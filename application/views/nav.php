@@ -248,8 +248,6 @@
 
 					<ul class="dropdown-menu dropdown-menu-right">
 						<li><a href="<?=base_url()?>user/profile"><i class="icon-user-plus"></i> My profile</a></li>
-						<li><a href="#"><i class="icon-coins"></i> My balance</a></li>
-						<li><a href="#"><span class="badge badge-warning pull-right">58</span> <i class="icon-comment-discussion"></i> Messages</a></li>
 						<li class="divider"></li>
 						<li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
 						<li><a href="<?=base_url()?>access/logout"><i class="icon-switch2"></i> Logout</a></li>
@@ -358,13 +356,7 @@
               <li><a href="#"><?=$page_controller?></a></li>
               <li class="active"><a href="#"><?=$controller_function?></a></li>
             </ul>
-            <ul class="breadcrumb-elements" >
-							<li class="dropdown" >
-								<a href="#" class="dropdown-toggle legitRipple" data-toggle="dropdown">
-									<i class="icon-gear position-left"></i>
-								</a>
-							</li>
-						</ul>
+           
           </div>
         </div>
 
