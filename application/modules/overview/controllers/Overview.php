@@ -16,6 +16,8 @@ class Overview extends MX_Controller
        if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles']))
         redirect('dashboard');
       else {
+        //print_r($_SESSION['laundry']['new_order']);
+        //unset($_SESSION['laundry']);
         /****** Required Parameters To Render A Page ******/
         $this->load->model('access/model_access');
         $this->load->model('globals/model_retrieval');
@@ -66,7 +68,8 @@ class Overview extends MX_Controller
               'weight_name' => $this->input->post('weight_name'),
               'price' => $this->input->post('price'),
               'description' => $this->input->post('description'),
-              'quantity' => $this->input->post('quantity')
+              'quantity' => $this->input->post('quantity'),
+              'array_index' => sizeof($_SESSION['laundry']['new_order'])
             ];
 
             $return_data = ['success' => "Adding To List Successful"];
@@ -97,7 +100,8 @@ class Overview extends MX_Controller
               'garment_name' => $this->input->post('garment_name'),
               'price' => $this->input->post('price'),
               'description' => $this->input->post('description'),
-              'quantity' => $this->input->post('item_quantity')
+              'quantity' => $this->input->post('item_quantity'),
+              'array_index' => sizeof($_SESSION['laundry']['new_order'])
             ];
 
             $return_data = ['success' => "Adding To List Successful"];
@@ -140,6 +144,7 @@ class Overview extends MX_Controller
             $query_result = $this->model_retrieval->all_info_return_result($dbres,$tablename,$where_condition,$return_dataType="php_object");
 
             $return_data = $query_result;
+            $_SESSION['laundry']['client_phone_number'] = $query_result[0]->phone_number_1;
           }
           else 
             $return_data['success'] = "Order Number";
@@ -210,5 +215,16 @@ class Overview extends MX_Controller
       }
     }
 
+    /**************** Deleting Items in Cart  ********************/
+    public function delete_from_cart($array_index) {
+      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+        $return_data['error'] = "Permission Denied. Conatat Amin";
+        print_r(json_encode($return_data));
+      }
+      else {
+        unset($_SESSION['laundry']['order']);
+      }
+    }   
+    /**************** Deleting Items in Cart  ********************/
     
 }//End of Class

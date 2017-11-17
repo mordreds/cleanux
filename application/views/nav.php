@@ -38,7 +38,6 @@
 	<div class="navbar navbar-inverse bg-teal ">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="<?=base_url();?>dashboard"> <?=$_SESSION['companyinfo']['name']?></a>
-
 			<ul class="nav navbar-nav pull-right visible-xs-block">
 				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
 			</ul>

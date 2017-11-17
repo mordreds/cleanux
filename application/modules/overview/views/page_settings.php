@@ -361,7 +361,7 @@
       }
     });
 
-    $('#active_accounts_tbl').dataTable({
+    /*$('#active_accounts_tbl').dataTable({
       ajax: {
         type : 'GET',
         url : '<?= base_url()?>administration/retrieve_allusers/active',
@@ -392,7 +392,7 @@
           }
         },
       ],
-    });
+    });*/
   /********** Displaying Services ******/
 </script>
 <?php endif; ?>

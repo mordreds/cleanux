@@ -35,13 +35,18 @@
           return row.quantity * row.price;
         }},
         {render: function(data,type,row,meta){
-          return '<i data-deleteid="" class="icon-cross2 text-danger" style="cursor: pointer;"></i>';
+          return '<i data-deleteid="'+row.array_index+'" class="icon-cross2 text-danger delete_item" style="cursor: pointer;"></i>';
         }},
       ],
     });
 
     $('#view_chart').click(function(){
       $('#laundry_chart').DataTable().ajax.reload();
+    });
+
+    $(document).on('click','.delete_item',function(){
+      let formurl = '<?= base_url()?>overview/laundry_chart';
+
     });
   /********** Displaying Services ******/
 </script>
