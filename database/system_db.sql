@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 12, 2017 at 03:49 PM
--- Server version: 5.7.19-0ubuntu0.16.04.1
+-- Generation Time: Nov 17, 2017 at 08:40 AM
+-- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -19,7 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `bgee_audit`
 --
-DROP DATABASE `bgee_audit`;
 CREATE DATABASE IF NOT EXISTS `bgee_audit` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `bgee_audit`;
 
@@ -29,7 +28,6 @@ USE `bgee_audit`;
 -- Table structure for table `failed_logins`
 --
 
-DROP TABLE IF EXISTS `failed_logins`;
 CREATE TABLE `failed_logins` (
   `id` int(20) NOT NULL COMMENT 'auto',
   `user_id` int(10) NOT NULL,
@@ -67,7 +65,6 @@ INSERT INTO `failed_logins` (`id`, `user_id`, `username`, `password`, `user_agen
 -- Table structure for table `successful_logins`
 --
 
-DROP TABLE IF EXISTS `successful_logins`;
 CREATE TABLE `successful_logins` (
   `id` int(20) NOT NULL COMMENT 'auto generated id',
   `user_id` int(5) NOT NULL COMMENT 'auto generated id from users table',
@@ -225,7 +222,12 @@ INSERT INTO `successful_logins` (`id`, `user_id`, `time_in`, `time_out`, `online
 (137, 1, '2017-11-10 23:07:42', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
 (138, 1, '2017-11-10 23:09:20', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
 (139, 1, '2017-11-11 01:47:53', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
-(140, 1, '2017-11-12 06:39:51', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL);
+(140, 1, '2017-11-12 06:39:51', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(141, 1, '2017-11-14 20:31:02', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(142, 1, '2017-11-15 02:04:24', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(143, 1, '2017-11-16 06:24:08', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(144, 1, '2017-11-16 22:23:54', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(145, 1, '2017-11-17 07:57:05', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -233,7 +235,6 @@ INSERT INTO `successful_logins` (`id`, `user_id`, `time_in`, `time_out`, `online
 -- Table structure for table `sysaudit`
 --
 
-DROP TABLE IF EXISTS `sysaudit`;
 CREATE TABLE `sysaudit` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `changeset` text NOT NULL,
@@ -279,7 +280,7 @@ ALTER TABLE `failed_logins`
 -- AUTO_INCREMENT for table `successful_logins`
 --
 ALTER TABLE `successful_logins`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=141;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=146;
 --
 -- AUTO_INCREMENT for table `sysaudit`
 --
@@ -287,7 +288,6 @@ ALTER TABLE `sysaudit`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;--
 -- Database: `bgee_db`
 --
-DROP DATABASE `bgee_db`;
 CREATE DATABASE IF NOT EXISTS `bgee_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `bgee_db`;
 
@@ -297,7 +297,6 @@ USE `bgee_db`;
 -- Table structure for table `blobs`
 --
 
-DROP TABLE IF EXISTS `blobs`;
 CREATE TABLE `blobs` (
   `id` bigint(20) NOT NULL COMMENT 'auto generated id',
   `file_path` text CHARACTER SET latin1 NOT NULL COMMENT 'physical location of blob',
@@ -321,7 +320,6 @@ INSERT INTO `blobs` (`id`, `file_path`, `user_id`, `date_of_upload`) VALUES
 -- Table structure for table `hr_company_document`
 --
 
-DROP TABLE IF EXISTS `hr_company_document`;
 CREATE TABLE `hr_company_document` (
   `id` bigint(20) NOT NULL,
   `logo_id` varchar(255) CHARACTER SET utf8 NOT NULL
@@ -333,7 +331,6 @@ CREATE TABLE `hr_company_document` (
 -- Table structure for table `hr_company_info`
 --
 
-DROP TABLE IF EXISTS `hr_company_info`;
 CREATE TABLE `hr_company_info` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -362,7 +359,6 @@ INSERT INTO `hr_company_info` (`id`, `name`, `telephone_1`, `telephone_2`, `fax`
 -- Table structure for table `hr_departments`
 --
 
-DROP TABLE IF EXISTS `hr_departments`;
 CREATE TABLE `hr_departments` (
   `id` tinyint(2) NOT NULL,
   `name` varchar(255) NOT NULL
@@ -386,7 +382,6 @@ INSERT INTO `hr_departments` (`id`, `name`) VALUES
 -- Table structure for table `hr_employee_biodata`
 --
 
-DROP TABLE IF EXISTS `hr_employee_biodata`;
 CREATE TABLE `hr_employee_biodata` (
   `id` bigint(20) NOT NULL,
   `first_name` varchar(100) NOT NULL,
@@ -425,7 +420,6 @@ INSERT INTO `hr_employee_biodata` (`id`, `first_name`, `middle_name`, `last_name
 -- Table structure for table `hr_employee_contact_info`
 --
 
-DROP TABLE IF EXISTS `hr_employee_contact_info`;
 CREATE TABLE `hr_employee_contact_info` (
   `id` bigint(20) NOT NULL,
   `biodata_id` bigint(20) NOT NULL,
@@ -456,7 +450,6 @@ INSERT INTO `hr_employee_contact_info` (`id`, `biodata_id`, `phone_number_1`, `p
 -- Table structure for table `hr_employee_other_info`
 --
 
-DROP TABLE IF EXISTS `hr_employee_other_info`;
 CREATE TABLE `hr_employee_other_info` (
   `id` int(11) NOT NULL,
   `biodata_id` varchar(20) NOT NULL,
@@ -469,7 +462,6 @@ CREATE TABLE `hr_employee_other_info` (
 -- Table structure for table `hr_employee_work_info`
 --
 
-DROP TABLE IF EXISTS `hr_employee_work_info`;
 CREATE TABLE `hr_employee_work_info` (
   `id` bigint(20) NOT NULL,
   `biodata_id` bigint(20) NOT NULL,
@@ -498,7 +490,6 @@ INSERT INTO `hr_employee_work_info` (`id`, `biodata_id`, `employee_id`, `positio
 -- Table structure for table `hr_position`
 --
 
-DROP TABLE IF EXISTS `hr_position`;
 CREATE TABLE `hr_position` (
   `id` tinyint(2) NOT NULL,
   `name` varchar(50) NOT NULL,
@@ -525,7 +516,6 @@ INSERT INTO `hr_position` (`id`, `name`, `description`) VALUES
 -- Table structure for table `laundry_clients`
 --
 
-DROP TABLE IF EXISTS `laundry_clients`;
 CREATE TABLE `laundry_clients` (
   `id` bigint(20) NOT NULL,
   `fullname` varchar(255) NOT NULL,
@@ -548,7 +538,10 @@ CREATE TABLE `laundry_clients` (
 INSERT INTO `laundry_clients` (`id`, `fullname`, `company`, `residence_address`, `postal_address`, `phone_number_1`, `phone_number_2`, `email`, `sms_alert`, `online_access`, `status`, `date_created`) VALUES
 (3, 'Ike Gyasi Nimako', 'Ejilsoft IT Technologies Limited', 'Spintex Road', '', '0244444888', '', 'ikegyasi@gmail.com', 0, 1, 'active', '2017-11-07 23:30:45'),
 (4, 'Evans Ofori', 'Marksbon IT Limited', 'New Site - Adenta', '', '0244888444', '', 'evansofori@gmail.com', 1, 1, 'active', '2017-11-07 23:32:16'),
-(5, 'MR Charles Agyin-Asare', 'Perez Dome Chapel', 'Dzorwulu - Junction', 'Box K47, Kotobabi - Accra', '0271589354', '', 'info@perezdome.com', 1, 0, 'active', '2017-11-09 19:37:36');
+(5, 'MR Charles Agyin-Asare', 'Perez Dome Chapel', 'Dzorwulu - Junction', 'Box K47, Kotobabi - Accra', '0271589354', '', 'info@perezdome.com', 1, 0, 'active', '2017-11-09 19:37:36'),
+(6, 'Kelvin Mitnik', 'Hackers', 'Kasoa', '', '0255555555', '', 'kelvin@mitnick.com', 1, 0, 'active', '2017-11-14 21:17:10'),
+(7, 'Test User 22', '', 'Mallam', '', '0211111222', '', '', 1, 0, 'active', '2017-11-14 21:37:39'),
+(8, 'Test User 1', 'Marksbon IT Limited', 'Taifa', '', '0244111111', '', 'user1@test.com', 1, 0, 'active', '2017-11-16 06:31:05');
 
 -- --------------------------------------------------------
 
@@ -556,7 +549,6 @@ INSERT INTO `laundry_clients` (`id`, `fullname`, `company`, `residence_address`,
 -- Table structure for table `laundry_garments`
 --
 
-DROP TABLE IF EXISTS `laundry_garments`;
 CREATE TABLE `laundry_garments` (
   `id` bigint(20) NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 NOT NULL,
@@ -579,7 +571,6 @@ INSERT INTO `laundry_garments` (`id`, `name`, `description`, `status`, `date_cre
 -- Table structure for table `laundry_orders`
 --
 
-DROP TABLE IF EXISTS `laundry_orders`;
 CREATE TABLE `laundry_orders` (
   `id` bigint(20) NOT NULL,
   `order_number` varchar(20) NOT NULL,
@@ -594,7 +585,6 @@ CREATE TABLE `laundry_orders` (
 -- Table structure for table `laundry_prices`
 --
 
-DROP TABLE IF EXISTS `laundry_prices`;
 CREATE TABLE `laundry_prices` (
   `id` bigint(20) NOT NULL,
   `service_id` bigint(20) NOT NULL,
@@ -622,7 +612,6 @@ INSERT INTO `laundry_prices` (`id`, `service_id`, `weight_id`, `garment_id`, `am
 -- Table structure for table `laundry_services`
 --
 
-DROP TABLE IF EXISTS `laundry_services`;
 CREATE TABLE `laundry_services` (
   `id` bigint(20) NOT NULL,
   `name` varchar(150) CHARACTER SET utf8 NOT NULL,
@@ -650,7 +639,6 @@ INSERT INTO `laundry_services` (`id`, `name`, `code`, `description`, `status`, `
 -- Table structure for table `laundry_weights`
 --
 
-DROP TABLE IF EXISTS `laundry_weights`;
 CREATE TABLE `laundry_weights` (
   `id` bigint(20) NOT NULL,
   `service_type` bigint(20) NOT NULL,
@@ -674,7 +662,6 @@ INSERT INTO `laundry_weights` (`id`, `service_type`, `weight`, `description`, `s
 --
 -- Stand-in structure for view `vw_employee_details`
 --
-DROP VIEW IF EXISTS `vw_employee_details`;
 CREATE TABLE `vw_employee_details` (
 `id` bigint(20)
 ,`first_name` varchar(100)
@@ -716,7 +703,6 @@ CREATE TABLE `vw_employee_details` (
 --
 -- Stand-in structure for view `vw_laundry_prices`
 --
-DROP VIEW IF EXISTS `vw_laundry_prices`;
 CREATE TABLE `vw_laundry_prices` (
 `id` bigint(20)
 ,`service_id` bigint(20)
@@ -735,7 +721,6 @@ CREATE TABLE `vw_laundry_prices` (
 --
 -- Stand-in structure for view `vw_laundry_weights`
 --
-DROP VIEW IF EXISTS `vw_laundry_weights`;
 CREATE TABLE `vw_laundry_weights` (
 `id` bigint(20)
 ,`service_type` bigint(20)
@@ -753,7 +738,7 @@ CREATE TABLE `vw_laundry_weights` (
 --
 DROP TABLE IF EXISTS `vw_employee_details`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_employee_details`  AS  select `a`.`id` AS `id`,`a`.`first_name` AS `first_name`,`a`.`middle_name` AS `middle_name`,`a`.`last_name` AS `last_name`,concat(`a`.`first_name`,' ',`a`.`middle_name`,' ',`a`.`last_name`) AS `fullname`,`a`.`gender` AS `gender`,`a`.`date_of_birth` AS `date_of_birth`,`a`.`id_type` AS `id_type`,`g`.`phone_number_1` AS `phone_number_1`,`g`.`phone_number_2` AS `phone_number_2`,`g`.`email` AS `email`,`a`.`id_number` AS `id_number`,`a`.`id_expiry_date` AS `id_expiry_date`,`a`.`id_issue_date` AS `id_issue_date`,`a`.`marital_status` AS `marital_status`,`a`.`nationality` AS `nationality`,`a`.`postal_address` AS `postal_address`,`a`.`social_security` AS `social_security`,`a`.`bank_name` AS `bank_name`,`a`.`bank_branch` AS `bank_branch`,`a`.`account_number` AS `account_number`,`a`.`user_id` AS `user_id`,`a`.`status` AS `status`,`a`.`created_date` AS `created_date`,`d`.`employment_type` AS `employment_type`,`d`.`employment_startdate` AS `employment_startdate`,`d`.`employee_id` AS `employee_id`,`d`.`work_email` AS `work_email`,`e`.`name` AS `department`,`f`.`name` AS `current_position`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`a`.`photo_id` = `bgee_db`.`blobs`.`id`)) AS `profile_photo`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`d`.`resume_id` = `bgee_db`.`blobs`.`id`)) AS `resume_file_path`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`d`.`application_id` = `bgee_db`.`blobs`.`id`)) AS `application_file_path` from (((((`bgee_db`.`hr_employee_biodata` `a` left join `bgee_db`.`hr_employee_other_info` `c` on((`a`.`id` = `c`.`biodata_id`))) left join `bgee_db`.`hr_employee_work_info` `d` on((`a`.`id` = `d`.`biodata_id`))) left join `bgee_db`.`hr_employee_contact_info` `g` on((`a`.`id` = `g`.`biodata_id`))) left join `bgee_db`.`hr_departments` `e` on((`d`.`department_id` = `e`.`id`))) left join `bgee_db`.`hr_position` `f` on((`d`.`position_id` = `f`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_employee_details`  AS  select `a`.`id` AS `id`,`a`.`first_name` AS `first_name`,`a`.`middle_name` AS `middle_name`,`a`.`last_name` AS `last_name`,concat(`a`.`first_name`,' ',`a`.`middle_name`,' ',`a`.`last_name`) AS `fullname`,`a`.`gender` AS `gender`,`a`.`date_of_birth` AS `date_of_birth`,`a`.`id_type` AS `id_type`,`g`.`phone_number_1` AS `phone_number_1`,`g`.`phone_number_2` AS `phone_number_2`,`g`.`email` AS `email`,`a`.`id_number` AS `id_number`,`a`.`id_expiry_date` AS `id_expiry_date`,`a`.`id_issue_date` AS `id_issue_date`,`a`.`marital_status` AS `marital_status`,`a`.`nationality` AS `nationality`,`a`.`postal_address` AS `postal_address`,`a`.`social_security` AS `social_security`,`a`.`bank_name` AS `bank_name`,`a`.`bank_branch` AS `bank_branch`,`a`.`account_number` AS `account_number`,`a`.`user_id` AS `user_id`,`a`.`status` AS `status`,`a`.`created_date` AS `created_date`,`d`.`employment_type` AS `employment_type`,`d`.`employment_startdate` AS `employment_startdate`,`d`.`employee_id` AS `employee_id`,`d`.`work_email` AS `work_email`,`e`.`name` AS `department`,`f`.`name` AS `current_position`,(select `blobs`.`file_path` from `blobs` where (`a`.`photo_id` = `blobs`.`id`)) AS `profile_photo`,(select `blobs`.`file_path` from `blobs` where (`d`.`resume_id` = `blobs`.`id`)) AS `resume_file_path`,(select `blobs`.`file_path` from `blobs` where (`d`.`application_id` = `blobs`.`id`)) AS `application_file_path` from (((((`hr_employee_biodata` `a` left join `hr_employee_other_info` `c` on((`a`.`id` = `c`.`biodata_id`))) left join `hr_employee_work_info` `d` on((`a`.`id` = `d`.`biodata_id`))) left join `hr_employee_contact_info` `g` on((`a`.`id` = `g`.`biodata_id`))) left join `hr_departments` `e` on((`d`.`department_id` = `e`.`id`))) left join `hr_position` `f` on((`d`.`position_id` = `f`.`id`))) ;
 
 -- --------------------------------------------------------
 
@@ -762,7 +747,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vw_laundry_prices`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`admin`@`%` SQL SECURITY DEFINER VIEW `vw_laundry_prices`  AS  select `a`.`id` AS `id`,`a`.`service_id` AS `service_id`,`b`.`name` AS `service_name`,`a`.`weight_id` AS `weight_id`,`c`.`weight` AS `weight`,`a`.`garment_id` AS `garment_id`,`d`.`name` AS `garment_name`,`a`.`amount` AS `amount`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created` from (((`laundry_prices` `a` left join `laundry_services` `b` on((`a`.`service_id` = `b`.`id`))) left join `laundry_weights` `c` on((`a`.`weight_id` = `c`.`id`))) left join `laundry_garments` `d` on((`a`.`garment_id` = `d`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_laundry_prices`  AS  select `a`.`id` AS `id`,`a`.`service_id` AS `service_id`,`b`.`name` AS `service_name`,`a`.`weight_id` AS `weight_id`,`c`.`weight` AS `weight`,`a`.`garment_id` AS `garment_id`,`d`.`name` AS `garment_name`,`a`.`amount` AS `amount`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created` from (((`laundry_prices` `a` left join `laundry_services` `b` on((`a`.`service_id` = `b`.`id`))) left join `laundry_weights` `c` on((`a`.`weight_id` = `c`.`id`))) left join `laundry_garments` `d` on((`a`.`garment_id` = `d`.`id`))) ;
 
 -- --------------------------------------------------------
 
@@ -771,7 +756,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`admin`@`%` SQL SECURITY DEFINER VIEW `vw_lau
 --
 DROP TABLE IF EXISTS `vw_laundry_weights`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`admin`@`%` SQL SECURITY DEFINER VIEW `vw_laundry_weights`  AS  select `a`.`id` AS `id`,`a`.`service_type` AS `service_type`,`a`.`weight` AS `weight`,`a`.`description` AS `description`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created`,`b`.`name` AS `service` from (`laundry_weights` `a` left join `laundry_services` `b` on((`a`.`service_type` = `b`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_laundry_weights`  AS  select `a`.`id` AS `id`,`a`.`service_type` AS `service_type`,`a`.`weight` AS `weight`,`a`.`description` AS `description`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created`,`b`.`name` AS `service` from (`laundry_weights` `a` left join `laundry_services` `b` on((`a`.`service_type` = `b`.`id`))) ;
 
 --
 -- Indexes for dumped tables
@@ -910,7 +895,7 @@ ALTER TABLE `hr_position`
 -- AUTO_INCREMENT for table `laundry_clients`
 --
 ALTER TABLE `laundry_clients`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `laundry_garments`
 --
@@ -938,7 +923,6 @@ ALTER TABLE `laundry_weights`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;--
 -- Database: `bgee_permissions`
 --
-DROP DATABASE `bgee_permissions`;
 CREATE DATABASE IF NOT EXISTS `bgee_permissions` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `bgee_permissions`;
 
@@ -948,7 +932,6 @@ USE `bgee_permissions`;
 -- Table structure for table `dashboard_tabs`
 --
 
-DROP TABLE IF EXISTS `dashboard_tabs`;
 CREATE TABLE `dashboard_tabs` (
   `id` bigint(20) NOT NULL,
   `name` varchar(100) CHARACTER SET utf8 NOT NULL,
@@ -987,7 +970,6 @@ INSERT INTO `dashboard_tabs` (`id`, `name`, `comment`, `icon`, `link`, `bg`, `pr
 -- Table structure for table `password_reset_requests`
 --
 
-DROP TABLE IF EXISTS `password_reset_requests`;
 CREATE TABLE `password_reset_requests` (
   `id` int(11) NOT NULL,
   `requestor_user_id` int(11) NOT NULL,
@@ -1028,7 +1010,6 @@ INSERT INTO `password_reset_requests` (`id`, `requestor_user_id`, `password_toke
 -- Table structure for table `roles_privileges_group`
 --
 
-DROP TABLE IF EXISTS `roles_privileges_group`;
 CREATE TABLE `roles_privileges_group` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL COMMENT 'name of the group / predefined set of roles & privileges ',
@@ -1057,7 +1038,6 @@ INSERT INTO `roles_privileges_group` (`id`, `name`, `roles`, `privileges`, `desc
 -- Table structure for table `roles_privileges_user`
 --
 
-DROP TABLE IF EXISTS `roles_privileges_user`;
 CREATE TABLE `roles_privileges_user` (
   `id` int(20) NOT NULL,
   `user_id` int(20) NOT NULL COMMENT 'Contains the id of the user',
@@ -1083,7 +1063,6 @@ INSERT INTO `roles_privileges_user` (`id`, `user_id`, `custom_roles`, `custom_pr
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` bigint(20) NOT NULL,
   `username` varchar(255) CHARACTER SET utf8 NOT NULL,
@@ -1115,7 +1094,6 @@ INSERT INTO `users` (`id`, `username`, `passwd`, `default_passwd`, `fullname`, `
 --
 -- Stand-in structure for view `vw_user_details`
 --
-DROP VIEW IF EXISTS `vw_user_details`;
 CREATE TABLE `vw_user_details` (
 `id` bigint(20)
 ,`username` varchar(255)
@@ -1145,7 +1123,7 @@ CREATE TABLE `vw_user_details` (
 --
 DROP TABLE IF EXISTS `vw_user_details`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_user_details`  AS  select `a`.`id` AS `id`,`a`.`username` AS `username`,`a`.`passwd` AS `passwd`,coalesce(convert((select concat(`bgee_db`.`hr_employee_biodata`.`first_name`,' ',`bgee_db`.`hr_employee_biodata`.`middle_name`,' ',`bgee_db`.`hr_employee_biodata`.`last_name`) from `bgee_db`.`hr_employee_biodata` where (`bgee_db`.`hr_employee_biodata`.`id` = `a`.`biodata_id`)) using utf8),`a`.`fullname`) AS `fullname`,coalesce((select `bgee_db`.`hr_employee_contact_info`.`phone_number_1` from `bgee_db`.`hr_employee_contact_info` where (`bgee_db`.`hr_employee_contact_info`.`biodata_id` = `a`.`biodata_id`)),`a`.`phone_number`) AS `phone_number`,coalesce((select `bgee_db`.`hr_employee_work_info`.`employee_id` from `bgee_db`.`hr_employee_work_info` where (`bgee_db`.`hr_employee_work_info`.`biodata_id` = `a`.`biodata_id`)),`a`.`temp_employee_id`) AS `employee_id`,`a`.`biodata_id` AS `biodata_id`,`a`.`first_login` AS `first_login`,`a`.`login_attempt` AS `login_attempt`,`a`.`status` AS `status`,`a`.`created_by` AS `created_by`,`a`.`date_created` AS `date_created`,coalesce(`b`.`custom_roles`,'') AS `custom_roles`,coalesce(`b`.`custom_privileges`,'') AS `custom_privileges`,coalesce(`b`.`group_id`,'') AS `group_id`,coalesce(`b`.`status`,'') AS `user_roles_status`,coalesce(`c`.`name`,'') AS `group_name`,coalesce(`c`.`roles`,'') AS `group_roles`,coalesce(`c`.`privileges`,'') AS `group_privileges` from (((`users` `a` left join `bgee_permissions`.`roles_privileges_user` `b` on((`a`.`id` = `b`.`user_id`))) left join `roles_privileges_group` `c` on((`b`.`group_id` = `c`.`id`))) left join `bgee_db`.`hr_employee_work_info` `d` on((`a`.`biodata_id` = `d`.`biodata_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_user_details`  AS  select `a`.`id` AS `id`,`a`.`username` AS `username`,`a`.`passwd` AS `passwd`,coalesce(convert((select concat(`bgee_db`.`hr_employee_biodata`.`first_name`,' ',`bgee_db`.`hr_employee_biodata`.`middle_name`,' ',`bgee_db`.`hr_employee_biodata`.`last_name`) from `bgee_db`.`hr_employee_biodata` where (`bgee_db`.`hr_employee_biodata`.`id` = `a`.`biodata_id`)) using utf8),`a`.`fullname`) AS `fullname`,coalesce((select `bgee_db`.`hr_employee_contact_info`.`phone_number_1` from `bgee_db`.`hr_employee_contact_info` where (`bgee_db`.`hr_employee_contact_info`.`biodata_id` = `a`.`biodata_id`)),`a`.`phone_number`) AS `phone_number`,coalesce((select `bgee_db`.`hr_employee_work_info`.`employee_id` from `bgee_db`.`hr_employee_work_info` where (`bgee_db`.`hr_employee_work_info`.`biodata_id` = `a`.`biodata_id`)),`a`.`temp_employee_id`) AS `employee_id`,`a`.`biodata_id` AS `biodata_id`,`a`.`first_login` AS `first_login`,`a`.`login_attempt` AS `login_attempt`,`a`.`status` AS `status`,`a`.`created_by` AS `created_by`,`a`.`date_created` AS `date_created`,coalesce(`b`.`custom_roles`,'') AS `custom_roles`,coalesce(`b`.`custom_privileges`,'') AS `custom_privileges`,coalesce(`b`.`group_id`,'') AS `group_id`,coalesce(`b`.`status`,'') AS `user_roles_status`,coalesce(`c`.`name`,'') AS `group_name`,coalesce(`c`.`roles`,'') AS `group_roles`,coalesce(`c`.`privileges`,'') AS `group_privileges` from (((`users` `a` left join `template_permissions`.`roles_privileges_user` `b` on((`a`.`id` = `b`.`user_id`))) left join `roles_privileges_group` `c` on((`b`.`group_id` = `c`.`id`))) left join `bgee_db`.`hr_employee_work_info` `d` on((`a`.`biodata_id` = `d`.`biodata_id`))) ;
 
 --
 -- Indexes for dumped tables
