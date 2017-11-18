@@ -31,9 +31,10 @@
       ?>
     });
 
-    var formurl = "<?=base_url()?>overview/search";
+    
     $('#search_submit').click(function(){
       let search_text = $('#search_text').val();
+      var formurl = "<?=base_url()?>overview/search";
       if(search_text == "")
         notification("failed","Order Number / Phone Number Required ");
       else {
@@ -47,7 +48,7 @@
         data : formData,
         success: function(response) { 
           response = JSON.parse(response)
-          console.log(response[0])
+          //console.log(response)
           if(response[0]) {  
             $('[name="id"]').val(response[0].id);
             $('[name="fullname"]').val(response[0].fullname);
@@ -64,29 +65,6 @@
             $('[name="secondary_tel"]').attr('readonly',"readonly");
             $('[name="email"]').val(response[0].email);
             $('[name="email"]').attr('readonly',"readonly");
-            if(response[0].sms == 1) {
-              console.log(switchery)
-              $('[name="sms"]').setPosition(true);
-              document.querySelector('.btn_cancel').addEventListener('click', function() {
-                switchery.disable();
-              });
-
-
-                /*  if (Array.prototype.forEach) {
-                var elems = Array.prototype.slice.call(document.querySelectorAll('.switchery'));
-                elems.forEach(function(html) {
-                    var switchery = new Switchery(html);
-                });
-              }
-              else {
-                var elems = document.querySelectorAll('.switchery');
-                for (var i = 0; i < elems.length; i++) {
-                    var switchery = new Switchery(elems[i]);
-                }
-              }*/
-            }
-            else
-              $('[name="sms"]').attr('checked',"");
           }
           else { 
             $.jGrowl("No Record Found", {
@@ -251,12 +229,12 @@
             response = JSON.parse(response);
             
             if(response.success) {
-              $.jGrowl('Chart Updated', {
+              $.jGrowl('Cart Updated', {
                 theme: 'alert-styled-left bg-success'
               });
 
-              let total_order = parseInt($('#order_chart').text()) + 1;
-              $('#order_chart').text(total_order);
+              let total_order = parseInt($('#order_cart').text()) + 1;
+              $('#order_cart').text(total_order);
 
               /******** Resetting Fields *********/
               $('#weight_onchange').data('selectBox-selectBoxIt').refresh()
@@ -331,12 +309,12 @@
             response = JSON.parse(response);
             
             if(response.success) {
-              $.jGrowl('Laundry List Updated', {
+              $.jGrowl('Cart Updated', {
                 theme: 'alert-styled-left bg-success'
               });
 
-              let total_order = parseInt($('#order_chart').text()) + 1;
-              $('#order_chart').text(total_order);
+              let total_order = parseInt($('#order_cart').text()) + 1;
+              $('#order_cart').text(total_order);
 
               /******** Resetting Fields ********/
               $('#serivce_onchange').data('selectBox-selectBoxIt').refresh()

@@ -157,15 +157,15 @@
 				</li>
 
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="view_chart">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="view_cart">
 						<i class="icon-basket"></i>
 						<span class="visible-xs-inline-block position-right">Messages</span>
-						<span class="badge bg-warning-400" id="order_chart"><?=sizeof(@$_SESSION['laundry']['new_order'])?></span>
+						<span class="badge bg-warning-400" id="order_cart"><?=sizeof(@$_SESSION['laundry']['new_order'])?></span>
 					</a>
 
 					<div class="dropdown-menu dropdown-content">
 						<div class="table-responsive">
-							<table class="table table-responsive" style="margin-top: 2px" id="laundry_chart">
+							<table class="table table-responsive" id="laundry_cart">
                 <thead>
                   <tr style="background-color:#009688;color:#ffffff">
                     <th>Code</th>
@@ -181,7 +181,7 @@
               </table>
               <div>
               	<div class="col-md-2">
-              		<button class="btn btn-xs btn-danger" style="padding:5px;">Clear All <i class="icon-trash"></i></button>
+              		<button class="btn btn-xs btn-danger" id="clear_cart" style="padding:5px;">Clear All <i class="icon-trash"></i></button>
               	</div>
               	<div class="col-md-2 pull-right" style="padding:5px;">
               		<button class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#checkout">Checkout <i class="icon-forward"></i></button>

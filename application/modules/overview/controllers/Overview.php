@@ -101,7 +101,7 @@ class Overview extends MX_Controller
               'price' => $this->input->post('price'),
               'description' => $this->input->post('description'),
               'quantity' => $this->input->post('item_quantity'),
-              'array_index' => sizeof($_SESSION['laundry']['new_order'])
+              'array_index' => sizeof(@$_SESSION['laundry']['new_order'])
             ];
 
             $return_data = ['success' => "Adding To List Successful"];
@@ -143,8 +143,13 @@ class Overview extends MX_Controller
 
             $query_result = $this->model_retrieval->all_info_return_result($dbres,$tablename,$where_condition,$return_dataType="php_object");
 
-            $return_data = $query_result;
-            $_SESSION['laundry']['client_phone_number'] = $query_result[0]->phone_number_1;
+            if($query_result) {
+              $return_data = $query_result;
+              $_SESSION['laundry']['client_phone_number'] = $query_result[0]->phone_number_1;
+            }
+            else {
+              $return_data = $query_result;
+            }
           }
           else 
             $return_data['success'] = "Order Number";
@@ -157,7 +162,7 @@ class Overview extends MX_Controller
     /*******************************
       order Search
     *******************************/
-    public function laundry_chart() 
+    public function laundry_cart() 
     {
       if(isset($_SESSION['laundry']['new_order'])) {
         # Loading Model
@@ -170,7 +175,7 @@ class Overview extends MX_Controller
         $select = "code";
         /****** Variables Assignment ******/
 
-        if(!empty($_SESSION['laundry']['new_order'])) {
+        if(isset($_SESSION['laundry']['new_order'])) {
           for($i=0; $i < sizeof($_SESSION['laundry']['new_order']) ; $i++) { 
             # code...
             $where_condition = ['id' => $_SESSION['laundry']['new_order'][$i]['service_id']];
@@ -182,9 +187,26 @@ class Overview extends MX_Controller
           print_r(json_encode($_SESSION['laundry']['new_order']));
         }
         else {
-          $_SESSION['laundry']['new_order'] = array();
+          print_r(json_encode($_SESSION['laundry']['new_order'] = array()));
         }
       }
+    }
+
+    /*******************************
+      Clear Chart
+    *******************************/
+    public function clear_cart() 
+    {
+       # Permission Check
+       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) 
+          $return_data = ['error' => "Permission Denied. Please Contact Admin"];
+          
+      else { 
+        unset($_SESSION['laundry']);
+        $return_data = ['success' => "Cart Cleared"];
+      }
+
+      print_r(json_encode($return_data));
     }
   /**************** Retrivals  ********************/
 

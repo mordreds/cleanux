@@ -140,22 +140,12 @@
                                   <input type="text" name="garment_price" class="form-control" readonly>
                                 </div>
                               </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label class="display-block">Total No. Of Items <span class="text-danger">*</span></label>
-                                  <input type="text" name="total_no_garments" class="form-control">
-                                </div>
-                              </div>
-                              <div class="col-md-4" style="">
-                                <div class="form-group">
-                                  <label class="display-block">Quantit</label>
-                                  <input type="text" name="" class="form-control">
-                                </div>
-                              </div>
-                              <div class="col-md-4" style="">
-                                <div class="form-group">
-                                  <label class="display-block">Quanti</label>
-                                  <input type="text" name="" class="form-control">
+                              <div class="col-md-12">
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label class="display-block">Total No. Of Items <span class="text-danger">*</span></label>
+                                    <input type="text" name="total_no_garments" class="form-control">
+                                  </div>
                                 </div>
                               </div>
                               <div class="col-md-5"></div>
