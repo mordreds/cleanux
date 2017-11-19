@@ -32,7 +32,7 @@
     });
 
     
-    $('#search_submit').click(function(){
+    $('#search_submit').click(function(e){
       let search_text = $('#search_text').val();
       var formurl = "<?=base_url()?>overview/search";
       if(search_text == "")
@@ -65,6 +65,9 @@
             $('[name="secondary_tel"]').attr('readonly',"readonly");
             $('[name="email"]').val(response[0].email);
             $('[name="email"]').attr('readonly',"readonly");
+            
+            e.preventDefault();
+            $('#overview_tabs a[href="#client_info"]').tab('show'); 
           }
           else { 
             $.jGrowl("No Record Found", {
@@ -243,13 +246,11 @@
               $('[name="weight_item_description"]').val("");
               $('[name="weight_item_quantity"]').val("");
               /******** Resetting Fields *********/
-            }
-            else {
-              $.jGrowl('Adding To List Failed', {
+            } else {
+              $.jGrowl(response.error, {
                 theme: 'alert-styled-left bg-danger'
               });
             }
-            
           },
           error: function() {
             $.jGrowl('Adding To List Failed', {
@@ -324,7 +325,7 @@
               /******** Resetting Fields *********/
             }
             else {
-              $.jGrowl('Adding To List Failed', {
+              $.jGrowl(response.error, {
                 theme: 'alert-styled-left bg-danger'
               });
             }

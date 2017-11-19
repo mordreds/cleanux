@@ -12,7 +12,7 @@
               <div class="panel panel-flat">
                 <div class="panel-body">
                   <div class="tabbable">
-                    <ul class="nav nav-tabs nav-tabs-bottom">
+                    <ul class="nav nav-tabs nav-tabs-bottom" id="overview_tabs">
                       <li class="active"><a href="#client_info" data-toggle="tab" class="legitRipple">Client Info <i class="icon-user position-right"></i></a></li>
                       <li><a href="#neworder" data-toggle="tab" class="legitRipple">New Order <i class="icon-user position-right"></i></a></li>
                       <li><a href="#right-icon-tab3" data-toggle="tab" class="legitRipple">Billing Info<i class="icon-cash3 position-left text-slate"></i></a></li>
@@ -45,7 +45,7 @@
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
-                                <input type="text" name="primary_tel" placeholder="Phone No #1:" class="form-control" required>
+                                <input type="text" name="primary_tel" placeholder="Phone No #1:" class="form-control" minlength="10" required>
                               </div>
                             </div>
                             <div class="col-md-6">
@@ -103,7 +103,7 @@
                               <div class="col-md-4">
                                 <div class="form-group">
                                   <label class="display-block">Unit Price <span class="text-danger">*</span></label>
-                                  <input type="text" name="weight_price" class="form-control" readonly>
+                                  <input type="number" name="weight_price" class="form-control" readonly>
                                 </div>
                               </div>
                               <div class="col-md-4">
@@ -115,7 +115,7 @@
                               <div class="col-md-4">
                                 <div class="form-group">
                                   <label class="display-block">Total No. Of Item(s) <span class="text-danger">*</span></label>
-                                  <input type="text" name="weight_item_quantity" class="form-control">
+                                  <input type="number" name="weight_item_quantity" class="form-control" min="1">
                                 </div>
                               </div>
                               <div class="col-md-4"></div>
@@ -137,14 +137,14 @@
                               <div class="col-md-4">
                                 <div class="form-group">
                                   <label class="display-block">Unit Price <span class="text-danger">*</span></label>
-                                  <input type="text" name="garment_price" class="form-control" readonly>
+                                  <input type="number" name="garment_price" class="form-control" readonly>
                                 </div>
                               </div>
                               <div class="col-md-12">
                                 <div class="col-md-4">
                                   <div class="form-group">
                                     <label class="display-block">Total No. Of Items <span class="text-danger">*</span></label>
-                                    <input type="text" name="total_no_garments" class="form-control">
+                                    <input type="number" name="total_no_garments" class="form-control" min="1">
                                   </div>
                                 </div>
                               </div>

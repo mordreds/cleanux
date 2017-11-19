@@ -4,14 +4,22 @@
  
  /********** Displaying Services ******/
     $(document).ready(function() {
+      $('#view_cart').click(function(){
+        $('#laundry_cart').DataTable().ajax.reload();
+      });
+
       $('#laundry_cart').dataTable({
         searching: false,
         paging: false,
+        order: [],
         ajax: {
           type : 'GET',
+          dataType : 'json',
           url : '<?= base_url()?>overview/laundry_cart',
           dataSrc: '',
-          error: function(){}
+          error: function(response){
+            console.log(response);
+          }
         },
         columns: [
           {data: "service_code", render: function(data,type,row,meta){
@@ -42,13 +50,15 @@
       });
     });
 
-    $('#view_cart').click(function(){
-      $('#laundry_cart').DataTable().ajax.reload();
-    });
-
     $(document).on('click','.delete_item',function(){
-      let formurl = '<?= base_url()?>overview/laundry_cart';
+      let array_index = $(this).data('deleteid');
+      let formurl = "<?=base_url()?>overview/delete_from_cart";
+      let formData = {'deleteid': array_index};
+      ajax_post(formurl,formData,tableid="laundry_cart");
 
+      let total_order = parseInt($('#order_cart').text()) - 1;
+      $('#order_cart').text(total_order);
+      $('#laundry_cart').DataTable().ajax.reload();
     });
 
     $('#clear_cart').click(function(){

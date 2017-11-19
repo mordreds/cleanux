@@ -16,8 +16,7 @@ class Overview extends MX_Controller
        if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles']))
         redirect('dashboard');
       else {
-        //print_r($_SESSION['laundry']['new_order']);
-        //unset($_SESSION['laundry']);
+        //print "<pre>"; print_r(@$_SESSION['laundry']); print "</pre>";
         /****** Required Parameters To Render A Page ******/
         $this->load->model('access/model_access');
         $this->load->model('globals/model_retrieval');
@@ -46,67 +45,119 @@ class Overview extends MX_Controller
           print_r(json_encode($return_data));
        }
       else {
-        if($list_type == "washing_only") {
-          $this->form_validation->set_rules('service_id','Service ID','trim|required');
-          $this->form_validation->set_rules('service_name','Service Name','trim|required');
-          $this->form_validation->set_rules('weight_id','Weight','trim|required');
-          $this->form_validation->set_rules('weight_name','Weight','trim|required');
-          $this->form_validation->set_rules('price','Price','trim|required');
-          $this->form_validation->set_rules('description','Description','trim|required');
-          $this->form_validation->set_rules('quantity','Item Total Quantity','trim|required');
+        if(isset($_SESSION['laundry']['client_phone_number'])) {
+          # Loading Model 
+          $this->load->model('globals/model_retrieval');
 
-          if($this->form_validation->run() === FALSE) {
-            $return_data = ['error' => "All Fields Required"];
-            print_r(json_encode($return_data));
+          /****** Retrieve Service Code *******/
+          $dbres = self::$_Default_DB; $tablename = 'laundry_services';
+          $return_dataType="php_object"; $select = "code";
+          $where_condition = ['id' => $this->input->post('service_id')];
+
+          $query_result =  $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType,$select,$where_condition);
+
+          if($query_result)
+            $service_code = $query_result->code;
+          else
+            $service_code = "N/A";
+
+          $arr_keys = array_keys($_SESSION['laundry']['new_order']);
+          if(!isset($_SESSION['laundry']['new_order'][0]))
+            $next_array_key = 0;
+          else
+            $next_array_key = end($arr_keys) + 1;
+
+          if(!isset($_SESSION['laundry']['new_order'][0]) && !empty(end($arr_keys)))
+            $next_array_key = end($arr_keys) + 1;
+          /****** Retrieve Service Code *******/
+
+          if($list_type == "washing_only") {
+            $this->form_validation->set_rules('service_id','Service ID','trim|required');
+            $this->form_validation->set_rules('service_name','Service Name','trim|required');
+            $this->form_validation->set_rules('weight_id','Weight','trim|required');
+            $this->form_validation->set_rules('weight_name','Weight','trim|required');
+            $this->form_validation->set_rules('price','Price','trim|required');
+            $this->form_validation->set_rules('description','Description','trim|required');
+            $this->form_validation->set_rules('quantity','Item Total Quantity','trim|required');
+
+            if($this->form_validation->run() === FALSE) {
+              $return_data = ['error' => "All Fields Required"];
+              print_r(json_encode($return_data));
+            }
+            else {
+              # Assigning to session variable
+              $_SESSION['laundry']['new_order'][] = [
+                'service_id' => $this->input->post('service_id'),
+                'service_name' => $this->input->post('service_name'),
+                'weight_id' => $this->input->post('weight_id'),
+                'weight_name' => $this->input->post('weight_name'),
+                'price' => $this->input->post('price'),
+                'description' => $this->input->post('description'),
+                'quantity' => $this->input->post('quantity'),
+                'service_code' => $service_code,
+                'array_index' => $next_array_key
+              ];
+
+              $return_data = ['success' => "Adding To List Successful"];
+              print_r(json_encode($return_data));
+            }
           }
-          else {
-            # Assigning to session variable
-            $_SESSION['laundry']['new_order'][] = [
-              'service_id' => $this->input->post('service_id'),
-              'service_name' => $this->input->post('service_name'),
-              'weight_id' => $this->input->post('weight_id'),
-              'weight_name' => $this->input->post('weight_name'),
-              'price' => $this->input->post('price'),
-              'description' => $this->input->post('description'),
-              'quantity' => $this->input->post('quantity'),
-              'array_index' => sizeof($_SESSION['laundry']['new_order'])
-            ];
+          else if($list_type == "others") {
+            $this->form_validation->set_rules('service_id','Service Type','trim|required');
+            $this->form_validation->set_rules('service_name','Service Type','trim|required');
+            $this->form_validation->set_rules('garment_id','Garment ID','trim');
+            $this->form_validation->set_rules('garment','Garment','trim');
+            $this->form_validation->set_rules('price','Price','trim|required');
+            $this->form_validation->set_rules('item_quantity','Item Total Quantity','trim|required');
 
-            $return_data = ['success' => "Adding To List Successful"];
-            print_r(json_encode($return_data));
+            if($this->form_validation->run() === FALSE) {
+              $return_data = ['error' => "All Fields Required"];
+              print_r(json_encode($return_data));
+            }
+            else {
+              # Loading model
+              $this->load->model('globals/model_retrieval');
+
+              # Assigning to session variable
+              $_SESSION['laundry']['new_order'][] = [
+                'service_id' => $this->input->post('service_id'),
+                'service_name' => $this->input->post('service_name'),
+                'garment_id' => $this->input->post('garment_id'),
+                'garment_name' => $this->input->post('garment_name'),
+                'price' => $this->input->post('price'),
+                'description' => $this->input->post('description'),
+                'quantity' => $this->input->post('item_quantity'),
+                'service_code' => $service_code,
+                'array_index' => $next_array_key
+              ];
+
+              $return_data = ['success' => "Adding To List Successful"];
+              print_r(json_encode($return_data));
+            }
           }
         }
-        else if($list_type == "others") {
-          $this->form_validation->set_rules('service_id','Service Type','trim|required');
-          $this->form_validation->set_rules('service_name','Service Type','trim|required');
-          $this->form_validation->set_rules('garment_id','Garment ID','trim');
-          $this->form_validation->set_rules('garment','Garment','trim');
-          $this->form_validation->set_rules('price','Price','trim|required');
-          $this->form_validation->set_rules('item_quantity','Item Total Quantity','trim|required');
+        else {
+          $return_data = ['error' => "No Client Selected"];
+          print_r(json_encode($return_data));
+        }
+      }
+    }
 
-          if($this->form_validation->run() === FALSE) {
-            $return_data = ['error' => "All Fields Required"];
-            print_r(json_encode($return_data));
-          }
-          else {
-            # Loading model
-            $this->load->model('globals/model_retrieval');
+    public function remove_from_list($array_index) {
+      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+          $return_data = ['error' => "Permission Denied. Please Contact Admin"];
+          print_r(json_encode($return_data));
+       }
+      else {
+        if(isset($_SESSION['laundry']['client_phone_number']) && isset($_SESSION['laundry']['new_order'])) {
+          unset($_SESSION['laundry']['new_order'][$array_index]);
 
-            # Assigning to session variable
-            $_SESSION['laundry']['new_order'][] = [
-              'service_id' => $this->input->post('service_id'),
-              'service_name' => $this->input->post('service_name'),
-              'garment_id' => $this->input->post('garment_id'),
-              'garment_name' => $this->input->post('garment_name'),
-              'price' => $this->input->post('price'),
-              'description' => $this->input->post('description'),
-              'quantity' => $this->input->post('item_quantity'),
-              'array_index' => sizeof(@$_SESSION['laundry']['new_order'])
-            ];
-
-            $return_data = ['success' => "Adding To List Successful"];
-            print_r(json_encode($return_data));
-          }
+          $return_data = ['success' => "Item Removed"];
+          print_r(json_encode($return_data));
+        }
+        else {
+          $return_data = ['error' => "Cart Already Empty"];
+          print_r(json_encode($return_data));
         }
       }
     }
@@ -165,31 +216,16 @@ class Overview extends MX_Controller
     public function laundry_cart() 
     {
       if(isset($_SESSION['laundry']['new_order'])) {
-        # Loading Model
-        $this->load->model('globals/model_retrieval');
-
-        /****** Variables Assignment ******/
-        $dbres = self::$_Default_DB;
-        $tablename = 'laundry_services';
-        $return_dataType="php_object";
-        $select = "code";
-        /****** Variables Assignment ******/
-
-        if(isset($_SESSION['laundry']['new_order'])) {
-          for($i=0; $i < sizeof($_SESSION['laundry']['new_order']) ; $i++) { 
-            # code...
-            $where_condition = ['id' => $_SESSION['laundry']['new_order'][$i]['service_id']];
-
-            $service_code =  $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType,$select,$where_condition);
-            $_SESSION['laundry']['new_order'][$i]['service_code'] = $service_code->code; 
-          }
-
-          print_r(json_encode($_SESSION['laundry']['new_order']));
+        
+        foreach ($_SESSION['laundry']['new_order'] as $key => $value) {
+          # code...
+          $return_data[] = $value;
         }
-        else {
-          print_r(json_encode($_SESSION['laundry']['new_order'] = array()));
-        }
+        print_r(json_encode(array_reverse($return_data)));
+        //print_r($_SESSION['laundry']['new_order']);
       }
+      else 
+        print_r($_SESSION['laundry']['new_order'] = array());
     }
 
     /*******************************
@@ -238,13 +274,30 @@ class Overview extends MX_Controller
     }
 
     /**************** Deleting Items in Cart  ********************/
-    public function delete_from_cart($array_index) {
+    public function delete_from_cart() {
       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
-        $return_data['error'] = "Permission Denied. Conatat Amin";
+        $return_data = ['error' => "Permission Denied. Contact Amin"];
         print_r(json_encode($return_data));
       }
       else {
-        unset($_SESSION['laundry']['order']);
+        $this->form_validation->set_rules('deleteid','Item To Delete','trim|required');
+
+        if($this->form_validation->run() === FALSE) {
+          $return_data = ['error' => "No Item Selected"];
+          print_r(json_encode($return_data));
+        }
+        else{
+          $array_index = $this->input->post('deleteid');
+          if(isset($_SESSION['laundry']['new_order'])) {
+            unset($_SESSION['laundry']['new_order'][$array_index]);
+            $return_data = ['success' => "Item Deleted"];
+          }
+          else {
+            $return_data = ['error' => "Cart is Empty"];
+          }
+
+          print_r(json_encode($return_data));
+        }
       }
     }   
     /**************** Deleting Items in Cart  ********************/

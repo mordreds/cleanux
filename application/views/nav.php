@@ -257,54 +257,6 @@
 	</div>
 	<!-- /main navbar -->
 
-	<!-- Secondary navbar --
-	<?php if($this->uri->segment(1) != "dashboard") : ?>
-	<div class="navbar navbar-default navbar-xs" style="z-index:995">
-		<ul class="nav navbar-nav no-border visible-xs-block">
-			<li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i class="icon-circle-down2"></i></a></li>
-		</ul>
-
-		<div class="navbar-collapse collapse" id="navbar-second-toggle">
-			<ul class="nav navbar-nav">
-				<?php 
-					if(!empty($dashboard_tabs)) { 
-						foreach ($dashboard_tabs as $key => $value) {
-							# code... 
-				?>
-				<li class="dropdown mega-menu mega-menu-wide">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <!-- data-hover="dropdown"> --
-						<i class="icon-make-group position-left"></i> <?=$key?>
-						<!-- <span class="badge badge-inline badge-warning position-right">47</span
-						<span class="caret"></span>
-					</a>
-
-					<div class="dropdown-menu dropdown-content">
-						<div class="dropdown-content-body">
-							<div class="row">
-							  <?php  foreach ($value as $menu_obj => $menu_val) { ?>
-									<div class="col-md-2">
-										<span class="menu-heading underlined"><strong><?=$menu_val['name']?></strong></span>
-										<ul class="menu-list">
-											<?php foreach($menu_val['privileges'] as $sub_menu) { ?>
-											<li><a href="<?=$menu_val['link']?>"><?=$sub_menu?></a></li>
-											<?php } ?>
-										</ul> 
-									</div>
-								<?php } ?>
-							</div>
-						</div>
-					</div>
-				</li>
-				<?php
-						}
-					}
-				?>
-			</ul>
-		</div>
-	</div>
-	<?php else : 
-		endif;
-	?>
 	<!-- /secondary navbar -->
 	<div class="navbar navbar-default navbar-fixed-bottom" style="display: none">
 		<ul class="nav navbar-nav no-border visible-xs-block">
@@ -314,25 +266,10 @@
 		<div class="navbar-collapse collapse" id="navbar-second">
 			<p class="navbar-text"><i class="icon-global-check position-left"></i>marksbon <a href="#" class="navbar-link">Oms</a></p>
 			
-
 			<div class="navbar-right">
 				<ul class="nav navbar-nav">
 					<li><a href="#" class="legitRipple">Help center</a></li>
 					<li><a href="#" class="legitRipple">Policy</a></li>
-				<!--	<li class="dropdown">
-						<a href="#" class="dropdown-toggle legitRipple" data-toggle="dropdown" aria-expanded="false">
-							<i class="icon-cog3"></i>
-							<span class="visible-xs-inline-block position-right">Settings</span>
-							<span class="caret"></span>
-						</a>
-
-						<ul class="dropdown-menu dropdown-menu-right">
-							<li><a href="#"><i class="icon-dribbble3"></i> Dribbble</a></li>
-							<li><a href="#"><i class="icon-pinterest2"></i> Pinterest</a></li>
-							<li><a href="#"><i class="icon-github"></i> Github</a></li>
-							<li><a href="#"><i class="icon-stackoverflow"></i> Stack Overflow</a></li>
-						</ul>
-					</li>-->
 				</ul>
 			</div>
 		</div>
@@ -355,7 +292,6 @@
               <li><a href="#"><?=$page_controller?></a></li>
               <li class="active"><a href="#"><?=$controller_function?></a></li>
             </ul>
-           
           </div>
         </div>
 
@@ -365,7 +301,6 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  
                 </div>
                 <div class="row" style="padding:20px;">
                 <div class="col-sm-6 content-group">

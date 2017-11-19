@@ -479,6 +479,7 @@ class Settings extends MX_Controller
         else {
           $this->load->model('globals/model_insertion');
           $this->load->model('globals/model_update');
+          $this->load->model('globals/model_retrieval');
           /***** Data Definition *****/
           $id = $this->input->post('id');
           $dbres = self::$_Default_DB;
@@ -513,21 +514,33 @@ class Settings extends MX_Controller
           else {
             if(empty($id)) {
               $data['status'] = "active";
-
+              /****** Form Validation ********/
+              $primary_tel_search = $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType,$select = "phone_number_1",$where=array('phone_number_1' => $data['phone_number_1']));
+              
+              if(strlen($data['phone_number_1']) < 10) {
+                $this->session->set_flashdata('error',"Invalid Phone Number");
+                redirect('overview');
+              }
+              
+              if($primary_tel_search) {
+                $this->session->set_flashdata('error',"Phone Number Already Exists");
+                redirect('overview');
+              }
+              /****** Form Validation ********/
               $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
+              
               if($query_result) {
                 $this->session->set_flashdata('success',"Save Successful");
                 $_SESSION['laundry']['client_phone_number'] = $this->input->post('primary_tel');
               }
               else
                 $this->session->set_flashdata('error',"Save Failed");
-
               redirect('overview');
             }
             else {
               $where_condition = ['id' => $id];
-
               $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
+              
               if($query_result)
                 $return_data['success'] = "Update Successul";
               else
