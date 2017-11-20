@@ -25,7 +25,7 @@
   /************** Default Settings **************/
 
   /********** Laundry Services ************/
-    var formurl = "<?=base_url()?>settings/save_services";
+    var service_formurl = "<?=base_url()?>settings/save_services";
     $('#laundry_services').dataTable({
       searching : false,
       paging: false,
@@ -42,7 +42,7 @@
         {data: "name"},
         {data: "description"},
         {data: "id", render: function(data,type,row,meta) { 
-          button = '<ul class="action_btns"><li><a class="edit_service" data-id="'+row.id+'" data-name="'+row.name+'" data-desc="'+row.description+'" data-tableid="laundry_services" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-formurl="'+formurl+'" data-tableid="laundry_services"></i></a></li></ul>';
+          button = '<ul class="action_btns"><li><a class="edit_service" data-id="'+row.id+'" data-name="'+row.name+'" data-desc="'+row.description+'" data-tableid="laundry_services" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-formurl="'+service_formurl+'" data-tableid="laundry_services"></i></a></li></ul>';
           return button; 
           }
         },
@@ -51,7 +51,7 @@
   /********** Laundry Services ************/
 
   /********** Laundry Weights  ************/
-    var formurl = "<?=base_url()?>settings/save_weight";
+    var weight_formurl = "<?=base_url()?>settings/save_weight";
     $('#laundry_weights').dataTable({
       searching : false,
       paging: false,
@@ -69,7 +69,7 @@
         {data: "weight"},
         {data: "description"},
         {data: "id", render: function(data,type,row,meta) { 
-          button = '<ul class="action_btns"><li><a class="edit_weight_btn" data-id="'+row.id+'" data-name="'+row.weight+'" data-desc="'+row.description+'" data-service="'+row.service+'" data-tableid="laundry_weights" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.weight+'" data-deleteid="'+row.id+'" data-formurl="'+formurl+'" data-tableid="laundry_weights"></i></a></li></ul>';
+          button = '<ul class="action_btns"><li><a class="edit_weight_btn" data-id="'+row.id+'" data-name="'+row.weight+'" data-desc="'+row.description+'" data-service="'+row.service+'" data-tableid="laundry_weights" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.weight+'" data-deleteid="'+row.id+'" data-formurl="'+weight_formurl+'" data-tableid="laundry_weights"></i></a></li></ul>';
           return button; 
           }
         },
@@ -78,7 +78,7 @@
   /********** Laundry Weights  ************/
 
   /********** Laundry Garments  ************/
-    var formurl = "<?=base_url()?>settings/save_garment";
+    var garment_formurl = "<?=base_url()?>settings/save_garment";
     $('#laundry_garments').dataTable({
       searching : false,
       paging: false,
@@ -95,7 +95,7 @@
         {data: "name"},
         {data: "description"},
         {data: "id", render: function(data,type,row,meta) { 
-          button = '<ul class="action_btns"><li><a class="edit_garment_btn" data-id="'+row.id+'" data-name="'+row.name+'" data-desc="'+row.description+'" data-tableid="laundry_garments" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-formurl="'+formurl+'" data-tableid="laundry_garments"></i></a></li></ul>';
+          button = '<ul class="action_btns"><li><a class="edit_garment_btn" data-id="'+row.id+'" data-name="'+row.name+'" data-desc="'+row.description+'" data-tableid="laundry_garments" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-formurl="'+garment_formurl+'" data-tableid="laundry_garments"></i></a></li></ul>';
           return button; 
           }
         },
@@ -104,7 +104,7 @@
   /********** Laundry Garments  ************/
 
   /********** Laundry Prices    ************/
-    var formurl = "<?=base_url()?>settings/save_price";
+    var prices_formurl = "<?=base_url()?>settings/save_price";
     let display = "";
     $('#laundry_prices').dataTable({
       searching : false,
@@ -132,7 +132,7 @@
         }},
         {data: "amount",},
         {data: "id", render: function(data,type,row,meta) { 
-          button = '<ul class="action_btns"><li><a class="edit_price_btn" data-id="'+row.id+'" data-service_id="'+row.service_id+'" data-weight_id="'+row.weight_id+'" data-garment_id="'+row.garment_id+'" data-amount="'+row.amount+'" data-tableid="laundry_prices" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.service_name+' - '+display+'" data-deleteid="'+row.id+'" data-formurl="'+formurl+'" data-tableid="laundry_prices"></i></a></li></ul>';
+          button = '<ul class="action_btns"><li><a class="edit_price_btn" data-id="'+row.id+'" data-service_id="'+row.service_id+'" data-weight_id="'+row.weight_id+'" data-garment_id="'+row.garment_id+'" data-amount="'+row.amount+'" data-tableid="laundry_prices" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.service_name+' - '+display+'" data-deleteid="'+row.id+'" data-formurl="'+prices_formurl+'" data-tableid="laundry_prices"></i></a></li></ul>';
           return button; 
         }}, 
       ], 
