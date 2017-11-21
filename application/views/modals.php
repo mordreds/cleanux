@@ -164,6 +164,91 @@
   </script>
 <!-- *********** Edit Laundry Service ********* -->
 
+<!-- *********** checkinig out  ********* -->
+  <script type="text/javascript">
+    $('.table').on('click','.edit_service', function(){
+      $('#service_displayname').val($(this).data('name'));
+      $('#service_description').val($(this).data('desc'));
+      $('#edit_service_submit').attr('data-id',$(this).data('id'));
+      $('#edit_service_submit').attr('data-service_name',$(this).data('name'));
+      $('#edit_service_submit').attr('data-service_desc',$(this).data('desc'));
+      $('#edit_service_submit').attr('data-tableid',$(this).data('tableid'));
+      $('#edit_service_submit').attr('data-formurl',"<?=base_url()?>settings/save_services");
+      $('#edit_service').modal('show');
+    });
+  </script>
+
+  <div id="checkingout" class="modal fade">
+    <div class="modal-dialog" style="width:350px;">
+      <div class="modal-content">
+        <div class="modal-header ">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <form>
+       <div class="modal-body">
+                    <div class="form-group">
+                      <div class="row">
+                      <div class="col-sm-2"></div>
+                        <div class="col-sm-4">
+                          <label>Pick Up</label><p>(Free)</p>
+                          <input type="radio" class="styled" name="pick" >
+                        </div>
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-4">
+                          <label>Delivery</label><p>(5.00)</p>
+                          <input type="radio"  class="styled" name="pick">
+                        </div>
+                      </div>
+                    </div>
+                    <hr></hr>
+                    <div class="form-group">
+                     <div class="row">
+                     <div class="col-sm-3"></div>
+                      <div class="col-sm-6">
+                          <label>Delivery Date</label>
+                          <input type="date" placeholder="0.00" data-mask="0.00" class="form-control">
+                        </div>
+                        <div class="col-sm-3"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <label>Total </label>
+                          <input type="text" placeholder="0.00" class="form-control" readonly>
+                          
+                        </div>
+
+                        <div class="col-sm-6">
+                          <label>Amount Paying</label>
+                          <input type="text" placeholder="0.00" data-mask="0.00" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-denger pull-left" data-dismiss="modal">Discard</button> &nbsp;&nbsp;
+          <button type="button" class="btn btn-warning btn-xs heading-btn legitRipple" data-toggle="modal" data-target="#checkout"> Proceed</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(document).on("click","#edit_service_submit",function(){
+      let formurl = $(this).data('formurl');
+      let tableid = $(this).data('tableid');
+      let formData = { 
+        'id': $(this).data('id'),
+        'service_name': $('#service_displayname').val(),
+        'service_desc': $('#service_description').val(),
+      };
+      ajax_post(formurl,formData,tableid);
+    });
+  </script>
+<!-- *********** check out ********* -->
+
 <!-- *********** check out ********* -->
   <script type="text/javascript">
     $('.table').on('click','.edit_service', function(){
@@ -194,6 +279,7 @@
                     <ul class="list-condensed list-unstyled">
                       <li><span class="text-semibold">Order #300324</span></li>
                       <li>Date: <span class="text-semibold">May 12, 2015</span></li>
+                      <li>Delivery on: <span class="text-semibold">May 12, 2015</span></li>
                     </ul>
                   </div>
                 </div>
@@ -242,6 +328,7 @@
                     <li><h5>Rebecca Manes</h5></li>
                     <li><span class="text-semibold">Normand axis LTD</span></li>
                     <li>888-555-2311</li>
+                    <li>Delivery/Pick up</li>
                   </ul>
                 </div>
                 <div class="col-sm-7">
@@ -289,7 +376,6 @@
       ajax_post(formurl,formData,tableid);
     });
   </script>
-<!-- *********** Edit Laundry Service ********* -->
 
 <!-- *********** Edit Laundry Weights ********* -->
   <script type="text/javascript">

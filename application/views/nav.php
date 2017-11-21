@@ -184,7 +184,7 @@
               		<button class="btn btn-xs btn-danger" style="padding:5px;">Clear All <i class="icon-trash"></i></button>
               	</div>
               	<div class="col-md-2 pull-right" style="padding:5px;">
-              		<button class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#checkout">Checkout <i class="icon-forward"></i></button>
+              		<button class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#checkingout">Checkout <i class="icon-forward"></i></button>
               	</div>
               </div>
 
@@ -360,118 +360,89 @@
         </div>
 
         <!-- Vertical form modal -->
-          <div id="modal_form_vertical" class="modal fade">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  
-                </div>
-                <div class="row" style="padding:20px;">
-                <div class="col-sm-6 content-group">
-                  <img src="" class="content-group mt-10" alt="" style="width: 120px;">
-                  <ul class="list-condensed list-unstyled">
-                    <li>2269 Elba Lane</li>
-                    <li>Paris, France</li>
-                    <li>888-555-2311</li>
-                  </ul>
-                </div>
-                <div class="col-sm-6 content-group">
-                  <div class="invoice-details">
-                    <h5 class="text-uppercase text-semibold">Order #300324</h5>
-                    <ul class="list-condensed list-unstyled">
-                      <li>Date: <span class="text-semibold">January 12, 2015</span></li>
-                      <li>Due date: <span class="text-semibold">May 12, 2015</span></li>
-                    </ul>
-                  </div>
-                </div>
-                <form action="#">
-                  <div class="modal-body">
-                    <div class="table">
-                <table class="table">
-                    <thead>
-                        <tr>
-                        <th>#</th>
-                            <th>Item Description</th>
-                            <th class="col-sm-1">Unit Price</th>
-                            <th class="col-sm-1">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <td>1</td>
-                            <td>
-                              <h6 class="no-margin">Create UI design model</h6>
-                            </td>
-                            <td>$70</td>
-                            <td><span class="text-semibold">$3,990</span></td>
-                        </tr>
-                        <tr>
-                        <td>2</td>
-                            <td>
-                              <h6 class="no-margin">Support tickets list doesn't support commas</h6>
-                            </td>
-                            <td>$70</td>
-                            <td><span class="text-semibold">$840</span></td>
-                        </tr>
-                        <tr>
-                        <td>3</td>
-                            <td>
-                              <h6 class="no-margin">Fix website issues on mobile</h6>
-                            </td>
-                            <td>$70</td>
-                            <td><span class="text-semibold">$2,170</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-            </div>
-                  </div>
-                   <div class="col-sm-7">
-                  <span class="text-muted">Invoice To:</span>
-                  <ul class="list-condensed list-unstyled">
-                    <li><h5>Rebecca Manes</h5></li>
-                    <li><span class="text-semibold">Normand axis LTD</span></li>
-                    <li>888-555-2311</li>
-                    <li><a href="#">rebecca@normandaxis.ltd</a></li>
-                  </ul>
-                </div>
-                <div class="col-sm-5">
-                  <div class="content-group">
-                    <h6>Total due</h6>
-                    <div class="table-responsive no-border">
-                      <table class="table">
-                        <tbody>
-                          <tr>
-                            <th>Subtotal:</th>
-                            <td class="text-right">$7,000</td>
-                          </tr>
-                          <tr>
-                            <th>Tax: <span class="text-regular">(25%)</span></th>
-                            <td class="text-right">$1,750</td>
-                          </tr>
-                          <tr>
-                            <th>Total:</th>
-                            <td class="text-right text-primary"><h5 class="text-semibold">$8,750</h5></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+					<div id="modal_form_vertical" class="modal fade">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h5 class="modal-title">Vertical form</h5>
+								</div>
 
-                    <div class="text-right">
-                      <button type="button" class="btn btn-primary btn-labeled legitRipple"><b><i class="icon-paperplane"></i></b> Send invoice</button>
-                    </div>
-                  </div>
-                </div>
-                </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-xs heading-btn legitRipple"><i class="icon-printer position-left"></i> Print</button>
-                  
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
+								<form action="#">
+									<div class="modal-body">
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-6">
+													<label>First name</label>
+													<input type="text" placeholder="Eugene" class="form-control">
+												</div>
+
+												<div class="col-sm-6">
+													<label>Last name</label>
+													<input type="text" placeholder="Kopyov" class="form-control">
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-6">
+													<label>Address line 1</label>
+													<input type="text" placeholder="Ring street 12" class="form-control">
+												</div>
+
+												<div class="col-sm-6">
+													<label>Address line 2</label>
+													<input type="text" placeholder="building D, flat #67" class="form-control">
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-4">
+													<label>City</label>
+													<input type="text" placeholder="Munich" class="form-control">
+												</div>
+
+												<div class="col-sm-4">
+													<label>State/Province</label>
+													<input type="text" placeholder="Bayern" class="form-control">
+												</div>
+
+												<div class="col-sm-4">
+													<label>ZIP code</label>
+													<input type="text" placeholder="1031" class="form-control">
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-6">
+													<label>Email</label>
+													<input type="text" placeholder="eugene@kopyov.com" class="form-control">
+													<span class="help-block">name@domain.com</span>
+												</div>
+
+												<div class="col-sm-6">
+													<label>Phone #</label>
+													<input type="text" placeholder="+99-99-9999-9999" data-mask="+99-99-9999-9999" class="form-control">
+													<span class="help-block">+99-99-9999-9999</span>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="modal-footer">
+										<button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+										<button type="submit" class="btn btn-primary">Submit form</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- /vertical form modal -->
         <!-- /page header -->
         <?php else : 
 					endif;
