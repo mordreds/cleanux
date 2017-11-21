@@ -3,21 +3,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Administration extends MX_Controller 
 {
-	 /*******************************
-      Constructor 
-    *******************************/
-    public function __construct() 
-    {
-      parent::__construct();
-    }
+  /*******************************
+    Constructor 
+  *******************************/
+  public function __construct() 
+  {
+    parent::__construct();
+  }
 
   /**************** Interface ********************/
     /*******************************
       Index Function
     *******************************/
-  	public function index()  {
       if(isset($_SESSION['user']['username'])) {
-        if(isset($_SESSION['user']['roles']) ) 
         	redirect('administration/users');
         else
           redirect('dashboard');
@@ -175,7 +173,7 @@ class Administration extends MX_Controller
     }
 
 
-	public function User_Roles() {
+	  public function User_Roles() {
 		
 		//User Roles
 		if (isset($_POST['user_roles']) && in_array('Roles & Priv.',$_SESSION['rows_exploded'])) {
