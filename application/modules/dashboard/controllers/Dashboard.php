@@ -48,7 +48,7 @@ class Dashboard extends MX_Controller
 			if(!isset($_SESSION['user']['roles'])) 			
 				redirect('access/login');
 			else
-      {
+      { 
         #Loading Model
         $this->load->model('access/model_access');
         $this->load->model('globals/model_retrieval');
