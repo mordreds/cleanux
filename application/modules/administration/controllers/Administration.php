@@ -15,18 +15,13 @@ class Administration extends MX_Controller
     /*******************************
       Index Function
     *******************************/
-  	public function index() 
-    {
-  		# Permission Check
-      if(isset($_SESSION['user']['username']))
-      {
+  	public function index()  {
+      if(isset($_SESSION['user']['username'])) {
         if(isset($_SESSION['user']['roles']) ) 
         	redirect('administration/users');
-        
         else
           redirect('dashboard');
       }
-      
       else
         redirect('access');
   	}
@@ -34,9 +29,7 @@ class Administration extends MX_Controller
 		/******************************
 			 User Management
 		*******************************/
-		public function users($action="interface") 
-		{
-      # Permission Check 
+		public function users($action="interface") {
       if(isset($_SESSION['user']['username'])) {
 				if(in_array('users',$_SESSION['user']['roles'])) {
 					switch($action) {
@@ -51,11 +44,10 @@ class Administration extends MX_Controller
               $data['allgroups'] = $this->model_retrieval->all_info_return_result(self::$_Permission_DB,'roles_privileges_group');
 
               $data['next_usr_id'] = $this->generate_userid();
-              $data['_Permission_DB'] = self::$_Permission_DB;
-
               /********** Interface ***********************/
               $data['page_controller'] = $this->uri->segment(1);
               $data['controller_function'] = $this->uri->segment(2);
+              $data['_Permission_DB'] = self::$_Permission_DB;
 
               $data['title'] = "users";
               $this->load->view('header',$data);
@@ -159,87 +151,27 @@ class Administration extends MX_Controller
     /******************************
 			Roles & Priviledges
 		******************************/
-		public function Roles_Priviledges() 
-		{
-			if (isset($_SESSION['username']))
-      {
-        if(in_array('Roles & Priv.',$_SESSION['rows_exploded'])) 
-        {
-  				# Loading models
-          $this->load->model('Model_Access');/*Needed By header, nav*/
-          $this->load->model('Universal_model_retrieval');
-          $this->load->model('Model_HR');
-            
-          #Extracting Data For Display
-          $data['allusers']  = $this->Universal_model_retrieval->all_info_return_result('access_user_details');
-          $data['allgroups'] = $this->Universal_model_retrieval->all_info_return_result('access_roles_priviledges_group');
-          $data['dash_tabs'] = $this->Model_Access->dashboard_tabs();
-            
-          /********** Generating New User Id ************/
-            $last_employee_id  = $this->Model_HR->ret_last_employee_id();
+		public function permissions() {
+			if(isset($_SESSION['user']['username']) && in_array('permissions',$_SESSION['user']['roles'])) {
+				# Loading models
+        $this->load->model('access/model_access');
+        $this->load->model('globals/model_retrieval');
+        
+        #********** Interface ***********************/  
+        $data['page_controller'] = $this->uri->segment(1);
+        $data['controller_function'] = $this->uri->segment(2);
+        $data['_Permission_DB'] = self::$_Permission_DB;
 
-            $data['id'] = $last_employee_id->id;
-            
-            if( !empty($last_employee_id) )
-            {
-              if($last_employee_id->employee_id == NULL || $last_employee_id->employee_id == 0) 
-                $data['next_usr_id'] = "KAD/TEMP/001";
-              
-              elseif( strlen($last_employee_id->employee_id) == 1 )
-                $data['next_usr_id'] = "KAD/TEMP/00".($last_employee_id->employee_id + 1);
-
-              elseif( strlen($last_employee_id->employee_id) == 2 )
-                $data['next_usr_id'] = "KAD/TEMP/0".($last_employee_id->employee_id + 1);
-
-              elseif( strlen($last_employee_id->employee_id) == 3 )
-                $data['next_usr_id'] = "KAD/TEMP/".($last_employee_id->employee_id + 1);
-            }
-          /********** Generating New User Id ************/
-
-          /********** Generating New Group Id ************/
-            $last_group_id  = $this->Model_Access->ret_last_group_id();
-
-            $data['id'] = $last_group_id->id;
-            
-            if( !empty($last_group_id) )
-            {
-              if($last_group_id->group_id == NULL || $last_employee_id->group_id == 0) 
-                $data['next_grp_id'] = "KAD/TEMP/001";
-              
-              elseif( strlen($last_group_id->group_id) == 1 )
-                $data['next_grp_id'] = "KAD/TEMP/00".($last_employee_id->group_id + 1);
-
-              elseif( strlen($last_group_id->group_id) == 2 )
-                $data['next_grp_id'] = "KAD/TEMP/0".($last_employee_id->group_id + 1);
-
-              elseif( strlen($last_employee_id->group_id) == 3 )
-                $data['next_grp_id'] = "KAD/TEMP/".($last_group_id->group_id + 1);
-            }
-          /********** Generating New Group Id ************/
-
-          /********** Unsetting Session Var ************/
-          unset($_SESSION['user_roles']);
-          /********** Unsetting Session Var ************/
-            
-          /********** Interface ***********************/    
-          $headertag['title'] = "Roles & Priviledges";
-          $this->load->view('headtag',$headertag);
-          $this->load->view('header');
-          $this->load->view('nav');
-          $this->load->view('administration/roles_priv',$data);
-          $this->load->view('footer');
-          /********** Interface ***********************/
-		    }
-        else
-        {
-          $this->session->set_flashdata('error',"Permission Denied. Contact Administrator");
-          redirect('dashboard');
-        }
-		  } 
-      else 
-      {
-			 redirect('access/login');
+        $data['title'] = "Permissions";
+        $this->load->view('header',$data);
+        $this->load->view('permissions',$data);
+        $this->load->view('footer',$data);
+        #********** Interface ***********************/
 		  }
+      else {
+        $this->session->set_flashdata('error',"Permission Denied. Contact Administrator");
+        redirect('dashboard');
+      }
     }
 
 

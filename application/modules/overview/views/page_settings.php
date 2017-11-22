@@ -42,64 +42,64 @@
         };
 
         $.ajax({
-        type : 'POST',
-        url : formurl,
-        data : formData,
-        success: function(response) { 
-          response = JSON.parse(response)
-          console.log(response[0])
-          if(response[0]) {  
-            $('[name="id"]').val(response[0].id);
-            $('[name="fullname"]').val(response[0].fullname);
-            $('[name="fullname"]').attr('readonly',"readonly");
-            $('[name="company_name"]').val(response[0].company);
-            $('[name="company_name"]').attr('readonly',"readonly");
-            $('[name="residence_addr"]').val(response[0].residence_address);
-            $('[name="residence_addr"]').attr('readonly',"readonly");
-            $('[name="postal_addr"]').val(response[0].postal_address);
-            $('[name="postal_addr"]').attr('readonly',"readonly");
-            $('[name="primary_tel"]').val(response[0].phone_number_1);
-            $('[name="primary_tel"]').attr('readonly',"readonly");
-            $('[name="secondary_tel"]').val(response[0].phone_number_2);
-            $('[name="secondary_tel"]').attr('readonly',"readonly");
-            $('[name="email"]').val(response[0].email);
-            $('[name="email"]').attr('readonly',"readonly");
-            if(response[0].sms == 1) {
-              console.log(switchery)
-              $('[name="sms"]').setPosition(true);
-              document.querySelector('.btn_cancel').addEventListener('click', function() {
-                switchery.disable();
-              });
-
-
-                /*  if (Array.prototype.forEach) {
-                var elems = Array.prototype.slice.call(document.querySelectorAll('.switchery'));
-                elems.forEach(function(html) {
-                    var switchery = new Switchery(html);
+          type : 'POST',
+          url : formurl,
+          data : formData,
+          success: function(response) { 
+            response = JSON.parse(response)
+            console.log(response[0])
+            if(response[0]) {  
+              $('[name="id"]').val(response[0].id);
+              $('[name="fullname"]').val(response[0].fullname);
+              $('[name="fullname"]').attr('readonly',"readonly");
+              $('[name="company_name"]').val(response[0].company);
+              $('[name="company_name"]').attr('readonly',"readonly");
+              $('[name="residence_addr"]').val(response[0].residence_address);
+              $('[name="residence_addr"]').attr('readonly',"readonly");
+              $('[name="postal_addr"]').val(response[0].postal_address);
+              $('[name="postal_addr"]').attr('readonly',"readonly");
+              $('[name="primary_tel"]').val(response[0].phone_number_1);
+              $('[name="primary_tel"]').attr('readonly',"readonly");
+              $('[name="secondary_tel"]').val(response[0].phone_number_2);
+              $('[name="secondary_tel"]').attr('readonly',"readonly");
+              $('[name="email"]').val(response[0].email);
+              $('[name="email"]').attr('readonly',"readonly");
+              if(response[0].sms == 1) {
+                console.log(switchery)
+                $('[name="sms"]').setPosition(true);
+                document.querySelector('.btn_cancel').addEventListener('click', function() {
+                  switchery.disable();
                 });
-              }
-              else {
-                var elems = document.querySelectorAll('.switchery');
-                for (var i = 0; i < elems.length; i++) {
-                    var switchery = new Switchery(elems[i]);
+
+
+                  /*  if (Array.prototype.forEach) {
+                  var elems = Array.prototype.slice.call(document.querySelectorAll('.switchery'));
+                  elems.forEach(function(html) {
+                      var switchery = new Switchery(html);
+                  });
                 }
-              }*/
+                else {
+                  var elems = document.querySelectorAll('.switchery');
+                  for (var i = 0; i < elems.length; i++) {
+                      var switchery = new Switchery(elems[i]);
+                  }
+                }*/
+              }
+              else
+                $('[name="sms"]').attr('checked',"");
             }
-            else
-              $('[name="sms"]').attr('checked',"");
-          }
-          else { 
-            $.jGrowl("No Record Found", {
+            else { 
+              $.jGrowl("No Record Found", {
+                theme: 'alert-styled-left bg-danger'
+              });
+            }
+          },
+          error: function() {
+            $.jGrowl('An Error Occured.<br/>Please Contact Admin', {
               theme: 'alert-styled-left bg-danger'
             });
           }
-        },
-        error: function() {
-          $.jGrowl('An Error Occured.<br/>Please Contact Admin', {
-            theme: 'alert-styled-left bg-danger'
-          });
-        }
-      });
+        });
       }
     });
   /********** Search Order / Info ************/

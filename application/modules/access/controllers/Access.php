@@ -176,8 +176,8 @@ class Access extends MX_Controller
                       # If user belongs to a group or has custom roles & priviledges
                       else {
                         if(!empty($user)) {
-                          $temp_array['group_roles'] = explode("|",$user->group_roles);
-                          $temp_array['group_privileges'] = explode("|",$user->group_privileges);
+                          $temp_array['group_roles'] = explode("|",trim($user->group_roles));
+                          $temp_array['group_privileges'] = explode("|",trim($user->group_privileges));
                         } else {
                           $temp_array['group_roles'] = $temp_array['group_priviledges'] = array();
                         }

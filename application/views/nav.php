@@ -111,11 +111,7 @@
                       </div>
                     </div>
 
-                    <ul class="nav nav-tabs nav-tabs-highlight" style="width:100px !important;">
-                      <li class="active"><a href="#right-tab1" data-toggle="tab"><span class="label label-info pull-right">Services</span> Washing</a></li>
-                      <li><a href="#right-tab2" data-toggle="tab"><span class="label label-info pull-right">Services</span> Ironing</a></li>
-                       <li><a href="#right-tab3" data-toggle="tab"><span class="label label-info pull-right">Fixed</span> Delivery</a></li>
-                    </ul>
+                    <ul class="nav nav-tabs nav-tabs-highlight" style="width:100px !important;" id="pricelists"></ul>
                   </div>
 						</ul>
 

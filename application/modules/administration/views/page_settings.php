@@ -113,10 +113,10 @@
   /********** All Inactivated Accounts ************/
     $('#inactive_acct_tbl').dataTable({
       ajax: {
-      type : 'GET',
-      url : '<?= base_url()?>administration/retrieve_allusers/inactive',
-      dataSrc: ''
-    },
+        type : 'GET',
+        url : '<?= base_url()?>administration/retrieve_allusers/inactive',
+        dataSrc: ''
+      },
       columns: [
         {data: "fullname"},
         {data: "employee_id"},
