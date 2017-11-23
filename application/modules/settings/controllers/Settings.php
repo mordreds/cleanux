@@ -559,6 +559,10 @@ class Settings extends MX_Controller
 
         if($dbtype == "default")
           $dbres = self::$_Default_DB;
+        else if($dbtype == "permissions") {
+          $dbres = self::$_Permission_DB;
+          $return_dataType = "json";
+        }
         
         if(!empty($where_field) && !empty($where_value)) {
           $fields = explode('~',$where_field);
@@ -597,6 +601,41 @@ class Settings extends MX_Controller
             
         if(!empty($search_result)) 
           $return_data = $search_result;
+        else
+          $return_data = ['error' => "Data Retrieval Failed"];
+      }
+      else 
+        $return_data = ['error' => "Permission Denied.Contact Administrator"];
+      
+      print_r($return_data);
+    }
+
+    /*******************************
+      Retrieving All data
+    *******************************/
+    public function retrieve_permissions($target)
+    {
+      if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
+      {
+        # Loading Model 
+        $this->load->model('globals/model_retrieval');
+
+        $dbres = self::$_Permission_DB;
+        if($target == "users") {
+          $tablename = "vw_user_details";
+          $condition = array('group_id !=' => 1);
+        }
+        else if($target == "groups"){
+          $tablename = "roles_privileges_group";
+          $condition = array('id !=' => 1);
+        }
+        $return_dataType = "json";
+
+        $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
+            
+        if(!empty($search_result)) 
+          $return_data = $search_result;
+        
         else
           $return_data = ['error' => "Data Retrieval Failed"];
       }

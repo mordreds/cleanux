@@ -6,6 +6,8 @@
       autoWidth: false,
       defaultText: "Select One",
     });
+
+    $('.styled').uniform();
   /*************** Selectbox ***************/
   /*************** Switchery ***************/
     var switchery

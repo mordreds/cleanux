@@ -355,7 +355,7 @@ class Administration extends MX_Controller
 
           if($this->form_validation->run() === FALSE) {
             //var_dump(validation_errors());
-            $this->session->set_flashdata('error',(string)validation_errors());
+            $this->session->set_flashdata('error',"Validation Error");
             redirect('administration/users#new_account');
           }
           else {
@@ -434,6 +434,23 @@ class Administration extends MX_Controller
       }
       else {
         redirect('Access');
+      }
+    }
+
+    /*****************************
+      New User
+    *****************************/
+    public function view_permission() {
+      $this->form_validation->set_rules('user_id','User Name','trim');
+      $this->form_validation->set_rules('group_id','Group Name','trim');
+      
+      if ($this->form_validation->run() == FALSE) {
+        $this->session->set_flashdata('error',"Validation Error");
+        redirect('administration/permissions');
+      }
+      # If Passed
+      else {
+
       }
     }
     

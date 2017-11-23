@@ -256,6 +256,51 @@
     });
   /****** Displaying Department Employees ****/
 
+  /****** Displaying Permission ****/
+  $.ajax({
+    type: 'POST',
+    url: '<?= base_url()?>settings/retrieve_permissions/users',
+    datatype: 'json',
+    success: function(data) {
+      var employees = JSON.parse(data);
+      
+      $.each(employees, function(array_index) {
+        $("#all_users").data("selectBox-selectBoxIt").add({ value: employees[array_index].id, text: employees[array_index].fullname, 'data-empid': employees[array_index].employee_id,'data-email': employees[array_index].work_email,'data-phone_num': employees[array_index].phone_number_1,'data-fullname': employees[array_index].fullname,
+          'data-iconurl':"../"+employees[array_index].profile_photo
+        });
+      });
+    },
+    error: function() {
+      $.jGrowl('Retrieving Users Failed', {
+        theme: 'alert-styled-left bg-danger'
+      });
+    }
+  });
+
+  $.ajax({
+    type: 'POST',
+    url: '<?= base_url()?>settings/retrieve_permissions/groups',
+    datatype: 'json',
+    success: function(data) {
+      var employees = JSON.parse(data);
+      
+      $.each(employees, function(array_index) {
+        $("#all_groups").data("selectBox-selectBoxIt").add({ value: employees[array_index].id, text: employees[array_index].name,
+        });
+      });
+    },
+    error: function() {
+      $.jGrowl('Retrieving Users Failed', {
+        theme: 'alert-styled-left bg-danger'
+      });
+    }
+  });
+
+  $('#all_users').change(function(){
+    alert($(this).val());
+  });
+  /****** Displaying Permission ****/
+
   /****** Displaying Employee ID *****/
     $("#department_employees").change(function(){
       $("#employeeid").val($(this).find(':selected').data('empid'));
