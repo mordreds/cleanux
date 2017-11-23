@@ -12,6 +12,7 @@
                 <li><a href="#weight" data-toggle="tab">Weights <i class="icon-menu3 position-right"></i></a></li>
                 <li><a href="#garments" data-toggle="tab">Garments<i class="icon-menu3 position-right"></i></a></li>
                 <li><a href="#pricing" data-toggle="tab">Pricing<i class="icon-menu3 position-right"></i></a></li>
+                <li><a href="#Delivery" data-toggle="tab">Delivery<i class="icon-menu3 position-right"></i></a></li>
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="service">
@@ -190,6 +191,55 @@
                             <th style="width: 5%">ID</th>
                             <th>Service</th>
                             <th>Description</th>
+                            <th>Amount (GHC)</th>
+                            <th style="width: 10%" class="text-center">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="Delivery">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <form action="<?=base_url();?>settings/save_price" method="post" style="margin-left: 10px; margin-right: 10px">
+                        <div class="row">
+                          <div class="col-md-11">
+                            <div class="form-group">
+                              <label class="display-block">Delivery Location</label>
+                              <select class="form-control display_services" name="">
+                                <option value="">Select One</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-11">
+                            <div class="form-group">
+                              <label class="display-block">Duration</label>
+                              <select class="form-control display_weights" name="">
+                                <option value="">Select One</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-11">
+                            <div class="form-group">
+                              <label class="display-block">Price</label>
+                              <select class="form-control display_weights" name="">
+                                <option value="">Select One</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save <i class="icon-arrow-right14 position-right"></i></button>
+                      </form>
+                    </div>
+                    <div class="col-md-7">
+                      <table id="laundry_prices" class="table datatable-responsive">
+                        <thead style="background-color:#009688;color:white">
+                          <tr>
+                            <th style="width: 5%">ID</th>
+                            <th>Delivery Location</th>
+                            <th>Duration</th>
                             <th>Amount (GHC)</th>
                             <th style="width: 10%" class="text-center">Actions</th>
                           </tr>

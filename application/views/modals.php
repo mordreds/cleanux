@@ -188,30 +188,19 @@
        <div class="modal-body">
                     <div class="form-group">
                       <div class="row">
-                      <div class="col-sm-2"></div>
-                        <div class="col-sm-4">
-                          <label>Pick Up</label><p>(Free)</p>
-                          <input type="radio" class="styled" name="pick" >
-                        </div>
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-4">
-                          <label>Delivery</label><p>(5.00)</p>
-                          <input type="radio"  class="styled" name="pick">
+                        <div class="col-sm-12 ">
+                          <div class="form-group">
+                             <center>  <label class="display-block">Delivery Location </label></center> 
+                                <select id="" class="form-control display_services" name="" >
+                                  <option value="">Select One</option>
+                                </select>
+                              </div>
                         </div>
                       </div>
                     </div>
                     <hr></hr>
-                    <div class="form-group">
-                     <div class="row">
-                     <div class="col-sm-3"></div>
-                      <div class="col-sm-6">
-                          <label>Delivery Date</label>
-                          <input type="date" placeholder="0.00" data-mask="0.00" class="form-control">
-                        </div>
-                        <div class="col-sm-3"></div>
-                        </div>
-                    </div>
-
+                   <center> <label class="display-block">Delivery after 3 Days </label></center> 
+                    <hr></hr>
                     <div class="form-group">
                       <div class="row">
                         <div class="col-sm-6">

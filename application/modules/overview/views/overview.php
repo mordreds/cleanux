@@ -58,7 +58,18 @@
                                 <input type="email" name="email" placeholder="Email:" class="form-control">
                               </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
+                              <div class="form-group">
+                                <div class="checkbox checkbox-switchery">
+                                <b>F</b>
+                                  <label>
+                                  <input type="checkbox" name="sms" class="switchery" checked>
+                                  <b>M</b>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-2">
                               <div class="form-group">
                                 <div class="checkbox checkbox-switchery">
                                   <label><input type="checkbox" name="sms" class="switchery" checked>
@@ -67,7 +78,7 @@
                                 </div>
                               </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                               <div class="form-group">
                                 <div class="checkbox checkbox-switchery">
                                   <label><input type="checkbox" name="online" class="switchery">
