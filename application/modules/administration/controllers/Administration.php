@@ -440,7 +440,7 @@ class Administration extends MX_Controller
     /*****************************
       New User
     *****************************/
-    public function view_permission() {
+    public function view_permissions() {
       $this->form_validation->set_rules('user_id','User Name','trim');
       $this->form_validation->set_rules('group_id','Group Name','trim');
       
@@ -450,7 +450,22 @@ class Administration extends MX_Controller
       }
       # If Passed
       else {
+        # Loading Model
+        $this->load->model('globals/model_retrieval');
 
+        $user_id = $this->input->post('user_id');
+        $group_id = $this->input->post('group_id');
+
+        if(empty($user_id) && empty($group_id)) {
+          $this->session->set_flashdata('error',"No Selection Made");
+          redirect('administration/permissions');
+        } else {
+          # Variables
+          $dbres = self::$_Permission_DB;
+          $return_dataType = "php_object";
+          $tablename = "roles_privileges_user";
+
+        }
       }
     }
     

@@ -296,8 +296,35 @@
     }
   });
 
-  $('#all_users').change(function(){
-    alert($(this).val());
+  $('#view_permissions').click(function(){
+    let user = $('[name="user_id"]').val();
+    let group = $('[name="group_id"]').val();
+
+    if(user == "" && group == "") {
+      $.jGrowl('No Selection Made', {
+        theme: 'alert-styled-left bg-danger'
+      });
+    } else {
+      let formData = {'user_id':user, 'group_id':group};
+      $.ajax({
+        type: 'POST',
+        url: '<?= base_url()?>administration/view_permissions',
+        datatype: 'json',
+        data: formData,
+        success: function(data) {
+          var employees = JSON.parse(data);
+          $.each(employees, function(array_index) {
+            $("#all_groups").data("selectBox-selectBoxIt").add({ value: employees[array_index].id, text: employees[array_index].name,
+            });
+          });
+        },
+        error: function() {
+          $.jGrowl('Retrieving Users Failed', {
+            theme: 'alert-styled-left bg-danger'
+          });
+        }
+      });
+    }
   });
   /****** Displaying Permission ****/
 

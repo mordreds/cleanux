@@ -31,7 +31,7 @@
                           </select>
                         </div>
                         <div class="text-center">
-                          <button type="submit" class="btn bg-teal-400">View Permissions <i class="icon-arrow-right14 position-right"></i></button>
+                          <button type="button" id="view_permissions" class="btn bg-teal-400">View Permissions <i class="icon-arrow-right14 position-right"></i></button>
                         </div>
                       </form>
                     </div>
