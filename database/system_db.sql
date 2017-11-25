@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 22, 2017 at 04:58 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.0.15
+-- Host: localhost
+-- Generation Time: Nov 25, 2017 at 10:02 AM
+-- Server version: 5.7.20-0ubuntu0.16.04.1
+-- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -228,11 +228,20 @@ INSERT INTO `successful_logins` (`id`, `user_id`, `time_in`, `time_out`, `online
 (143, 1, '2017-11-16 06:24:08', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
 (144, 1, '2017-11-16 22:23:54', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
 (145, 1, '2017-11-17 07:57:05', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
-(146, 1, '2017-11-21 09:44:17', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36 OPR/49.0.2725.39', '::1', 'London', NULL, NULL),
-(147, 1, '2017-11-21 10:12:14', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36 OPR/49.0.2725.39', '::1', 'London', NULL, NULL),
-(148, 1, '2017-11-21 10:12:25', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36 OPR/49.0.2725.39', '::1', 'London', NULL, NULL),
-(149, 1, '2017-11-22 06:56:33', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36 OPR/49.0.2725.39', '::1', 'London', NULL, NULL),
-(150, 1, '2017-11-22 14:49:37', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36 OPR/49.0.2725.39', '::1', 'London', NULL, NULL);
+(146, 1, '2017-11-17 23:38:01', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(147, 1, '2017-11-17 23:38:03', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(148, 1, '2017-11-18 06:29:15', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(149, 1, '2017-11-18 18:13:59', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(150, 1, '2017-11-18 18:13:59', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(151, 1, '2017-11-19 09:22:50', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(152, 1, '2017-11-20 21:20:01', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(153, 1, '2017-11-21 17:19:30', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(154, 1, '2017-11-22 18:57:13', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(155, 1, '2017-11-23 04:07:01', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(156, 1, '2017-11-24 04:15:17', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(157, 1, '2017-11-24 18:39:35', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(158, 1, '2017-11-24 18:39:35', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(159, 1, '2017-11-25 07:05:42', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -285,7 +294,7 @@ ALTER TABLE `failed_logins`
 -- AUTO_INCREMENT for table `successful_logins`
 --
 ALTER TABLE `successful_logins`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=151;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=160;
 --
 -- AUTO_INCREMENT for table `sysaudit`
 --
@@ -546,7 +555,33 @@ INSERT INTO `laundry_clients` (`id`, `fullname`, `company`, `residence_address`,
 (5, 'MR Charles Agyin-Asare', 'Perez Dome Chapel', 'Dzorwulu - Junction', 'Box K47, Kotobabi - Accra', '0271589354', '', 'info@perezdome.com', 1, 0, 'active', '2017-11-09 19:37:36'),
 (6, 'Kelvin Mitnik', 'Hackers', 'Kasoa', '', '0255555555', '', 'kelvin@mitnick.com', 1, 0, 'active', '2017-11-14 21:17:10'),
 (7, 'Test User 22', '', 'Mallam', '', '0211111222', '', '', 1, 0, 'active', '2017-11-14 21:37:39'),
-(8, 'Test User 1', 'Marksbon IT Limited', 'Taifa', '', '0244111111', '', 'user1@test.com', 1, 0, 'active', '2017-11-16 06:31:05');
+(8, 'Test User 1', 'Marksbon IT Limited', 'Taifa', '', '0244111111', '', 'user1@test.com', 1, 0, 'active', '2017-11-16 06:31:05'),
+(9, 'Test User 2', 'Stl Limited', 'Kotobabi', '', '0244222111', '', 'user2@test.com', 1, 1, 'active', '2017-11-17 23:39:39'),
+(12, 'Nana', 'K', 'Taifa', '', '123', '', 'info@peredome.com', 1, 0, 'active', '2017-11-18 19:03:33'),
+(13, 'Test User 3', 'Test User 2 & Sons Limited', 'Spintex Road', '', '1234', '', 'user3@gmail.com', 1, 0, 'active', '2017-11-18 19:12:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `laundry_delivery_prices`
+--
+
+CREATE TABLE `laundry_delivery_prices` (
+  `id` bigint(20) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `duration` tinyint(2) NOT NULL,
+  `price` double NOT NULL,
+  `status` enum('active','inactive','deleted') NOT NULL DEFAULT 'active',
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `laundry_delivery_prices`
+--
+
+INSERT INTO `laundry_delivery_prices` (`id`, `location`, `duration`, `price`, `status`, `date_created`) VALUES
+(1, 'Within Accra', 4, 5, 'active', '0000-00-00 00:00:00'),
+(2, 'Kumasi Delivery', 15, 10, 'deleted', '2017-11-25 09:22:19');
 
 -- --------------------------------------------------------
 
@@ -579,8 +614,31 @@ INSERT INTO `laundry_garments` (`id`, `name`, `description`, `status`, `date_cre
 CREATE TABLE `laundry_orders` (
   `id` bigint(20) NOT NULL,
   `order_number` varchar(20) NOT NULL,
+  `total_cost` double NOT NULL,
+  `amount_paid` double NOT NULL,
+  `balance` double NOT NULL,
+  `balance_paid_date` datetime NOT NULL,
   `client_id` bigint(20) NOT NULL,
   `status` enum('pending','completed','deleted') NOT NULL DEFAULT 'pending',
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `laundry_orders_details`
+--
+
+CREATE TABLE `laundry_orders_details` (
+  `id` bigint(20) NOT NULL,
+  `order_number` varchar(20) NOT NULL,
+  `service_id` bigint(20) NOT NULL,
+  `weight_id` bigint(255) NOT NULL,
+  `garment_id` bigint(20) NOT NULL,
+  `weight_description` varchar(255) NOT NULL,
+  `amount` double NOT NULL,
+  `delivery_id` bigint(20) NOT NULL,
+  `delivery_amount` double NOT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -609,7 +667,8 @@ INSERT INTO `laundry_prices` (`id`, `service_id`, `weight_id`, `garment_id`, `am
 (2, 2, 0, 1, 5, 'active', '2017-11-05 23:42:05'),
 (3, 3, 1, 2, 25, 'active', '2017-11-05 23:42:30'),
 (5, 6, 0, 1, 5, 'active', '2017-11-10 06:16:16'),
-(6, 4, 0, 1, 20, 'active', '2017-11-12 07:13:27');
+(6, 4, 0, 1, 20, 'active', '2017-11-12 07:13:27'),
+(7, 6, 0, 1, 5, 'active', '2017-11-18 19:17:49');
 
 -- --------------------------------------------------------
 
@@ -636,7 +695,7 @@ INSERT INTO `laundry_services` (`id`, `name`, `code`, `description`, `status`, `
 (3, 'Dry Cleaning', 'DC', 'For Heavy Cleaning', 'active', '2017-10-04 00:00:00'),
 (4, 'Washing & Ironing', 'WI', '', 'active', '2017-10-12 00:00:00'),
 (5, 'Washing & Drying', 'WD', 'For Both Little and Small items', 'active', '2017-11-02 00:00:00'),
-(6, 'Delivery', '', 'To Customers', 'active', '2017-11-10 06:15:31');
+(6, 'Delivery', 'OD', 'Taifa', 'deleted', '2017-11-10 06:15:31');
 
 -- --------------------------------------------------------
 
@@ -666,7 +725,6 @@ INSERT INTO `laundry_weights` (`id`, `service_type`, `weight`, `description`, `s
 
 --
 -- Stand-in structure for view `vw_employee_details`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_employee_details` (
 `id` bigint(20)
@@ -708,7 +766,6 @@ CREATE TABLE `vw_employee_details` (
 
 --
 -- Stand-in structure for view `vw_laundry_prices`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_prices` (
 `id` bigint(20)
@@ -727,7 +784,6 @@ CREATE TABLE `vw_laundry_prices` (
 
 --
 -- Stand-in structure for view `vw_laundry_weights`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_weights` (
 `id` bigint(20)
@@ -826,8 +882,13 @@ ALTER TABLE `hr_position`
 --
 ALTER TABLE `laundry_clients`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `phone_number_1` (`phone_number_1`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `phone_number_1` (`phone_number_1`);
+
+--
+-- Indexes for table `laundry_delivery_prices`
+--
+ALTER TABLE `laundry_delivery_prices`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `laundry_garments`
@@ -839,6 +900,12 @@ ALTER TABLE `laundry_garments`
 -- Indexes for table `laundry_orders`
 --
 ALTER TABLE `laundry_orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `laundry_orders_details`
+--
+ALTER TABLE `laundry_orders_details`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -903,7 +970,12 @@ ALTER TABLE `hr_position`
 -- AUTO_INCREMENT for table `laundry_clients`
 --
 ALTER TABLE `laundry_clients`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `laundry_delivery_prices`
+--
+ALTER TABLE `laundry_delivery_prices`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `laundry_garments`
 --
@@ -915,10 +987,15 @@ ALTER TABLE `laundry_garments`
 ALTER TABLE `laundry_orders`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `laundry_orders_details`
+--
+ALTER TABLE `laundry_orders_details`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `laundry_prices`
 --
 ALTER TABLE `laundry_prices`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `laundry_services`
 --
@@ -1063,7 +1140,8 @@ INSERT INTO `roles_privileges_user` (`id`, `user_id`, `custom_roles`, `custom_pr
 (1, 1, '', '', 1, 'active'),
 (2, 2, '', '', 1, 'active'),
 (3, 3, '', '', 5, 'active'),
-(4, 4, '', '', 5, 'active');
+(4, 4, '', '', 5, 'active'),
+(5, 5, '', '', 3, 'active');
 
 -- --------------------------------------------------------
 
@@ -1094,14 +1172,12 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `passwd`, `default_passwd`, `fullname`, `phone_number`, `temp_employee_id`, `biodata_id`, `first_login`, `login_attempt`, `status`, `created_by`, `date_created`) VALUES
 (1, 'osborne.mordred@gmail.com', '$2y$10$GuOFXrr8Xdd5JFHD9vzm8.tUeafbhkUfvImwdDkswS8NJJOqzV3BC', '', 'Osborne Mordreds', '0541786220', 'KAD/SYS/1', 0, 0, 5, 'active', 1, '2017-05-25 06:05:10'),
 (2, 'wikills2k@gmail.com', '$2y$10$GuOFXrr8Xdd5JFHD9vzm8.tUeafbhkUfvImwdDkswS8NJJOqzV3BC', '', 'Bismark Offei ', '0245626487', 'KAD/SYS/2', 0, 0, 5, 'active', 1, '2017-05-25 06:05:10'),
-(3, 'evans@marksbon.com', '', '$2y$10$WxR9pcai8uwiHmsOPT.4NuN5HhCWV9aeRIkUo7oOJgyWw.O.FLkHy', 'Evans  Kwame Offori', '', '', 1, 0, 5, 'active', 0, '2017-10-20 09:49:42'),
-(4, 'ike@marksbon.com', '', '$2y$10$9fYLtPVJu4AbtIUVh2JO7.iCBEJCY5SfG9DyU/0XhZKbx/W1pFTNC', 'Gyasi jon Nimako', '', '', 2, 0, 5, 'inactive', 0, '2017-10-27 09:59:17');
+(5, 'evans@marksbon.com', '', '$2y$10$/kuqijx7L/V.sZpaAeCJ4uu5PjeR3a2AXhKrDopg.L2VLd2jogkJm', 'Evans  Kwame Offori', '', '', 1, 0, 5, 'active', 0, '2017-11-23 06:37:31');
 
 -- --------------------------------------------------------
 
 --
 -- Stand-in structure for view `vw_user_details`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_user_details` (
 `id` bigint(20)
@@ -1111,6 +1187,7 @@ CREATE TABLE `vw_user_details` (
 ,`phone_number` varchar(25)
 ,`employee_id` varchar(50)
 ,`biodata_id` bigint(20)
+,`profile_photo` text
 ,`first_login` tinyint(1)
 ,`login_attempt` tinyint(1)
 ,`status` enum('active','inactive','deleted','')
@@ -1132,7 +1209,7 @@ CREATE TABLE `vw_user_details` (
 --
 DROP TABLE IF EXISTS `vw_user_details`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_user_details`  AS  select `a`.`id` AS `id`,`a`.`username` AS `username`,`a`.`passwd` AS `passwd`,coalesce(convert((select concat(`bgee_db`.`hr_employee_biodata`.`first_name`,' ',`bgee_db`.`hr_employee_biodata`.`middle_name`,' ',`bgee_db`.`hr_employee_biodata`.`last_name`) from `bgee_db`.`hr_employee_biodata` where (`bgee_db`.`hr_employee_biodata`.`id` = `a`.`biodata_id`)) using utf8),`a`.`fullname`) AS `fullname`,coalesce((select `bgee_db`.`hr_employee_contact_info`.`phone_number_1` from `bgee_db`.`hr_employee_contact_info` where (`bgee_db`.`hr_employee_contact_info`.`biodata_id` = `a`.`biodata_id`)),`a`.`phone_number`) AS `phone_number`,coalesce((select `bgee_db`.`hr_employee_work_info`.`employee_id` from `bgee_db`.`hr_employee_work_info` where (`bgee_db`.`hr_employee_work_info`.`biodata_id` = `a`.`biodata_id`)),`a`.`temp_employee_id`) AS `employee_id`,`a`.`biodata_id` AS `biodata_id`,`a`.`first_login` AS `first_login`,`a`.`login_attempt` AS `login_attempt`,`a`.`status` AS `status`,`a`.`created_by` AS `created_by`,`a`.`date_created` AS `date_created`,coalesce(`b`.`custom_roles`,'') AS `custom_roles`,coalesce(`b`.`custom_privileges`,'') AS `custom_privileges`,coalesce(`b`.`group_id`,'') AS `group_id`,coalesce(`b`.`status`,'') AS `user_roles_status`,coalesce(`c`.`name`,'') AS `group_name`,coalesce(`c`.`roles`,'') AS `group_roles`,coalesce(`c`.`privileges`,'') AS `group_privileges` from (((`users` `a` left join `roles_privileges_user` `b` on((`a`.`id` = `b`.`user_id`))) left join `roles_privileges_group` `c` on((`b`.`group_id` = `c`.`id`))) left join `bgee_db`.`hr_employee_work_info` `d` on((`a`.`biodata_id` = `d`.`biodata_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_user_details`  AS  select `a`.`id` AS `id`,`a`.`username` AS `username`,`a`.`passwd` AS `passwd`,coalesce(convert((select concat(`bgee_db`.`hr_employee_biodata`.`first_name`,' ',`bgee_db`.`hr_employee_biodata`.`middle_name`,' ',`bgee_db`.`hr_employee_biodata`.`last_name`) from `bgee_db`.`hr_employee_biodata` where (`bgee_db`.`hr_employee_biodata`.`id` = `a`.`biodata_id`)) using utf8),`a`.`fullname`) AS `fullname`,coalesce((select `bgee_db`.`hr_employee_contact_info`.`phone_number_1` from `bgee_db`.`hr_employee_contact_info` where (`bgee_db`.`hr_employee_contact_info`.`biodata_id` = `a`.`biodata_id`)),`a`.`phone_number`) AS `phone_number`,coalesce((select `bgee_db`.`hr_employee_work_info`.`employee_id` from `bgee_db`.`hr_employee_work_info` where (`bgee_db`.`hr_employee_work_info`.`biodata_id` = `a`.`biodata_id`)),`a`.`temp_employee_id`) AS `employee_id`,`a`.`biodata_id` AS `biodata_id`,coalesce((select `vw_employee_details`.`profile_photo` from `bgee_db`.`vw_employee_details` where (`vw_employee_details`.`id` = `a`.`biodata_id`)),'uploads/profile_pictures/default.jpg') AS `profile_photo`,`a`.`first_login` AS `first_login`,`a`.`login_attempt` AS `login_attempt`,`a`.`status` AS `status`,`a`.`created_by` AS `created_by`,`a`.`date_created` AS `date_created`,coalesce(`b`.`custom_roles`,'') AS `custom_roles`,coalesce(`b`.`custom_privileges`,'') AS `custom_privileges`,coalesce(`b`.`group_id`,'') AS `group_id`,coalesce(`b`.`status`,'') AS `user_roles_status`,coalesce(`c`.`name`,'') AS `group_name`,coalesce(`c`.`roles`,'') AS `group_roles`,coalesce(`c`.`privileges`,'') AS `group_privileges` from (((`users` `a` left join `bgee_permissions`.`roles_privileges_user` `b` on((`a`.`id` = `b`.`user_id`))) left join `roles_privileges_group` `c` on((`b`.`group_id` = `c`.`id`))) left join `bgee_db`.`hr_employee_work_info` `d` on((`a`.`biodata_id` = `d`.`biodata_id`))) ;
 
 --
 -- Indexes for dumped tables
@@ -1193,12 +1270,12 @@ ALTER TABLE `roles_privileges_group`
 -- AUTO_INCREMENT for table `roles_privileges_user`
 --
 ALTER TABLE `roles_privileges_user`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
