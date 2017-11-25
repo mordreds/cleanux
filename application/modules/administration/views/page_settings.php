@@ -25,171 +25,9 @@
     });
   /************** Default Settings **************/
 
-  /********** All Activated Accounts ************/
-    $('#active_accounts_tbl').dataTable({
-      ajax: {
-        type : 'GET',
-        url : '<?= base_url()?>administration/retrieve_allusers/active',
-        dataSrc: ''
-      },
-      columns: [
-        {data: "fullname"},
-        {data: "employee_id"},
-        {data: "username"},
-        {data: "group_name"},
-        {data: "status", render: function(data,type,row,meta) { 
-          if(row.status == "active") {
-            label_class = "label-success";
-          }
-          else if(row.status == "inactive"){
-            label_class = "label-danger";
-          }
-          user_status = row.status;
-          return '<span class="label '+label_class+'">'+row.status+'</span>';}
-        },
-        {data: "id", render: function(data,type,row,meta) { 
-          if(user_status == "active") {
-            button = '<ul class="action_btns"><li><a data-fullname="'+row.fullname+'" data-username="'+row.username+'" data-id="'+row.id+'" id="reset_password" title="Reset Password"><i class="icon-key" style="font-size:21px"></i></a></li><li><a data-popup="tooltip" title="Suspend Account"><i class="deactivate_user icon-lock text-warning" data-dataid="'+row.id+'" data-email="'+row.username+'" data-state="inactive" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete Account"><i class="icon-trash text-danger delete_btn" data-displayname="'+row.fullname+'" data-dataid="'+row.id+'"  data-email="'+row.username+'" data-state="deleted" style="font-size: 20px"></i></a></li></ul>';
-          } 
-          else if(user_status == "deleted"){ }
-
-          return button; 
-          }
-        },
-      ],
-    });
-
-    $(document).on("click",".deactivate_user",function(){
-      let formData = { 
-        'user_id': $(this).data('dataid'),
-        'email': $(this).data('email'),
-        'status': $(this).data('state')
-      };
-      $.ajax({
-        type : 'POST',
-        url : '<?= base_url()?>administration/users/account_status',
-        data : formData,
-        success: function(response) {
-          $.jGrowl('User Deactivation Successful', {
-              /*header: 'Process Successful',*/
-            theme: 'alert-styled-left bg-success'
-          });
-          $('#inactive_acct_tbl').DataTable().ajax.reload();
-          $('#active_accounts_tbl').DataTable().ajax.reload();
-        },
-        error: function() {
-          alert("Error Transmitting Data")
-        }
-      });
-    });
-
-    $(document).on("click",".delete_confirmed",function(){
-      let formData = { 
-        'user_id': $(this).data('user_id'),
-        'email': $(this).data('email'),
-        'status': $(this).data('status')
-      };
-      $.ajax({
-        type : 'POST',
-        url : '<?= base_url()?>administration/users/account_status',
-        data : formData,
-        success: function(response) {
-          $.jGrowl('User Deletion Successful', {
-            theme: 'alert-styled-left bg-success'
-          });
-          $('#del_acct_tbl').DataTable().ajax.reload();
-          $('#inactive_acct_tbl').DataTable().ajax.reload();
-          $('#active_accounts_tbl').DataTable().ajax.reload();
-        },
-        error: function() {
-          $.jGrowl('User Deletion Failed', {
-            theme: 'alert-styled-left bg-danger'
-          });
-        }
-      });
-    });
-  /********** All Activated Accounts ************/
-
-  /********** All Inactivated Accounts ************/
-    $('#inactive_acct_tbl').dataTable({
-      ajax: {
-        type : 'GET',
-        url : '<?= base_url()?>administration/retrieve_allusers/inactive',
-        dataSrc: ''
-      },
-      columns: [
-        {data: "fullname"},
-        {data: "employee_id"},
-        {data: "username"},
-        {data: "group_name"},
-        {data: "status", render: function(data,type,row,meta) { 
-          if(row.status == "active") {
-            label_class = "label-success";
-          }
-          else if(row.status == "inactive"){
-            label_class = "label-danger";
-          }
-          user_status = row.status;
-          return '<span class="label '+label_class+'">'+row.status+'</span>'}
-        },
-        {data: "id", render: function(data,type,row,meta) { 
-          button = '<a title="Activate Account"><i class="activate_user icon-unlocked2 text-success" data-dataid="'+row.id+'"data-email="'+row.username+'" data-state="active" style="font-size: 22px"></i></a>&nbsp;&nbsp;';
-          
-          return button; 
-          }
-        },
-      ],
-    });
-
-    $(document).on("click",".activate_user",function(){
-      let formData = { 
-        'user_id': $(this).data('dataid'),
-        'email': $(this).data('email'),
-        'status': $(this).data('state'),
-      };
-      $.ajax({
-        type : 'POST',
-        url : '<?= base_url()?>administration/users/account_status',
-        data : formData,
-        success: function(response) {
-          $.jGrowl('User Activation Successful', {
-              /*header: 'Process Successful',*/
-            theme: 'alert-styled-left bg-success'
-          });
-          //$('#userTab a[href="#active_accounts"]').tab('show');
-          $('#active_accounts_tbl').DataTable().ajax.reload();
-          $('#inactive_acct_tbl').DataTable().ajax.reload();
-        },
-        error: function() {
-          alert("Error Transmitting Data")
-        }
-      });
-    });
-  /********** All Inactivated Accounts ************/
-
-  /********** All Deleted Accounts ************/
-    $('#del_acct_tbl').dataTable({
-      ajax: {
-        type : 'GET',
-        url : '<?= base_url()?>administration/retrieve_allusers/deleted',
-        dataSrc: ''
-      },
-      columns: [
-        {data: "fullname"},
-        {data: "employee_id"},
-        {data: "username"},
-        {data: "group_name"},
-        {data: "status", render: function(data,type,row,meta) { 
-          return '<span class="label label-danger">Deleted</span>'}
-        },
-        {data: "id", render: function(data,type,row,meta) {
-          button = "<strong><em>No Action Available</em></strong>";
-          return button;
-        }
-        },
-      ],
-    });
-  /********** All Deleted Accounts ************/
+  /********** All Permissions ****************/
+    
+  /********** All Permissions ****************/
 
   /********** Displaying Departments **********/
     $("#all_departments").selectBoxIt({
@@ -257,25 +95,26 @@
   /****** Displaying Department Employees ****/
 
   /****** Displaying Permission ****/
-  $.ajax({
-    type: 'POST',
-    url: '<?= base_url()?>settings/retrieve_permissions/users',
-    datatype: 'json',
-    success: function(data) {
-      var employees = JSON.parse(data);
-      
-      $.each(employees, function(array_index) {
-        $("#all_users").data("selectBox-selectBoxIt").add({ value: employees[array_index].id, text: employees[array_index].fullname, 'data-empid': employees[array_index].employee_id,'data-email': employees[array_index].work_email,'data-phone_num': employees[array_index].phone_number_1,'data-fullname': employees[array_index].fullname,
-          'data-iconurl':"../"+employees[array_index].profile_photo
+    /****** All Users ******/
+    $.ajax({
+      type: 'POST',
+      url: '<?= base_url()?>settings/retrieve_permissions/users',
+      datatype: 'json',
+      success: function(data) {
+        var employees = JSON.parse(data);
+        
+        $.each(employees, function(array_index) {
+          $("#all_users").data("selectBox-selectBoxIt").add({ value: employees[array_index].id, text: employees[array_index].fullname, 'data-empid': employees[array_index].employee_id,'data-email': employees[array_index].work_email,'data-phone_num': employees[array_index].phone_number_1,'data-fullname': employees[array_index].fullname,
+            'data-iconurl':"../"+employees[array_index].profile_photo
+          });
         });
-      });
-    },
-    error: function() {
-      $.jGrowl('Retrieving Users Failed', {
-        theme: 'alert-styled-left bg-danger'
-      });
-    }
-  });
+      },
+      error: function() {
+        $.jGrowl('Retrieving Users Failed', {
+          theme: 'alert-styled-left bg-danger'
+        });
+      }
+    });
 
   $.ajax({
     type: 'POST',
@@ -295,6 +134,7 @@
       });
     }
   });
+
 
   $('#view_permissions').click(function(){
     let user = $('[name="user_id"]').val();
@@ -344,29 +184,7 @@
     });
   /****** Displaying Employee ID *****/
 
-  /****** Passy Password Meter *****/
-    var $inputLabel = $('.label-indicator input');
-    var $inputLabelAbsolute = $('.label-indicator-absolute input');
-    var $inputGroup = $('.group-indicator input');
-
-    var $outputLabel = $('.label-indicator > span');
-    var $outputLabelAbsolute = $('.label-indicator-absolute > span');
-    var $outputGroup = $('.group-indicator > span');
-
-    $.passy.requirements.length.min = 4;
-    // Strength meter
-    var feedback = [
-      {color: '#D55757', text: 'Weak', textColor: '#fff'},
-      {color: '#EB7F5E', text: 'Normal', textColor: '#fff'},
-      {color: '#3BA4CE', text: 'Good', textColor: '#fff'},
-      {color: '#40B381', text: 'Strong', textColor: '#fff'}
-    ];
-    // Absolute positioned label
-    $inputLabelAbsolute.passy(function(strength) {
-        $outputLabelAbsolute.text(feedback[strength].text);
-        $outputLabelAbsolute.css('background-color', feedback[strength].color).css('color', feedback[strength].textColor);
-    });
-  /****** Passy Password Meter *****/
+  
 
   /********** Reset Password ************/
     $(document).on('click','#change_pwd_submit',function(){
@@ -397,6 +215,255 @@
       });
     });
   /********** Reset Password ************/
+
+/**************************************** Users Page ***********************************/
+  <?php if($controller_function == "users") : ?>
+  $(document).ready(function(){
+    /********** All Activated Accounts ************/
+      $('#active_accounts_tbl').dataTable({
+        ajax: {
+          type : 'GET',
+          url : '<?= base_url()?>administration/retrieve_allusers/active',
+          dataSrc: '',
+          error: function() {
+            $.jGrowl('Retrieving Active Users Failed', {
+              theme: 'alert-styled-left bg-danger'
+            });
+          }
+        },
+        columns: [
+          {data: "fullname"},
+          {data: "employee_id"},
+          {data: "username"},
+          {data: "group_name"},
+          {data: "status", render: function(data,type,row,meta) { 
+            if(row.status == "active") {
+              label_class = "label-success";
+            }
+            else if(row.status == "inactive"){
+              label_class = "label-danger";
+            }
+            user_status = row.status;
+            return '<span class="label '+label_class+'">'+row.status+'</span>';}
+          },
+          {data: "id", render: function(data,type,row,meta) { 
+            if(user_status == "active") {
+              button = '<ul class="action_btns"><li><a data-fullname="'+row.fullname+'" data-username="'+row.username+'" data-id="'+row.id+'" id="reset_password" title="Reset Password"><i class="icon-key" style="font-size:21px"></i></a></li><li><a data-popup="tooltip" title="Suspend Account"><i class="deactivate_user icon-lock text-warning" data-dataid="'+row.id+'" data-email="'+row.username+'" data-state="inactive" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete Account"><i class="icon-trash text-danger delete_btn" data-displayname="'+row.fullname+'" data-dataid="'+row.id+'"  data-email="'+row.username+'" data-state="deleted" style="font-size: 20px"></i></a></li></ul>';
+            } 
+            else if(user_status == "deleted"){ }
+
+            return button; 
+            }
+          },
+        ],
+      });
+
+      $(document).on("click",".deactivate_user",function(){
+        let formData = { 
+          'user_id': $(this).data('dataid'),
+          'email': $(this).data('email'),
+          'status': $(this).data('state')
+        };
+        $.ajax({
+          type : 'POST',
+          url : '<?= base_url()?>administration/users/account_status',
+          data : formData,
+          success: function(response) {
+            $.jGrowl('User Deactivation Successful', {
+                /*header: 'Process Successful',*/
+              theme: 'alert-styled-left bg-success'
+            });
+            $('#inactive_acct_tbl').DataTable().ajax.reload();
+            $('#active_accounts_tbl').DataTable().ajax.reload();
+          },
+          error: function() {
+            alert("Error Transmitting Data")
+          }
+        });
+      });
+
+      $(document).on("click",".delete_confirmed",function(){
+        let formData = { 
+          'user_id': $(this).data('user_id'),
+          'email': $(this).data('email'),
+          'status': $(this).data('status')
+        };
+        $.ajax({
+          type : 'POST',
+          url : '<?= base_url()?>administration/users/account_status',
+          data : formData,
+          success: function(response) {
+            $.jGrowl('User Deletion Successful', {
+              theme: 'alert-styled-left bg-success'
+            });
+            $('#del_acct_tbl').DataTable().ajax.reload();
+            $('#inactive_acct_tbl').DataTable().ajax.reload();
+            $('#active_accounts_tbl').DataTable().ajax.reload();
+          },
+          error: function() {
+            $.jGrowl('User Deletion Failed', {
+              theme: 'alert-styled-left bg-danger'
+            });
+          }
+        });
+      });
+    /********** All Activated Accounts ************/
+
+    /********** All Inactivated Accounts ************/
+      $('#inactive_acct_tbl').dataTable({
+        ajax: {
+          type : 'GET',
+          url : '<?= base_url()?>administration/retrieve_allusers/inactive',
+          dataSrc: '',
+          error: function() {
+            $.jGrowl('Retrieving In-active Users Failed', {
+              theme: 'alert-styled-left bg-danger'
+            });
+          }
+        },
+        columns: [
+          {data: "fullname"},
+          {data: "employee_id"},
+          {data: "username"},
+          {data: "group_name"},
+          {data: "status", render: function(data,type,row,meta) { 
+            if(row.status == "active") {
+              label_class = "label-success";
+            }
+            else if(row.status == "inactive"){
+              label_class = "label-danger";
+            }
+            user_status = row.status;
+            return '<span class="label '+label_class+'">'+row.status+'</span>'}
+          },
+          {data: "id", render: function(data,type,row,meta) { 
+            button = '<a title="Activate Account"><i class="activate_user icon-unlocked2 text-success" data-dataid="'+row.id+'"data-email="'+row.username+'" data-state="active" style="font-size: 22px"></i></a>&nbsp;&nbsp;';
+            
+            return button; 
+            }
+          },
+        ],
+      });
+
+      $(document).on("click",".activate_user",function(){
+        let formData = { 
+          'user_id': $(this).data('dataid'),
+          'email': $(this).data('email'),
+          'status': $(this).data('state'),
+        };
+        $.ajax({
+          type : 'POST',
+          url : '<?= base_url()?>administration/users/account_status',
+          data : formData,
+          success: function(response) {
+            $.jGrowl('User Activation Successful', {
+                /*header: 'Process Successful',*/
+              theme: 'alert-styled-left bg-success'
+            });
+            //$('#userTab a[href="#active_accounts"]').tab('show');
+            $('#active_accounts_tbl').DataTable().ajax.reload();
+            $('#inactive_acct_tbl').DataTable().ajax.reload();
+          },
+          error: function() {
+            alert("Error Transmitting Data")
+          }
+        });
+      });
+    /********** All Inactivated Accounts ************/
+
+    /********** All Deleted Accounts ************/
+      $('#del_acct_tbl').dataTable({
+        ajax: {
+          type : 'GET',
+          url : '<?= base_url()?>administration/retrieve_allusers/deleted',
+          dataSrc: '',
+          error: function() {
+            $.jGrowl('Retrieving Deleted Users Failed', {
+              theme: 'alert-styled-left bg-danger'
+            });
+          }
+        },
+        columns: [
+          {data: "fullname"},
+          {data: "employee_id"},
+          {data: "username"},
+          {data: "group_name"},
+          {data: "status", render: function(data,type,row,meta) { 
+            return '<span class="label label-danger">Deleted</span>'}
+          },
+          {data: "id", render: function(data,type,row,meta) {
+            button = "<strong><em>No Action Available</em></strong>";
+            return button;
+          }
+          },
+        ],
+      });
+    /********** All Deleted Accounts ************/
+    /****** Passy Password Meter *****/
+      var $inputLabel = $('.label-indicator input');
+      var $inputLabelAbsolute = $('.label-indicator-absolute input');
+      var $inputGroup = $('.group-indicator input');
+
+      var $outputLabel = $('.label-indicator > span');
+      var $outputLabelAbsolute = $('.label-indicator-absolute > span');
+      var $outputGroup = $('.group-indicator > span');
+
+      $.passy.requirements.length.min = 4;
+      // Strength meter
+      var feedback = [
+        {color: '#D55757', text: 'Weak', textColor: '#fff'},
+        {color: '#EB7F5E', text: 'Normal', textColor: '#fff'},
+        {color: '#3BA4CE', text: 'Good', textColor: '#fff'},
+        {color: '#40B381', text: 'Strong', textColor: '#fff'}
+      ];
+      // Absolute positioned label
+      $inputLabelAbsolute.passy(function(strength) {
+          $outputLabelAbsolute.text(feedback[strength].text);
+          $outputLabelAbsolute.css('background-color', feedback[strength].color).css('color', feedback[strength].textColor);
+      });
+    /****** Passy Password Meter *****/
+  });
+  <?php endif; ?>
+/**************************************** Users Page ***********************************/
+
+/**************************************** Permissions Page ***********************************/
+  <?php if($controller_function == "permissions") : ?>
+  $(document).ready(function(){
+  /********* Table Initializations ************/
+    /********* Permissions Table ************/
+      $('#allPermissions').dataTable({
+        searching: false,
+        paging: false,
+        ajax: {
+          type : 'GET',
+          url : '<?=base_url()?>administration/view_allPermissions',
+          dataSrc: '',
+          error: function() {
+            $.jGrowl('Retrieving Permissions Failed', {
+              theme: 'alert-styled-left bg-danger'
+            });
+          }
+        },
+        columns: [
+          {data: function(type,row,meta) { 
+             return '<input type="checkbox" class="styled"> &nbsp;&nbsp; '+type[0].name.toUpperCase();
+            }
+          },
+          {data: function(type,row,meta) { 
+             return '<input type="checkbox" class="styled"> &nbsp;&nbsp; '+type[1].name.toUpperCase();
+            }
+          },
+          {data: function(type,row,meta) { 
+             return '<input type="checkbox" class="styled"> &nbsp;&nbsp; '+type[2].name.toUpperCase();
+            }
+          },
+        ],
+      });
+    /********* Permissions Table ************/
+  /********* Table Initializations ************/
+  });
+  <?php endif; ?>
+/**************************************** Permissions Page ***********************************/
 </script>
 <?php endif; ?>
   

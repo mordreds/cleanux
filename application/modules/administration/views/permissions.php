@@ -35,8 +35,8 @@
                         </div>
                       </form>
                     </div>
-                    <div class="col-md-6" id="allpermissions_display" style="">
-                      <table id="allpermission" class="table datatable-responsive">
+                    <div class="col-md-6">
+                      <table id="allPermissions" class="table datatable-responsive">
                         <thead style="background-color:#009688;color:white">
                           <tr>
                             <th> </th>
@@ -46,7 +46,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
+                          <!-- <tr>
                             <td><input type="checkbox" class="styled"> &nbsp;&nbsp; Permission 1</td>
                             <td><input type="checkbox" class="styled"> &nbsp;&nbsp; Permission 1</td>
                             <td><input type="checkbox" class="styled"> &nbsp;&nbsp; Permission 1</td>
@@ -69,7 +69,7 @@
                             <td><input type="checkbox" class="styled"> &nbsp;&nbsp; Permission 1</td>
                             <td><input type="checkbox" class="styled"> &nbsp;&nbsp; Permission 1</td>
                             <td><input type="checkbox" class="styled"> &nbsp;&nbsp; Permission 1</td>
-                          </tr>
+                          </tr> -->
                         </tbody>
                       </table><br/>
                       <div class="text-center">

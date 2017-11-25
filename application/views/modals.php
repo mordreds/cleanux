@@ -70,99 +70,374 @@
   </div>
 <!-- *********** Delete Modal *********** -->
 
-<!-- *********** Reset Password ********* -->
-  <script type="text/javascript">
-    $('.table').on('click','#reset_password', function(){
-      $('#password_reset_displayname').val($(this).data('fullname'));
-      $('#change_pwd_submit').attr('data-user_id',$(this).data('id'));
-      $('#change_pwd_submit').attr('data-email',$(this).data('username'));
-      $('#password_reset_modal').modal('show');
-    });
-  </script>
+<!-- **************************************** Users Page *********************************** -->
+  <?php if($controller_function == "users") : ?>
+    <!-- *********** Reset Password ********* -->
+      <script type="text/javascript">
+        $('.table').on('click','#reset_password', function(){
+          $('#password_reset_displayname').val($(this).data('fullname'));
+          $('#change_pwd_submit').attr('data-user_id',$(this).data('id'));
+          $('#change_pwd_submit').attr('data-email',$(this).data('username'));
+          $('#password_reset_modal').modal('show');
+        });
+      </script>
 
-  <div id="password_reset_modal" class="modal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-danger">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h6 class="modal-title">Reset Password</h6>
-        </div>
-        <div class="modal-body">
-          <div class="form-group has-feedback">
-            <label>Username: </label>
-            <input id="password_reset_displayname" type="text" placeholder="Your username" class="form-control" readonly>
-            <div class="form-control-feedback">
-              <i class="icon-user text-muted"></i>
+      <div id="password_reset_modal" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header bg-danger">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h6 class="modal-title">Reset Password</h6>
+            </div>
+            <div class="modal-body">
+              <div class="form-group has-feedback">
+                <label>Username: </label>
+                <input id="password_reset_displayname" type="text" placeholder="Your username" class="form-control" readonly>
+                <div class="form-control-feedback">
+                  <i class="icon-user text-muted"></i>
+                </div>
+              </div>
+              <div class="form-group has-feedback">
+                <label>Password: </label>
+                <input id="new_password" type="password" placeholder="Your password" class="form-control">
+                <div class="form-control-feedback">
+                  <i class="icon-lock text-muted"></i>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
+              <button type="button" class="btn btn-success" id="change_pwd_submit" data-dismiss="modal">Save</button>
             </div>
           </div>
-          <div class="form-group has-feedback">
-            <label>Password: </label>
-            <input id="new_password" type="password" placeholder="Your password" class="form-control">
-            <div class="form-control-feedback">
-              <i class="icon-lock text-muted"></i>
+        </div>
+      </div>
+    <!-- *********** Reset Password ********* -->
+  <?php endif; ?>
+<!-- **************************************** Users Page *********************************** -->
+<!-- ***************************** New Registration Page *********************************** -->
+  <?php if($controller_function == "new_registration") : ?>
+    <!-- *********** Edit Laundry Service ********* -->
+      <script type="text/javascript">
+        $('.table').on('click','.edit_service', function(){
+          $('#service_displayname').val($(this).data('name'));
+          $('#service_description').val($(this).data('desc'));
+          $('#edit_service_submit').attr('data-id',$(this).data('id'));
+          $('#edit_service_submit').attr('data-service_name',$(this).data('name'));
+          $('#edit_service_submit').attr('data-service_desc',$(this).data('desc'));
+          $('#edit_service_submit').attr('data-tableid',$(this).data('tableid'));
+          $('#edit_service_submit').attr('data-formurl',"<?=base_url()?>settings/save_services");
+          $('#edit_service').modal('show');
+        });
+      </script>
+
+      <div id="edit_service" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header bg-teal-400">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h6 class="modal-title">Edit Service</h6>
+            </div>
+            <div class="modal-body">
+              <div class="form-group has-feedback">
+                <label  class="display-block">Name: </label>
+                <input id="service_displayname" type="text" class="form-control">
+              </div>
+              <div class="form-group has-feedback">
+                <label  class="display-block">Description: </label>
+                <input id="service_description" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
+              <button type="button" class="btn btn-primary" id="edit_service_submit" data-dismiss="modal">Save</button>
             </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
-          <button type="button" class="btn btn-success" id="change_pwd_submit" data-dismiss="modal">Save</button>
+      </div>
+      <script type="text/javascript">
+        $(document).on("click","#edit_service_submit",function(){
+          let formurl = $(this).data('formurl');
+          let tableid = $(this).data('tableid');
+          let formData = { 
+            'id': $(this).data('id'),
+            'service_name': $('#service_displayname').val(),
+            'service_desc': $('#service_description').val(),
+          };
+          ajax_post(formurl,formData,tableid);
+        });
+      </script>
+    <!-- *********** Edit Laundry Service ********* -->
+
+    <!-- *********** Edit Laundry Weights ********* -->
+      <script type="text/javascript">
+        $('.table').on('click','.edit_weight_btn', function(){
+          var selectbox = $('select.display_services').selectBoxIt().data('selectBox-selectBoxIt');
+          selectbox.setOption({selectOption: $(this).data('id')});
+
+          /*$('#weight_serviceType').val($(this).data('service'));*/
+          $('#weight_displayname').val($(this).data('name'));
+          $('#weight_description').val($(this).data('desc'));
+          $('#edit_weight_submit').attr('data-id',$(this).data('id'));
+          $('#edit_weight_submit').attr('data-weight_name',$(this).data('name'));
+          $('#edit_weight_submit').attr('data-weight_desc',$(this).data('desc'));
+          $('#edit_weight_submit').attr('data-tableid',$(this).data('tableid'));
+          $('#edit_weight_submit').attr('data-formurl',"<?=base_url()?>settings/save_weight");
+          $('#edit_weight').modal('show');
+        });
+      </script>
+
+      <div id="edit_weight" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header bg-teal-400">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h6 class="modal-title">Edit Weight Info</h6>
+            </div>
+            <div class="modal-body">
+              <div class="form-group has-feedback">
+                <label  class="display-block">Service Type: </label>
+                <select id="new_service" class="form-control display_services" name="service_type"></select>
+              </div>
+              <div class="form-group has-feedback">
+                <label  class="display-block">Name: </label>
+                <input id="weight_displayname" type="text" class="form-control">
+              </div>
+              <div class="form-group has-feedback">
+                <label  class="display-block">Description: </label>
+                <input id="weight_description" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
+              <button type="button" class="btn btn-primary" id="edit_weight_submit" data-dismiss="modal">Save <i class="icon-arrow-right14 position-right"></i></button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-<!-- *********** Reset Password ********* -->
+      <script type="text/javascript">
+        $(document).on("click","#edit_weight_submit",function(){
+          let formurl = $(this).data('formurl');
+          let tableid = $(this).data('tableid');
+          let formData = { 
+            'id': $(this).data('id'),
+            'service_type': $('#new_service').val(),
+            'weight': $('#weight_displayname').val(),
+            'weight_description': $('#weight_description').val(),
+          };
+          ajax_post(formurl,formData,tableid);
+        });
+      </script>
+    <!-- *********** Edit Laundry Weights ********* -->
 
-<!-- *********** Edit Laundry Service ********* -->
-  <script type="text/javascript">
-    $('.table').on('click','.edit_service', function(){
-      $('#service_displayname').val($(this).data('name'));
-      $('#service_description').val($(this).data('desc'));
-      $('#edit_service_submit').attr('data-id',$(this).data('id'));
-      $('#edit_service_submit').attr('data-service_name',$(this).data('name'));
-      $('#edit_service_submit').attr('data-service_desc',$(this).data('desc'));
-      $('#edit_service_submit').attr('data-tableid',$(this).data('tableid'));
-      $('#edit_service_submit').attr('data-formurl',"<?=base_url()?>settings/save_services");
-      $('#edit_service').modal('show');
-    });
-  </script>
+    <!-- *********** Edit Laundry Garments ********* -->
+      <script type="text/javascript">
+        $('.table').on('click','.edit_garment_btn', function(){
+          $('#garment_displayname').val($(this).data('name'));
+          $('#garment_description').val($(this).data('desc'));
+          $('#edit_garment_submit').attr('data-id',$(this).data('id'));
+          $('#edit_garment_submit').attr('data-garment_name',$(this).data('name'));
+          $('#edit_garment_submit').attr('data-garment_desc',$(this).data('desc'));
+          $('#edit_garment_submit').attr('data-tableid',$(this).data('tableid'));
+          $('#edit_garment_submit').attr('data-formurl',"<?=base_url()?>settings/save_garment");
+          $('#edit_garment').modal('show');
+        });
+      </script>
 
-  <div id="edit_service" class="modal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-teal-400">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h6 class="modal-title">Edit Service</h6>
-        </div>
-        <div class="modal-body">
-          <div class="form-group has-feedback">
-            <label  class="display-block">Name: </label>
-            <input id="service_displayname" type="text" class="form-control">
+      <div id="edit_garment" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header bg-teal-400">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h6 class="modal-title">Edit Weight Info</h6>
+            </div>
+            <div class="modal-body">
+              <div class="form-group has-feedback">
+                <label  class="display-block">Name: </label>
+                <input id="garment_displayname" type="text" class="form-control">
+              </div>
+              <div class="form-group has-feedback">
+                <label  class="display-block">Description: </label>
+                <input id="garment_description" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
+              <button type="button" class="btn btn-primary" id="edit_garment_submit" data-dismiss="modal">Save <i class="icon-arrow-right14 position-right"></i></button>
+            </div>
           </div>
-          <div class="form-group has-feedback">
-            <label  class="display-block">Description: </label>
-            <input id="service_description" type="text" class="form-control">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
-          <button type="button" class="btn btn-primary" id="edit_service_submit" data-dismiss="modal">Save</button>
         </div>
       </div>
-    </div>
-  </div>
-  <script type="text/javascript">
-    $(document).on("click","#edit_service_submit",function(){
-      let formurl = $(this).data('formurl');
-      let tableid = $(this).data('tableid');
-      let formData = { 
-        'id': $(this).data('id'),
-        'service_name': $('#service_displayname').val(),
-        'service_desc': $('#service_description').val(),
-      };
-      ajax_post(formurl,formData,tableid);
-    });
-  </script>
-<!-- *********** Edit Laundry Service ********* -->
+      <script type="text/javascript">
+        $(document).on("click","#edit_garment_submit",function(){
+          let formurl = $(this).data('formurl');
+          let tableid = $(this).data('tableid');
+          let formData = { 
+            'id': $(this).data('id'),
+            'garment_name': $('#garment_displayname').val(),
+            'garment_desc': $('#garment_description').val(),
+          };
+          ajax_post(formurl,formData,tableid);
+        });
+      </script>
+    <!-- *********** Edit Laundry Garments ********* -->
+
+    <!-- *********** Edit Laundry Price ********* -->
+      <script type="text/javascript">
+        $('.table').on('click','.edit_price_btn', function(){
+          let service_id = $(this).data("service_id");
+          let weight_id  = $(this).data("weight_id");
+          let garment_id  = $(this).data("garment_id");
+
+          selectbox_initialize('#price_service_type','services',service_id);
+          selectbox_initialize('#price_garments','garments',garment_id);
+          
+          var weights = $("#price_weight").selectBoxIt({
+            autoWidth: false,
+            defaultText: "Select One",
+            populate: function(){
+              var deferred = $.Deferred(), arr = [], x = -1;
+              $.ajax({
+              url: '<?= base_url()?>settings/retrieve_alldata/vw_weights/default'}).done(function(data) {
+                data = JSON.parse(data);
+                while(++x < data.length){
+                  if(data[x].id == weight_id)
+                    arr[x] = { value : data[x].id, text : data[x].weight, selected: "selected" };
+                  else
+                  arr[x] = { value : data[x].id, text : data[x].weight };
+                }
+                deferred.resolve(arr);
+              });
+              return deferred;
+            }
+          });
+          
+          $('#amount').val($(this).data('amount'));
+
+          $('#edit_price_submit').attr('data-id',$(this).data('id'));
+          $('#edit_price_submit').attr('data-service_id',$(this).data('service_id'));
+          $('#edit_price_submit').attr('data-weight_id',$(this).data('weight_id'));
+          $('#edit_price_submit').attr('data-garment_id',$(this).data('garment_id'));
+          $('#edit_price_submit').attr('data-tableid',$(this).data('tableid'));
+          $('#edit_price_submit').attr('data-formurl',"<?=base_url()?>settings/save_price");
+          $('#edit_price_list').modal('show');
+        });
+      </script>
+
+      <div id="edit_price_list" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header bg-teal-400">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h6 class="modal-title">Edit Price Info</h6>
+            </div>
+            <div class="modal-body">
+              <div class="form-group has-feedback">
+                <label  class="display-block">Service Type: </label>
+                <select id="price_service_type" class="form-control" name="service_type">
+                  <option value="">Select One</option>
+                </select>
+              </div>
+              <div class="form-group has-feedback">
+                <label  class="display-block">Service Weight: </label>
+                <select id="price_weight" class="form-control display_weights" name="weight">
+                  <option value="">Select One</option>
+                </select>
+              </div>
+              <div class="form-group has-feedback">
+                <label  class="display-block">Service Garment: </label>
+                <select id="price_garments" class="form-control" name="weight">
+                  <option value="">Select One</option>
+                </select>
+              </div>
+              <div class="form-group has-feedback">
+                <label  class="display-block">Amount: </label>
+                <input id="amount" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
+              <button type="button" class="btn btn-primary" id="edit_price_submit" data-dismiss="modal">Save <i class="icon-arrow-right14 position-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        $(document).on("click","#edit_price_submit",function(){
+          let formurl = $(this).data('formurl');
+          let tableid = $(this).data('tableid');
+          let formData = { 
+            'id': $(this).data('id'),
+            'service_id': $('#price_service_type').val(),
+            'weight_id': $('#price_weight').val(),
+            'garment_id': $('#price_garments').val(),
+            'amount': $('#amount').val(),
+          };
+          ajax_post(formurl,formData,tableid);
+        });
+      </script>
+    <!-- *********** Edit Laundry Price ********* -->
+
+    <!-- *********** Edit Laundry Delivery Price ********* -->
+      <script type="text/javascript">
+        $('.table').on('click','.edit_delivery_price_btn', function(){
+          let location = $(this).data("location");
+          let duration  = $(this).data("duration");
+          let price  = $(this).data("price");
+         
+          $('#edit_delivery_price_submit').attr('data-id',$(this).data('id'));
+          $('#edit_delivery_price_submit').attr('data-location',$(this).data('location'));
+          $('#edit_delivery_price_submit').attr('data-duration',$(this).data('duration'));
+          $('#edit_delivery_price_submit').attr('data-price',$(this).data('price'));
+          $('#edit_delivery_price_submit').attr('data-tableid',$(this).data('tableid'));
+          $('#edit_delivery_price_submit').attr('data-formurl',"<?=base_url()?>settings/save_delivery");
+          $('#edit_delivery_price_list').modal('show');
+        });
+      </script>
+
+      <div id="edit_delivery_price_list" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header bg-teal-400">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h6 class="modal-title">Edit Delivery Prices</h6>
+            </div>
+            <div class="modal-body">
+              <div class="form-group has-feedback">
+                <label  class="display-block">Location: </label>
+                <input id="location" type="text" class="form-control">
+              </div>
+              <div class="form-group has-feedback">
+                <label  class="display-block">Duration(in days): </label>
+                <input id="duration" type="number" class="form-control">
+              </div>
+              <div class="form-group has-feedback">
+                <label  class="display-block">Price: </label>
+                <input id="price" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
+              <button type="button" class="btn btn-primary" id="edit_delivery_price_submit" data-dismiss="modal">Save <i class="icon-arrow-right14 position-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        $(document).on("click","#edit_delivery_price_submit",function(){
+          let formurl = $(this).data('formurl');
+          let tableid = $(this).data('tableid');
+          let formData = { 
+            'id': $(this).data('id'),
+            'location': $('#location').val(),
+            'duration': $('#duration').val(),
+            'price': $('#price').val(),
+          };
+          ajax_post(formurl,formData,tableid);
+        });
+      </script>
+    <!-- *********** Edit Laundry Delivery Price ********* -->
+  <?php endif; ?>
 
 <!-- *********** checkinig out  ********* -->
   <script type="text/javascript">
@@ -366,214 +641,7 @@
     });
   </script>
 
-<!-- *********** Edit Laundry Weights ********* -->
-  <script type="text/javascript">
-    $('.table').on('click','.edit_weight_btn', function(){
-      var selectbox = $('select.display_services').selectBoxIt().data('selectBox-selectBoxIt');
-      selectbox.setOption({selectOption: $(this).data('id')});
 
-      /*$('#weight_serviceType').val($(this).data('service'));*/
-      $('#weight_displayname').val($(this).data('name'));
-      $('#weight_description').val($(this).data('desc'));
-      $('#edit_weight_submit').attr('data-id',$(this).data('id'));
-      $('#edit_weight_submit').attr('data-weight_name',$(this).data('name'));
-      $('#edit_weight_submit').attr('data-weight_desc',$(this).data('desc'));
-      $('#edit_weight_submit').attr('data-tableid',$(this).data('tableid'));
-      $('#edit_weight_submit').attr('data-formurl',"<?=base_url()?>settings/save_weight");
-      $('#edit_weight').modal('show');
-    });
-  </script>
-
-  <div id="edit_weight" class="modal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-teal-400">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h6 class="modal-title">Edit Weight Info</h6>
-        </div>
-        <div class="modal-body">
-          <div class="form-group has-feedback">
-            <label  class="display-block">Service Type: </label>
-            <select id="new_service" class="form-control display_services" name="service_type"></select>
-          </div>
-          <div class="form-group has-feedback">
-            <label  class="display-block">Name: </label>
-            <input id="weight_displayname" type="text" class="form-control">
-          </div>
-          <div class="form-group has-feedback">
-            <label  class="display-block">Description: </label>
-            <input id="weight_description" type="text" class="form-control">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
-          <button type="button" class="btn btn-primary" id="edit_weight_submit" data-dismiss="modal">Save <i class="icon-arrow-right14 position-right"></i></button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script type="text/javascript">
-    $(document).on("click","#edit_weight_submit",function(){
-      let formurl = $(this).data('formurl');
-      let tableid = $(this).data('tableid');
-      let formData = { 
-        'id': $(this).data('id'),
-        'service_type': $('#new_service').val(),
-        'weight': $('#weight_displayname').val(),
-        'weight_description': $('#weight_description').val(),
-      };
-      ajax_post(formurl,formData,tableid);
-    });
-  </script>
-<!-- *********** Edit Laundry Weights ********* -->
-
-<!-- *********** Edit Laundry Garments ********* -->
-  <script type="text/javascript">
-    $('.table').on('click','.edit_garment_btn', function(){
-      $('#garment_displayname').val($(this).data('name'));
-      $('#garment_description').val($(this).data('desc'));
-      $('#edit_garment_submit').attr('data-id',$(this).data('id'));
-      $('#edit_garment_submit').attr('data-garment_name',$(this).data('name'));
-      $('#edit_garment_submit').attr('data-garment_desc',$(this).data('desc'));
-      $('#edit_garment_submit').attr('data-tableid',$(this).data('tableid'));
-      $('#edit_garment_submit').attr('data-formurl',"<?=base_url()?>settings/save_garment");
-      $('#edit_garment').modal('show');
-    });
-  </script>
-
-  <div id="edit_garment" class="modal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-teal-400">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h6 class="modal-title">Edit Weight Info</h6>
-        </div>
-        <div class="modal-body">
-          <div class="form-group has-feedback">
-            <label  class="display-block">Name: </label>
-            <input id="garment_displayname" type="text" class="form-control">
-          </div>
-          <div class="form-group has-feedback">
-            <label  class="display-block">Description: </label>
-            <input id="garment_description" type="text" class="form-control">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
-          <button type="button" class="btn btn-primary" id="edit_garment_submit" data-dismiss="modal">Save <i class="icon-arrow-right14 position-right"></i></button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script type="text/javascript">
-    $(document).on("click","#edit_garment_submit",function(){
-      let formurl = $(this).data('formurl');
-      let tableid = $(this).data('tableid');
-      let formData = { 
-        'id': $(this).data('id'),
-        'garment_name': $('#garment_displayname').val(),
-        'garment_desc': $('#garment_description').val(),
-      };
-      ajax_post(formurl,formData,tableid);
-    });
-  </script>
-<!-- *********** Edit Laundry Garments ********* -->
-
-<!-- *********** Edit Laundry Price ********* -->
-  <script type="text/javascript">
-    $('.table').on('click','.edit_price_btn', function(){
-      let service_id = $(this).data("service_id");
-      let weight_id  = $(this).data("weight_id");
-      let garment_id  = $(this).data("garment_id");
-
-      selectbox_initialize('#price_service_type','services',service_id);
-      selectbox_initialize('#price_garments','garments',garment_id);
-      
-      var weights = $("#price_weight").selectBoxIt({
-        autoWidth: false,
-        defaultText: "Select One",
-        populate: function(){
-          var deferred = $.Deferred(), arr = [], x = -1;
-          $.ajax({
-          url: '<?= base_url()?>settings/retrieve_alldata/vw_weights/default'}).done(function(data) {
-            data = JSON.parse(data);
-            while(++x < data.length){
-              if(data[x].id == weight_id)
-                arr[x] = { value : data[x].id, text : data[x].weight, selected: "selected" };
-              else
-              arr[x] = { value : data[x].id, text : data[x].weight };
-            }
-            deferred.resolve(arr);
-          });
-          return deferred;
-        }
-      });
-      
-      $('#amount').val($(this).data('amount'));
-
-      $('#edit_price_submit').attr('data-id',$(this).data('id'));
-      $('#edit_price_submit').attr('data-service_id',$(this).data('service_id'));
-      $('#edit_price_submit').attr('data-weight_id',$(this).data('weight_id'));
-      $('#edit_price_submit').attr('data-garment_id',$(this).data('garment_id'));
-      $('#edit_price_submit').attr('data-tableid',$(this).data('tableid'));
-      $('#edit_price_submit').attr('data-formurl',"<?=base_url()?>settings/save_price");
-      $('#edit_price_list').modal('show');
-    });
-  </script>
-
-  <div id="edit_price_list" class="modal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-teal-400">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h6 class="modal-title">Edit Price Info</h6>
-        </div>
-        <div class="modal-body">
-          <div class="form-group has-feedback">
-            <label  class="display-block">Service Type: </label>
-            <select id="price_service_type" class="form-control" name="service_type">
-              <option value="">Select One</option>
-            </select>
-          </div>
-          <div class="form-group has-feedback">
-            <label  class="display-block">Service Weight: </label>
-            <select id="price_weight" class="form-control display_weights" name="weight">
-              <option value="">Select One</option>
-            </select>
-          </div>
-          <div class="form-group has-feedback">
-            <label  class="display-block">Service Garment: </label>
-            <select id="price_garments" class="form-control" name="weight">
-              <option value="">Select One</option>
-            </select>
-          </div>
-          <div class="form-group has-feedback">
-            <label  class="display-block">Amount: </label>
-            <input id="amount" type="text" class="form-control">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
-          <button type="button" class="btn btn-primary" id="edit_price_submit" data-dismiss="modal">Save <i class="icon-arrow-right14 position-right"></i></button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script type="text/javascript">
-    $(document).on("click","#edit_price_submit",function(){
-      let formurl = $(this).data('formurl');
-      let tableid = $(this).data('tableid');
-      let formData = { 
-        'id': $(this).data('id'),
-        'service_id': $('#price_service_type').val(),
-        'weight_id': $('#price_weight').val(),
-        'garment_id': $('#price_garments').val(),
-        'amount': $('#amount').val(),
-      };
-      ajax_post(formurl,formData,tableid);
-    });
-  </script>
-<!-- *********** Edit Laundry Price ********* -->
 
 
 <?php endif; ?>

@@ -86,22 +86,7 @@
       });
     }
 
-    function retrieveData_ajax(formurl,formData){
-      $.ajax({
-        type : 'POST',
-        url : formurl,
-        data :formData,
-        success: function(response) { 
-          response = JSON.parse(response)
-          return response;
-        },
-        error: function() {
-          $.jGrowl('An Error Occured.<br/>Please Contact Admin', {
-            theme: 'alert-styled-left bg-danger'
-          });
-        }
-      });
-    }
+    
   /************ Ajax Post Function  *********/
 
   /************ SelectBoxIt Plugin  *********/
@@ -137,4 +122,26 @@
       }
     }
   /************ Swtichery Plugin  *********/
+
+
+  /************************ All Ajax Functions  ******************/
+    /******** Retrieve All Data  **********/
+      function retrieveData_ajax(formurl,formData){
+        $.ajax({
+          type : 'POST',
+          url : formurl,
+          data :formData,
+          success: function(response) { 
+            response = JSON.parse(response)
+            return response;
+          },
+          error: function() {
+            $.jGrowl('An Error Occured.<br/>Please Contact Admin', {
+              theme: 'alert-styled-left bg-danger'
+            });
+          }
+        });
+      }
+    /******** Retrieve All Data  **********/
+  /************************ All Ajax Functions  ******************/
  </script>

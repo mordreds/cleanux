@@ -456,7 +456,82 @@ class Settings extends MX_Controller
     }
     /****** Save Prices    ***********/
 
-    /****** Save Prices      ***********/
+    /****** Save Weight      ***********/
+    public function save_delivery() {
+      if(in_array('new registration', $_SESSION['user']['roles'])) {
+        $this->form_validation->set_rules('id','ID','trim');
+        $this->form_validation->set_rules('location','Location','trim');
+        $this->form_validation->set_rules('duration','Duration','trim');
+        $this->form_validation->set_rules('price','Price','trim');
+        $this->form_validation->set_rules('delete_item','Delete Action','trim');
+
+        if($this->form_validation->run() === FALSE) {
+          $this->session->set_flashdata('error',"Validation Error");
+          redirect('settings/new_registration#delivery');
+        }
+        else {
+          $this->load->model('globals/model_insertion');
+          $this->load->model('globals/model_update');
+          /***** Data Definition *****/
+          $id = $this->input->post('id');
+          $dbres = self::$_Default_DB;
+          $tablename = "laundry_delivery_prices";
+          $data = [
+            'location' => ucwords($this->input->post('location')),
+            'duration' => ucwords($this->input->post('duration')),
+            'price' => ucwords($this->input->post('price')),
+          ];
+          $return_dataType="php_object";
+          $delete_confirmed = $this->input->post('delete_item');
+          /***** Data Definition *****/
+          
+          if(isset($delete_confirmed) && isset($id)) {
+            $delete_data['status'] = "deleted";
+
+            $where_condition = ['id' => $id];
+
+            $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$delete_data,$where_condition) ;
+            if($query_result)
+              $return_data['success'] = "Delete Successul";
+            else
+              $return_data['error'] = "Delete Failed";
+
+            print_r(json_encode($return_data));
+          } 
+          else {
+            if(empty($id)) {
+              $data['status'] = "active";
+
+              $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
+              if($query_result)
+                $this->session->set_flashdata('success',"Save Successful");
+              else
+                $this->session->set_flashdata('error',"Save Failed");
+
+              redirect('settings/new_registration#delivery');
+            }
+            else {
+              $where_condition = ['id' => $id];
+
+              $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
+              if($query_result)
+                $return_data['success'] = "Update Successul";
+              else
+                $return_data['error'] = "Update Failed";
+
+              print_r(json_encode($return_data));
+            }
+          }
+        }
+      }
+      else {
+        $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
+        redirect('settings/new_registration#delivery');
+      }
+    }
+    /****** Save Weight      ***********/
+
+    /****** Save Client Info ***********/
     public function save_client_info() {
       if(in_array('new registration', $_SESSION['user']['roles'])) {
         $this->form_validation->set_rules('id','ID','trim');
@@ -543,7 +618,7 @@ class Settings extends MX_Controller
         redirect('overview');
       }
     }
-    /****** Save Prices    ***********/
+    /****** Save Client Info ***********/
   /**************** Insertions ****************/
 
   /*********************************  AJAX CALLS  **************************/
@@ -594,6 +669,11 @@ class Settings extends MX_Controller
 
         if($tablename == "vw_prices") {
           $tablename = "vw_laundry_prices";
+          $return_dataType = "json";
+        }
+
+        if($tablename == "delivery") {
+          $tablename = "laundry_delivery_prices";
           $return_dataType = "json";
         }
 

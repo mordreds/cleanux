@@ -440,7 +440,7 @@ class Administration extends MX_Controller
     /*****************************
       New User
     *****************************/
-    public function view_permissions() {
+    public function view_allPermissions() {
       /*$this->form_validation->set_rules('user_id','User Name','trim');
       $this->form_validation->set_rules('group_id','Group Name','trim');
       
@@ -480,23 +480,18 @@ class Administration extends MX_Controller
 
       $query_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$where_condition);
 
-      //print "<pre>"; print_r($query_result); print "</pre>";
-
-      $counter = 1; $array_index = 0;
+      $array_index = 0;
       foreach ($query_result as $key => $value) {
-        if($counter == 4) {
+        if(sizeof(@$tableArray[$array_index]) == 4) {
           $array_index++;
-          $counter = 1;
-
           $tableArray[$array_index][] = $value;
         }
-        else {
-          $counter ++;
+        else 
           $tableArray[$array_index][] = $value;
-        }
       }
 
-      print "<br/><br/><pre>"; print_r($tableArray); print "</pre>";
+      //print "<pre>"; print_r($tableArray); print "</pre>";
+      print_r(json_encode($tableArray));
     }
     
     /***********************************************
