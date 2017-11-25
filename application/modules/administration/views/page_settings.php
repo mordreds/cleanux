@@ -313,6 +313,7 @@
         data: formData,
         success: function(data) {
           var employees = JSON.parse(data);
+          let output = "<tr>"
           $.each(employees, function(array_index) {
             $("#all_groups").data("selectBox-selectBoxIt").add({ value: employees[array_index].id, text: employees[array_index].name,
             });
@@ -326,7 +327,7 @@
       });
     }
   });
-  /****** Displaying Permission ****/
+  /********* Displaying Permission *********/
 
   /****** Displaying Employee ID *****/
     $("#department_employees").change(function(){
@@ -368,33 +369,33 @@
   /****** Passy Password Meter *****/
 
   /********** Reset Password ************/
-  $(document).on('click','#change_pwd_submit',function(){
-    let formData = { 
-      'user_id': $(this).data('user_id'),
-      'email': $(this).data('email'),
-      'new_password': $('#new_password').val()
-    };
-    $.ajax({
-      type : 'POST',
-      url : '<?= base_url()?>administration/users/reset_password',
-      data : formData,
-      success: function(response) {
-        $.jGrowl('Password Reset Successful', {
-          theme: 'alert-styled-left bg-success'
-        });
-        $('#password_reset_displayname').val("");
-        $('#new_password').val("");
-        $('#del_acct_tbl').DataTable().ajax.reload();
-        $('#inactive_acct_tbl').DataTable().ajax.reload();
-        $('#active_accounts_tbl').DataTable().ajax.reload();
-      },
-      error: function() {
-        $.jGrowl('Password Reset Failed', {
-          theme: 'alert-styled-left bg-danger'
-        });
-      }
+    $(document).on('click','#change_pwd_submit',function(){
+      let formData = { 
+        'user_id': $(this).data('user_id'),
+        'email': $(this).data('email'),
+        'new_password': $('#new_password').val()
+      };
+      $.ajax({
+        type : 'POST',
+        url : '<?= base_url()?>administration/users/reset_password',
+        data : formData,
+        success: function(response) {
+          $.jGrowl('Password Reset Successful', {
+            theme: 'alert-styled-left bg-success'
+          });
+          $('#password_reset_displayname').val("");
+          $('#new_password').val("");
+          $('#del_acct_tbl').DataTable().ajax.reload();
+          $('#inactive_acct_tbl').DataTable().ajax.reload();
+          $('#active_accounts_tbl').DataTable().ajax.reload();
+        },
+        error: function() {
+          $.jGrowl('Password Reset Failed', {
+            theme: 'alert-styled-left bg-danger'
+          });
+        }
+      });
     });
-  });
   /********** Reset Password ************/
 </script>
 <?php endif; ?>

@@ -35,8 +35,8 @@
                         </div>
                       </form>
                     </div>
-                    <div class="col-md-6">
-                      <table id="" class="table datatable-responsive">
+                    <div class="col-md-6" id="allpermissions_display" style="">
+                      <table id="allpermission" class="table datatable-responsive">
                         <thead style="background-color:#009688;color:white">
                           <tr>
                             <th> </th>

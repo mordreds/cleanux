@@ -441,12 +441,12 @@ class Administration extends MX_Controller
       New User
     *****************************/
     public function view_permissions() {
-      $this->form_validation->set_rules('user_id','User Name','trim');
+      /*$this->form_validation->set_rules('user_id','User Name','trim');
       $this->form_validation->set_rules('group_id','Group Name','trim');
       
       if ($this->form_validation->run() == FALSE) {
-        $this->session->set_flashdata('error',"Validation Error");
-        redirect('administration/permissions');
+        $return_data = ['error' => "Validation Error"];
+        print_r($return_data);
       }
       # If Passed
       else {
@@ -457,16 +457,46 @@ class Administration extends MX_Controller
         $group_id = $this->input->post('group_id');
 
         if(empty($user_id) && empty($group_id)) {
-          $this->session->set_flashdata('error',"No Selection Made");
-          redirect('administration/permissions');
+          $return_data = ['error' => "No Selection Made"];
+          print_r($return_data);
         } else {
           # Variables
           $dbres = self::$_Permission_DB;
-          $return_dataType = "php_object";
-          $tablename = "roles_privileges_user";
+          $return_dataType = "json";
+          $tablename = "dashboard_tabs";
+          $where_condition = ['status'=>"active"];
 
+          $query_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$where_condition);
+
+          print_r($query_result); 
+        }
+      }*/
+
+      $this->load->model('globals/model_retrieval');
+      $dbres = self::$_Permission_DB;
+      $return_dataType = "php_object";
+      $tablename = "dashboard_tabs";
+      $where_condition = ['status'=>"active"];
+
+      $query_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$where_condition);
+
+      //print "<pre>"; print_r($query_result); print "</pre>";
+
+      $counter = 1; $array_index = 0;
+      foreach ($query_result as $key => $value) {
+        if($counter == 4) {
+          $array_index++;
+          $counter = 1;
+
+          $tableArray[$array_index][] = $value;
+        }
+        else {
+          $counter ++;
+          $tableArray[$array_index][] = $value;
         }
       }
+
+      print "<br/><br/><pre>"; print_r($tableArray); print "</pre>";
     }
     
     /***********************************************
