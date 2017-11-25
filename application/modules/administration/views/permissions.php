@@ -9,7 +9,6 @@
             <div class="tabbable">
               <ul class="nav nav-tabs nav-tabs-bottom" id="userTab">
                 <li class="active"><a href="#user_permission" data-toggle="tab">User Permissions<i class="icon-user position-right"></i></a></li>
-                <li><a href="#new_account" data-toggle="tab">Create New User <i class="icon-user position-right"></i></a></li>
                 <li><a href="#inactive_accounts" data-toggle="tab">Group Permissions <i class="icon-users position-right"></i></a></li>
                 <li><a href="#inactive_accounts" data-toggle="tab">Group Members <i class="icon-users position-right"></i></a></li>
               </ul>

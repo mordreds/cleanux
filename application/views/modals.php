@@ -384,6 +384,10 @@
           let location = $(this).data("location");
           let duration  = $(this).data("duration");
           let price  = $(this).data("price");
+
+          $('#delivery_location').val(location);
+          $('#delivery_duration').val(duration);
+          $('#delivery_price').val(price);
          
           $('#edit_delivery_price_submit').attr('data-id',$(this).data('id'));
           $('#edit_delivery_price_submit').attr('data-location',$(this).data('location'));
@@ -405,15 +409,15 @@
             <div class="modal-body">
               <div class="form-group has-feedback">
                 <label  class="display-block">Location: </label>
-                <input id="location" type="text" class="form-control">
+                <input id="delivery_location" type="text" class="form-control">
               </div>
               <div class="form-group has-feedback">
                 <label  class="display-block">Duration(in days): </label>
-                <input id="duration" type="number" class="form-control">
+                <input id="delivery_duration" type="number" class="form-control">
               </div>
               <div class="form-group has-feedback">
                 <label  class="display-block">Price: </label>
-                <input id="price" type="text" class="form-control">
+                <input id="delivery_price" type="text" class="form-control">
               </div>
             </div>
             <div class="modal-footer">
@@ -429,9 +433,9 @@
           let tableid = $(this).data('tableid');
           let formData = { 
             'id': $(this).data('id'),
-            'location': $('#location').val(),
-            'duration': $('#duration').val(),
-            'price': $('#price').val(),
+            'location': $('#delivery_location').val(),
+            'duration': $('#delivery_duration').val(),
+            'price': $('#delivery_price').val(),
           };
           ajax_post(formurl,formData,tableid);
         });

@@ -43,40 +43,42 @@
         };
 
         $.ajax({
-        type : 'POST',
-        url : formurl,
-        data : formData,
-        success: function(response) { 
-          response = JSON.parse(response)
-          //console.log(response)
-          if(response[0]) {  
-            $('[name="id"]').val(response[0].id);
-            $('[name="fullname"]').val(response[0].fullname);
-            $('[name="fullname"]').attr('readonly',"readonly");
-            $('[name="company_name"]').val(response[0].company);
-            $('[name="company_name"]').attr('readonly',"readonly");
-            $('[name="residence_addr"]').val(response[0].residence_address);
-            $('[name="residence_addr"]').attr('readonly',"readonly");
-            $('[name="postal_addr"]').val(response[0].postal_address);
-            $('[name="postal_addr"]').attr('readonly',"readonly");
-            $('[name="primary_tel"]').val(response[0].phone_number_1);
-            $('[name="primary_tel"]').attr('readonly',"readonly");
-            $('[name="secondary_tel"]').val(response[0].phone_number_2);
-            $('[name="secondary_tel"]').attr('readonly',"readonly");
-            $('[name="email"]').val(response[0].email);
-            $('[name="email"]').attr('readonly',"readonly");
-            
-            e.preventDefault();
-            $('#overview_tabs a[href="#client_info"]').tab('show'); 
-          }
-          else { 
-            $.jGrowl("No Record Found", {
-              theme: 'alert-styled-left bg-danger'
-            });
+          type : 'POST',
+          url : formurl,
+          data : formData,
+          success: function(response) { 
+            response = JSON.parse(response)
+            //console.log(response)
+            if(response[0]) {  
+              $('[name="id"]').val(response[0].id);
+              $('[name="fullname"]').val(response[0].fullname);
+              $('[name="fullname"]').attr('readonly',"readonly");
+              $('[name="company_name"]').val(response[0].company);
+              $('[name="company_name"]').attr('readonly',"readonly");
+              $('[name="residence_addr"]').val(response[0].residence_address);
+              $('[name="residence_addr"]').attr('readonly',"readonly");
+              $('[name="postal_addr"]').val(response[0].postal_address);
+              $('[name="postal_addr"]').attr('readonly',"readonly");
+              $('[name="primary_tel"]').val(response[0].phone_number_1);
+              $('[name="primary_tel"]').attr('readonly',"readonly");
+              $('[name="secondary_tel"]').val(response[0].phone_number_2);
+              $('[name="secondary_tel"]').attr('readonly',"readonly");
+              $('[name="email"]').val(response[0].email);
+              $('[name="email"]').attr('readonly',"readonly");
+              
+              e.preventDefault();
+              $('#overview_tabs a[href="#client_info"]').tab('show'); 
+            }
+            else { 
+              $.jGrowl("No Record Found", {
+                theme: 'alert-styled-left bg-danger'
+              });
+            }
           }
         });
       }
     });
+
   /********** Search Order / Info ************/
 
   /********** Displaying Services ******/

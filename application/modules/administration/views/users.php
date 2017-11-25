@@ -11,6 +11,7 @@
                 <li class="active"><a href="#active_accounts" data-toggle="tab">Active Users <i class="icon-unlocked2 position-right"></i></a></li>
                 <li><a href="#inactive_accounts" data-toggle="tab">Inactive Users <i class="icon-lock position-right"></i></a></li>
                 <li><a class="text-danger" href="#deleted_accounts" data-toggle="tab">Deleted Accounts <i class="icon-trash position-right"></i></a></li>
+                <li><a href="#new_account" data-toggle="tab">Create New User <i class="icon-user position-right"></i></a></li>
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="active_accounts">

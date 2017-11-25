@@ -221,11 +221,14 @@ class Overview extends MX_Controller
           # code...
           $return_data[] = $value;
         }
-        print_r(json_encode(array_reverse($return_data)));
+        if(!empty($return_data))
+          print_r(json_encode(array_reverse($return_data)));
         //print_r($_SESSION['laundry']['new_order']);
+        else
+          print "";
       }
       else 
-        print_r($_SESSION['laundry']['new_order'] = array());
+        print_r(json_encode($_SESSION['laundry']['new_order'] = array()));
     }
 
     /*******************************

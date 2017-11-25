@@ -203,25 +203,24 @@
                 <div class="tab-pane" id="delivery">
                   <div class="row">
                     <div class="col-md-5">
-                      <form action="<?=base_url();?>settings/save_price" method="post" style="margin-left: 10px; margin-right: 10px">
+                      <form action="<?=base_url();?>settings/save_delivery" method="post" style="margin-left: 10px; margin-right: 10px">
                         <div class="row">
                           <div class="col-md-11">
                             <div class="form-group">
                               <label class="display-block">Delivery Location   <span style="color:red;">*</span></label>
-                               <input type="text" name="" class="form-control"  required>
+                               <input type="text" name="location" class="form-control"  required>
                             </div>
                           </div>
                           <div class="col-md-11">
                             <div class="form-group">
-                              <label class="display-block">Duration (Days)  <span style="color:red;">*</span></label>
-                               <input type="number" name="" class="form-control" min="1"  required>
+                              <label class="display-block">Duration(in days)  <span style="color:red;">*</span></label>
+                               <input type="number" name="duration" class="form-control" min="1"  required>
                             </div>
                           </div>
                           <div class="col-md-11">
                             <div class="form-group">
-                              <label class="display-block">Price
-                              </label>
-                               <input type="text" name="" class="form-control"  required>
+                              <label class="display-block">Price (GHS)<span style="color:red;">*</span></label></label>
+                               <input type="number" name="price" class="form-control"  required>
                             </div>
                           </div>
                         </div>
