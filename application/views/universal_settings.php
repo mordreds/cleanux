@@ -2,7 +2,7 @@
 
 <script type="text/javascript">
  
- /********** Displaying Services ******/
+  /********** Displaying Services ******/
     $(document).ready(function() {
       $('#view_cart').click(function(){
         $('#laundry_cart').DataTable().ajax.reload();
@@ -68,6 +68,27 @@
       location.reload();
     });
   /********** Displaying Services ******/
+
+  /****** Retrieving Price List ******/
+    let services_formurl = "<?=base_url()?>settings/retrieve_alldata/services/default";
+    var service_name = "";
+    $.ajax({
+      type : 'GET',
+      data : '',
+      success: function(response) { 
+        response = JSON.parse(response)
+        $.each(response, function(index) {
+          service_name = '<li><a href="#" data-toggle="tab"><span class="label label-info pull-right">Services</span> '+response[index].name+'</a></li>';
+          $(service_name).appendTo('#pricelists');
+        });
+      },
+      error: function() {
+        $.jGrowl('An Error Retrieving Price List', {
+          theme: 'alert-styled-left bg-danger'
+        });
+      }
+    });
+  /****** Retrieving Price List ******/
 </script>
 <?php endif; ?>
   

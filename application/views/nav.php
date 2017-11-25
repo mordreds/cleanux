@@ -292,8 +292,6 @@
         </div>
 
         <!-- Vertical form modal -->
-                            <td>$70</td>
-                          </tr>
 					<div id="modal_form_vertical" class="modal fade">
 						<div class="modal-dialog">
 							<div class="modal-content">
