@@ -31,9 +31,10 @@
       ?>
     });
 
-    var formurl = "<?=base_url()?>overview/search";
-    $('#search_submit').click(function(){
+    
+    $('#search_submit').click(function(e){
       let search_text = $('#search_text').val();
+      var formurl = "<?=base_url()?>overview/search";
       if(search_text == "")
         notification("failed","Order Number / Phone Number Required ");
       else {
@@ -42,60 +43,34 @@
         };
 
         $.ajax({
-          type : 'POST',
-          url : formurl,
-          data : formData,
-          success: function(response) { 
-            response = JSON.parse(response)
-            console.log(response[0])
-            if(response[0]) {  
-              $('[name="id"]').val(response[0].id);
-              $('[name="fullname"]').val(response[0].fullname);
-              $('[name="fullname"]').attr('readonly',"readonly");
-              $('[name="company_name"]').val(response[0].company);
-              $('[name="company_name"]').attr('readonly',"readonly");
-              $('[name="residence_addr"]').val(response[0].residence_address);
-              $('[name="residence_addr"]').attr('readonly',"readonly");
-              $('[name="postal_addr"]').val(response[0].postal_address);
-              $('[name="postal_addr"]').attr('readonly',"readonly");
-              $('[name="primary_tel"]').val(response[0].phone_number_1);
-              $('[name="primary_tel"]').attr('readonly',"readonly");
-              $('[name="secondary_tel"]').val(response[0].phone_number_2);
-              $('[name="secondary_tel"]').attr('readonly',"readonly");
-              $('[name="email"]').val(response[0].email);
-              $('[name="email"]').attr('readonly',"readonly");
-              if(response[0].sms == 1) {
-                console.log(switchery)
-                $('[name="sms"]').setPosition(true);
-                document.querySelector('.btn_cancel').addEventListener('click', function() {
-                  switchery.disable();
-                });
-
-
-                  /*  if (Array.prototype.forEach) {
-                  var elems = Array.prototype.slice.call(document.querySelectorAll('.switchery'));
-                  elems.forEach(function(html) {
-                      var switchery = new Switchery(html);
-                  });
-                }
-                else {
-                  var elems = document.querySelectorAll('.switchery');
-                  for (var i = 0; i < elems.length; i++) {
-                      var switchery = new Switchery(elems[i]);
-                  }
-                }*/
-              }
-              else
-                $('[name="sms"]').attr('checked',"");
-            }
-            else { 
-              $.jGrowl("No Record Found", {
-                theme: 'alert-styled-left bg-danger'
-              });
-            }
-          },
-          error: function() {
-            $.jGrowl('An Error Occured.<br/>Please Contact Admin', {
+        type : 'POST',
+        url : formurl,
+        data : formData,
+        success: function(response) { 
+          response = JSON.parse(response)
+          //console.log(response)
+          if(response[0]) {  
+            $('[name="id"]').val(response[0].id);
+            $('[name="fullname"]').val(response[0].fullname);
+            $('[name="fullname"]').attr('readonly',"readonly");
+            $('[name="company_name"]').val(response[0].company);
+            $('[name="company_name"]').attr('readonly',"readonly");
+            $('[name="residence_addr"]').val(response[0].residence_address);
+            $('[name="residence_addr"]').attr('readonly',"readonly");
+            $('[name="postal_addr"]').val(response[0].postal_address);
+            $('[name="postal_addr"]').attr('readonly',"readonly");
+            $('[name="primary_tel"]').val(response[0].phone_number_1);
+            $('[name="primary_tel"]').attr('readonly',"readonly");
+            $('[name="secondary_tel"]').val(response[0].phone_number_2);
+            $('[name="secondary_tel"]').attr('readonly',"readonly");
+            $('[name="email"]').val(response[0].email);
+            $('[name="email"]').attr('readonly',"readonly");
+            
+            e.preventDefault();
+            $('#overview_tabs a[href="#client_info"]').tab('show'); 
+          }
+          else { 
+            $.jGrowl("No Record Found", {
               theme: 'alert-styled-left bg-danger'
             });
           }
@@ -251,12 +226,12 @@
             response = JSON.parse(response);
             
             if(response.success) {
-              $.jGrowl('Chart Updated', {
+              $.jGrowl('Cart Updated', {
                 theme: 'alert-styled-left bg-success'
               });
 
-              let total_order = parseInt($('#order_chart').text()) + 1;
-              $('#order_chart').text(total_order);
+              let total_order = parseInt($('#order_cart').text()) + 1;
+              $('#order_cart').text(total_order);
 
               /******** Resetting Fields *********/
               $('#weight_onchange').data('selectBox-selectBoxIt').refresh()
@@ -265,13 +240,11 @@
               $('[name="weight_item_description"]').val("");
               $('[name="weight_item_quantity"]').val("");
               /******** Resetting Fields *********/
-            }
-            else {
-              $.jGrowl('Adding To List Failed', {
+            } else {
+              $.jGrowl(response.error, {
                 theme: 'alert-styled-left bg-danger'
               });
             }
-            
           },
           error: function() {
             $.jGrowl('Adding To List Failed', {
@@ -331,12 +304,12 @@
             response = JSON.parse(response);
             
             if(response.success) {
-              $.jGrowl('Laundry List Updated', {
+              $.jGrowl('Cart Updated', {
                 theme: 'alert-styled-left bg-success'
               });
 
-              let total_order = parseInt($('#order_chart').text()) + 1;
-              $('#order_chart').text(total_order);
+              let total_order = parseInt($('#order_cart').text()) + 1;
+              $('#order_cart').text(total_order);
 
               /******** Resetting Fields ********/
               $('#serivce_onchange').data('selectBox-selectBoxIt').refresh()
@@ -346,7 +319,7 @@
               /******** Resetting Fields *********/
             }
             else {
-              $.jGrowl('Adding To List Failed', {
+              $.jGrowl(response.error, {
                 theme: 'alert-styled-left bg-danger'
               });
             }

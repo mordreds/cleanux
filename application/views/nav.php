@@ -153,15 +153,15 @@
 				</li>
 
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="view_chart">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="view_cart">
 						<i class="icon-basket"></i>
 						<span class="visible-xs-inline-block position-right">Messages</span>
-						<span class="badge bg-warning-400" id="order_chart"><?=sizeof(@$_SESSION['laundry']['new_order'])?></span>
+						<span class="badge bg-warning-400" id="order_cart"><?=sizeof(@$_SESSION['laundry']['new_order'])?></span>
 					</a>
 
 					<div class="dropdown-menu dropdown-content">
 						<div class="table-responsive">
-							<table class="table table-responsive" style="margin-top: 2px" id="laundry_chart">
+							<table class="table table-responsive" id="laundry_cart">
                 <thead>
                   <tr style="background-color:#009688;color:#ffffff">
                     <th>Code</th>
@@ -177,7 +177,7 @@
               </table>
               <div>
               	<div class="col-md-2">
-              		<button class="btn btn-xs btn-danger" style="padding:5px;">Clear All <i class="icon-trash"></i></button>
+              		<button class="btn btn-xs btn-danger" id="clear_cart" style="padding:5px;">Clear All <i class="icon-trash"></i></button>
               	</div>
               	<div class="col-md-2 pull-right" style="padding:5px;">
               		<button class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#checkingout">Checkout <i class="icon-forward"></i></button>
@@ -253,54 +253,6 @@
 	</div>
 	<!-- /main navbar -->
 
-	<!-- Secondary navbar --
-	<?php if($this->uri->segment(1) != "dashboard") : ?>
-	<div class="navbar navbar-default navbar-xs" style="z-index:995">
-		<ul class="nav navbar-nav no-border visible-xs-block">
-			<li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i class="icon-circle-down2"></i></a></li>
-		</ul>
-
-		<div class="navbar-collapse collapse" id="navbar-second-toggle">
-			<ul class="nav navbar-nav">
-				<?php 
-					if(!empty($dashboard_tabs)) { 
-						foreach ($dashboard_tabs as $key => $value) {
-							# code... 
-				?>
-				<li class="dropdown mega-menu mega-menu-wide">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <!-- data-hover="dropdown"> --
-						<i class="icon-make-group position-left"></i> <?=$key?>
-						<!-- <span class="badge badge-inline badge-warning position-right">47</span
-						<span class="caret"></span>
-					</a>
-
-					<div class="dropdown-menu dropdown-content">
-						<div class="dropdown-content-body">
-							<div class="row">
-							  <?php  foreach ($value as $menu_obj => $menu_val) { ?>
-									<div class="col-md-2">
-										<span class="menu-heading underlined"><strong><?=$menu_val['name']?></strong></span>
-										<ul class="menu-list">
-											<?php foreach($menu_val['privileges'] as $sub_menu) { ?>
-											<li><a href="<?=$menu_val['link']?>"><?=$sub_menu?></a></li>
-											<?php } ?>
-										</ul> 
-									</div>
-								<?php } ?>
-							</div>
-						</div>
-					</div>
-				</li>
-				<?php
-						}
-					}
-				?>
-			</ul>
-		</div>
-	</div>
-	<?php else : 
-		endif;
-	?>
 	<!-- /secondary navbar -->
 	<div class="navbar navbar-default navbar-fixed-bottom" style="display: none">
 		<ul class="nav navbar-nav no-border visible-xs-block">
@@ -310,25 +262,10 @@
 		<div class="navbar-collapse collapse" id="navbar-second">
 			<p class="navbar-text"><i class="icon-global-check position-left"></i>marksbon <a href="#" class="navbar-link">Oms</a></p>
 			
-
 			<div class="navbar-right">
 				<ul class="nav navbar-nav">
 					<li><a href="#" class="legitRipple">Help center</a></li>
 					<li><a href="#" class="legitRipple">Policy</a></li>
-				<!--	<li class="dropdown">
-						<a href="#" class="dropdown-toggle legitRipple" data-toggle="dropdown" aria-expanded="false">
-							<i class="icon-cog3"></i>
-							<span class="visible-xs-inline-block position-right">Settings</span>
-							<span class="caret"></span>
-						</a>
-
-						<ul class="dropdown-menu dropdown-menu-right">
-							<li><a href="#"><i class="icon-dribbble3"></i> Dribbble</a></li>
-							<li><a href="#"><i class="icon-pinterest2"></i> Pinterest</a></li>
-							<li><a href="#"><i class="icon-github"></i> Github</a></li>
-							<li><a href="#"><i class="icon-stackoverflow"></i> Stack Overflow</a></li>
-						</ul>
-					</li>-->
 				</ul>
 			</div>
 		</div>
@@ -351,11 +288,12 @@
               <li><a href="#"><?=$page_controller?></a></li>
               <li class="active"><a href="#"><?=$controller_function?></a></li>
             </ul>
-           
           </div>
         </div>
 
         <!-- Vertical form modal -->
+                            <td>$70</td>
+                          </tr>
 					<div id="modal_form_vertical" class="modal fade">
 						<div class="modal-dialog">
 							<div class="modal-content">
