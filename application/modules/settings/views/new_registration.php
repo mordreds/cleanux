@@ -12,7 +12,7 @@
                 <li><a href="#weight" data-toggle="tab">Weights <i class="icon-menu3 position-right"></i></a></li>
                 <li><a href="#garments" data-toggle="tab">Garments<i class="icon-menu3 position-right"></i></a></li>
                 <li><a href="#pricing" data-toggle="tab">Pricing<i class="icon-menu3 position-right"></i></a></li>
-                <li><a href="#Delivery" data-toggle="tab">Delivery<i class="icon-menu3 position-right"></i></a></li>
+                <li><a href="#delivery" data-toggle="tab">delivery<i class="icon-menu3 position-right"></i></a></li>
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="service">
@@ -200,33 +200,28 @@
                     </div>
                   </div>
                 </div>
-                <div class="tab-pane" id="Delivery">
+                <div class="tab-pane" id="delivery">
                   <div class="row">
                     <div class="col-md-5">
                       <form action="<?=base_url();?>settings/save_price" method="post" style="margin-left: 10px; margin-right: 10px">
                         <div class="row">
                           <div class="col-md-11">
                             <div class="form-group">
-                              <label class="display-block">Delivery Location</label>
-                              <select class="form-control display_services" name="">
-                                <option value="">Select One</option>
-                              </select>
+                              <label class="display-block">Delivery Location   <span style="color:red;">*</span></label>
+                               <input type="text" name="" class="form-control"  required>
                             </div>
                           </div>
                           <div class="col-md-11">
                             <div class="form-group">
-                              <label class="display-block">Duration</label>
-                              <select class="form-control display_weights" name="">
-                                <option value="">Select One</option>
-                              </select>
+                              <label class="display-block">Duration (Days)  <span style="color:red;">*</span></label>
+                               <input type="number" name="" class="form-control" min="1"  required>
                             </div>
                           </div>
                           <div class="col-md-11">
                             <div class="form-group">
-                              <label class="display-block">Price</label>
-                              <select class="form-control display_weights" name="">
-                                <option value="">Select One</option>
-                              </select>
+                              <label class="display-block">Price
+                              </label>
+                               <input type="text" name="" class="form-control"  required>
                             </div>
                           </div>
                         </div>
@@ -234,7 +229,7 @@
                       </form>
                     </div>
                     <div class="col-md-7">
-                      <table id="laundry_prices" class="table datatable-responsive">
+                      <table id="laundry_delivery_prices" class="table datatable-responsive">
                         <thead style="background-color:#009688;color:white">
                           <tr>
                             <th style="width: 5%">ID</th>
