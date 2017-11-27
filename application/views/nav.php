@@ -77,22 +77,22 @@
                             <td>
                               <h6 class="no-margin">White Shirt</h6>
                             </td>
-                            <td>$70</td>
-                            <td><span class="text-semibold">$3,990</span></td>
+                            <td>GHC70</td>
+                            <td><span class="text-semibold">GHC3,990</span></td>
                         </tr>
                         <tr>
                             <td>
                               <h6 class="no-margin">Long Sleeve-white</h6>
                             </td>
-                            <td>$70</td>
-                            <td><span class="text-semibold">$840</span></td>
+                            <td>GHC70</td>
+                            <td><span class="text-semibold">GHC840</span></td>
                         </tr>
                         <tr>
                             <td>
                               <h6 class="no-margin">Boxers White</h6>
                             </td>
-                            <td>$70</td>
-                            <td><span class="text-semibold">$2,170</span></td>
+                            <td>GHC70</td>
+                            <td><span class="text-semibold">GHC2,170</span></td>
                         </tr>
                     </tbody>
                 </table>

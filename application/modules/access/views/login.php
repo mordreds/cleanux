@@ -1,4 +1,4 @@
-<body class="login-container bg-slate-800">
+<body class="login-container bg-slate-800"  style="background-image:url(<?=base_url()?>resources/images/1.jpg);">
   <!-- Page container -->
   <div class="page-container">
     <!-- Page content -->

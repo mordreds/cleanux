@@ -84,7 +84,7 @@
                       </tr>
               </tbody>
               <tfoot>
-                <tr>
+                <tr class="bg-teal-400">
                   <td>Order #</td>
                     <td>Description</td>
                     <td>Quantity</td>
