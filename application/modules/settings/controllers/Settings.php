@@ -536,6 +536,7 @@ class Settings extends MX_Controller
       if(in_array('new registration', $_SESSION['user']['roles'])) {
         $this->form_validation->set_rules('id','ID','trim');
         $this->form_validation->set_rules('fullname','Fullname','trim');
+        $this->form_validation->set_rules('gender','Gender','trim');
         $this->form_validation->set_rules('company_name','Company Name','trim');
         $this->form_validation->set_rules('residence_addr','Residence Address','trim');
         $this->form_validation->set_rules('postal_addr','Postal Address','trim');
@@ -561,6 +562,7 @@ class Settings extends MX_Controller
           $tablename = "laundry_clients";
           $data = [
             'fullname' => ucwords($this->input->post('fullname')),
+            'gender' => ucwords($this->input->post('gender')),
             'company' => ucwords($this->input->post('company_name')),
             'residence_address' => ucwords($this->input->post('residence_addr')),
             'postal_address' => $this->input->post('postal_addr'),

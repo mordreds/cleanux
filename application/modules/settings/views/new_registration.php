@@ -214,7 +214,7 @@
                           <div class="col-md-11">
                             <div class="form-group">
                               <label class="display-block">Duration(in days)  <span style="color:red;">*</span></label>
-                               <input type="number" name="duration" class="form-control" min="1"  required>
+                               <input type="text" name="duration" class="form-control" min="0"  required>
                             </div>
                           </div>
                           <div class="col-md-11">
@@ -233,7 +233,7 @@
                           <tr>
                             <th style="width: 5%">ID</th>
                             <th>Delivery Location</th>
-                            <th>Duration</th>
+                            <th>Duration(in days)</th>
                             <th>Amount (GHC)</th>
                             <th style="width: 10%" class="text-center">Actions</th>
                           </tr>

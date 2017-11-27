@@ -115,6 +115,7 @@
     <!-- *********** Reset Password ********* -->
   <?php endif; ?>
 <!-- **************************************** Users Page *********************************** -->
+
 <!-- ***************************** New Registration Page *********************************** -->
   <?php if($controller_function == "new_registration") : ?>
     <!-- *********** Edit Laundry Service ********* -->
@@ -413,7 +414,7 @@
               </div>
               <div class="form-group has-feedback">
                 <label  class="display-block">Duration(in days): </label>
-                <input id="delivery_duration" type="number" class="form-control">
+                <input id="delivery_duration" type="text" class="form-control">
               </div>
               <div class="form-group has-feedback">
                 <label  class="display-block">Price: </label>
@@ -442,22 +443,10 @@
       </script>
     <!-- *********** Edit Laundry Delivery Price ********* -->
   <?php endif; ?>
+<!-- ***************************** New Registration Page *********************************** -->
 
 <!-- *********** checkinig out  ********* -->
-  <script type="text/javascript">
-    $('.table').on('click','.edit_service', function(){
-      $('#service_displayname').val($(this).data('name'));
-      $('#service_description').val($(this).data('desc'));
-      $('#edit_service_submit').attr('data-id',$(this).data('id'));
-      $('#edit_service_submit').attr('data-service_name',$(this).data('name'));
-      $('#edit_service_submit').attr('data-service_desc',$(this).data('desc'));
-      $('#edit_service_submit').attr('data-tableid',$(this).data('tableid'));
-      $('#edit_service_submit').attr('data-formurl',"<?=base_url()?>settings/save_services");
-      $('#edit_service').modal('show');
-    });
-  </script>
-
-  <div id="checkingout" class="modal fade">
+  <div id="delivery_method" class="modal fade">
     <div class="modal-dialog" style="width:350px;">
       <div class="modal-content">
         <div class="modal-header ">
@@ -465,36 +454,45 @@
         </div>
         <form>
        <div class="modal-body">
-                    <div class="form-group">
-                      <div class="row">
-                        <div class="col-sm-12 ">
-                          <div class="form-group">
-                             <center>  <label class="display-block">Delivery Location </label></center> 
-                                <select id="" class="form-control display_services" name="" >
-                                  <option value="">Select One</option>
-                                </select>
-                              </div>
-                        </div>
-                      </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-12 ">
+                <div class="form-group">
+                   <center>  <label class="display-block">Select Delivery Method </label></center> 
+                      <select id="" class="form-control display_delivery" name="" >
+                        <option value="">Select One</option>
+                      </select>
                     </div>
-                    <hr></hr>
-                   <center> <label class="display-block">Delivery after 3 Days </label></center> 
-                    <hr></hr>
-                    <div class="form-group">
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <label>Total </label>
-                          <input type="text" placeholder="0.00" class="form-control" readonly>
-                          
-                        </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-12 ">
+                <div class="form-group">
+                   <center>  <label class="display-block">Select Due Date </label></center> 
+                      <input type="date" placeholder="0.00" class="form-control" readonly>
+                    </div>
+              </div>
+            </div>
+          </div>
+          <center><label class="display-block">Delivery after 3 Days </label></center> 
+          <hr></hr>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <label>Total </label>
+                <input type="text" placeholder="0.00" class="form-control" readonly>
+                
+              </div>
 
-                        <div class="col-sm-6">
-                          <label>Amount Paying</label>
-                          <input type="text" placeholder="0.00" data-mask="0.00" class="form-control">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              <div class="col-sm-6">
+                <label>Amount Paying</label>
+                <input type="text" placeholder="0.00" data-mask="0.00" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-denger pull-left" data-dismiss="modal">Discard</button> &nbsp;&nbsp;
           <button type="button" class="btn btn-warning btn-xs heading-btn legitRipple" data-toggle="modal" data-target="#checkout"> Proceed</button>

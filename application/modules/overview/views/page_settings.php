@@ -335,39 +335,6 @@
         });
       }
     });
-
-    /*$('#active_accounts_tbl').dataTable({
-      ajax: {
-        type : 'GET',
-        url : '<?= base_url()?>administration/retrieve_allusers/active',
-        dataSrc: ''
-      },
-      columns: [
-        {data: "fullname"},
-        {data: "employee_id"},
-        {data: "username"},
-        {data: "group_name"},
-        {data: "status", render: function(data,type,row,meta) { 
-          if(row.status == "active") {
-            label_class = "label-success";
-          }
-          else if(row.status == "inactive"){
-            label_class = "label-danger";
-          }
-          user_status = row.status;
-          return '<span class="label '+label_class+'">'+row.status+'</span>';}
-        },
-        {data: "id", render: function(data,type,row,meta) { 
-          if(user_status == "active") {
-            button = '<ul class="action_btns"><li><a data-fullname="'+row.fullname+'" data-username="'+row.username+'" data-id="'+row.id+'" id="reset_password" title="Reset Password"><i class="icon-key" style="font-size:21px"></i></a></li><li><a data-popup="tooltip" title="Suspend Account"><i class="deactivate_user icon-lock text-warning" data-dataid="'+row.id+'" data-email="'+row.username+'" data-state="inactive" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete Account"><i class="icon-trash text-danger delete_btn" data-displayname="'+row.fullname+'" data-dataid="'+row.id+'"  data-email="'+row.username+'" data-state="deleted" style="font-size: 20px"></i></a></li></ul>';
-          } 
-          else if(user_status == "deleted"){ }
-
-          return button; 
-          }
-        },
-      ],
-    });*/
   /********** Displaying Services ******/
 </script>
 <?php endif; ?>

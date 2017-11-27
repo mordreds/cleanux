@@ -162,13 +162,13 @@
           {data: "duration"},
           {data: "price"},
           {data: "id", render: function(data,type,row,meta) { 
-            button = '<ul class="action_btns"><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.location+'" data-deleteid="'+row.id+'" data-formurl="'+service_formurl+'" data-tableid="laundry_delivery_prices"></i></a></li></ul>';
+            button = '<ul class="action_btns"><li><a class="edit_delivery_price_btn" data-id="'+row.id+'" data-location="'+row.location+'" data-duration="'+row.duration+'" data-price="'+row.price+'" data-tableid="laundry_delivery_prices" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.location+'" data-deleteid="'+row.id+'" data-formurl="'+service_formurl+'" data-tableid="laundry_delivery_prices"></i></a></li></ul>';
             return button; 
             }
           },
         ], 
       });
-      /* <li><a class="edit_delivery_price_btn" data-id="'+row.id+'" data-location="'+row.location+'" data-duration="'+row.duration+'" data-price="'+row.price+'" data-tableid="laundry_delivery_prices" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li> */
+      /*  */
     /******* Laundry Delivery Prices  *******/
 
     /********** Displaying Services ******/
