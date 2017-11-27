@@ -59,19 +59,18 @@
 								<li><a href="#"><i class="icon-sync"></i></a></li>
 							</ul>
 						</div>
-
 						<ul class="media-list dropdown-content-body width-350" style="width:650px !important; max-height:650px;">
-							 <div class="tabbable nav-tabs-vertical nav-tabs-right">
-                    <div class="tab-content">
-                      <div class="tab-pane active has-padding" id="right-tab1">
-                        <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Item Description</th>
-                            <th class="col-sm-1">Unit Price</th>
-                            <th class="col-sm-1">Bulk</th>
-                        </tr>
-                    </thead>
+							<div class="tabbable nav-tabs-vertical nav-tabs-right">
+                <div class="tab-content">
+                  <div class="tab-pane active has-padding" id="right-tab1">
+                    <table class="table">
+	                    <thead>
+	                      <tr>
+	                          <th>Item Description</th>
+	                          <th class="col-sm-1">Unit Price</th>
+	                          <th class="col-sm-1">Bulk</th>
+	                      </tr>
+	                    </thead>
                     <tbody>
                         <tr>
                             <td>
@@ -165,7 +164,7 @@
                 <thead>
                   <tr style="background-color:#009688;color:#ffffff">
                     <th>Code</th>
-                    <th style="width: 50%">Service</th>
+                    <th>Service</th>
                     <th>Description</th>
                     <th>Quantity</th>
                     <th>Unit</th>
@@ -180,7 +179,7 @@
               		<button class="btn btn-xs btn-danger" id="clear_cart" style="padding:5px;">Clear All <i class="icon-trash"></i></button>
               	</div>
               	<div class="col-md-2 pull-right" style="padding:5px;">
-              		<button class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#checkingout">Checkout <i class="icon-forward"></i></button>
+              		<button class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#delivery_method">Checkout <i class="icon-forward"></i></button>
               	</div>
               </div>
 

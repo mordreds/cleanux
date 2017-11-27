@@ -4,7 +4,7 @@
 	/*************** Selectbox ***************/
     $(".selectbox").selectBoxIt({
       autoWidth: false,
-      defaultText: "Select One",
+      defaultText: "<em style='color: #827f7f'>Select One</em>",
     });
 
     $('.styled').uniform();

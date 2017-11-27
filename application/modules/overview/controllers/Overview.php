@@ -215,7 +215,7 @@ class Overview extends MX_Controller
     *******************************/
     public function laundry_cart() 
     {
-      if(isset($_SESSION['laundry']['new_order'])) {
+      if(isset($_SESSION['laundry']['new_order']) && !empty($_SESSION['laundry']['new_order'])) {
         
         foreach ($_SESSION['laundry']['new_order'] as $key => $value) {
           # code...
