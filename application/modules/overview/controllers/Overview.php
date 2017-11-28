@@ -48,7 +48,6 @@ class Overview extends MX_Controller
         if(isset($_SESSION['laundry']['client_phone_number'])) {
           # Loading Model 
           $this->load->model('globals/model_retrieval');
-
           /****** Retrieve Service Code *******/
           $dbres = self::$_Default_DB; $tablename = 'laundry_services';
           $return_dataType="php_object"; $select = "code";
@@ -95,9 +94,10 @@ class Overview extends MX_Controller
                 'description' => $this->input->post('description'),
                 'quantity' => $this->input->post('quantity'),
                 'service_code' => $service_code,
-                'array_index' => $next_array_key
+                'array_index' => $next_array_key,
+                'total_cost' => $this->input->post('price')
               ];
-
+              @$_SESSION['laundry']['cart_total_amount'] += $this->input->post('price');
               $return_data = ['success' => "Adding To List Successful"];
               print_r(json_encode($return_data));
             }
@@ -128,9 +128,10 @@ class Overview extends MX_Controller
                 'description' => $this->input->post('description'),
                 'quantity' => $this->input->post('item_quantity'),
                 'service_code' => $service_code,
-                'array_index' => $next_array_key
+                'array_index' => $next_array_key,
+                'total_cost' => $this->input->post('price') * $this->input->post('item_quantity')
               ];
-
+              @$_SESSION['laundry']['cart_total_amount'] += ($this->input->post('price') * $this->input->post('item_quantity'));
               $return_data = ['success' => "Adding To List Successful"];
               print_r(json_encode($return_data));
             }
@@ -143,13 +144,14 @@ class Overview extends MX_Controller
       }
     }
 
-    public function remove_from_list($array_index) {
+    /*public function remove_from_list($array_index) {
       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
           $return_data = ['error' => "Permission Denied. Please Contact Admin"];
           print_r(json_encode($return_data));
        }
       else {
         if(isset($_SESSION['laundry']['client_phone_number']) && isset($_SESSION['laundry']['new_order'])) {
+          @$_SESSION['laundry']['cart_total_amount'] -= $_SESSION['laundry']['new_order'][$array_index]['price'];
           unset($_SESSION['laundry']['new_order'][$array_index]);
 
           $return_data = ['success' => "Item Removed"];
@@ -160,7 +162,7 @@ class Overview extends MX_Controller
           print_r(json_encode($return_data));
         }
       }
-    }
+    }*/
   /**************** Insertions ********************/
 
   /**************** Retrivals  ********************/
@@ -236,10 +238,9 @@ class Overview extends MX_Controller
     *******************************/
     public function clear_cart() 
     {
-       # Permission Check
-       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) 
-          $return_data = ['error' => "Permission Denied. Please Contact Admin"];
-          
+      # Permission Check
+      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) 
+        $return_data = ['error' => "Permission Denied. Please Contact Admin"];
       else { 
         unset($_SESSION['laundry']);
         $return_data = ['success' => "Cart Cleared"];
@@ -248,7 +249,6 @@ class Overview extends MX_Controller
       print_r(json_encode($return_data));
     }
   /**************** Retrivals  ********************/
-
     /*******************************
       Retrieving All data
     *******************************/
@@ -275,8 +275,9 @@ class Overview extends MX_Controller
         /***************** Interface *****************/
       }
     }
-
-    /**************** Deleting Items in Cart  ********************/
+    /*******************************
+      Deleting Items in Cart
+    *******************************/
     public function delete_from_cart() {
       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
         $return_data = ['error' => "Permission Denied. Contact Amin"];
@@ -292,6 +293,7 @@ class Overview extends MX_Controller
         else{
           $array_index = $this->input->post('deleteid');
           if(isset($_SESSION['laundry']['new_order'])) {
+            @$_SESSION['laundry']['cart_total_amount'] -= $_SESSION['laundry']['new_order'][$array_index]['total_cost'];
             unset($_SESSION['laundry']['new_order'][$array_index]);
             $return_data = ['success' => "Item Deleted"];
           }
@@ -302,7 +304,20 @@ class Overview extends MX_Controller
           print_r(json_encode($return_data));
         }
       }
-    }   
-    /**************** Deleting Items in Cart  ********************/
-    
+    } 
+    /*******************************
+      New Order Total Cost
+    *******************************/  
+    public function new_order_totalCost() {
+      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+        $return_data = ['error' => "Permission Denied. Contact Amin"];
+        print_r(json_encode($return_data));
+      }
+      else {
+        if(isset($_SESSION['laundry']['cart_total_amount']) && !empty($_SESSION['laundry']['cart_total_amount'])) {
+          $return_data = ['total' => number_format($_SESSION['laundry']['cart_total_amount'],2)];
+          print_r(json_encode($return_data));
+        }
+      }
+    } 
 }//End of Class

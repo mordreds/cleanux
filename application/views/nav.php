@@ -166,7 +166,7 @@
                     <th>Code</th>
                     <th>Service</th>
                     <th>Description</th>
-                    <th>Quantity</th>
+                    <th>Qty</th>
                     <th>Unit</th>
                     <th>Total</th>
                     <th>Action</th>
@@ -179,53 +179,9 @@
               		<button class="btn btn-xs btn-danger" id="clear_cart" style="padding:5px;">Clear All <i class="icon-trash"></i></button>
               	</div>
               	<div class="col-md-2 pull-right" style="padding:5px;">
-              		<button class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#delivery_method">Checkout <i class="icon-forward"></i></button>
+              		<button class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#delivery" id="checkout">Checkout <i class="icon-forward"></i></button>
               	</div>
               </div>
-
-							<table class="table text-nowrap" style="display:none;">
-								<thead>
-									<tr style="background-color:#f8f8f8">
-										<th colspan="3">Check out</th>
-										<th class="text-right">
-											<span class="badge bg-warning-400"><?=sizeof(@$_SESSION['laundry']['new_order'])?></span>
-										</th>
-									</tr>
-								</thead>
-								<?php 
-
-								?>
-								<tbody>
-									<tr>
-										<td class="text-center">
-											<i class="icon-cross2 text-danger" style="cursor: pointer;"></i>
-										</td>
-										<td>
-											<div class="media-left media-middle">
-												<a href="#" class="btn bg-brown-400 btn-rounded btn-icon btn-xs">
-													<span class="letter-icon">W</span>
-												</a>
-											</div>
-
-											<div class="media-body" style="padding-top: 7px;">
-												<a href="#" class="display-inline-block text-muted letter-icon-title">
-													<span class="display-block text-muted">Washing</span>  
-												</a>
-											</div>
-										</td>
-										<td>
-											<a href="#" class="text-default display-inline-block" style="cursor: default">
-												<span class="display-block text-default">1 - 15 KG</span>
-											</a>
-										</td>
-										<td>
-											<a href="#" class="text-default display-inline-block" style="cursor: default">
-												<span class="display-block text-default">GHC 500</span>
-											</a>
-										</td>
-									</tr>
-								</tbody>
-							</table>
 						</div>
 					</div>
 				</li>

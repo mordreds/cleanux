@@ -23,17 +23,17 @@
                           <input type="hidden" name="id"/>
                           <input type="hidden" name="update_item"/>
                           <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4 col-sm-4">
                               <div class="form-group">
                                 <input type="text" name="fullname" placeholder="Full Name :" class="form-control" required>
                               </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 col-sm-4">
                               <div class="form-group">
                                 <input type="text" name="company_name" placeholder="Company Name (optional) :" class="form-control">
                               </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 col-sm-4">
                               <div class="form-group">
                                 <select class="form-control selectbox" name="gender" required>
                                   <option value="">Select One</option>
@@ -42,27 +42,31 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-md-4">
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4 col-sm-4">
                               <div class="form-group">
                                 <input type="text" name="residence_addr" placeholder="Residence Address" class="form-control" required>
                               </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 col-sm-4">
                               <div class="form-group">
                                 <input type="text" name="postal_addr" placeholder="Postal Address" class="form-control">
                               </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 col-sm-4">
                               <div class="form-group">
                                 <input type="email" name="email" placeholder="Email Address:" class="form-control">
                               </div>
                             </div>
-                            <div class="col-md-4">
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4 col-sm-4">
                               <div class="form-group">
                                 <input type="text" name="primary_tel" placeholder="Phone No #1:" class="form-control" minlength="10" required>
                               </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 col-sm-4">
                               <div class="form-group">
                                 <input type="text" name="secondary_tel" placeholder="Phone No #2:" class="form-control">
                               </div>
@@ -80,7 +84,7 @@
                               <div class="form-group">
                                 <div class="checkbox checkbox-switchery">
                                   <label><input type="checkbox" name="online" class="switchery">
-                                    Online Access
+                                  Online Portal
                                   </label>
                                 </div>
                               </div>

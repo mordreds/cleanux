@@ -11,6 +11,7 @@
         searching: false,
         paging: false,
         order: [],
+        autoWidth: false,
         ajax: {
           type : 'GET',
           dataType : 'json',
@@ -18,12 +19,6 @@
           dataSrc: '',
           error: function(response){}
         },
-        columnsDef: [
-          {
-            targets: [1],
-            width: "4%"
-          }
-        ],
         columns: [
           {data: "service_code", render: function(data,type,row,meta){
             return '<div class="media-left media-middle"><a href="#" class="btn bg-brown-400 btn-rounded btn-icon btn-xs"><span class="letter-icon">'+row.service_code+'</span></a></div>';
@@ -54,7 +49,9 @@
           }},
         ],
       });
-    
+
+      $('#laundry_cart thead>tr>th:nth-child(4)').css({'max-width':"5px"});
+      $('#laundry_cart thead>tr>th:nth-child(5)').css({'max-width':"5px"});
 
       $('#laundry_cart').on('click','.delete_item',function(){
         let array_index = $(this).data('deleteid');
@@ -97,7 +94,7 @@
       });
     /****** Retrieving Price List ******/
 
-    /****** Retrieving Delivery ******/
+    /****** Delivery Dropdown ******/
       $(".display_delivery").selectBoxIt({
         autoWidth: false,
         defaultText: "Select One",
@@ -107,14 +104,47 @@
           url: '<?= base_url()?>settings/retrieve_alldata/delivery/default'}).done(function(data) {
             data = JSON.parse(data);
             while(++x < data.length){
-              arr[x] = { value : data[x].id, text : data[x].location };
+              arr[x] = { value : data[x].id, text : data[x].location, 'data-delivery_days': data[x].duration};
             }
             deferred.resolve(arr);
           });
           return deferred;
         }
       });
-    /****** Retrieving Delivery ******/
+    /****** Delivery Dropdown ******/
+
+    /********** Total Cost ******/
+      $('#checkout').click(function() {
+        let t_cost_url = '<?=base_url()?>overview/new_order_totalCost';
+        $.ajax({
+          type : 'GET',
+          url: t_cost_url,
+          data : '',
+          success: function(response) { 
+            response = JSON.parse(response);
+            if(response.error) {
+              $.jGrowl(response.error, {
+                theme: 'alert-styled-left bg-danger'
+              });
+            }
+            else
+              $('#cart_total_amount').val(response.total);
+          },
+          error: function() {
+            $.jGrowl('An Error Retrieving Total Cost', {
+              theme: 'alert-styled-left bg-danger'
+            });
+          }
+        });
+      });
+    /********** Total Cost ******/
+
+    /********** Total Cost ******/
+      $(document).on('#display_delivery','change',function() {
+        let collection_date = $('#collection_due_date').val();
+        alert(collection_date);
+      });
+    /********** Total Cost ******/
   });
 </script>
 <?php endif; ?>

@@ -446,7 +446,7 @@
 <!-- ***************************** New Registration Page *********************************** -->
 
 <!-- *********** checkinig out  ********* -->
-  <div id="delivery_method" class="modal fade">
+  <div id="delivery" class="modal fade">
     <div class="modal-dialog" style="width:350px;">
       <div class="modal-content">
         <div class="modal-header ">
@@ -454,25 +454,19 @@
         </div>
         <form>
        <div class="modal-body">
-          <div class="form-group">
-            <div class="row">
-              <div class="col-sm-12 ">
-                <div class="form-group">
-                   <center>  <label class="display-block">Select Delivery Method </label></center> 
-                      <select id="" class="form-control display_delivery" name="" >
-                        <option value="">Select One</option>
-                      </select>
-                    </div>
+          <div class="row">
+            <div class="col-sm-12 ">
+              <div class="form-group">
+                <label class="display-block">Select Due Date </label>
+                <input type="date" placeholder="0.00" class="form-control" id="collection_due_date">
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <div class="row">
-              <div class="col-sm-12 ">
-                <div class="form-group">
-                   <center>  <label class="display-block">Select Due Date </label></center> 
-                      <input type="date" placeholder="0.00" class="form-control" readonly>
-                    </div>
+            <div class="col-sm-12 ">
+              <div class="form-group">
+                <label class="display-block">Select Delivery Method </label>
+                  <select id="delivery_method" class="form-control display_delivery" name="" >
+                    <option value="">Select One</option>
+                  </select>
               </div>
             </div>
           </div>
@@ -482,7 +476,7 @@
             <div class="row">
               <div class="col-sm-6">
                 <label>Total </label>
-                <input type="text" placeholder="0.00" class="form-control" readonly>
+                <input type="text" placeholder="0.00" id="cart_total_amount" class="form-control" readonly>
                 
               </div>
 
