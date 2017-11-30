@@ -445,7 +445,7 @@
   <?php endif; ?>
 <!-- ***************************** New Registration Page *********************************** -->
 
-<!-- *********** checkinig out  ********* -->
+<!-- ****** Delivery Method Modal  ******* -->
   <div id="delivery" class="modal fade">
     <div class="modal-dialog" style="width:350px;">
       <div class="modal-content">
@@ -489,7 +489,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-denger pull-left" data-dismiss="modal">Discard</button> &nbsp;&nbsp;
-          <button type="button" class="btn btn-warning btn-xs heading-btn legitRipple" data-toggle="modal" data-target="#checkout"> Proceed</button>
+          <button id="proceed_btn" type="button" class="btn btn-warning btn-xs heading-btn legitRipple" data-toggle="modal" data-target="#checkout"> Proceed</button>
         </div>
         </form>
       </div>
@@ -507,7 +507,7 @@
       ajax_post(formurl,formData,tableid);
     });
   </script>
-<!-- *********** check out ********* -->
+<!-- ****** Delivery Method Modal ******* -->
 
 <!-- *********** check out ********* -->
   <script type="text/javascript">

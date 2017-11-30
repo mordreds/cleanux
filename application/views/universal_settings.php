@@ -2,9 +2,11 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
+      $buttons = cart_buttons_switch();
     /********** Viewing Laundry Cart ******/
       $('#view_cart').click(function(){
         $('#laundry_cart').DataTable().ajax.reload();
+        cart_buttons_switch();
       });
 
       $('#laundry_cart').dataTable({
@@ -62,6 +64,7 @@
         let total_order = parseInt($('#order_cart').text()) - 1;
         $('#order_cart').text(total_order);
         $('#laundry_cart').DataTable().ajax.reload();
+        cart_buttons_switch();
       });
 
       $('#clear_cart').click(function(){
@@ -146,6 +149,21 @@
       });
     /********** Total Cost ******/
   });
+  
+  /********** Checkout Button Display ******/
+  function cart_buttons_switch(){
+    var rowCount = $('#laundry_cart tbody tr').length;
+    
+    if(rowCount < 1) {
+      $('#proceed_btn').attr('style',"display:none");
+      $('#checkout').attr('style',"display:none");
+    }
+    else {
+      $('#proceed_btn').attr('style',"display:block");
+      $('#checkout').attr('style',"display:block");
+    }
+  };
+  /********** Checkout Button Display ******/
 </script>
 <?php endif; ?>
   
