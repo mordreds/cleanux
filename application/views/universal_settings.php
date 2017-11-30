@@ -2,7 +2,7 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-      $buttons = cart_buttons_switch();
+      cart_buttons_switch();
     /********** Viewing Laundry Cart ******/
       $('#view_cart').click(function(){
         $('#laundry_cart').DataTable().ajax.reload();
@@ -107,7 +107,7 @@
           url: '<?= base_url()?>settings/retrieve_alldata/delivery/default'}).done(function(data) {
             data = JSON.parse(data);
             while(++x < data.length){
-              arr[x] = { value : data[x].id, text : data[x].location, 'data-delivery_days': data[x].duration};
+              arr[x] = { value : data[x].id, text : data[x].location, 'data-delivery_days': data[x].duration, 'data-delivery_amount': data[x].price};
             }
             deferred.resolve(arr);
           });
@@ -142,25 +142,58 @@
       });
     /********** Total Cost ******/
 
-    /********** Total Cost ******/
-      $(document).on('#display_delivery','change',function() {
-        let collection_date = $('#collection_due_date').val();
-        alert(collection_date);
+    /********** Delivery OnChange ******/
+      $('body').on('change','.display_delivery',function() {
+        let collection_date = $('.display_delivery option:selected').data('delivery_days');
+        if(!collection_date) {
+          collection_date = "No Selection Made";
+        } else {
+          collection_date = $('.display_delivery option:selected').data('delivery_days') + " After Due Date";
+          /****** Retrieving Cost ******/
+            let t_cost_url = '<?=base_url()?>overview/new_order_totalCost';
+            var total_cost = $.ajax({
+              type : 'GET',
+              url: t_cost_url,
+              data : '',
+              success: function(response) { 
+                response = JSON.parse(response);
+                if(response.error) {
+                  $.jGrowl(response.error, {
+                    theme: 'alert-styled-left bg-danger'
+                  });
+                }
+                else
+                  return response;
+              },
+              error: function() {
+                $.jGrowl('An Error Retrieving Total Cost', {
+                  theme: 'alert-styled-left bg-danger'
+                });
+              }
+            });
+          /****** Retrieving Cost ******/
+          console.log(total_cost.total);
+          /*delivery_cost = $('.display_delivery option:selected').data('delivery_amount');
+          $('#cart_total_amount').val(parseInt(total_cost['total'])+parseInt(delivery_cost));*/
+        }
+
+        $('#delivery_notice').text(collection_date);
+        
       });
-    /********** Total Cost ******/
+    /********** Delivery OnChange ******/
   });
   
   /********** Checkout Button Display ******/
   function cart_buttons_switch(){
     var rowCount = $('#laundry_cart tbody tr').length;
     
-    if(rowCount < 1) {
+    if(rowCount < 2) {
       $('#proceed_btn').attr('style',"display:none");
       $('#checkout').attr('style',"display:none");
     }
     else {
-      $('#proceed_btn').attr('style',"display:block");
-      $('#checkout').attr('style',"display:block");
+      $('#proceed_btn').removeAttr('style');
+      $('#checkout').removeAttr('style');
     }
   };
   /********** Checkout Button Display ******/

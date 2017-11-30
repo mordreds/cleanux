@@ -1,74 +1,138 @@
 <?php if(isset($_SESSION['user']['id'])) : ?>
 
-<!-- *********** Delete Modal *********** -->
-  <script type="text/javascript">
-    $(document).on("click",".delete_button",function(){
-      $('#deletename_').text($(this).data('deletename'));
-      $('.delete_confirmed_').attr('data-formurl',$(this).data('formurl'));
-      $('.delete_confirmed_').attr('data-deleteid',$(this).data('deleteid'));
-      $('.delete_confirmed_').attr('data-tableid',$(this).data('tableid'));
-      $('#delete_modal_').modal('show');
-    });
-  </script>
-  <div id="delete_modal_" class="modal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-danger">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h6 class="modal-title">Delete Confirmation</h6>
-        </div>
-        <div class="modal-body">
-          Do You Want To Really Delete <?php echo "<strong><em id='deletename_'></em></strong>"; ?> .... ?
-        </div>
+<!-- ***************************** Universal In System *********************************** -->
+  <!-- *********** Delete Modal *********** -->
+    <script type="text/javascript">
+      $(document).on("click",".delete_button",function(){
+        $('#deletename_').text($(this).data('deletename'));
+        $('.delete_confirmed_').attr('data-formurl',$(this).data('formurl'));
+        $('.delete_confirmed_').attr('data-deleteid',$(this).data('deleteid'));
+        $('.delete_confirmed_').attr('data-tableid',$(this).data('tableid'));
+        $('#delete_modal_').modal('show');
+      });
+    </script>
+    <div id="delete_modal_" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-danger">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h6 class="modal-title">Delete Confirmation</h6>
+          </div>
+          <div class="modal-body">
+            Do You Want To Really Delete <?php echo "<strong><em id='deletename_'></em></strong>"; ?> .... ?
+          </div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
-          <button type="button" class="btn btn-danger delete_confirmed_" data-dismiss="modal">Delete</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
+            <button type="button" class="btn btn-danger delete_confirmed_" data-dismiss="modal">Delete</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <script type="text/javascript">
-    $(document).on("click",".delete_confirmed_",function(){
-      let formurl = $(this).data('formurl');
-      let tableid = $(this).data('tableid');
-      let formData = { 
-        'id': $(this).data('deleteid'),
-        'delete_item': "Confirmed"
-      };
-      ajax_post(formurl,formData,tableid);
-    });
-  </script>
+    <script type="text/javascript">
+      $(document).on("click",".delete_confirmed_",function(){
+        let formurl = $(this).data('formurl');
+        let tableid = $(this).data('tableid');
+        let formData = { 
+          'id': $(this).data('deleteid'),
+          'delete_item': "Confirmed"
+        };
+        ajax_post(formurl,formData,tableid);
+      });
+    </script>
 
-  <script type="text/javascript">
-    $(document).on("click",".delete_btn",function(){
-      $('#deletename').text($(this).data('displayname'));
-      $('.delete_confirmed').attr('data-user_id',$(this).data('dataid'));
-      $('.delete_confirmed').attr('data-email',$(this).data('email'));
-      $('.delete_confirmed').attr('data-status',$(this).data('state'));
-      $('#delete_modal').modal('show');
-    });
-  </script>
-  <div id="delete_modal" class="modal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-danger">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h6 class="modal-title">Delete Confirmation</h6>
-        </div>
-        <div class="modal-body">
-          Do You Want To Really Delete <?php echo "<strong><em id='deletename'></em></strong>"; ?> .... ?
-          <input type="hidden" id="deleteId" name="deleteid"/> 
-        </div>
+    <script type="text/javascript">
+      $(document).on("click",".delete_btn",function(){
+        $('#deletename').text($(this).data('displayname'));
+        $('.delete_confirmed').attr('data-user_id',$(this).data('dataid'));
+        $('.delete_confirmed').attr('data-email',$(this).data('email'));
+        $('.delete_confirmed').attr('data-status',$(this).data('state'));
+        $('#delete_modal').modal('show');
+      });
+    </script>
+    <div id="delete_modal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-danger">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h6 class="modal-title">Delete Confirmation</h6>
+          </div>
+          <div class="modal-body">
+            Do You Want To Really Delete <?php echo "<strong><em id='deletename'></em></strong>"; ?> .... ?
+            <input type="hidden" id="deleteId" name="deleteid"/> 
+          </div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
-          <button type="button" class="btn btn-danger delete_confirmed" data-dismiss="modal">Delete</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
+            <button type="button" class="btn btn-danger delete_confirmed" data-dismiss="modal">Delete</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<!-- *********** Delete Modal *********** -->
+  <!-- *********** Delete Modal *********** -->
+
+  <!-- ****** Delivery Method Modal  ******* -->
+    <div id="delivery" class="modal fade">
+      <div class="modal-dialog" style="width:350px;">
+        <div class="modal-content">
+          <div class="modal-header ">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <form>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-sm-12 ">
+                  <div class="form-group">
+                    <label class="display-block">Select Due Date </label>
+                    <input type="date" placeholder="0.00" class="form-control" id="collection_due_date">
+                  </div>
+                </div>
+                <div class="col-sm-12 ">
+                  <div class="form-group">
+                    <label class="display-block">Select Delivery Method </label>
+                      <select id="delivery_method" class="form-control display_delivery" name="" >
+                        <option value="">Select One</option>
+                      </select>
+                  </div>
+                </div>
+              </div>
+              <label class="display-block" id="delivery_notice"></label> 
+              <hr></hr>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label>Total </label>
+                    <input type="text" placeholder="0.00" id="cart_total_amount" class="form-control" readonly>
+                  </div>
+                  <div class="col-sm-6">
+                    <label>Amount Paying</label>
+                    <input type="text" placeholder="0.00" data-mask="0.00" class="form-control">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-denger pull-left" data-dismiss="modal">Discard</button> &nbsp;&nbsp;
+              <button id="proceed_btn" type="button" class="btn btn-warning btn-xs heading-btn legitRipple" data-toggle="modal" data-target="#checkout"> Proceed</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(document).on("click","#edit_service_submit",function(){
+        let formurl = $(this).data('formurl');
+        let tableid = $(this).data('tableid');
+        let formData = { 
+          'id': $(this).data('id'),
+          'service_name': $('#service_displayname').val(),
+          'service_desc': $('#service_description').val(),
+        };
+        ajax_post(formurl,formData,tableid);
+      });
+    </script>
+  <!-- ****** Delivery Method Modal ******* -->
+<!-- ***************************** Universal In System *********************************** -->
 
 <!-- **************************************** Users Page *********************************** -->
   <?php if($controller_function == "users") : ?>
@@ -445,69 +509,7 @@
   <?php endif; ?>
 <!-- ***************************** New Registration Page *********************************** -->
 
-<!-- ****** Delivery Method Modal  ******* -->
-  <div id="delivery" class="modal fade">
-    <div class="modal-dialog" style="width:350px;">
-      <div class="modal-content">
-        <div class="modal-header ">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <form>
-       <div class="modal-body">
-          <div class="row">
-            <div class="col-sm-12 ">
-              <div class="form-group">
-                <label class="display-block">Select Due Date </label>
-                <input type="date" placeholder="0.00" class="form-control" id="collection_due_date">
-              </div>
-            </div>
-            <div class="col-sm-12 ">
-              <div class="form-group">
-                <label class="display-block">Select Delivery Method </label>
-                  <select id="delivery_method" class="form-control display_delivery" name="" >
-                    <option value="">Select One</option>
-                  </select>
-              </div>
-            </div>
-          </div>
-          <center><label class="display-block">Delivery after 3 Days </label></center> 
-          <hr></hr>
-          <div class="form-group">
-            <div class="row">
-              <div class="col-sm-6">
-                <label>Total </label>
-                <input type="text" placeholder="0.00" id="cart_total_amount" class="form-control" readonly>
-                
-              </div>
 
-              <div class="col-sm-6">
-                <label>Amount Paying</label>
-                <input type="text" placeholder="0.00" data-mask="0.00" class="form-control">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-denger pull-left" data-dismiss="modal">Discard</button> &nbsp;&nbsp;
-          <button id="proceed_btn" type="button" class="btn btn-warning btn-xs heading-btn legitRipple" data-toggle="modal" data-target="#checkout"> Proceed</button>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <script type="text/javascript">
-    $(document).on("click","#edit_service_submit",function(){
-      let formurl = $(this).data('formurl');
-      let tableid = $(this).data('tableid');
-      let formData = { 
-        'id': $(this).data('id'),
-        'service_name': $('#service_displayname').val(),
-        'service_desc': $('#service_description').val(),
-      };
-      ajax_post(formurl,formData,tableid);
-    });
-  </script>
-<!-- ****** Delivery Method Modal ******* -->
 
 <!-- *********** check out ********* -->
   <script type="text/javascript">

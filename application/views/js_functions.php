@@ -126,9 +126,9 @@
 
   /************************ All Ajax Functions  ******************/
     /******** Retrieve All Data  **********/
-      function retrieveData_ajax(formurl,formData){
+      function retrieveData_ajax(formurl,formData,method="POST"){
         $.ajax({
-          type : 'POST',
+          type : method,
           url : formurl,
           data :formData,
           success: function(response) { 

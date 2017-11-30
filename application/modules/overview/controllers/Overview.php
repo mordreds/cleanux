@@ -311,7 +311,7 @@ class Overview extends MX_Controller
     public function new_order_totalCost() {
       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
         $return_data = ['error' => "Permission Denied. Contact Amin"];
-        print_r(json_encode($return_data));
+        return json_encode($return_data);
       }
       else {
         if(isset($_SESSION['laundry']['cart_total_amount']) && !empty($_SESSION['laundry']['cart_total_amount'])) {
