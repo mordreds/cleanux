@@ -78,19 +78,19 @@
           <div class="modal-header ">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-          <form action="<?=base_url()?>overview/save_order">
+          <form action="<?=base_url()?>overview/save_order" method="post">
             <div class="modal-body">
               <div class="row">
                 <div class="col-sm-12 ">
                   <div class="form-group">
                     <label class="display-block">Select Due Date </label>
-                    <input type="date" placeholder="0.00" class="form-control" id="collection_due_date" name="order_due_date">
+                    <input type="date" placeholder="0.00" class="form-control" id="collection_due_date" name="order_due_date" required>
                   </div>
                 </div>
                 <div class="col-sm-12 ">
                   <div class="form-group">
                     <label class="display-block">Select Delivery Method </label>
-                      <select id="delivery_method" class="form-control display_delivery" name="delivery_method">
+                      <select id="delivery_method" class="form-control display_delivery" name="delivery_method" required>
                         <option value="">Select One</option>
                       </select>
                   </div>
@@ -101,26 +101,23 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-4">
-                    <label class="display-block" style="color:red"><b>Total</b> </label>
-                    <input type="text" placeholder="0.00" id="cart_total_amount" class="form-control order_total_cost" readonly>
-                    <div class="form-control-feedback">
-                      <i class="icon-office"></i>
-                    </div>
+                    <label class="display-block" style="color:red"><b>Total</b> </label><br/>
+                    <input type="number" id="cart_total_amount" class="form-control order_total_cost" style="font-size: 28px;" readonly required>
                   </div>
                   <div class="col-sm-4">
                     <label class="display-block" >Balance</label>
-                    <input type="text" placeholder="0.00" data-mask="0.00" class="form-control order_balance" readonly>
+                    <input type="number" class="form-control order_balance" name="order_balance" readonly required>
                   </div>
                   <div class="col-sm-4">
-                    <label class="display-block" >Amount Paying</label>
-                    <input type="text" placeholder="0.00" data-mask="0.00" class="form-control amount_payable">
+                    <label class="display-block" >Amount Paid</label><br/>
+                    <input name="amount_paid" type="number" min="0" class="form-control amount_payable" style="font-size: 28px;" required>
                   </div>
                 </div>
               </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-denger pull-left" data-dismiss="modal">Discard</button> &nbsp;&nbsp;
-              <button id="proceed_btn" type="submit" class="btn btn-warning btn-xs heading-btn legitRipple" data-toggle="modal" data-target="#checkout"> Proceed</button>
+              <button id="proceed_btn" type="submit" class="btn btn-warning btn-xs heading-btn legitRipple"> Proceed</button>
             </div>
           </form>
         </div>

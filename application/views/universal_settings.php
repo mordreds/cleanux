@@ -129,8 +129,10 @@
                 theme: 'alert-styled-left bg-danger'
               });
             }
-            else
-              $('#cart_total_amount').val("GHC "+response.total);
+            else {
+              $('#cart_total_amount').val(response.total);
+              $('.order_balance').val(response.total);
+            }
           },
           error: function() {
             $.jGrowl('An Error Retrieving Total Cost', {
@@ -192,7 +194,8 @@
           delivery_cost = $('.display_delivery option:selected').data('delivery_amount');
           
           let total_sum = parseFloat(total_cost) + parseFloat(delivery_cost);
-          $('#cart_total_amount').val(total_sum);
+          $('#cart_total_amount').val(total_sum.toFixed(2));
+          $('.order_balance').val(total_sum.toFixed(2));
         }
 
         $('#delivery_notice').text(collection_date);
@@ -203,9 +206,21 @@
     /********** Amount Being Paid ******/
       $('.amount_payable').on('input',function(){
         let current_total = $('#cart_total_amount').val();
-        let order_balance = $('.order_balance').val();
+        let amount_payable = $(this).val();
 
-        alert(current_total);
+        if(amount_payable == "" || amount_payable == 0)
+          $('.order_balance').val(current_total);
+        else {
+          let balance = parseFloat(current_total) - parseFloat(amount_payable);
+          if(balance < 0) {
+            $.jGrowl('Invalid Amount', {
+              theme: 'alert-styled-left bg-danger'
+            });
+          }
+          else {
+            $('.order_balance').val(balance.toFixed(2));
+          }
+        }
       });
     /********** Amount Being Paid ******/
   });

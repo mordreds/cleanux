@@ -144,25 +144,42 @@ class Overview extends MX_Controller
       }
     }
 
-    /*public function remove_from_list($array_index) {
+    /*******************************
+      Save New Order
+    *******************************/
+    public function save_order() {
       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
-          $return_data = ['error' => "Permission Denied. Please Contact Admin"];
-          print_r(json_encode($return_data));
-       }
+        $this->session->set_flashdata('error',"Permission Denied. Please Contact Admin");
+        redirect($_SERVER['HTTP_REFERER']);
+      }
       else {
-        if(isset($_SESSION['laundry']['client_phone_number']) && isset($_SESSION['laundry']['new_order'])) {
-          @$_SESSION['laundry']['cart_total_amount'] -= $_SESSION['laundry']['new_order'][$array_index]['price'];
-          unset($_SESSION['laundry']['new_order'][$array_index]);
+        $this->form_validation->set_rules('order_due_date','Order Due Date','trim|required');
+        $this->form_validation->set_rules('delivery_method','Delivery Method','trim|required');
+        $this->form_validation->set_rules('amount_paid','Amount Paid','trim|required');
 
-          $return_data = ['success' => "Item Removed"];
-          print_r(json_encode($return_data));
+        if($this->form_validation->run() === FALSE) {
+          $this->session->set_flashdata('error',"Validation Error");
+          redirect($_SERVER['HTTP_REFERER']);
         }
         else {
-          $return_data = ['error' => "Cart Already Empty"];
-          print_r(json_encode($return_data));
+          # Loading Model 
+          $this->load->model('globals/Model_insertion');
+          
+          if(isset($_SESSION['laundry']['new_order']) && !empty($_SESSION['laundry']['new_order'])) {
+            # Assigning to session variable
+            $dbres = self::$_Default_DB;
+            $tablename = "";
+            $data = [
+              
+            ];
+          }
+          else {
+            $return_data = ['error' => "No Client Selected"];
+            print_r(json_encode($return_data));
+          }
         }
       }
-    }*/
+    }
   /**************** Insertions ********************/
 
   /**************** Retrivals  ********************/

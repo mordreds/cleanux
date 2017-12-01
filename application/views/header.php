@@ -61,7 +61,7 @@
 		<!-- ***** Users Page ***** -->
 		<!-- ***** Users Page ***** -->
 			<?php if($controller_function == "statistics") : ?>
-		  	<script type="text/javascript" src="<?=base_url()?>resources/js/google/bars/combo.js"></script>
+		  	<!-- <script type="text/javascript" src="<?=base_url()?>resources/js/google/bars/combo.js"></script> -->
 		  	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/ui/ripple.min.js"></script>
 		  <?php endif; ?>
 		<!-- ***** Users Page ***** -->
