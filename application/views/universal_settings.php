@@ -2,7 +2,6 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-      cart_buttons_switch();
     /********** Viewing Laundry Cart ******/
       $('#view_cart').click(function(){
         $('#laundry_cart').DataTable().ajax.reload();
@@ -52,8 +51,8 @@
         ],
       });
 
-      $('#laundry_cart thead>tr>th:nth-child(4)').css({'max-width':"5px"});
-      $('#laundry_cart thead>tr>th:nth-child(5)').css({'max-width':"5px"});
+      /*$('#laundry_cart thead>tr>th:nth-child(4)').css({'max-width':"5px"});
+      $('#laundry_cart thead>tr>th:nth-child(5)').css({'max-width':"5px"});*/
 
       $('#laundry_cart').on('click','.delete_item',function(){
         let array_index = $(this).data('deleteid');
@@ -131,7 +130,7 @@
               });
             }
             else
-              $('#cart_total_amount').val(response.total);
+              $('#cart_total_amount').val("GHC "+response.total);
           },
           error: function() {
             $.jGrowl('An Error Retrieving Total Cost', {
@@ -147,23 +146,41 @@
         let collection_date = $('.display_delivery option:selected').data('delivery_days');
         if(!collection_date) {
           collection_date = "No Selection Made";
+          let t_cost_url = '<?=base_url()?>overview/new_order_totalCost';
+          $.ajax({
+            type : 'GET',
+            url: t_cost_url,
+            data : '',
+            success: function(response) { 
+              response = JSON.parse(response);
+              if(response.error) {
+                $.jGrowl(response.error, {
+                  theme: 'alert-styled-left bg-danger'
+                });
+              }
+              else
+                $('#cart_total_amount').val(response.total);
+            },
+            error: function() {
+              $.jGrowl('An Error Retrieving Total Cost', {
+                theme: 'alert-styled-left bg-danger'
+              });
+            }
+          });
         } else {
-          collection_date = $('.display_delivery option:selected').data('delivery_days') + " After Due Date";
+          collection_date = $('.display_delivery option:selected').data('delivery_days') + " After Due Date (GHS "+$('.display_delivery option:selected').data('delivery_amount')+")";
           /****** Retrieving Cost ******/
             let t_cost_url = '<?=base_url()?>overview/new_order_totalCost';
-            var total_cost = $.ajax({
+            var total_cost;
+
+            $.ajax({
+              async : false,
               type : 'GET',
+              global: false,
+              dataType: "json",
               url: t_cost_url,
-              data : '',
               success: function(response) { 
-                response = JSON.parse(response);
-                if(response.error) {
-                  $.jGrowl(response.error, {
-                    theme: 'alert-styled-left bg-danger'
-                  });
-                }
-                else
-                  return response;
+                total_cost = response.total;
               },
               error: function() {
                 $.jGrowl('An Error Retrieving Total Cost', {
@@ -172,31 +189,44 @@
               }
             });
           /****** Retrieving Cost ******/
-          console.log(total_cost.total);
-          /*delivery_cost = $('.display_delivery option:selected').data('delivery_amount');
-          $('#cart_total_amount').val(parseInt(total_cost['total'])+parseInt(delivery_cost));*/
+          delivery_cost = $('.display_delivery option:selected').data('delivery_amount');
+          
+          let total_sum = parseFloat(total_cost) + parseFloat(delivery_cost);
+          $('#cart_total_amount').val(total_sum);
         }
 
         $('#delivery_notice').text(collection_date);
         
       });
     /********** Delivery OnChange ******/
+
+    /********** Amount Being Paid ******/
+      $('.amount_payable').on('input',function(){
+        let current_total = $('#cart_total_amount').val();
+        let order_balance = $('.order_balance').val();
+
+        alert(current_total);
+      });
+    /********** Amount Being Paid ******/
   });
   
   /********** Checkout Button Display ******/
-  function cart_buttons_switch(){
-    var rowCount = $('#laundry_cart tbody tr').length;
-    
-    if(rowCount < 2) {
-      $('#proceed_btn').attr('style',"display:none");
-      $('#checkout').attr('style',"display:none");
-    }
-    else {
-      $('#proceed_btn').removeAttr('style');
-      $('#checkout').removeAttr('style');
-    }
-  };
+    function cart_buttons_switch(){
+      var rowCount = $('#laundry_cart tbody tr').length;
+      var rowData = $('#laundry_cart tbody tr td:eq(0)').text();
+      
+      if(rowCount <= 1 && rowData == "No Record(s) Found") {
+        $('#proceed_btn').attr('style',"display:none");
+        $('#checkout').attr('style',"display:none");
+      }
+      else if(rowCount >= 1 && rowData != "No Record(s) Found") {
+        $('#proceed_btn').attr('style',"display:inline-block");
+        $('#checkout').attr('style',"display:inline-block");
+      }
+    };
   /********** Checkout Button Display ******/
+
+  
 </script>
 <?php endif; ?>
   
