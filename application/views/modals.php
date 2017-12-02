@@ -117,7 +117,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-denger pull-left" data-dismiss="modal">Discard</button> &nbsp;&nbsp;
-              <button id="proceed_btn" type="submit" class="btn btn-warning btn-xs heading-btn legitRipple"> Proceed</button>
+              <a  href="<?=base_url()?>overview/receipt" target="_blink" id="proceed_btn" type="submit" class="btn btn-warning btn-xs heading-btn legitRipple"> Proceed</a>
             </div>
           </form>
         </div>
@@ -491,7 +491,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
-              <button type="button" class="btn btn-primary" id="edit_delivery_price_submit" data-dismiss="modal">Save <i class="icon-arrow-right14 position-right"></i></button>
+              <button type="button" class="btn btn-primary" id="edit_delivery_price_submit"  data-dismiss="modal">Save <i class="icon-arrow-right14 position-right"></i></button>
             </div>
           </div>
         </div>
