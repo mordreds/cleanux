@@ -46,12 +46,13 @@
           {data: "name"},
           {data: "description"},
           {data: "id", render: function(data,type,row,meta) { 
-            button = '<ul class="action_btns"><li><a class="edit_service" data-id="'+row.id+'" data-name="'+row.name+'" data-desc="'+row.description+'" data-tableid="laundry_services" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-formurl="'+service_formurl+'" data-tableid="laundry_services"></i></a></li></ul>';
+            button = '<ul class="action_btns"><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-formurl="'+service_formurl+'" data-tableid="laundry_services"></i></a></li></ul>';
             return button; 
             }
           },
         ], 
       });
+      /* <li><a class="edit_service" data-id="'+row.id+'" data-name="'+row.name+'" data-desc="'+row.description+'" data-tableid="laundry_services" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li> */
     /********** Laundry Services ************/
 
     /********** Laundry Weights  ************/
@@ -73,12 +74,15 @@
           {data: "weight"},
           {data: "description"},
           {data: "id", render: function(data,type,row,meta) { 
-            button = '<ul class="action_btns"><li><a class="edit_weight_btn" data-id="'+row.id+'" data-name="'+row.weight+'" data-desc="'+row.description+'" data-service="'+row.service+'" data-tableid="laundry_weights" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.weight+'" data-deleteid="'+row.id+'" data-formurl="'+weight_formurl+'" data-tableid="laundry_weights"></i></a></li></ul>';
+            button = '<ul class="action_btns"><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.weight+'" data-deleteid="'+row.id+'" data-formurl="'+weight_formurl+'" data-tableid="laundry_weights"></i></a></li></ul>';
             return button; 
             }
           },
         ], 
       });
+      /*
+        <li><a class="edit_weight_btn" data-id="'+row.id+'" data-name="'+row.weight+'" data-desc="'+row.description+'" data-service="'+row.service+'" data-tableid="laundry_weights" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li>
+      */
     /********** Laundry Weights  ************/
 
     /********** Laundry Garments  ************/
@@ -99,12 +103,15 @@
           {data: "name"},
           {data: "description"},
           {data: "id", render: function(data,type,row,meta) { 
-            button = '<ul class="action_btns"><li><a class="edit_garment_btn" data-id="'+row.id+'" data-name="'+row.name+'" data-desc="'+row.description+'" data-tableid="laundry_garments" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-formurl="'+garment_formurl+'" data-tableid="laundry_garments"></i></a></li></ul>';
+            button = '<ul class="action_btns"><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-formurl="'+garment_formurl+'" data-tableid="laundry_garments"></i></a></li></ul>';
             return button; 
             }
           },
         ], 
       });
+      /*
+        <li><a class="edit_garment_btn" data-id="'+row.id+'" data-name="'+row.name+'" data-desc="'+row.description+'" data-tableid="laundry_garments" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li>
+      */
     /********** Laundry Garments  ************/
 
     /********** Laundry Prices    ************/

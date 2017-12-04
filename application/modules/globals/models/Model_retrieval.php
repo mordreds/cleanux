@@ -10,8 +10,27 @@ class Model_retrieval extends CI_Model
 	public function index() 
   {
 		#Redirect to Dashboard Where Roles Are Defined
-		redirect('Access');
+		redirect('access');
 	}
+
+  /*******************************
+    Return Count of Result
+  *******************************/
+  public function return_count($dbres,$tablename,$return_dataType="php_object",$where_condition=array()) 
+  {
+    $dbres->where($where_condition); 
+    $query_result = $dbres->get($tablename);
+    
+    if($query_result) 
+      $return_data = $query_result->num_rows();
+    else
+      $return_data = 0;
+    
+    if($return_dataType == "json")          
+      return json_encode($return_data);
+    else 
+      return ($return_data);
+  }
   
   /*******************************
     Return Array of Information
@@ -100,12 +119,15 @@ class Model_retrieval extends CI_Model
   /***********************************************
     Return Single Row Record
   ************************************************/
-  public function all_info_return_row($dbres,$tablename,$condition=array()) 
+  public function all_info_return_row($dbres,$tablename,$condition=array(),$return_dataType="php_object") 
   { 
     $dbres->where($condition); 
     $query = $dbres->get($tablename); 
-        
-    return ( ($query->num_rows() > 0) ? $query->row() : FALSE );
+
+    if($return_dataType == "json")          
+      return json_encode($query->row());
+    else 
+      return ($query->row());
   }
 
   /***********************************************

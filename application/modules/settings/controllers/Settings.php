@@ -475,7 +475,7 @@ class Settings extends MX_Controller
           /***** Data Definition *****/
           $id = $this->input->post('id');
           $dbres = self::$_Default_DB;
-          $tablename = "laundry_delivery_prices";
+          $tablename = "laundry_delivery_method";
           $data = [
             'location' => ucwords($this->input->post('location')),
             'duration' => ucwords($this->input->post('duration')),
@@ -688,7 +688,7 @@ class Settings extends MX_Controller
         }
 
         if($tablename == "delivery") {
-          $tablename = "laundry_delivery_prices";
+          $tablename = "laundry_delivery_method";
           $return_dataType = "json";
         }
 

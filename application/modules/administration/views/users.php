@@ -15,7 +15,7 @@
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="active_accounts">
-                  <table id="active_accounts_tbl" class="table datatable-responsive">
+                  <table id="active_accounts_tbl" class="table datatable-responsive table-xxs">
                     <thead style="background-color:#009688;color:white">
                       <tr>
                         <th>Fullname</th>

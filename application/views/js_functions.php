@@ -114,6 +114,32 @@
     }
   /************ SelectBoxIt Plugin  *********/
 
+  /************ SelectBoxIt Plugin  *********/
+    function selectbox_pricelist(doc_element,default_select="null"){
+      let tablename = "vw_prices";
+      $(doc_element).selectBoxIt({
+        autoWidth: false,
+        defaultText: "Select One",
+        populate: function(){
+          var deferred = $.Deferred(), arr = [], x = -1;
+          $.ajax({
+          url: '<?= base_url()?>settings/retrieve_alldata/'+tablename+'/default'}).done(function(data) {
+            data = JSON.parse(data);
+
+            while(++x < data.length){
+              if(data[x].id == default_select)
+                arr[x] = { value : data[x].id, text : data[x].name, selected: "selected" };
+              else
+              arr[x] = { value : data[x].id, text : data[x].name };
+            }
+            deferred.resolve(arr);
+          });
+          return deferred;
+        }
+      });
+    }
+  /************ SelectBoxIt Plugin  *********/
+
   /************ Swtichery Plugin  *********
     function setSwitchery(switchElement,checkedBool) {
       if((checkedBool && !switchElement.ischecked()) || (!checkedBool && switchElement.isChecked())) {

@@ -155,7 +155,7 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="view_cart">
 						<i class="icon-basket"></i>
 						<span class="visible-xs-inline-block position-right">Messages</span>
-						<span class="badge bg-warning-400" id="order_cart"><?=sizeof(@$_SESSION['laundry']['new_order'])?></span>
+						<span class="badge bg-warning-400" id="order_cart"><?=sizeof(@$_SESSION['laundry']['new_order']['orders'])?></span>
 					</a>
 
 					<div class="dropdown-menu dropdown-content">

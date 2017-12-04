@@ -48,7 +48,7 @@
           data : formData,
           success: function(response) { 
             response = JSON.parse(response)
-            //console.log(response)
+            //alert(response)
             if(response[0]) {  
               $('[name="id"]').val(response[0].id);
               $('[name="fullname"]').val(response[0].fullname);
@@ -78,7 +78,6 @@
         });
       }
     });
-
   /********** Search Order / Info ************/
 
   /********** Displaying Services ******/
@@ -138,6 +137,7 @@
           if(response[0]) {
             let price = response[0].amount;
             $('[name="weight_price"]').val(price);
+            $('[name="weight_price"]').attr('data-pricelist_id',response[0].id);
           }
           else
             $('[name="weight_price"]').val("");
@@ -164,10 +164,10 @@
           if(response[0]) {
             let price = response[0].amount;
             $('[name="garment_price"]').val(price);
+            $('[name="garment_price"]').attr('data-pricelist_id',response[0].id);
           }
           else
             $('[name="garment_price"]').val("");
-          
         },
         error: function() {
           $.jGrowl('An Error Occured.<br/>Please Contact Admin', {
@@ -183,6 +183,7 @@
       let weight_id = $('#weight_onchange').val();
       let weight_name = $('#weight_onchange option:selected').text();
       let price = $('[name="weight_price"]').val();
+      let pricelist_id = $('[name="weight_price"]').data('pricelist_id');
       let description = $('[name="weight_item_description"]').val();
       let quantity = $('[name="weight_item_quantity"]').val();
       
@@ -216,6 +217,7 @@
           'weight_id' : weight_id,
           'weight_name' : weight_name,
           'price' : price,
+          'pricelist_id': pricelist_id,
           'description' : description,
           'quantity' : quantity
         };
@@ -263,8 +265,8 @@
       let garment_id = $('#garment_onchange').val();
       let garment_name = $('#garment_onchange option:selected').text();
       let price = $('[name="garment_price"]').val();
+      let pricelist_id = $('[name="garment_price"]').data('pricelist_id');
       let item_quantity = $('[name="total_no_garments"]').val();
-      
       /******** Error Checking **********/
       if(service_id == "") {
         $.jGrowl('Service Type Required', {
@@ -295,6 +297,7 @@
           'garment_id' : garment_id,
           'garment_name' : garment_name,
           'price' : price,
+          'pricelist_id': pricelist_id,
           'item_quantity' : item_quantity
         };
 
@@ -304,15 +307,12 @@
           data : formData,
           success: function(response) { 
             response = JSON.parse(response);
-            
             if(response.success) {
               $.jGrowl('Cart Updated', {
                 theme: 'alert-styled-left bg-success'
               });
-
               let total_order = parseInt($('#order_cart').text()) + 1;
               $('#order_cart').text(total_order);
-
               /******** Resetting Fields ********/
               $('#serivce_onchange').data('selectBox-selectBoxIt').refresh()
               $('#garment_onchange').data('selectBox-selectBoxIt').refresh()
@@ -325,7 +325,6 @@
                 theme: 'alert-styled-left bg-danger'
               });
             }
-            
           },
           error: function() {
             $.jGrowl('Adding To List Failed', {
@@ -336,6 +335,113 @@
       }
     });
   /********** Displaying Services ******/
+
+  $(document).ready(function(){
+    /********** All Activated Accounts ************/
+      $('#todays_order').dataTable({
+        searching: false,
+        paging: false,
+        order: [],
+        autoWidth: false,
+        ajax: {
+          type : 'GET',
+          url : '<?= base_url()?>overview/retrieve_order/today/5',
+          dataSrc: '',
+          error: function() {
+            $.jGrowl("Retrieving Today's Order Failed", {
+              theme: 'alert-styled-left bg-danger'
+            });
+          }
+        },
+        columns: [
+          {data: "order_number",render: function(data,type,row,meta) { 
+            return "<a href='#' data-toggle='modal' data-target='#modal_form_vertical'>"+row.order_number+"</a>"; 
+          }},
+          {data: "total_cost"},
+          {data: "date_created"},
+        ],
+      });
+
+      $(document).on("click",".deactivate_user",function(){
+        let formData = { 
+          'user_id': $(this).data('dataid'),
+          'email': $(this).data('email'),
+          'status': $(this).data('state')
+        };
+        $.ajax({
+          type : 'POST',
+          url : '<?= base_url()?>administration/users/account_status',
+          data : formData,
+          success: function(response) {
+            $.jGrowl('User Deactivation Successful', {
+                /*header: 'Process Successful',*/
+              theme: 'alert-styled-left bg-success'
+            });
+            $('#inactive_acct_tbl').DataTable().ajax.reload();
+            $('#active_accounts_tbl').DataTable().ajax.reload();
+          },
+          error: function() {
+            alert("Error Transmitting Data")
+          }
+        });
+      });
+
+      $(document).on("click",".delete_confirmed",function(){
+        let formData = { 
+          'user_id': $(this).data('user_id'),
+          'email': $(this).data('email'),
+          'status': $(this).data('status')
+        };
+        $.ajax({
+          type : 'POST',
+          url : '<?= base_url()?>administration/users/account_status',
+          data : formData,
+          success: function(response) {
+            $.jGrowl('User Deletion Successful', {
+              theme: 'alert-styled-left bg-success'
+            });
+            $('#del_acct_tbl').DataTable().ajax.reload();
+            $('#inactive_acct_tbl').DataTable().ajax.reload();
+            $('#active_accounts_tbl').DataTable().ajax.reload();
+          },
+          error: function() {
+            $.jGrowl('User Deletion Failed', {
+              theme: 'alert-styled-left bg-danger'
+            });
+          }
+        });
+      });
+    /********** All Activated Accounts ************/
+
+    /********** All Deleted Accounts ************/
+      $('#del_acct_tbl').dataTable({
+        ajax: {
+          type : 'GET',
+          url : '<?= base_url()?>administration/retrieve_allusers/deleted',
+          dataSrc: '',
+          error: function() {
+            $.jGrowl('Retrieving Deleted Users Failed', {
+              theme: 'alert-styled-left bg-danger'
+            });
+          }
+        },
+        columns: [
+          {data: "fullname"},
+          {data: "employee_id"},
+          {data: "username"},
+          {data: "group_name"},
+          {data: "status", render: function(data,type,row,meta) { 
+            return '<span class="label label-danger">Deleted</span>'}
+          },
+          {data: "id", render: function(data,type,row,meta) {
+            button = "<strong><em>No Action Available</em></strong>";
+            return button;
+          }
+          },
+        ],
+      });
+    /********** All Deleted Accounts ************/
+  });
 </script>
 <?php endif; ?>
   

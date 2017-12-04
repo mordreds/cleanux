@@ -102,11 +102,11 @@
                 <div class="row">
                   <div class="col-sm-4">
                     <label class="display-block" style="color:red"><b>Total</b> </label><br/>
-                    <input type="number" id="cart_total_amount" class="form-control order_total_cost" style="font-size: 28px;" readonly required>
+                    <input type="text" id="cart_total_amount" class="form-control order_total_cost" style="font-size: 28px;padding:0px" readonly required>
                   </div>
                   <div class="col-sm-4">
                     <label class="display-block" >Balance</label>
-                    <input type="number" class="form-control order_balance" name="order_balance" readonly required>
+                    <input type="text" class="form-control order_balance" name="order_balance" readonly required>
                   </div>
                   <div class="col-sm-4">
                     <label class="display-block" >Amount Paid</label><br/>

@@ -58,6 +58,7 @@
         let array_index = $(this).data('deleteid');
         let formurl = "<?=base_url()?>overview/delete_from_cart";
         let formData = {'deleteid': array_index};
+        alert(array_index);
         ajax_post(formurl,formData,tableid="laundry_cart");
 
         let total_order = parseInt($('#order_cart').text()) - 1;
