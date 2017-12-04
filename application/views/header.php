@@ -49,7 +49,6 @@
   <script type="text/javascript" src="<?=base_url()?>resources/js/plugins/notifications/jgrowl.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/loaders/pace.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/uploaders/fileinput.min.js"></script>
-	<script type="text/javascript" src="<?=base_url()?>resources/js/google/bars/combo.js"></script>
 	<!-- /core JS files -->
 
   <!-- *********** Custom JS Need For Pages ************ -->
@@ -61,8 +60,12 @@
 		<!-- ***** Users Page ***** -->
 		<!-- ***** Users Page ***** -->
 			<?php if($controller_function == "statistics") : ?>
+<<<<<<< Updated upstream
 		  	<!-- <script type="text/javascript" src="<?=base_url()?>resources/js/google/bars/combo.js"></script> -->
 		  	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/ui/ripple.min.js"></script>
+=======
+		  	<script type="text/javascript" src="<?=base_url()?>resources/js/google/bars/combo.js"></script>
+>>>>>>> Stashed changes
 		  <?php endif; ?>
 		<!-- ***** Users Page ***** -->
 

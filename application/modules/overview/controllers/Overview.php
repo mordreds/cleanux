@@ -397,7 +397,7 @@ class Overview extends MX_Controller
     /*******************************
       Retrieving All data
     *******************************/
-    public function addnew() 
+    public function receipt() 
     {
       # Permission Check
        if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles']))
@@ -415,7 +415,7 @@ class Overview extends MX_Controller
         /***************** Interface *****************/
         $data['title'] = "Add new"; 
         $this->load->view('header',$data); 
-        $this->load->view('addnew',$data); 
+        $this->load->view('receipt',$data); 
         $this->load->view('footer'); 
         /***************** Interface *****************/
       }
