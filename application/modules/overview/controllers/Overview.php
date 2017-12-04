@@ -391,6 +391,62 @@ class Overview extends MX_Controller
         print_r(json_encode($return_data));
       }
     }
+
+    /*******************************
+      Search Order By Order No
+    *******************************/  
+    public function search_order_by_orderno($order_number) {
+      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+        $return_data = ['error' => "Permission Denied. Contact Amin"];
+        print_r(json_encode($return_data));
+      }
+      else {
+        # loading model 
+        $this->load->model('globals/model_retrieval');
+        # data definition 
+        $dbres = self::$_Default_DB;
+        $tablename = "vw_orderlist_summary";
+        $where_condition = array('order_number' => $order_number);
+
+        $query_result = $this->model_retrieval->all_info_return_row($dbres,$tablename,$where_condition,$return_dataType="php_object");
+
+        if($query_result) {
+          $return_data = $query_result;
+        }
+        else
+          $return_data = array();
+
+        print_r(json_encode($return_data));
+      }
+    }
+
+    /*******************************
+      Search Order By Telephone No
+    *******************************/  
+    public function search_order_by_telno($phone_number) {
+      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+        $return_data = ['error' => "Permission Denied. Contact Amin"];
+        print_r(json_encode($return_data));
+      }
+      else {
+        # loading model 
+        $this->load->model('globals/model_retrieval');
+        # data definition 
+        $dbres = self::$_Default_DB;
+        $tablename = "vw_orderlist_summary";
+        $where_condition = array("status = Pending And client_phone_no_1 = $phone_number OR client_phone_2 = $phone_number");
+
+        $query_result = $this->model_retrieval->all_info_return_row($dbres,$tablename,$where_condition,$return_dataType="php_object");
+
+        if($query_result) {
+          $return_data = $query_result;
+        }
+        else
+          $return_data = array();
+
+        print_r(json_encode($return_data));
+      }
+    }
   /**************** Retrievals  ********************/
 
   /**************** Deletion  ********************/

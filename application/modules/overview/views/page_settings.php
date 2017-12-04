@@ -65,6 +65,63 @@
               $('[name="secondary_tel"]').attr('readonly',"readonly");
               $('[name="email"]').val(response[0].email);
               $('[name="email"]').attr('readonly',"readonly");
+
+              
+              if(search_text.length >= 10) {
+                //$('#pending_order_table').destroy();
+                $('#pending_order_table').dataTable({
+                  searching: false,
+                  paging: false,
+                  order: [],
+                  autoWidth: false,
+                  ajax: {
+                    type : 'GET',
+                    url : "<?= base_url()?>overview/search_order_by_telno/"+search_text,
+                    dataSrc: '',
+                    error: function() {
+                      $.jGrowl("Retrieving Pending Orders Failed", {
+                        theme: 'alert-styled-left bg-danger'
+                      });
+                    }
+                  },
+                  columns: [
+                    {data: "order_number",render: function(data,type,row,meta) { 
+                      return "<a href='#' data-toggle='modal' data-target='#modal_form_vertical'>"+row.order_number+"</a>"; 
+                    }},
+                    {data: "total_cost"},
+                    {data: "date_created"},
+                  ],
+                });
+
+                $('#pending_order_table_display').attr('style',"display:block")
+              }
+              else { 
+                $('#pending_order_table').dataTable({
+                  searching: false,
+                  paging: false,
+                  order: [],
+                  autoWidth: false,
+                  ajax: {
+                    type : 'GET',
+                    url : "<?= base_url()?>overview/search_order_by_orderno/"+search_text,
+                    dataSrc: '',
+                    error: function() {
+                      $.jGrowl("Retrieving Pending Orders Failed", {
+                        theme: 'alert-styled-left bg-danger'
+                      });
+                    }
+                  },
+                  columns: [
+                    {data: "order_number",render: function(data,type,row,meta) { 
+                      return "<a href='#' data-toggle='modal' data-target='#modal_form_vertical'>"+row.order_number+"</a>"; 
+                    }},
+                    {data: "total_cost"},
+                    {data: "date_created"},
+                  ],
+                });
+
+                $('#pending_order_table_display').attr('style',"display:block")
+              }
               
               e.preventDefault();
               $('#overview_tabs a[href="#client_info"]').tab('show'); 
@@ -337,7 +394,7 @@
   /********** Displaying Services ******/
 
   $(document).ready(function(){
-    /********** All Activated Accounts ************/
+    /********** Todays Order ************/
       $('#todays_order').dataTable({
         searching: false,
         paging: false,
@@ -411,7 +468,7 @@
           }
         });
       });
-    /********** All Activated Accounts ************/
+    /********** Todays Order ************/
 
     /********** All Deleted Accounts ************/
       $('#del_acct_tbl').dataTable({

@@ -250,9 +250,20 @@
               </div>
             </div>-->
           </div>
-          <div class="col-md-12" style="display:block">
+          <div class="col-md-12" id="pending_order_table_display" style="display:none">
             <div class="panel panel-flat">
               <div class="table-responsive">
+                <table class="table table-xxs" id="pending_order_table">
+                  <thead>
+                    <tr style="background-color:#009688;color:#ffffff">
+                      <th>Order #</th>
+                      <th>Total Cost</th>
+                      <th>Date Created</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
                 <table class="table table-xxs">
                   <thead>
                     <tr style="background-color:#009688;color:#ffffff">
