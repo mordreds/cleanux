@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 04, 2017 at 06:40 AM
--- Server version: 5.7.20-0ubuntu0.16.04.1
--- PHP Version: 7.0.22-0ubuntu0.16.04.1
+-- Host: 127.0.0.1
+-- Generation Time: Dec 04, 2017 at 10:27 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.0.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -258,7 +258,8 @@ INSERT INTO `successful_logins` (`id`, `user_id`, `time_in`, `time_out`, `online
 (173, 1, '2017-12-02 20:30:12', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0', '127.0.0.1', 'localhost', NULL, NULL),
 (174, 1, '2017-12-03 06:28:55', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0', '127.0.0.1', 'localhost', NULL, NULL),
 (175, 1, '2017-12-03 08:41:06', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0', '127.0.0.1', 'localhost', NULL, NULL),
-(176, 1, '2017-12-04 06:27:37', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0', '127.0.0.1', 'localhost', NULL, NULL);
+(176, 1, '2017-12-04 06:27:37', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0', '127.0.0.1', 'localhost', NULL, NULL),
+(177, 1, '2017-12-04 07:05:32', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36 OPR/49.0.2725.47', '::1', 'London', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -311,7 +312,7 @@ ALTER TABLE `failed_logins`
 -- AUTO_INCREMENT for table `successful_logins`
 --
 ALTER TABLE `successful_logins`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=177;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=178;
 --
 -- AUTO_INCREMENT for table `sysaudit`
 --
@@ -670,7 +671,8 @@ INSERT INTO `laundry_order_details` (`id`, `order_id`, `pricelist_ids`, `quantit
 (5, 10, '1', '23', '50', '50', '6 boxer shorts, 8 singlets, 9 shirts, 10 shorts', '2017-12-03 12:26:28'),
 (6, 11, '3|3', '7|9', '25|5', '175|45', '|', '2017-12-03 12:30:33'),
 (7, 12, '6', '100', '20', '2000', '', '2017-12-03 12:42:26'),
-(8, 13, '1', '5', '50', '50', 'carpets', '2017-12-03 12:43:51');
+(8, 13, '1', '5', '50', '50', 'carpets', '2017-12-03 12:43:51'),
+(9, 14, '1|3', '4|3', '50|25', '50|75', '2 blankets, 2 pillow cases|', '2017-12-04 09:12:36');
 
 -- --------------------------------------------------------
 
@@ -704,7 +706,8 @@ INSERT INTO `laundry_orders` (`id`, `order_number`, `total_cost`, `amount_paid`,
 (10, '76238557', 50, 50, 0, 4, 1, 5, '2017-12-13', 'Pending', 'Pending', '2017-12-03 12:26:28'),
 (11, '32978388', 235, 230, 5, 3, 1, 2, '2017-12-20', 'Pending', 'Pending', '2017-12-03 12:30:33'),
 (12, '00384550', 2000, 1500, 500, 3, 1, 5, '2017-12-07', 'Pending', 'Pending', '2017-12-03 12:42:26'),
-(13, '55908916', 50, 50, 0, 3, 1, 5, '2017-12-13', 'Pending', 'Pending', '2017-12-03 12:43:51');
+(13, '55908916', 50, 50, 0, 3, 1, 5, '2017-12-13', 'Pending', 'Pending', '2017-12-03 12:43:51'),
+(14, '90658950', 125, 125, 0, 8, 1, 5, '2017-12-06', 'Pending', 'Pending', '2017-12-04 09:12:36');
 
 -- --------------------------------------------------------
 
@@ -789,6 +792,7 @@ INSERT INTO `laundry_weights` (`id`, `service_type`, `weight`, `description`, `s
 
 --
 -- Stand-in structure for view `vw_employee_details`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_employee_details` (
 `id` bigint(20)
@@ -830,6 +834,7 @@ CREATE TABLE `vw_employee_details` (
 
 --
 -- Stand-in structure for view `vw_laundry_prices`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_prices` (
 `id` bigint(20)
@@ -848,6 +853,7 @@ CREATE TABLE `vw_laundry_prices` (
 
 --
 -- Stand-in structure for view `vw_laundry_weights`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_weights` (
 `id` bigint(20)
@@ -863,6 +869,7 @@ CREATE TABLE `vw_laundry_weights` (
 
 --
 -- Stand-in structure for view `vw_orderlist_summary`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_orderlist_summary` (
 `id` bigint(20)
@@ -912,6 +919,12 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 
 -- --------------------------------------------------------
 
+--
+-- Structure for view `vw_orderlist_summary`
+--
+DROP TABLE IF EXISTS `vw_orderlist_summary`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_orderlist_summary`  AS  select `a`.`id` AS `id`,`a`.`order_number` AS `order_number`,`a`.`total_cost` AS `total_cost`,`a`.`amount_paid` AS `amount_paid`,`a`.`balance` AS `balance`,`a`.`client_id` AS `client_id`,`a`.`processor_user_id` AS `processor_user_id`,`a`.`delivery_method_id` AS `delivery_method_id`,`a`.`due_date` AS `due_date`,`a`.`status` AS `status`,`a`.`processing_stages` AS `processing_stages`,`a`.`date_created` AS `date_created`,`b`.`fullname` AS `client_fullname`,coalesce(`b`.`company`,'') AS `COALESCE(b.company,"")`,`c`.`fullname` AS `processor_name`,`d`.`location` AS `delivery_location` from (((`laundry_orders` `a` left join `laundry_clients` `b` on((`a`.`client_id` = `b`.`id`))) left join `bgee_permissions`.`vw_user_details` `c` on((`a`.`processor_user_id` = `c`.`id`))) left join `laundry_delivery_method` `d` on((`a`.`delivery_method_id` = `d`.`id`))) ;
 
 --
 -- Indexes for dumped tables
@@ -1087,12 +1100,12 @@ ALTER TABLE `laundry_order_balances`
 -- AUTO_INCREMENT for table `laundry_order_details`
 --
 ALTER TABLE `laundry_order_details`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `laundry_orders`
 --
 ALTER TABLE `laundry_orders`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `laundry_prices`
 --
@@ -1243,7 +1256,8 @@ INSERT INTO `roles_privileges_user` (`id`, `user_id`, `custom_roles`, `custom_pr
 (2, 2, '', '', 1, 'active'),
 (3, 3, '', '', 5, 'active'),
 (4, 4, '', '', 5, 'active'),
-(5, 5, '', '', 3, 'active');
+(5, 5, '', '', 3, 'active'),
+(6, 6, '', '', 4, 'active');
 
 -- --------------------------------------------------------
 
@@ -1274,12 +1288,14 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `passwd`, `default_passwd`, `fullname`, `phone_number`, `temp_employee_id`, `biodata_id`, `first_login`, `login_attempt`, `status`, `created_by`, `date_created`) VALUES
 (1, 'osborne.mordred@gmail.com', '$2y$10$GuOFXrr8Xdd5JFHD9vzm8.tUeafbhkUfvImwdDkswS8NJJOqzV3BC', '', 'Osborne Mordreds', '0541786220', 'KAD/SYS/1', 0, 0, 5, 'active', 1, '2017-05-25 06:05:10'),
 (2, 'wikills2k@gmail.com', '$2y$10$GuOFXrr8Xdd5JFHD9vzm8.tUeafbhkUfvImwdDkswS8NJJOqzV3BC', '', 'Bismark Offei ', '0245626487', 'KAD/SYS/2', 0, 0, 5, 'active', 1, '2017-05-25 06:05:10'),
-(5, 'evans@marksbon.com', '', '$2y$10$/kuqijx7L/V.sZpaAeCJ4uu5PjeR3a2AXhKrDopg.L2VLd2jogkJm', 'Evans  Kwame Offori', '', '', 1, 0, 5, 'active', 0, '2017-11-23 06:37:31');
+(5, 'evans@marksbon.com', '', '$2y$10$/kuqijx7L/V.sZpaAeCJ4uu5PjeR3a2AXhKrDopg.L2VLd2jogkJm', 'Evans  Kwame Offori', '', '', 1, 0, 5, 'active', 0, '2017-11-23 06:37:31'),
+(6, 'ike@marksbon.com', '', '$2y$10$ymyWOznE4uK1QG6TKmZLs.HeuV.8032CqeRRvLAsFQl3SYR336JSu', 'Gyasi jon Nimako', '', '', 2, 0, 5, 'inactive', 0, '2017-12-04 07:15:13');
 
 -- --------------------------------------------------------
 
 --
 -- Stand-in structure for view `vw_user_details`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_user_details` (
 `id` bigint(20)
@@ -1372,20 +1388,12 @@ ALTER TABLE `roles_privileges_group`
 -- AUTO_INCREMENT for table `roles_privileges_user`
 --
 ALTER TABLE `roles_privileges_user`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
---
--- Structure for view `vw_orderlist_summary`
---
-DROP TABLE IF EXISTS `vw_orderlist_summary`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_orderlist_summary`  AS  select `a`.`id` AS `id`,`a`.`order_number` AS `order_number`,`a`.`total_cost` AS `total_cost`,`a`.`amount_paid` AS `amount_paid`,`a`.`balance` AS `balance`,`a`.`client_id` AS `client_id`,`a`.`processor_user_id` AS `processor_user_id`,`a`.`delivery_method_id` AS `delivery_method_id`,`a`.`due_date` AS `due_date`,`a`.`status` AS `status`,`a`.`processing_stages` AS `processing_stages`,`a`.`date_created` AS `date_created`,`b`.`fullname` AS `client_fullname`,coalesce(`b`.`company`,'') AS `COALESCE(b.company,"")`,`c`.`fullname` AS `processor_name`,`d`.`location` AS `delivery_location` from (((bgee_db.`laundry_orders` `a` left join bgee_db.`laundry_clients` `b` on((`a`.`client_id` = `b`.`id`))) left join `bgee_permissions`.`vw_user_details` `c` on((`a`.`processor_user_id` = `c`.`id`))) left join bgee_db.`laundry_delivery_method` `d` on((`a`.`delivery_method_id` = `d`.`id`))) ;
-

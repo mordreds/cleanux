@@ -33,7 +33,6 @@
   } 
 	/*********** Rearranging Dashboard Tabs From User Permissions *********/
 ?>
-
 <!-- Main navbar -->
 	<div class="navbar navbar-inverse bg-teal ">
 		<div class="navbar-header">
@@ -42,7 +41,6 @@
 				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
 			</ul>
 		</div>
-
 		<div class="navbar-collapse collapse" id="navbar-mobile">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
@@ -51,7 +49,6 @@
 						<span class="visible-xs-inline-block position-right">Get updates</span>
 						<span class="status-mark border-orange-400"></span>
 					</a>
-					
 					<div class="dropdown-menu dropdown-content">
 						<div class="dropdown-content-heading">
 							Price List
@@ -160,7 +157,7 @@
 
 					<div class="dropdown-menu dropdown-content">
 						<div class="table-responsive">
-							<table class="table table-responsive" id="laundry_cart">
+							<table class="table table-responsive table-xxs" id="laundry_cart">
                 <thead>
                   <tr style="background-color:#009688;color:#ffffff">
                     <th>Code</th>

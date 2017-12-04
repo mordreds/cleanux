@@ -117,7 +117,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-denger pull-left" data-dismiss="modal">Discard</button> &nbsp;&nbsp;
-              <a  href="<?=base_url()?>overview/receipt" target="_blink" id="proceed_btn" type="submit" class="btn btn-warning btn-xs heading-btn legitRipple"> Proceed</a>
+              <button id="proceed_btn" type="submit" class="btn btn-warning btn-xs heading-btn legitRipple"> Proceed</button>
             </div>
           </form>
         </div>
