@@ -912,12 +912,6 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 
 -- --------------------------------------------------------
 
---
--- Structure for view `vw_orderlist_summary`
---
-DROP TABLE IF EXISTS `vw_orderlist_summary`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_orderlist_summary`  AS  select `a`.`id` AS `id`,`a`.`order_number` AS `order_number`,`a`.`total_cost` AS `total_cost`,`a`.`amount_paid` AS `amount_paid`,`a`.`balance` AS `balance`,`a`.`client_id` AS `client_id`,`a`.`processor_user_id` AS `processor_user_id`,`a`.`delivery_method_id` AS `delivery_method_id`,`a`.`due_date` AS `due_date`,`a`.`status` AS `status`,`a`.`processing_stages` AS `processing_stages`,`a`.`date_created` AS `date_created`,`b`.`fullname` AS `client_fullname`,coalesce(`b`.`company`,'') AS `COALESCE(b.company,"")`,`c`.`fullname` AS `processor_name`,`d`.`location` AS `delivery_location` from (((`laundry_orders` `a` left join `laundry_clients` `b` on((`a`.`client_id` = `b`.`id`))) left join `bgee_permissions`.`vw_user_details` `c` on((`a`.`processor_user_id` = `c`.`id`))) left join `laundry_delivery_method` `d` on((`a`.`delivery_method_id` = `d`.`id`))) ;
 
 --
 -- Indexes for dumped tables
@@ -1387,3 +1381,11 @@ ALTER TABLE `users`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+--
+-- Structure for view `vw_orderlist_summary`
+--
+DROP TABLE IF EXISTS `vw_orderlist_summary`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_orderlist_summary`  AS  select `a`.`id` AS `id`,`a`.`order_number` AS `order_number`,`a`.`total_cost` AS `total_cost`,`a`.`amount_paid` AS `amount_paid`,`a`.`balance` AS `balance`,`a`.`client_id` AS `client_id`,`a`.`processor_user_id` AS `processor_user_id`,`a`.`delivery_method_id` AS `delivery_method_id`,`a`.`due_date` AS `due_date`,`a`.`status` AS `status`,`a`.`processing_stages` AS `processing_stages`,`a`.`date_created` AS `date_created`,`b`.`fullname` AS `client_fullname`,coalesce(`b`.`company`,'') AS `COALESCE(b.company,"")`,`c`.`fullname` AS `processor_name`,`d`.`location` AS `delivery_location` from (((bgee_db.`laundry_orders` `a` left join bgee_db.`laundry_clients` `b` on((`a`.`client_id` = `b`.`id`))) left join `bgee_permissions`.`vw_user_details` `c` on((`a`.`processor_user_id` = `c`.`id`))) left join bgee_db.`laundry_delivery_method` `d` on((`a`.`delivery_method_id` = `d`.`id`))) ;
+
