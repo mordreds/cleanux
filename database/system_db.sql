@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 30, 2017 at 07:31 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.0.15
+-- Host: localhost
+-- Generation Time: Dec 04, 2017 at 06:40 AM
+-- Server version: 5.7.20-0ubuntu0.16.04.1
+-- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -248,7 +248,17 @@ INSERT INTO `successful_logins` (`id`, `user_id`, `time_in`, `time_out`, `online
 (163, 1, '2017-11-28 07:08:49', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
 (164, 1, '2017-11-28 07:08:57', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
 (165, 1, '2017-11-28 19:16:22', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
-(166, 1, '2017-11-29 20:56:58', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL);
+(166, 1, '2017-11-29 20:56:58', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(167, 1, '2017-11-30 21:11:01', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(168, 1, '2017-11-30 21:11:04', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(169, 1, '2017-12-01 06:09:43', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(170, 1, '2017-12-01 22:29:55', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0', '127.0.0.1', 'localhost', NULL, NULL),
+(171, 1, '2017-12-02 08:40:31', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0', '127.0.0.1', 'localhost', NULL, NULL),
+(172, 1, '2017-12-02 16:32:32', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0', '127.0.0.1', 'localhost', NULL, NULL),
+(173, 1, '2017-12-02 20:30:12', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0', '127.0.0.1', 'localhost', NULL, NULL),
+(174, 1, '2017-12-03 06:28:55', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0', '127.0.0.1', 'localhost', NULL, NULL),
+(175, 1, '2017-12-03 08:41:06', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0', '127.0.0.1', 'localhost', NULL, NULL),
+(176, 1, '2017-12-04 06:27:37', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0', '127.0.0.1', 'localhost', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -301,7 +311,7 @@ ALTER TABLE `failed_logins`
 -- AUTO_INCREMENT for table `successful_logins`
 --
 ALTER TABLE `successful_logins`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=167;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=177;
 --
 -- AUTO_INCREMENT for table `sysaudit`
 --
@@ -572,28 +582,28 @@ INSERT INTO `laundry_clients` (`id`, `fullname`, `gender`, `company`, `residence
 -- --------------------------------------------------------
 
 --
--- Table structure for table `laundry_delivery_prices`
+-- Table structure for table `laundry_delivery_method`
 --
 
-CREATE TABLE `laundry_delivery_prices` (
+CREATE TABLE `laundry_delivery_method` (
   `id` int(11) NOT NULL,
   `location` varchar(255) NOT NULL,
   `duration` varchar(20) NOT NULL,
   `price` double NOT NULL,
-  `status` enum('active','inactive','deleted') NOT NULL DEFAULT 'active',
+  `status` enum('active','deleted') NOT NULL DEFAULT 'active',
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `laundry_delivery_prices`
+-- Dumping data for table `laundry_delivery_method`
 --
 
-INSERT INTO `laundry_delivery_prices` (`id`, `location`, `duration`, `price`, `status`, `date_created`) VALUES
+INSERT INTO `laundry_delivery_method` (`id`, `location`, `duration`, `price`, `status`, `date_created`) VALUES
 (1, 'Express Service (Within Accra)', '1 - 2 Days', 7, 'active', '2017-11-25 23:10:12'),
 (2, 'Express Service (Outside Accra)', '3 ~ 5 Days', 15, 'active', '2017-11-25 23:11:45'),
 (3, 'Regular (Within Accra)', '3 ~ 5 Days', 5, 'active', '2017-11-25 23:44:30'),
-(4, 'Regular (Outside Accra)', '7 ~ 13 Days', 10, 'active', '2017-11-25 23:45:27'),
-(5, 'Pickup (At Office)', 'Pickup', 0, 'active', '2017-11-25 23:16:04');
+(4, 'Regular (Outside Accra)', '7 ~ 13 Days', 10.5, 'active', '2017-11-25 23:45:27'),
+(5, 'Pickup (At Office)', '3 Days', 0, 'active', '2017-11-25 23:16:04');
 
 -- --------------------------------------------------------
 
@@ -620,6 +630,51 @@ INSERT INTO `laundry_garments` (`id`, `name`, `description`, `status`, `date_cre
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `laundry_order_balances`
+--
+
+CREATE TABLE `laundry_order_balances` (
+  `id` bigint(20) NOT NULL,
+  `order_id` bigint(20) NOT NULL,
+  `balance` double NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `status` enum('Pending','Paid') NOT NULL DEFAULT 'Pending',
+  `payment_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `laundry_order_details`
+--
+
+CREATE TABLE `laundry_order_details` (
+  `id` bigint(20) NOT NULL,
+  `order_id` bigint(20) NOT NULL,
+  `pricelist_ids` varchar(100) NOT NULL,
+  `quantities` varchar(100) NOT NULL,
+  `unit_prices` varchar(100) NOT NULL,
+  `total_sums` varchar(100) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `laundry_order_details`
+--
+
+INSERT INTO `laundry_order_details` (`id`, `order_id`, `pricelist_ids`, `quantities`, `unit_prices`, `total_sums`, `description`, `date_created`) VALUES
+(2, 7, '1|3', '3|2', '50|25', '50|50', 'blankets|', '2017-12-02 23:57:01'),
+(3, 8, '1|2', '20|20', '50|5', '50|100', 'pillow case|', '2017-12-03 09:52:20'),
+(4, 9, '1|3|3', '7|3|3', '50|25|20', '50|75|60', '4 bedsheets, 3 pillows||', '2017-12-03 12:17:21'),
+(5, 10, '1', '23', '50', '50', '6 boxer shorts, 8 singlets, 9 shirts, 10 shorts', '2017-12-03 12:26:28'),
+(6, 11, '3|3', '7|9', '25|5', '175|45', '|', '2017-12-03 12:30:33'),
+(7, 12, '6', '100', '20', '2000', '', '2017-12-03 12:42:26'),
+(8, 13, '1', '5', '50', '50', 'carpets', '2017-12-03 12:43:51');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `laundry_orders`
 --
 
@@ -629,30 +684,27 @@ CREATE TABLE `laundry_orders` (
   `total_cost` double NOT NULL,
   `amount_paid` double NOT NULL,
   `balance` double NOT NULL,
-  `balance_paid_date` datetime NOT NULL,
   `client_id` bigint(20) NOT NULL,
-  `status` enum('pending','completed','deleted') NOT NULL DEFAULT 'pending',
+  `processor_user_id` bigint(20) NOT NULL,
+  `delivery_method_id` bigint(20) NOT NULL,
+  `due_date` date NOT NULL,
+  `status` enum('Pending','Processing','Completed','Deleted') NOT NULL DEFAULT 'Pending',
+  `processing_stages` enum('Pending','Washing','Drying','Ironing','Packaging') NOT NULL DEFAULT 'Pending',
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `laundry_orders_details`
+-- Dumping data for table `laundry_orders`
 --
 
-CREATE TABLE `laundry_orders_details` (
-  `id` bigint(20) NOT NULL,
-  `order_number` varchar(20) NOT NULL,
-  `service_id` bigint(20) NOT NULL,
-  `weight_id` bigint(255) NOT NULL,
-  `garment_id` bigint(20) NOT NULL,
-  `weight_description` varchar(255) NOT NULL,
-  `amount` double NOT NULL,
-  `delivery_id` bigint(20) NOT NULL,
-  `delivery_amount` double NOT NULL,
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `laundry_orders` (`id`, `order_number`, `total_cost`, `amount_paid`, `balance`, `client_id`, `processor_user_id`, `delivery_method_id`, `due_date`, `status`, `processing_stages`, `date_created`) VALUES
+(7, '417099242', 105, 50, 55, 12, 1, 3, '2017-12-12', 'Pending', 'Pending', '2017-12-02 23:57:01'),
+(8, '12054353', 160.5, 100, 60.5, 8, 1, 4, '2017-12-06', 'Pending', 'Pending', '2017-12-03 09:52:20'),
+(9, '24661497', 195.5, 80, 115.5, 6, 1, 4, '2017-12-07', 'Pending', 'Pending', '2017-12-03 12:17:21'),
+(10, '76238557', 50, 50, 0, 4, 1, 5, '2017-12-13', 'Pending', 'Pending', '2017-12-03 12:26:28'),
+(11, '32978388', 235, 230, 5, 3, 1, 2, '2017-12-20', 'Pending', 'Pending', '2017-12-03 12:30:33'),
+(12, '00384550', 2000, 1500, 500, 3, 1, 5, '2017-12-07', 'Pending', 'Pending', '2017-12-03 12:42:26'),
+(13, '55908916', 50, 50, 0, 3, 1, 5, '2017-12-13', 'Pending', 'Pending', '2017-12-03 12:43:51');
 
 -- --------------------------------------------------------
 
@@ -737,7 +789,6 @@ INSERT INTO `laundry_weights` (`id`, `service_type`, `weight`, `description`, `s
 
 --
 -- Stand-in structure for view `vw_employee_details`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_employee_details` (
 `id` bigint(20)
@@ -779,15 +830,14 @@ CREATE TABLE `vw_employee_details` (
 
 --
 -- Stand-in structure for view `vw_laundry_prices`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_prices` (
 `id` bigint(20)
 ,`service_id` bigint(20)
 ,`service_name` varchar(150)
-,`weight_id` bigint(20)
+,`weight_id` varchar(20)
 ,`weight` varchar(20)
-,`garment_id` bigint(20)
+,`garment_id` varchar(20)
 ,`garment_name` varchar(50)
 ,`amount` float
 ,`status` enum('active','inactive','deleted','')
@@ -798,7 +848,6 @@ CREATE TABLE `vw_laundry_prices` (
 
 --
 -- Stand-in structure for view `vw_laundry_weights`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_weights` (
 `id` bigint(20)
@@ -808,6 +857,30 @@ CREATE TABLE `vw_laundry_weights` (
 ,`status` enum('active','inactive','deleted','')
 ,`date_created` datetime
 ,`service` varchar(150)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `vw_orderlist_summary`
+--
+CREATE TABLE `vw_orderlist_summary` (
+`id` bigint(20)
+,`order_number` varchar(20)
+,`total_cost` double
+,`amount_paid` double
+,`balance` double
+,`client_id` bigint(20)
+,`processor_user_id` bigint(20)
+,`delivery_method_id` bigint(20)
+,`due_date` date
+,`status` enum('Pending','Processing','Completed','Deleted')
+,`processing_stages` enum('Pending','Washing','Drying','Ironing','Packaging')
+,`date_created` datetime
+,`client_fullname` varchar(255)
+,`COALESCE(b.company,"")` varchar(255)
+,`processor_name` varchar(255)
+,`delivery_location` varchar(255)
 );
 
 -- --------------------------------------------------------
@@ -826,7 +899,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vw_laundry_prices`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_laundry_prices`  AS  select `a`.`id` AS `id`,`a`.`service_id` AS `service_id`,`b`.`name` AS `service_name`,`a`.`weight_id` AS `weight_id`,`c`.`weight` AS `weight`,`a`.`garment_id` AS `garment_id`,`d`.`name` AS `garment_name`,`a`.`amount` AS `amount`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created` from (((`laundry_prices` `a` left join `laundry_services` `b` on((`a`.`service_id` = `b`.`id`))) left join `laundry_weights` `c` on((`a`.`weight_id` = `c`.`id`))) left join `laundry_garments` `d` on((`a`.`garment_id` = `d`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_laundry_prices`  AS  select `a`.`id` AS `id`,`a`.`service_id` AS `service_id`,`b`.`name` AS `service_name`,coalesce(`a`.`weight_id`,'') AS `weight_id`,coalesce(`c`.`weight`,'') AS `weight`,coalesce(`a`.`garment_id`,'') AS `garment_id`,coalesce(`d`.`name`,'') AS `garment_name`,`a`.`amount` AS `amount`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created` from (((`laundry_prices` `a` left join `laundry_services` `b` on((`a`.`service_id` = `b`.`id`))) left join `laundry_weights` `c` on((`a`.`weight_id` = `c`.`id`))) left join `laundry_garments` `d` on((`a`.`garment_id` = `d`.`id`))) ;
 
 -- --------------------------------------------------------
 
@@ -836,6 +909,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `vw_laundry_weights`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_laundry_weights`  AS  select `a`.`id` AS `id`,`a`.`service_type` AS `service_type`,`a`.`weight` AS `weight`,`a`.`description` AS `description`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created`,`b`.`name` AS `service` from (`laundry_weights` `a` left join `laundry_services` `b` on((`a`.`service_type` = `b`.`id`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vw_orderlist_summary`
+--
+DROP TABLE IF EXISTS `vw_orderlist_summary`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_orderlist_summary`  AS  select `a`.`id` AS `id`,`a`.`order_number` AS `order_number`,`a`.`total_cost` AS `total_cost`,`a`.`amount_paid` AS `amount_paid`,`a`.`balance` AS `balance`,`a`.`client_id` AS `client_id`,`a`.`processor_user_id` AS `processor_user_id`,`a`.`delivery_method_id` AS `delivery_method_id`,`a`.`due_date` AS `due_date`,`a`.`status` AS `status`,`a`.`processing_stages` AS `processing_stages`,`a`.`date_created` AS `date_created`,`b`.`fullname` AS `client_fullname`,coalesce(`b`.`company`,'') AS `COALESCE(b.company,"")`,`c`.`fullname` AS `processor_name`,`d`.`location` AS `delivery_location` from (((`laundry_orders` `a` left join `laundry_clients` `b` on((`a`.`client_id` = `b`.`id`))) left join `bgee_permissions`.`vw_user_details` `c` on((`a`.`processor_user_id` = `c`.`id`))) left join `laundry_delivery_method` `d` on((`a`.`delivery_method_id` = `d`.`id`))) ;
 
 --
 -- Indexes for dumped tables
@@ -900,9 +982,9 @@ ALTER TABLE `laundry_clients`
   ADD UNIQUE KEY `phone_number_1` (`phone_number_1`);
 
 --
--- Indexes for table `laundry_delivery_prices`
+-- Indexes for table `laundry_delivery_method`
 --
-ALTER TABLE `laundry_delivery_prices`
+ALTER TABLE `laundry_delivery_method`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -912,15 +994,21 @@ ALTER TABLE `laundry_garments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `laundry_orders`
+-- Indexes for table `laundry_order_balances`
 --
-ALTER TABLE `laundry_orders`
+ALTER TABLE `laundry_order_balances`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `laundry_orders_details`
+-- Indexes for table `laundry_order_details`
 --
-ALTER TABLE `laundry_orders_details`
+ALTER TABLE `laundry_order_details`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `laundry_orders`
+--
+ALTER TABLE `laundry_orders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -987,9 +1075,9 @@ ALTER TABLE `hr_position`
 ALTER TABLE `laundry_clients`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
--- AUTO_INCREMENT for table `laundry_delivery_prices`
+-- AUTO_INCREMENT for table `laundry_delivery_method`
 --
-ALTER TABLE `laundry_delivery_prices`
+ALTER TABLE `laundry_delivery_method`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `laundry_garments`
@@ -997,15 +1085,20 @@ ALTER TABLE `laundry_delivery_prices`
 ALTER TABLE `laundry_garments`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `laundry_order_balances`
+--
+ALTER TABLE `laundry_order_balances`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `laundry_order_details`
+--
+ALTER TABLE `laundry_order_details`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
 -- AUTO_INCREMENT for table `laundry_orders`
 --
 ALTER TABLE `laundry_orders`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `laundry_orders_details`
---
-ALTER TABLE `laundry_orders_details`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `laundry_prices`
 --
@@ -1193,7 +1286,6 @@ INSERT INTO `users` (`id`, `username`, `passwd`, `default_passwd`, `fullname`, `
 
 --
 -- Stand-in structure for view `vw_user_details`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_user_details` (
 `id` bigint(20)
