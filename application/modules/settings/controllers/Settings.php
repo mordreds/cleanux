@@ -608,7 +608,7 @@ class Settings extends MX_Controller
               
               if($query_result) {
                 $this->session->set_flashdata('success',"Save Successful");
-                $_SESSION['laundry']['client_phone_number'] = $this->input->post('primary_tel');
+                $_SESSION['laundry']['new_order']['client']['phone_number'] = $this->input->post('primary_tel');
               }
               else
                 $this->session->set_flashdata('error',"Save Failed");

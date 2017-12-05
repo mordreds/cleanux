@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Overview extends MX_Controller 
 {
-   /*******************************
-      Constructor 
-    *******************************/
-    public function __construct() {
-      parent::__construct();
-    }
+  /*******************************
+    Constructor 
+  *******************************/
+  public function __construct() {
+    parent::__construct();
+  }
 
   /**************** Interface ********************/
     public function index() {
