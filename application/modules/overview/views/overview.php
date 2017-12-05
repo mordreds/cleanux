@@ -173,18 +173,33 @@
                         </div>
                         <div class="tab-pane" id="billing_info">
                           <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group">
-                              <label>Amount Payable</label>
-                                <input type="text" placeholder="150.00" class="form-control" readonly>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                               <label>Outstanding Balance</label>
-                                <input type="text" placeholder="50.00" class="form-control" readonly>
-                              </div>
-                            </div>
+                            <table id="" class="table table-xxs">
+                            <thead>
+                              <tr style="background-color: #009688;color:white;" > 
+                                <th>Order No #</th>
+                                <th>Total</th>
+                                <th>Payed</th>
+                                <th>Balance</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>300777</td>
+                                <td>50</td>
+                                <td>30</td>
+                                <td>20</td>
+                                <td><button  data-toggle="modal" data-target="#Payment" class="label bg-blue">Pay<i class="icon-cash3 position-right "></i></button></td>
+                              </tr>
+                              <tr>
+                                <td>300777</td>
+                                <td>50</td>
+                                <td>30</td>
+                                <td>20</td>
+                                <td><button data-toggle="modal" data-target="#Payment" class="label bg-blue">Pay<i class="icon-cash3 position-right "></i></button> </td>
+                              </tr>
+                            </tbody>
+                          </table>
                           </div>
                           <button type="submit" class="btn btn-primary btn-xs legitRipple">Save <i class="icon-database position-right"></i></button>
                         </div>

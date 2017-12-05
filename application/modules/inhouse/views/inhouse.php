@@ -24,11 +24,10 @@
               <thead>
                 <tr class="bg-teal-400">
                   <th>Order #</th>
-                    <th>Description</th>
-                    <th># Items</th>
+                    <th># of Items</th>
                     <th>Total Cost</th>
                     <th>Status</th>
-                    <th>Tax</th>
+                    <th>Due Date</th>
                     <th>Comment</th>
                   <th class="text-center">Actions</th>
                 </tr>
@@ -36,11 +35,10 @@
               <tbody>
                 <tr>
                   <td data-toggle="modal" data-target="#orders">300123</td>
-                    <td>T-shirt,Black Shorts,Blue Shirt,Blue Jean</td>
                     <td>6</td>
                     <td>15.00</td>
-                    <td><i data-toggle="modal" data-target="#modal_form_vertical">Washing & Drying</i></td>
-                    <td>5.00</td>
+                    <td><i data-toggle="modal" data-target="#history">Washing & Drying</i></td>
+                    <td><span class="label bg-success">12/12/2017 </span></td>
                     <td  data-toggle="modal" data-target="#comment">Comment(0)</td>
                   <td class="text-center">
                     <ul class="icons-list">
@@ -60,11 +58,10 @@
                       </tr>
                       <tr>
                   <td data-toggle="modal" data-target="#orders" >300120</td>
-                    <td>T-shirt,Black Shorts,Blue Shirt,</td>
                     <td>13</td>
                     <td>15.00</td>
-                    <td><i data-toggle="modal" data-target="#modal_form_vertical">Washing & Drying</i></td>
-                    <td>5.00</td>
+                    <td><i data-toggle="modal" data-target="#history">Washing & Drying</i></td>
+                      <td><span class="label bg-danger">12/12/2017 </span></td>
                     <td  data-toggle="modal" data-target="#comment">Comment(1)</td>
                   <td class="text-center">
                     <ul class="icons-list">
@@ -86,11 +83,10 @@
               <tfoot>
                 <tr class="bg-teal-400">
                   <td>Order #</td>
-                    <td>Description</td>
-                    <td>Quantity</td>
+                    <td># of items</td>
                     <td>Total Price</td>
                     <td>Status</td>
-                    <td>Tax</td>
+                    <td>Due Date</td>
                     <td>Comment</td>
                   <td class="text-center">Actions</td>
                       </tr>
@@ -114,7 +110,7 @@
   <!-- All Users Data Table Ajax -->
 
   <!-- Vertical form modal -->
-          <div id="modal_form_vertical" class="modal fade">
+          <div id="history" class="modal fade">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
