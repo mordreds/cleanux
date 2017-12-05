@@ -30,7 +30,6 @@
         print "$('#search_submit').click()";
       ?>
     });
-
     
     $('#search_submit').click(function(e){
       let search_text = $('#search_text').val();
@@ -48,7 +47,7 @@
           data : formData,
           success: function(response) { 
             response = JSON.parse(response)
-            //alert(response)
+
             if(response[0]) {  
               $('[name="id"]').val(response[0].id);
               $('[name="fullname"]').val(response[0].fullname);
@@ -66,10 +65,10 @@
               $('[name="email"]').val(response[0].email);
               $('[name="email"]').attr('readonly',"readonly");
 
-              
+              $('#pending_order_table').DataTable().destroy();
+
               if(search_text.length >= 10) {
-                //$('#pending_order_table').destroy();
-                $('#pending_order_table').dataTable({
+                $('#pending_order_table').DataTable({
                   searching: false,
                   paging: false,
                   order: [],
@@ -78,6 +77,7 @@
                     type : 'GET',
                     url : "<?= base_url()?>overview/search_order_by_telno/"+search_text,
                     dataSrc: '',
+                    //success: function(response){ alert(response.order_number)},
                     error: function() {
                       $.jGrowl("Retrieving Pending Orders Failed", {
                         theme: 'alert-styled-left bg-danger'
@@ -89,6 +89,13 @@
                       return "<a href='#' data-toggle='modal' data-target='#modal_form_vertical'>"+row.order_number+"</a>"; 
                     }},
                     {data: "total_cost"},
+                    {render: function(data,type,row,meta) { 
+                      if(row.processing_stage == "Pending")
+                        label_color = "label-default";
+                      if(row.processing_stage == "Washing")
+                        label_color = "label-warning";
+                      return "<span class='label "+label_color+"'>"+row.processing_stage+"</span>"; 
+                    }},
                     {data: "date_created"},
                   ],
                 });
@@ -96,7 +103,7 @@
                 $('#pending_order_table_display').attr('style',"display:block")
               }
               else { 
-                $('#pending_order_table').dataTable({
+                $('#pending_order_table').DataTable({
                   searching: false,
                   paging: false,
                   order: [],
@@ -105,6 +112,7 @@
                     type : 'GET',
                     url : "<?= base_url()?>overview/search_order_by_orderno/"+search_text,
                     dataSrc: '',
+                    //success: function(response){ alert(response.order_number)},
                     error: function() {
                       $.jGrowl("Retrieving Pending Orders Failed", {
                         theme: 'alert-styled-left bg-danger'
@@ -116,6 +124,13 @@
                       return "<a href='#' data-toggle='modal' data-target='#modal_form_vertical'>"+row.order_number+"</a>"; 
                     }},
                     {data: "total_cost"},
+                    {render: function(data,type,row,meta) { 
+                      if(row.processing_stage == "Pending")
+                        label_color = "label-default";
+                      if(row.processing_stage == "Washing")
+                        label_color = "label-warning";
+                      return "<span class='label "+label_color+"'>"+row.processing_stage+"</span>"; 
+                    }},
                     {data: "date_created"},
                   ],
                 });
@@ -395,7 +410,7 @@
 
   $(document).ready(function(){
     /********** Todays Order ************/
-      $('#todays_order').dataTable({
+      $('#todays_order').DataTable({
         searching: false,
         paging: false,
         order: [],
@@ -469,35 +484,6 @@
         });
       });
     /********** Todays Order ************/
-
-    /********** All Deleted Accounts ************/
-      $('#del_acct_tbl').dataTable({
-        ajax: {
-          type : 'GET',
-          url : '<?= base_url()?>administration/retrieve_allusers/deleted',
-          dataSrc: '',
-          error: function() {
-            $.jGrowl('Retrieving Deleted Users Failed', {
-              theme: 'alert-styled-left bg-danger'
-            });
-          }
-        },
-        columns: [
-          {data: "fullname"},
-          {data: "employee_id"},
-          {data: "username"},
-          {data: "group_name"},
-          {data: "status", render: function(data,type,row,meta) { 
-            return '<span class="label label-danger">Deleted</span>'}
-          },
-          {data: "id", render: function(data,type,row,meta) {
-            button = "<strong><em>No Action Available</em></strong>";
-            return button;
-          }
-          },
-        ],
-      });
-    /********** All Deleted Accounts ************/
   });
 </script>
 <?php endif; ?>

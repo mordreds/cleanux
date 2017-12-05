@@ -273,7 +273,7 @@ class Overview extends MX_Controller
           $this->load->model('globals/model_retrieval');
           $search = $this->input->post('search_text');
           $dbres = self::$_Default_DB;
-
+          /***** Search By Phone Number ********/
           if(is_numeric($search) && strlen($search) >= 10) {
             $tablename = "laundry_clients";
             $where_condition = ['phone_number_1' => $search];
@@ -288,6 +288,7 @@ class Overview extends MX_Controller
               $return_data = array();
             }
           }
+          /***** Search By Order No ********/
           else {
             /********** Order Number Search **********/
             $tablename = "laundry_orders";
@@ -303,7 +304,7 @@ class Overview extends MX_Controller
 
               if($query_result) {
                 $return_data = $query_result;
-                $_SESSION['laundry']['new_order']['client']['phone_number'] = $query_result[0]->phone_number_1;
+                $_SESSION['laundry']['new_order']['client']['phone_number'] = $search;
                 $_SESSION['laundry']['new_order']['client']['id'] = $query_result[0]->id;
               }
               else {
@@ -411,7 +412,7 @@ class Overview extends MX_Controller
         $query_result = $this->model_retrieval->all_info_return_row($dbres,$tablename,$where_condition,$return_dataType="php_object");
 
         if($query_result) {
-          $return_data = $query_result;
+          $return_data = array($query_result);
         }
         else
           $return_data = array();
@@ -434,9 +435,9 @@ class Overview extends MX_Controller
         # data definition 
         $dbres = self::$_Default_DB;
         $tablename = "vw_orderlist_summary";
-        $where_condition = array("status = Pending And client_phone_no_1 = $phone_number OR client_phone_2 = $phone_number");
+        $where_condition = array('status' => "Pending", 'client_phone_no_1' => $phone_number);
 
-        $query_result = $this->model_retrieval->all_info_return_row($dbres,$tablename,$where_condition,$return_dataType="php_object");
+        $query_result = $this->model_retrieval->all_info_return_result($dbres,$tablename,$where_condition,$return_dataType="php_object");
 
         if($query_result) {
           $return_data = $query_result;

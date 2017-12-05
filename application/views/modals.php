@@ -136,6 +136,61 @@
       });
     </script>
   <!-- ****** Delivery Method Modal ******* -->
+
+  <!-- ****** Order Details  ******* -->
+    <div id="modal_form_vertical" class="modal fade">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header ">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <form action="<?=base_url()?>overview/save_order" method="post">
+            <div class="modal-body" style>
+              <table class="table table-xs">
+                <thead>
+                  <tr style="background-color:#009688;color:#ffffff">
+                    <th>Order #</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>unit price</th>
+                    <th>Total price</th>
+                    <th>Status</th>
+                    <th>Tax</th>
+                    <th>Comment</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>300120</td>
+                    <td>T-shirt</td>
+                    <td>3</td>
+                    <td>5.00</td>
+                    <td>15.00</td>
+                    <td><i data-toggle="modal" data-target="#modal_form_vertical">Dispatched</i></td>
+                    <td>5.00</td>
+                    <td  data-toggle="modal" data-target="#comment">Comment(1)</td>
+                  </tr>
+                   <tr>
+                    <td>300123</td>
+                    <td>T-shirt</td>
+                    <td>3</td>
+                    <td>5.00</td>
+                    <td>15.00</td>
+                    <td><i data-toggle="modal" data-target="#modal_form_vertical">Dispatched</i></td>
+                    <td>5.00</td>
+                    <td  data-toggle="modal" data-target="#comment"><b style="color:red">Comment(1)</b></td>
+                  </tr>
+               
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  <!-- ****** Order Details ******* -->
 <!-- ***************************** Universal In System *********************************** -->
 
 <!-- **************************************** Users Page *********************************** -->
@@ -537,8 +592,7 @@
         </div>
         <div class="modal-body">
          <div class="row" style="padding:2px;">
-                <div class="col-sm-6 content-group">
-                </div>
+          <div class="col-sm-6 content-group"></div>
                 <div class="col-sm-6 content-group">
                   <div class="invoice-details">
                     <h5 class="text-uppercase text-semibold">BG"s Laundry</h5>

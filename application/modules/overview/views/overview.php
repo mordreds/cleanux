@@ -1,10 +1,8 @@
  <!-- Content area -->
   <div class="content">
     <?php //print "<pre>"; print_r(@$_SESSION['laundry']); print "</pre>";?>
-    <!-- Main charts -->
     <div class="row">
       <div class="col-md-12">
-        <!-- Individual column searching (text inputs) -->
           <div class="panel panel-flat">
             <div class="col-md-12">
               <div class="col-md-8">
@@ -14,7 +12,7 @@
                       <ul class="nav nav-tabs nav-tabs-bottom" id="overview_tabs">
                         <li class="active"><a href="#client_info" data-toggle="tab" class="legitRipple">Client Info <i class="icon-user position-right"></i></a></li>
                         <li><a href="#neworder" data-toggle="tab" class="legitRipple">New Order <i class="icon-user position-right"></i></a></li>
-                        <li><a href="#right-icon-tab3" data-toggle="tab" class="legitRipple">Billing Info <i class="icon-cash3 position-left text-slate"></i></a></li>
+                        <li><a href="#billing_info" data-toggle="tab" class="legitRipple">Billing Info <i class="icon-cash3 position-left text-slate"></i></a></li>
                       </ul>
                       <div class="tab-content">
                         <div class="tab-pane active" id="client_info">
@@ -173,7 +171,7 @@
                             </div>
                           </form>
                         </div>
-                        <div class="tab-pane" id="right-icon-tab3">
+                        <div class="tab-pane" id="billing_info">
                           <div class="row">
                             <div class="col-md-6">
                               <div class="form-group">
@@ -211,11 +209,12 @@
                                 <input type="text" id="search_text" value="<?=@$new_client_number?>" placeholder="Order Number or Phone Number :" class="form-control">
                               </div>
                               <button type="button" class="btn btn-primary" id="search_submit">Search  <i class="icon-search4 position-right"></i></button>
+                              <button type="button" class="btn btn-danger clear_cart">Clear Record <i class="icon-x position-right"></i></button>
                             </div>
                           </div>
                         </div>
                         <div class="tab-pane" id="Remarks" style="margin-top:-33px;">
-                          <table id="todays_order" class="table table-xxs">
+                          <table id="todays_order" class="table table-xs">
                             <thead>
                               <tr style="background-color:#009688;color:#ffffff"> 
                                 <th>Order No #</th>
@@ -238,17 +237,6 @@
                 </div>
               </div>
             </div>
-        <!--    <div class="col-md-4">
-
-              <div class="panel panel-flat">
-                <div class="panel-body">
-                  <div class="form-group">
-                    <input type="text" id="search_text" value="<?=@$new_client_number?>" placeholder="Order Number or Phone Number :" class="form-control">
-                  </div>
-                  <button type="button" class="btn btn-primary" id="search_submit">Search  <i class="icon-search4 position-right"></i></button>
-                </div>
-              </div>
-            </div>-->
           </div>
           <div class="col-md-12" id="pending_order_table_display" style="display:none">
             <div class="panel panel-flat">
@@ -258,154 +246,21 @@
                     <tr style="background-color:#009688;color:#ffffff">
                       <th>Order #</th>
                       <th>Total Cost</th>
-                      <th>Date Created</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  </tbody>
-                </table>
-                <table class="table table-xxs">
-                  <thead>
-                    <tr style="background-color:#009688;color:#ffffff">
-                      <th>Order #</th>
-                      <th>Description</th>
-                      <th>Quantity</th>
-                      <th>unit price</th>
-                      <th>Total price</th>
                       <th>Status</th>
-                      <th>Tax</th>
-                      <th>Comment</th>
+                      <th>Date</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>300120</td>
-                      <td>T-shirt</td>
-                      <td>3</td>
-                      <td>5.00</td>
-                      <td>15.00</td>
-                      <td><i data-toggle="modal" data-target="#modal_form_vertical">Dispatched</i></td>
-                      <td>5.00</td>
-                      <td  data-toggle="modal" data-target="#comment">Comment(1)</td>
-                    </tr>
-                     <tr>
-                      <td>300123</td>
-                      <td>T-shirt</td>
-                      <td>3</td>
-                      <td>5.00</td>
-                      <td>15.00</td>
-                      <td><i data-toggle="modal" data-target="#modal_form_vertical">Dispatched</i></td>
-                      <td>5.00</td>
-                      <td  data-toggle="modal" data-target="#comment"><b style="color:red">Comment(1)</b></td>
-                    </tr>
-                 
                   </tbody>
                 </table>
               </div>
             </div>
-            </div>
           </div>
+      </div>
     </div>
   </div>
   <!-- /main charts -->
 
-  <!-- All Users Data Table Ajax -->
-  <script type="text/javascript">
-    var user_status = "default";
-    $('#allusers').dataTable({
-        ajax: '<?= base_url()?>administration/retrieve_allusers',
-        columns: [
-          {data: "firstname"},
-          {data: "lastname"},
-          {data: "email"},
-          {data: "group_name"},
-          {data: "status", render: function(data,type,row,meta) { 
-            if(row.status == "active") {
-              label_class = "label-success";
-              user_status = row.status;
-            }
-            else if(row.status == "inactive"){
-              label_class = "label-danger";
-              user_status = row.status;
-            }
-
-            return '<span class="label '+label_class+'">'+row.status+'</span>'}
-          },
-          {data: "id", render: function(data,type,row,meta) { 
-            if(user_status == "active") {
-              button = '<ul class="icons-list"><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a><ul class="dropdown-menu dropdown-menu-right"><li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li><li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li><li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li></ul></li></ul>';
-            } 
-            else if(user_status == "inactive") {
-              button = "<button type='submit' name='activate_user' class='btn btn-success btn-xs'><i class='fa fa-unlock'></i> Activate</button>";
-            }
-            return button; }
-          },
-        ],
-    });
- // Alert dialog
-
-  </script>
-  <!-- All Users Data Table Ajax -->
-
-<!-- Vertical form modal -->
-          <div id="modal_form_vertical" class="modal fade">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  
-                </div>
-
-                <form action="#">
-                  <div class="modal-body">
-                    <table id="alluser" class="table ">
-              <thead>
-                <tr class="bg-teal-400">
-                  <th >Status</th>
-                  <th >Last Name</th>
-                  
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Check-In</td>
-                  <td>Bismark</td>
-                  
-                    </tr>
-                    <tr>
-                  <td>Finance verified</td>
-                  <td>Bismark</td>
-                  
-                    </tr>
-                    <tr>
-                  <td>Washing & Drying</td>
-                  <td>Bismark</td>
-                  
-                    </tr>
-                    <tr>
-                  <td>Pressing & Folding</td>
-                  <td>Bismark</td>
-                  
-                    </tr>
-                    <tr>
-                  <td>Dispatched</td>
-                  <td>Bismark</td>
-                  
-                    </tr>
-              </tbody>
-              
-            </table>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                  
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-  <!-- Vertical form modal -->
           <div id="comment" class="modal fade">
             <div class="modal-dialog">
               <div class="modal-content">

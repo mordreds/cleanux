@@ -67,7 +67,7 @@
         cart_buttons_switch();
       });
 
-      $('#clear_cart').click(function(){
+      $('.clear_cart').click(function(){
         let formurl = "<?=base_url()?>overview/clear_cart";
         let formData = {'data': "clear chart"};
         ajax_post(formurl,formData,tableid="laundry_cart");
