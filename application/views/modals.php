@@ -136,7 +136,71 @@
       });
     </script>
   <!-- ****** Delivery Method Modal ******* -->
-
+  <!-- ****** Order Details  ******* -->
+    <div id="order_history" class="modal fade">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header ">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <form action="<?=base_url()?>overview/save_order" method="post">
+            <div class="modal-body" style>
+              <table id="alluser" class="table ">
+              <thead>
+                <tr class="bg-teal-400">
+                  <th >Select</th>
+                  <th >Description</th>
+                  <th > Service</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                  <div class="checkbox">
+                  <input type="checkbox" name="single_basic_checkbox" required="required">
+                  </div>
+                  </td>
+                  <td>T-shirt</td>
+                   <td>Washing</td>
+                    </tr>
+                    <tr>
+                  <td>
+                  <div class="checkbox">
+                  <input type="checkbox" name="single_basic_checkbox" required="required">
+                  </div>
+                  </td>
+                  <td>T-shirt</td>
+                   <td>Washing</td>
+                    </tr>
+                    <tr>
+                  <td>
+                  <div class="checkbox">
+                  <input type="checkbox" name="single_basic_checkbox" required="required">
+                  </div>
+                  </td>
+                  <td>Blue Shirt</td>
+                   <td>Washing</td>
+                    </tr>
+                    <tr>
+                  <td>
+                  <div class="checkbox">
+                  <input type="checkbox" name="single_basic_checkbox" required="required">
+                  </div>
+                  </td>
+                  <td>white long sleeves</td>
+                   <td>Ironing</td>
+                    </tr>
+              </tbody>
+              
+            </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   <!-- ****** Order Details  ******* -->
     <div id="modal_form_vertical" class="modal fade">
       <div class="modal-dialog modal-lg">
@@ -190,6 +254,38 @@
         </div>
       </div>
     </div>
+    <!-- ****** Order Details  ******* -->
+    <div id="Payment" class="modal fade">
+      <div class="modal-dialog ">
+        <div class="modal-content">
+          <div class="modal-header ">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <form action="<?=base_url()?>overview/save_order" method="post">
+            <div class="modal-body" style>
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label>Amount Payable</label>
+                    <input type="text" placeholder="150.00" class="form-control" readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form-group">
+                        <label>Amount Paying</label>
+                        <input type="text" placeholder="State/Province:" class="form-control">
+                     </div>
+                  </div>
+            </div>
+            <div class="modal-footer">
+                 <button type="submit" class="btn btn-warning pull-left">Proceed On Credit</button>
+                    <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit form</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
   <!-- ****** Order Details ******* -->
 <!-- ***************************** Universal In System *********************************** -->
 
