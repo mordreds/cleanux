@@ -86,7 +86,7 @@
                   },
                   columns: [
                     {data: "order_number",render: function(data,type,row,meta) { 
-                      return "<a href='#' data-toggle='modal' data-target='#modal_form_vertical'>"+row.order_number+"</a>"; 
+                      return "<a href='#' data-toggle='modal' data-target='#order_history'>"+row.order_number+"</a>"; 
                     }},
                     {data: "total_cost"},
                     {render: function(data,type,row,meta) { 

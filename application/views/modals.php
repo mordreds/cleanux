@@ -136,6 +136,7 @@
       });
     </script>
   <!-- ****** Delivery Method Modal ******* -->
+
   <!-- ****** Order Details  ******* -->
     <div id="order_history" class="modal fade">
       <div class="modal-dialog modal-lg">
@@ -148,51 +149,18 @@
               <table id="alluser" class="table ">
               <thead>
                 <tr class="bg-teal-400">
-                  <th >Select</th>
-                  <th >Description</th>
-                  <th > Service</th>
-                  
+                  <th>Description</th>
+                  <th> Quantity </th>
+                  <th> Service</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>
-                  <div class="checkbox">
-                  <input type="checkbox" name="single_basic_checkbox" required="required">
-                  </div>
-                  </td>
                   <td>T-shirt</td>
-                   <td>Washing</td>
-                    </tr>
-                    <tr>
-                  <td>
-                  <div class="checkbox">
-                  <input type="checkbox" name="single_basic_checkbox" required="required">
-                  </div>
-                  </td>
-                  <td>T-shirt</td>
-                   <td>Washing</td>
-                    </tr>
-                    <tr>
-                  <td>
-                  <div class="checkbox">
-                  <input type="checkbox" name="single_basic_checkbox" required="required">
-                  </div>
-                  </td>
-                  <td>Blue Shirt</td>
-                   <td>Washing</td>
-                    </tr>
-                    <tr>
-                  <td>
-                  <div class="checkbox">
-                  <input type="checkbox" name="single_basic_checkbox" required="required">
-                  </div>
-                  </td>
-                  <td>white long sleeves</td>
-                   <td>Ironing</td>
-                    </tr>
+                  <td>7</td>
+                  <td>Washing</td>
+                </tr>
               </tbody>
-              
             </table>
             </div>
             <div class="modal-footer">
@@ -202,6 +170,7 @@
       </div>
     </div>
   <!-- ****** Order Details  ******* -->
+
     <div id="modal_form_vertical" class="modal fade">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
