@@ -64,6 +64,9 @@
               $('[name="secondary_tel"]').attr('readonly',"readonly");
               $('[name="email"]').val(response[0].email);
               $('[name="email"]').attr('readonly',"readonly");
+              $('[name="gender_alt"]').val(response[0].gender);
+              $('[name="gender_alt"]').attr('style',"display:block");
+              $('[name="gender"]').attr('style',"display:none");
 
               $('#pending_order_table').DataTable().destroy();
 
@@ -86,7 +89,7 @@
                   },
                   columns: [
                     {data: "order_number",render: function(data,type,row,meta) { 
-                      return "<a href='#' data-toggle='modal' data-target='#order_history'>"+row.order_number+"</a>"; 
+                      return "<a href='#' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
                     }},
                     {data: "total_cost"},
                     {render: function(data,type,row,meta) { 
@@ -121,7 +124,7 @@
                   },
                   columns: [
                     {data: "order_number",render: function(data,type,row,meta) { 
-                      return "<a href='#' data-toggle='modal' data-target='#order_history'>"+row.order_number+"</a>"; 
+                      return "<a href='#' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
                     }},
                     {data: "total_cost"},
                     {render: function(data,type,row,meta) { 
@@ -407,6 +410,25 @@
       }
     });
   /********** Displaying Services ******/
+
+  /********** View Order Details ******/
+  $('#pending_order_table').on('click','.view_order_details',function(){
+    order_id = $(this).data('order_no');
+    $.ajax({
+      type : 'GET',
+      url : "<?= base_url()?>overview/search_order_details_by_orderno/"+order_id,
+      dataSrc: '',
+      success: function(response){ 
+        alert(response.order_number)
+      },
+      error: function() {
+        $.jGrowl("Retrieving Pending Orders Failed", {
+          theme: 'alert-styled-left bg-danger'
+        });
+      }
+    });
+  });
+  /********** View Order Details ******/
 
   $(document).ready(function(){
     /********** Todays Order ************/

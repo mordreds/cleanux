@@ -422,6 +422,44 @@ class Overview extends MX_Controller
     }
 
     /*******************************
+      Search Order Details By Order No
+    *******************************/  
+    public function search_order_details_by_orderno($order_id) {
+      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+        $return_data = ['error' => "Permission Denied. Contact Amin"];
+        print_r(json_encode($return_data));
+      }
+      else {
+        # loading model 
+        $this->load->model('globals/model_retrieval');
+        # data definition 
+        $dbres = self::$_Default_DB;
+        $tablename = "laundry_order_details";
+        $where_condition = array('order_id' => $order_id);
+        $query_result = $this->model_retrieval->all_info_return_row($dbres,$tablename,$where_condition,$return_dataType="php_object");
+
+        if($query_result) {
+          //print_r($query_result); print "<br/><br/>";
+          $pricelists = explode('|',$query_result->pricelist_ids);
+          if($pricelists) {
+            $dbres = self::$_Default_DB;
+            $tablename = "vw_laundry_prices";
+            $where_condition = array('id' => $order_id);
+            $pricelist_query_result = $this->model_retrieval->all_info_return_row($dbres,$tablename,$where_condition,$return_dataType="php_object");
+            
+            print_r($pricelist_query_result); print "<br/>";
+          }
+          //print_r($pricelist_query_result); print "<br/><br/>";
+          $return_data = array($query_result);
+        }
+        else
+          $return_data = array();
+
+        print_r(json_encode($return_data));
+      }
+    }
+
+    /*******************************
       Search Order By Telephone No
     *******************************/  
     public function search_order_by_telno($phone_number) {
@@ -436,16 +474,15 @@ class Overview extends MX_Controller
         $dbres = self::$_Default_DB;
         $tablename = "vw_orderlist_summary";
         $where_condition = array('status' => "Pending", 'client_phone_no_1' => $phone_number);
-
         $query_result = $this->model_retrieval->all_info_return_result($dbres,$tablename,$where_condition,$return_dataType="php_object");
 
         if($query_result) {
-          $return_data = $query_result;
+          
         }
         else
           $return_data = array();
 
-        print_r(json_encode($return_data));
+        
       }
     }
   /**************** Retrievals  ********************/

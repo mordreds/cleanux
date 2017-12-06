@@ -32,6 +32,7 @@
                               </div>
                               <div class="col-md-4 col-sm-4">
                                 <div class="form-group">
+                                  <input type="text" style="display:none" name="gender_alt" class="form-control" readonly >
                                   <select class="form-control selectbox" name="gender" data-defaultText="Gender" required>
                                     <option value="">Select One</option>
                                     <option value="Male">Male</option>
