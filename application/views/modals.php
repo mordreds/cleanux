@@ -138,7 +138,7 @@
   <!-- ****** Delivery Method Modal ******* -->
 
   <!-- ****** Order Details  ******* -->
-    <div id="order_history" class="modal fade">
+    <div id="order_details" class="modal fade">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header ">
@@ -146,12 +146,12 @@
           </div>
           <form action="<?=base_url()?>overview/save_order" method="post">
             <div class="modal-body" style>
-              <table id="alluser" class="table ">
+              <table id="view_order_details_tbl" class="table table-xs">
               <thead>
                 <tr class="bg-teal-400">
+                  <th>Service</th>
                   <th>Description</th>
-                  <th> Quantity </th>
-                  <th> Service</th>
+                  <th>Quantity</th>
                 </tr>
               </thead>
               <tbody>

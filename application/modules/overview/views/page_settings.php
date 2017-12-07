@@ -69,7 +69,6 @@
               $('[name="gender"]').attr('style',"display:none");
 
               $('#pending_order_table').DataTable().destroy();
-
               if(search_text.length >= 10) {
                 $('#pending_order_table').DataTable({
                   searching: false,
@@ -106,6 +105,7 @@
                 $('#pending_order_table_display').attr('style',"display:block")
               }
               else { 
+                $('#pending_order_table').DataTable().destroy();
                 $('#pending_order_table').DataTable({
                   searching: false,
                   paging: false,
@@ -413,20 +413,31 @@
 
   /********** View Order Details ******/
   $('#pending_order_table').on('click','.view_order_details',function(){
-    order_id = $(this).data('order_no');
-    $.ajax({
-      type : 'GET',
-      url : "<?= base_url()?>overview/search_order_details_by_orderno/"+order_id,
-      dataSrc: '',
-      success: function(response){ 
-        alert(response.order_number)
+    order_id = $(this).data('order_id');
+    $('#view_order_details_tbl').DataTable().destroy();
+    $('#view_order_details_tbl').DataTable({
+      searching: false,
+      paging: false,
+      order: [],
+      autoWidth: false,
+      ajax: {
+        type : 'GET',
+        url : "<?= base_url()?>overview/search_order_details_by_orderno/"+order_id,
+        dataSrc: '',
+        //success: function(response){ alert(response.order_number)},
+        error: function() {
+          $.jGrowl("View Order Details Failed", {
+            theme: 'alert-styled-left bg-danger'
+          });
+        }
       },
-      error: function() {
-        $.jGrowl("Retrieving Pending Orders Failed", {
-          theme: 'alert-styled-left bg-danger'
-        });
-      }
+      columns: [
+        {data: "service_name"},
+        {data: "description"},
+        {data: "quantity"},
+      ],
     });
+    $('#order_details').modal('show');
   });
   /********** View Order Details ******/
 

@@ -439,22 +439,42 @@ class Overview extends MX_Controller
         $query_result = $this->model_retrieval->all_info_return_row($dbres,$tablename,$where_condition,$return_dataType="php_object");
 
         if($query_result) {
-          //print_r($query_result); print "<br/><br/>";
+          $return_data_array = array();
+
           $pricelists = explode('|',$query_result->pricelist_ids);
+          $quantities = explode('|',$query_result->quantities);
+          $descriptions = explode('|',$query_result->description);
+
           if($pricelists) {
-            $dbres = self::$_Default_DB;
-            $tablename = "vw_laundry_prices";
-            $where_condition = array('id' => $order_id);
-            $pricelist_query_result = $this->model_retrieval->all_info_return_row($dbres,$tablename,$where_condition,$return_dataType="php_object");
+            for ($a=0; $a < sizeof($pricelists) ; $a++) { 
+              /***** Return Data Array ******/
+              $dbres = self::$_Default_DB;
+              $tablename = "vw_laundry_prices";
+              $where_condition = array('id' => $pricelists[$a]);
+              $pricelist_query_result = $this->model_retrieval->all_info_return_row($dbres,$tablename,$where_condition,$return_dataType="php_object");
+
+              if($pricelists[$a] == 1)
+                $description = $descriptions[$a];
+              else
+                $description = $pricelist_query_result->garment_name;
+
+              $return_data_array[] = [
+                'service_name' => $pricelist_query_result->service_name,
+                'description' => $description,
+                'quantity' => $quantities[$a],
+              ]; 
+              /***** Return Data Array ******/
+            }
             
-            print_r($pricelist_query_result); print "<br/>";
+            if(isset($return_data_array))
+              $return_data = $return_data_array;
+            else
+              $return_data = array();
           }
-          //print_r($pricelist_query_result); print "<br/><br/>";
-          $return_data = array($query_result);
         }
         else
           $return_data = array();
-
+        
         print_r(json_encode($return_data));
       }
     }
@@ -477,12 +497,12 @@ class Overview extends MX_Controller
         $query_result = $this->model_retrieval->all_info_return_result($dbres,$tablename,$where_condition,$return_dataType="php_object");
 
         if($query_result) {
-          
+          $return_data = $query_result;
         }
         else
           $return_data = array();
 
-        
+        print_r(json_encode($return_data));
       }
     }
   /**************** Retrievals  ********************/
