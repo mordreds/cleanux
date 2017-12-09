@@ -49,25 +49,28 @@
             response = JSON.parse(response)
 
             if(response[0]) {  
-              $('[name="id"]').val(response[0].id);
-              $('[name="fullname"]').val(response[0].fullname);
-              $('[name="fullname"]').attr('readonly',"readonly");
-              $('[name="company_name"]').val(response[0].company);
-              $('[name="company_name"]').attr('readonly',"readonly");
-              $('[name="residence_addr"]').val(response[0].residence_address);
-              $('[name="residence_addr"]').attr('readonly',"readonly");
-              $('[name="postal_addr"]').val(response[0].postal_address);
-              $('[name="postal_addr"]').attr('readonly',"readonly");
-              $('[name="primary_tel"]').val(response[0].phone_number_1);
-              $('[name="primary_tel"]').attr('readonly',"readonly");
-              $('[name="secondary_tel"]').val(response[0].phone_number_2);
-              $('[name="secondary_tel"]').attr('readonly',"readonly");
-              $('[name="email"]').val(response[0].email);
-              $('[name="email"]').attr('readonly',"readonly");
-              $('[name="gender_alt"]').val(response[0].gender);
-              $('[name="gender_alt"]').attr('style',"display:block");
-              $('[name="gender"]').attr('style',"display:none");
+              /****** Client Info ***********/
+                $('[name="id"]').val(response[0].id);
+                $('[name="fullname"]').val(response[0].fullname);
+                $('[name="fullname"]').attr('readonly',"readonly");
+                $('[name="company_name"]').val(response[0].company);
+                $('[name="company_name"]').attr('readonly',"readonly");
+                $('[name="residence_addr"]').val(response[0].residence_address);
+                $('[name="residence_addr"]').attr('readonly',"readonly");
+                $('[name="postal_addr"]').val(response[0].postal_address);
+                $('[name="postal_addr"]').attr('readonly',"readonly");
+                $('[name="primary_tel"]').val(response[0].phone_number_1);
+                $('[name="primary_tel"]').attr('readonly',"readonly");
+                $('[name="secondary_tel"]').val(response[0].phone_number_2);
+                $('[name="secondary_tel"]').attr('readonly',"readonly");
+                $('[name="email"]').val(response[0].email);
+                $('[name="email"]').attr('readonly',"readonly");
+                $('[name="gender_alt"]').val(response[0].gender);
+                $('[name="gender_alt"]').attr('style',"display:block");
+                $('[name="gender"]').attr('style',"display:none");
+              /****** Client Info ***********/
 
+              /****** Pending Order Table ***********/
               $('#pending_order_table').DataTable().destroy();
               if(search_text.length >= 10) {
                 $('#pending_order_table').DataTable({
@@ -79,7 +82,6 @@
                     type : 'GET',
                     url : "<?= base_url()?>overview/search_order_by_telno/"+search_text,
                     dataSrc: '',
-                    //success: function(response){ alert(response.order_number)},
                     error: function() {
                       $.jGrowl("Retrieving Pending Orders Failed", {
                         theme: 'alert-styled-left bg-danger'
@@ -91,6 +93,9 @@
                       return "<a href='#' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
                     }},
                     {data: "total_cost"},
+                    {data: "amount_paid"},
+                    {data: "balance"},
+                    {data: "delivery_location"},
                     {render: function(data,type,row,meta) { 
                       if(row.processing_stage == "Pending")
                         label_color = "label-default";
@@ -99,6 +104,9 @@
                       return "<span class='label "+label_color+"'>"+row.processing_stage+"</span>"; 
                     }},
                     {data: "date_created"},
+                    {render: function(data,type,row,meta) { 
+                      return '<ul class="action_btns"><li><button data-toggle="modal" data-target="#Payment" class="label bg-blue">Pay<i class="icon-cash3 position-right "></i></button></li><li><button data-toggle="modal" data-target="#comment" class="label bg-green-600">Comments (1)</button></li></ul>'; 
+                    }},
                   ],
                 });
 
@@ -140,9 +148,45 @@
 
                 $('#pending_order_table_display').attr('style',"display:block")
               }
-              
-              e.preventDefault();
-              $('#overview_tabs a[href="#client_info"]').tab('show'); 
+              /****** Pending Order Table ***********/
+
+              /****** Billing Info Table ***********
+              $('#billing_info_tbl').DataTable().destroy();
+              $('#billing_info_tbl').DataTable({
+                searching: false,
+                paging: false,
+                order: [],
+                autoWidth: false,
+                ajax: {
+                  type : 'GET',
+                  url : "<?= base_url()?>overview/view_billing_info/"+search_text,
+                  dataSrc: '',
+                  //success: function(response){ alert(response.order_number)},
+                  error: function() {
+                    $.jGrowl("Retrieving Pending Orders Failed", {
+                      theme: 'alert-styled-left bg-danger'
+                    });
+                  }
+                },
+                columns: [
+                  {data: "order_number",render: function(data,type,row,meta) { 
+                    return "<a href='#' class='view_order_billing_info' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
+                  }},
+                  {data: "total_cost"},
+                  {render: function(data,type,row,meta) { 
+                    if(row.processing_stage == "Pending")
+                      label_color = "label-default";
+                    if(row.processing_stage == "Washing")
+                      label_color = "label-warning";
+                    return "<span class='label "+label_color+"'>"+row.processing_stage+"</span>"; 
+                  }},
+                  {data: "date_created"},
+                ],
+              });
+
+              $('#billing_info_tbl').attr('style',"display:block")
+              }
+              /****** Billing Info Table ***********/
             }
             else { 
               $.jGrowl("No Record Found", {
@@ -412,7 +456,7 @@
   /********** Displaying Services ******/
 
   /********** View Order Details ******/
-  $('#pending_order_table').on('click','.view_order_details',function(){
+  $(document).on('click','.view_order_details',function(){
     order_id = $(this).data('order_id');
     $('#view_order_details_tbl').DataTable().destroy();
     $('#view_order_details_tbl').DataTable({
@@ -460,14 +504,14 @@
         },
         columns: [
           {data: "order_number",render: function(data,type,row,meta) { 
-            return "<a href='#' data-toggle='modal' data-target='#modal_form_vertical'>"+row.order_number+"</a>"; 
+            return "<a href='#' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
           }},
           {data: "total_cost"},
           {data: "date_created"},
         ],
       });
 
-      $(document).on("click",".deactivate_user",function(){
+      /*$(document).on("click",".deactivate_user",function(){
         let formData = { 
           'user_id': $(this).data('dataid'),
           'email': $(this).data('email'),
@@ -479,7 +523,6 @@
           data : formData,
           success: function(response) {
             $.jGrowl('User Deactivation Successful', {
-                /*header: 'Process Successful',*/
               theme: 'alert-styled-left bg-success'
             });
             $('#inactive_acct_tbl').DataTable().ajax.reload();
@@ -515,7 +558,7 @@
             });
           }
         });
-      });
+      });*/
     /********** Todays Order ************/
   });
 </script>

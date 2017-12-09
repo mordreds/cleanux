@@ -171,59 +171,7 @@
     </div>
   <!-- ****** Order Details  ******* -->
 
-    <div id="modal_form_vertical" class="modal fade">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header ">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <form action="<?=base_url()?>overview/save_order" method="post">
-            <div class="modal-body" style>
-              <table class="table table-xs">
-                <thead>
-                  <tr style="background-color:#009688;color:#ffffff">
-                    <th>Order #</th>
-                    <th>Description</th>
-                    <th>Quantity</th>
-                    <th>unit price</th>
-                    <th>Total price</th>
-                    <th>Status</th>
-                    <th>Tax</th>
-                    <th>Comment</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>300120</td>
-                    <td>T-shirt</td>
-                    <td>3</td>
-                    <td>5.00</td>
-                    <td>15.00</td>
-                    <td><i data-toggle="modal" data-target="#modal_form_vertical">Dispatched</i></td>
-                    <td>5.00</td>
-                    <td  data-toggle="modal" data-target="#comment">Comment(1)</td>
-                  </tr>
-                   <tr>
-                    <td>300123</td>
-                    <td>T-shirt</td>
-                    <td>3</td>
-                    <td>5.00</td>
-                    <td>15.00</td>
-                    <td><i data-toggle="modal" data-target="#modal_form_vertical">Dispatched</i></td>
-                    <td>5.00</td>
-                    <td  data-toggle="modal" data-target="#comment"><b style="color:red">Comment(1)</b></td>
-                  </tr>
-               
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <!-- ****** Order Details  ******* -->
+  <!-- ****** Pay Balance  ******* -->
     <div id="Payment" class="modal fade">
       <div class="modal-dialog ">
         <div class="modal-content">
@@ -234,28 +182,56 @@
             <div class="modal-body" style>
               <div class="col-md-6">
                 <div class="form-group">
-                    <label>Amount Payable</label>
-                    <input type="text" placeholder="150.00" class="form-control" readonly>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                     <div class="form-group">
-                        <label>Amount Paying</label>
-                        <input type="text" placeholder="State/Province:" class="form-control">
-                     </div>
-                  </div>
+                  <label>Amount Payable</label>
+                  <input type="text" placeholder="0.00" class="form-control" readonly>
+                </div>
+              </div>
+              <div class="col-md-6">
+                 <div class="form-group">
+                    <label>Amount Paying</label>
+                    <input type="text" placeholder="State/Province:" class="form-control">
+                 </div>
+              </div>
             </div>
             <div class="modal-footer">
-                 <button type="submit" class="btn btn-warning pull-left">Proceed On Credit</button>
-                    <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit form</button>
+              <button type="submit" class="btn btn-warning pull-left">Proceed On Credit</button>
+              <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Submit form</button>
             </div>
           </form>
         </div>
       </div>
     </div>
+  <!-- ****** Pay Balance ******* -->
 
-  <!-- ****** Order Details ******* -->
+  <!-- ****** Comments  ******* -->
+    <div id="comment" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h5 class="modal-title">Comment</h5>
+          </div>
+
+          <form action="#">
+            <div class="panel panel-flat">
+          <div class="panel-body">
+            <div class="form-group">
+                  <textarea rows="6" cols="5" class="form-control" placeholder="Enter your message here"></textarea>
+                </div>
+                </div>
+        </div>
+
+            <div class="modal-footer">
+           
+              <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Submit form</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  <!-- ****** Comments  ******* -->
 <!-- ***************************** Universal In System *********************************** -->
 
 <!-- **************************************** Users Page *********************************** -->
@@ -633,22 +609,7 @@
   <?php endif; ?>
 <!-- ***************************** New Registration Page *********************************** -->
 
-
-
 <!-- *********** check out ********* -->
-  <script type="text/javascript">
-    $('.table').on('click','.edit_service', function(){
-      $('#service_displayname').val($(this).data('name'));
-      $('#service_description').val($(this).data('desc'));
-      $('#edit_service_submit').attr('data-id',$(this).data('id'));
-      $('#edit_service_submit').attr('data-service_name',$(this).data('name'));
-      $('#edit_service_submit').attr('data-service_desc',$(this).data('desc'));
-      $('#edit_service_submit').attr('data-tableid',$(this).data('tableid'));
-      $('#edit_service_submit').attr('data-formurl',"<?=base_url()?>settings/save_services");
-      $('#edit_service').modal('show');
-    });
-  </script>
-
   <div id="checkout" class="modal fade">
     <div class="modal-dialog" style="width:350px;">
       <div class="modal-content">
@@ -749,20 +710,4 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript">
-    $(document).on("click","#edit_service_submit",function(){
-      let formurl = $(this).data('formurl');
-      let tableid = $(this).data('tableid');
-      let formData = { 
-        'id': $(this).data('id'),
-        'service_name': $('#service_displayname').val(),
-        'service_desc': $('#service_description').val(),
-      };
-      ajax_post(formurl,formData,tableid);
-    });
-  </script>
-
-
-
-
 <?php endif; ?>

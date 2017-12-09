@@ -412,12 +412,25 @@ class Overview extends MX_Controller
         $query_result = $this->model_retrieval->all_info_return_row($dbres,$tablename,$where_condition,$return_dataType="php_object");
 
         if($query_result) {
-          $return_data = array($query_result);
+          for ($a=0; $a < sizeof($query_result); $a++) { 
+            # code...
+            $return_data[] = [
+              'id' => $query_result[$a]->id,
+              'order_number' => $query_result[$a]->order_number,
+              'total_cost' => number_format($query_result[$a]->total_cost,2),
+              'amount_paid' => number_format($query_result[$a]->amount_paid,2),
+              'balance' => number_format($query_result[$a]->balance,2),
+              'delivery_location' => $query_result[$a]->delivery_location,
+              'processing_stage' => $query_result[$a]->processing_stage,
+              'status' => $query_result[$a]->status,
+              'date_created' => $query_result[$a]->date_created,
+            ];
+          }
         }
         else
           $return_data = array();
 
-        print_r(json_encode($return_data));
+        print_r(json_encode(array_reverse($return_data)));
       }
     }
 
@@ -493,16 +506,30 @@ class Overview extends MX_Controller
         # data definition 
         $dbres = self::$_Default_DB;
         $tablename = "vw_orderlist_summary";
-        $where_condition = array('status' => "Pending", 'client_phone_no_1' => $phone_number);
+        $where_condition = array('status' => "Pending", 'client_phone_no_1' => "$phone_number", );
         $query_result = $this->model_retrieval->all_info_return_result($dbres,$tablename,$where_condition,$return_dataType="php_object");
 
         if($query_result) {
-          $return_data = $query_result;
+          for ($a=0; $a < sizeof($query_result); $a++) { 
+            # code...
+            $return_data[] = [
+              'id' => $query_result[$a]->id,
+              'order_number' => $query_result[$a]->order_number,
+              'total_cost' => number_format($query_result[$a]->total_cost,2),
+              'amount_paid' => number_format($query_result[$a]->amount_paid,2),
+              'balance' => number_format($query_result[$a]->balance,2),
+              'delivery_location' => $query_result[$a]->delivery_location,
+              'processing_stage' => $query_result[$a]->processing_stage,
+              'status' => $query_result[$a]->status,
+              'date_created' => $query_result[$a]->date_created,
+            ];
+          }
+          //$return_data = array_reverse($query_result);
         }
         else
           $return_data = array();
 
-        print_r(json_encode($return_data));
+        print_r(json_encode(array_reverse($return_data)));
       }
     }
   /**************** Retrievals  ********************/

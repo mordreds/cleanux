@@ -174,7 +174,7 @@
                         </div>
                         <div class="tab-pane" id="billing_info">
                           <div class="row">
-                            <table id="" class="table table-xxs">
+                            <table id="billing_info_tbl" class="table table-xxs">
                             <thead>
                               <tr style="background-color: #009688;color:white;" > 
                                 <th>Order No #</th>
@@ -225,7 +225,7 @@
                                 <input type="text" id="search_text" value="<?=@$new_client_number?>" placeholder="Order Number or Phone Number :" class="form-control">
                               </div>
                               <button type="button" class="btn btn-primary" id="search_submit">Search  <i class="icon-search4 position-right"></i></button>
-                              <button type="button" class="btn btn-danger clear_cart">Clear Record <i class="icon-x position-right"></i></button>
+                              <button type="button" class="btn btn-warning clear_cart pull-right">Clear Record <i class="icon-x position-right"></i></button>
                             </div>
                           </div>
                         </div>
@@ -262,8 +262,12 @@
                     <tr style="background-color:#009688;color:#ffffff">
                       <th>Order #</th>
                       <th>Total Cost</th>
+                      <th>Amount Paid</th>
+                      <th>Balance</th>
+                      <th>Delivery Method</th>
                       <th>Status</th>
                       <th>Date</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -275,34 +279,7 @@
       </div>
     </div>
   </div>
-  <!-- /main charts -->
-
-          <div id="comment" class="modal fade">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h5 class="modal-title">Comment</h5>
-                </div>
-
-                <form action="#">
-                  <div class="panel panel-flat">
-                <div class="panel-body">
-                  <div class="form-group">
-                        <textarea rows="6" cols="5" class="form-control" placeholder="Enter your message here"></textarea>
-                      </div>
-                      </div>
-              </div>
-
-                  <div class="modal-footer">
-                 
-                    <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit form</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>   
+  <!-- /main charts -->   
 
   <!-- Including Page Settings -->
   <?php include("page_settings.php"); ?>
