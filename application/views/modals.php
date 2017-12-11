@@ -141,8 +141,9 @@
     <div id="order_details" class="modal fade">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <div class="modal-header ">
+          <div class="modal-header bg-green-400">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h6 class="modal-title">ORDER DETAILS</h6>
           </div>
           <form action="<?=base_url()?>overview/save_order" method="post">
             <div class="modal-body" style>
@@ -174,6 +175,7 @@
   <!-- ****** Pay Balance  ******* -->
     <script type="text/javascript">
       $(document).on("click",".pay_bill",function(){
+        $('[name=order_id]').val($(this).data('order_id'));
         $('[name=pay_bill_total_bal]').val($(this).data('total_balance'));
         $('#pay_order').modal('show');
       });
@@ -185,8 +187,8 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h6 class="modal-title">Balance Payment</h6>
           </div>
-          <form action="<?=base_url()?>overview/balance_paid" method="post">
-            <input type="hidden" name="order_id"rg>
+          <form action="<?=base_url()?>overview/pay_balance" method="post">
+            <input type="hidden" name="order_id">
             <div class="modal-body">
               <div class="col-md-12">
                 <div class="form-group">
@@ -197,7 +199,7 @@
               <div class="col-md-12">
                  <div class="form-group">
                     <label class="display-block">Amount</label>
-                    <input type="number" min="0" placeholder="0.00" class="form-control">
+                    <input type="number" name="balance_paid" min="0" placeholder="0.00" class="form-control">
                  </div>
               </div>
             </div>

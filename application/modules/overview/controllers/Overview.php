@@ -248,6 +248,69 @@ class Overview extends MX_Controller
         }
       }
     }
+
+    /*******************************
+      Balance Payment
+    *******************************/
+    public function pay_balance() {
+      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+        $this->session->set_flashdata('error',"Permission Denied. Please Contact Admin");
+        redirect($_SERVER['HTTP_REFERER']);
+      }
+      else {
+        $this->form_validation->set_rules('order_id','Order','trim|required');
+        $this->form_validation->set_rules('balance_paid','Balance Paid','trim|required');
+
+        if($this->form_validation->run() === FALSE) {
+          $this->session->set_flashdata('error',"Validation Error");
+          redirect($_SERVER['HTTP_REFERER']);
+        }
+        else {
+          # Loading Model 
+          $this->load->model('globals/Model_insertion');
+          $this->load->model('globals/model_retrieval');
+
+          $balance = $this->input->post('balance_paid');
+          # Retrieving Order Balance
+          $dbres = self::$_Default_DB;
+          $tablename = "vw_orderlist_summary";
+          $return_dataType = "php_object";
+          $select = "balance";
+          $where_condition = array('id' => $this->input->post('order_id'));
+          $balance_query = $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType,$select,$where_condition);   
+          if($balance_query) {
+            if($balance_query->balance > $balance){
+              $this->session->set_flashdata('error',"Insufficient Payment Amount");
+              redirect('overview');
+            }
+            else{
+              # storing balance data
+              $dbres = self::$_Default_DB;
+              $tablename = "laundry_order_balances";
+              $order_balance_table = [
+                'order_id' => $this->input->post('order_id'),
+                'balance_paid' => $balance,
+                'user_id' => $_SESSION['user']['id'],
+                'status' => "Paid",
+              ];
+              
+              $order_balance_insert = $this->Model_insertion->datainsert($dbres,$tablename,$order_balance_table);
+
+              if($order_balance_insert)
+                $this->session->set_flashdata('success',"Balance Payment Successful");
+              else
+                $this->session->set_flashdata('error',"Balance Payment Failed");
+              
+              redirect('overview');
+            }
+          }
+          else {
+            $this->session->set_flashdata('error',"Invalid Order");
+            redirect('overview');
+          }
+        }
+      }
+    }
   /**************** Insertions ********************/
 
   /**************** Retrievals  ********************/

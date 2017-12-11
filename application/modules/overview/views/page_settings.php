@@ -107,7 +107,7 @@
                     {render: function(data,type,row,meta) { 
                       let balance = row.balance;
                       if(balance > 0)
-                        pay_button = '<li><button class="label bg-blue pay_bill" data-total_balance="'+row.balance+'"">Pay<i class="icon-cash3 position-right "></i></button></li>'; 
+                        pay_button = '<li><button class="label bg-blue pay_bill" data-total_balance="'+row.balance+'" data-order_id="'+row.id+'">Pay<i class="icon-cash3 position-right "></i></button></li>'; 
                       else
                         pay_button = "";
 
