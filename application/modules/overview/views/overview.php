@@ -174,33 +174,23 @@
                         </div>
                         <div class="tab-pane" id="billing_info">
                           <div class="row">
-                            <table id="billing_info_tbl" class="table table-xxs">
-                            <thead>
-                              <tr style="background-color: #009688;color:white;" > 
-                                <th>Order No #</th>
-                                <th>Total</th>
-                                <th>Payed</th>
-                                <th>Balance</th>
-                                <th>Action</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>300777</td>
-                                <td>50</td>
-                                <td>30</td>
-                                <td>20</td>
-                                <td><button  data-toggle="modal" data-target="#Payment" class="label bg-blue">Pay<i class="icon-cash3 position-right "></i></button></td>
-                              </tr>
-                              <tr>
-                                <td>300777</td>
-                                <td>50</td>
-                                <td>30</td>
-                                <td>20</td>
-                                <td><button data-toggle="modal" data-target="#Payment" class="label bg-blue">Pay<i class="icon-cash3 position-right "></i></button> </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                            <div class="col-md-12">
+                            <div class="col-md-2"></div>
+                             <div class="col-md-2">
+                              <label class="display-block" >Total Amount</label>
+                               <input type="text" class="form-control order_balance" name="order_balance" readonly >
+                               <label class="display-block" >Date</label>
+                               <input type="text" class="form-control order_balance" name="order_balance" readonly >
+                              </div>
+                              <div class="col-md-2">
+                              <label class="display-block" >Amount Paid</label>
+                                <input type="text" class="form-control order_balance" name="order_balance" readonly >
+                                <label class="display-block" >Date</label>
+                               <input type="text" class="form-control order_balance" name="order_balance" readonly >
+                              </div>
+                              
+                              <div class="col-md-2"></div>
+                              </div>
                           </div>
                           <button type="submit" class="btn btn-primary btn-xs legitRipple">Save <i class="icon-database position-right"></i></button>
                         </div>

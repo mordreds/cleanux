@@ -34,8 +34,8 @@
 	/*********** Rearranging Dashboard Tabs From User Permissions *********/
 ?>
 <!-- Main navbar -->
-	<div class="navbar navbar-inverse bg-teal ">
-		<div class="navbar-header">
+	<div class="navbar navbar-inverse bg-slate-800 ">
+		<div class="navbar-header bg-slate-800">
 			<a class="navbar-brand" href="<?=base_url();?>dashboard"> <?=$_SESSION['companyinfo']['name']?></a>
 			<ul class="nav navbar-nav pull-right visible-xs-block">
 				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
@@ -46,7 +46,7 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 						<i class="icon-list"></i>
-						<span class="visible-xs-inline-block position-right">Get updates</span>
+						<span class="visible-xs-inline-block position-right"></span>
 						<span class="status-mark border-orange-400"></span>
 					</a>
 					<div class="dropdown-menu dropdown-content">
@@ -135,8 +135,8 @@
 							<li class="media">
 								<div class="media-left"><img src="<?=base_url()?>resources/images/users/default.jpg" class="img-circle img-sm" alt=""></div>
 								<div class="media-body">
-									<a href="#" class="media-heading text-semibold">Jordana Ansley</a>
-									<span class="display-block text-muted text-size-small">Lead web developer</span>
+									<a href="#" class="media-heading text-semibold"></a>
+									<span class="display-block text-muted text-size-small">Lead </span>
 								</div>
 								<div class="media-right media-middle"><span class="status-mark border-success"></span></div>
 							</li>
@@ -192,14 +192,15 @@
 						<span><?=$_SESSION['user']['fullname']?></span>
 						<i class="caret"></i>
 					</a>
-
+					
 					<ul class="dropdown-menu dropdown-menu-right">
 						<li><a href="<?=base_url()?>user/profile"><i class="icon-user-plus"></i> My profile</a></li>
 						<li class="divider"></li>
 						<li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
-						<li><a href="<?=base_url()?>access/logout"><i class="icon-switch2"></i> Logout</a></li>
+						
 					</ul>
 				</li>
+				<li><a href="<?=base_url()?>access/logout"><i class="icon-switch2"></i> Logout</a></li>
 			</ul>
 		</div>
 	</div>

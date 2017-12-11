@@ -55,7 +55,7 @@ class Access extends MX_Controller
         redirect('dashboard');
       else
       {
-        $title['title'] = "Login - ProjectName"; 
+        $title['title'] = "lOMS - Login"; 
         $this->load->view('login_header',$title); 
         $this->load->view('login'); 
         $this->load->view('login_footer'); 

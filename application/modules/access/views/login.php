@@ -1,4 +1,4 @@
-<body class="login-container bg-slate-800"  style="background-image:url(<?=base_url()?>resources/images/1.jpg);">
+<body class="login-container bg-slate-800"  ">
   <!-- Page container -->
   <div class="page-container">
     <!-- Page content -->
@@ -9,9 +9,9 @@
         <div class="content">
           <!-- Advanced login -->
           <form action="<?=base_url()?>access/login_validation" method="post">
-            <div class="panel panel-body login-form">
+            <div class="panel panel-body login-form" style="background-color:#667d88;color: #fff ">
               <div class="text-center">
-                <div class="icon-object border-warning-400 text-warning-400"><i class="icon-people"></i></div>
+                <div class="icon-object border-warning-400 text-warning-400"><i class="icon-basket"></i></div>
                 <h5 class="content-group-lg">Login to your account
                   <?php 
                     if($this->session->flashdata('error'))
@@ -44,7 +44,7 @@
                     </label>
                   </div>
                   <div class="col-sm-6 text-right">
-                    <a href="<?=base_url()?>access/password_reset">Forgot password?</a>
+                    <a href="<?=base_url()?>access/password_reset" style="color: white">Forgot password?</a>
                   </div>
                 </div>
               </div>
@@ -61,7 +61,7 @@
 
               <!-- <div class="content-divider text-muted form-group"><span>Don't have an account?</span></div>
               <a href="login_registration.html" class="btn bg-slate btn-block content-group">Register</a> -->
-              <span class="help-block text-center no-margin">By continuing, you're confirming that you've read our <a href="#">Terms &amp; Conditions</a> and <a href="#">Cookie Policy</a></span> 
+              <span class="help-block text-center no-margin" style="color: white">By continuing, you're confirming that you've read our <a href="#" style="color: red">Terms &amp; Conditions</a> and <a href="#" style="color: red">Cookie Policy</a></span> 
             </div>
           </form>
           <!-- /advanced login -->
