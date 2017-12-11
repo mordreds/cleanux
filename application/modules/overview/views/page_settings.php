@@ -105,7 +105,13 @@
                     }},
                     {data: "date_created"},
                     {render: function(data,type,row,meta) { 
-                      return '<ul class="action_btns"><li><button data-toggle="modal" data-target="#Payment" class="label bg-blue">Pay<i class="icon-cash3 position-right "></i></button></li><li><button data-toggle="modal" data-target="#comment" class="label bg-green-600">Comments (1)</button></li></ul>'; 
+                      let balance = row.balance;
+                      if(balance > 0)
+                        pay_button = '<li><button class="label bg-blue pay_bill" data-total_balance="'+row.balance+'"">Pay<i class="icon-cash3 position-right "></i></button></li>'; 
+                      else
+                        pay_button = "";
+
+                      return '<ul class="action_btns"><li><button data-toggle="modal" data-target="#comment" class="label bg-green-600">Comments (1)</button></li>'+pay_button+'</ul>'; 
                     }},
                   ],
                 });

@@ -23,7 +23,7 @@
           </div>
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
+            <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button> 
             <button type="button" class="btn btn-danger delete_confirmed_" data-dismiss="modal">Delete</button>
           </div>
         </div>
@@ -51,7 +51,7 @@
       });
     </script>
     <div id="delete_modal" class="modal fade">
-      <div class="modal-dialog">
+      <div class="modal-dialog" style="width: 500px">
         <div class="modal-content">
           <div class="modal-header bg-danger">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -63,7 +63,7 @@
           </div>
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
+            <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-danger delete_confirmed" data-dismiss="modal">Delete</button>
           </div>
         </div>
@@ -172,31 +172,38 @@
   <!-- ****** Order Details  ******* -->
 
   <!-- ****** Pay Balance  ******* -->
-    <div id="Payment" class="modal fade">
-      <div class="modal-dialog ">
+    <script type="text/javascript">
+      $(document).on("click",".pay_bill",function(){
+        $('[name=pay_bill_total_bal]').val($(this).data('total_balance'));
+        $('#pay_order').modal('show');
+      });
+    </script>
+    <div id="pay_order" class="modal fade">
+      <div class="modal-dialog" style="width:400px">
         <div class="modal-content">
-          <div class="modal-header ">
+          <div class="modal-header bg-teal-400">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h6 class="modal-title">Balance Payment</h6>
           </div>
-          <form action="<?=base_url()?>overview/save_order" method="post">
-            <div class="modal-body" style>
-              <div class="col-md-6">
+          <form action="<?=base_url()?>overview/balance_paid" method="post">
+            <input type="hidden" name="order_id"rg>
+            <div class="modal-body">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label>Amount Payable</label>
-                  <input type="text" placeholder="0.00" class="form-control" readonly>
+                  <label class="display-block">Balance</label>
+                  <input type="text" placeholder="0.00" class="form-control" name="pay_bill_total_bal" readonly>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                  <div class="form-group">
-                    <label>Amount Paying</label>
-                    <input type="text" placeholder="State/Province:" class="form-control">
+                    <label class="display-block">Amount</label>
+                    <input type="number" min="0" placeholder="0.00" class="form-control">
                  </div>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-warning pull-left">Proceed On Credit</button>
-              <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Submit form</button>
+              <button type="submit" class="btn btn-warning pull-left" data-dismiss="modal">Close <i class="icon icon-x position-right"></i></button>
+              <button type="submit" class="btn btn-primary pull-right">Save <i class="icon icon-database position-right"></i></button>
             </div>
           </form>
         </div>
