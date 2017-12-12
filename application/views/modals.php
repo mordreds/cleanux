@@ -619,6 +619,140 @@
   <?php endif; ?>
 <!-- ***************************** New Registration Page *********************************** -->
 
+<!-- *********************************** Customers Page ************************************* -->
+  <?php if($page_controller == "customers") : ?>
+    <script type="text/javascript">
+      $(document).on("click",".edit_client_info",function(){
+        //$('#deletename_').text($(this).data('deletename'));
+        $('[name="client_id"]').val($(this).data('client_id'));
+        $('[name="fullname"]').val($(this).data('fullname'));
+        $('[name="company_name"]').val($(this).data('company'));
+        $('[name="residence_addr"]').val($(this).data('residence_address'));
+        $('[name="postal_addr"]').val($(this).data('postal_address'));
+        $('[name="email"]').val($(this).data('email'));
+        $('[name="primary_tel"]').val($(this).data('phone_number_1'));
+        $('[name="secondary_tel"]').val($(this).data('phone_number_2'));
+        
+        let gender = $(this).data('gender');
+        if(gender) {
+          $('[name="gender"]').val(gender).change();
+        }
+
+        let sms = $(this).data('sms_alert');
+        if(sms) {
+          $('[name="sms"]').attr('checked',true);
+        }
+
+        let online_portal = $(this).data('online_access');
+        if(online_portal) {
+          $('[name="online"]').attr('checked',true);
+        }
+
+        $('#edit_client_modal').modal('show');
+      });
+    </script>
+    <div id="edit_client_modal" class="modal fade">
+      <div class="modal-dialog" style="width:800px">
+        <div class="modal-content">
+          <div class="modal-header bg-teal-400">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h6 class="modal-title">Edit Customer Info</h6>
+          </div>
+          <div class="modal-body">
+            <form action="<?=base_url()?>settings/save_client_info" method="post" onsubmit="javascript(return false)">
+              <input type="hidden" name="client_id"/>
+              <div class="">
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <input type="text" name="fullname" placeholder="Full Name :" class="form-control" required>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <input type="text" name="company_name" placeholder="Company Name (optional) :" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <input type="text" style="display:none" name="gender_alt" class="form-control" readonly >
+                    <select class="form-control selectbox" name="gender" data-defaultText="Gender" required>
+                      <option value="" selected="true">Select One</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="">
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <input type="text" name="residence_addr" placeholder="Residence Address" class="form-control" required>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <input type="text" name="postal_addr" placeholder="Postal Address" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <input type="email" name="email" placeholder="Email Address:" class="form-control">
+                  </div>
+                </div>
+              </div>
+              <div class="">
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <input type="text" name="primary_tel" placeholder="Phone No #1:" class="form-control" minlength="10" required>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <input type="text" name="secondary_tel" placeholder="Phone No #2:" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <div class="checkbox checkbox-switchery">
+                      <label><input type="checkbox" name="sms" class="switchery">
+                        SMS Alert
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <div class="checkbox checkbox-switchery">
+                      <label><input type="checkbox" name="online" class="switchery">
+                      Online Portal
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button> 
+            <button type="submit" data-action="reload" class="btn btn-success legitRipple">Save <i class="icon-database2 position-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(document).on("click",".delete_confirmed_",function(){
+        let formurl = $(this).data('formurl');
+        let tableid = $(this).data('tableid');
+        let formData = { 
+          'id': $(this).data('deleteid'),
+          'delete_item': "Confirmed"
+        };
+        ajax_post(formurl,formData,tableid);
+      });
+    </script>
+  <?php endif;?>
+<!-- *********************************** Customers Page ************************************* -->
+
 <!-- *********** check out ********* -->
   <div id="checkout" class="modal fade">
     <div class="modal-dialog" style="width:350px;">
