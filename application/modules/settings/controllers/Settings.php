@@ -634,6 +634,19 @@ class Settings extends MX_Controller
       }
     }
     /****** Save Client Info ***********/
+
+    /****** Search From Customers Table ***********/
+    public function customer_new_order($phone_number) {
+      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+        $return_data = ['error' => "Permission Denied. Please Contact Admin"];
+        print_r(json_encode($return_data));
+      }
+      else {
+        $_SESSION['laundry']['new_order']['client']['phone_number'] = $phone_number;
+        redirect('overview');
+      }
+    }
+    /****** Search From Customers Table ***********/
   /**************** Insertions ****************/
 
   /*********************************  AJAX CALLS  **************************/

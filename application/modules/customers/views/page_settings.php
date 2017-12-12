@@ -56,7 +56,7 @@
         },
         {data: "id", render: function(data,type,row,meta) { 
           if(user_status == "active") {
-            button = '<ul class="action_btns"><li><a data-client_tel="'+row.phone_number_1+'" data-id="'+row.id+'" id="new_order" title="New Order"><i class="icon-basket" style="font-size:21px"></i></a></li><li><a data-client_tel="'+row.phone_number_1+'" data-id="'+row.id+'" id="new_order" title="New Order"><i class="icon-envelop3" style="font-size:21px"></i></a></li><li><a data-client_tel="'+row.phone_number_1+'" data-id="'+row.id+'" id="new_order" title="New Order"><i class="icon-pencil" style="font-size:21px"></i></a></li><li><a data-popup="tooltip" title="Suspend Account"><i class="deactivate_user icon-lock text-warning" data-dataid="'+row.id+'" data-email="'+row.username+'" data-state="inactive" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete Account"><i class="icon-trash text-danger delete_btn" data-displayname="'+row.fullname+'" data-dataid="'+row.id+'"  data-email="'+row.username+'" data-state="deleted" style="font-size: 20px"></i></a></li></ul>';
+            button = '<ul class="action_btns"><li><a  data-action="reload" class="customer_new_order" data-client_tel="'+row.phone_number_1+'" data-customer_id="'+row.id+'" title="New Order"><i class="icon-basket" style="font-size:21px"></i></a></li><li><a data-client_tel="'+row.phone_number_1+'" data-id="'+row.id+'" title="New Order"><i class="icon-envelop3" style="font-size:21px"></i></a></li><li><a data-client_tel="'+row.phone_number_1+'" data-id="'+row.id+'" title="New Order"><i class="icon-pencil" style="font-size:21px"></i></a></li><li><a data-popup="tooltip" title="Suspend Account"><i class="deactivate_user icon-lock text-warning" data-dataid="'+row.id+'" data-email="'+row.username+'" data-state="inactive" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete Account"><i class="icon-trash text-danger delete_btn" data-displayname="'+row.fullname+'" data-dataid="'+row.id+'"  data-email="'+row.username+'" data-state="deleted" style="font-size: 20px"></i></a></li></ul>';
           } 
           else if(user_status == "deleted"){ }
 
@@ -66,31 +66,24 @@
       ],
     });
 
-    $(document).on("click",".deactivate_user",function(){
-      let formData = { 
-        'user_id': $(this).data('dataid'),
-        'email': $(this).data('email'),
-        'status': $(this).data('state')
-      };
+    $(document).on("click",".customer_new_order",function(){
+      let client_number = $(this).data('client_tel');
+      let overview_url = "<?=base_url()?>overview";
       $.ajax({
         type : 'POST',
-        url : '<?= base_url()?>administration/users/account_status',
-        data : formData,
+        url : '<?= base_url()?>settings/customer_new_order/'+client_number,
         success: function(response) {
-          $.jGrowl('User Deactivation Successful', {
-              /*header: 'Process Successful',*/
-            theme: 'alert-styled-left bg-success'
-          });
-          $('#inactive_acct_tbl').DataTable().ajax.reload();
-          $('#active_accounts_tbl').DataTable().ajax.reload();
+          window.location.replace(overview_url);
         },
         error: function() {
-          alert("Error Transmitting Data")
+          $.jGrowl('Error Transmitting Data', {
+            theme: 'alert-styled-left bg-danger'
+          });
         }
       });
     });
 
-    $(document).on("click",".delete_confirmed",function(){
+    /*$(document).on("click",".delete_confirmed",function(){
       let formData = { 
         'user_id': $(this).data('user_id'),
         'email': $(this).data('email'),
@@ -114,7 +107,7 @@
           });
         }
       });
-    });
+    });*/
   /************** All Customers Table *********/
 </script>
 <?php endif; ?>

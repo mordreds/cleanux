@@ -90,7 +90,7 @@
                             </div>
                             <div class="col-md-5"></div>
                             <div class="col-md-1">
-                              <button type="submit" class="btn btn-primary legitRipple">Save <i class="icon-database2 position-right"></i></button>
+                              <button type="submit" data-action="reload" class="btn btn-primary legitRipple">Save <i class="icon-database2 position-right"></i></button>
                             </div>
                             <div class="col-md-6"></div>
                           </form>
@@ -165,7 +165,7 @@
                                 </div>
                                 <div class="col-md-5"></div>
                                 <div class="col-md-1">
-                                  <button type="button" id="add_to_others" class="btn btn-primary legitRipple">Add To List <i class="icon-database2 position-right"></i></button>
+                                  <button type="button" data-action="reload" id="add_to_others" class="btn btn-primary legitRipple">Add To List <i class="icon-database2 position-right"></i></button>
                                 </div>
                                 <div class="col-md-6"></div>
                               </div>
@@ -214,8 +214,8 @@
                               <div class="form-group">
                                 <input type="text" id="search_text" value="<?=@$new_client_number?>" placeholder="Order Number or Phone Number :" class="form-control">
                               </div>
-                              <button type="button" class="btn btn-primary" id="search_submit">Search  <i class="icon-search4 position-right"></i></button>
-                              <button type="button" class="btn btn-warning clear_cart pull-right">Clear Record <i class="icon-x position-right"></i></button>
+                              <button type="button" data-action="reload" class="btn btn-primary" id="search_submit">Search  <i class="icon-search4 position-right"></i></button>
+                              <button type="button" data-action="reload" class="btn btn-warning clear_cart pull-right">Clear Record <i class="icon-x position-right"></i></button>
                             </div>
                           </div>
                         </div>

@@ -90,7 +90,7 @@
                   },
                   columns: [
                     {data: "order_number",render: function(data,type,row,meta) { 
-                      return "<a href='#' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
+                      return "<a href='#' data-action='reload' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
                     }},
                     {data: "total_cost"},
                     {data: "amount_paid"},
