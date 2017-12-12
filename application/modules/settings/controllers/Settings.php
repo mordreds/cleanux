@@ -692,6 +692,11 @@ class Settings extends MX_Controller
           $return_dataType = "json";
         }
 
+        if($tablename == "clients") {
+          $tablename = "laundry_clients";
+          $return_dataType = "json";
+        }
+
         $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
             
         if(!empty($search_result)) 

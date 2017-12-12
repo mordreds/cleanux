@@ -75,8 +75,9 @@
     <div id="delivery" class="modal fade">
       <div class="modal-dialog" style="width:450px;">
         <div class="modal-content">
-          <div class="modal-header ">
+          <div class="modal-header bg-teal-400">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h6 class="modal-title">Delivery Method</h6>
           </div>
           <form action="<?=base_url()?>overview/save_order" method="post">
             <div class="modal-body">
@@ -217,9 +218,9 @@
     <div id="comment" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
+          <div class="modal-header bg-teal-400">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h5 class="modal-title">Comment</h5>
+            <h6 class="modal-title">Comments On Order</h6>
           </div>
 
           <form action="#">
