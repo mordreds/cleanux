@@ -111,7 +111,7 @@
                       else
                         pay_button = "";
 
-                      return '<ul class="action_btns"><li><button data-toggle="modal" data-target="#comment" class="label bg-green-600">Comments (1)</button></li>'+pay_button+'</ul>'; 
+                      return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments ('+row.total_comments+')</button></li>'+pay_button+'</ul>'; 
                     }},
                   ],
                 });

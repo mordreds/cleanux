@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2017 at 06:11 PM
+-- Generation Time: Dec 13, 2017 at 05:43 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.0.15
 
@@ -266,7 +266,9 @@ INSERT INTO `successful_logins` (`id`, `user_id`, `time_in`, `time_out`, `online
 (181, 1, '2017-12-12 11:47:45', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:58.0) Gecko/20100101 Firefox/58.0', '::1', 'London', NULL, NULL),
 (182, 1, '2017-12-12 13:07:09', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:58.0) Gecko/20100101 Firefox/58.0', '::1', 'London', NULL, NULL),
 (183, 1, '2017-12-12 12:48:19', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36', '::1', 'London', NULL, NULL),
-(184, 1, '2017-12-12 14:58:41', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:58.0) Gecko/20100101 Firefox/58.0', '::1', 'London', NULL, NULL);
+(184, 1, '2017-12-12 14:58:41', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:58.0) Gecko/20100101 Firefox/58.0', '::1', 'London', NULL, NULL),
+(185, 1, '2017-12-13 13:41:47', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36 OPR/49.0.2725.47', '::1', 'London', NULL, NULL),
+(186, 1, '2017-12-13 14:37:12', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36 OPR/49.0.2725.47', '::1', 'London', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -319,7 +321,7 @@ ALTER TABLE `failed_logins`
 -- AUTO_INCREMENT for table `successful_logins`
 --
 ALTER TABLE `successful_logins`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=185;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=187;
 --
 -- AUTO_INCREMENT for table `sysaudit`
 --
@@ -580,12 +582,12 @@ INSERT INTO `laundry_clients` (`id`, `fullname`, `gender`, `company`, `residence
 (4, 'Evans Ofori', 'Male', 'Marksbon IT Limited', 'New Site - Adenta', '', '0244888444', '', 'evansofori@gmail.com', 1, 1, 'active', '2017-11-07 23:32:16'),
 (5, 'MR Charles Agyin-Asare', 'Male', 'Perez Dome Chapel', 'Dzorwulu - Junction', 'Box K47, Kotobabi - Accra', '0271589354', '', 'info@perezdome.com', 1, 0, 'active', '2017-11-09 19:37:36'),
 (6, 'Kelvin Mitnik', 'Male', 'Hackers', 'Kasoa', '', '0255555555', '', 'kelvin@mitnick.com', 1, 0, 'active', '2017-11-14 21:17:10'),
-(7, 'Test User 22', 'Female', '', 'Mallam', '', '0211111222', '', '', 1, 0, 'active', '2017-11-14 21:37:39'),
+(7, 'Test User 22', 'Female', '', 'Mallam', '', '0211111222', '', 'testuser22@test.com', 1, 1, 'active', '2017-11-14 21:37:39'),
 (8, 'Test User 1', 'Male', 'Marksbon IT Limited', 'Taifa', '', '0244111111', '', 'user1@test.com', 1, 0, 'active', '2017-11-16 06:31:05'),
 (9, 'Test User 2', 'Female', 'Stl Limited', 'Kotobabi', '', '0244222111', '', 'user2@test.com', 1, 1, 'active', '2017-11-17 23:39:39'),
-(12, 'Nana', 'Male', 'K', 'Taifa', '', '123', '', 'info@peredome.com', 1, 0, 'active', '2017-11-18 19:03:33'),
-(13, 'Test User 3', 'Male', 'Test User 2 & Sons Limited', 'Spintex Road', '', '1234', '', 'user3@gmail.com', 1, 0, 'active', '2017-11-18 19:12:58'),
-(14, 'Mr Aboagye Kesse Junior', 'Male', 'YPG Sonitra', 'Sonitra - Amasaman', '', '0244999999', '', '', 1, 1, 'active', '2017-11-25 16:23:21');
+(12, 'Nana', 'Male', 'K', 'Taifa', '', '0244333333', '', 'info@peredome.com', 1, 1, 'active', '2017-11-18 19:03:33'),
+(13, 'Test User 3', 'Male', 'Test User 2 & Sons Limited', 'Spintex Road', '', '0244222222', '', 'user3@gmail.com', 1, 1, 'active', '2017-11-18 19:12:58'),
+(14, 'Mr Aboagye Kesse Junior', 'Male', 'YPG Sonitra', 'Sonitra - Amasaman', '', '0244999999', '', '', 1, 1, 'deleted', '2017-11-25 16:23:21');
 
 -- --------------------------------------------------------
 
@@ -661,6 +663,28 @@ INSERT INTO `laundry_order_balances` (`id`, `order_id`, `balance_paid`, `user_id
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `laundry_order_comments`
+--
+
+CREATE TABLE `laundry_order_comments` (
+  `id` bigint(20) NOT NULL,
+  `order_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `comment` varchar(255) NOT NULL,
+  `status` enum('active','inactive') NOT NULL DEFAULT 'active',
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `laundry_order_comments`
+--
+
+INSERT INTO `laundry_order_comments` (`id`, `order_id`, `user_id`, `comment`, `status`, `date_created`) VALUES
+(1, 11, 1, 'initial comment', 'active', '2017-12-13 13:39:01');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `laundry_order_details`
 --
 
@@ -707,8 +731,7 @@ CREATE TABLE `laundry_orders` (
   `delivery_method_id` bigint(20) NOT NULL,
   `due_date` date NOT NULL,
   `status` enum('Pending','Processing','Completed','Deleted') NOT NULL DEFAULT 'Pending',
-  `processing_stages` enum('Pending','Washing','Drying','Ironing','Packaging') NOT NULL DEFAULT 'Pending',
-  `comment` text NOT NULL,
+  `processing_stages` enum('Pending','Washing','Drying','Ironing','Ready For Dispatch') NOT NULL DEFAULT 'Pending',
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -716,16 +739,16 @@ CREATE TABLE `laundry_orders` (
 -- Dumping data for table `laundry_orders`
 --
 
-INSERT INTO `laundry_orders` (`id`, `order_number`, `total_cost`, `amount_paid`, `balance`, `client_id`, `processor_user_id`, `delivery_method_id`, `due_date`, `status`, `processing_stages`, `comment`, `date_created`) VALUES
-(7, '417099242', 105, 50, 55, 12, 1, 3, '2017-12-12', 'Pending', 'Pending', '', '2017-12-02 23:57:01'),
-(8, '12054353', 160.5, 100, 60.5, 8, 1, 4, '2017-12-06', 'Pending', 'Pending', '', '2017-12-03 09:52:20'),
-(9, '24661497', 195.5, 80, 115.5, 6, 1, 4, '2017-12-07', 'Pending', 'Pending', '', '2017-12-03 12:17:21'),
-(10, '76238557', 50, 50, 0, 4, 1, 5, '2017-12-13', 'Pending', 'Pending', '', '2017-12-03 12:26:28'),
-(11, '32978388', 235, 230, 5, 3, 1, 2, '2017-12-20', 'Pending', 'Pending', '', '2017-12-03 12:30:33'),
-(12, '00384550', 2000, 1500, 500, 3, 1, 5, '2017-12-07', 'Pending', 'Pending', '', '2017-12-03 12:42:26'),
-(13, '55908916', 50, 50, 0, 3, 1, 5, '2017-12-13', 'Pending', 'Pending', '', '2017-12-03 12:43:51'),
-(14, '90658950', 125, 125, 0, 8, 1, 5, '2017-12-06', 'Pending', 'Pending', '', '2017-12-04 09:12:36'),
-(15, '45697180', 50, 50, 0, 3, 1, 5, '2017-12-14', 'Pending', 'Pending', '', '2017-12-05 15:38:20');
+INSERT INTO `laundry_orders` (`id`, `order_number`, `total_cost`, `amount_paid`, `balance`, `client_id`, `processor_user_id`, `delivery_method_id`, `due_date`, `status`, `processing_stages`, `date_created`) VALUES
+(7, '417099242', 105, 50, 55, 12, 1, 3, '2017-12-12', 'Pending', 'Pending', '2017-12-02 23:57:01'),
+(8, '12054353', 160.5, 100, 60.5, 8, 1, 4, '2017-12-06', 'Pending', 'Washing', '2017-12-03 09:52:20'),
+(9, '24661497', 195.5, 80, 115.5, 6, 1, 4, '2017-12-07', 'Pending', 'Pending', '2017-12-03 12:17:21'),
+(10, '76238557', 50, 50, 0, 4, 1, 5, '2017-12-13', 'Pending', 'Drying', '2017-12-03 12:26:28'),
+(11, '32978388', 235, 230, 5, 3, 1, 2, '2017-12-20', 'Pending', 'Pending', '2017-12-03 12:30:33'),
+(12, '00384550', 2000, 1500, 500, 3, 1, 5, '2017-12-07', 'Pending', 'Ironing', '2017-12-03 12:42:26'),
+(13, '55908916', 50, 50, 0, 3, 1, 5, '2017-12-13', 'Pending', 'Pending', '2017-12-03 12:43:51'),
+(14, '90658950', 125, 125, 0, 8, 1, 5, '2017-12-06', 'Pending', 'Ready For Dispatch', '2017-12-04 09:12:36'),
+(15, '45697180', 50, 50, 0, 3, 1, 5, '2017-12-14', 'Pending', 'Pending', '2017-12-05 15:38:20');
 
 -- --------------------------------------------------------
 
@@ -904,8 +927,8 @@ CREATE TABLE `vw_orderlist_summary` (
 ,`delivery_method_id` bigint(20)
 ,`due_date` date
 ,`status` enum('Pending','Processing','Completed','Deleted')
-,`processing_stage` enum('Pending','Washing','Drying','Ironing','Packaging')
-,`comment` text
+,`processing_stage` enum('Pending','Washing','Drying','Ironing','Ready For Dispatch')
+,`total_comments` varbinary(21)
 ,`date_created` datetime
 ,`client_fullname` varchar(255)
 ,`client_company` varchar(255)
@@ -949,7 +972,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vw_orderlist_summary`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_orderlist_summary`  AS  select `a`.`id` AS `id`,`a`.`order_number` AS `order_number`,`a`.`total_cost` AS `total_cost`,`a`.`amount_paid` AS `amount_paid`,`a`.`balance` AS `previous_balance`,coalesce(`e`.`balance_paid`,0) AS `balance_paid`,coalesce((`a`.`balance` - `e`.`balance_paid`),`a`.`balance`) AS `balance`,coalesce((select `vw_user_details`.`fullname` from `bgee_permissions`.`vw_user_details` where (`vw_user_details`.`id` = `e`.`user_id`)),'') AS `balance_received_by`,coalesce(`e`.`payment_date`,'') AS `balance_payment_date`,`a`.`client_id` AS `client_id`,`a`.`processor_user_id` AS `processor_user_id`,`a`.`delivery_method_id` AS `delivery_method_id`,`a`.`due_date` AS `due_date`,`a`.`status` AS `status`,`a`.`processing_stages` AS `processing_stage`,`a`.`comment` AS `comment`,`a`.`date_created` AS `date_created`,`b`.`fullname` AS `client_fullname`,coalesce(`b`.`company`,'') AS `client_company`,`b`.`phone_number_1` AS `client_phone_no_1`,`b`.`phone_number_2` AS `client_phone_no_2`,`c`.`fullname` AS `processor_name`,`d`.`location` AS `delivery_location` from ((((`laundry_orders` `a` left join `laundry_clients` `b` on((`a`.`client_id` = `b`.`id`))) left join `bgee_permissions`.`vw_user_details` `c` on((`a`.`processor_user_id` = `c`.`id`))) left join `laundry_delivery_method` `d` on((`a`.`delivery_method_id` = `d`.`id`))) left join `laundry_order_balances` `e` on((`a`.`id` = `e`.`order_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_orderlist_summary`  AS  select `a`.`id` AS `id`,`a`.`order_number` AS `order_number`,`a`.`total_cost` AS `total_cost`,`a`.`amount_paid` AS `amount_paid`,`a`.`balance` AS `previous_balance`,coalesce(`e`.`balance_paid`,0) AS `balance_paid`,coalesce((`a`.`balance` - `e`.`balance_paid`),`a`.`balance`) AS `balance`,coalesce((select `vw_user_details`.`fullname` from `bgee_permissions`.`vw_user_details` where (`vw_user_details`.`id` = `e`.`user_id`)),'') AS `balance_received_by`,coalesce(`e`.`payment_date`,'') AS `balance_payment_date`,`a`.`client_id` AS `client_id`,`a`.`processor_user_id` AS `processor_user_id`,`a`.`delivery_method_id` AS `delivery_method_id`,`a`.`due_date` AS `due_date`,`a`.`status` AS `status`,`a`.`processing_stages` AS `processing_stage`,coalesce((select count(`laundry_order_comments`.`comment`) from `laundry_order_comments` where (`laundry_order_comments`.`order_id` = `a`.`id`)),'') AS `total_comments`,`a`.`date_created` AS `date_created`,`b`.`fullname` AS `client_fullname`,coalesce(`b`.`company`,'') AS `client_company`,`b`.`phone_number_1` AS `client_phone_no_1`,`b`.`phone_number_2` AS `client_phone_no_2`,`c`.`fullname` AS `processor_name`,`d`.`location` AS `delivery_location` from ((((`laundry_orders` `a` left join `laundry_clients` `b` on((`a`.`client_id` = `b`.`id`))) left join `bgee_permissions`.`vw_user_details` `c` on((`a`.`processor_user_id` = `c`.`id`))) left join `laundry_delivery_method` `d` on((`a`.`delivery_method_id` = `d`.`id`))) left join `laundry_order_balances` `e` on((`a`.`id` = `e`.`order_id`))) ;
 
 --
 -- Indexes for dumped tables
@@ -1029,6 +1052,12 @@ ALTER TABLE `laundry_garments`
 -- Indexes for table `laundry_order_balances`
 --
 ALTER TABLE `laundry_order_balances`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `laundry_order_comments`
+--
+ALTER TABLE `laundry_order_comments`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1121,6 +1150,11 @@ ALTER TABLE `laundry_garments`
 --
 ALTER TABLE `laundry_order_balances`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `laundry_order_comments`
+--
+ALTER TABLE `laundry_order_comments`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `laundry_order_details`
 --
@@ -1415,7 +1449,78 @@ ALTER TABLE `roles_privileges_user`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;--
+-- Database: `bgee_views`
+--
+CREATE DATABASE IF NOT EXISTS `bgee_views` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `bgee_views`;
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `vw_laundry_order_comments`
+-- (See below for the actual view)
+--
+CREATE TABLE `vw_laundry_order_comments` (
+`id` bigint(20)
+,`order_id` bigint(20)
+,`user_id` bigint(20)
+,`comment` varchar(255)
+,`status` enum('active','inactive')
+,`date_created` datetime
+,`commenter_fullname` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `vw_orderlist_summary`
+-- (See below for the actual view)
+--
+CREATE TABLE `vw_orderlist_summary` (
+`id` bigint(20)
+,`order_number` varchar(20)
+,`total_cost` double
+,`amount_paid` double
+,`previous_balance` double
+,`balance_paid` double
+,`balance` double
+,`balance_received_by` varchar(255)
+,`balance_payment_date` varchar(19)
+,`client_id` bigint(20)
+,`processor_user_id` bigint(20)
+,`delivery_method_id` bigint(20)
+,`due_date` date
+,`status` enum('Pending','Processing','Completed','Deleted')
+,`processing_stage` enum('Pending','Washing','Drying','Ironing','Ready For Dispatch')
+,`total_comments` varbinary(21)
+,`date_created` datetime
+,`client_fullname` varchar(255)
+,`client_company` varchar(255)
+,`client_phone_no_1` varchar(20)
+,`client_phone_no_2` varchar(20)
+,`processor_name` varchar(255)
+,`delivery_location` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vw_laundry_order_comments`
+--
+DROP TABLE IF EXISTS `vw_laundry_order_comments`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_laundry_order_comments`  AS  select `a`.`id` AS `id`,`a`.`order_id` AS `order_id`,`a`.`user_id` AS `user_id`,`a`.`comment` AS `comment`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created`,`b`.`fullname` AS `commenter_fullname` from (`bgee_db`.`laundry_order_comments` `a` left join `bgee_permissions`.`vw_user_details` `b` on((`a`.`user_id` = `b`.`id`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vw_orderlist_summary`
+--
+DROP TABLE IF EXISTS `vw_orderlist_summary`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_orderlist_summary`  AS  select `a`.`id` AS `id`,`a`.`order_number` AS `order_number`,`a`.`total_cost` AS `total_cost`,`a`.`amount_paid` AS `amount_paid`,`a`.`balance` AS `previous_balance`,coalesce(`e`.`balance_paid`,0) AS `balance_paid`,coalesce((`a`.`balance` - `e`.`balance_paid`),`a`.`balance`) AS `balance`,coalesce((select `vw_user_details`.`fullname` from `bgee_permissions`.`vw_user_details` where (`vw_user_details`.`id` = `e`.`user_id`)),'') AS `balance_received_by`,coalesce(`e`.`payment_date`,'') AS `balance_payment_date`,`a`.`client_id` AS `client_id`,`a`.`processor_user_id` AS `processor_user_id`,`a`.`delivery_method_id` AS `delivery_method_id`,`a`.`due_date` AS `due_date`,`a`.`status` AS `status`,`a`.`processing_stages` AS `processing_stage`,coalesce((select count(`bgee_db`.`laundry_order_comments`.`comment`) from `bgee_db`.`laundry_order_comments` where (`bgee_db`.`laundry_order_comments`.`order_id` = `a`.`id`)),'') AS `total_comments`,`a`.`date_created` AS `date_created`,`b`.`fullname` AS `client_fullname`,coalesce(`b`.`company`,'') AS `client_company`,`b`.`phone_number_1` AS `client_phone_no_1`,`b`.`phone_number_2` AS `client_phone_no_2`,`c`.`fullname` AS `processor_name`,`d`.`location` AS `delivery_location` from ((((`bgee_db`.`laundry_orders` `a` left join `bgee_db`.`laundry_clients` `b` on((`a`.`client_id` = `b`.`id`))) left join `bgee_permissions`.`vw_user_details` `c` on((`a`.`processor_user_id` = `c`.`id`))) left join `bgee_db`.`laundry_delivery_method` `d` on((`a`.`delivery_method_id` = `d`.`id`))) left join `bgee_db`.`laundry_order_balances` `e` on((`a`.`id` = `e`.`order_id`))) ;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

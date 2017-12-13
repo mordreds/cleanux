@@ -711,6 +711,12 @@ class Settings extends MX_Controller
           $return_dataType = "json";
         }
 
+        if($tablename == "inhouse_orders") {
+          $tablename = "vw_orderlist_summary";
+          $return_dataType = "json";
+          $condition = array('status !=' => "Completed",'processing_stage !=' => "Completed"  );
+        }
+
         $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
             
         if(!empty($search_result)) 

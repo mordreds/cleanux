@@ -35,6 +35,48 @@ class Inhouse extends MX_Controller
         /***************** Interface *****************/
       }
     }
+  /**************** Interface ********************/
+
+  /**************** Data Retrieval ********************/
+    /*******************************
+      Order Comments 
+    *******************************/
+    public function retrieve_comments() 
+    {
+      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+        $return_data['error'] = "Permission Denied. Please Contact Admin";
+        print_r(json_encode($return_data));
+      }
+      else {
+        $this->form_validation->set_rules('order_id','Order','trim|required');
+
+        if($this->form_validation->run() === FALSE) {
+          $return_data['error'] ="Validation Error";
+          print_r(json_encode($return_data));
+        }
+        else {
+          # Loading Model 
+          $this->load->model('globals/model_retrieval');
+
+          $dbres = self::$_Views_DB;
+          $tablename = "vw_laundry_order_comments";
+          $return_dataType = "php_object";
+          $where_condition = array('order_id' => $this->input->post('order_id'));
+          $query_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$where_condition); 
+          if($query_result) 
+            $return_data = $query_result;
+          else 
+            $return_data = array();
+          
+          print_r(json_encode($return_data));
+        }
+      }
+    }
+  /**************** Data Retrieval ********************/
+
+  /**************** Interface ********************/
+
+  /**************** Interface ********************/
     
     
 }//End of Class

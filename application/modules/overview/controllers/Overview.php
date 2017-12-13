@@ -585,6 +585,7 @@ class Overview extends MX_Controller
               'processing_stage' => $query_result[$a]->processing_stage,
               'status' => $query_result[$a]->status,
               'date_created' => $query_result[$a]->date_created,
+              'total_comments' => $query_result[$a]->total_comments
             ];
           }
           //$return_data = array_reverse($query_result);

@@ -215,6 +215,44 @@
   <!-- ****** Pay Balance ******* -->
 
   <!-- ****** Comments  ******* -->
+    <?php if($page_controller == "inhouse" || $page_controller == "overview") : ?>
+    <script type="text/javascript">
+      $('table').on("click",".view_order_comments",function(){
+        let order_id = $(this).data('order_id');
+        let formurl = "<?=base_url()?>inhouse/retrieve_comments";
+        let formData = {'order_id': order_id};
+
+        $.ajax({
+          type : 'POST',
+          url : formurl,
+          data : formData,
+          success: function(response) { 
+            response = JSON.parse(response)
+            let comments = "";
+            if(!response.ERR) {
+              $.each(response, function(key,value){
+                commenter_fullname = value.commenter_fullname;
+                comment = value.comment;
+                comment_time = value.date_created;
+
+                comments += '<li class="media"><a href="#" class="media-left"><img src="assets/images/demo/users/face25.jpg" class="img-circle img-sm" alt=""></a><div class="media-body"><div class="media-heading text-semibold"><a href="#">'+commenter_fullname+'</a> <span class="media-annotation pull-right">'+comment_time+'</span></div>'+comment+'</div></li>';
+              });
+            }
+
+            $('#all_comments_view').html(comments);
+            $('#comment').modal('show');
+          },
+          error: function() {
+            $.jGrowl('View Comments Failed', {
+              theme: 'alert-styled-left bg-danger'
+            });
+          }
+        });
+        
+
+        
+      });
+    </script>
     <div id="comment" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -222,25 +260,30 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h6 class="modal-title">Comments On Order</h6>
           </div>
-
-          <form action="#">
-            <div class="panel panel-flat">
-          <div class="panel-body">
-            <div class="form-group">
-                  <textarea rows="6" cols="5" class="form-control" placeholder="Enter your message here"></textarea>
+          <div class="modal-body">
+            <div class="caption">
+              <ul class="media-list content-group" id="all_comments_view">
+                
+              </ul>
+              <textarea name="enter-message" class="form-control content-group" rows="2" cols="1" placeholder="Add comment"></textarea>
+              <div class="row">
+                <div class="col-xs-6">
+                  <ul class="icons-list icons-list-extended mt-10">
+                      <li><a href="#"><i class="icon-mic2"></i></a></li>
+                      <li><a href="#"><i class="icon-file-picture"></i></a></li>
+                      <li><a href="#"><i class="icon-file-plus"></i></a></li>
+                    </ul>
                 </div>
+                <div class="col-xs-6 text-right">
+                  <button type="button" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Send</button>
                 </div>
-        </div>
-
-            <div class="modal-footer">
-           
-              <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Submit form</button>
+              </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
+  <?php endif; ?>
   <!-- ****** Comments  ******* -->
 <!-- ***************************** Universal In System *********************************** -->
 
@@ -762,6 +805,49 @@
     </script>
   <?php endif;?>
 <!-- *********************************** Customers Page ************************************* -->
+
+<!-- *********************************** In House Page ************************************* -->
+  <?php if($page_controller == "inhouse") : ?>
+    <script type="text/javascript">
+      $(document).on("click",".change_order_status",function(){
+        
+
+        $('#status_history').modal('show');
+      });
+    </script>
+    <div id="status_history" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <form action="#">
+            <div class="modal-body">
+              <table id="alluser" class="table ">
+                <thead>
+                  <tr class="bg-teal-400">
+                    <th >Status</th>
+                    <th >Last Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Check-In</td>
+                    <td>Bismark</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  <?php endif;?>
+<!-- *********************************** In House Page ************************************* -->
+
 
 <!-- *********** check out ********* -->
   <div id="checkout" class="modal fade">
