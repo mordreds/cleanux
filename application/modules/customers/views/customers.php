@@ -10,7 +10,6 @@
               <thead>
                 <tr class="bg-teal-400">
                   <th>Full name</th>
-                  <th>Gender </th>
                   <th>Email </th>
                   <th>Primary Phone </th>
                   <th>Secondary Phone </th>

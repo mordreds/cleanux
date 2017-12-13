@@ -623,7 +623,8 @@
   <?php if($page_controller == "customers") : ?>
     <script type="text/javascript">
       $(document).on("click",".edit_client_info",function(){
-        //$('#deletename_').text($(this).data('deletename'));
+        $('#deletename_').text($(this).data('deletename'));
+        // Filling Form Component
         $('[name="client_id"]').val($(this).data('client_id'));
         $('[name="fullname"]').val($(this).data('fullname'));
         $('[name="company_name"]').val($(this).data('company'));
@@ -659,7 +660,7 @@
             <h6 class="modal-title">Edit Customer Info</h6>
           </div>
           <div class="modal-body">
-            <form action="<?=base_url()?>settings/save_client_info" method="post" onsubmit="javascript(return false)">
+            <form action="#" method="post">
               <input type="hidden" name="client_id"/>
               <div class="">
                 <div class="col-md-4 col-sm-4">
@@ -734,18 +735,27 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button> 
-            <button type="submit" data-action="reload" class="btn btn-success legitRipple">Save <i class="icon-database2 position-right"></i></button>
+            <button type="button" data-action="reload" class="btn btn-success legitRipple" id="edit_client_submit" data-dismiss="modal">Save <i class="icon-database2 position-right"></i></button>
           </div>
         </div>
       </div>
     </div>
     <script type="text/javascript">
-      $(document).on("click",".delete_confirmed_",function(){
-        let formurl = $(this).data('formurl');
-        let tableid = $(this).data('tableid');
+      $(document).on("click","#edit_client_submit",function(){
+        let formurl = "<?=base_url()?>settings/save_client_info";
+        let tableid = "allcustomers";
         let formData = { 
-          'id': $(this).data('deleteid'),
-          'delete_item': "Confirmed"
+          'id': $('[name="client_id"]').val(),
+          'fullname': $('[name="fullname"]').val(),
+          'company_name': $('[name="company_name"]').val(),
+          'gender': $('[name="gender"]').val(),
+          'residence_addr': $('[name="residence_addr"]').val(),
+          'postal_addr': $('[name="postal_addr"]').val(),
+          'primary_tel': $('[name="primary_tel"]').val(),
+          'secondary_tel': $('[name="secondary_tel"]').val(),
+          'email': $('[name="email"]').val(),
+          'sms': $('[name="sms"]').val(),
+          'online': $('[name="online"]').val(),
         };
         ajax_post(formurl,formData,tableid);
       });

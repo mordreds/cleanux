@@ -23,12 +23,11 @@
            <table id="alluser" class="table table-responsive datatable-column-search-inputs">
               <thead>
                 <tr class="bg-teal-400">
-                  <th>Order #</th>
-                    <th>Description</th>
+                  <th>Select</th>
+                    <th>Customers Name</th>
+                    <th>Location</th>
                     <th># Items</th>
-                    <th>Total Cost</th>
-                    <th>Balance</th>
-                    <th>Status</th>
+                    <th>Tel</th>
                     <th>Comment</th>
                     <th>Dispatch</th>
                      <th class="text-center">Actions</th>
@@ -36,7 +35,10 @@
               </thead>
               <tbody>
                 <tr>
-                  <td data-toggle="modal" data-target="#orders">300123</td>
+                  <td >
+                      <input type="checkbox" name="Select" >
+                   
+                  </td>
                     <td>T-shirt,Black Shorts,Blue Shirt,Blue Jean</td>
                     <td>4</td>
                     <td>15.00</td>

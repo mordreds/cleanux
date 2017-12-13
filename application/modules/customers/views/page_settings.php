@@ -37,8 +37,9 @@
         }
       },
       columns: [
-        {data: "fullname"},
-        {data: "gender"},
+        {data: "fullname"/*,render: function(data,type,row,meta) { 
+          return '<a class="edit_client_info" data-fullname="'+row.fullname+'" data-gender="'+row.gender+'" data-company="'+row.company+'" data-residence_address="'+row.residence_address+'" data-postal_address="'+row.postal_address+'" data-phone_number_1="'+row.phone_number_1+'" data-phone_number_2="'+row.phone_number_2+'" data-email="'+row.email+'" data-sms_alert="'+row.sms_alert+'" data-online_access="'+row.online_access+'" data-status="'+row.status+'" data-client_id="'+row.id+'" title="Edit Client Info">'+row.fullname+'</a>'; 
+        }*/},
         {data: "email"},
         {data: "phone_number_1"},
         {data: "phone_number_2"},
@@ -56,7 +57,7 @@
         },
         {data: "id", render: function(data,type,row,meta) { 
           if(user_status == "active") {
-            button = '<ul class="action_btns"><li><a class="edit_client_info" data-fullname="'+row.fullname+'" data-gender="'+row.gender+'" data-company="'+row.company+'" data-residence_address="'+row.residence_address+'" data-postal_address="'+row.postal_address+'" data-phone_number_1="'+row.phone_number_1+'" data-phone_number_2="'+row.phone_number_2+'" data-email="'+row.email+'" data-sms_alert="'+row.sms_alert+'" data-online_access="'+row.online_access+'" data-status="'+row.status+'" data-client_id="'+row.id+'" title="Edit Client Info"><i class="icon-pencil" style="font-size:18px"></i></a></li><li><a class="customer_new_order" data-client_tel="'+row.phone_number_1+'" title="Create Order"><i class="icon-basket" style="font-size:18px"></i></a></li><li><a data-client_tel="'+row.phone_number_1+'" data-id="'+row.id+'" title="New Order"><i class="icon-envelop3" style="font-size:18px"></i></a></li><li><a data-popup="tooltip" title="Suspend Account"><i class="deactivate_user icon-lock text-warning" data-dataid="'+row.id+'" data-email="'+row.username+'" data-state="inactive" style="font-size: 18px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete Account"><i class="icon-trash text-danger delete_btn" data-displayname="'+row.fullname+'" data-dataid="'+row.id+'"  data-email="'+row.username+'" data-state="deleted" style="font-size: 18px"></i></a></li></ul>';
+            button = '<ul class="action_btns" style="margin-bottom:0px"><li><a class="edit_client_info" data-fullname="'+row.fullname+'" data-gender="'+row.gender+'" data-company="'+row.company+'" data-residence_address="'+row.residence_address+'" data-postal_address="'+row.postal_address+'" data-phone_number_1="'+row.phone_number_1+'" data-phone_number_2="'+row.phone_number_2+'" data-email="'+row.email+'" data-sms_alert="'+row.sms_alert+'" data-online_access="'+row.online_access+'" data-status="'+row.status+'" data-client_id="'+row.id+'" title="Edit Client Info"><i class="icon-pencil" style="font-size:18px"></i></a></li><li><a class="customer_new_order" data-client_tel="'+row.phone_number_1+'" title="Create Order"><i class="icon-basket" style="font-size:18px"></i></a></li><li><a data-client_tel="'+row.phone_number_1+'" data-id="'+row.id+'" title="Send SMS"><i class="icon-envelop3" style="font-size:18px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete Account"><i class="icon-trash text-danger delete_button" data-deletename="'+row.fullname+'" data-deleteid="'+row.id+'" data-formurl="<?=base_url()?>settings/save_client_info" data-tableid="allcustomers" style="font-size: 18px"></i></a></li></ul>';
           } 
           else if(user_status == "deleted"){ }
 

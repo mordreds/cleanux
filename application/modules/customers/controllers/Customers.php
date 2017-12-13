@@ -15,7 +15,7 @@ class Customers extends MX_Controller
     public function index() 
     {
       # Permission Check
-       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles']))
+      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles']))
         redirect('dashboard');
       else
       {

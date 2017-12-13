@@ -549,8 +549,8 @@ class Settings extends MX_Controller
         $this->form_validation->set_rules('delete_item','Delete Action','trim');
 
         if($this->form_validation->run() === FALSE) {
-          $this->session->set_flashdata('error',"Validation Error");
-          redirect('overview');
+          $return_data['error'] = "Validation Error";
+          print_r(json_encode($return_data));
         }
         else {
           $this->load->model('globals/model_insertion');
@@ -587,6 +587,7 @@ class Settings extends MX_Controller
               $return_data['error'] = "Delete Failed";
 
             print_r(json_encode($return_data));
+            exit();
           } 
           else {
             if(empty($id)) {
@@ -619,7 +620,7 @@ class Settings extends MX_Controller
               $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
               
               if($query_result)
-                $return_data['success'] = "Update Successul";
+                $return_data['success'] = "Client Info Updated";
               else
                 $return_data['error'] = "Update Failed";
 
@@ -629,8 +630,8 @@ class Settings extends MX_Controller
         }
       }
       else {
-        $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
-        redirect('overview');
+        $return_data['error'] = 'Permission Denied.Contact Administrator';
+        print_r(json_encode($return_data));
       }
     }
     /****** Save Client Info ***********/
