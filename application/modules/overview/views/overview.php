@@ -16,7 +16,7 @@
                       </ul>
                       <div class="tab-content">
                         <div class="tab-pane active" id="client_info">
-                          <form action="<?=base_url()?>settings/save_client_info" method="post" onsubmit="javascript(return false)">
+                          <form action="<?=base_url()?>settings/save_client_info" method="post"">
                             <input type="hidden" name="id"/>
                             <input type="hidden" name="update_item"/>
                             <div class="">
@@ -90,7 +90,7 @@
                             </div>
                             <div class="col-md-5"></div>
                             <div class="col-md-1">
-                              <button type="submit" data-action="reload" class="btn btn-primary legitRipple">Save <i class="icon-database2 position-right"></i></button>
+                              <button type="submit" class="btn btn-primary legitRipple">Save <i class="icon-database2 position-right"></i></button>
                             </div>
                             <div class="col-md-6"></div>
                           </form>

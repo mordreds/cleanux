@@ -10,8 +10,7 @@
               <thead>
                 <tr class="bg-teal-400">
                   <th>Order #</th>
-                  <th>Order Date</th>
-                  <th>Total Cost</th>
+                  <th>Item Quantity</th>
                   <th>Due Date</th>
                   <th>Status</th>
                   <th class="text-center">Actions</th>

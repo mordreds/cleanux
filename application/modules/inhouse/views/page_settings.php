@@ -38,26 +38,29 @@
         }
       },
       columns: [
-        {data: "order_number"},
-        {data: "date_created"},
+        {data: "order_number",render: function(data,type,row,meta) { 
+          return "<a data-action='reload' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
+        }},
         {data: "total_cost"},
         {data: "due_date"},
         {render: function(data,type,row,meta) { 
-          if(row.processing_stage == "Pending") 
+          if(row.status == "Pending") 
             label_class = "label-default";
-          else if(row.processing_stage == "Washing") 
-            label_class = "label-warning";
-          else if(row.processing_stage == "Drying") 
-            label_class = "label-warning";
-          else if(row.processing_stage == "Ironing") 
-            label_class = "label-warning";
-          else if(row.processing_stage == "Ready For Dispatch") 
+          else if(row.status == "Processing") 
+            label_class = "label-primary";
+          else if(row.status == "Dispatch") 
             label_class = "label-success";
+          else if(row.status == "Completed") 
+            label_class = "label-success";
+          else if(row.status == "Cancelled") 
+            label_class = "label-danger";
+          else
+            label_class = "";
           
-          return '<span class="label '+label_class+' change_order_status" style="cursor:pointer">'+row.processing_stage+'</span>';
+          return '<span class="label '+label_class+' change_order_status" style="cursor:pointer">'+row.status+'</span>';
         }},
         {render: function(data,type,row,meta) { 
-          return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments (1)</button></li><li><button class="label bg-primary" data-order="'+row.id+'" set_delivery>Set For Delivery <i class="icon-truck position-right"></i></button></li></ul>';
+          return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments (1)</button></li><li><button class="label bg-primary" data-order="'+row.id+'" set_delivery>Dispatch <i class="icon-truck position-right"></i></button></li></ul>';
         }}
       ],
     });

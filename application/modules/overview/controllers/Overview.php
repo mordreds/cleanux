@@ -272,7 +272,7 @@ class Overview extends MX_Controller
 
           $balance = $this->input->post('balance_paid');
           # Retrieving Order Balance
-          $dbres = self::$_Default_DB;
+          $dbres = self::$_Views_DB;
           $tablename = "vw_orderlist_summary";
           $return_dataType = "php_object";
           $select = "balance";
@@ -438,7 +438,7 @@ class Overview extends MX_Controller
         # loading model 
         $this->load->model('globals/model_retrieval');
         # data definition 
-        $dbres = self::$_Default_DB;
+        $dbres = self::$_Views_DB;
         $tablename = "vw_orderlist_summary";
         $where_condition = array('DATE(date_created)' => $day, '');
         $orderby = array('date_created'=>"desc");
@@ -468,27 +468,25 @@ class Overview extends MX_Controller
         # loading model 
         $this->load->model('globals/model_retrieval');
         # data definition 
-        $dbres = self::$_Default_DB;
+        $dbres = self::$_Views_DB;
         $tablename = "vw_orderlist_summary";
-        $where_condition = array('order_number' => $order_number);
+        $where_condition = array('order_number' => $order_number,'status !=' => "Completed");
 
         $query_result = $this->model_retrieval->all_info_return_row($dbres,$tablename,$where_condition,$return_dataType="php_object");
-
+        //print_r($query_result);
         if($query_result) {
-          for ($a=0; $a < sizeof($query_result); $a++) { 
-            # code...
             $return_data[] = [
-              'id' => $query_result[$a]->id,
-              'order_number' => $query_result[$a]->order_number,
-              'total_cost' => number_format($query_result[$a]->total_cost,2),
-              'amount_paid' => number_format($query_result[$a]->amount_paid,2),
-              'balance' => number_format($query_result[$a]->balance,2),
-              'delivery_location' => $query_result[$a]->delivery_location,
-              'processing_stage' => $query_result[$a]->processing_stage,
-              'status' => $query_result[$a]->status,
-              'date_created' => $query_result[$a]->date_created,
+              'id' => $query_result->id,
+              'order_number' => $query_result->order_number,
+              'total_cost' => number_format($query_result->total_cost,2),
+              'amount_paid' => number_format($query_result->amount_paid,2),
+              'balance' => number_format($query_result->balance,2),
+              'delivery_location' => $query_result->delivery_location,
+              'processing_stage' => $query_result->status,
+              'status' => $query_result->status,
+              'date_created' => $query_result->date_created,
+              'total_comments' =>$query_result->total_comments
             ];
-          }
         }
         else
           $return_data = array();
@@ -520,6 +518,9 @@ class Overview extends MX_Controller
           $pricelists = explode('|',$query_result->pricelist_ids);
           $quantities = explode('|',$query_result->quantities);
           $descriptions = explode('|',$query_result->description);
+          $status = explode('|',$query_result->service_status);
+          $changed_by = explode('|',$query_result->status_change_userids);
+          $change_date = explode('|',$query_result->status_change_dates);
 
           if($pricelists) {
             for ($a=0; $a < sizeof($pricelists) ; $a++) { 
@@ -538,6 +539,9 @@ class Overview extends MX_Controller
                 'service_name' => $pricelist_query_result->service_name,
                 'description' => $description,
                 'quantity' => $quantities[$a],
+                'status'  => @$status[$a],
+                'changed_by' => @$changed_by[$a],
+                'change_date' => @$change_date[$a]
               ]; 
               /***** Return Data Array ******/
             }
@@ -567,9 +571,9 @@ class Overview extends MX_Controller
         # loading model 
         $this->load->model('globals/model_retrieval');
         # data definition 
-        $dbres = self::$_Default_DB;
+        $dbres = self::$_Views_DB;
         $tablename = "vw_orderlist_summary";
-        $where_condition = array('status' => "Pending", 'client_phone_no_1' => "$phone_number", );
+        $where_condition = array('status !=' => "Completed", 'client_phone_no_1' => "$phone_number", );
         $query_result = $this->model_retrieval->all_info_return_result($dbres,$tablename,$where_condition,$return_dataType="php_object");
 
         if($query_result) {
@@ -582,7 +586,7 @@ class Overview extends MX_Controller
               'amount_paid' => number_format($query_result[$a]->amount_paid,2),
               'balance' => number_format($query_result[$a]->balance,2),
               'delivery_location' => $query_result[$a]->delivery_location,
-              'processing_stage' => $query_result[$a]->processing_stage,
+              'processing_stage' => $query_result[$a]->status,
               'status' => $query_result[$a]->status,
               'date_created' => $query_result[$a]->date_created,
               'total_comments' => $query_result[$a]->total_comments

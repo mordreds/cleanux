@@ -549,8 +549,8 @@ class Settings extends MX_Controller
         $this->form_validation->set_rules('delete_item','Delete Action','trim');
 
         if($this->form_validation->run() === FALSE) {
-          $return_data['error'] = "Validation Error";
-          print_r(json_encode($return_data));
+          $this->session->set_flashdata('error', "Validation Error");
+          redirect('overview');
         }
         else {
           $this->load->model('globals/model_insertion');
@@ -712,9 +712,10 @@ class Settings extends MX_Controller
         }
 
         if($tablename == "inhouse_orders") {
+          $dbres = self::$_Views_DB;
           $tablename = "vw_orderlist_summary";
           $return_dataType = "json";
-          $condition = array('status !=' => "Completed",'processing_stage !=' => "Completed"  );
+          $condition = array('status !=' => "Completed",'status !=' => "Completed"  );
         }
 
         $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
@@ -722,10 +723,10 @@ class Settings extends MX_Controller
         if(!empty($search_result)) 
           $return_data = $search_result;
         else
-          $return_data = ['error' => "Data Retrieval Failed"];
+          $return_data['error'] = "Data Retrieval Failed";
       }
       else 
-        $return_data = ['error' => "Permission Denied.Contact Administrator"];
+        $return_data['error'] = "Permission Denied.Contact Administrator";
       
       print_r($return_data);
     }

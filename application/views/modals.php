@@ -139,10 +139,95 @@
   <!-- ****** Delivery Method Modal ******* -->
 
   <!-- ****** Order Details  ******* -->
+    <script type="text/javascript">
+      $(document).on('click','.view_order_details',function(){
+        let status = "";
+        let action = "";
+
+        <?php if($page_controller == "overview" || $page_controller == "inhouse") : ?>
+          status = {data: 'status', render: function(data,type,row,meta) { 
+            if(row.status == "Pending") 
+              label_class = "label-default";
+            else if(row.status == "Washing") 
+              label_class = "label-warning";
+            else if(row.status == "Drying") 
+              label_class = "label-warning";
+            else if(row.status == "Ironing") 
+              label_class = "label-warning";
+            else if(row.status == "Ready For Dispatch") 
+              label_class = "label-success";
+            else
+              label_class = "label-default";
+            
+            return '<span class="label '+label_class+' change_order_status" style="cursor:pointer">'+row.status+'</span>';
+          }};
+
+          <?php if($page_controller == "inhouse") : ?>
+            action = {render: function(data,type,row,meta) { 
+              return '<ul class="action_btns"><li><select class="form-control selectbox"><option>1wsrfer</option><option>1wsrfer</option><option>1wsrfer</option><option>1wsrfer</option><option>1wsrfer</option><option>1wsrfer</option><option>1wsrfer</option></select></li></ul>';
+            }};
+          <?php endif; ?>
+        <?php endif; ?>
+
+        order_id = $(this).data('order_id');
+        $('#view_order_details_tbl').DataTable().destroy();
+        <?php if($page_controller == "overview") : ?>
+        $('#view_order_details_tbl').DataTable({
+          searching: false,
+          paging: false,
+          order: [],
+          autoWidth: false,
+          ajax: {
+            type : 'GET',
+            url : "<?= base_url()?>overview/search_order_details_by_orderno/"+order_id,
+            dataSrc: '',
+            //success: function(response){ alert(response.order_number)},
+            error: function() {
+              $.jGrowl("View Order Details Failed", {
+                theme: 'alert-styled-left bg-danger'
+              });
+            }
+          },
+          columns: [
+            {data: "service_name"},
+            {data: "description"},
+            {data: "quantity"},
+            status
+          ],
+        });
+        <?php endif; ?>
+        <?php if($page_controller == "inhouse") : ?>
+        $('#view_order_details_tbl').DataTable({
+          searching: false,
+          paging: false,
+          order: [],
+          autoWidth: false,
+          ajax: {
+            type : 'GET',
+            url : "<?= base_url()?>overview/search_order_details_by_orderno/"+order_id,
+            dataSrc: '',
+            //success: function(response){ alert(response.order_number)},
+            error: function() {
+              $.jGrowl("View Order Details Failed", {
+                theme: 'alert-styled-left bg-danger'
+              });
+            }
+          },
+          columns: [
+            {data: "service_name"},
+            {data: "description"},
+            {data: "quantity"},
+            status,action
+          ],
+        });
+        <?php endif; ?>
+        $('#order_details').modal('show');
+      });
+    </script>
     <div id="order_details" class="modal fade">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <div class="modal-header bg-green-400">
+          <div class="modal-header bg-slate-800">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h6 class="modal-title">ORDER DETAILS</h6>
           </div>
@@ -154,15 +239,13 @@
                   <th>Service</th>
                   <th>Description</th>
                   <th>Quantity</th>
+                  <th>Status</th>
+                  <?php if($page_controller == "inhouse") : ?>
+                  <th>Action</th>
+                  <?php endif; ?>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>T-shirt</td>
-                  <td>7</td>
-                  <td>Washing</td>
-                </tr>
-              </tbody>
+              <tbody></tbody>
             </table>
             </div>
             <div class="modal-footer">
@@ -184,7 +267,7 @@
     <div id="pay_order" class="modal fade">
       <div class="modal-dialog" style="width:400px">
         <div class="modal-content">
-          <div class="modal-header bg-teal-400">
+          <div class="modal-header bg-slate-800">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h6 class="modal-title">Balance Payment</h6>
           </div>
@@ -256,7 +339,7 @@
     <div id="comment" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header bg-teal-400">
+          <div class="modal-header bg-slate-800">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h6 class="modal-title">Comments On Order</h6>
           </div>

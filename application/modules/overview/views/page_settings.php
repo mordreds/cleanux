@@ -97,11 +97,17 @@
                     {data: "balance"},
                     {data: "delivery_location"},
                     {render: function(data,type,row,meta) { 
-                      if(row.processing_stage == "Pending")
+                      if(row.status == "Pending")
                         label_color = "label-default";
-                      if(row.processing_stage == "Washing")
-                        label_color = "label-warning";
-                      return "<span class='label "+label_color+"'>"+row.processing_stage+"</span>"; 
+                      else if(row.status == "Processing")
+                        label_color = "label-primary";
+                      else if(row.status == "Dispatched")
+                        label_color = "label-success";
+                      else if(row.status == "Completed")
+                        label_color = "label-success";
+                      else
+                        label_color = "label-default";
+                      return "<span class='label "+label_color+"'>"+row.status+"</span>"; 
                     }},
                     {data: "date_created"},
                     {render: function(data,type,row,meta) { 
@@ -128,8 +134,7 @@
                   ajax: {
                     type : 'GET',
                     url : "<?= base_url()?>overview/search_order_by_orderno/"+search_text,
-                    dataSrc: '',
-                    //success: function(response){ alert(response.order_number)},
+                      dataSrc: '',
                     error: function() {
                       $.jGrowl("Retrieving Pending Orders Failed", {
                         theme: 'alert-styled-left bg-danger'
@@ -138,17 +143,35 @@
                   },
                   columns: [
                     {data: "order_number",render: function(data,type,row,meta) { 
-                      return "<a href='#' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
+                      return "<a href='#' data-action='reload' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
                     }},
                     {data: "total_cost"},
+                    {data: "amount_paid"},
+                    {data: "balance"},
+                    {data: "delivery_location"},
                     {render: function(data,type,row,meta) { 
-                      if(row.processing_stage == "Pending")
+                      if(row.status == "Pending")
                         label_color = "label-default";
-                      if(row.processing_stage == "Washing")
-                        label_color = "label-warning";
-                      return "<span class='label "+label_color+"'>"+row.processing_stage+"</span>"; 
+                      else if(row.status == "Processing")
+                        label_color = "label-primary";
+                      else if(row.status == "Dispatched")
+                        label_color = "label-success";
+                      else if(row.status == "Completed")
+                        label_color = "label-success";
+                      else
+                        label_color = "label-default";
+                      return "<span class='label "+label_color+"'>"+row.status+"</span>"; 
                     }},
                     {data: "date_created"},
+                    {render: function(data,type,row,meta) { 
+                      let balance = row.balance;
+                      if(balance > 0)
+                        pay_button = '<li><button class="label bg-blue pay_bill" data-total_balance="'+row.balance+'" data-order_id="'+row.id+'">Pay<i class="icon-cash3 position-right "></i></button></li>'; 
+                      else
+                        pay_button = "";
+
+                      return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments ('+row.total_comments+')</button></li>'+pay_button+'</ul>'; 
+                    }},
                   ],
                 });
 
@@ -460,36 +483,6 @@
       }
     });
   /********** Displaying Services ******/
-
-  /********** View Order Details ******/
-  $(document).on('click','.view_order_details',function(){
-    order_id = $(this).data('order_id');
-    $('#view_order_details_tbl').DataTable().destroy();
-    $('#view_order_details_tbl').DataTable({
-      searching: false,
-      paging: false,
-      order: [],
-      autoWidth: false,
-      ajax: {
-        type : 'GET',
-        url : "<?= base_url()?>overview/search_order_details_by_orderno/"+order_id,
-        dataSrc: '',
-        //success: function(response){ alert(response.order_number)},
-        error: function() {
-          $.jGrowl("View Order Details Failed", {
-            theme: 'alert-styled-left bg-danger'
-          });
-        }
-      },
-      columns: [
-        {data: "service_name"},
-        {data: "description"},
-        {data: "quantity"},
-      ],
-    });
-    $('#order_details').modal('show');
-  });
-  /********** View Order Details ******/
 
   $(document).ready(function(){
     /********** Todays Order ************/

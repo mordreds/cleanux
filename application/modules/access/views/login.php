@@ -1,4 +1,4 @@
-<body class="login-container bg-slate-800"  ">
+<body class="login-container   " style="background-image: url(<?=base_url()?>resources/images/a.jpg);background-repeat: no-repeat;background-origin: f background-position: center;">
   <!-- Page container -->
   <div class="page-container">
     <!-- Page content -->
