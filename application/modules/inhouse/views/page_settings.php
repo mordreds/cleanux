@@ -60,7 +60,7 @@
           return '<span class="label '+label_class+' change_order_status" style="cursor:pointer">'+row.status+'</span>';
         }},
         {render: function(data,type,row,meta) { 
-          return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments (1)</button></li><li><button class="label bg-primary" data-order="'+row.id+'" set_delivery>Dispatch <i class="icon-truck position-right"></i></button></li></ul>';
+          return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments ('+row.total_comments+')</button></li><li><button class="label bg-primary dispatch" data-order_id="'+row.id+'" data-order_no="'+row.order_number+'">Dispatch <i class="icon-truck position-right"></i></button></li></ul>';
         }}
       ],
     });

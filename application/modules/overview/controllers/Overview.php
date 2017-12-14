@@ -311,6 +311,47 @@ class Overview extends MX_Controller
         }
       }
     }
+
+    /*******************************
+      Save New Order
+    *******************************/
+    public function save_comment() {
+      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+        $this->session->set_flashdata('error',"Permission Denied. Please Contact Admin");
+        redirect($_SERVER['HTTP_REFERER']);
+      }
+      else {
+        $this->form_validation->set_rules('order_id','Order','trim|required');
+        $this->form_validation->set_rules('comment','Order','trim|required');
+
+        if($this->form_validation->run() === FALSE) {
+          $this->session->set_flashdata('error',"Validation Error");
+          redirect($_SERVER['HTTP_REFERER']);
+        }
+        else {
+          # Loading Model 
+          $this->load->model('globals/model_insertion');
+          
+          # variable delcarations
+          $dbres = self::$_Default_DB;
+          $tablename = "laundry_order_comments";
+          $data = [
+            'order_id' => $this->input->post('order_id'), 
+            'user_id' => $_SESSION['user']['id'], 
+            'comment' => $this->input->post('comment'), 
+          ];
+
+          $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
+
+          if($query_result)
+            $this->session->set_flashdata('success',"Comment Save Successful");
+          else
+            $this->session->set_flashdata('error',"Comment Save Failed");
+          
+          redirect($_SERVER['HTTP_REFERER']);
+        }
+      }
+    }
   /**************** Insertions ********************/
 
   /**************** Retrievals  ********************/

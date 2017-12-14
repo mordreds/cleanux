@@ -715,7 +715,7 @@ class Settings extends MX_Controller
           $dbres = self::$_Views_DB;
           $tablename = "vw_orderlist_summary";
           $return_dataType = "json";
-          $condition = array('status !=' => "Completed",'status !=' => "Completed"  );
+          $condition = array('status !=' => "Completed",'status !=' => "Dispatch"  );
         }
 
         $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);

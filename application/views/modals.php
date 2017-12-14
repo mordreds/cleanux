@@ -323,6 +323,7 @@
             }
 
             $('#all_comments_view').html(comments);
+            $('[name="order_id"]').val(order_id);
             $('#comment').modal('show');
           },
           error: function() {
@@ -331,11 +332,19 @@
             });
           }
         });
-        
+      });
 
-        
+      $('table').on("click",".dispatch",function(){
+        let order_id = $(this).data('order_id');
+        let order_no = $(this).data('order_no');
+
+        $('#orderno_').text(order_no);
+        $('[name="dispatch_order_id"]').val(order_id);
+        //alert(order_no);
+        $('#confirm_dispatch').modal('show');
       });
     </script>
+    
     <div id="comment" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -345,10 +354,10 @@
           </div>
           <div class="modal-body">
             <div class="caption">
-              <ul class="media-list content-group" id="all_comments_view">
-                
-              </ul>
-              <textarea name="enter-message" class="form-control content-group" rows="2" cols="1" placeholder="Add comment"></textarea>
+              <form action="<?=base_url()?>overview/save_comment" method="post">
+                <input type="hidden" name="order_id" />
+              <ul class="media-list content-group" id="all_comments_view"></ul>
+              <textarea name="comment" class="form-control content-group" rows="2" cols="1" placeholder="Add comment"></textarea>
               <div class="row">
                 <div class="col-xs-6">
                   <ul class="icons-list icons-list-extended mt-10">
@@ -358,15 +367,37 @@
                     </ul>
                 </div>
                 <div class="col-xs-6 text-right">
-                  <button type="button" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Send</button>
+                  <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Send</button>
                 </div>
               </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-  <?php endif; ?>
+
+    <div id="confirm_dispatch" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="<?=base_url()?>inhouse/order_complete" method="post">
+            <div class="modal-header bg-slate-800">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h6 class="modal-title">Confirm Dispatch </h6>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" name="dispatch_order_id" />
+              Do You Confirm that order number <strong><em id='orderno_'></em></strong> is ready for <b>Dispatch</b> .. ?
+            </div>
+            <div class="modal-footer"><hr/>
+              <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button> 
+              <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Confirm</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <?php endif; ?>
   <!-- ****** Comments  ******* -->
 <!-- ***************************** Universal In System *********************************** -->
 

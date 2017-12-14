@@ -29,7 +29,7 @@ class Dispatch extends MX_Controller
          $data['page_controller'] = $this->uri->segment(1);
          $data['controller_function'] = $this->uri->segment(2);
          
-        $data['title'] = "Overview"; 
+        $data['title'] = "Dispatch"; 
         $this->load->view('header',$data); 
         $this->load->view('dispatch',$data); 
         $this->load->view('footer'); 

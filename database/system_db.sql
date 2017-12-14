@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2017 at 08:28 AM
--- Server version: 10.1.10-MariaDB
--- PHP Version: 7.0.4
+-- Generation Time: Dec 14, 2017 at 01:30 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.0.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -274,7 +274,8 @@ INSERT INTO `successful_logins` (`id`, `user_id`, `time_in`, `time_out`, `online
 (189, 2, '2017-12-14 07:24:01', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36', '::1', 'DESKTOP-JIFH265', NULL, NULL),
 (190, 2, '2017-12-14 07:24:57', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36', '::1', 'DESKTOP-JIFH265', NULL, NULL),
 (191, 2, '2017-12-14 07:26:14', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36', '::1', 'DESKTOP-JIFH265', NULL, NULL),
-(192, 2, '2017-12-14 07:26:17', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36', '::1', 'DESKTOP-JIFH265', NULL, NULL);
+(192, 2, '2017-12-14 07:26:17', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36', '::1', 'DESKTOP-JIFH265', NULL, NULL),
+(193, 1, '2017-12-14 09:37:44', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36 OPR/49.0.2725.47', '::1', 'London', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -327,7 +328,7 @@ ALTER TABLE `failed_logins`
 -- AUTO_INCREMENT for table `successful_logins`
 --
 ALTER TABLE `successful_logins`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=193;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=194;
 --
 -- AUTO_INCREMENT for table `sysaudit`
 --
@@ -688,7 +689,9 @@ CREATE TABLE `laundry_order_comments` (
 --
 
 INSERT INTO `laundry_order_comments` (`id`, `order_id`, `user_id`, `comment`, `status`, `date_created`) VALUES
-(1, 11, 1, 'initial comment', 'active', '2017-12-13 13:39:01');
+(1, 11, 1, 'initial comment', 'active', '2017-12-13 13:39:01'),
+(2, 13, 1, 'I should be noted before he come for it', 'active', '2017-12-14 10:01:18'),
+(3, 12, 1, 'Testing Comment on Order Numbber - 00384550', 'active', '2017-12-14 10:08:37');
 
 -- --------------------------------------------------------
 
@@ -741,7 +744,8 @@ CREATE TABLE `laundry_orders` (
   `processor_user_id` bigint(20) NOT NULL,
   `delivery_method_id` bigint(20) NOT NULL,
   `due_date` date NOT NULL,
-  `status` enum('Pending','Processing','Completed','Deleted','Dispatched') NOT NULL DEFAULT 'Pending',
+  `status` enum('Pending','Processing','Completed','Deleted','Dispatch') NOT NULL DEFAULT 'Pending',
+  `modified_by` bigint(20) NOT NULL,
   `processing_stages` enum('Pending','Washing','Drying','Ironing','Ready For Dispatch') NOT NULL DEFAULT 'Pending',
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -750,16 +754,16 @@ CREATE TABLE `laundry_orders` (
 -- Dumping data for table `laundry_orders`
 --
 
-INSERT INTO `laundry_orders` (`id`, `order_number`, `total_cost`, `amount_paid`, `balance`, `client_id`, `processor_user_id`, `delivery_method_id`, `due_date`, `status`, `processing_stages`, `date_created`) VALUES
-(7, '417099242', 105, 50, 55, 12, 1, 3, '2017-12-12', 'Pending', 'Pending', '2017-12-02 23:57:01'),
-(8, '12054353', 160.5, 100, 60.5, 8, 1, 4, '2017-12-06', 'Processing', 'Washing', '2017-12-03 09:52:20'),
-(9, '24661497', 195.5, 80, 115.5, 6, 1, 4, '2017-12-07', 'Pending', 'Pending', '2017-12-03 12:17:21'),
-(10, '76238557', 50, 50, 0, 4, 1, 5, '2017-12-13', 'Pending', 'Drying', '2017-12-03 12:26:28'),
-(11, '32978388', 235, 230, 5, 3, 1, 2, '2017-12-20', 'Pending', 'Pending', '2017-12-03 12:30:33'),
-(12, '00384550', 2000, 1500, 500, 3, 1, 5, '2017-12-07', 'Pending', 'Ironing', '2017-12-03 12:42:26'),
-(13, '55908916', 50, 50, 0, 3, 1, 5, '2017-12-13', 'Pending', 'Pending', '2017-12-03 12:43:51'),
-(14, '90658950', 125, 125, 0, 8, 1, 5, '2017-12-06', 'Pending', 'Ready For Dispatch', '2017-12-04 09:12:36'),
-(15, '45697180', 50, 50, 0, 3, 1, 5, '2017-12-14', 'Pending', 'Pending', '2017-12-05 15:38:20');
+INSERT INTO `laundry_orders` (`id`, `order_number`, `total_cost`, `amount_paid`, `balance`, `client_id`, `processor_user_id`, `delivery_method_id`, `due_date`, `status`, `modified_by`, `processing_stages`, `date_created`) VALUES
+(7, '417099242', 105, 50, 55, 12, 1, 3, '2017-12-12', 'Pending', 0, 'Pending', '2017-12-02 23:57:01'),
+(8, '12054353', 160.5, 100, 60.5, 8, 1, 4, '2017-12-06', 'Processing', 0, 'Washing', '2017-12-03 09:52:20'),
+(9, '24661497', 195.5, 80, 115.5, 6, 1, 4, '2017-12-07', 'Pending', 0, 'Pending', '2017-12-03 12:17:21'),
+(10, '76238557', 50, 50, 0, 4, 1, 5, '2017-12-13', 'Pending', 0, 'Drying', '2017-12-03 12:26:28'),
+(11, '32978388', 235, 230, 5, 3, 1, 2, '2017-12-20', 'Pending', 0, 'Pending', '2017-12-03 12:30:33'),
+(12, '00384550', 2000, 1500, 500, 3, 1, 5, '2017-12-07', 'Dispatch', 1, 'Ironing', '2017-12-03 12:42:26'),
+(13, '55908916', 50, 50, 0, 3, 1, 5, '2017-12-13', 'Pending', 0, 'Pending', '2017-12-03 12:43:51'),
+(14, '90658950', 125, 125, 0, 8, 1, 5, '2017-12-06', 'Pending', 0, 'Ready For Dispatch', '2017-12-04 09:12:36'),
+(15, '45697180', 50, 50, 0, 3, 1, 5, '2017-12-14', 'Pending', 0, 'Pending', '2017-12-05 15:38:20');
 
 -- --------------------------------------------------------
 
@@ -844,6 +848,7 @@ INSERT INTO `laundry_weights` (`id`, `service_type`, `weight`, `description`, `s
 
 --
 -- Stand-in structure for view `vw_employee_details`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_employee_details` (
 `id` bigint(20)
@@ -885,6 +890,7 @@ CREATE TABLE `vw_employee_details` (
 
 --
 -- Stand-in structure for view `vw_laundry_prices`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_prices` (
 `id` bigint(20)
@@ -903,6 +909,7 @@ CREATE TABLE `vw_laundry_prices` (
 
 --
 -- Stand-in structure for view `vw_laundry_weights`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_weights` (
 `id` bigint(20)
@@ -1121,7 +1128,7 @@ ALTER TABLE `laundry_order_balances`
 -- AUTO_INCREMENT for table `laundry_order_comments`
 --
 ALTER TABLE `laundry_order_comments`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `laundry_order_details`
 --
@@ -1319,6 +1326,7 @@ INSERT INTO `users` (`id`, `username`, `passwd`, `default_passwd`, `fullname`, `
 
 --
 -- Stand-in structure for view `vw_user_details`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_user_details` (
 `id` bigint(20)
@@ -1333,13 +1341,13 @@ CREATE TABLE `vw_user_details` (
 ,`status` enum('active','inactive','deleted','')
 ,`created_by` bigint(20)
 ,`date_created` timestamp
-,`custom_roles` text
-,`custom_privileges` text
+,`custom_roles` mediumtext
+,`custom_privileges` mediumtext
 ,`group_id` varchar(11)
 ,`user_roles_status` varchar(8)
 ,`group_name` varchar(255)
-,`group_roles` text
-,`group_privileges` text
+,`group_roles` mediumtext
+,`group_privileges` mediumtext
 );
 
 -- --------------------------------------------------------
@@ -1425,6 +1433,7 @@ USE `bgee_views`;
 
 --
 -- Stand-in structure for view `vw_laundry_order_comments`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_order_comments` (
 `id` bigint(20)
@@ -1440,6 +1449,7 @@ CREATE TABLE `vw_laundry_order_comments` (
 
 --
 -- Stand-in structure for view `vw_orderlist_summary`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_orderlist_summary` (
 `id` bigint(20)
@@ -1455,7 +1465,7 @@ CREATE TABLE `vw_orderlist_summary` (
 ,`processor_user_id` bigint(20)
 ,`delivery_method_id` bigint(20)
 ,`due_date` date
-,`status` enum('Pending','Processing','Completed','Deleted','Dispatched')
+,`status` enum('Pending','Processing','Completed','Deleted','Dispatch')
 ,`total_comments` varbinary(21)
 ,`date_created` datetime
 ,`client_fullname` varchar(255)
