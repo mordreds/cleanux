@@ -41,8 +41,20 @@
         {data: "order_number",render: function(data,type,row,meta) { 
           return "<a data-action='reload' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
         }},
-        {data: "total_cost"},
+        {data: "total_order_items"},
         {data: "due_date"},
+        {data: "date_difference",render: function(data,type,row,meta) { 
+          if(row.date_difference < 0) 
+            button = '<span class="label label-danger">'+Math.abs(row.date_difference)+' days past</span>';
+          else if(row.date_difference == 0) 
+            button = '<span class="label label-warning">'+Math.abs(row.date_difference)+' days past</span>';
+          else if(row.date_difference > 0) 
+            button = '<span class="label label-success">'+Math.abs(row.date_difference)+' days more</span>';
+          else
+            button = '<span class="label label-warning">Undefined</span>';
+          
+          return button;
+        }},
         {render: function(data,type,row,meta) { 
           if(row.status == "Pending") 
             label_class = "label-default";

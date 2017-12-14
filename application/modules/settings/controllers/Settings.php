@@ -654,7 +654,7 @@ class Settings extends MX_Controller
     /*******************************
       Retrieving All data
     *******************************/
-    public function retrieve_alldata($tablename,$dbtype,$where_field = "",$where_value = "")
+    public function retrieve_alldata($table,$dbtype,$where_field = "",$where_value = "")
     {
       if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
       {
@@ -681,37 +681,37 @@ class Settings extends MX_Controller
           $condition = array('status' => "active");
         }
 
-        if($tablename == "services") {
+        if($table == "services") {
           $tablename = "laundry_services";
           $return_dataType = "json";
         }
 
-        if($tablename == "vw_weights") {
+        if($table == "vw_weights") {
           $tablename = "vw_laundry_weights";
           $return_dataType = "json";
         }
 
-        if($tablename == "garments") {
+        if($table == "garments") {
           $tablename = "laundry_garments";
           $return_dataType = "json";
         }
 
-        if($tablename == "vw_prices") {
+        if($table == "vw_prices") {
           $tablename = "vw_laundry_prices";
           $return_dataType = "json";
         }
 
-        if($tablename == "delivery") {
+        if($table == "delivery") {
           $tablename = "laundry_delivery_method";
           $return_dataType = "json";
         }
 
-        if($tablename == "clients") {
+        if($table == "clients") {
           $tablename = "laundry_clients";
           $return_dataType = "json";
         }
 
-        if($tablename == "inhouse_orders") {
+        if($table == "inhouse_orders") {
           $dbres = self::$_Views_DB;
           $tablename = "vw_orderlist_summary";
           $return_dataType = "json";
@@ -720,8 +720,42 @@ class Settings extends MX_Controller
 
         $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
             
-        if(!empty($search_result)) 
+        if(!empty($search_result) && $table != "inhouse_orders") 
           $return_data = $search_result;
+        else if(!empty($search_result) && $table == "inhouse_orders") {
+          $new_array = json_decode($search_result);
+          foreach ($new_array as $key => $value) {
+            # code...
+            /******* Retrieving Total Number Of ITems **********/
+            $dbres = self::$_Default_DB;
+            $tablename = "laundry_order_details";
+            $select = "quantities";
+            $where_condition = array('order_id' => $value->id);
+            $return_dataType = "php_object";
+            $query_result = $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType,$select,$where_condition);;
+            if($query_result) {
+              $items = explode('|',$query_result->quantities);
+              $order_total_items = array_sum($items);
+            }
+            else
+              $order_total_items = 0;
+            /******* Retrieving Total Number Of ITems **********/
+            /******* Calculating Days More Before Due Date **********/
+            $due_date = new DateTime($value->due_date);
+            $today = new DateTime(gmdate('Y-m-d'));
+            $interval = $today->diff($due_date);
+            $date_diff = $interval->format('%R%a');
+            /******* Calculating Days More Before Due Date **********/
+            $return_data[] = [
+              'order_number' => $value->order_number,
+              'total_order_items' => $order_total_items,
+              'due_date' => $value->due_date,
+              'date_difference' => $date_diff,
+              'status' => $value->status,
+            ]; 
+          }
+          $return_data = json_encode($return_data);
+        }
         else
           $return_data['error'] = "Data Retrieval Failed";
       }

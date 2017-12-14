@@ -9,9 +9,10 @@
             <table id="allpending_orders" class="table table-responsive table-xs">
               <thead>
                 <tr class="bg-teal-400">
-                  <th>Order #</th>
-                  <th>Item Quantity</th>
+                  <th>Order No #</th>
+                  <th>Total Item(s)</th>
                   <th>Due Date</th>
+                  <th>Time Left</th>
                   <th>Status</th>
                   <th class="text-center">Actions</th>
                 </tr>
