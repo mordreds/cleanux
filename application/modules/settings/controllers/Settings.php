@@ -752,6 +752,7 @@ class Settings extends MX_Controller
               'due_date' => $value->due_date,
               'date_difference' => $date_diff,
               'status' => $value->status,
+              'total_comments' => $value->total_comments,
             ]; 
           }
           $return_data = json_encode($return_data);
