@@ -170,8 +170,9 @@
         <?php endif; ?>
 
         order_id = $(this).data('order_id');
+
+        /****** Populating Details Table ********/
         $('#view_order_details_tbl').DataTable().destroy();
-        <?php if($page_controller == "overview") : ?>
         $('#view_order_details_tbl').DataTable({
           searching: false,
           paging: false,
@@ -192,10 +193,37 @@
             {data: "service_name"},
             {data: "description"},
             {data: "quantity"},
-            status
+            //status
+          ],
+        });
+        /****** Populating Details Table ********/
+
+        /*<?php if($page_controller == "overview") : ?>
+        $('#view_order_details_tbl').DataTable({
+          searching: false,
+          paging: false,
+          order: [],
+          autoWidth: false,
+          ajax: {
+            type : 'GET',
+            url : "<?= base_url()?>overview/search_order_details_by_orderno/"+order_id,
+            dataSrc: '',
+            //success: function(response){ alert(response.order_number)},
+            error: function() {
+              $.jGrowl("View Order Details Failed", {
+                theme: 'alert-styled-left bg-danger'
+              });
+            }
+          },
+          columns: [
+            {data: "service_name"},
+            {data: "description"},
+            {data: "quantity"},
+            //status
           ],
         });
         <?php endif; ?>
+
         <?php if($page_controller == "inhouse") : ?>
         $('#view_order_details_tbl').DataTable({
           searching: false,
@@ -220,7 +248,8 @@
             status,action
           ],
         });
-        <?php endif; ?>
+        <?php endif; ?>*/
+
         $('#order_details').modal('show');
       });
     </script>
@@ -232,17 +261,17 @@
             <h6 class="modal-title">ORDER DETAILS</h6>
           </div>
           <form action="<?=base_url()?>overview/save_order" method="post">
-            <div class="modal-body" style>
+            <div class="modal-body">
               <table id="view_order_details_tbl" class="table table-xs">
               <thead>
                 <tr class="bg-teal-400">
                   <th>Service</th>
                   <th>Description</th>
                   <th>Quantity</th>
-                  <th>Status</th>
+                  <!-- <th>Status</th>
                   <?php if($page_controller == "inhouse") : ?>
                   <th>Action</th>
-                  <?php endif; ?>
+                  <?php endif; ?> -->
                 </tr>
               </thead>
               <tbody></tbody>
@@ -304,7 +333,7 @@
         let order_id = $(this).data('order_id');
         let formurl = "<?=base_url()?>inhouse/retrieve_comments";
         let formData = {'order_id': order_id};
-
+        
         $.ajax({
           type : 'POST',
           url : formurl,

@@ -38,6 +38,7 @@
         }
       },
       columns: [
+        {data: "client"},
         {data: "order_number",render: function(data,type,row,meta) { 
           return "<a data-action='reload' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
         }},

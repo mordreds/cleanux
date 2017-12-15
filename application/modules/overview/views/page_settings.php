@@ -148,7 +148,7 @@
                     {data: "total_cost"},
                     {data: "amount_paid"},
                     {data: "balance"},
-                    {data: "delivery_location"},
+                    {data: "delivery_method"},
                     {render: function(data,type,row,meta) { 
                       if(row.status == "Pending")
                         label_color = "label-default";

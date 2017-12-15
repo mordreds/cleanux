@@ -4,100 +4,21 @@
     <!-- Main charts -->
     <div class="row">
       <div class="col-md-12">
-        <!-- Individual column searching (text inputs) -->
-          <div class="panel panel-flat">
-            <div class="panel-heading">
-              <div class="heading-elements">
-                <ul class="icons-list">
-                  <li><a data-action="collapse"></a></li>
-                  <li><a data-action="reload"></a></li>
-                  <li><a data-action="close"></a></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="panel-body">
-            
-            </div>
-
-           <table id="alluser" class="table table-responsive datatable-column-search-inputs">
+        <div class="panel panel-flat">
+          <div class="panel-body">
+            <table id="dispatch_tbl" class="table table-responsive table-xs">
               <thead>
                 <tr class="bg-teal-400">
-                  <th>Select</th>
-                    <th>Customers Name</th>
-                    <th>Location</th>
-                    <th># Items</th>
-                    <th>Tel</th>
-                    <th>Comment</th>
-                    <th>Dispatch</th>
-                     <th class="text-center">Actions</th>
+                  <th>Customers Name</th>
+                  <th>Order Number</th>
+                  <th>Delivery Method</th>
+                  <th>Delivery Location</th>
+                  <th>Phone No 1</th>
+                  <th>Phone No 2</th>
+                   <th class="text-center">Actions</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td >
-                      <input type="checkbox" name="Select" >
-                   
-                  </td>
-                    <td>T-shirt,Black Shorts,Blue Shirt,Blue Jean</td>
-                    <td>4</td>
-                    <td>15.00</td>
-                    <td>0.00</td>
-                    <td><i data-toggle="modal" data-target="#modal_form_vertical">Washing & Drying</i></td>
-                    <td  data-toggle="modal" data-target="#comment">Comment(0)</td>
-                    <td>Pickup</td>
-                       <td class="text-center">
-                    <ul class="icons-list">
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                          <i class="icon-menu9"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                         <li><a href="#"><i class="icon-file-pdf"></i> Delivery</a></li>
-                          <li><a href="#"><i class="icon-file-excel"></i>Pickup</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </td>
-                      </tr>
-                      <tr>
-                  <td data-toggle="modal" data-target="#orders" >300120</td>
-                    <td>T-shirt,Black Shorts,Blue Shirt,</td>
-                    <td>3</td>
-                    <td>15.00</td>
-                    <td>0.00</td>
-                    <td><i data-toggle="modal" data-target="#modal_form_vertical">Washing & Drying</i></td>
-                    <td  data-toggle="modal" data-target="#comment">Comment(1)</td>
-
-                     <td>delivery</td>
-                  <td class="text-center">
-                    <ul class="icons-list">
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                          <i class="icon-menu9"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                         <li><a href="#"><i class="icon-file-pdf"></i> Delivery</a></li>
-                          <li><a href="#"><i class="icon-file-excel"></i>Pickup</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </td>
-                      </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td>Order #</td>
-                    <td>Description</td>
-                    <td>Quantity</td>
-                    <td>Total Price</td>
-                    <td>Balance</td>
-                    <td>Status</td>
-                    <td>Tax</td>
-                    <td>Comment</td>
-                  <td class="text-center">Actions</td>
-                      </tr>
-              </tfoot>
+              <tbody></tbody>
             </table>
           </div>
           <!-- /individual column searching (text inputs) -->
@@ -106,44 +27,6 @@
   </div>
   <!-- /main charts -->
 
-
-
-
-  <!-- All Users Data Table Ajax -->
-  <script type="text/javascript">
-    var user_status = "default";
-    $('#allusers').dataTable({
-        ajax: '<?= base_url()?>administration/retrieve_allusers',
-        columns: [
-          {data: "firstname"},
-          {data: "lastname"},
-          {data: "email"},
-          {data: "group_name"},
-          {data: "status", render: function(data,type,row,meta) { 
-            if(row.status == "active") {
-              label_class = "label-success";
-              user_status = row.status;
-            }
-            else if(row.status == "inactive"){
-              label_class = "label-danger";
-              user_status = row.status;
-            }
-
-            return '<span class="label '+label_class+'">'+row.status+'</span>'}
-          },
-          {data: "id", render: function(data,type,row,meta) { 
-            if(user_status == "active") {
-              button = '<ul class="icons-list"><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a><ul class="dropdown-menu dropdown-menu-right"><li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li><li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li><li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li></ul></li></ul>';
-            } 
-            else if(user_status == "inactive") {
-              button = "<button type='submit' name='activate_user' class='btn btn-success btn-xs'><i class='fa fa-unlock'></i> Activate</button>";
-            }
-            return button; }
-          },
-        ],
-    });
-  </script>
-  <!-- All Users Data Table Ajax -->
 
   <!-- Vertical form modal -->
           <div id="modal_form_vertical" class="modal fade">
@@ -204,3 +87,7 @@
             </div>
           </div>
 
+
+<!-- Including Page Settings -->
+<?php include("page_settings.php"); ?>
+<!-- Including Page Settings --> 
