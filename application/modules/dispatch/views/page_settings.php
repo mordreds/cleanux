@@ -46,11 +46,11 @@
         {data: "delivery_location"},
         {data: "date_difference",render: function(data,type,row,meta) { 
           if(row.date_difference < 0) 
-            button = '<span class="label label-danger">'+Math.abs(row.date_difference)+' days past due date</span>';
+            button = '<span class="label label-danger">'+Math.abs(row.date_difference)+' days past</span>';
           else if(row.date_difference == 0) 
-            button = '<span class="label label-warning">'+Math.abs(row.date_difference)+' days past due date</span>';
+            button = '<span class="label label-warning">'+Math.abs(row.date_difference)+' days past</span>';
           else if(row.date_difference > 0) 
-            button = '<span class="label label-success">'+Math.abs(row.date_difference)+' days more to due date</span>';
+            button = '<span class="label label-success">'+Math.abs(row.date_difference)+' days more</span>';
           else
             button = '<span class="label label-warning">Undefined</span>';
           
@@ -59,7 +59,7 @@
         {data: "client_phone_no_1"},
         {data: "client_phone_no_2"},
         {render: function(data,type,row,meta) { 
-          return '<ul class="action_btns"><li><button class="label bg-primary delivered" data-order_id="'+row.id+'" data-order_no="'+row.order_number+'">Delivered <i class="icon-truck position-right"></i></button></li></ul>';
+          return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments ('+row.total_comments+')</button></li><li><button class="label bg-primary delivered" data-order_id="'+row.id+'" data-order_no="'+row.order_number+'">Delivered <i class="icon-truck position-right"></i></button></li></ul>';
         }}
       ],
     });
