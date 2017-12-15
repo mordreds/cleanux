@@ -46,9 +46,9 @@
               <div class="sidebar-category">
                 <div class="category-content no-padding">
                   <ul class="nav navigation" >
-                    <li ><a href="#v_1_1"><i class="icon-bubbles4 text-slate-400" style="color:#fff;"></i ><p style="color:#fff;">Vision:</p><span class="text-muted text-regular pull-right">To become the biggest and largest laundry service in ghana</span></a></li>
+                    <li ><a href="#v_1_1"><i class="icon-bubbles4 text-slate-400" style="color: #333"></i ><p style="color:#333;">Vision:</p><span class="text-muted text-regular pull-right">To become the biggest and largest laundry service in ghana</span></a></li>
                     <li class="navigation-divider"></li>
-                   <li><a href="#v_1_1"><i class="icon-bubbles4 text-slate-400"></i><p style="color:#fff;">Mision:</p><span class="text-muted text-regular pull-right">To become the biggest and largest laundry service in ghana</span></a></li>
+                   <li><a href="#v_1_1"><i class="icon-footprint text-slate-400"></i><p style="color:##333;">Mision:</p><span class="text-muted text-regular pull-right">To become the biggest and largest laundry service in ghana</span></a></li>
                     <li><a> <span ></span></a></li>
                     <li class="navigation-divider"></li>
                   </ul>
