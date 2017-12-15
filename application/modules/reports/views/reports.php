@@ -18,50 +18,28 @@
 
             <div class="panel-body">
             
+            
+            <div class="col-md-12">
+            <div class="col-md-4">
+            <div class="input-group">
+            <span class="input-group-addon"><i class="icon-calendar"></i></span>
+            <input type="text" class="form-control datepicker-menus hasDatepicker" placeholder="Duration" id="">
+            </div>
             </div>
 
-            <table id="alluser" class="table table-responsive datatable-column-search-inputs">
-              <thead>
-                <tr class="bg-teal-400">
-                  <th>#</th>
-                    <th>Full name</th>
-                    <th>Gender </th>
-                    <th>Email </th>
-                    <th>Phone </th>
-                    <th>Residence address</th>
-                    <th>Postal Address</th>
-                    <th>Company</th>
-                  <th class="text-center">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td data-toggle="modal" data-target="#orders">1</td>
-                    <td>BImark</td>
-                    <td  >Male</td>
-                    <td>quuqubismark@yahoo.com</td>
-                    <td>021111111111</td>
-                    <td>Taifa,Daavi street</td>
-                    <td>box ta 353,Taifa-Accra</td>
-                    <td>jumia</td>
-                   <td><span class="label bg-success"><a href="<?=base_url()?>/Overview" style="color: #fff">New Order</a> </span></td>
-                      </tr>
-                   
-              </tbody>
-              <tfoot>
-                 <tr class="bg-teal-400">
-                  <th>#</th>
-                    <th>Full name</th>
-                    <th>Gender </th>
-                    <th>Email </th>
-                    <th>Phone </th>
-                    <th>Residence address</th>
-                    <th>Postal Address</th>
-                    <th>Company</th>
-                  <th class="text-center">Actions</th>
-                </tr>
-              </tfoot>
-            </table>
+            <div class="col-md-4">
+             <div class="input-group">
+            <span class="input-group-addon"><i class="icon-search4 text-size-base"></i></span>
+            <input type="text" class="form-control datepicker-menus hasDatepicker" placeholder="Staff" id="">
+            </div>
+            </div>
+            <div class="col-md-4">
+              <center>
+            <button type="button" class="btn btn-primary btn-ladda btn-ladda-progress ladda-button legitRipple" data-style="zoom-in"><span class="ladda-label">Spinner + Progress</span><span class="ladda-spinner"></span><div class="ladda-progress" style="width: 180px;"></div><span class="legitRipple-ripple" style="left: 34.2361%; top: 23.6842%; transform: translate3d(-50%, -50%, 0px); width: 204.408%; opacity: 0;"></span></button>
+            </div>
+            </center>
+            </div>
+          </div>
           </div>
           <!-- /individual column searching (text inputs) -->
       
