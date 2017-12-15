@@ -337,7 +337,7 @@
   <!-- ****** Pay Balance ******* -->
 
   <!-- ****** Comments  ******* -->
-    <?php if($page_controller == "inhouse" || $page_controller == "overview") : ?>
+    <?php if($page_controller == "inhouse" || $page_controller == "overview" | $page_controller == "dispatch") : ?>
     <script type="text/javascript">
       $('table').on("click",".view_order_comments",function(){
         let order_id = $(this).data('order_id');
@@ -395,7 +395,7 @@
               <form action="<?=base_url()?>overview/save_comment" method="post">
                 <input type="hidden" name="order_id" />
               <ul class="media-list content-group" id="all_comments_view"></ul>
-              <textarea name="comment" class="form-control content-group" rows="2" cols="1" placeholder="Add comment"></textarea>
+              <textarea name="comment" class="form-control content-group" rows="2" cols="1" placeholder="Add comment" required></textarea>
               <div class="row">
                 <div class="col-xs-6">
                   <ul class="icons-list icons-list-extended mt-10">
@@ -1016,7 +1016,7 @@
     <div id="confirm_delivery" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
-          <form action="<?=base_url()?>inhouse/order_complete" method="post">
+          <form action="<?=base_url()?>inhouse/order_delivered" method="post">
             <div class="modal-header bg-slate-800">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h6 class="modal-title">Confirm Delivery </h6>

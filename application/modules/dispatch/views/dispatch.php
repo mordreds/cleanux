@@ -9,10 +9,10 @@
             <table id="dispatch_tbl" class="table table-responsive table-xs">
               <thead>
                 <tr class="bg-teal-400">
-                  <th>Customers Name</th>
-                  <th>Order Number</th>
+                  <th>Client Name</th>
+                  <th>Order No</th>
                   <th>Delivery Method</th>
-                  <th>Delivery Location</th>
+                  <th>Location</th>
                   <th>Due Date</th>
                   <th>Phone No 1</th>
                   <th>Phone No 2</th>

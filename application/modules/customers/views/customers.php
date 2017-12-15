@@ -11,8 +11,8 @@
                 <tr class="bg-teal-400">
                   <th>Full name</th>
                   <th>Email </th>
-                  <th>Primary Phone </th>
-                  <th>Secondary Phone </th>
+                  <th>Phone No 1</th>
+                  <th>Phone No 2</th>
                   <th>Residence address</th>
                   <th>Company</th>
                   <th>Status</th>

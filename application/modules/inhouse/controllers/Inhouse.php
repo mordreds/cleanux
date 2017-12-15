@@ -112,6 +112,44 @@ class Inhouse extends MX_Controller
         }
       }
     }
+
+    /*******************************
+      Order Delivered
+    *******************************/
+    public function order_delivered() {
+      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+        $this->session->set_flashdata('error',"Permission Denied. Please Contact Admin");
+        redirect('inhouse');
+      }
+      else {
+        $this->form_validation->set_rules('delivery_order_id','Order','trim|required');
+
+        if($this->form_validation->run() === FALSE) {
+          $this->session->set_flashdata('error',"Validation Error");
+          redirect('dispatch');
+        }
+        else {
+          $this->load->model('globals/model_update');
+          /***** Data Definition *****/
+          $id = $this->input->post('delivery_order_id');
+          $dbres = self::$_Default_DB;
+          $tablename = "laundry_orders";
+          $update_data = ['status' => "Delivered"];
+          $return_dataType="php_object";
+          $delete_confirmed = $this->input->post('delete_item');
+          $where_condition = ['id' => $id];
+          /***** Data Definition *****/
+          $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$update_data,$where_condition) ;
+        
+          if($query_result)
+            $this->session->set_flashdata('success', "Delivery Confirmed");
+          else
+            $this->session->set_flashdata('error', "Confirm Delivery Failed");
+
+          redirect('dispatch');
+        }
+      }
+    }
   /**************** Data Insertion ********************/
     
     
