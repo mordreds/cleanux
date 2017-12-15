@@ -718,9 +718,16 @@ class Settings extends MX_Controller
           $condition = array('status !=' => "Completed",'status !=' => "Dispatch"  );
         }
 
+        if($table == "dispatch_orders") {
+          $dbres = self::$_Views_DB;
+          $tablename = "vw_orderlist_summary";
+          $return_dataType = "json";
+          $condition = array('status' => "Dispatch"  );
+        }
+
         $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
             
-        if(!empty($search_result) && $table != "inhouse_orders") 
+        if(!empty($search_result) && $table != "inhouse_orders" && $table != "dispatch_orders") 
           $return_data = $search_result;
         else if(!empty($search_result) && $table == "inhouse_orders") {
           $new_array = json_decode($search_result);
@@ -747,12 +754,54 @@ class Settings extends MX_Controller
             $date_diff = $interval->format('%R%a');
             /******* Calculating Days More Before Due Date **********/
             $return_data[] = [
+              'id' => $value->id,
               'order_number' => $value->order_number,
               'total_order_items' => $order_total_items,
               'due_date' => $value->due_date,
               'date_difference' => $date_diff,
               'status' => $value->status,
               'total_comments' => $value->total_comments,
+              'client' => $value->client_fullname,
+            ]; 
+          }
+          $return_data = json_encode($return_data);
+        }
+        else if(!empty($search_result) && $table == "dispatch_orders") {
+          $new_array = json_decode($search_result);
+          foreach ($new_array as $key => $value) {
+            /******* Retrieving Total Number Of ITems **********/
+            $dbres = self::$_Default_DB;
+            $tablename = "laundry_order_details";
+            $select = "quantities";
+            $where_condition = array('order_id' => $value->id);
+            $return_dataType = "php_object";
+            $query_result = $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType,$select,$where_condition);;
+            if($query_result) {
+              $items = explode('|',$query_result->quantities);
+              $order_total_items = array_sum($items);
+            }
+            else
+              $order_total_items = 0;
+            /******* Retrieving Total Number Of ITems **********/
+            /******* Calculating Days More Before Due Date **********/
+            $due_date = new DateTime($value->due_date);
+            $today = new DateTime(gmdate('Y-m-d'));
+            $interval = $today->diff($due_date);
+            $date_diff = $interval->format('%R%a');
+            /******* Calculating Days More Before Due Date **********/
+            $return_data[] = [
+              'id' => $value->id,
+              'order_number' => $value->order_number,
+              'total_order_items' => $order_total_items,
+              'due_date' => $value->due_date,
+              'date_difference' => $date_diff,
+              'status' => $value->status,
+              'total_comments' => $value->total_comments,
+              'client' => $value->client_fullname,
+              'delivery_method' => $value->delivery_method,
+              'delivery_location' => $value->delivery_location,
+              'client_phone_no_1' => $value->client_phone_no_1,
+              'client_phone_no_2' => $value->client_phone_no_2,
             ]; 
           }
           $return_data = json_encode($return_data);
