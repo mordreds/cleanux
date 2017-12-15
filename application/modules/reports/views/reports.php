@@ -42,7 +42,70 @@
           </div>
           </div>
           <!-- /individual column searching (text inputs) -->
-      
+        <div class="panel panel-white">
+            <div class="panel-heading">
+              <h6 class="panel-title">Static invoice</h6>
+              <div class="heading-elements">
+                
+                      </div>
+            </div>
+
+            <div class="panel-body no-padding-bottom">
+              <div class="row">
+                <div class="col-sm-6 content-group">
+                  <img src="assets/images/logo_demo.png" class="content-group mt-10" alt="" style="width: 120px;">
+                  <ul class="list-condensed list-unstyled">
+                    <li>2269 Elba Lane</li>
+                    <li>Paris, France</li>
+                    <li>888-555-2311</li>
+                  </ul>
+                </div>
+
+                <div class="col-sm-6 content-group">
+                  <div class="invoice-details">
+                    <h5 class="text-uppercase text-semibold">Invoice #49029</h5>
+                    <ul class="list-condensed list-unstyled">
+                      <li>Date: <span class="text-semibold">January 12, 2015</span></li>
+                      <li>Due date: <span class="text-semibold">May 12, 2015</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <table id="allpending_orders" class="table table-responsive table-xs">
+              <thead>
+                <tr class="bg-teal-400">
+                  <th>Client Name</th>
+                  <th>Order No #</th>
+                  <th>Total Item(s)</th>
+                  <th>Due Date</th>
+                  <th>Time Left</th>
+                  <th>Status</th>
+                  <th class="text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+            <table id="dispatch_tbl" class="table table-responsive table-xs">
+              <thead>
+                <tr class="bg-teal-400">
+                  <th>Customers Name</th>
+                  <th>Order Number</th>
+                  <th>Delivery Method</th>
+                  <th>Delivery Location</th>
+                  <th>Due Date</th>
+                  <th>Phone No 1</th>
+                  <th>Phone No 2</th>
+                   <th class="text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+
+            <button type="button" class="btn btn-default btn-xs heading-btn"><i class="icon-file-check position-left"></i> Save</button>
+                <button type="button" class="btn btn-default btn-xs heading-btn"><i class="icon-printer position-left"></i> Print</button>
+          </div>
     </div>
   </div>
   <!-- /main charts -->
