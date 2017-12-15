@@ -166,6 +166,7 @@ class Overview extends MX_Controller
       else {
         $this->form_validation->set_rules('order_due_date','Order Due Date','trim|required');
         $this->form_validation->set_rules('delivery_method','Delivery Method','trim|required');
+        $this->form_validation->set_rules('delivery_location','Delivery Location','trim|required');
         $this->form_validation->set_rules('amount_paid','Amount Paid','trim|required');
 
         if($this->form_validation->run() === FALSE) {
@@ -210,6 +211,7 @@ class Overview extends MX_Controller
               'due_date' => $this->input->post('order_due_date'),
               'processor_user_id' => $_SESSION['user']['id'],
               'delivery_method_id' => $this->input->post('delivery_method'),
+              'delivery_location' => $this->input->post('delivery_location'),
               'status' => "Pending",
             ];
             $dbres = self::$_Default_DB;

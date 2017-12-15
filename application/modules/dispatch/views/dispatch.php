@@ -13,6 +13,7 @@
                   <th>Order Number</th>
                   <th>Delivery Method</th>
                   <th>Delivery Location</th>
+                  <th>Due Date</th>
                   <th>Phone No 1</th>
                   <th>Phone No 2</th>
                    <th class="text-center">Actions</th>

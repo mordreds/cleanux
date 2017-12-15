@@ -228,13 +228,7 @@
                                 <th>Time</th>
                               </tr>
                             </thead>
-                            <tbody>
-                              <tr>
-                                <td>300777</td>
-                                <td>Kwesi</td>
-                                <td>1000</td>
-                              </tr>
-                            </tbody>
+                            <tbody></tbody>
                           </table>    
                         </div>
                       </div>

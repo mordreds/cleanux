@@ -26,6 +26,7 @@
 
   /************** All Pending Orders Table *********/
     $('#allpending_orders').dataTable({
+      order: [],
       ajax: {
         type : 'GET',
         url : '<?= base_url()?>settings/retrieve_alldata/inhouse_orders/default',

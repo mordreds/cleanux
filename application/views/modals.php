@@ -99,6 +99,14 @@
               </div>
               <label class="display-block" id="delivery_notice"></label> 
               <hr></hr>
+              <div class="row">
+                <div class="col-sm-12 ">
+                  <div class="form-group">
+                    <label class="display-block">Enter Delivery Location</label>
+                    <textarea class="form-control" name="delivery_location" required></textarea>
+                  </div>
+                </div>
+              </div>
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-4">
@@ -286,6 +294,7 @@
   <!-- ****** Order Details  ******* -->
 
   <!-- ****** Pay Balance  ******* -->
+    <?php if($page_controller == "overview") : ?>
     <script type="text/javascript">
       $(document).on("click",".pay_bill",function(){
         $('[name=order_id]').val($(this).data('order_id'));
@@ -324,6 +333,7 @@
         </div>
       </div>
     </div>
+    <?php endif; ?>
   <!-- ****** Pay Balance ******* -->
 
   <!-- ****** Comments  ******* -->
@@ -369,7 +379,6 @@
 
         $('#orderno_').text(order_no);
         $('[name="dispatch_order_id"]').val(order_id);
-        //alert(order_no);
         $('#confirm_dispatch').modal('show');
       });
     </script>
@@ -430,7 +439,7 @@
   <!-- ****** Comments  ******* -->
 <!-- ***************************** Universal In System *********************************** -->
 
-<!-- **************************************** Users Page *********************************** -->
+<!-- ***************************** Users Page ******************************************** -->
   <?php if($controller_function == "users") : ?>
     <!-- *********** Reset Password ********* -->
       <script type="text/javascript">
@@ -474,9 +483,9 @@
       </div>
     <!-- *********** Reset Password ********* -->
   <?php endif; ?>
-<!-- **************************************** Users Page *********************************** -->
+<!-- ***************************** Users Page ******************************************** -->
 
-<!-- ***************************** New Registration Page *********************************** -->
+<!-- ***************************** New Registration Page ********************************* -->
   <?php if($controller_function == "new_registration") : ?>
     <!-- *********** Edit Laundry Service ********* -->
       <script type="text/javascript">
@@ -803,9 +812,9 @@
       </script>
     <!-- *********** Edit Laundry Delivery Price ********* -->
   <?php endif; ?>
-<!-- ***************************** New Registration Page *********************************** -->
+<!-- ***************************** New Registration Page ********************************* -->
 
-<!-- *********************************** Customers Page ************************************* -->
+<!-- ***************************** Customers Page ************************************* -->
   <?php if($page_controller == "customers") : ?>
     <script type="text/javascript">
       $(document).on("click",".edit_client_info",function(){
@@ -947,9 +956,9 @@
       });
     </script>
   <?php endif;?>
-<!-- *********************************** Customers Page ************************************* -->
+<!-- ***************************** Customers Page ************************************* -->
 
-<!-- *********************************** In House Page ************************************* -->
+<!-- ***************************** In House Page ************************************* -->
   <?php if($page_controller == "inhouse") : ?>
     <script type="text/javascript">
       $(document).on("click",".change_order_status",function(){
@@ -989,7 +998,44 @@
       </div>
     </div>
   <?php endif;?>
-<!-- *********************************** In House Page ************************************* -->
+<!-- ***************************** In House Page ************************************* -->
+
+<!-- ***************************** Dispatch Page ************************************* -->
+  <?php if($page_controller == "dispatch") : ?>
+    <script type="text/javascript">
+      $(document).on("click",".delivered",function(){
+        let order_id = $(this).data('order_id');
+        let order_no = $(this).data('order_no');
+
+        $('#delivery_orderno_').text(order_no);
+        $('[name="delivery_order_id"]').val(order_id);
+
+        $('#confirm_delivery').modal('show');
+      });
+    </script>
+    <div id="confirm_delivery" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="<?=base_url()?>inhouse/order_complete" method="post">
+            <div class="modal-header bg-slate-800">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h6 class="modal-title">Confirm Delivery </h6>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" name="delivery_order_id" />
+              Do You Confirm that order number <strong><em id='delivery_orderno_'></em></strong> has been safely delivered .. ?
+            </div>
+            <div class="modal-footer"><hr/>
+              <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button> 
+              <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Confirm</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+  <?php endif;?>
+<!-- ***************************** Dispatch Page ************************************* -->
 
 
 <!-- *********** check out ********* -->

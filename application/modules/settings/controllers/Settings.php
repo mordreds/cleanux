@@ -715,14 +715,14 @@ class Settings extends MX_Controller
           $dbres = self::$_Views_DB;
           $tablename = "vw_orderlist_summary";
           $return_dataType = "json";
-          $condition = array('status !=' => "Completed",'status !=' => "Dispatch"  );
+          $condition = array('status !=' => "Completed",'status !=' => "Dispatch");
         }
 
         if($table == "dispatch_orders") {
           $dbres = self::$_Views_DB;
           $tablename = "vw_orderlist_summary";
           $return_dataType = "json";
-          $condition = array('status' => "Dispatch"  );
+          $condition = array('status' => "Dispatch");
         }
 
         $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
@@ -731,6 +731,7 @@ class Settings extends MX_Controller
           $return_data = $search_result;
         else if(!empty($search_result) && $table == "inhouse_orders") {
           $new_array = json_decode($search_result);
+          $new_array = array_reverse($new_array);
           foreach ($new_array as $key => $value) {
             # code...
             /******* Retrieving Total Number Of ITems **********/
