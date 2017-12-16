@@ -71,7 +71,7 @@
           else
             label_class = "";
           
-          return '<span class="label '+label_class+' change_order_status" style="cursor:pointer">'+row.status+'</span>';
+          return '<ul class="icons-list"><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="label '+label_class+' change_order_status" style="cursor:pointer">'+row.status+'</span></a><ul class="dropdown-menu dropdown-menu-right"><li><a href="#"><i class="icon-file-stats"></i> Pending</a></li><li><a href="#"><i class="icon-file-text2"></i> Processing</a></li><li><a href="#"><i class="icon-file-locked"></i> Dispatch</a></li><li class="divider"></li></ul></li></ul>';
         }},
         {render: function(data,type,row,meta) { 
           return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments ('+row.total_comments+')</button></li><li><button class="label bg-primary dispatch" data-order_id="'+row.id+'" data-order_no="'+row.order_number+'">Dispatch <i class="icon-truck position-right"></i></button></li></ul>';
