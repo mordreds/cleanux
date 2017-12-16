@@ -963,8 +963,7 @@
     <script type="text/javascript">
       $(document).on("click",".change_order_status",function(){
         
-
-        $('#status_history').modal('show');
+        //$('#status_history').modal('show');
       });
     </script>
     <div id="status_history" class="modal fade">
