@@ -20,20 +20,25 @@
             
             
             <div class="col-md-12">
-            <div class="col-md-4">
+            <div class="col-md-3">
             <div class="input-group">
-            <span class="input-group-addon"><i class="icon-calendar"></i></span>
-            <input type="text" class="form-control datepicker-menus hasDatepicker" placeholder="Duration" id="">
-            </div>
-            </div>
-
-            <div class="col-md-4">
-             <div class="input-group">
-            <span class="input-group-addon"><i class="icon-search4 text-size-base"></i></span>
+            <span class="input-group-addon"><i class="icon-search4"></i></span>
             <input type="text" class="form-control datepicker-menus hasDatepicker" placeholder="Staff" id="">
             </div>
             </div>
-            <div class="col-md-4">
+             <div class="col-md-3">
+             <div class="input-group">
+            <span class="input-group-addon"><i class="icon-calendar text-size-base"></i></span>
+            <input type="text" class="form-control datepicker-menus hasDatepicker" placeholder="Date" id="">
+            </div>
+            </div>
+            <div class="col-md-3">
+             <div class="input-group">
+            <span class="input-group-addon"><i class="icon-search4 text-size-base"></i></span>
+            <input type="text" class="form-control datepicker-menus hasDatepicker" placeholder="Type" id="">
+            </div>
+            </div>
+            <div class="col-md-3">
               <center>
             <button type="button" class="btn btn-primary btn-ladda btn-ladda-progress ladda-button legitRipple" data-style="zoom-in"><span class="ladda-label">Spinner + Progress</span><span class="ladda-spinner"></span><div class="ladda-progress" style="width: 180px;"></div><span class="legitRipple-ripple" style="left: 34.2361%; top: 23.6842%; transform: translate3d(-50%, -50%, 0px); width: 204.408%; opacity: 0;"></span></button>
             </div>
@@ -43,30 +48,24 @@
           </div>
           <!-- /individual column searching (text inputs) -->
         <div class="panel panel-white">
-            <div class="panel-heading">
-              <h6 class="panel-title">Static invoice</h6>
-              <div class="heading-elements">
-                
-                      </div>
-            </div>
+            
 
             <div class="panel-body no-padding-bottom">
               <div class="row">
                 <div class="col-sm-6 content-group">
                   <img src="assets/images/logo_demo.png" class="content-group mt-10" alt="" style="width: 120px;">
                   <ul class="list-condensed list-unstyled">
-                    <li>2269 Elba Lane</li>
-                    <li>Paris, France</li>
-                    <li>888-555-2311</li>
+                    <li>Company Logo</li>
                   </ul>
                 </div>
 
                 <div class="col-sm-6 content-group">
                   <div class="invoice-details">
-                    <h5 class="text-uppercase text-semibold">Invoice #49029</h5>
+                    <h5 class="text-uppercase text-semibold"><?=$_SESSION['companyinfo']['name']?></h5>
                     <ul class="list-condensed list-unstyled">
-                      <li>Date: <span class="text-semibold">January 12, 2015</span></li>
-                      <li>Due date: <span class="text-semibold">May 12, 2015</span></li>
+                      <li><span class="text-semibold"><?=$_SESSION['companyinfo']['postal_address']?></span></li>
+                      <li><span class="text-semibold"><?=$_SESSION['companyinfo']['telephone_1']?></span></li>
+                       <li><span class="text-semibold"><?=$_SESSION['companyinfo']['email']?></span></li>
                     </ul>
                   </div>
                 </div>
@@ -104,7 +103,7 @@
             </table>
 
             <button type="button" class="btn btn-default btn-xs heading-btn"><i class="icon-file-check position-left"></i> Save</button>
-                <button type="button" class="btn btn-default btn-xs heading-btn"><i class="icon-printer position-left"></i> Print</button>
+                <button type="button" _blink class="btn btn-default btn-xs heading-btn pull-right"><i class="icon-printer position-left"></i> Print</button>
           </div>
     </div>
   </div>
