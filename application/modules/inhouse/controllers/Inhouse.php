@@ -85,6 +85,7 @@ class Inhouse extends MX_Controller
       }
       else {
         $this->form_validation->set_rules('dispatch_order_id','Order','trim|required');
+        $this->form_validation->set_rules('status','Order','trim');
 
         if($this->form_validation->run() === FALSE) {
           $this->session->set_flashdata('error',"Validation Error");
@@ -94,21 +95,44 @@ class Inhouse extends MX_Controller
           $this->load->model('globals/model_update');
           /***** Data Definition *****/
           $id = $this->input->post('dispatch_order_id');
+          if($this->input->post('status')) {
+            $status = $this->input->post('status');
+            $success_msg = "Status Changed";
+            $error_msg = "Status Changing";
+            $response = "ajax";
+          }
+          else {
+            $status = "Dispatch";
+            $success_msg = "Order Moved For Dispatch";
+            $error_msg = "Moving Order Failed";
+            $response = "post";
+          }
           $dbres = self::$_Default_DB;
           $tablename = "laundry_orders";
-          $update_data = ['status' => "Dispatch", 'modified_by' => $_SESSION['user']['id']];
+          $update_data = ['status' => $status, 'modified_by' => $_SESSION['user']['id'], 'modified_date'=>gmdate('Y-m-d H:i:s')];
           $return_dataType="php_object";
           $delete_confirmed = $this->input->post('delete_item');
           $where_condition = ['id' => $id];
           /***** Data Definition *****/
           $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$update_data,$where_condition) ;
         
-          if($query_result)
-            $this->session->set_flashdata('success', "Order Moved For Dispatch");
-          else
-            $this->session->set_flashdata('error', "Moving Order Failed");
+          if($response == "post") {
+            if($query_result)
+              $this->session->set_flashdata('success', $success_msg);
+            else
+              $this->session->set_flashdata('error', $error_msg);
 
-          redirect('inhouse');
+            redirect('inhouse');
+          }
+          else if($response = "ajax") {
+            if($query_result)
+              $return_data['success'] = "Status Changed";
+            else
+              $return_data['error'] = "Status Failed";
+
+            print_r(json_encode($return_data));
+          }
+          
         }
       }
     }

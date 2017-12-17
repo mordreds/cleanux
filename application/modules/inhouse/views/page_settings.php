@@ -71,14 +71,40 @@
           else
             label_class = "";
           
-          return '<ul class="icons-list"><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="label '+label_class+' change_order_status" style="cursor:pointer">'+row.status+'</span></a><ul class="dropdown-menu dropdown-menu-right"><li><a href="#"><i class="icon-file-stats"></i> Pending</a></li><li><a href="#"><i class="icon-file-text2"></i> Processing</a></li><li><a href="#"><i class="icon-file-locked"></i> Dispatch</a></li><li class="divider"></li></ul></li></ul>';
+          return '<ul class="icons-list"><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="label '+label_class+' change_order_status" style="cursor:pointer">'+row.status+'</span></a><ul class="dropdown-menu dropdown-menu-right"><li><a href="#" class="change_status" data-status="Pending" data-tableid="allpending_orders" data-order_id="'+row.id+'"><i class="icon-file-stats"></i> Pending</a></li><li><a href="#" class="change_status" data-status="Processing" data-tableid="allpending_orders" data-order_id="'+row.id+'"><i class="icon-hour-glass"></i> Processing</a></li><li><a href="#" class="change_status" data-status="Dispatch" data-tableid="allpending_orders" data-order_id="'+row.id+'" data-order_no="'+row.order_number+'"><i class="icon-truck"></i> Dispatch</a></li><li class="divider"></li></ul></li></ul>';
         }},
         {render: function(data,type,row,meta) { 
-          return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments ('+row.total_comments+')</button></li><li><button class="label bg-primary dispatch" data-order_id="'+row.id+'" data-order_no="'+row.order_number+'">Dispatch <i class="icon-truck position-right"></i></button></li></ul>';
+          return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments ('+row.total_comments+')</button></li></ul>';
         }}
       ],
     });
+    /* <li><button class="label bg-primary dispatch" data-order_id="'+row.id+'" data-order_no="'+row.order_number+'">Dispatch <i class="icon-truck position-right"></i></button></li>*/
   /************** All Pending Orders Table *********/
+
+  /************** Changing Status ******************/
+    $(document).on("click",".change_status",function(){
+      let status = $(this).data('status');
+      
+      if(status == "Dispatch") {
+        let order_id = $(this).data('order_id');
+        let order_no = $(this).data('order_no');
+        
+        $('#orderno_').text(order_no);
+        $('[name="dispatch_order_id"]').val(order_id);
+        $('#confirm_dispatch').modal('show');
+      }
+      else {
+        let formurl = "<?=base_url()?>inhouse/order_complete";
+        let tableid = $(this).data('tableid');
+        let formData = { 
+          'dispatch_order_id': $(this).data('order_id'),
+          'status': status
+        };
+        ajax_post(formurl,formData,tableid);
+      }
+    });
+  /************** Changing Status ******************/
 </script>
+
 <?php endif; ?>
   

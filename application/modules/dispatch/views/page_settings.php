@@ -26,6 +26,7 @@
 
   /************** All Pending Orders Table *********/
     $('#dispatch_tbl').dataTable({
+      order: [],
       ajax: {
         type : 'GET',
         url : '<?= base_url()?>settings/retrieve_alldata/dispatch_orders/default',

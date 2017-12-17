@@ -22,8 +22,6 @@
               <tbody></tbody>
             </table>
           </div>
-          <!-- /individual column searching (text inputs) -->
-      
     </div>
   </div>
   <!-- /main charts -->

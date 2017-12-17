@@ -715,7 +715,7 @@ class Settings extends MX_Controller
           $dbres = self::$_Views_DB;
           $tablename = "vw_orderlist_summary";
           $return_dataType = "json";
-          $condition = array('status !=' => "Completed",'status !=' => "Dispatch",'status !=' => "Delivered");
+          $condition = "status not in ('Completed','Dispatch','Delivered')" /*array('status !=' => "Completed",'status !=' => "Dispatch",'status !=' => "Delivered")*/;
         }
 
         if($table == "dispatch_orders") {
@@ -723,9 +723,10 @@ class Settings extends MX_Controller
           $tablename = "vw_orderlist_summary";
           $return_dataType = "json";
           $condition = array('status' => "Dispatch");
+          $orderby = array('modified_date' => "DESC");
         }
 
-        $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
+        $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition,@$orderby);
             
         if(!empty($search_result) && $table != "inhouse_orders" && $table != "dispatch_orders") 
           $return_data = $search_result;

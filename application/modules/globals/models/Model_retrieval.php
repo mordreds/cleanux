@@ -35,9 +35,16 @@ class Model_retrieval extends CI_Model
   /*******************************
     Return Array of Information
   *******************************/
-  public function retrieve_allinfo($dbres,$tablename,$return_dataType="php_object",$condition=array()) 
+  public function retrieve_allinfo($dbres,$tablename,$return_dataType="php_object",$condition=array(),$orderby = array()) 
   {
     $dbres->where($condition); 
+
+    if($orderby) {
+      foreach ($orderby as $key => $value) {
+        # code...
+        $dbres->order_by($key,$value); 
+      }
+    }
 
     $query_result = $dbres->get($tablename);
 
