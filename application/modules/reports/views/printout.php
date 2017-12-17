@@ -1,69 +1,45 @@
+<!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>resources/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>resources/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>resources/css/core.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>resources/css/components.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>resources/css/colors.css" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
  <!-- Content area -->
-  <div class="content">
+  <div class="content" >
     <?php //print "<pre>"; print_r($_SESSION); print "</pre>";?>
     <!-- Main charts -->
     <div class="row">
       <div class="col-md-12">
         <!-- Individual column searching (text inputs) -->
           <div class="panel panel-flat">
-            <div class="panel-heading">
-              <div class="heading-elements">
-                <ul class="icons-list">
-                  <li><a data-action="collapse"></a></li>
-                  <li><a data-action="reload"></a></li>
-                  <li><a data-action="close"></a></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="panel-body">
-            
-            
-            <div class="col-md-12">
-            <div class="col-md-3">
-            <div class="input-group">
-            <span class="input-group-addon"><i class="icon-search4"></i></span>
-            <input type="text" class="form-control datepicker-menus hasDatepicker" placeholder="Staff" id="">
-            </div>
-            </div>
-             <div class="col-md-3">
-              <div class="col-md-6">
-                <label>From:</label>
-             <div class="input-group">
-            <span class="input-group-addon"><i class="icon-calendar text-size-base"></i></span>
-            <input type="Date" class="form-control datepicker-menus hasDatepicker" placeholder="Date" id="">
-            </div>
-            </div>
-            <div class="col-md-6">
-              <label>To:</label>
-            <div class="input-group">
-            <span class="input-group-addon"><i class="icon-calendar text-size-base"></i></span>
-            <input type="Date" class="form-control datepicker-menus hasDatepicker" placeholder="Date" id="">
-            </div>
-            </div>
-            </div>
-            <div class="col-md-3">
-             <div class="input-group">
-            <span class="input-group-addon"><i class="icon-search4 text-size-base"></i></span>
-            <input type="text" class="form-control datepicker-menus hasDatepicker" placeholder="Type" id="">
-            </div>
-            </div>
-            <div class="col-md-3">
-              <center>
-            <button type="button" class="btn btn-primary btn-ladda btn-ladda-progress ladda-button legitRipple" data-style="zoom-in"><span class="ladda-label">Spinner + Progress</span><span class="ladda-spinner"></span><div class="ladda-progress" style="width: 180px;"></div><span class="legitRipple-ripple" style="left: 34.2361%; top: 23.6842%; transform: translate3d(-50%, -50%, 0px); width: 204.408%; opacity: 0;"></span></button>
-            </div>
-            </center>
-            </div>
-          </div>
-          </div>
           <!-- /individual column searching (text inputs) -->
         <div class="panel panel-white">
             
 
             <div class="panel-body no-padding-bottom">
-             
+              <div class="row">
+                <div class="col-sm-6 content-group">
+                  <img src="assets/images/logo_demo.png" class="content-group mt-10" alt="" style="width: 120px;">
+                  <ul class="list-condensed list-unstyled">
+                  </ul>
+                </div>
 
-              <table id="allpending_orders" class="table table-responsive table-xs">
+                <div class="col-sm-6 content-group">
+                  <div class="invoice-details">
+                    <h5 class="text-uppercase text-semibold"><?=$_SESSION['companyinfo']['name']?></h5>
+                    <ul class="list-condensed list-unstyled">
+                      <li><span class="text-semibold"><?=$_SESSION['companyinfo']['postal_address']?></span></li>
+                      <li><span class="text-semibold"><?=$_SESSION['companyinfo']['telephone_1']?></span></li>
+                       <li><span class="text-semibold"><?=$_SESSION['companyinfo']['email']?></span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+           
+              <table id="allpending_orders" class="table table-responsive table-xs" style="font-size: 13px">
               <thead>
                 <tr class="bg-slate-800">
                   <th>Client Name</th>
@@ -85,7 +61,7 @@
               <tbody>
               </tbody>
             </table>
-            <table id="dispatch_tbl" class="table table-responsive table-xs ">
+            <table id="dispatch_tbl" class="table table-responsive table-xs " style="font-size: 13px">
               <thead>
                 <tr class="bg-slate-800">
                   <th>Customers Name</th>
@@ -108,9 +84,6 @@
               </thead>
               <tbody></tbody>
             </table>
-
-            <button type="button" class="btn btn-default btn-xs heading-btn"><i class="icon-file-check position-left"></i> Save</button>
-                <a  href="<?=base_url()?>reports/printout" type="button" target="_blink" class="btn btn-default btn-xs heading-btn pull-right"><i class="icon-printer position-left"></i> Print</a>
           </div>
     </div>
   </div>

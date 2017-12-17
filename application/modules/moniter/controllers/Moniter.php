@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Moniter extends MX_Controller 
+class Sms extends MX_Controller 
 {
    /*******************************
       Constructor 
@@ -28,9 +28,9 @@ class Moniter extends MX_Controller
         /****** Required Parameters To Render A Page ******/
 
         /***************** Interface *****************/
-        $data['title'] = " Order Status"; 
+        $data['title'] = " SMS"; 
         $this->load->view('onlineheader',$data); 
-        $this->load->view('moniter',$data); 
+        $this->load->view('Sms',$data); 
         $this->load->view('footer'); 
         /***************** Interface *****************/
       }

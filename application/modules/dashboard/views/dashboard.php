@@ -39,7 +39,7 @@
                     <li>Incooperation Date:<span class="text-muted text-regular "><b>21-10-2015</b> </span></li>
                     <li>Commencement of Business:<span class="text-muted text-regular "><b> 21-10-2015</b> </span></li>
                     <li>TIN Number:<span class="text-muted text-regular "><b> 0021102015</b> </span></li>
-                    <li>Location:<span class="text-muted text-regular"> <b> Ofankor Bariah</b></span></li>
+                    <li>Location:<span class="text-muted text-regular"> <b><?=$_SESSION['companyinfo']['residence_address']?></b></span></li>
                   </ul>
                 </div>
               </div>
