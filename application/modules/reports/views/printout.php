@@ -20,7 +20,8 @@
 
             <div class="panel-body no-padding-bottom">
               <div class="row">
-                <div class="col-sm-6 content-group">
+                <div class="col-md-12">
+                <div class="col-sm-5 content-group">
                   <img src="assets/images/logo_demo.png" class="content-group mt-10" alt="" style="width: 120px;">
                   <ul class="list-condensed list-unstyled">
                   </ul>
@@ -35,6 +36,7 @@
                        <li><span class="text-semibold"><?=$_SESSION['companyinfo']['email']?></span></li>
                     </ul>
                   </div>
+                </div>
                 </div>
               </div>
 

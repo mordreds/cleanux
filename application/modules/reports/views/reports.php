@@ -21,10 +21,22 @@
             
             <div class="col-md-12">
             <div class="col-md-3">
-            <div class="input-group">
-            <span class="input-group-addon"><i class="icon-search4"></i></span>
-            <input type="text" class="form-control datepicker-menus hasDatepicker" placeholder="Staff" id="">
-            </div>
+           <div class="form-group">
+            <select class="form-control selectbox" name="" data-defaultText="saff" placeholder="staff" required>
+              <option value="">Staff</option>
+              <option value="Male">Completed orders</option>
+              <option value="Female">processing orders</option>
+              <option value="Female">Delivered orders</option>
+             </select>
+           </div>
+           <div class="form-group">
+            <select class="form-control selectbox" name="" data-defaultText="Customers" required>
+              <option value="">Customers</option>
+              <option value="Male">All</option>
+              <option value="Female">kwame</option>
+              <option value="Female">kodjo</option>
+             </select>
+           </div>
             </div>
              <div class="col-md-3">
               <div class="col-md-6">
@@ -43,10 +55,15 @@
             </div>
             </div>
             <div class="col-md-3">
-             <div class="input-group">
-            <span class="input-group-addon"><i class="icon-search4 text-size-base"></i></span>
-            <input type="text" class="form-control datepicker-menus hasDatepicker" placeholder="Type" id="">
-            </div>
+             <div class="form-group">
+            <select class="form-control selectbox" name="" data-defaultText="Pending Orders" required>
+              <option value="">Pending Orders</option>
+              <option value="Male">Completed orders</option>
+              <option value="Female">processing orders</option>
+              <option value="Female">Delivered orders</option>
+              <option value="Female">Pending balance</option>
+             </select>
+           </div>
             </div>
             <div class="col-md-3">
               <center>
