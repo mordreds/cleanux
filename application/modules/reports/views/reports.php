@@ -1,75 +1,73 @@
  <!-- Content area -->
   <div class="content">
     <?php //print "<pre>"; print_r($_SESSION); print "</pre>";?>
-    <!-- Main charts -->
     <div class="row">
       <div class="col-md-12">
-        <!-- Individual column searching (text inputs) -->
-          <div class="panel panel-flat">
-            <div class="panel-heading">
-              <div class="heading-elements">
-                <ul class="icons-list">
-                  <li><a data-action="collapse"></a></li>
-                  <li><a data-action="reload"></a></li>
-                  <li><a data-action="close"></a></li>
-                </ul>
+        <div class="panel panel-flat">
+          <div class="panel-body">
+            <div class="col-md-12">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label class="display-block">Select Customer</label>
+                  <select class="form-control display_customers" name="customer">
+                    <option value="All_Customers">All Customers</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label class="display-block">Select Order Type</label>
+                  <select class="form-control selectbox" name="order_type">
+                    <option value=""></option>
+                    <option value="All_Orders">All Types</option>
+                    <option>Pending Orders</option>
+                    <option>Pending Balances</option>
+                    <option>Processing Orders</option>
+                    <option>Completed Orders</option>
+                    <option>Delivered Orders</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label class="display-block">Select Service</label>
+                  <select class="form-control display_services" name="service_type">
+                    <option></option>
+                  </select>
+                </div>
               </div>
             </div>
-
-            <div class="panel-body">
-            
-            
             <div class="col-md-12">
-            <div class="col-md-3">
-           <div class="form-group">
-            <select class="form-control selectbox" name="" data-defaultText="saff" placeholder="staff" required>
-              <option value="">Staff</option>
-              <option value="Male">Completed orders</option>
-              <option value="Female">processing orders</option>
-              <option value="Female">Delivered orders</option>
-             </select>
-           </div>
-           <div class="form-group">
-            <select class="form-control selectbox" name="" data-defaultText="Customers" required>
-              <option value="">Customers</option>
-              <option value="Male">All</option>
-              <option value="Female">kwame</option>
-              <option value="Female">kodjo</option>
-             </select>
-           </div>
-            </div>
-             <div class="col-md-3">
-              <div class="col-md-6">
-                <label>From:</label>
-             <div class="input-group">
-            <span class="input-group-addon"><i class="icon-calendar text-size-base"></i></span>
-            <input type="Date" class="form-control datepicker-menus hasDatepicker" placeholder="Date" id="">
-            </div>
-            </div>
-            <div class="col-md-6">
-              <label>To:</label>
-            <div class="input-group">
-            <span class="input-group-addon"><i class="icon-calendar text-size-base"></i></span>
-            <input type="Date" class="form-control datepicker-menus hasDatepicker" placeholder="Date" id="">
-            </div>
-            </div>
-            </div>
-            <div class="col-md-3">
-             <div class="form-group">
-            <select class="form-control selectbox" name="" data-defaultText="Pending Orders" required>
-              <option value="">Pending Orders</option>
-              <option value="Male">Completed orders</option>
-              <option value="Female">processing orders</option>
-              <option value="Female">Delivered orders</option>
-              <option value="Female">Pending balance</option>
-             </select>
-           </div>
-            </div>
-            <div class="col-md-3">
-              <center>
-            <button type="button" class="btn btn-primary btn-ladda btn-ladda-progress ladda-button legitRipple" data-style="zoom-in"><span class="ladda-label">Spinner + Progress</span><span class="ladda-spinner"></span><div class="ladda-progress" style="width: 180px;"></div><span class="legitRipple-ripple" style="left: 34.2361%; top: 23.6842%; transform: translate3d(-50%, -50%, 0px); width: 204.408%; opacity: 0;"></span></button>
-            </div>
-            </center>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label class="display-block">Select Customer</label>
+                  <select class="form-control display_customers" name="customer">
+                    <option value="All_Customers">All Customers</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label class="display-block">Select Order Type</label>
+                  <select class="form-control selectbox" name="order_type">
+                    <option value=""></option>
+                    <option value="All_Orders">All Types</option>
+                    <option>Pending Orders</option>
+                    <option>Pending Balances</option>
+                    <option>Processing Orders</option>
+                    <option>Completed Orders</option>
+                    <option>Delivered Orders</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label class="display-block">Select Service</label>
+                  <select class="form-control display_services" name="service_type">
+                    <option></option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
           </div>
@@ -368,4 +366,9 @@
                 </form>
               </div>
             </div>
-          </div>           
+          </div>     
+
+
+<!-- Including Page Settings -->
+<?php include("page_settings.php"); ?>
+<!-- Including Page Settings -->      
