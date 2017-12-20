@@ -40,8 +40,6 @@
 
   <script type="text/javascript" src="<?=base_url()?>resources/js/plugins/forms/styling/switchery.min.js"></script>
   <script type="text/javascript" src="<?=base_url()?>resources/js/plugins/forms/styling/uniform.min.js"></script>
-
-
   <script type="text/javascript" src="<?=base_url()?>resources/js/plugins/forms/selects/selectboxit.min.js"></script>
   <script type="text/javascript" src="<?=base_url()?>resources/js/plugins/forms/selects/select2.min.js"></script>
   <script type="text/javascript" src="<?=base_url()?>resources/js/plugins/tables/datatables/datatables.min.js"></script>
@@ -49,6 +47,8 @@
   <script type="text/javascript" src="<?=base_url()?>resources/js/plugins/notifications/jgrowl.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/loaders/pace.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/uploaders/fileinput.min.js"></script>
+	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/ui/moment/moment.min.js"></script>
+	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/pickers/daterangepicker.js"></script>
 	<!-- /core JS files -->
 
   <!-- *********** Custom JS Need For Pages ************ -->

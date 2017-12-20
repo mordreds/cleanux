@@ -8,14 +8,6 @@
             <div class="col-md-12">
               <div class="col-md-3">
                 <div class="form-group">
-                  <label class="display-block">Select Customer</label>
-                  <select class="form-control display_customers" name="customer">
-                    <option value="All_Customers">All Customers</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
                   <label class="display-block">Select Order Type</label>
                   <select class="form-control selectbox" name="order_type">
                     <option value=""></option>
@@ -30,42 +22,25 @@
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <label class="display-block">Select Service</label>
-                  <select class="form-control display_services" name="service_type">
-                    <option></option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="col-md-2">
-                <div class="form-group">
                   <label class="display-block">Select Customer</label>
                   <select class="form-control display_customers" name="customer">
                     <option value="All_Customers">All Customers</option>
                   </select>
                 </div>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-3">
                 <div class="form-group">
-                  <label class="display-block">Select Order Type</label>
-                  <select class="form-control selectbox" name="order_type">
-                    <option value=""></option>
-                    <option value="All_Orders">All Types</option>
-                    <option>Pending Orders</option>
-                    <option>Pending Balances</option>
-                    <option>Processing Orders</option>
-                    <option>Completed Orders</option>
-                    <option>Delivered Orders</option>
-                  </select>
+                  <label class="display-block">Select Date: </label>
+                  <div class="input-group">
+                      <input type="text" class="form-control daterange-datemenu" value="03/18/2013 - 03/23/2013"> 
+                      <span class="input-group-addon"><i class="icon-calendar22"></i></span>
+                    </div>
                 </div>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-3">
                 <div class="form-group">
-                  <label class="display-block">Select Service</label>
-                  <select class="form-control display_services" name="service_type">
-                    <option></option>
-                  </select>
+                  <label class="display-block"></label><br/>
+                  <button type="submit" class="btn bg-teal-400">Search</button>
                 </div>
               </div>
             </div>
