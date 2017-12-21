@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 17, 2017 at 07:26 AM
+-- Generation Time: Dec 21, 2017 at 07:13 AM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -282,7 +282,10 @@ INSERT INTO `successful_logins` (`id`, `user_id`, `time_in`, `time_out`, `online
 (197, 1, '2017-12-15 13:40:26', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36 OPR/49.0.2725.47', '::1', 'London', NULL, NULL),
 (198, 1, '2017-12-15 18:24:42', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
 (199, 1, '2017-12-15 21:14:31', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0', '127.0.0.1', 'localhost', NULL, NULL),
-(200, 1, '2017-12-17 05:10:18', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL);
+(200, 1, '2017-12-17 05:10:18', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(201, 1, '2017-12-19 22:16:20', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(202, 1, '2017-12-20 23:47:49', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(203, 1, '2017-12-21 06:02:28', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -335,7 +338,7 @@ ALTER TABLE `failed_logins`
 -- AUTO_INCREMENT for table `successful_logins`
 --
 ALTER TABLE `successful_logins`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=201;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=204;
 --
 -- AUTO_INCREMENT for table `sysaudit`
 --
@@ -756,7 +759,7 @@ CREATE TABLE `laundry_orders` (
   `delivery_method_id` bigint(20) NOT NULL,
   `delivery_location` varchar(255) NOT NULL,
   `due_date` date NOT NULL,
-  `status` enum('Pending','Processing','Completed','Deleted','Dispatch','Delivered') NOT NULL DEFAULT 'Pending',
+  `status` enum('Pending','Processing','Dispatch','Delivered','Cancelled') NOT NULL DEFAULT 'Pending',
   `modified_by` bigint(20) NOT NULL,
   `modified_date` datetime DEFAULT NULL,
   `delivered_by` bigint(20) NOT NULL,
@@ -1476,7 +1479,7 @@ CREATE TABLE `vw_orderlist_summary` (
 ,`delivery_method_id` bigint(20)
 ,`delivery_location` varchar(255)
 ,`due_date` date
-,`status` enum('Pending','Processing','Completed','Deleted','Dispatch','Delivered')
+,`status` enum('Pending','Processing','Dispatch','Delivered','Cancelled')
 ,`modified_by` varchar(20)
 ,`modified_date` varchar(19)
 ,`total_comments` varbinary(21)

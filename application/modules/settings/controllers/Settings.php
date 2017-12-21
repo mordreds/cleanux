@@ -715,7 +715,7 @@ class Settings extends MX_Controller
           $dbres = self::$_Views_DB;
           $tablename = "vw_orderlist_summary";
           $return_dataType = "json";
-          $condition = "status not in ('Completed','Dispatch','Delivered')" /*array('status !=' => "Completed",'status !=' => "Dispatch",'status !=' => "Delivered")*/;
+          $condition = "status not in ('Cancelled','Dispatch','Delivered')" /*array('status !=' => "Completed",'status !=' => "Dispatch",'status !=' => "Delivered")*/;
         }
 
         if($table == "dispatch_orders") {
