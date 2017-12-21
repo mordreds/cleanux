@@ -43,6 +43,19 @@
           return deferred;
         }
       });
+
+      $('#search').click(function(){
+        let formurl = "<?=base_url()?>inhouse/order_records";
+        let formdata = {
+          'order_type' : $('#order_type option:selected').val(),
+          'customer' : $('#customer option:selected').val(),
+          'daterange' : $('#daterange').val(),
+        };
+        let tableid = "record_tbl";
+        alert($('#daterange').val());
+        //ajax_post(formurl,formdata,tableid);
+        //$('#record_tbl').attr('style',"display:block");
+      });
     });
   /********** Displaying Services ******/
 

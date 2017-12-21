@@ -100,7 +100,7 @@
           startDate: moment().subtract('days', 29),
           endDate: moment(),
           locale: {
-          format: 'YYYY-MM-DD'
+            format: 'MMMM D, YYYY'
           },
         },
         function(start, end) {

@@ -5,95 +5,62 @@
       <div class="col-md-12">
         <div class="panel panel-flat">
           <div class="panel-body">
-            <div class="col-md-12">
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label class="display-block">Select Order Type</label>
-                  <select class="form-control selectbox" name="order_type">
-                    <option value=""></option>
-                    <option value="All_Orders">All Types</option>
-                    <option>Pending Orders</option>
-                    <option>Pending Balances</option>
-                    <option>Processing Orders</option>
-                    <option>Completed Orders</option>
-                    <option>Delivered Orders</option>
-                  </select>
+            <form action="#" method="post" onsubmit="javascript(return false);">
+              <div class="col-md-12">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label class="display-block">Select Order Type</label>
+                    <select class="form-control selectbox" id="order_type">
+                      ccccccc
+                      <option value="All_Orders">All Types</option>
+                      <option>Pending Orders</option>
+                      <option>Pending Balances</option>
+                      <option>Processing Orders</option>
+                      <option>Dispatch Orders</option>
+                      <option>Delivered Orders</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label class="display-block">Select Customer</label>
+                    <select class="form-control display_customers" id="customer">
+                      <option value=""></option>
+                      <option value="All_Customers">All Customers</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label class="display-block">Select Date: </label>
+                    <div class="input-group">
+                        <input type="text" id="daterange" name="daterange" class="form-control daterange-datemenu" value="03/18/2013 - 03/23/2013"> 
+                        <span class="input-group-addon"><i class="icon-calendar22"></i></span>
+                      </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label class="display-block"></label><br/>
+                    <button type="button" id="search" class="btn bg-teal-400">Search</button>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label class="display-block">Select Customer</label>
-                  <select class="form-control display_customers" name="customer">
-                    <option value="All_Customers">All Customers</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label class="display-block">Select Date: </label>
-                  <div class="input-group">
-                      <input type="text" class="form-control daterange-datemenu" value="03/18/2013 - 03/23/2013"> 
-                      <span class="input-group-addon"><i class="icon-calendar22"></i></span>
-                    </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label class="display-block"></label><br/>
-                  <button type="submit" class="btn bg-teal-400">Search</button>
-                </div>
-              </div>
-            </div>
+            </form>
           </div>
-          </div>
-          <!-- /individual column searching (text inputs) -->
+        </div>
         <div class="panel panel-white">
-            
-
-            <div class="panel-body no-padding-bottom">
-             
-
-              <table id="allpending_orders" class="table table-responsive table-xs">
-              <thead>
-                <tr class="bg-slate-800">
-                  <th>Client Name</th>
-                  <th>Order No #</th>
-                  <th>Total Item(s)</th>
-                  <th>Due Date</th>
-                  <th>Time Left</th>
-                  <th>Status</th>
-                </tr>
-                <tr>
-                  <td>nana</td>
-                  <td>0002992</td>
-                  <td>200</td>
-                  <td>11/33/12</td>
-                  <td>2 days</td>
-                  <td>processing</td>
-                </tr>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
-            <table id="dispatch_tbl" class="table table-responsive table-xs ">
+          <div class="panel-body no-padding-bottom">
+            <table id="record_tbl" class="table table-responsive table-xs">
               <thead>
                 <tr class="bg-slate-800">
                   <th>Customers Name</th>
                   <th>Order Number</th>
+                  <th>Due Date</th>
                   <th>Delivery Method</th>
                   <th>Delivery Location</th>
-                  <th>Due Date</th>
-                  <th>Phone No 1</th>
-                  <th>Phone No 2</th>
-                </tr>
-                <tr>
-                  <td>Kwame</td>
-                  <td>0832938</td>
-                  <td>Pickup</td>
-                  <td>Accra</td>
-                  <td>1/12/12</td>
-                  <td>0192881292</td>
-                  <td></td>
+                  <th>Phone #</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody></tbody>

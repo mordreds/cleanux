@@ -72,6 +72,74 @@ class Inhouse extends MX_Controller
         }
       }
     }
+
+    /*******************************
+      Retrieve Order Records 
+    *******************************/
+    public function order_records() 
+    {
+      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+        $return_data['error'] = "Permission Denied. Please Contact Admin";
+        print_r(json_encode($return_data));
+      }
+      else {
+        $this->form_validation->set_rules('order_type','Order Type','trim');
+        $this->form_validation->set_rules('customer','Customer','trim');
+        $this->form_validation->set_rules('daterange','Date Range','trim|required');
+
+        if($this->form_validation->run() === FALSE) {
+          $return_data['error'] ="Validation Error";
+          print_r(json_encode($return_data));
+        }
+        else {
+
+          $order_temp = $this->input->post('order_type');
+          $customer_temp = $this->input->post('customer');
+          $daterange_temp = $this->input->post('daterange');
+
+          if(empty($order_temp) && empty($customer_temp)) {
+            $return_data['error'] ="Validation Error";
+            print_r(json_encode($return_data)); exit;
+          }
+
+          # Loading Model 
+          $this->load->model('globals/model_retrieval');
+
+          $dbres = self::$_Views_DB;
+          $tablename = "vw_orderlist_summary";
+          $return_dataType = "php_object";
+          /***** Defining where clauses ********/
+          $order_options = [
+            'All Orders' => array(),
+            'Pending Orders' => array('status'=>"Pending"),
+            'Processing Orders' => array('status'=>"Processing"),
+            'Dispatch Orders' => array('status'=>"Dispatch"),
+            'Delivered Orders' => array('status'=>"Delivered"),
+            'Cancelled Orders' => array('status'=>"Cancelled"),
+          ];
+
+          if($order_temp) 
+            $order = in_array($order_temp, $where_options);
+
+          if ($customer_temp) {
+            if($customer_temp == "All Customers")
+              $customer = array();
+            else
+              $customer = array('client_id'=>$customer);
+          }
+          $where_condition = array_merge($order,$customer);
+          /***** Defining where clauses ********/
+          $query_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$where_condition); 
+          
+          if($query_result) 
+            $return_data = $query_result;
+          else 
+            $return_data = array();
+          
+          print_r(json_encode($return_data));
+        }
+      }
+    }
   /**************** Data Retrieval ********************/
 
   /**************** Data Insertion ********************/
