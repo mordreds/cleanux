@@ -45,16 +45,69 @@
       });
 
       $('#search').click(function(){
-        let formurl = "<?=base_url()?>inhouse/order_records";
+        /**** Variable Declaration ******/
+        let formurl = "<?=base_url()?>reports/fetch_order";
+        let order_type = $('#order_type option:selected').val();
+        let customer  = $('#customer option:selected').val();
+        
+        if(order_type == "No Selection" && customer == "No Selection") {
+          $.jGrowl("No Selection Made", {
+            theme: 'alert-styled-left bg-danger'
+          });
+          return;
+        }
         let formdata = {
-          'order_type' : $('#order_type option:selected').val(),
-          'customer' : $('#customer option:selected').val(),
+          'order_type' : order_type,
+          'customer' : customer,
           'daterange' : $('#daterange').val(),
         };
-        let tableid = "record_tbl";
-        alert($('#daterange').val());
-        //ajax_post(formurl,formdata,tableid);
-        //$('#record_tbl').attr('style',"display:block");
+        /**** Variable Declaration ******/
+        /**** Fetch Data Ajax Call ******/
+        $('#record_tbl').DataTable().destroy();
+        $('#record_tbl').DataTable({
+          searching: false,
+          paging: false,
+          order: [],
+          autoWidth: false,
+          ajax: {
+            type : 'POST',
+            url : formurl,
+            data : formdata,
+            dataSrc: "",
+            error: function() {
+              $.jGrowl("Retrieving Report Failed", {
+                theme: 'alert-styled-left bg-danger'
+              });
+            }
+          },
+          columns: [
+            {data: "client_fullname",render: function(data,type,row,meta) { 
+              return "<a href='#' class='view_client_info' data-client_id='"+row.client_id+"'>"+row.client_fullname+"</a>"; 
+            }},
+            {data: "order_number",render: function(data,type,row,meta) { 
+              return "<a href='#' data-action='reload' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
+            }},
+            {data: "balance"},
+            {data: "due_date"},
+            {data: "delivery_method"},
+            {data: "delivery_location"},
+            {render: function(data,type,row,meta) { 
+              if(row.status == "Pending")
+                label_color = "label-default";
+              else if(row.status == "Processing")
+                label_color = "label-primary";
+              else if(row.status == "Dispatched")
+                label_color = "label-success";
+              else if(row.status == "Completed")
+                label_color = "label-success";
+              else
+                label_color = "label-default";
+              return "<span class='label "+label_color+"'>"+row.status+"</span>"; 
+            }},
+          ],
+        });
+        /**** Fetch Data Ajax Call ******/
+        $('#search_result').attr('style',"display:block");
       });
     });
   /********** Displaying Services ******/
