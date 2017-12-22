@@ -152,6 +152,8 @@ class Access extends MX_Controller
                         'postal_address'    => $companyinfo->postal_address,
                         'residence_address' => $companyinfo->residence_address,
                         'website'           => $companyinfo->website,
+                        'tin_number'    => $companyinfo->tin_number,
+                        'date_of_commence' => $companyinfo->date_of_commence
                       ];
                       # Retrieving logo
                       /*$condition = ['id' => $companyinfo->logo_id];
@@ -159,7 +161,7 @@ class Access extends MX_Controller
                       $session_array['companyinfo']['logo'] = @$logo_search->blob_path;*/
                     } 
                     else
-                      $session_array['companyinfo']['name'] = "Unregisted" ;
+                      $session_array['companyinfo']['name'] = "Company Name" ;
                   /************************ End of Company Info ********************/
                   /************************ User Roles & Priviledges ********************/
                     if(!empty($user) && $user->user_roles_status == "active") {

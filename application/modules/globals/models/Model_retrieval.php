@@ -45,14 +45,13 @@ class Model_retrieval extends CI_Model
         $dbres->order_by($key,$value); 
       }
     }
-
     $query_result = $dbres->get($tablename);
-
+    //print $dbres->get_compiled_select($tablename);
     /*************** Query check ************/
     if($query_result->num_rows() > 0) 
       $return_data = $query_result->result();
     else
-      $return_data = ['ERR' => $dbres->error()];
+      $return_data = ['DB_ERROR' => $dbres->error()];
     /*************** Query check ************/
     
     if($return_dataType == "json")          

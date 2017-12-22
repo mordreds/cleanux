@@ -372,7 +372,7 @@
           }
         });
       });
-
+      /******** Confirm Dispatch *********/
       $('table').on("click",".dispatch",function(){
         let order_id = $(this).data('order_id');
         let order_no = $(this).data('order_no');
@@ -381,6 +381,7 @@
         $('[name="dispatch_order_id"]').val(order_id);
         $('#confirm_dispatch').modal('show');
       });
+      /******** Confirm Dispatch *********/
     </script>
     
     <div id="comment" class="modal fade">
@@ -426,6 +427,28 @@
             <div class="modal-body">
               <input type="hidden" name="dispatch_order_id" />
               Do You Confirm that order number <strong><em id='orderno_'></em></strong> is ready for <b>Dispatch</b> .. ?
+            </div>
+            <div class="modal-footer"><hr/>
+              <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button> 
+              <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Confirm</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="confirmation_modal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="confirmation_modal_form"  method="post">
+            <div class="modal-header bg-slate-800">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h6 class="modal-title" id="modal_heading"></h6>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" name="order_id" />
+              <input type="hidden" name="status" />
+              Do You Confirm that order number <strong><em id='cancel_orderno_'></em></strong> should be <b>Cancelled</b> .. ?
             </div>
             <div class="modal-footer"><hr/>
               <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button> 

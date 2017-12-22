@@ -33,22 +33,25 @@
           <div class="sidebar sidebar-default">
             <div class="sidebar-content">
               <div class="sidebar-category no-margin">
-                <div class="category-title">
-                  <h3><?=$_SESSION['companyinfo']['name']?> </h3>
+                <div class="category-title" style="padding: 5px 5px 5px 14px;">
+                  <h3 style="margin-top: 10px;"><?=$_SESSION['companyinfo']['name']?> </h3>
                   <ul class="nav navigation">
-                    <li>Incooperation Date:<span class="text-muted text-regular "><b>21-10-2015</b> </span></li>
-                    <li>Commencement of Business:<span class="text-muted text-regular "><b> 21-10-2015</b> </span></li>
-                    <li>TIN Number:<span class="text-muted text-regular "><b> 0021102015</b> </span></li>
-                    <li>Location:<span class="text-muted text-regular"> <b><?=$_SESSION['companyinfo']['residence_address']?></b></span></li>
+                    <!-- <li>Incooperation Date:<span class="text-muted text-regular "><b>21-10-2015</b> </span></li> -->
+                    <li>Date Of Commencement:<span class="text-muted text-regular "><b> 21-10-2015</b> </span></li>
+                    <li>TIN Number:<span class="text-muted text-regular "><b> <?=@$_SESSION['companyinfo']['tin_number']?></b> </span></li>
+                    <li>Postal Address:<span class="text-muted text-regular"> <b><?=@$_SESSION['companyinfo']['residence_address']?></b></span></li>
+                    <li>Residence Address:<span class="text-muted text-regular"> <b><?=@$_SESSION['companyinfo']['residence_address']?></b></span></li>
+                    <li>Email Address:<span class="text-muted text-regular"> <b><?=@$_SESSION['companyinfo']['residence_address']?></b></span></li>
+                    <li>Website Address:<span class="text-muted text-regular"> <b><?=@$_SESSION['companyinfo']['residence_address']?></b></span></li>
                   </ul>
                 </div>
               </div>
               <div class="sidebar-category">
                 <div class="category-content no-padding">
                   <ul class="nav navigation" >
-                    <li ><a href="#v_1_1"><i class="icon-bubbles4 text-slate-400" style="color: #333"></i ><p style="color:#333;">Vision:</p><span class="text-muted text-regular pull-right">To become the biggest and largest laundry service in ghana</span></a></li>
+                    <li ><a href="#v_1_1"><i class="icon-bubbles4 text-slate-400" style="color: #333"></i ><p style="color:#333;">Vision:</p><span class="text-muted text-regular pull-right"><?=@$_SESSION['companyinfo']['vision']?></span></a></li>
                     <li class="navigation-divider"></li>
-                   <li><a href="#v_1_1"><i class="icon-footprint text-slate-400"></i><p style="color:##333;">Mision:</p><span class="text-muted text-regular pull-right">To become the biggest and largest laundry service in ghana</span></a></li>
+                   <li><a href="#v_1_1"><i class="icon-footprint text-slate-400"></i><p style="color:##333;">Mision:</p><span class="text-muted text-regular pull-right"><?=@$_SESSION['companyinfo']['mission']?></span></a></li>
                     <li><a> <span ></span></a></li>
                     <li class="navigation-divider"></li>
                   </ul>

@@ -18,6 +18,7 @@
                       <option>Processing Orders</option>
                       <option>Dispatch Orders</option>
                       <option>Delivered Orders</option>
+                      <option>Cancelled Orders</option>
                     </select>
                   </div>
                 </div>

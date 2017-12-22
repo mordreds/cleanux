@@ -60,13 +60,22 @@ class Reports extends MX_Controller
 
           $order_temp = $this->input->post('order_type');
           $customer_temp = $this->input->post('customer');
-          $daterange_temp = $this->input->post('daterange');
+          /**** Creating Start & End Date ******/
+          $dates = explode('-', $this->input->post('daterange'));
+          $start_date = date('Y-m-d',strtotime($dates[0]));
+          $end_date = date('Y-m-d',strtotime($dates[1]));
+
+          if($start_date == $end_date)
+            $daterange = ['DATE(date_created)' => $start_date];
+          else
+            $daterange = ['DATE(date_created) >=' => $start_date, 'DATE(date_created) <=' => $end_date,];
+          /**** Creating Start & End Date ******/
+          //print $start_date; exit;
 
           if(empty($order_temp) && empty($customer_temp)) {
             $return_data['error'] ="No Selection Made";
             print_r(json_encode($return_data)); exit;
           }
-
           # Loading Model 
           $this->load->model('globals/model_retrieval');
 
@@ -98,7 +107,7 @@ class Reports extends MX_Controller
           else
             $customer = array('client_id'=>$customer_temp);
           
-          $where_condition = array_merge($order,$customer);
+          $where_condition = array_merge($order,$customer,$daterange);
           /***** Defining where clauses ********/
           $query_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$where_condition); 
           

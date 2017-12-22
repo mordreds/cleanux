@@ -100,6 +100,8 @@
                 label_color = "label-success";
               else if(row.status == "Completed")
                 label_color = "label-success";
+              else if(row.status == "Cancelled")
+                label_color = "label-danger";
               else
                 label_color = "label-default";
               return "<span class='label "+label_color+"'>"+row.status+"</span>"; 

@@ -174,6 +174,71 @@ class Inhouse extends MX_Controller
         }
       }
     }
+
+
+
+
+
+    /*******************************
+      Change Order Status
+    *******************************/
+    public function change_order_status($response_type) {
+      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+        $this->session->set_flashdata('error',"Permission Denied. Please Contact Admin");
+        redirect('inhouse');
+      }
+      else {
+        $this->form_validation->set_rules('order_id','Order Number','trim|required');
+        $this->form_validation->set_rules('status','Status','trim|required');
+
+        if($this->form_validation->run() === FALSE) {
+          if($response_type = "async"){
+            $return_data['error'] = "Validation Error.";
+            print_r(json_encode($return_data));
+          }
+          else if($response_type = "sync") {
+            $this->session->set_flashdata('error',"Validation Error");
+            redirect('inhouse');
+          }
+        }
+        else {
+          $this->load->model('globals/model_update');
+          /********** Data Definition **********/
+          $dbres = self::$_Default_DB;
+          $tablename = "laundry_orders";
+          $update_data = [
+            'status' => $this->input->post('status'), 
+            'modified_by' => $_SESSION['user']['id'], 
+            'modified_date'=>gmdate('Y-m-d H:i:s')
+          ];
+          $where_condition = ['id' => $this->input->post('order_id')];
+          if($response_type = "sync")
+            $return_dataType = "php_object";
+          else if($response_type = "async")
+            $return_dataType = "json";
+          /********** Data Definition **********/
+          $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$update_data,$where_condition) ;
+        
+          if($response_type == "sync") {
+            if($query_result)
+              $this->session->set_flashdata('success', "Successful");
+            else
+              $this->session->set_flashdata('error', "Action Failed");
+
+            redirect($_SERVER['HTTP_REFERER']);
+          }
+          else if($response = "async") {
+            if($query_result)
+              $return_data['success'] = "Status Changed";
+            else
+              $return_data['error'] = "Action Failed";
+
+            print_r(json_encode($return_data));
+          }
+          
+        }
+      }
+    }
   /**************** Data Insertion ********************/
     
     
