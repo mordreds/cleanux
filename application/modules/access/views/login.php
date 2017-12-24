@@ -8,10 +8,15 @@
         <!-- Content area -->
         <div class="content">
           <!-- Advanced login -->
+          <div class="col-sm-6">
+            <div class="icon-object border-warning-400 text-warning-400"><i class="icon-basket"></i></div>
+          </div>
+          <div class="col-sm-6">
+            <div class="col-sm-6"></div>
           <form action="<?=base_url()?>access/login_validation" method="post">
-            <div class="panel panel-body login-form" style="background-color:#667d88;color: #fff ">
+            <div class="panel panel-body login-form" style="background-color:#82891f8a;color: #fff ">
               <div class="text-center">
-                <div class="icon-object border-warning-400 text-warning-400"><i class="icon-basket"></i></div>
+                
                 <h5 class="content-group-lg">Login to your account
                   <?php 
                     if($this->session->flashdata('error'))
@@ -24,13 +29,13 @@
                 </h5>
               </div>
               <div class="form-group has-feedback has-feedback-left">
-                <input type="email" class="form-control" placeholder="Email" oncopy="return false;" onpaste="return false;" onselectstart="return false;" autocomplete="off" name="email" required>
+                <input type="email" class="form-control" placeholder="Email" oncopy="return false;" onpaste="return false;" onselectstart="return false;" autocomplete="off" name="email" required style="background:#51561c00;background-color: #51561c00 !important;border-radius:10px;">
                 <div class="form-control-feedback">
                   <i class="icon-user text-muted"></i>
                 </div>
               </div>
               <div class="form-group has-feedback has-feedback-left">
-                <input type="password" class="form-control" placeholder="Password" oncopy="return false;" onpaste="return false;" onselectstart="return false;" autocomplete="off" name="passwd" required>
+                <input type="password" class="form-control" placeholder="Password" oncopy="return false;" onpaste="return false;" onselectstart="return false;" autocomplete="off" name="passwd" required style="background:#51561c00 ;background-color: #51561c00 !important;border-radius:10px;">
                 <div class="form-control-feedback">
                   <i class="icon-lock2 text-muted"></i>
                 </div>
@@ -64,6 +69,7 @@
               <span class="help-block text-center no-margin" style="color: white">By continuing, you're confirming that you've read our <a href="#" style="color: red">Terms &amp; Conditions</a> and <a href="#" style="color: red">Cookie Policy</a></span> 
             </div>
           </form>
+          </div>
           <!-- /advanced login -->
         </div>
         <!-- /content area -->
