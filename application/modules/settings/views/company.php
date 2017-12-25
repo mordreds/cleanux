@@ -113,8 +113,8 @@
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label class="display-block">Middle Name <span style="color:red;">*</span></label>
-                          <input type="text" name="middle_name" class="form-control" required>
+                          <label class="display-block">Middle Name </label>
+                          <input type="text" name="middle_name" class="form-control">
                         </div>
                       </div>
                       <div class="col-md-3">

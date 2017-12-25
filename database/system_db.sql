@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 22, 2017 at 06:19 AM
+-- Generation Time: Dec 25, 2017 at 08:16 AM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -60,14 +60,6 @@ CREATE TABLE `successful_logins` (
   `country` varchar(255) DEFAULT NULL COMMENT 'country of the user at the time of system access'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `successful_logins`
---
-
-INSERT INTO `successful_logins` (`id`, `user_id`, `time_in`, `time_out`, `online`, `user_agent`, `ipaddress`, `hostname`, `city_region`, `country`) VALUES
-(1, 1, '2017-12-22 05:17:52', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
-(2, 1, '2017-12-22 05:17:54', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -119,7 +111,7 @@ ALTER TABLE `failed_logins`
 -- AUTO_INCREMENT for table `successful_logins`
 --
 ALTER TABLE `successful_logins`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=3;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id';
 --
 -- AUTO_INCREMENT for table `sysaudit`
 --
@@ -161,7 +153,7 @@ CREATE TABLE `hr_company_document` (
 --
 
 CREATE TABLE `hr_company_info` (
-  `id` int(11) NOT NULL,
+  `id` bigint(20) NOT NULL,
   `name` varchar(255) NOT NULL,
   `telephone_1` varchar(20) NOT NULL,
   `telephone_2` varchar(20) NOT NULL,
@@ -211,6 +203,7 @@ CREATE TABLE `hr_employee_biodata` (
   `id_number` varchar(50) DEFAULT NULL,
   `id_expiry_date` date DEFAULT NULL,
   `id_issue_date` date DEFAULT NULL,
+  `id_card_photo_id` bigint(20) NOT NULL,
   `marital_status` varchar(50) DEFAULT NULL,
   `nationality` varchar(255) DEFAULT NULL,
   `postal_address` text,
@@ -288,8 +281,16 @@ CREATE TABLE `hr_employee_work_info` (
 CREATE TABLE `hr_position` (
   `id` tinyint(2) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `description` varchar(100) DEFAULT NULL
+  `description` varchar(100) DEFAULT NULL,
+  `status` enum('active','deleted') NOT NULL DEFAULT 'active'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `hr_position`
+--
+
+INSERT INTO `hr_position` (`id`, `name`, `description`, `status`) VALUES
+(1, 'Administrator', 'Head Of Administration', 'active');
 
 -- --------------------------------------------------------
 
@@ -448,6 +449,13 @@ CREATE TABLE `laundry_services` (
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `laundry_services`
+--
+
+INSERT INTO `laundry_services` (`id`, `name`, `code`, `description`, `status`, `date_created`) VALUES
+(1, 'Washing Only', 'WO', 'All items in this category are weighed', 'active', '2017-12-24 12:37:39');
+
 -- --------------------------------------------------------
 
 --
@@ -575,6 +583,12 @@ ALTER TABLE `blobs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `hr_company_info`
+--
+ALTER TABLE `hr_company_info`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `hr_departments`
 --
 ALTER TABLE `hr_departments`
@@ -691,6 +705,11 @@ ALTER TABLE `laundry_weights`
 ALTER TABLE `blobs`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id';
 --
+-- AUTO_INCREMENT for table `hr_company_info`
+--
+ALTER TABLE `hr_company_info`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `hr_departments`
 --
 ALTER TABLE `hr_departments`
@@ -719,7 +738,7 @@ ALTER TABLE `hr_employee_work_info`
 -- AUTO_INCREMENT for table `hr_position`
 --
 ALTER TABLE `hr_position`
-  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `laundry_clients`
 --
@@ -764,7 +783,7 @@ ALTER TABLE `laundry_prices`
 -- AUTO_INCREMENT for table `laundry_services`
 --
 ALTER TABLE `laundry_services`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `laundry_weights`
 --
@@ -874,7 +893,8 @@ CREATE TABLE `roles_privileges_user` (
 
 INSERT INTO `roles_privileges_user` (`id`, `user_id`, `custom_roles`, `custom_privileges`, `group_id`, `status`) VALUES
 (1, 1, '', '', 1, 'active'),
-(2, 2, '', '', 1, 'active');
+(2, 2, '', '', 1, 'active'),
+(7, 5, '', '', 2, 'active');
 
 -- --------------------------------------------------------
 
@@ -904,7 +924,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `passwd`, `default_passwd`, `fullname`, `phone_number`, `temp_employee_id`, `biodata_id`, `first_login`, `login_attempt`, `status`, `created_by`, `date_created`) VALUES
 (1, 'osborne.mordred@gmail.com', '$2y$10$GuOFXrr8Xdd5JFHD9vzm8.tUeafbhkUfvImwdDkswS8NJJOqzV3BC', '', 'Osborne Mordreds', '0541786220', 'KAD/SYS/1', 0, 0, 5, 'active', 1, '2017-05-25 06:05:10'),
-(2, 'wikills2k@gmail.com', '$2y$10$GuOFXrr8Xdd5JFHD9vzm8.tUeafbhkUfvImwdDkswS8NJJOqzV3BC', '', 'Bismark Offei ', '0245626487', 'KAD/SYS/2', 0, 0, 5, 'active', 1, '2017-05-25 06:05:10');
+(2, 'wikills2k@gmail.com', '$2y$10$GuOFXrr8Xdd5JFHD9vzm8.tUeafbhkUfvImwdDkswS8NJJOqzV3BC', '', 'Bismark Offei ', '0245626487', 'KAD/SYS/2', 0, 0, 5, 'active', 1, '2017-05-25 06:05:10'),
+(5, 'Support@bglaundry.com', '', '$2y$10$pHf/qOWfPP9QOmQGN2rZLOlw7nidlTdP5MKJAQr6tXmplMyFrMT.K', 'Evans Kwame Owusu', '', '', 1, 0, 5, 'inactive', 0, '2017-12-24 11:59:52');
 
 -- --------------------------------------------------------
 
@@ -1001,12 +1022,12 @@ ALTER TABLE `roles_privileges_group`
 -- AUTO_INCREMENT for table `roles_privileges_user`
 --
 ALTER TABLE `roles_privileges_user`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;--
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;--
 -- Database: `bgee_views`
 --
 CREATE DATABASE IF NOT EXISTS `bgee_views` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;

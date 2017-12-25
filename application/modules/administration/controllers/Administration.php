@@ -210,7 +210,7 @@ class Administration extends MX_Controller
     public function save_employee() {
       if(in_array('new registration', $_SESSION['user']['roles'])) {
         $this->form_validation->set_rules('first_name','First Name','trim|required');
-        $this->form_validation->set_rules('middle_name','Middle Name','trim|required');
+        $this->form_validation->set_rules('middle_name','Middle Name','trim');
         $this->form_validation->set_rules('last_name','Last Name','trim|required');
         $this->form_validation->set_rules('gender','Gender','trim|required');
         $this->form_validation->set_rules('marital_status','Marital Status','trim|required');
