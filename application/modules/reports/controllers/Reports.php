@@ -30,7 +30,7 @@ class Reports extends MX_Controller
         /***************** Interface *****************/
         $data['title'] = " All Reports"; 
         $this->load->view('header',$data); 
-        $this->load->view('reports',$data); 
+        $this->load->view('report',$data); 
         $this->load->view('footer'); 
         /***************** Interface *****************/
       }
