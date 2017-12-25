@@ -42,9 +42,15 @@
   <script type="text/javascript" src="<?=base_url()?>resources/js/plugins/forms/styling/uniform.min.js"></script>
   <script type="text/javascript" src="<?=base_url()?>resources/js/plugins/forms/selects/selectboxit.min.js"></script>
   <script type="text/javascript" src="<?=base_url()?>resources/js/plugins/forms/selects/select2.min.js"></script>
+
   <script type="text/javascript" src="<?=base_url()?>resources/js/plugins/tables/datatables/datatables.min.js"></script>
+	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/tables/datatables/extensions/select.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/tables/datatables/extensions/responsive.min.js"></script>
-  <script type="text/javascript" src="<?=base_url()?>resources/js/plugins/notifications/jgrowl.min.js"></script>
+	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/tables/datatables/extensions/buttons.min.js"></script> 
+	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/tables/datatables/extensions/pdfmake/pdfmake.min.js"></script>
+	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/tables/datatables/extensions/pdfmake/vfs_fonts.min.js"></script>
+
+
 	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/loaders/pace.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/uploaders/fileinput.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/ui/moment/moment.min.js"></script>
@@ -56,16 +62,6 @@
 			<?php if($controller_function == "users") : ?>
 		  	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/forms/inputs/passy.js"></script>
 				<script type="text/javascript" src="<?=base_url()?>resources/js/pages/users.js"></script>
-		  <?php endif; ?>
-		<!-- ***** Users Page ***** -->
-		<!-- ***** Users Page ***** -->
-			<?php if($controller_function == "statistics") : ?>
-<<<<<<< Updated upstream
-		  	<!-- <script type="text/javascript" src="<?=base_url()?>resources/js/google/bars/combo.js"></script> -->
-		  	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/ui/ripple.min.js"></script>
-=======
-		  	<script type="text/javascript" src="<?=base_url()?>resources/js/google/bars/combo.js"></script>
->>>>>>> Stashed changes
 		  <?php endif; ?>
 		<!-- ***** Users Page ***** -->
 

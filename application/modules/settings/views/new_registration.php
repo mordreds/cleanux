@@ -21,9 +21,17 @@
                       <form action="<?=base_url();?>settings/save_services" method="post" style="margin-left: 10px; margin-right: 10px">
                         <div class="row">
                           <div class="col-md-11">
-                            <div class="form-group">
-                              <label class="display-block">Name</label>
-                               <input type="text" name="service_name" class="form-control" required>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="display-block">Name <span style="color:red;">*</span></label>
+                                 <input type="text" name="service_name" class="form-control" required>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="display-block">Code <span style="color:red;">*</span></label>
+                                 <input type="text" name="code" class="form-control" maxlength="2" required>
+                              </div>
                             </div>
                           </div>
                           <div class="col-md-11">
@@ -42,6 +50,7 @@
                           <tr>
                             <th style="width: 5%">ID</th>
                             <th>Name</th>
+                            <th>Code</th>
                             <th>Description</th>
                             <th class="text-center" style="width: 20%">Actions</th>
                           </tr>
@@ -51,7 +60,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="tab-pane" id="weight">
                   <div class="row">
                     <div class="col-md-5">
@@ -59,22 +67,23 @@
                         <div class="row">
                           <div class="col-md-11">
                             <div class="form-group">
-                              <label class="display-block">Select Service</label>
-                              <select class="form-control display_services" name="service_id">
+                              <label class="display-block">Select Service <span style="color:red;">*</span></label>
+                              <select class="form-control display_services" name="service_type">
                                 <option value="">Select One</option>
                               </select>
                             </div>
                           </div>
                           <div class="col-md-8">
                             <div class="form-group">
-                              <label class="display-block">Weight</label>
+                              <label class="display-block">Weight <span style="color:red;">*</span></label>
                                <input type="text" name="weight" class="form-control" required>
                             </div>
                           </div>
                           <div class="col-md-3">
                             <div class="form-group">
-                              <label class="display-block">Unit</label>
+                              <label class="display-block">Unit <span style="color:red;">*</span></label>
                               <select id="services" class="form-control selectbox" name="weight_unit" required>
+                                <option value=""><em>Select One</em></option>
                                 <option value="KG">Kilograms (KG)</option>
                                 <option value="g">Grams (g)</option>
                                 <option value="T">Tonnes (T)</option>
@@ -107,7 +116,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="tab-pane" id="garments">
                   <div class="row">
                     <div class="col-md-5">
@@ -115,14 +123,14 @@
                         <div class="row">
                           <div class="col-md-11">
                             <div class="form-group">
-                              <label class="display-block">Name</label>
+                              <label class="display-block">Name <span style="color:red;">*</span></label>
                                <input type="text" name="garment_name" class="form-control" required>
                             </div>
                           </div>
                           <div class="col-md-11">
                             <div class="form-group">
-                              <label class="display-block">Description</label>
-                               <input type="text" name="garment_desc" class="form-control" required>
+                              <label class="display-block">Description </label>
+                               <input type="text" name="garment_desc" class="form-control">
                             </div>
                           </div>
                         </div>
@@ -177,7 +185,7 @@
                           <div class="col-md-11">
                             <div class="form-group">
                               <label class="display-block">Amount</label>
-                               <input type="number" name="amount" class="form-control" min="0" required>
+                               <input type="text" name="amount" class="form-control" min="0" required>
                             </div>
                           </div>
                         </div>

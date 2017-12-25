@@ -27,7 +27,6 @@
   /***************************** New Registration Page *****************************/
   <?php if($controller_function == "new_registration") : ?>
   $(document).ready(function(){
-
     /********** Laundry Services ************/
       var service_formurl = "<?=base_url()?>settings/save_services";
       $('#laundry_services').dataTable({
@@ -44,6 +43,9 @@
             } 
           },
           {data: "name"},
+          {render: function(data,type,row,meta){
+            return '<div class="media-left media-middle"><a href="#" class="btn bg-brown-400 btn-rounded btn-icon btn-xs"><span class="letter-icon">'+row.code+'</span></a></div>';
+          }},
           {data: "description"},
           {data: "id", render: function(data,type,row,meta) { 
             button = '<ul class="action_btns"><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-formurl="'+service_formurl+'" data-tableid="laundry_services"></i></a></li></ul>';
@@ -54,7 +56,6 @@
       });
       /* <li><a class="edit_service" data-id="'+row.id+'" data-name="'+row.name+'" data-desc="'+row.description+'" data-tableid="laundry_services" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li> */
     /********** Laundry Services ************/
-
     /********** Laundry Weights  ************/
       var weight_formurl = "<?=base_url()?>settings/save_weight";
       $('#laundry_weights').dataTable({
@@ -84,7 +85,6 @@
         <li><a class="edit_weight_btn" data-id="'+row.id+'" data-name="'+row.weight+'" data-desc="'+row.description+'" data-service="'+row.service+'" data-tableid="laundry_weights" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li>
       */
     /********** Laundry Weights  ************/
-
     /********** Laundry Garments  ************/
       var garment_formurl = "<?=base_url()?>settings/save_garment";
       $('#laundry_garments').dataTable({
@@ -113,7 +113,6 @@
         <li><a class="edit_garment_btn" data-id="'+row.id+'" data-name="'+row.name+'" data-desc="'+row.description+'" data-tableid="laundry_garments" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li>
       */
     /********** Laundry Garments  ************/
-
     /********** Laundry Prices    ************/
       var prices_formurl = "<?=base_url()?>settings/save_price";
       let display = "";
@@ -149,7 +148,6 @@
         ], 
       });
     /********** Laundry Prices    ************/
-
     /******* Laundry Delivery Prices  *******/
       var service_formurl = "<?=base_url()?>settings/save_delivery";
       $('#laundry_delivery_prices').dataTable({
@@ -177,13 +175,10 @@
       });
       /*  */
     /******* Laundry Delivery Prices  *******/
-
-    /********** Displaying Services ******/
-      $(document).ready(function() {
-        selectbox_initialize('.display_services','services');
-        selectbox_initialize('.display_garments','garments');
-      });
-
+    /********** Displaying Services *********/
+      selectbox_initialize('.display_services','services');
+      selectbox_initialize('.display_garments','garments');
+      
       $(".display_weights").selectBoxIt({
         autoWidth: false,
         defaultText: "Select One",
@@ -204,6 +199,14 @@
   });
   <?php endif; ?>
   /***************************** New Registration Page *****************************/
+  /***************************** Company Settings      *****************************/
+  <?php if($controller_function == "company") : ?>
+  $(document).ready(function(){
+    selectbox_initialize('.display_positions','positions');
+    $(".display_positions").data("selectBox-selectBoxIt").add({value:"", text: "<em>Select One</em>"});
+  });
+  <?php endif; ?>
+  /***************************** Company Settings      *****************************/
 </script>
 <?php endif; ?>
   

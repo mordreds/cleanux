@@ -103,7 +103,7 @@
                 <div class="col-sm-12 ">
                   <div class="form-group">
                     <label class="display-block">Enter Delivery Location</label>
-                    <textarea class="form-control" name="delivery_location" required></textarea>
+                    <input type="text" class="form-control" name="delivery_location" required/>
                   </div>
                 </div>
               </div>

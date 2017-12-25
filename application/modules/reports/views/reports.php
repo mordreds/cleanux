@@ -11,7 +11,7 @@
                   <div class="form-group">
                     <label class="display-block">Select Order Type</label>
                     <select class="form-control selectbox" id="order_type">
-                      <option value="No Selection"></option>
+                      <option value="No Selection"><em>Select One</em></option>
                       <option value="All Orders">All Types</option>
                       <option>Pending Orders</option>
                       <option>Pending Balances</option>
@@ -66,12 +66,9 @@
               </thead>
               <tbody></tbody>
             </table>
-
-            <button type="button" class="btn btn-default btn-xs heading-btn"><i class="icon-file-check position-left"></i> Save</button>
-                <a  href="<?=base_url()?>reports/printout" type="button" target="_blink" class="btn btn-default btn-xs heading-btn pull-right"><i class="icon-printer position-left"></i> Print</a>
           </div>
-    </div>
-  </div>
+        </div>
+      </div>
   <!-- /main charts -->
 
 <!-- Including Page Settings -->

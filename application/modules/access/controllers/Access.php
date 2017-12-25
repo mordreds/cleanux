@@ -153,7 +153,9 @@ class Access extends MX_Controller
                         'residence_address' => $companyinfo->residence_address,
                         'website'           => $companyinfo->website,
                         'tin_number'    => $companyinfo->tin_number,
-                        'date_of_commence' => $companyinfo->date_of_commence
+                        'date_of_commence' => $companyinfo->date_of_commence,
+                        'mission' => $companyinfo->mission,
+                        'vision' => $companyinfo->vision
                       ];
                       # Retrieving logo
                       /*$condition = ['id' => $companyinfo->logo_id];

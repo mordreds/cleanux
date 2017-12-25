@@ -29,7 +29,6 @@
                     <tbody></tbody>
                   </table>
                 </div>
-
                 <div class="tab-pane" id="inactive_accounts">
                   <table id="inactive_acct_tbl" class="table datatable-responsive">
                     <thead style="background-color:#009688;color:white">
@@ -45,7 +44,6 @@
                     <tbody></tbody>
                   </table>
                 </div>
-
                 <div class="tab-pane" id="deleted_accounts">
                   <table id="del_acct_tbl" class="table datatable-responsive">
                     <thead style="background-color:#009688;color:white">
@@ -61,7 +59,6 @@
                     <tbody></tbody>
                   </table>
                 </div>
-
                 <div class="tab-pane" id="new_account">
                   <form action="<?=base_url();?>administration/new_user" method="post" style="margin-left: 10px; margin-right: 10px">
                     <input type="hidden" id="bio_id" name="biodata_id" />

@@ -46,6 +46,12 @@
       });
     <?php endif; ?>
 
+    <?php if(!empty($_SESSION['validation_error'])) : ?>
+      $.jGrowl('<?= $this->session->flashdata("validation_error") ?>', {
+        theme: 'alert-styled-left bg-danger'
+      });
+    <?php endif; ?>
+
     <?php if(!empty($_SESSION['warning'])) : ?>
       $.jGrowl('<?= $this->session->flashdata("warning") ?>', {
         theme: 'alert-styled-left bg-danger'

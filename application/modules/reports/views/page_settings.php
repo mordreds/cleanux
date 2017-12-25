@@ -2,25 +2,15 @@
 
 <script type="text/javascript">
   /************** Default Settings **************/
-    $.extend( $.fn.dataTable.defaults, {
-      autoWidth: false,
-      responsive: true,
-      columnDefs: [{ 
-          orderable: false,
-          width: '100px'
-      }],
-      dom: '<"datatable-header"fl><"datatable-scroll-wrap"t><"datatable-footer"ip>',
-      language: {
-        search: '<span>Filter:</span> _INPUT_',
-        lengthMenu: '<span>Show:</span> _MENU_',
-        paginate: { 'first': 'First', 'last': 'Last', 'next': '&rarr;', 'previous': '&larr;' }
-      },
-      drawCallback: function () {
-        $(this).find('tbody tr').slice(-3).find('.dropdown, .btn-group').addClass('dropup');
-      },
-      preDrawCallback: function() {
-        $(this).find('tbody tr').slice(-3).find('.dropdown, .btn-group').removeClass('dropup');
-      }
+    $.extend($.fn.dataTable.defaults, {
+        autoWidth: false,
+        dom: '<"datatable-header"fBl><"datatable-scroll-wrap"t><"datatable-footer"ip>',
+        language: {
+            search: '<span>Filter:</span> _INPUT_',
+            lengthMenu: '<span>Show:</span> _MENU_',
+            paginate: { 'first': 'First', 'last': 'Last', 'next': '&rarr;', 'previous': '&larr;' }
+        },
+        buttons: [],
     });
   /************** Default Settings **************/
   /********** Displaying Services ******/
@@ -65,8 +55,45 @@
         /**** Fetch Data Ajax Call ******/
         $('#record_tbl').DataTable().destroy();
         $('#record_tbl').DataTable({
-          searching: false,
-          paging: false,
+          /*searching: false,*/
+          /*paging: false,*/
+          buttons: {
+            buttons: [
+              {
+                extend: 'copyHtml5',
+                className: 'btn bg-teal-400',
+                text: '<i class="icon-copy3 position-left" title="Copy"></i> COPY'
+              },
+              {
+                  extend: 'csvHtml5',
+                  className: 'btn bg-teal-400',
+                  text: '<i class="icon-file-spreadsheet position-left"></i> CSV',
+                  fieldSeparator: '\t',
+                  extension: '.csv'
+              },
+              {
+                extend: 'pdfHtml5',
+                className: 'btn bg-teal-400',
+                  text: '<i class="icon-file-pdf position-left"></i> PDF',
+              },
+              {
+                extend: 'print',
+                className: 'btn bg-teal-400',
+                text: '<i class="icon-printer position-left" title="Print All"></i> ALL'
+              },
+              {
+                extend: 'print',
+                className: 'btn bg-teal-400',
+                text: '<i class="icon-three-bars position-left" title="Print Selected"></i> SELECTED',
+                exportOptions: {
+                  modifier: {
+                      selected: true
+                  }
+                }
+              }
+            ],
+          },
+          select: true,
           order: [],
           autoWidth: false,
           ajax: {
@@ -114,6 +141,8 @@
     });
   /********** Displaying Services ******/
 
+
+  $('.dataTables_filter input[type=search]').attr('placeholder','Type to filter...');
 </script>
 <?php endif; ?>
   

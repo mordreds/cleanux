@@ -2,7 +2,7 @@
   <div class="content" style="background:url(<?=base_url()?>resources/images/backgrounds/bg.png);">
     <!-- Main charts -->
     <div class="row">
-      <div class="col-lg-1"></div>
+      <div class="col-md-1"></div>
       <div class="col-lg-8 col-md-10">
       <?php 
         if(!empty($dashboard_tabs)) { 
@@ -37,22 +37,21 @@
                   <h3 style="margin-top: 10px;"><?=$_SESSION['companyinfo']['name']?> </h3>
                   <ul class="nav navigation">
                     <!-- <li>Incooperation Date:<span class="text-muted text-regular "><b>21-10-2015</b> </span></li> -->
-                    <li>Date Of Commencement:<span class="text-muted text-regular "><b> 21-10-2015</b> </span></li>
-                    <li>TIN Number:<span class="text-muted text-regular "><b> <?=@$_SESSION['companyinfo']['tin_number']?></b> </span></li>
-                    <li>Postal Address:<span class="text-muted text-regular"> <b><?=@$_SESSION['companyinfo']['residence_address']?></b></span></li>
-                    <li>Residence Address:<span class="text-muted text-regular"> <b><?=@$_SESSION['companyinfo']['residence_address']?></b></span></li>
-                    <li>Email Address:<span class="text-muted text-regular"> <b><?=@$_SESSION['companyinfo']['residence_address']?></b></span></li>
-                    <li>Website Address:<span class="text-muted text-regular"> <b><?=@$_SESSION['companyinfo']['residence_address']?></b></span></li>
+                    <li>Date Of Commencement:<span class="text-muted text-regular "><br/><b> 21-10-2015</b> </span></li>
+                    <li>TIN Number:<span class="text-muted text-regular "><br/><b> <?=@$_SESSION['companyinfo']['tin_number']?></b> </span></li>
+                    <li>Postal Address:<span class="text-muted text-regular"><br/><b><?=@$_SESSION['companyinfo']['postal_address']?></b></span></li>
+                    <li>Residence Address:<span class="text-muted text-regular"><br/><b><?=@$_SESSION['companyinfo']['residence_address']?></b></span></li>
+                    <li>Email Address:<span class="text-muted text-regular"><br/><b><?=@$_SESSION['companyinfo']['residence_address']?></b></span></li>
+                    <li>Website Address:<span class="text-muted text-regular"><br/><b><?=@$_SESSION['companyinfo']['residence_address']?></b></span></li>
                   </ul>
                 </div>
               </div>
               <div class="sidebar-category">
                 <div class="category-content no-padding">
                   <ul class="nav navigation" >
-                    <li ><a href="#v_1_1"><i class="icon-bubbles4 text-slate-400" style="color: #333"></i ><p style="color:#333;">Vision:</p><span class="text-muted text-regular pull-right"><?=@$_SESSION['companyinfo']['vision']?></span></a></li>
+                    <li ><a href="#v_1_1"><i class="icon-bubbles4 text-slate-400" style="color: #333"></i ><p style="color:#333;">Vision:</p><span class="text-muted text-regular pull-left"><?=@$_SESSION['companyinfo']['vision']?></span></a></li>
                     <li class="navigation-divider"></li>
-                   <li><a href="#v_1_1"><i class="icon-footprint text-slate-400"></i><p style="color:##333;">Mision:</p><span class="text-muted text-regular pull-right"><?=@$_SESSION['companyinfo']['mission']?></span></a></li>
-                    <li><a> <span ></span></a></li>
+                   <li><a href="#v_1_1"><i class="icon-footprint text-slate-400"></i><p style="color:##333;">Mision:</p><span class="text-muted text-regular pull-left"><?=@$_SESSION['companyinfo']['mission']?></span></a></li>
                     <li class="navigation-divider"></li>
                   </ul>
                 </div>

@@ -16,12 +16,8 @@ class Administration extends MX_Controller
       Index Function
     *******************************/
   	public function index()  {
-      if(isset($_SESSION['user']['username'])) {
-        if(isset($_SESSION['user']['roles']) ) 
+      if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
         	redirect('administration/users');
-        else
-          redirect('dashboard');
-      }
       else
         redirect('access');
   	}
@@ -174,133 +170,6 @@ class Administration extends MX_Controller
       }
     }
 
-
-	  public function User_Roles() {
-		
-		//User Roles
-		if (isset($_POST['user_roles']) && in_array('Roles & Priv.',$_SESSION['rows_exploded'])) {
-			# code...
-			$this->form_validation->set_rules('user','User Selected','required|trim');
-            $this->form_validation->set_rules('user_group','User Selected','required|trim');
-            #Checking Form Validation Rule Result
-            # If Failed
-            if ($this->form_validation->run() == FALSE) {
-                #Redirecting With Error
-                $this->Roles_Priviledges();
-            }
-            # If Passed
-            else {
-	            #Variable Assignment
-	            $_SESSION['user_roles']['employee_id'] = $this->input->post('user');
-	            $_SESSION['user_roles']['group_id'] =  $this->input->post('user_group');
-	            $data['roles'] = "activate";
-	            # Loading model...
-	            $this->load->model('SettingsModel');
-	            $this->load->model('UserModel'); 
-	            #Extracting Data For Display
-	            $data['allusers'] = $this->SettingsModel->users();
-            	$data['allgroups'] = $this->SettingsModel->groups();
-            	$data['all_users_result']  = $this->UserModel->allemployees();
-	            $data['dash_tabs'] = $this->SettingsModel->dashboard_tabs();
-	            $data['grp_roles_result'] = $this->SettingsModel->ret_grp_roles_id($_SESSION['user_roles']['group_id']);
-	            /******* Interface ******/
-					$headertag['title'] = "Roles & Priviledges";
-	            $this->load->view('headtag',$headertag);
-                $this->load->view('header');
-                $this->load->view('nav');
-	            $this->load->view('roles_priv',$data);
-	            $this->load->view('footer');
-	            /******* Interface ******/
-			}
-		} else {
-			# code...
-			//loading login view
-            $_SESSION['error'] = "Permission Denied. Contact Administrator";
-			redirect('administration/roles_priviledges');
-		}
-	}
-    
-	public function Group_Roles() {
-		
-		//User Roles
-		if (isset($_POST['group_roles'])&& in_array('Roles & Priv.',$_SESSION['rows_exploded'])) {
-			# code...
-			$this->form_validation->set_rules('group','Group Selected','required|trim');
-            #Checking Form Validation Rule Result
-            # If Failed
-            if ($this->form_validation->run() == FALSE) {
-                #Redirecting With Error
-                $this->Roles_Priviledges();
-            }
-            # If Passed
-            else {
-	            #Variable Assignment
-                $_SESSION['user_roles']['group_id'] = $this->input->post('group');
-	            $data['group_id'] = $_SESSION['user_roles']['group_id'];
-	            $data['grp_to_belong'] = $_SESSION['user_roles']['group_id'];
-	            $data['roles'] = "activate";
-	            # Loading model...
-	            $this->load->model('SettingsModel');
-	            $this->load->model('UserModel'); 
-	            #Extracting Data For Display
-	            $data['groups'] = $this->SettingsModel->groups();
-	            $data['dash_tabs'] = $this->SettingsModel->dashboard_tabs();
-	            $_SESSION['grp_roles_result'] = $this->SettingsModel->ret_grp_roles_id($_SESSION['user_roles']['group_id']);
-                $data['grp_roles_result'] = $_SESSION['grp_roles_result'];
-                $_SESSION['grp_request'] = "group";
-	            /******* Interface ******/
-				$headertag['title'] = "Roles & Priviledges";
-	            $this->load->view('headtag',$headertag);
-                $this->load->view('header');
-                $this->load->view('nav');
-	            $this->load->view('roles_priv',$data);
-	            $this->load->view('footer');
-	            /******* Interface ******/
-			}
-		} else {
-			# code...
-			//loading login view
-			redirect('administration/roles_priviledges');
-		}
-	}
-
-    /******************************
-  			 License
-  	*******************************/
-  	public function License() 
-    {
-  		if (isset($_SESSION['username']))
-      {
-        if(in_array('License',$_SESSION['rows_exploded'])) 
-        {
-          # Loading models...
-            $this->load->model('Model_Access'); /*Needed By header, nav*/
-            $this->load->model('Universal_model_retrieval');
-
-          # Extracting Data For Display
-            $data['license_info'] = $this->Universal_model_retrieval->all_info_return_result("companyinfo");
-
-  		    /********** Interface ***********************/    
-            $headertag['title'] = "License";
-            $this->load->view('headtag',$headertag);
-            $this->load->view('header');
-            $this->load->view('nav');
-            $this->load->view('administration/license',$data);
-            $this->load->view('footer');
-          /********** Interface ***********************/
-  		  } 
-        else 
-        {
-  		    $this->session->set_flashdata('error',"Permission Denied. Contact Administrator");
-  		    redirect('dashboard');
-  		  }
-      }
-      else
-      {
-        redirect('access/login');
-      }
-  	}
-    
     /***********************************************
   			Report
   	************************************************/
@@ -334,10 +203,89 @@ class Administration extends MX_Controller
         redirect('Access/Login');
       }
   	}  
+  /**************** Interface ********************/
 
-  /***************************  Data Insertion  *****************************/
-  
-	/*********************	Data Insertion (Privileges)	***********************/
+  /************** Data Insertion *****************/
+    /****** Save New Employee ***********/
+    public function save_employee() {
+      if(in_array('new registration', $_SESSION['user']['roles'])) {
+        $this->form_validation->set_rules('first_name','First Name','trim|required');
+        $this->form_validation->set_rules('middle_name','Middle Name','trim|required');
+        $this->form_validation->set_rules('last_name','Last Name','trim|required');
+        $this->form_validation->set_rules('gender','Gender','trim|required');
+        $this->form_validation->set_rules('marital_status','Marital Status','trim|required');
+        $this->form_validation->set_rules('position','Position','trim|required');
+        $this->form_validation->set_rules('residence_addr','Residence Address','trim|required');
+        $this->form_validation->set_rules('primary_tel','Phone Number 1','trim|required|is_unique[hr_employee_contact_info.phone_number_1]',array('is_unique'=>"%s Already Exists"));
+        $this->form_validation->set_rules('secondary_tel','Phone No #2','trim');
+        $this->form_validation->set_rules('email','Email Address','trim|required|is_unique[hr_employee_contact_info.email]',array('is_unique'=>"%s Already Exists"));
+        $this->form_validation->set_rules('emergency_fullname','Emergency Name','trim|required');
+        $this->form_validation->set_rules('emergency_residence','Emergency Residence','trim|required');
+        $this->form_validation->set_rules('emergency_phone_1','Emergency Phone Number','trim|required');
+        $this->form_validation->set_rules('emergency_relationship','Emergency Relationship','trim|required');
+
+        if($this->form_validation->run() === FALSE) {
+          $errors = str_replace(array("\r","\n","<p>","</p>"),'\n',validation_errors());
+          $this->session->set_flashdata('validation_error',$errors);
+          redirect('settings/company');
+        }
+        else {
+          $this->load->model('custom_retrievals');
+          /***** Data Definition *****/
+          $dbres = self::$_Default_DB;
+          $return_dataType="php_object";
+          
+          $bio_data = [
+            'first_name' => ucwords($this->input->post('first_name')),
+            'middle_name' => ucwords($this->input->post('middle_name')),
+            'last_name' => ucwords($this->input->post('last_name')),
+            'gender' => ucwords($this->input->post('gender')),
+            'marital_status' => ucwords($this->input->post('marital_status')),
+          ];
+
+          $contact_data = [
+            'residence' => ucwords($this->input->post('residence_addr')),
+            'phone_number_1' => ucwords($this->input->post('primary_tel')),
+            'phone_number_2' => ucwords($this->input->post('secondary_tel')),
+            'email' => ucwords($this->input->post('email')),
+            'emergency_fullname' => ucwords($this->input->post('gender')),
+            'emergency_relationship' => ucwords($this->input->post('marital_status')),
+            'emergency_phone_1' => ucwords($this->input->post('marital_status')),
+            'emergency_residence' => ucwords($this->input->post('marital_status')),
+          ];  
+
+          $work_data = [
+            'employee_id' => $this->generate_employeeid(),
+            'department_id' => 1,
+            'position_id' => ucwords($this->input->post('position')),
+          ];
+          //print_r($work_info)
+          /***** Data Definition *****/
+          if(strlen($contact_data['phone_number_1']) < 10) {
+            $this->session->set_flashdata('error',"Invalid Phone Number");
+            redirect('settings/company');
+          } 
+          else {
+            # bio data insert
+            $tablename = "hr_employee_biodata";
+            $save_data = $this->custom_retrievals->save_employee_details($bio_data,$contact_data,$work_data);
+
+            if($save_data) 
+              $this->session->set_flashdata('success', 'Saving Data Successful');
+            else 
+              $this->session->set_flashdata('error', 'Saving Data Failed');
+              
+              redirect('settings/company');
+          }
+        }
+      }
+      else {
+        $return_data['error'] = 'Permission Denied.Contact Administrator';
+        print_r(json_encode($return_data));
+      }
+    }
+    /****** Save New Employee ***********/
+
     /*****************************
 	    New User
     *****************************/
@@ -370,7 +318,6 @@ class Administration extends MX_Controller
 
               $biodata_id = $this->input->post('biodata_id');
               $fullname   = $this->input->post('fullname');
-
               $dbres = self::$_Permission_DB;
               $tablename = "users";
               
@@ -396,7 +343,7 @@ class Administration extends MX_Controller
                       'biodata_id'  => $biodata_id,
                     ];
 
-                    if($this->input->post('usergroup') == 1 || $this->input->post('usergroup') == 2)
+                    if($this->input->post('usergroup') == 1)
                       $usergroup = 0;
                     else
                       $usergroup = $this->input->post('usergroup');
@@ -440,38 +387,8 @@ class Administration extends MX_Controller
     /*****************************
       New User
     *****************************/
-    public function view_allPermissions() {
-      /*$this->form_validation->set_rules('user_id','User Name','trim');
-      $this->form_validation->set_rules('group_id','Group Name','trim');
-      
-      if ($this->form_validation->run() == FALSE) {
-        $return_data = ['error' => "Validation Error"];
-        print_r($return_data);
-      }
-      # If Passed
-      else {
-        # Loading Model
-        $this->load->model('globals/model_retrieval');
-
-        $user_id = $this->input->post('user_id');
-        $group_id = $this->input->post('group_id');
-
-        if(empty($user_id) && empty($group_id)) {
-          $return_data = ['error' => "No Selection Made"];
-          print_r($return_data);
-        } else {
-          # Variables
-          $dbres = self::$_Permission_DB;
-          $return_dataType = "json";
-          $tablename = "dashboard_tabs";
-          $where_condition = ['status'=>"active"];
-
-          $query_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$where_condition);
-
-          print_r($query_result); 
-        }
-      }*/
-
+    public function view_allPermissions() 
+    {
       $this->load->model('globals/model_retrieval');
       $dbres = self::$_Permission_DB;
       $return_dataType = "php_object";
@@ -490,195 +407,8 @@ class Administration extends MX_Controller
           $tableArray[$array_index][] = $value;
       }
 
-      //print "<pre>"; print_r($tableArray); print "</pre>";
       print_r(json_encode($tableArray));
     }
-    
-    /***********************************************
-	       New Group
-	  ************************************************/
-    
-    public function Add_Group() 
-    {
-        
-        if( isset($_POST['add_grp']) && isset($_SESSION['username']) && in_array('Roles & Priv.',$_SESSION['rows_exploded']) ) {
-	    	//Setting validation rules
-			$this->form_validation->set_rules('grp_id','Group ID','required|trim');
-            $this->form_validation->set_rules('grp_name','Group Name','required|trim');
-            //$this->form_validation->set_rules('grp_desc','Group Description','trim|xss_clean');
-            
-            #Checking Form Validation Rule Result
-            # If Failed
-            if ($this->form_validation->run() == FALSE) {
-                #Redirecting With Error
-                $this->Roles_Priviledges();
-            }
-            # If Passed
-            else {
-	            #Variables Assignment
-	            $data['group_id'] = $this->input->post('grp_id');
-	            $data['name'] = ucwords($this->input->post('grp_name'));
-	            //$data['desc'] = $this->input->post('grp_desc');
-	            # Loading model...
-	            $this->load->model('SettingsModel');
-	            #
-	            $result = $this->SettingsModel->create_grp($data);
-	            
-	            if($result) {
-	                $_SESSION['success'] = "Group Created";
-	            }
-	            else {
-	                $_SESSION['error'] = "Creating Group Failed."; 
-	            }
-	            /******* Interface ******/
-					redirect('Administration/Roles_Priviledges');
-	            /******* Interface ******/
-	        }
-		} else{
-		 	$_SESSION['error'] = "Permission Denied. Contact Administrator";
-			redirect('Administration/Roles_Priviledges');
-		}
-    }
-    
-    /***********************************************
-	       Roles Assignment  
-	************************************************/
-    
-    public function Assign_Roles() {
-        
-        if( isset($_POST['assign']) && isset($_SESSION['username']) && in_array('Roles & Priv.',$_SESSION['rows_exploded'])) {
-  		    //Setting validation rules
-	        $this->form_validation->set_rules('general[]','General Role(s)','trim');
-            $this->form_validation->set_rules('site[]','Site Role(s)','trim');
-            $this->form_validation->set_rules('accounts[]','Accounts Role(s)','trim');
-            $this->form_validation->set_rules('procurement[]','Procurement Role(s)','trim');
-            $this->form_validation->set_rules('human_resource[]','Human Resource Role(s)','trim');
-            $this->form_validation->set_rules('stores[]','Store Role(s)','trim');
-            $this->form_validation->set_rules('administration[]','Administration Role(s)','trim');
-            #Checking Form Validation Rule Result
-            # If Failed
-            if ($this->form_validation->run() === FALSE) {
-                #Redirecting With Error
-                $this->Roles_Priviledges();
-            }
-            # If Passed
-            else {
-            	$Roles[] = $this->input->post('general[]');
-	            $Roles[] = $this->input->post('site[]');
-	            $Roles[] = $this->input->post('accounts[]');
-	            $Roles[] = $this->input->post('procurement[]');
-	            $Roles[] = $this->input->post('human_resource[]');
-	            $Roles[] = $this->input->post('stores[]');
-	            $Roles[] = $this->input->post('administration[]');
-
-	            # Loading model...
-	            $this->load->model('SettingsModel');
-	            $this->load->model('UserModel'); 
-	            #
-	            foreach($Roles As $role_array) {
-	                #
-	                if(!empty($role_array)) {
-	                    #code
-	                    foreach($role_array As $role) {
-	                        #
-	                        if(!empty($role))
-	                        	{
-	                            	@$_SESSION['user_roles']['roles'] .= $role."|";
-	                            	#Retrieving Priviledges Associated With Role
-	                            	$data['priv_result'][$role] = $this->SettingsModel->retrieve_priviledges($role);
-	                        	}
-	                    }
-	                } 
-	            }
-	            #
-	            /****** Interface *******/
-					$headertag['title'] = "Roles & Priviledges";
-	            $this->load->view('headtag',$headertag);
-	            $this->load->view('roles_priv',$data);
-	            $this->load->view('footer');
-	            /******* Interface ******/
-	         }
-		} 
-		 else{
-		 	$_SESSION['error'] = "Permission Denied. Contact Administrator";
-			redirect('Administration/Roles_Priviledges');
-		}
-    }
-
-    /***********************************************
-	       Priviledges Assignment  
-	************************************************/
-    
-    public function Assign_Priviledges() {
-        
-        if( isset($_POST['assign_priv']) && isset($_SESSION['username']) && in_array('Roles & Priv.',$_SESSION['rows_exploded'])) {
-	    		//Setting validation rules
-				$this->form_validation->set_rules('Priviledges[]','Priviledges','trim');
-            #Checking Form Validation Rule Result
-            # If Failed
-            if ($this->form_validation->run() === FALSE) {
-                #Redirecting With Error
-                $this->Roles_Priviledges();
-            }
-            # If Passed
-            else {
-                #Loading Model 
-                $this->load->model('SettingsModel');
-                $this->load->model('Update');
-                
-                $Priviledges[] = $this->input->post('Priviledges[]');
-                
-                foreach($Priviledges As $value) {
-                    #
-                    if(!empty($value)) {
-                        #
-                        foreach($value As $val) {
-                            #
-                            if(!empty($val)) {
-                                #
-                                @$_SESSION['user_roles']['priviledges'] .= $val."|";
-                            }
-                        }
-                    }
-                }
-                if(!empty($_SESSION['grp_request'])) {
-                    #
-                    $result = $this->SettingsModel->set_group_roles_priviledges($_SESSION['user_roles']);
-                    unset($_SESSION['grp_request']);
-                }
-                else {
-                    $result = $this->SettingsModel->set_user_roles_priviledges($_SESSION['user_roles']);
-                    # Variables Declaration
-                    $tablename = "users";
-                    $IdField = "employee_id";
-                    $FieldUpdate = "active_status";
-                    #Variables Assignment
-    	            $data['employee_id'] = $_SESSION['user_roles']['employee_id'];
-                    $data['active_status'] = 1;
-    	            
-    	            $result = $this->Update->OneFieldUpdate($tablename,$IdField,$FieldUpdate,$data);
-                 }
-                
-	            if($result) {
-	                
-	                $_SESSION['success'] = "Role(s) & Priviledge(s) Assigned";
-	            }
-	            else {
-	                $_SESSION['error'] = "Role(s) & Priviledge(s) Assigning Failed"; 
-	            }
-	            /****** Interface *******/
-					redirect("Administration/Roles_Priviledges");
-	            /******* Interface ******/
-	         }
-		} 
-		 else{
-		 	$_SESSION['error'] = "Permission Denied. Contact Administrator";
-			redirect('Administration/Roles_Priviledges');
-		}
-    }
-    
-    
-
     /*********************************	Data Update	****************************/
 
     
@@ -686,15 +416,13 @@ class Administration extends MX_Controller
     /*******************************
       Retrieving System Groups
     *******************************/
-    public function usergroups($tablename)
+    public function usergroups()
     {
       if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
       {
         # Loading Model 
         $this->load->model('administration/custom_retrievals');
-
         $dbres = self::$_Permission_DB;
-        $condition = array('status' => "active", 'id !=' => '1', 'id !=' => '2');
         $return_dataType = "json";
 
         $search_result = $this->custom_retrievals->retrieve_usergroup($dbres,$return_dataType);
@@ -781,36 +509,71 @@ class Administration extends MX_Controller
   /*********************************  AJAX CALLS **************************/
 
   /********************************* Other Functions *********************/
-  protected function generate_userid() {
-    # Loading Model 
-    $this->load->model('globals/model_retrieval');
-    $this->load->model('custom_retrievals');
+    /*******************************
+      Generating User ID
+    *******************************/
+    protected function generate_userid() {
+      # Loading Model 
+      $this->load->model('globals/model_retrieval');
+      $this->load->model('custom_retrievals');
+      /******** Generating New User Id *********/
+      $dbres = self::$_Permission_DB;
+      $return_dataType = "";
 
-    /******** Generating New User Id *********/
-    $dbres = self::$_Permission_DB;
-    $return_dataType = "";
+      $last_employee_id  = $this->custom_retrievals->last_temp_employee_id($dbres,$return_dataType);
+      
+      if(empty($last_employee_id[0]->temp_employee_id)) 
+        $next_usr_id = "BG/TEMP/001"; 
+      else {
+        $last_emp_id = explode("/", $last_employee_id[0]->temp_employee_id);
+        $last_emp_id = (int)$last_emp_id[2];
 
-    $last_employee_id  = $this->custom_retrievals->last_temp_employee_id($dbres,$return_dataType);
-    
-    if(empty($last_employee_id[0]->temp_employee_id)) 
-      $next_usr_id = "KAD/TEMP/001"; 
-    else {
-      $last_emp_id = explode("/", $last_employee_id[0]->temp_employee_id);
-      $last_emp_id = (int)$last_emp_id[2];
+        if(strlen($last_emp_id) == 1)
+        $next_usr_id = "BG/TEMP/00".($last_emp_id + 1);
 
-      if(strlen($last_emp_id) == 1)
-      $next_usr_id = "KAD/TEMP/00".($last_emp_id + 1);
+        elseif(strlen($last_emp_id) == 2)
+          $next_usr_id = "BG/TEMP/0".($last_emp_id + 1);
 
-      elseif(strlen($last_emp_id) == 2)
-        $next_usr_id = "KAD/TEMP/0".($last_emp_id + 1);
+        elseif(strlen($last_emp_id) == 3)
+          $next_usr_id = "BG/TEMP/".($last_emp_id + 1);
+      }
 
-      elseif(strlen($last_emp_id) == 3)
-        $next_usr_id = "KAD/TEMP/".($last_emp_id + 1);
+      return $next_usr_id;  
+      /********** Generating New User Id ************/
     }
 
-    return $next_usr_id;  
-    /********** Generating New User Id ************/
-  }
+    /*******************************
+      Generating New User ID
+    *******************************/
+    protected function generate_employeeid() {
+      # Loading Model 
+      $this->load->model('globals/model_retrieval');
+      $this->load->model('custom_retrievals');
+      /******** Generating New User Id *********/
+      $dbres = self::$_Default_DB;
+      $return_dataType = "";
+
+      $last_employee_id  = $this->custom_retrievals->last_employee_id($dbres,$return_dataType);
+      
+      if(empty($last_employee_id[0]->employee_id)) 
+        $next_usr_id = "BG/EMP/001"; 
+      else {
+        $last_emp_id = explode("/", $last_employee_id[0]->employee_id);
+        $last_emp_id = (int)$last_emp_id[2];
+
+        if(strlen($last_emp_id) == 1)
+        $next_usr_id = "BG/EMP/00".($last_emp_id + 1);
+
+        elseif(strlen($last_emp_id) == 2)
+          $next_usr_id = "BG/EMP/0".($last_emp_id + 1);
+
+        elseif(strlen($last_emp_id) == 3)
+          $next_usr_id = "BG/EMP/".($last_emp_id + 1);
+      }
+
+      return $next_usr_id;  
+      /********** Generating New User Id ************/
+    }
   /********************************* Other Functions *********************/
     
 }//End of Class

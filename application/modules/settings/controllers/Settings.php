@@ -10,225 +10,227 @@ class Settings extends MX_Controller
   /********** Constructor ************/
 
   /**************** Interfaces ****************/
-    /********** Index call  ************/
-    public function index() {
-      redirect("dashboard");
-    }
-    /********** Index call  ************/
-    /****** Company  Details*********/
-    public function company() {
-      # Permission Check
-       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles']))
-        redirect('dashboard');
-      else
-      {
-        /****** Required Parameters To Render A Page ******/
-        $this->load->model('access/model_access');
-        $this->load->model('globals/model_retrieval');
-        $data['_Permission_DB'] = self::$_Permission_DB;
-        $data['page_controller'] = $this->uri->segment(1);
-        $data['controller_function'] = $this->uri->segment(2); 
-        /****** Required Parameters To Render A Page ******/
+    /********** Index Function  **********/
+      public function index() {
+        redirect("dashboard");
+      }
+    /********** Index Function  **********/
 
-        /****** Additional Functions  ****************/
-        $dbres = self::$_Default_DB;
-        $tablename = "hr_company_info";
-        $return_dataType="php_object";
-        $condition = array('id' => 1);
-
-        $company_info = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
-
-        if(isset($company_info['ERR']['message'])) {
-          $data['company_info'] = "";
-          $this->session->set_flashdata('error',"Uable To Retrieve Company Details");
-        }
+    /********** Company  Details *********/
+      public function company() {
+        if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles']))
+          redirect('dashboard');
         else
-          $data['company_info'] = $company_info;
-        /****** Additional Functions  ****************/
+        {
+          /****** Required Parameters To Render A Page ******/
+          $this->load->model('access/model_access');
+          $this->load->model('globals/model_retrieval');
+          $data['_Permission_DB'] = self::$_Permission_DB;
+          $data['page_controller'] = $this->uri->segment(1);
+          $data['controller_function'] = $this->uri->segment(2); 
+          /****** Required Parameters To Render A Page ******/
 
-        /***************** Interface *****************/
-        $data['title'] = "Company Details"; 
-        $this->load->view('header',$data); 
-        $this->load->view('company',$data); 
-        $this->load->view('footer'); 
-        /***************** Interface *****************/
+          /****** Additional Functions  ****************/
+          $dbres = self::$_Default_DB;
+          $tablename = "hr_company_info";
+          $return_dataType="php_object";
+          $condition = array('id' => 1);
+          $company_info = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
+
+          if(isset($company_info['ERR']['message'])) {
+            $data['company_info'] = "";
+            $this->session->set_flashdata('error',"Uable To Retrieve Company Details");
+          }
+          else
+            $data['company_info'] = $company_info;
+          /****** Additional Functions  ****************/
+
+          /***************** Interface *****************/
+          $data['title'] = "Company Details"; 
+          $this->load->view('header',$data); 
+          $this->load->view('company',$data); 
+          $this->load->view('footer'); 
+          /***************** Interface *****************/
+        }
       }
-    }
-    /****** Company Details  *********/
-    /****** New Registration  *********/
-    public function new_registration() {
-      # Permission Check
-       if(!in_array('new registration', $_SESSION['user']['roles'])) {
-        $this->session->set_flashdata('error', "Permission Denied. Please Contact Admin");
-        redirect('dashboard');
-       }
-      else
-      {
-        /****** Required Parameters To Render A Page ******/
-        $this->load->model('access/model_access');
-        $this->load->model('globals/model_retrieval');
-        $data['_Permission_DB'] = self::$_Permission_DB;
-        $data['page_controller'] = $this->uri->segment(1);
-        $data['controller_function'] = $this->uri->segment(2); 
-        /****** Required Parameters To Render A Page ******/
-        /****** Additional Functions  ****************/
-        $dbres = self::$_Default_DB;
-        $tablename = "laundry_services";
-        $condition = array('status' => "active");
+    /********** Company Details  *********/
 
-        $data['services'] = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType="php_object",$condition); 
-        /****** Additional Functions  ****************/
-        /***************** Interface *****************/
-        $data['title'] = "New Registration"; 
-        $this->load->view('header',$data); 
-        $this->load->view('new_registration',$data); 
-        $this->load->view('footer'); 
-        /***************** Interface *****************/
+    /********** New Registration  ********/
+      public function new_registration() {
+        # Permission Check
+         if(!in_array('new registration', $_SESSION['user']['roles'])) {
+          $this->session->set_flashdata('error', "Permission Denied. Please Contact Admin");
+          redirect('dashboard');
+         }
+        else
+        {
+          /****** Required Parameters To Render A Page ******/
+          $this->load->model('access/model_access');
+          $this->load->model('globals/model_retrieval');
+          $data['_Permission_DB'] = self::$_Permission_DB;
+          $data['page_controller'] = $this->uri->segment(1);
+          $data['controller_function'] = $this->uri->segment(2); 
+          /****** Required Parameters To Render A Page ******/
+          /****** Additional Functions  ****************/
+          $dbres = self::$_Default_DB;
+          $tablename = "laundry_services";
+          $condition = array('status' => "active");
+
+          $data['services'] = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType="php_object",$condition); 
+          /****** Additional Functions  ****************/
+          /***************** Interface *****************/
+          $data['title'] = "New Registration"; 
+          $this->load->view('header',$data); 
+          $this->load->view('new_registration',$data); 
+          $this->load->view('footer'); 
+          /***************** Interface *****************/
+        }
       }
-    }
-  /****** New Registration  *********/
-
+    /********** New Registration  ********/
   /**************** Interfaces ****************/
 
   /**************** Insertions ****************/
     /****** Save Company Details  ******/
-    public function save_company_details() {
-      if(in_array('users', $_SESSION['user']['roles'])) {
-        $this->form_validation->set_rules('id','ID','trim|required');
-        $this->form_validation->set_rules('name','Name','trim|required');
-        $this->form_validation->set_rules('postal_addr','Postal Address','trim|required');
-        $this->form_validation->set_rules('residence_addr','Residence Address','trim|required');
-        $this->form_validation->set_rules('phone_num_1','Primary Telephone','trim|required');
-        $this->form_validation->set_rules('phone_num_2','Secondary Telephone','trim|required');
-        $this->form_validation->set_rules('fax','Fax','trim');
-        $this->form_validation->set_rules('email','Email','trim|required');
-        $this->form_validation->set_rules('website','Website','trim');
-        $this->form_validation->set_rules('mission','Mission Statment','trim');
-        $this->form_validation->set_rules('vision','vision Statment','trim');
-        $this->form_validation->set_rules('tin_number','Tin Number','trim');
-        if ($this->form_validation->run() === FALSE) {
-          $this->session->set_flashdata('error',"Validation Error");
-          redirect('settings/company');
-        }
-        else {
-          $this->load->model('globals/model_insertion');
-          $this->load->model('globals/model_update');
-
-          $id = $this->input->post('id');
-          $dbres = self::$_Default_DB;
-          $tablename = "hr_company_info";
-          $data = [
-            'name' => $this->input->post('name'),
-            'postal_address' => $this->input->post('postal_addr'),
-            'residence_address' => $this->input->post('residence_addr'),
-            'telephone_1' => $this->input->post('phone_num_1'),
-            'telephone_2' => $this->input->post('phone_num_2'),
-            'fax' => $this->input->post('fax'),
-            'email' => $this->input->post('email'),
-            'website' => $this->input->post('website'),
-            'mission' => $this->input->post('mission'),
-            'vision' => $this->input->post('vision'),
-            'tin_number' => $this->input->post('tin_number')
-          ];
-          $return_dataType="php_object";
-
-          if(empty($id)) {
-            $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
-            if($query_result)
-              $this->session->set_flashdata('success',"Company Registration Successful");
-            else
-              $this->session->set_flashdata('error',"Company Registration Failed");
+      public function save_company_details() {
+        if(in_array('users', $_SESSION['user']['roles'])) {
+          $this->form_validation->set_rules('id','ID','trim');
+          $this->form_validation->set_rules('name','Name','trim|required');
+          $this->form_validation->set_rules('postal_addr','Postal Address','trim|required');
+          $this->form_validation->set_rules('residence_addr','Residence Address','trim|required');
+          $this->form_validation->set_rules('phone_num_1','Primary Telephone','trim|required');
+          $this->form_validation->set_rules('phone_num_2','Secondary Telephone','trim|required');
+          $this->form_validation->set_rules('fax','Fax','trim');
+          $this->form_validation->set_rules('email','Email','trim|required');
+          $this->form_validation->set_rules('website','Website','trim');
+          $this->form_validation->set_rules('mission','Mission Statment','trim');
+          $this->form_validation->set_rules('vision','vision Statment','trim');
+          $this->form_validation->set_rules('tin_number','Tin Number','trim');
+          if ($this->form_validation->run() === FALSE) {
+            $this->session->set_flashdata('error',"Validation Error");
+            redirect('settings/company');
           }
           else {
-            $where_condition = ['id' => $this->input->post('id')];
+            $this->load->model('globals/model_insertion');
+            $this->load->model('globals/model_update');
 
-            $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
-            if($query_result)
-              $this->session->set_flashdata('success',"Company Details Updated");
-            else
-              $this->session->set_flashdata('error',"Update Failed");
-          }
+            $id = $this->input->post('id');
+            $dbres = self::$_Default_DB;
+            $tablename = "hr_company_info";
+            $data = [
+              'name' => $this->input->post('name'),
+              'postal_address' => $this->input->post('postal_addr'),
+              'residence_address' => $this->input->post('residence_addr'),
+              'telephone_1' => $this->input->post('phone_num_1'),
+              'telephone_2' => $this->input->post('phone_num_2'),
+              'fax' => $this->input->post('fax'),
+              'email' => $this->input->post('email'),
+              'website' => $this->input->post('website'),
+              'mission' => $this->input->post('mission'),
+              'vision' => $this->input->post('vision'),
+              'tin_number' => $this->input->post('tin_number')
+            ];
+            $return_dataType="php_object";
 
-          redirect('settings/company');
-        }
-      }
-      else 
-        $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
-        redirect('settings/company');
-    }
-    /****** Save Company Details  ******/
-
-    /****** Save Services    ***********/
-    public function save_services() {
-      if(in_array('new registration', $_SESSION['user']['roles'])) {
-        $this->form_validation->set_rules('id','ID','trim');
-        $this->form_validation->set_rules('service_name','Name','trim');
-        $this->form_validation->set_rules('service_desc','Description','trim');
-        $this->form_validation->set_rules('delete_item','Delete Action','trim');
-
-        if($this->form_validation->run() === FALSE) {
-          $this->session->set_flashdata('error',"Validation Error");
-          redirect('settings/new_registration');
-        }
-        else {
-          $this->load->model('globals/model_insertion');
-          $this->load->model('globals/model_update');
-          /***** Data Definition *****/
-          $id = $this->input->post('id');
-          $dbres = self::$_Default_DB;
-          $tablename = "laundry_services";
-          $data = [
-            'name' => ucwords($this->input->post('service_name')),
-            'description' => $this->input->post('service_desc'),
-          ];
-          $return_dataType="php_object";
-          $delete_confirmed = $this->input->post('delete_item');
-          /***** Data Definition *****/
-          
-          if(isset($delete_confirmed) && isset($id)) {
-            $delete_data['status'] = "deleted";
-
-            $where_condition = ['id' => $id];
-
-            $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$delete_data,$where_condition) ;
-            if($query_result)
-              $return_data['success'] = "Delete Successul";
-            else
-              $return_data['error'] = "Delete Failed";
-
-            print_r(json_encode($return_data));
-          } 
-          else {
             if(empty($id)) {
-              $data['status'] = "active";
-
               $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
+              
               if($query_result)
-                $this->session->set_flashdata('success',"Save Successful");
+                $this->session->set_flashdata('success',"Company Registration Successful");
               else
-                $this->session->set_flashdata('error',"Save Failed");
-
-              redirect('settings/new_registration');
+                $this->session->set_flashdata('error',"Company Registration Failed");
             }
             else {
-              $where_condition = ['id' => $id];
+              $where_condition = ['id' => $this->input->post('id')];
 
               $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
               if($query_result)
-                $return_data['success'] = "Update Successul";
+                $this->session->set_flashdata('success',"Company Details Updated");
               else
-                $return_data['error'] = "Update Failed";
+                $this->session->set_flashdata('error',"Update Failed");
+            }
+
+            redirect('settings/company');
+          }
+        }
+        else 
+          $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
+          redirect('settings/company');
+      }
+    /****** Save Company Details  ******/
+
+    /****** Save Services    ***********/
+      public function save_services() {
+        if(in_array('new registration', $_SESSION['user']['roles'])) {
+          $this->form_validation->set_rules('id','ID','trim');
+          $this->form_validation->set_rules('service_name','Name','trim');
+          $this->form_validation->set_rules('service_desc','Description','trim');
+          $this->form_validation->set_rules('code','Code','trim');
+          $this->form_validation->set_rules('delete_item','Delete Action','trim');
+
+          if($this->form_validation->run() === FALSE) {
+            $this->session->set_flashdata('error',"Validation Error");
+            redirect('settings/new_registration');
+          }
+          else {
+            $this->load->model('globals/model_insertion');
+            $this->load->model('globals/model_update');
+            /***** Data Definition *****/
+            $id = $this->input->post('id');
+            $dbres = self::$_Default_DB;
+            $tablename = "laundry_services";
+            $data = [
+              'name' => ucwords($this->input->post('service_name')),
+              'description' => ucfirst($this->input->post('service_desc')),
+              'code' => strtoupper($this->input->post('code'))
+            ];
+            $return_dataType="php_object";
+            $delete_confirmed = $this->input->post('delete_item');
+            /***** Data Definition *****/
+            
+            if(isset($delete_confirmed) && isset($id)) {
+              $delete_data['status'] = "deleted";
+
+              $where_condition = ['id' => $id];
+
+              $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$delete_data,$where_condition) ;
+              if($query_result)
+                $return_data['success'] = "Delete Successul";
+              else
+                $return_data['error'] = "Delete Failed";
 
               print_r(json_encode($return_data));
+            } 
+            else {
+              if(empty($id)) {
+                $data['status'] = "active";
+
+                $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
+                if($query_result)
+                  $this->session->set_flashdata('success',"Save Successful");
+                else
+                  $this->session->set_flashdata('error',"Save Failed");
+
+                redirect('settings/new_registration');
+              }
+              else {
+                $where_condition = ['id' => $id];
+
+                $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
+                if($query_result)
+                  $return_data['success'] = "Update Successul";
+                else
+                  $return_data['error'] = "Update Failed";
+
+                print_r(json_encode($return_data));
+              }
             }
           }
         }
+        else {
+          $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
+          redirect('settings/new_registration');
+        }
       }
-      else {
-        $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
-        redirect('settings/new_registration');
-      }
-    }
     /****** Save Services    ***********/
 
     /****** Save Weight      ***********/
@@ -636,6 +638,10 @@ class Settings extends MX_Controller
     }
     /****** Save Client Info ***********/
 
+  /**************** Insertions ****************/
+
+  /**************** Retrievals ****************/
+
     /****** Search From Customers Table ***********/
     public function customer_new_order($phone_number) {
       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
@@ -648,7 +654,7 @@ class Settings extends MX_Controller
       }
     }
     /****** Search From Customers Table ***********/
-  /**************** Insertions ****************/
+  /**************** Retrievals ****************/
 
   /*********************************  AJAX CALLS  **************************/
     /*******************************
@@ -726,8 +732,20 @@ class Settings extends MX_Controller
           $orderby = array('modified_date' => "DESC");
         }
 
+        if($table == "positions") {
+          $tablename = "hr_position";
+          $return_dataType = "json";
+        }
+
         $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition,@$orderby);
-            
+        /**** DB ERROR Check *****/
+        $check = json_decode($search_result);
+        if(isset($check->DB_ERROR)) {
+          $check = array();
+          print_r(json_encode($check));
+          exit;
+        }
+        /**** DB ERROR Check *****/   
         if(!empty($search_result) && $table != "inhouse_orders" && $table != "dispatch_orders") 
           $return_data = $search_result;
         else if(!empty($search_result) && $table == "inhouse_orders") {
@@ -814,7 +832,7 @@ class Settings extends MX_Controller
       else 
         $return_data['error'] = "Permission Denied.Contact Administrator";
       
-      print_r($return_data);
+      print_r(json_encode(array_reverse(json_decode($return_data))));
     }
 
     /*******************************
@@ -852,6 +870,39 @@ class Settings extends MX_Controller
       print_r($return_data);
     }
   /*********************************  AJAX CALLS **************************/
+
+  /********************************* Other Functions *********************/
+  protected function generate_userid() {
+    # Loading Model 
+    $this->load->model('globals/model_retrieval');
+    $this->load->model('custom_retrievals');
+
+    /******** Generating New User Id *********/
+    $dbres = self::$_Permission_DB;
+    $return_dataType = "";
+
+    $last_employee_id  = $this->custom_retrievals->last_temp_employee_id($dbres,$return_dataType);
+    
+    if(empty($last_employee_id[0]->temp_employee_id)) 
+      $next_usr_id = "KAD/TEMP/001"; 
+    else {
+      $last_emp_id = explode("/", $last_employee_id[0]->temp_employee_id);
+      $last_emp_id = (int)$last_emp_id[2];
+
+      if(strlen($last_emp_id) == 1)
+      $next_usr_id = "KAD/TEMP/00".($last_emp_id + 1);
+
+      elseif(strlen($last_emp_id) == 2)
+        $next_usr_id = "KAD/TEMP/0".($last_emp_id + 1);
+
+      elseif(strlen($last_emp_id) == 3)
+        $next_usr_id = "KAD/TEMP/".($last_emp_id + 1);
+    }
+
+    return $next_usr_id;  
+    /********** Generating New User Id ************/
+  }
+  /********************************* Other Functions *********************/
 
   
 }//End of Class

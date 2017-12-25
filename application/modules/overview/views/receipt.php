@@ -27,7 +27,7 @@
                 </div>
                 <form action="#">
                   <div class="modal-body">
-                <table class="">
+                <table class="table">
                     <thead>
                         <tr>
                         <th>#</th>
@@ -111,43 +111,6 @@
   </div>
   <!-- /main charts -->
 
-
-
-
-  <!-- All Users Data Table Ajax -->
-  <script type="text/javascript">
-    var user_status = "default";
-    $('#allusers').dataTable({
-        ajax: '<?= base_url()?>administration/retrieve_allusers',
-        columns: [
-          {data: "firstname"},
-          {data: "lastname"},
-          {data: "email"},
-          {data: "group_name"},
-          {data: "status", render: function(data,type,row,meta) { 
-            if(row.status == "active") {
-              label_class = "label-success";
-              user_status = row.status;
-            }
-            else if(row.status == "inactive"){
-              label_class = "label-danger";
-              user_status = row.status;
-            }
-
-            return '<span class="label '+label_class+'">'+row.status+'</span>'}
-          },
-          {data: "id", render: function(data,type,row,meta) { 
-            if(user_status == "active") {
-              button = '<ul class="icons-list"><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu9"></i></a><ul class="dropdown-menu dropdown-menu-right"><li><a href="#"><i class="icon-file-pdf"></i> Export to .pdf</a></li><li><a href="#"><i class="icon-file-excel"></i> Export to .csv</a></li><li><a href="#"><i class="icon-file-word"></i> Export to .doc</a></li></ul></li></ul>';
-            } 
-            else if(user_status == "inactive") {
-              button = "<button type='submit' name='activate_user' class='btn btn-success btn-xs'><i class='fa fa-unlock'></i> Activate</button>";
-            }
-            return button; }
-          },
-        ],
-    });
- // Alert dialog
-
-  </script>
-  <!-- All Users Data Table Ajax -->
+  <!-- Including Page Settings -->
+  <?php include("page_settings.php"); ?>
+  <!-- Including Page Settings -->
