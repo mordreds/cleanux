@@ -12,6 +12,7 @@ body,figure{position:relative}
 html{height:100%}
 body{min-height:100%}
 a{cursor:pointer}
+
 figcaption{position:absolute;bottom:0;opacity:0;visibility:hidden;width:100%;padding:10px 15px;z-index:2;background-color:rgba(0,0,0,.7);-webkit-transition:all ease-in-out .2s;-o-transition:all ease-in-out .2s;transition:all ease-in-out .2s}
 figure:hover figcaption{opacity:1;visibility:visible}
 .img-rounded{border-radius:3px}
@@ -381,7 +382,7 @@ select[multiple].input-xs,textarea.input-xs{height:auto}
 .caret{font-style:normal;font-weight:400;border:0;margin:-1px 0 0;width:auto;height:auto;text-align:center}
 .caret:after{content:'\e9c5';display:block;font-size:16px;width:16px;line-height:1}
 .dropdown-menu{min-width:180px;padding:8px 0;color:#333;-webkit-box-shadow:0 3px 6px rgba(0,0,0,.16),0 3px 6px rgba(0,0,0,.23);box-shadow:0 3px 6px rgba(0,0,0,.16),0 3px 6px rgba(0,0,0,.23)}
-.dropdown-menu:not([class*=border-]){border-width:0}
+.dropdown-menu:not([class*=border-]){border-width:0;}
 .dropdown-menu .divider{margin:8px 0}
 .dropdown-menu>li{position:relative;margin-bottom:1px}
 .dropdown-menu>.checkbox-switchery.switchery-sm,.dropdown-menu>.checkbox-switchery.switchery-xs,.dropdown-menu>li:last-child{margin-bottom:0}

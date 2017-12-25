@@ -1,10 +1,67 @@
  <!-- Content area -->
   <div class="content">
     <?php //print "<pre>"; print_r($_SESSION); print "</pre>";?>
+
+
     
     <!-- Main charts -->
     <div class="row">
       <div class="col-md-12">
+        <div class="col-xs-1"></div>
+      <div class="panel panel-body col-xs-3">
+                <div class="row text-center">
+                  <div class="col-xs-6">
+                    <p><i class="icon-users2 icon-2x display-inline-block text-info"></i></p>
+                    <h5 class="text-semibold no-margin">2,345</h5>
+                    <span class="text-muted text-size-small">users</span>
+                  </div>
+
+                  <div class="col-xs-6">
+                    <p><i class="icon-users4 icon-2x display-inline-block text-warning"></i></p>
+                    <h5 class="text-semibold no-margin">3,568</h5>
+                    <span class="text-muted text-size-small">Customers</span>
+                  </div>
+
+                </div>
+              </div>
+              
+              <div class="panel panel-body col-xs-3">
+                <div class="row text-center">
+                 
+                  <div class="col-xs-6">
+                    <p><i class="icon-hour-glass icon-2x display-inline-block text-success"></i></p>
+                    <h5 class="text-semibold no-margin">9,693</h5>
+                    <span class="text-muted text-size-small">pending Orders</span>
+                  </div>
+                  <div class="col-xs-6">
+                    <p><i class="icon-hour-glass3 icon-2x display-inline-block text-success"></i></p>
+                    <h5 class="text-semibold no-margin">9,693</h5>
+                    <span class="text-muted text-size-small">complete Orders</span>
+                  </div>
+                </div>
+              </div>
+             
+              
+               
+              <div class="panel panel-body col-xs-3">
+                <div class="row text-center">
+                 
+                  <div class="col-xs-6">
+                    <p><i class="icon-cash2 icon-2x display-inline-block text-success"></i></p>
+                    <h5 class="text-semibold no-margin">GHC 9,693</h5>
+                    <span class="text-muted text-size-small">Daily Sales</span>
+                  </div>
+                  <div class="col-xs-6">
+                    <p><i class="icon-cash3 icon-2x display-inline-block text-success"></i></p>
+                    <h5 class="text-semibold no-margin">GHC 9,693</h5>
+                    <span class="text-muted text-size-small">Total</span>
+                  </div>
+                </div>
+              </div>
+              
+      </div>
+      <div class="col-md-12">
+
         <!-- Individual column searching (text inputs) -->
         <legend> Garment status</legend>
           <div class="panel panel-flat">
@@ -85,28 +142,7 @@
             </table>
 
           </div>
-          <!-- /individual column searching (text inputs) -->
-          <legend>Flow Chart</legend>
-      <!-- Combo chart -->
-          <div class="panel panel-flat">
-            <div class="panel-heading">
-              <div class="heading-elements">
-                <ul class="icons-list">
-                          <li><a data-action="collapse"></a></li>
-                          <li><a data-action="reload"></a></li>
-                          <li><a data-action="close"></a></li>
-                        </ul>
-                      </div>
-            </div>
-
-            <div class="panel-body">
-
-              <div class="chart-container">
-                <div class="chart" id="google-combo"></div>
-              </div>
-            </div>
-          </div>
-          <!-- /combo chart -->
+      
     </div>
 
   </div>
