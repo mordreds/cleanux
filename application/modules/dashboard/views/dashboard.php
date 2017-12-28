@@ -37,12 +37,11 @@
                   <h3 style="margin-top: 10px;"><?=$_SESSION['companyinfo']['name']?> </h3>
                   <ul class="nav navigation">
                     <!-- <li>Incooperation Date:<span class="text-muted text-regular "><b>21-10-2015</b> </span></li> -->
-                    <li>Date Of Commencement:<span class="text-muted text-regular "><br/><b> 21-10-2015</b> </span></li>
                     <li>TIN Number:<span class="text-muted text-regular "><br/><b> <?=@$_SESSION['companyinfo']['tin_number']?></b> </span></li>
                     <li>Postal Address:<span class="text-muted text-regular"><br/><b><?=@$_SESSION['companyinfo']['postal_address']?></b></span></li>
                     <li>Residence Address:<span class="text-muted text-regular"><br/><b><?=@$_SESSION['companyinfo']['residence_address']?></b></span></li>
-                    <li>Email Address:<span class="text-muted text-regular"><br/><b><?=@$_SESSION['companyinfo']['residence_address']?></b></span></li>
-                    <li>Website Address:<span class="text-muted text-regular"><br/><b><?=@$_SESSION['companyinfo']['residence_address']?></b></span></li>
+                    <li>Email Address:<span class="text-muted text-regular"><br/><b><?=@$_SESSION['companyinfo']['email']?></b></span></li>
+                    <li>Website Address:<span class="text-muted text-regular"><br/><b><?=@$_SESSION['companyinfo']['website']?></b></span></li>
                   </ul>
                 </div>
               </div>

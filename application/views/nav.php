@@ -50,12 +50,44 @@
 						<span class="status-mark border-orange-400"></span>
 					</a>
 					<div class="dropdown-menu dropdown-content">
-						<div class="dropdown-content-heading">
-							Price List
-							<ul class="icons-list">
-								<li><a href="#"><i class="icon-sync"></i></a></li>
-							</ul>
-						</div>
+						<div class="panel panel-flat">
+    					<div class="table-responsive">
+    						<table class="table text-nowrap table-xxs" id="pricelists_alt">
+    							<thead style="background-color: #dae2e6;">
+    								<tr>
+    									<th><h4 class="panel-title">Price Lists</h4></th>
+    									<th class="col-md-2">Unit Price</th>
+    									<th class="col-md-2">Bulk Price</th>
+    								</tr>
+    							</thead>
+    							<tbody>
+    								<!-- <tr class="active border-double">
+    									<td colspan="5">Today</td>
+    									<td class="text-right">
+    										<span class="progress-meter" id="today-progress" data-progress="30"></span>
+    									</td>
+    								</tr>
+    								<tr>
+    									<td>
+    										<div class="media-left media-middle">
+    											<a href="#"><img src="assets/images/brands/facebook.png" class="img-circle img-xs" alt=""></a>
+    										</div>
+    										<div class="media-left">
+    											<div class=""><a href="#" class="text-default text-semibold">Facebook</a></div>
+    											<div class="text-muted text-size-small">
+    												<span class="status-mark border-blue position-left"></span>
+    												02:00 - 03:00
+    											</div>
+    										</div>
+    									</td>
+    									<td><h6 class="text-semibold">GHC 0</h6></td>
+    									<td><h6 class="text-semibold">GHC 5</h6></td>
+    								</tr> -->
+    							</tbody>
+    						</table>
+    					</div>
+    				</div>
+                				<!-- /marketing campaigns -->
 						<ul class="media-list dropdown-content-body width-350" style="width:650px !important; max-height:650px;">
 							<div class="tabbable nav-tabs-vertical nav-tabs-right">
                 <div class="tab-content">
@@ -92,18 +124,6 @@
                         </tr>
                     </tbody>
                 </table>
-                      </div>
-
-                      <div class="tab-pane has-padding" id="right-tab2">
-                        Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid laeggin.
-                      </div>
-
-                      <div class="tab-pane has-padding" id="right-tab3">
-                        DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg whatever.
-                      </div>
-
-                      <div class="tab-pane has-padding" id="right-tab4">
-                        Aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthet.
                       </div>
                     </div>
 
