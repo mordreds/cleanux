@@ -503,34 +503,15 @@
         },
         columns: [
           {data: "order_number",render: function(data,type,row,meta) { 
-            return "<a href='#' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
+            return "<a href='#' class='view_order_receipt' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
           }},
           {data: "total_cost"},
           {data: "date_created"},
         ],
       });
 
-      /*$(document).on("click",".deactivate_user",function(){
-        let formData = { 
-          'user_id': $(this).data('dataid'),
-          'email': $(this).data('email'),
-          'status': $(this).data('state')
-        };
-        $.ajax({
-          type : 'POST',
-          url : '<?= base_url()?>administration/users/account_status',
-          data : formData,
-          success: function(response) {
-            $.jGrowl('User Deactivation Successful', {
-              theme: 'alert-styled-left bg-success'
-            });
-            $('#inactive_acct_tbl').DataTable().ajax.reload();
-            $('#active_accounts_tbl').DataTable().ajax.reload();
-          },
-          error: function() {
-            alert("Error Transmitting Data")
-          }
-        });
+      $(document).on("click",".view_order_receipt",function(){
+        $('#order_receipt').modal('show');
       });
 
       $(document).on("click",".delete_confirmed",function(){
@@ -557,7 +538,7 @@
             });
           }
         });
-      });*/
+      });
     /********** Todays Order ************/
   });
 </script>

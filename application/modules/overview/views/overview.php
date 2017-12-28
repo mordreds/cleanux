@@ -175,24 +175,19 @@
                         <div class="tab-pane" id="billing_info">
                           <div class="row">
                             <div class="col-md-12">
-                            <div class="col-md-2"></div>
-                             <div class="col-md-2">
-                              <label class="display-block" >Total Amount</label>
-                               <input type="text" class="form-control order_balance" name="order_balance" readonly >
-                               <label class="display-block" >Date</label>
-                               <input type="text" class="form-control order_balance" name="order_balance" readonly >
+                              <div class="col-md-2"></div>
+                              <div class="col-md-2">
+                                <label class="display-block" >Total Amount</label>
+                                <input type="text" class="form-control order_balance" name="order_balance" readonly >
                               </div>
                               <div class="col-md-2">
                               <label class="display-block" >Amount Paid</label>
                                 <input type="text" class="form-control order_balance" name="order_balance" readonly >
-                                <label class="display-block" >Date</label>
-                               <input type="text" class="form-control order_balance" name="order_balance" readonly >
                               </div>
                               
                               <div class="col-md-2"></div>
                               </div>
                           </div>
-                          <button type="submit" class="btn btn-primary btn-xs legitRipple">Save <i class="icon-database position-right"></i></button>
                         </div>
                       </div>
                     </div>
@@ -223,7 +218,7 @@
                           <table id="todays_order" class="table table-xs">
                             <thead>
                               <tr style="background-color:#009688;color:#ffffff"> 
-                                <th>Order No #</th>
+                                <th>Order #</th>
                                 <th>Total Cost</th>
                                 <th>Time</th>
                               </tr>

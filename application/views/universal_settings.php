@@ -97,7 +97,7 @@
       });
 
       $('#pricelists_alt').dataTable({
-        /*searching : false,*/
+        autoWidth: false,
         paging: false,
         ajax: {
           type : 'GET',
@@ -116,7 +116,7 @@
               return '<td><div class="media-left media-middle"><a href="#" class="btn bg-brown-400 btn-rounded btn-icon btn-xs"><span class="letter-icon">'+row.service_code+'</span></a></div><div class="media-left"><div class=""><a href="#" class="text-default text-semibold">'+display+'</a></div><div class="text-muted text-size-small"><span class="status-mark border-blue position-left"></span>'+row.service_name+'</div></div></td>';
           }},
           {data: "amount"}, 
-          {data: "amount"} 
+          {render: function(data,type,row,meta) { return '0'; }} 
         ], 
       });
     /****** Retrieving Price List ******/

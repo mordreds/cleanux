@@ -1061,7 +1061,7 @@
 
 
 <!-- *********** check out ********* -->
-  <div id="checkout" class="modal fade">
+  <div id="order_receipt" class="modal fade">
     <div class="modal-dialog" style="width:350px;">
       <div class="modal-content">
         <div class="modal-header ">
