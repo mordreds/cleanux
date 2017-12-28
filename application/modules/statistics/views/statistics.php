@@ -12,13 +12,13 @@
                 <div class="row text-center">
                   <div class="col-xs-6">
                     <p><i class="icon-users2 icon-2x display-inline-block text-info"></i></p>
-                    <h5 class="text-semibold no-margin">2,345</h5>
+                    <h5 class="text-semibold no-margin"><?=number_format($total_users)?></h5>
                     <span class="text-muted text-size-small">users</span>
                   </div>
 
                   <div class="col-xs-6">
                     <p><i class="icon-users4 icon-2x display-inline-block text-warning"></i></p>
-                    <h5 class="text-semibold no-margin">3,568</h5>
+                    <h5 class="text-semibold no-margin"><?=number_format($total_customers)?></h5>
                     <span class="text-muted text-size-small">Customers</span>
                   </div>
 
@@ -30,13 +30,13 @@
                  
                   <div class="col-xs-6">
                     <p><i class="icon-hour-glass icon-2x display-inline-block text-success"></i></p>
-                    <h5 class="text-semibold no-margin">9,693</h5>
+                    <h5 class="text-semibold no-margin"><?=number_format($pending_orders)?></h5>
                     <span class="text-muted text-size-small">pending Orders</span>
                   </div>
                   <div class="col-xs-6">
                     <p><i class="icon-hour-glass3 icon-2x display-inline-block text-success"></i></p>
-                    <h5 class="text-semibold no-margin">9,693</h5>
-                    <span class="text-muted text-size-small">complete Orders</span>
+                    <h5 class="text-semibold no-margin"><?=number_format($month_orders)?></h5>
+                    <span class="text-muted text-size-small">Monthly Successful Orders</span>
                   </div>
                 </div>
               </div>

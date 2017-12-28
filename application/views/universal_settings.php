@@ -95,6 +95,30 @@
           });
         }
       });
+
+      $('#pricelists_alt').dataTable({
+        /*searching : false,*/
+        paging: false,
+        ajax: {
+          type : 'GET',
+          url : '<?= base_url()?>settings/retrieve_alldata/vw_prices/default',
+          dataSrc: ''
+        },
+        columns: [
+          {data: "id", render: function(data,type,row,meta) { 
+              if(row.weight_id > 0 && row.garment_id > 0)
+                display = row.garment_name+" ("+row.weight+")";
+              else if(row.weight_id > 0)
+                display = row.weight;
+              else if(row.garment_id > 0)
+                display = row.garment_name
+
+              return '<td><div class="media-left media-middle"><a href="#" class="btn bg-brown-400 btn-rounded btn-icon btn-xs"><span class="letter-icon">'+row.service_code+'</span></a></div><div class="media-left"><div class=""><a href="#" class="text-default text-semibold">'+display+'</a></div><div class="text-muted text-size-small"><span class="status-mark border-blue position-left"></span>'+row.service_name+'</div></div></td>';
+          }},
+          {data: "amount"}, 
+          {data: "amount"} 
+        ], 
+      });
     /****** Retrieving Price List ******/
 
     /****** Delivery Dropdown ******/
