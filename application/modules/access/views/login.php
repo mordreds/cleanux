@@ -29,13 +29,13 @@
                 </h5>
               </div>
               <div class="form-group has-feedback has-feedback-left">
-                <input type="email" class="form-control" placeholder="Email" oncopy="return false;" onpaste="return false;" onselectstart="return false;" autocomplete="off" name="email" required style="background:#51561c00;background-color: #51561c00 !important;border-radius:10px;">
+                <input type="email" class="form-control" placeholder="Email" oncopy="return false;" onpaste="return false;" onselectstart="return false;" autocomplete="off" name="email" required style="background:#51561c00;background-color: #51561c00 !important;border-radius:10px;color: #fff">
                 <div class="form-control-feedback">
                   <i class="icon-user text-muted"></i>
                 </div>
               </div>
               <div class="form-group has-feedback has-feedback-left">
-                <input type="password" class="form-control" placeholder="Password" oncopy="return false;" onpaste="return false;" onselectstart="return false;" autocomplete="off" name="passwd" required style="background:#51561c00 ;background-color: #51561c00 !important;border-radius:10px;">
+                <input type="password" class="form-control" placeholder="Password" oncopy="return false;" onpaste="return false;" onselectstart="return false;" autocomplete="off" name="passwd" required style="background:#51561c00 ;background-color: #51561c00 !important;border-radius:10px;color: #fff">
                 <div class="form-control-feedback">
                   <i class="icon-lock2 text-muted"></i>
                 </div>
