@@ -1069,10 +1069,11 @@
         </div>
         <div class="modal-body">
          <div class="row" style="padding:2px;">
-          <div class="col-sm-6 content-group"></div>
+          <div class="col-sm-6 content-group">
+            <h5 class="text-uppercase text-semibold">BG"s Laundry</h5>
+          </div>
                 <div class="col-sm-6 content-group">
                   <div class="invoice-details">
-                    <h5 class="text-uppercase text-semibold">BG"s Laundry</h5>
                     <ul class="list-condensed list-unstyled">
                       <li><span class="text-semibold">Order #300324</span></li>
                       <li>Date: <span class="text-semibold">May 12, 2015</span></li>
