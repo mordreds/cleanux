@@ -130,6 +130,12 @@ class Settings extends MX_Controller
               'tin_number' => $this->input->post('tin_number')
             ];
             $return_dataType="php_object";
+            # Uploading Logo
+            if(!empty($_FILES['logo'])) {
+              $this->load->helper('file_restriction');
+
+              $file_array = pic_restriction($_FILES['logo'],$mall_name,$img_type);
+            }
 
             if(empty($id)) {
               $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);

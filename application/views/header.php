@@ -37,6 +37,7 @@
 	<script type="text/javascript" src="<?=base_url()?>resources/js/core/libraries/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/loaders/blockui.min.js"></script>
   <script type="text/javascript" src="<?=base_url()?>resources/js/core/libraries/jquery_ui/core.min.js"></script>
+	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/notifications/jgrowl.min.js"></script>
 
   <script type="text/javascript" src="<?=base_url()?>resources/js/plugins/forms/styling/switchery.min.js"></script>
   <script type="text/javascript" src="<?=base_url()?>resources/js/plugins/forms/styling/uniform.min.js"></script>
