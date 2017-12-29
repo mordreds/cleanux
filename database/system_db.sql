@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 25, 2017 at 08:16 AM
+-- Generation Time: Dec 29, 2017 at 05:28 AM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -60,6 +60,13 @@ CREATE TABLE `successful_logins` (
   `country` varchar(255) DEFAULT NULL COMMENT 'country of the user at the time of system access'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `successful_logins`
+--
+
+INSERT INTO `successful_logins` (`id`, `user_id`, `time_in`, `time_out`, `online`, `user_agent`, `ipaddress`, `hostname`, `city_region`, `country`) VALUES
+(1, 1, '2017-12-29 05:26:37', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -111,7 +118,7 @@ ALTER TABLE `failed_logins`
 -- AUTO_INCREMENT for table `successful_logins`
 --
 ALTER TABLE `successful_logins`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id';
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `sysaudit`
 --
@@ -314,6 +321,16 @@ CREATE TABLE `laundry_clients` (
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `laundry_clients`
+--
+
+INSERT INTO `laundry_clients` (`id`, `fullname`, `gender`, `company`, `residence_address`, `postal_address`, `phone_number_1`, `phone_number_2`, `email`, `sms_alert`, `online_access`, `status`, `date_created`) VALUES
+(1, 'Mr. Kwame Attah Paintsil', 'Male', '', 'Amasaman', '', '0244444888', '', '', 1, 0, 'active', '2017-12-27 19:03:55'),
+(2, 'Mr Aboagye Kesse Junior', 'Male', '', 'Ashalajah', '', '0244589652', '', 'kessejnr@yahoo.co.uk', 1, 1, 'active', '2017-12-27 19:04:44'),
+(3, 'Ike Gyasi Nimako', 'Male', '', 'Spintex Road', '', '0244111111', '', 'ikegyasi@gmail.com', 1, 0, 'active', '2017-12-27 19:05:17'),
+(4, 'Mrs Appiah Gifty', 'Female', 'Ghana Water Company', 'Asofan', '', '0244222111', '', 'gifty2006@gmail.com', 1, 0, 'active', '2017-12-27 19:06:56');
+
 -- --------------------------------------------------------
 
 --
@@ -329,6 +346,17 @@ CREATE TABLE `laundry_delivery_method` (
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `laundry_delivery_method`
+--
+
+INSERT INTO `laundry_delivery_method` (`id`, `location`, `duration`, `price`, `status`, `date_created`) VALUES
+(1, 'Express Service (Outside Accra)', '1 ~ 3 Days', 20, 'active', '2017-12-27 19:46:23'),
+(2, 'Express Service (Within Accra)', '0 ~ 1 Days', 15, 'active', '2017-12-27 19:46:57'),
+(3, 'Regular (Outside Accra)', '5 ~ 7 Days', 15, 'active', '2017-12-27 19:51:11'),
+(4, 'Regular (Within Accra)', '3 ~ 4 Days', 5, 'active', '2017-12-27 20:08:13'),
+(5, 'Pickup (At Office)', 'At Users Discretion', 0, 'active', '2017-12-27 20:08:58');
+
 -- --------------------------------------------------------
 
 --
@@ -342,6 +370,17 @@ CREATE TABLE `laundry_garments` (
   `status` enum('active','inactive','deleted','') CHARACTER SET utf8 NOT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `laundry_garments`
+--
+
+INSERT INTO `laundry_garments` (`id`, `name`, `description`, `status`, `date_created`) VALUES
+(1, 'Nylon Cloths', 'All Types', 'active', '2017-12-27 20:11:24'),
+(2, 'Pure Cotton Clothing', 'All Types', 'active', '2017-12-27 20:11:53'),
+(3, 'Cotton / Polyesther Clothing', 'All Types', 'active', '2017-12-27 20:13:09'),
+(4, 'Light Jeans', 'All Types', 'active', '2017-12-27 20:13:49'),
+(5, 'Heavy Jeans', 'All Types', 'active', '2017-12-27 20:14:01');
 
 -- --------------------------------------------------------
 
@@ -393,6 +432,14 @@ CREATE TABLE `laundry_order_details` (
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `laundry_order_details`
+--
+
+INSERT INTO `laundry_order_details` (`id`, `order_id`, `pricelist_ids`, `quantities`, `unit_prices`, `total_sums`, `description`, `service_status`, `status_change_userids`, `status_change_dates`, `date_created`) VALUES
+(1, 1, '1', '5', '25', '25', '2 blankets, 3 pillow cases', '', '', '', '2017-12-28 20:07:28'),
+(2, 2, '3|2|2', '10|80|25', '5|40|25', '50|40|25', '|40 singlets, 20 under wears|25 curtains', '', '', '', '2017-12-28 23:23:25');
+
 -- --------------------------------------------------------
 
 --
@@ -405,6 +452,7 @@ CREATE TABLE `laundry_orders` (
   `total_cost` double NOT NULL,
   `amount_paid` double NOT NULL,
   `balance` double NOT NULL,
+  `tax_id` int(11) NOT NULL,
   `client_id` bigint(20) NOT NULL,
   `processor_user_id` bigint(20) NOT NULL,
   `delivery_method_id` bigint(20) NOT NULL,
@@ -417,6 +465,14 @@ CREATE TABLE `laundry_orders` (
   `processing_stages` enum('Pending','Washing','Drying','Ironing','Ready For Dispatch') NOT NULL DEFAULT 'Pending',
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `laundry_orders`
+--
+
+INSERT INTO `laundry_orders` (`id`, `order_number`, `total_cost`, `amount_paid`, `balance`, `tax_id`, `client_id`, `processor_user_id`, `delivery_method_id`, `delivery_location`, `due_date`, `status`, `modified_by`, `modified_date`, `delivered_by`, `processing_stages`, `date_created`) VALUES
+(1, '43974052', 25, 20, 5, 1, 3, 1, 5, 'Pickup', '2017-12-30', 'Pending', 0, NULL, 0, 'Pending', '2017-12-29 20:07:28'),
+(2, '60581272', 120, 100, 20, 2, 3, 1, 4, 'Taifa', '2018-01-01', 'Pending', 0, NULL, 0, 'Pending', '2017-12-29 23:23:25');
 
 -- --------------------------------------------------------
 
@@ -433,6 +489,15 @@ CREATE TABLE `laundry_prices` (
   `status` enum('active','inactive','deleted','') NOT NULL DEFAULT 'active',
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `laundry_prices`
+--
+
+INSERT INTO `laundry_prices` (`id`, `service_id`, `weight_id`, `garment_id`, `amount`, `status`, `date_created`) VALUES
+(1, 1, 3, 0, 25, 'active', '2017-12-28 04:55:04'),
+(2, 1, 2, 0, 40, 'active', '2017-12-28 04:55:32'),
+(3, 4, 0, 1, 5, 'active', '2017-12-28 04:56:21');
 
 -- --------------------------------------------------------
 
@@ -454,7 +519,10 @@ CREATE TABLE `laundry_services` (
 --
 
 INSERT INTO `laundry_services` (`id`, `name`, `code`, `description`, `status`, `date_created`) VALUES
-(1, 'Washing Only', 'WO', 'All items in this category are weighed', 'active', '2017-12-24 12:37:39');
+(1, 'Washing Only', 'WO', 'All items in this category are weighed', 'active', '2017-12-24 12:37:39'),
+(2, 'Washing & Ironing', 'WI', 'Individual Items Are Charged Here', 'active', '2017-12-27 19:18:22'),
+(3, 'Dry Cleaning', 'DC', 'Dry cleaning description', 'active', '2017-12-27 19:18:42'),
+(4, 'Ironing', 'IR', 'Item Brought for ironing only', 'active', '2017-12-27 19:29:43');
 
 -- --------------------------------------------------------
 
@@ -470,6 +538,36 @@ CREATE TABLE `laundry_weights` (
   `status` enum('active','inactive','deleted','') NOT NULL DEFAULT 'active',
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `laundry_weights`
+--
+
+INSERT INTO `laundry_weights` (`id`, `service_type`, `weight`, `description`, `status`, `date_created`) VALUES
+(1, 1, '1 - 10 KG', '', 'active', '2017-12-27 19:30:48'),
+(2, 1, '15 - 30 KG', '', 'active', '2017-12-27 19:33:34'),
+(3, 3, '1 - 10 KG', 'Blowing With Dryer', 'deleted', '2017-12-27 19:34:20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tax_system`
+--
+
+CREATE TABLE `tax_system` (
+  `id` int(11) NOT NULL,
+  `value` float NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tax_system`
+--
+
+INSERT INTO `tax_system` (`id`, `value`, `user_id`, `date_created`) VALUES
+(1, 17.5, 1, '2017-12-29 00:45:46'),
+(2, 25, 1, '2017-12-29 00:46:10');
 
 -- --------------------------------------------------------
 
@@ -520,6 +618,7 @@ CREATE TABLE `vw_employee_details` (
 CREATE TABLE `vw_laundry_prices` (
 `id` bigint(20)
 ,`service_id` bigint(20)
+,`service_code` char(2)
 ,`service_name` varchar(150)
 ,`weight_id` varchar(20)
 ,`weight` varchar(20)
@@ -561,7 +660,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vw_laundry_prices`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_laundry_prices`  AS  select `a`.`id` AS `id`,`a`.`service_id` AS `service_id`,`b`.`name` AS `service_name`,coalesce(`a`.`weight_id`,'') AS `weight_id`,coalesce(`c`.`weight`,'') AS `weight`,coalesce(`a`.`garment_id`,'') AS `garment_id`,coalesce(`d`.`name`,'') AS `garment_name`,`a`.`amount` AS `amount`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created` from (((`laundry_prices` `a` left join `laundry_services` `b` on((`a`.`service_id` = `b`.`id`))) left join `laundry_weights` `c` on((`a`.`weight_id` = `c`.`id`))) left join `laundry_garments` `d` on((`a`.`garment_id` = `d`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_laundry_prices`  AS  select `a`.`id` AS `id`,`a`.`service_id` AS `service_id`,`b`.`code` AS `service_code`,`b`.`name` AS `service_name`,coalesce(`a`.`weight_id`,'') AS `weight_id`,coalesce(`c`.`weight`,'') AS `weight`,coalesce(`a`.`garment_id`,'') AS `garment_id`,coalesce(`d`.`name`,'') AS `garment_name`,`a`.`amount` AS `amount`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created` from (((`laundry_prices` `a` left join `laundry_services` `b` on((`a`.`service_id` = `b`.`id`))) left join `laundry_weights` `c` on((`a`.`weight_id` = `c`.`id`))) left join `laundry_garments` `d` on((`a`.`garment_id` = `d`.`id`))) ;
 
 -- --------------------------------------------------------
 
@@ -696,6 +795,12 @@ ALTER TABLE `laundry_weights`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tax_system`
+--
+ALTER TABLE `tax_system`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -743,17 +848,17 @@ ALTER TABLE `hr_position`
 -- AUTO_INCREMENT for table `laundry_clients`
 --
 ALTER TABLE `laundry_clients`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `laundry_delivery_method`
 --
 ALTER TABLE `laundry_delivery_method`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `laundry_garments`
 --
 ALTER TABLE `laundry_garments`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `laundry_order_balances`
 --
@@ -768,27 +873,32 @@ ALTER TABLE `laundry_order_comments`
 -- AUTO_INCREMENT for table `laundry_order_details`
 --
 ALTER TABLE `laundry_order_details`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `laundry_orders`
 --
 ALTER TABLE `laundry_orders`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `laundry_prices`
 --
 ALTER TABLE `laundry_prices`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `laundry_services`
 --
 ALTER TABLE `laundry_services`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `laundry_weights`
 --
 ALTER TABLE `laundry_weights`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;--
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `tax_system`
+--
+ALTER TABLE `tax_system`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;--
 -- Database: `bgee_permissions`
 --
 CREATE DATABASE IF NOT EXISTS `bgee_permissions` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -1051,12 +1161,32 @@ CREATE TABLE `vw_laundry_order_comments` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `vw_laundry_prices`
+--
+CREATE TABLE `vw_laundry_prices` (
+`id` bigint(20)
+,`service_id` bigint(20)
+,`service_code` char(2)
+,`service_name` varchar(150)
+,`weight_id` varchar(20)
+,`weight` varchar(20)
+,`garment_id` varchar(20)
+,`garment_name` varchar(50)
+,`amount` float
+,`status` enum('active','inactive','deleted','')
+,`date_created` datetime
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `vw_orderlist_summary`
 --
 CREATE TABLE `vw_orderlist_summary` (
 `id` bigint(20)
 ,`order_number` varchar(20)
 ,`total_cost` double
+,`tax` float
 ,`amount_paid` double
 ,`previous_balance` double
 ,`balance_paid` double
@@ -1093,11 +1223,20 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Structure for view `vw_laundry_prices`
+--
+DROP TABLE IF EXISTS `vw_laundry_prices`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`admin`@`%` SQL SECURITY DEFINER VIEW `vw_laundry_prices`  AS  select `a`.`id` AS `id`,`a`.`service_id` AS `service_id`,`b`.`code` AS `service_code`,`b`.`name` AS `service_name`,coalesce(`a`.`weight_id`,'') AS `weight_id`,coalesce(`c`.`weight`,'') AS `weight`,coalesce(`a`.`garment_id`,'') AS `garment_id`,coalesce(`d`.`name`,'') AS `garment_name`,`a`.`amount` AS `amount`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created` from (((`bgee_db`.`laundry_prices` `a` left join `bgee_db`.`laundry_services` `b` on((`a`.`service_id` = `b`.`id`))) left join `bgee_db`.`laundry_weights` `c` on((`a`.`weight_id` = `c`.`id`))) left join `bgee_db`.`laundry_garments` `d` on((`a`.`garment_id` = `d`.`id`))) ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `vw_orderlist_summary`
 --
 DROP TABLE IF EXISTS `vw_orderlist_summary`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_orderlist_summary`  AS  select `a`.`id` AS `id`,`a`.`order_number` AS `order_number`,`a`.`total_cost` AS `total_cost`,`a`.`amount_paid` AS `amount_paid`,`a`.`balance` AS `previous_balance`,coalesce(`e`.`balance_paid`,0) AS `balance_paid`,coalesce((`a`.`balance` - `e`.`balance_paid`),`a`.`balance`) AS `balance`,coalesce((select `vw_user_details`.`fullname` from `bgee_permissions`.`vw_user_details` where (`vw_user_details`.`id` = `e`.`user_id`)),'') AS `balance_received_by`,coalesce(`e`.`payment_date`,'') AS `balance_payment_date`,`a`.`client_id` AS `client_id`,`a`.`processor_user_id` AS `processor_user_id`,`a`.`delivery_method_id` AS `delivery_method_id`,`a`.`delivery_location` AS `delivery_location`,`a`.`due_date` AS `due_date`,`a`.`status` AS `status`,coalesce(`a`.`modified_by`,'') AS `modified_by`,coalesce(`a`.`modified_date`,'') AS `modified_date`,coalesce((select count(`bgee_db`.`laundry_order_comments`.`comment`) from `bgee_db`.`laundry_order_comments` where (`bgee_db`.`laundry_order_comments`.`order_id` = `a`.`id`)),'') AS `total_comments`,`a`.`date_created` AS `date_created`,`b`.`fullname` AS `client_fullname`,coalesce(`b`.`company`,'') AS `client_company`,`b`.`phone_number_1` AS `client_phone_no_1`,`b`.`phone_number_2` AS `client_phone_no_2`,`c`.`fullname` AS `processor_name`,`d`.`location` AS `delivery_method` from ((((`bgee_db`.`laundry_orders` `a` left join `bgee_db`.`laundry_clients` `b` on((`a`.`client_id` = `b`.`id`))) left join `bgee_permissions`.`vw_user_details` `c` on((`a`.`processor_user_id` = `c`.`id`))) left join `bgee_db`.`laundry_delivery_method` `d` on((`a`.`delivery_method_id` = `d`.`id`))) left join `bgee_db`.`laundry_order_balances` `e` on((`a`.`id` = `e`.`order_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_orderlist_summary`  AS  select `a`.`id` AS `id`,`a`.`order_number` AS `order_number`,`a`.`total_cost` AS `total_cost`,`f`.`value` AS `tax`,`a`.`amount_paid` AS `amount_paid`,`a`.`balance` AS `previous_balance`,coalesce(`e`.`balance_paid`,0) AS `balance_paid`,coalesce((`a`.`balance` - `e`.`balance_paid`),`a`.`balance`) AS `balance`,coalesce((select `vw_user_details`.`fullname` from `bgee_permissions`.`vw_user_details` where (`vw_user_details`.`id` = `e`.`user_id`)),'') AS `balance_received_by`,coalesce(`e`.`payment_date`,'') AS `balance_payment_date`,`a`.`client_id` AS `client_id`,`a`.`processor_user_id` AS `processor_user_id`,`a`.`delivery_method_id` AS `delivery_method_id`,`a`.`delivery_location` AS `delivery_location`,`a`.`due_date` AS `due_date`,`a`.`status` AS `status`,coalesce(`a`.`modified_by`,'') AS `modified_by`,coalesce(`a`.`modified_date`,'') AS `modified_date`,coalesce((select count(`bgee_db`.`laundry_order_comments`.`comment`) from `bgee_db`.`laundry_order_comments` where (`bgee_db`.`laundry_order_comments`.`order_id` = `a`.`id`)),'') AS `total_comments`,`a`.`date_created` AS `date_created`,`b`.`fullname` AS `client_fullname`,coalesce(`b`.`company`,'') AS `client_company`,`b`.`phone_number_1` AS `client_phone_no_1`,`b`.`phone_number_2` AS `client_phone_no_2`,`c`.`fullname` AS `processor_name`,`d`.`location` AS `delivery_method` from (((((`bgee_db`.`laundry_orders` `a` left join `bgee_db`.`laundry_clients` `b` on((`a`.`client_id` = `b`.`id`))) left join `bgee_permissions`.`vw_user_details` `c` on((`a`.`processor_user_id` = `c`.`id`))) left join `bgee_db`.`laundry_delivery_method` `d` on((`a`.`delivery_method_id` = `d`.`id`))) left join `bgee_db`.`laundry_order_balances` `e` on((`a`.`id` = `e`.`order_id`))) left join `bgee_db`.`tax_system` `f` on((`a`.`tax_id` = `f`.`id`))) ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

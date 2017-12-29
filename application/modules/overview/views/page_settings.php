@@ -511,10 +511,57 @@
       });
 
       $(document).on("click",".view_order_receipt",function(){
+        let order_id = $(this).data('order_id');
+        $.ajax({
+          type : 'POST',
+          url : '<?= base_url()?>overview/search_order_details_by_orderno/'+order_id+'/search',
+          //data : order_id,
+          success: function(response) {
+            response = JSON.parse(response);
+            $('#receipt_orderno').text('Order #'+response[0].order_number);
+            $('#receipt_date').text(response[0].date_created);
+            $('#receipt_duedate').text(response[0].due_date);
+            $('#receipt_subtotal').text(response[0].total_cost);
+            $('#receipt_total_amount').text(response[0].total_cost);
+            $('#receipt_tax').text('('+response[0].tax+'%)');
+            $('#receipt_tax_value').text(response[0].tax_value);
+            $('#receipt_client').text(response[0].client);
+            $('#receipt_delivery_method').text(response[0].delivery_method);
+
+            $('#receipt_table').DataTable().destroy();
+            $('#receipt_table').DataTable({
+              searching: false,
+              paging: false,
+              order: [],
+              autoWidth: false,
+              bInfo: false,
+              data: response,
+              columnDefs: [
+                  { "width": "5%", "targets": 0 }
+                ],
+              columns: [
+                { render: function(data,type,row,meta) { 
+                  return meta.row +1;
+                }},
+                {data: "description"},
+                {data: "unit_price"},
+                {data: "total_sums"},
+              ],
+              aoColumnDefs: [
+                { "bSortable": false, "aTargets": [ "_all" ] }
+              ]
+            });
+          },
+          error: function() {
+            $.jGrowl('User Deletion Failed', {
+              theme: 'alert-styled-left bg-danger'
+            });
+          }
+        });
         $('#order_receipt').modal('show');
       });
 
-      $(document).on("click",".delete_confirmed",function(){
+      /*$(document).on("click",".delete_confirmed",function(){
         let formData = { 
           'user_id': $(this).data('user_id'),
           'email': $(this).data('email'),
@@ -538,7 +585,7 @@
             });
           }
         });
-      });
+      });*/
     /********** Todays Order ************/
   });
 </script>

@@ -524,7 +524,7 @@ class Overview extends MX_Controller
               'total_cost' => number_format($query_result->total_cost,2),
               'amount_paid' => number_format($query_result->amount_paid,2),
               'balance' => number_format($query_result->balance,2),
-              'delivery_location' => $query_result->delivery_method,
+              'delivery_method' => $query_result->delivery_method,
               'processing_stage' => $query_result->status,
               'status' => $query_result->status,
               'date_created' => $query_result->date_created,
@@ -541,7 +541,7 @@ class Overview extends MX_Controller
     /*******************************
       Search Order Details By Order No
     *******************************/  
-    public function search_order_details_by_orderno($order_id) {
+    public function search_order_details_by_orderno($order_id,$page = null) {
       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
         $return_data = ['error' => "Permission Denied. Contact Amin"];
         print_r(json_encode($return_data));
@@ -554,12 +554,22 @@ class Overview extends MX_Controller
         $tablename = "laundry_order_details";
         $where_condition = array('order_id' => $order_id);
         $query_result = $this->model_retrieval->all_info_return_row($dbres,$tablename,$where_condition,$return_dataType="php_object");
+        
+        if(!empty($page)) {
+          # code...
+          $dbres = self::$_Views_DB;
+          $tablename = "vw_orderlist_summary";
+          $where_condition = array('id' => $order_id);
+          $view_result = $this->model_retrieval->all_info_return_row($dbres,$tablename,$where_condition,$return_dataType="php_object");
+        }
 
         if($query_result) {
           $return_data_array = array();
 
           $pricelists = explode('|',$query_result->pricelist_ids);
           $quantities = explode('|',$query_result->quantities);
+          $unit_prices = explode('|',$query_result->unit_prices);
+          $total_sums = explode('|',$query_result->total_sums);
           $descriptions = explode('|',$query_result->description);
           $status = explode('|',$query_result->service_status);
           $changed_by = explode('|',$query_result->status_change_userids);
@@ -573,7 +583,7 @@ class Overview extends MX_Controller
               $where_condition = array('id' => $pricelists[$a]);
               $pricelist_query_result = $this->model_retrieval->all_info_return_row($dbres,$tablename,$where_condition,$return_dataType="php_object");
 
-              if($pricelists[$a] == 1)
+              if(!empty($descriptions[$a]))
                 $description = $descriptions[$a];
               else
                 $description = $pricelist_query_result->garment_name;
@@ -582,14 +592,24 @@ class Overview extends MX_Controller
                 'service_name' => $pricelist_query_result->service_name,
                 'description' => $description,
                 'quantity' => $quantities[$a],
+                'unit_price' => $unit_prices[$a],
+                'total_sums' => $total_sums[$a],
                 'status'  => @$status[$a],
                 'changed_by' => @$changed_by[$a],
-                'change_date' => @$change_date[$a]
+                'change_date' => @$change_date[$a],
+                'order_number' => @$view_result->order_number,
+                'date_created' => date('M d, Y',strtotime(@$view_result->date_created)),
+                'due_date' => date('M d, Y',strtotime(@$view_result->due_date)),
+                'total_cost' => number_format(@$view_result->total_cost,2),
+                'client' => @$view_result->client_fullname,
+                'tax' => @$view_result->tax,
+                'tax_value' => number_format((@$view_result->tax * $view_result->total_cost)/100,2),
+                'delivery_method' => @$view_result->delivery_method
               ]; 
               /***** Return Data Array ******/
             }
             
-            if(isset($return_data_array))
+            if(isset($return_data_array)) 
               $return_data = $return_data_array;
             else
               $return_data = array();
@@ -616,7 +636,7 @@ class Overview extends MX_Controller
         # data definition 
         $dbres = self::$_Views_DB;
         $tablename = "vw_orderlist_summary";
-        $where_condition = array('status !=' => "Completed", 'client_phone_no_1' => "$phone_number", );
+        $where_condition = "status Not In ('Delivered','Cancelled') AND client_phone_no_1 = $phone_number";
         $query_result = $this->model_retrieval->all_info_return_result($dbres,$tablename,$where_condition,$return_dataType="php_object");
 
         if($query_result) {
