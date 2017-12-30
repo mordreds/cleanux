@@ -8,7 +8,6 @@
         columnDefs: [{ 
             orderable: false,
             width: '100px',
-            targets: [ 5 ]
         }],
         dom: '<"datatable-header"fl><"datatable-scroll-wrap"t><"datatable-footer"ip>',
         language: {
@@ -357,6 +356,7 @@
           /********* Permissions Table ************/
             $('#allPermissions').dataTable({
               searching: false,
+              order: [],
               paging: false,
               ajax: {
                 type : 'GET',

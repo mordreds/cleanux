@@ -1061,8 +1061,8 @@
 
 
 <!-- *********** check out ********* -->
-  <div id="order_receipt" class="modal fade">
-    <div class="modal-dialog" style="width:350px;">
+  <div id="order_receipt" class="modal fade" >
+    <div class="modal-dialog" style="width:350px;" id="printSection">
       <div class="modal-content">
         <div class="modal-header ">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -1070,7 +1070,7 @@
         <div class="modal-body">
           <div class="row" style="padding:2px;">
             <div class="col-sm-6 content-group">
-              <h5 class="text-uppercase text-semibold">BG"s Laundry</h5>
+              <h5 class="text-uppercase text-semibold"><?=$_SESSION['companyinfo']['name']?></h5>
             </div>
             <div class="col-sm-6 content-group">
               <div class="invoice-details">
@@ -1085,52 +1085,62 @@
               <table class="table table-xxs" id="receipt_table">
                 <thead>
                   <tr>
-                    <th>Qty</th>
                     <th>Description</th>
-                    <th class="col-sm-1">Unit</th>
-                    <th class="col-sm-1">Total</th>
+                    <th style="width: 15px !important; text-align: center; padding: 0px">Qty</th>
+                    <th style="width: 15px !important; text-align: center; padding: 0px">Unit</th>
+                    <th style="width: 15px !important; text-align: center; padding: 0px">Total</th>
                   </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody style="font-style: italic;"></tbody>
               </table>
             </div>
-            <div class="col-sm-5">
+            <div class="col-xs-5">
               <span class="text-muted">Invoice To:</span>
               <ul class="list-condensed list-unstyled">
                 <li><span class="text-semibold" id="receipt_client"></span></li>
-                <li id="receipt_delivery_method"></li>
+              </ul>
+              <span class="text-muted">Delivery Method:</span>
+              <ul class="list-condensed list-unstyled">
+                <li class="text-semibold" id="receipt_delivery_method"></li>
+              </ul>
+              <span class="text-muted">Balance:</span>
+              <ul class="list-condensed list-unstyled">
+                <li class="text-semibold" id="receipt_balance"></li>
               </ul>
             </div>
-                <div class="col-sm-7">
-                  <span class="text-muted">Total Due:</span>
-                  <div class="content-group">
-                    <h6></h6>
-                    <div class="table-responsive no-border">
-                      <table class="table table-xxs">
-                        <tbody>
-                          <tr>
-                            <th>Subtotal:</th>
-                            <td class="text-right" id="receipt_subtotal"></td>
-                          </tr>
-                          <tr>
-                            <th>Tax: <span class="text-regular" id="receipt_tax"></span></th>
-                            <td class="text-right" id="receipt_tax_value"></td>
-                          </tr>
-                          <tr>
-                            <th>Total:</th>
-                            <td class="text-right text-primary"><h5 class="text-semibold" id="receipt_total_amount"></h5></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-
-                  </div>
+            <div class="col-xs-7">
+              <span class="text-muted">Total Due:</span>
+              <div class="content-group">
+                <h6></h6>
+                <div class="table-responsive no-border">
+                  <table class="table table-xxs">
+                    <tbody>
+                      <tr>
+                        <th>Subtotal:</th>
+                        <td class="text-right" id="receipt_subtotal"></td>
+                      </tr>
+                      <tr>
+                        <th>Tax <span class="text-regular" id="receipt_tax"></span>:</th>
+                        <td class="text-right" id="receipt_tax_value"></td>
+                      </tr>
+                      <tr>
+                        <th>Delivery:</th>
+                        <td class="text-right" id="receipt_delivery_cost"></td>
+                      </tr>
+                      <tr>
+                        <th>Total (GH¢):</th>
+                        <td class="text-right text-primary"><h5 class="text-semibold" id="receipt_total_cost"></h5></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> &nbsp;&nbsp;
-                    <button type="button" class="btn btn-default btn-xs heading-btn legitRipple"><i class="icon-printer position-left"></i> Print</button>
+          <button type="button" id="print_receipt" data-dismiss="modal" class="btn bg-teal-400 btn-xs"><i class="icon-printer position-left"></i> Print</button>
         </div>
       </div>
     </div>

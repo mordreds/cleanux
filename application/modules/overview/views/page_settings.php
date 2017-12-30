@@ -93,7 +93,7 @@
                       return "<a href='#' data-action='reload' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
                     }},
                     {data: "total_cost"},
-                    {data: "amount_paid"},
+                    {data: "total_amount_paid"},
                     {data: "balance"},
                     {data: "delivery_location"},
                     {render: function(data,type,row,meta) { 
@@ -122,7 +122,7 @@
                   ],
                 });
 
-                $('#pending_order_table_display').attr('style',"display:block")
+                $('#pending_order_table_display').attr('style',"display:block");
               }
               else { 
                 $('#pending_order_table').DataTable().destroy();
@@ -146,7 +146,7 @@
                       return "<a href='#' data-action='reload' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
                     }},
                     {data: "total_cost"},
-                    {data: "amount_paid"},
+                    {data: "total_amount_paid"},
                     {data: "balance"},
                     {data: "delivery_method"},
                     {render: function(data,type,row,meta) { 
@@ -180,41 +180,7 @@
               /****** Pending Order Table ***********/
 
               /****** Billing Info Table ***********
-              $('#billing_info_tbl').DataTable().destroy();
-              $('#billing_info_tbl').DataTable({
-                searching: false,
-                paging: false,
-                order: [],
-                autoWidth: false,
-                ajax: {
-                  type : 'GET',
-                  url : "<?= base_url()?>overview/view_billing_info/"+search_text,
-                  dataSrc: '',
-                  //success: function(response){ alert(response.order_number)},
-                  error: function() {
-                    $.jGrowl("Retrieving Pending Orders Failed", {
-                      theme: 'alert-styled-left bg-danger'
-                    });
-                  }
-                },
-                columns: [
-                  {data: "order_number",render: function(data,type,row,meta) { 
-                    return "<a href='#' class='view_order_billing_info' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
-                  }},
-                  {data: "total_cost"},
-                  {render: function(data,type,row,meta) { 
-                    if(row.processing_stage == "Pending")
-                      label_color = "label-default";
-                    if(row.processing_stage == "Washing")
-                      label_color = "label-warning";
-                    return "<span class='label "+label_color+"'>"+row.processing_stage+"</span>"; 
-                  }},
-                  {data: "date_created"},
-                ],
-              });
-
-              $('#billing_info_tbl').attr('style',"display:block")
-              }
+              
               /****** Billing Info Table ***********/
             }
             else { 
@@ -521,12 +487,15 @@
             $('#receipt_orderno').text('Order #'+response[0].order_number);
             $('#receipt_date').text(response[0].date_created);
             $('#receipt_duedate').text(response[0].due_date);
-            $('#receipt_subtotal').text(response[0].total_cost);
-            $('#receipt_total_amount').text(response[0].total_cost);
+            $('#receipt_subtotal').text(response[0].subtotal);
+            $('#receipt_balance').text(response[0].balance);
+            $('#receipt_total_cost').text(response[0].total_cost);
             $('#receipt_tax').text('('+response[0].tax+'%)');
             $('#receipt_tax_value').text(response[0].tax_value);
             $('#receipt_client').text(response[0].client);
             $('#receipt_delivery_method').text(response[0].delivery_method);
+            $('#receipt_delivery_cost').text(response[0].delivery_cost);
+            $('#print_receipt').attr('data-order',order_id);
 
             $('#receipt_table').DataTable().destroy();
             $('#receipt_table').DataTable({
@@ -540,10 +509,8 @@
                   { "width": "5%", "targets": 0 }
                 ],
               columns: [
-                { render: function(data,type,row,meta) { 
-                  return meta.row +1;
-                }},
                 {data: "description"},
+                {data: "quantity"},
                 {data: "unit_price"},
                 {data: "total_sums"},
               ],
@@ -560,33 +527,16 @@
         });
         $('#order_receipt').modal('show');
       });
-
-      /*$(document).on("click",".delete_confirmed",function(){
-        let formData = { 
-          'user_id': $(this).data('user_id'),
-          'email': $(this).data('email'),
-          'status': $(this).data('status')
-        };
-        $.ajax({
-          type : 'POST',
-          url : '<?= base_url()?>administration/users/account_status',
-          data : formData,
-          success: function(response) {
-            $.jGrowl('User Deletion Successful', {
-              theme: 'alert-styled-left bg-success'
-            });
-            $('#del_acct_tbl').DataTable().ajax.reload();
-            $('#inactive_acct_tbl').DataTable().ajax.reload();
-            $('#active_accounts_tbl').DataTable().ajax.reload();
-          },
-          error: function() {
-            $.jGrowl('User Deletion Failed', {
-              theme: 'alert-styled-left bg-danger'
-            });
-          }
-        });
-      });*/
     /********** Todays Order ************/
+
+    /********** Print Button ************/
+    <?php if($order_id = $this->session->flashdata('order_successful')) : ?>
+      window.open("<?=base_url()?>overview/receipt/<?=$order_id?>","_blank");
+    <?php endif; ?>
+    $('#print_receipt').click(function(){
+      window.open("<?=base_url()?>overview/receipt/"+$(this).data('order'),"_blank");
+    });
+    /********** Print Button ************/
   });
 </script>
 <?php endif; ?>

@@ -58,7 +58,6 @@
         let array_index = $(this).data('deleteid');
         let formurl = "<?=base_url()?>overview/delete_from_cart";
         let formData = {'deleteid': array_index};
-        alert(array_index);
         ajax_post(formurl,formData,tableid="laundry_cart");
 
         let total_order = parseInt($('#order_cart').text()) - 1;
@@ -76,7 +75,7 @@
     /********** Viewing Laundry Cart ******/
 
     /****** Retrieving Price List ******/
-      let services_formurl = "<?=base_url()?>settings/retrieve_alldata/services/default";
+      /*let services_formurl = "<?=base_url()?>settings/retrieve_alldata/services/default";
       var service_name = "";
       $.ajax({
         type : 'GET',
@@ -94,7 +93,7 @@
             theme: 'alert-styled-left bg-danger'
           });
         }
-      });
+      });*/
 
       $('#pricelists_alt').dataTable({
         autoWidth: false,
@@ -102,10 +101,15 @@
         ajax: {
           type : 'GET',
           url : '<?= base_url()?>settings/retrieve_alldata/vw_prices/default',
-          dataSrc: ''
+          dataSrc: '',
+          error: function() {
+            $.jGrowl('An Error Retrieving Price List', {
+              theme: 'alert-styled-left bg-danger'
+            });
+          }
         },
         columns: [
-          {data: "id", render: function(data,type,row,meta) { 
+          {render: function(data,type,row,meta) { 
               if(row.weight_id > 0 && row.garment_id > 0)
                 display = row.garment_name+" ("+row.weight+")";
               else if(row.weight_id > 0)
@@ -116,7 +120,7 @@
               return '<td><div class="media-left media-middle"><a href="#" class="btn bg-brown-400 btn-rounded btn-icon btn-xs"><span class="letter-icon">'+row.service_code+'</span></a></div><div class="media-left"><div class=""><a href="#" class="text-default text-semibold">'+display+'</a></div><div class="text-muted text-size-small"><span class="status-mark border-blue position-left"></span>'+row.service_name+'</div></div></td>';
           }},
           {data: "amount"}, 
-          {render: function(data,type,row,meta) { return '0'; }} 
+          {render: function() { return '0'; }} 
         ], 
       });
     /****** Retrieving Price List ******/

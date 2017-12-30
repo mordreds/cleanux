@@ -11,6 +11,9 @@ class Overview extends MX_Controller
   }
 
   /**************** Interface ********************/
+    /*******************************
+      Index Function
+    *******************************/
     public function index() {
       # Permission Check
        if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles']))
@@ -37,6 +40,21 @@ class Overview extends MX_Controller
         $this->load->view('header',$data); 
         $this->load->view('overview',$data); 
         $this->load->view('footer'); 
+        /***************** Interface *****************/
+      }
+    }
+
+    /*******************************
+      Index Function
+    *******************************/
+    public function receipt($order_id) {
+      # Permission Check
+       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles']))
+        redirect('dashboard');
+      else {
+        /***************** Interface *****************/
+        $data['order'] = $order_id;
+        $this->load->view('receipt',$data); 
         /***************** Interface *****************/
       }
     }
@@ -185,7 +203,15 @@ class Overview extends MX_Controller
             $return_dataType = "php_object";
             $select = "price";
             $where_condition = array('id' => $this->input->post('delivery_method'));
-            $delivery_price = $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType,$select,$where_condition);   
+            $delivery_price = $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType,$select,$where_condition); 
+            # Retrieve Tax Value
+            $dbres = self::$_Default_DB;
+            $tablename = "tax_system";
+            $return_dataType = "php_object";
+            $select = "MAX(id) as id";
+            $where_condition = array();
+            $tax_value = $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType,$select,$where_condition);
+            //print_r($tax_value); exit;
             # variable declaration
             $pricelist_ids = $quantities = $unit_prices = $total_sums = $description = array();
             $delivery_price = $delivery_price->price;
@@ -207,6 +233,7 @@ class Overview extends MX_Controller
               'total_cost' => $total_cost,
               'amount_paid' => $this->input->post('amount_paid'),
               'balance' => $balance,
+              'tax_id' => $tax_value->id,
               'client_id' => $_SESSION['laundry']['new_order']['client']['id'],
               'due_date' => $this->input->post('order_due_date'),
               'processor_user_id' => $_SESSION['user']['id'],
@@ -236,6 +263,8 @@ class Overview extends MX_Controller
             if($order_details_insert) {
               unset($_SESSION['laundry']['new_order']);
               $this->session->set_flashdata('success', "Order Saving Successful");
+              $this->session->set_flashdata('order_successful', $order_info_insert);
+
               redirect($_SERVER['HTTP_REFERER']);
             }
             else {
@@ -524,6 +553,7 @@ class Overview extends MX_Controller
               'total_cost' => number_format($query_result->total_cost,2),
               'amount_paid' => number_format($query_result->amount_paid,2),
               'balance' => number_format($query_result->balance,2),
+              'total_amount_paid' => number_format($query_result->total_amount_paid,2),
               'delivery_method' => $query_result->delivery_method,
               'processing_stage' => $query_result->status,
               'status' => $query_result->status,
@@ -600,11 +630,15 @@ class Overview extends MX_Controller
                 'order_number' => @$view_result->order_number,
                 'date_created' => date('M d, Y',strtotime(@$view_result->date_created)),
                 'due_date' => date('M d, Y',strtotime(@$view_result->due_date)),
-                'total_cost' => number_format(@$view_result->total_cost,2),
-                'client' => @$view_result->client_fullname,
                 'tax' => @$view_result->tax,
-                'tax_value' => number_format((@$view_result->tax * $view_result->total_cost)/100,2),
-                'delivery_method' => @$view_result->delivery_method
+                'tax_value' => number_format((@$view_result->tax * @$view_result->total_cost)/100,2),
+                'subtotal' => number_format(@$view_result->total_cost - ((@$view_result->tax * @$view_result->total_cost)/100),2),
+                'balance' => number_format(@$view_result->balance,2),
+                'amount_paid' => number_format(@$view_result->amount_paid,2),
+                'client' => @$view_result->client_fullname,
+                'delivery_method' => @$view_result->delivery_method,
+                'delivery_cost' => number_format(@$view_result->delivery_cost,2),
+                'total_cost' => number_format(@$view_result->total_cost + @$view_result->delivery_cost,2)
               ]; 
               /***** Return Data Array ******/
             }
@@ -646,7 +680,7 @@ class Overview extends MX_Controller
               'id' => $query_result[$a]->id,
               'order_number' => $query_result[$a]->order_number,
               'total_cost' => number_format($query_result[$a]->total_cost,2),
-              'amount_paid' => number_format($query_result[$a]->amount_paid,2),
+              'total_amount_paid' => number_format($query_result[$a]->total_amount_paid,2),
               'balance' => number_format($query_result[$a]->balance,2),
               'delivery_location' => $query_result[$a]->delivery_method,
               'processing_stage' => $query_result[$a]->status,
@@ -667,32 +701,6 @@ class Overview extends MX_Controller
 
   /**************** Deletion  ********************/
     /*******************************
-      Retrieving All data
-    *******************************/
-    public function receipt() 
-    {
-      # Permission Check
-       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles']))
-        redirect('dashboard');
-      else
-      {
-        /****** Required Parameters To Render A Page ******/
-        $this->load->model('access/model_access');
-        $this->load->model('globals/model_retrieval');
-        $data['_Permission_DB'] = self::$_Permission_DB;
-        $data['page_controller'] = $this->uri->segment(1);
-        $data['controller_function'] = $this->uri->segment(2); 
-        /****** Required Parameters To Render A Page ******/
-
-        /***************** Interface *****************/
-        $data['title'] = "Add new"; 
-        $this->load->view('header',$data); 
-        $this->load->view('receipt',$data); 
-        $this->load->view('footer'); 
-        /***************** Interface *****************/
-      }
-    }
-    /*******************************
       Deleting Items in Cart
     *******************************/
     public function delete_from_cart() {
@@ -709,9 +717,10 @@ class Overview extends MX_Controller
         }
         else{
           $array_index = $this->input->post('deleteid');
+          //print $array_index; exit;
           if(isset($_SESSION['laundry']['new_order'])) {
             @$_SESSION['laundry']['new_order']['cart_total_amount'] -= $_SESSION['laundry']['new_order']['orders'][$array_index]['total_cost'];
-            unset($_SESSION['laundry']['new_order'][$array_index]);
+            unset($_SESSION['laundry']['new_order']['orders'][$array_index]);
             $return_data = ['success' => "Item Deleted"];
           }
           else {

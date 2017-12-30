@@ -61,34 +61,12 @@
     								</tr>
     							</thead>
     							<tbody>
-    								<!-- <tr class="active border-double">
-    									<td colspan="5">Today</td>
-    									<td class="text-right">
-    										<span class="progress-meter" id="today-progress" data-progress="30"></span>
-    									</td>
-    								</tr>
-    								<tr>
-    									<td>
-    										<div class="media-left media-middle">
-    											<a href="#"><img src="assets/images/brands/facebook.png" class="img-circle img-xs" alt=""></a>
-    										</div>
-    										<div class="media-left">
-    											<div class=""><a href="#" class="text-default text-semibold">Facebook</a></div>
-    											<div class="text-muted text-size-small">
-    												<span class="status-mark border-blue position-left"></span>
-    												02:00 - 03:00
-    											</div>
-    										</div>
-    									</td>
-    									<td><h6 class="text-semibold">GHC 0</h6></td>
-    									<td><h6 class="text-semibold">GHC 5</h6></td>
-    								</tr> -->
     							</tbody>
     						</table>
     					</div>
     				</div>
                 				<!-- /marketing campaigns -->
-						<ul class="media-list dropdown-content-body width-350" style="width:650px !important; max-height:650px;">
+						<!-- <ul class="media-list dropdown-content-body width-350" style="width:650px !important; max-height:650px;">
 							<div class="tabbable nav-tabs-vertical nav-tabs-right">
                 <div class="tab-content">
                   <div class="tab-pane active has-padding" id="right-tab1">
@@ -130,9 +108,9 @@
                     <ul class="nav nav-tabs nav-tabs-highlight" style="width:100px !important;" id="pricelists"></ul>
                   </div>
 						</ul>
-
+ -->
 						<div class="dropdown-content-footer">
-							<a href="#" data-popup="tooltip" title="" data-original-title="All activity"><i class="icon-menu display-block"></i></a>
+							<a href="#"><i class="icon-menu display-block"></i></a>
 						</div>
 					</div>
 				</li>

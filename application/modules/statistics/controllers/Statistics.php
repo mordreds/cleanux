@@ -57,7 +57,7 @@ class Statistics extends MX_Controller
           # Total Monthly Orders
           $dbres = self::$_Views_DB;
           $tablename = "vw_orderlist_summary";
-          $condition = "Month(date_created) = ".gmdate('m');
+          $condition = "Month(date_created) = ".gmdate('m')." And status ='Delivered'";
           $month_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
           if(!isset($month_orders['DB_ERROR']))
             $data['month_orders'] = sizeof($month_orders);

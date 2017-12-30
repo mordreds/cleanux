@@ -1,116 +1,146 @@
- <!-- Content area -->
-  <div class="content">
-    <?php //print "<pre>"; print_r($_SESSION); print "</pre>";?>
-    <!-- Main charts -->
-    <div class="row">
-      <div class="col-md-12">
-        <!-- Individual column searching (text inputs) -->
-          <div class="panel panel-flat" style="width:380px;">
-            
-            <div class="col-md-12">
-           <div class="col-md-8">
-              <div class="panel panel-flat">
+ <!DOCTYPE html>
+ <html>
+ <head>
+   <title>Receipt</title>
+   <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>resources/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>resources/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>resources/css/core.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>resources/css/components.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>resources/css/colors.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>resources/css/icons/fontawesome/styles.min.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>resources/css/extras/animate.min.css" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+  <script type="text/javascript" src="<?=base_url()?>resources/js/core/libraries/jquery.min.js"></script>
+  <script type="text/javascript" src="<?=base_url()?>resources/js/plugins/tables/datatables/datatables.min.js"></script>
 
-        <div class="panel-body" >
-         <div class="row" style="padding:2px;">
-                <div class="col-sm-6 content-group">
-                    <h5 class="text-uppercase text-semibold">BG"s Laundry</h5>
-                </div>
-                <div class="col-sm-6 content-group">
-                  <div class="invoice-details">
-                    <ul class="list-condensed list-unstyled">
-                      <li><span class="text-semibold">Order #300324</span></li>
-                      <li>Date: <span class="text-semibold">May 12, 2015</span></li>
-                      <li>Delivery on: <span class="text-semibold">May 12, 2015</span></li>
-                    </ul>
-                  </div>
-                </div>
-                <form action="#">
-                  <div class="modal-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                        <th>#</th>
-                            <th>Description</th>
-                            <th class="col-sm-1">U.Price</th>
-                            <th class="col-sm-1">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <td>1</td>
-                            <td>
-                              <h6 class="no-margin">T-Shirt</h6>
-                            </td>
-                            <td>70</td>
-                            <td><span class="text-semibold">3,990</span></td>
-                        </tr>
-                        <tr>
-                        <td>2</td>
-                            <td>
-                              <h6 class="no-margin">Singlet</h6>
-                            </td>
-                            <td>70</td>
-                            <td><span class="text-semibold">840</span></td>
-                        </tr>
-                        <tr>
-                        <td>3</td>
-                            <td>
-                              <h6 class="no-margin">Blanket</h6>
-                            </td>
-                            <td>70</td>
-                            <td><span class="text-semibold">2,170</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-                  </div>
-                   <div class="col-sm-5">
-                  <span class="text-muted">Invoice To:</span>
+ </head>
+ <body>
+    <div class="content">
+      <div class="row" style="max-width: 325px">
+        <div class="col-xs-12">
+          <div class="panel panel-flat">
+            <div class="panel-body" style="padding: 5px;">
+              <div class="col-xs-6 content-group">
+                <h6 class="text-uppercase text-semibold"><?=$_SESSION['companyinfo']['name']?></h6>
+              </div>
+              <div class="col-xs-6 content-group">
+                <div class="invoice-details">
                   <ul class="list-condensed list-unstyled">
-                    <li><h5>Rebecca Manes</h5></li>
-                    <li><span class="text-semibold">Normand axis LTD</span></li>
-                    <li>888-555-2311</li>
-                    <li>Delivery/Pick up</li>
+                    <li style="text-align: right;"><span class="text-semibold" id="receipt_orderno"></span></li>
+                    <li style="text-align: right;">Date: <span class="text-semibold" id="receipt_date"></span></li>
+                    <li style="text-align: right;">Due Date: <span class="text-semibold" id="receipt_duedate"></span></li>
                   </ul>
                 </div>
-                <div class="col-sm-7">
-                  <div class="content-group">
-                    <h6>Total due</h6>
-                    <div class="">
-                      <table class="">
-                        <tbody >
-                          <tr>
-                            <th>Subtotal:</th>
-                            <td class="text-right">7,000</td>
-                          </tr>
-                          <tr>
-                            <th>Tax: <span class="text-regular">(25%)</span></th>
-                            <td class="text-right">1,750</td>
-                          </tr>
-                          <tr>
-                            <th>Total:</th>
-                            <td class="text-right text-primary"><hr></hr><h5 class="text-semibold">8,750</h5><hr></hr></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-
+              </div>
+              <table class="table table-xxs" id="receipt_table">
+                <thead>
+                  <tr>
+                    <th>Description</th>
+                    <th style="width: 15px !important; text-align: center; padding: 0px">Qty</th>
+                    <th style="width: 15px !important; text-align: center; padding: 0px">Unit</th>
+                    <th style="width: 15px !important; text-align: center; padding: 0px">Total</th>
+                  </tr>
+                </thead>
+                <tbody style="font-style: italic;"></tbody>
+              </table>
+              <hr/>
+              <div class="col-xs-5">
+                <span class="text-muted">Invoice To:</span>
+                <ul class="list-condensed list-unstyled">
+                  <li><span class="text-semibold" id="receipt_client"></span></li>
+                </ul>
+                <span class="text-muted">Delivery Method:</span>
+                <ul class="list-condensed list-unstyled">
+                  <li class="text-semibold" id="receipt_delivery_method"></li>
+                </ul>
+                <span class="text-muted">Balance:</span>
+                <ul class="list-condensed list-unstyled">
+                  <li class="text-semibold" id="receipt_balance"></li>
+                </ul>
+              </div>
+              <div class="col-xs-7">
+                <span class="text-muted">Total Due:</span>
+                <div class="content-group">
+                  <div class="table-responsive no-border">
+                    <table class="table table-xxs" style="position: absolute;">
+                      <tbody>
+                        <tr>
+                          <th>Subtotal:</th>
+                          <td class="text-right" id="receipt_subtotal"></td>
+                        </tr>
+                        <tr>
+                          <th>Tax<span class="text-regular" id="receipt_tax"></span>:</th>
+                          <td class="text-right" id="receipt_tax_value"></td>
+                        </tr>
+                        <tr>
+                          <th>Delivery:</th>
+                          <td class="text-right" id="receipt_delivery_cost"></td>
+                        </tr>
+                        <tr>
+                          <th>Total(GH¢):</th>
+                          <td class="text-right text-primary"><h5 class="text-semibold" id="receipt_total_cost"></h5></td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
-                </div>
-        </div>
-
-                <div class="box-footer">
-
-                </div><!-- /.box-footer -->
-              </div><!-- /. box -->
-            </div><!-- /.col -->
-
+              </div>
+            </div>
           </div>
+        </div><!-- /. box -->
+      </div><!-- /.col -->
     </div>
-  </div>
-  <!-- /main charts -->
 
-  <!-- Including Page Settings -->
-  <?php include("page_settings.php"); ?>
-  <!-- Including Page Settings -->
+    <script type="text/javascript">
+      $(document).ready(function(){
+        let order_id = "<?php echo $order; ?>";
+        $.ajax({
+          type : 'POST',
+          url : '<?= base_url()?>overview/search_order_details_by_orderno/'+order_id+'/search',
+          success: function(response) {
+            response = JSON.parse(response);
+            $('#receipt_orderno').text('Order #'+response[0].order_number);
+            $('#receipt_date').text(response[0].date_created);
+            $('#receipt_duedate').text(response[0].due_date);
+            $('#receipt_subtotal').text(response[0].subtotal);
+            $('#receipt_balance').text(response[0].balance);
+            $('#receipt_total_cost').text(response[0].total_cost);
+            $('#receipt_tax').text('('+response[0].tax+'%)');
+            $('#receipt_tax_value').text(response[0].tax_value);
+            $('#receipt_client').text(response[0].client);
+            $('#receipt_delivery_method').text(response[0].delivery_method);
+            $('#receipt_delivery_cost').text(response[0].delivery_cost);
+
+            $('#receipt_table').DataTable().destroy();
+            $('#receipt_table').DataTable({
+              searching: false,
+              paging: false,
+              order: [],
+              autoWidth: false,
+              bInfo: false,
+              data: response,
+              columns: [
+                {data: "description"},
+                {data: "quantity"},
+                {data: "unit_price"},
+                {data: "total_sums"},
+              ],
+              aoColumnDefs: [
+                { "bSortable": false, "aTargets": [ "_all" ] }
+              ]
+            });
+            window.print();
+            window.close(500);
+          },
+          error: function() {
+            $.jGrowl('User Deletion Failed', {
+              theme: 'alert-styled-left bg-danger'
+            });
+          }
+        });
+      });
+    </script>
+ </body>
+ </html>
