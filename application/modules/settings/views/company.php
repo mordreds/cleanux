@@ -6,7 +6,7 @@
           <div class="panel-body"> 
             <div class="tabbable">
               <ul class="nav nav-tabs nav-tabs-bottom" id="userTab">
-                <li class="active"><a href="#company_details" data-toggle="tab">Company Details <i class="icon-unlocked2 position-right"></i></a></li>
+                <li class="active"><a href="#company_details" data-toggle="tab">Company Details <i class="icon-office position-right"></i></a></li>
                 <li><a href="#new_employee" data-toggle="tab">New Employee <i class="icon-users position-right"></i></a></li>
               </ul>
               <div class="tab-content">

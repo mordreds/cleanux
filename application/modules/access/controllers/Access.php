@@ -6,29 +6,25 @@ class Access extends MX_Controller
     /*******************************
       Constructor 
     *******************************/
-    public function __construct() 
-    {
+    public function __construct() {
       parent::__construct();
     }
 
     /*******************************
            Logout
     *******************************/
-    public function logout() 
-    {
+    public function logout() {
       if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['login_id']) ) 
       {
         $this->load->model('model_access');
         $result = $this->model_access->logout_user(self::$_Audit_DB,'successful_logins',$_SESSION['user']['login_id']);
         
-        if($result) 
-        {
+        if($result) {
           session_destroy();
           redirect('access');
         } 
         
-        else 
-        {
+        else {
           $this->session->set_flashdata('error',"Log Out Failed");
           redirect('dashboard');
         }
@@ -107,8 +103,8 @@ class Access extends MX_Controller
           $username = $this->input->post('email',TRUE);
           $password = $this->input->post('passwd',TRUE);
                 
-          $user = $this->model_access->verify_username(self::$_Permission_DB,$username);
-          
+          $user = $this->model_access->verify_username(self::$_Views_DB,$username);
+          //print_r($user); exit;
           if(empty($user)){
             $this->session->set_flashdata('error',"Invalid Username / Password Combination");
             redirect('access/login');
@@ -133,11 +129,13 @@ class Access extends MX_Controller
             }
             else {
               # Password Verifications
-              if(!empty($user->passwd)) {
+              $user_password = ($user->passwd) ? $user->passwd : $user->default_passwd;
+              //print_r($user_password); exit;
+              if(!empty($user_password)) {
                 # Calling Helper
                 $this->load->helper('encryption');
-                
-                if(password_decrypt($password, $user->passwd)) { 
+                # Checking if Password Is Default
+                if(password_decrypt($password, $user_password)) { 
                   /************************ Retrieving Company Info ********************/
                     $companyinfo = $this->model_access->retrieve_company_info();
                     
@@ -266,7 +264,7 @@ class Access extends MX_Controller
                     $session_array['user']['login_attempt'] = $result['login_attempt'];
                     $session_array['user']['fullname'] = $user->fullname;
                     $this->session->set_userdata($session_array);
-                    redirect('dashboard');
+                    redirect(base_url().$user->group_login_url);
                     //print "<pre>";print_r($_SESSION);print "</pre>";
                   }
                   /************************ Recording Login Success **********************/  
@@ -355,7 +353,7 @@ class Access extends MX_Controller
           # Performing Database Verfication ==> Username
           $email = $this->input->post('email',TRUE);
           # Email Verification       
-          $verify_email_result = $this->model_access->verify_username(self::$_Permission_DB,$email);
+          $verify_email_result = $this->model_access->verify_username(self::$_Views_DB,$email);
           
           if(empty($verify_email_result)){
             $this->session->set_flashdata('error',"Invalid Email");

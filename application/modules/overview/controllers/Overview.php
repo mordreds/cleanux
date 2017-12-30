@@ -16,9 +16,13 @@ class Overview extends MX_Controller
     *******************************/
     public function index() {
       # Permission Check
-       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles']))
-        redirect('dashboard');
-      else {
+       if(!isset($_SESSION['user']['username']))
+        redirect('access/login');
+      else if(!in_array('overview', $_SESSION['user']['roles'])) {
+        $this->session->set_flashdata('error', 'Permission Denied. Contact Admin');
+        redirect($_SERVER['HTTP_REFERER']);
+      }
+      else { 
         //print "<pre>"; print_r(@$_SESSION['laundry']); print "</pre>";
         /****** Required Parameters To Render A Page ******/
         $this->load->model('access/model_access');
@@ -512,7 +516,7 @@ class Overview extends MX_Controller
         # data definition 
         $dbres = self::$_Views_DB;
         $tablename = "vw_orderlist_summary";
-        $where_condition = array('DATE(date_created)' => $day, '');
+        $where_condition = array('DATE(date_created)' => $day, 'processor_user_id' => $_SESSION['user']['id']);
         $orderby = array('date_created'=>"desc");
         $limit = $display_limit;
 

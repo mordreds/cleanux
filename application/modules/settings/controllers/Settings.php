@@ -117,7 +117,7 @@ class Settings extends MX_Controller
             $dbres = self::$_Default_DB;
             $tablename = "hr_company_info";
             $data = [
-              'name' => $this->input->post('name'),
+              'name' => strtoupper($this->input->post('name')),
               'postal_address' => $this->input->post('postal_addr'),
               'residence_address' => $this->input->post('residence_addr'),
               'telephone_1' => $this->input->post('phone_num_1'),
