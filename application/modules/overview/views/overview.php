@@ -178,11 +178,11 @@
                               <div class="col-md-2"></div>
                               <div class="col-md-2">
                                 <label class="display-block" >Total Amount</label>
-                                <input type="text" class="form-control order_balance" name="order_balance" readonly >
+                                <input type="text" class="form-control order_balance" name="billing_info_total_cost" readonly >
                               </div>
                               <div class="col-md-2">
                               <label class="display-block" >Amount Paid</label>
-                                <input type="text" class="form-control order_balance" name="order_balance" readonly >
+                                <input type="text" class="form-control order_balance" name="billing_info_total_amount_paid" readonly >
                               </div>
                               
                               <div class="col-md-2"></div>

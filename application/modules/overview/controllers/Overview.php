@@ -680,6 +680,9 @@ class Overview extends MX_Controller
         if($query_result) {
           for ($a=0; $a < sizeof($query_result); $a++) { 
             # code...
+            @$_SESSION['laundry']['total_billing_cost'] += number_format($query_result[$a]->total_cost,2);
+            @$billing_info_total_amount_paid += number_format($query_result[$a]->total_amount_paid,2);
+
             $return_data[] = [
               'id' => $query_result[$a]->id,
               'order_number' => $query_result[$a]->order_number,
@@ -690,8 +693,11 @@ class Overview extends MX_Controller
               'processing_stage' => $query_result[$a]->status,
               'status' => $query_result[$a]->status,
               'date_created' => $query_result[$a]->date_created,
-              'total_comments' => $query_result[$a]->total_comments
+              'total_comments' => $query_result[$a]->total_comments,
+              'billing_info_total_cost' => $billing_info_total_cost,
+              'billing_info_total_amount_paid' => $billing_info_total_amount_paid,
             ];
+
           }
           //$return_data = array_reverse($query_result);
         }

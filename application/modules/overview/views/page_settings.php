@@ -47,7 +47,7 @@
           data : formData,
           success: function(response) { 
             response = JSON.parse(response)
-
+            var total_billing_cost = "";
             if(response[0]) {  
               /****** Client Info ***********/
                 $('[name="id"]').val(response[0].id);
@@ -71,113 +71,119 @@
               /****** Client Info ***********/
 
               /****** Pending Order Table ***********/
-              $('#pending_order_table').DataTable().destroy();
-              if(search_text.length >= 10) {
-                $('#pending_order_table').DataTable({
-                  searching: false,
-                  paging: false,
-                  order: [],
-                  autoWidth: false,
-                  ajax: {
-                    type : 'GET',
-                    url : "<?= base_url()?>overview/search_order_by_telno/"+search_text,
-                    dataSrc: '',
-                    error: function() {
-                      $.jGrowl("Retrieving Pending Orders Failed", {
-                        theme: 'alert-styled-left bg-danger'
-                      });
-                    }
-                  },
-                  columns: [
-                    {data: "order_number",render: function(data,type,row,meta) { 
-                      return "<a href='#' data-action='reload' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
-                    }},
-                    {data: "total_cost"},
-                    {data: "total_amount_paid"},
-                    {data: "balance"},
-                    {data: "delivery_location"},
-                    {render: function(data,type,row,meta) { 
-                      if(row.status == "Pending")
-                        label_color = "label-default";
-                      else if(row.status == "Processing")
-                        label_color = "label-primary";
-                      else if(row.status == "Dispatched")
-                        label_color = "label-success";
-                      else if(row.status == "Completed")
-                        label_color = "label-success";
-                      else
-                        label_color = "label-default";
-                      return "<span class='label "+label_color+"'>"+row.status+"</span>"; 
-                    }},
-                    {data: "date_created"},
-                    {render: function(data,type,row,meta) { 
-                      let balance = row.balance;
-                      if(balance > 0)
-                        pay_button = '<li><button class="label bg-blue pay_bill" data-total_balance="'+row.balance+'" data-order_id="'+row.id+'">Pay<i class="icon-cash3 position-right "></i></button></li>'; 
-                      else
-                        pay_button = "";
-
-                      return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments ('+row.total_comments+')</button></li>'+pay_button+'</ul>'; 
-                    }},
-                  ],
-                });
-
-                $('#pending_order_table_display').attr('style',"display:block");
-              }
-              else { 
                 $('#pending_order_table').DataTable().destroy();
-                $('#pending_order_table').DataTable({
-                  searching: false,
-                  paging: false,
-                  order: [],
-                  autoWidth: false,
-                  ajax: {
-                    type : 'GET',
-                    url : "<?= base_url()?>overview/search_order_by_orderno/"+search_text,
+                if(search_text.length >= 10) {
+                  $('#pending_order_table').DataTable({
+                    searching: false,
+                    paging: false,
+                    order: [],
+                    autoWidth: false,
+                    ajax: {
+                      type : 'GET',
+                      url : "<?= base_url()?>overview/search_order_by_telno/"+search_text,
                       dataSrc: '',
-                    error: function() {
-                      $.jGrowl("Retrieving Pending Orders Failed", {
-                        theme: 'alert-styled-left bg-danger'
-                      });
-                    }
-                  },
-                  columns: [
-                    {data: "order_number",render: function(data,type,row,meta) { 
-                      return "<a href='#' data-action='reload' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
-                    }},
-                    {data: "total_cost"},
-                    {data: "total_amount_paid"},
-                    {data: "balance"},
-                    {data: "delivery_method"},
-                    {render: function(data,type,row,meta) { 
-                      if(row.status == "Pending")
-                        label_color = "label-default";
-                      else if(row.status == "Processing")
-                        label_color = "label-primary";
-                      else if(row.status == "Dispatched")
-                        label_color = "label-success";
-                      else if(row.status == "Completed")
-                        label_color = "label-success";
-                      else
-                        label_color = "label-default";
-                      return "<span class='label "+label_color+"'>"+row.status+"</span>"; 
-                    }},
-                    {data: "date_created"},
-                    {render: function(data,type,row,meta) { 
-                      let balance = row.balance;
-                      if(balance > 0)
-                        pay_button = '<li><button class="label bg-blue pay_bill" data-total_balance="'+row.balance+'" data-order_id="'+row.id+'">Pay<i class="icon-cash3 position-right "></i></button></li>'; 
-                      else
-                        pay_button = "";
+                      error: function() {
+                        $.jGrowl("Retrieving Pending Orders Failed", {
+                          theme: 'alert-styled-left bg-danger'
+                        });
+                      }
+                    },
+                    columns: [
+                      {data: "order_number",render: function(data,type,row,meta) { 
+                        total_billing_cost += row.total_cost;
+                        return "<a href='#' data-action='reload' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
+                      }},
+                      {data: "total_cost"},
+                      {data: "total_amount_paid"},
+                      {data: "balance"},
+                      {data: "delivery_location"},
+                      {render: function(data,type,row,meta) { 
+                        if(row.status == "Pending")
+                          label_color = "label-default";
+                        else if(row.status == "Processing")
+                          label_color = "label-primary";
+                        else if(row.status == "Dispatched")
+                          label_color = "label-success";
+                        else if(row.status == "Completed")
+                          label_color = "label-success";
+                        else
+                          label_color = "label-default";
+                        return "<span class='label "+label_color+"'>"+row.status+"</span>"; 
+                      }},
+                      {data: "date_created"},
+                      {render: function(data,type,row,meta) { 
+                        let balance = row.balance;
+                        if(balance > 0)
+                          pay_button = '<li><button class="label bg-blue pay_bill" data-total_balance="'+row.balance+'" data-order_id="'+row.id+'">Pay<i class="icon-cash3 position-right "></i></button></li>'; 
+                        else
+                          pay_button = "";
 
-                      return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments ('+row.total_comments+')</button></li>'+pay_button+'</ul>'; 
-                    }},
-                  ],
-                });
+                        return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments ('+row.total_comments+')</button></li>'+pay_button+'</ul>'; 
+                      }},
+                    ],
+                  });
 
-                $('#pending_order_table_display').attr('style',"display:block")
-              }
+                  $('#pending_order_table_display').attr('style',"display:block");
+                }
+                else { 
+                  $('#pending_order_table').DataTable().destroy();
+                  $('#pending_order_table').DataTable({
+                    searching: false,
+                    paging: false,
+                    order: [],
+                    autoWidth: false,
+                    ajax: {
+                      type : 'GET',
+                      url : "<?= base_url()?>overview/search_order_by_orderno/"+search_text,
+                        dataSrc: '',
+                      error: function() {
+                        $.jGrowl("Retrieving Pending Orders Failed", {
+                          theme: 'alert-styled-left bg-danger'
+                        });
+                      }
+                    },
+                    columns: [
+                      {data: "order_number",render: function(data,type,row,meta) { 
+                        return "<a href='#' data-action='reload' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
+                      }},
+                      {data: "total_cost"},
+                      {data: "total_amount_paid"},
+                      {data: "balance"},
+                      {data: "delivery_method"},
+                      {render: function(data,type,row,meta) { 
+                        if(row.status == "Pending")
+                          label_color = "label-default";
+                        else if(row.status == "Processing")
+                          label_color = "label-primary";
+                        else if(row.status == "Dispatched")
+                          label_color = "label-success";
+                        else if(row.status == "Completed")
+                          label_color = "label-success";
+                        else
+                          label_color = "label-default";
+                        return "<span class='label "+label_color+"'>"+row.status+"</span>"; 
+                      }},
+                      {data: "date_created"},
+                      {render: function(data,type,row,meta) { 
+                        let balance = row.balance;
+                        if(balance > 0)
+                          pay_button = '<li><button class="label bg-blue pay_bill" data-total_balance="'+row.balance+'" data-order_id="'+row.id+'">Pay<i class="icon-cash3 position-right "></i></button></li>'; 
+                        else
+                          pay_button = "";
+
+                        return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments ('+row.total_comments+')</button></li>'+pay_button+'</ul>'; 
+                      }},
+                    ],
+                  });
+
+                  $('#pending_order_table_display').attr('style',"display:block")
+                }
               /****** Pending Order Table ***********/
+
+              /****** Billing Info **********/
+              $('[name="billing_info_total_cost"]').val();
+              $('[name="billing_info_total_amount_paid"]').val();
+              /****** Billing Info **********/
 
               /****** Billing Info Table ***********
               
