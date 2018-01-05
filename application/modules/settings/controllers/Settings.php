@@ -679,6 +679,9 @@ class Settings extends MX_Controller
           $dbres = self::$_Permission_DB;
           $return_dataType = "json";
         }
+         else if($dbtype == "views") {
+          $dbres = self::$_Views_DB;
+        }
         
         if(!empty($where_field) && !empty($where_value)) {
           $fields = explode('~',$where_field);
@@ -720,6 +723,11 @@ class Settings extends MX_Controller
 
         if($table == "clients") {
           $tablename = "laundry_clients";
+          $return_dataType = "json";
+        }
+
+        if($table == "employees") {
+          $tablename = "vw_employee_details";
           $return_dataType = "json";
         }
 

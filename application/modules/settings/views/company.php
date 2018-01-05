@@ -7,7 +7,8 @@
             <div class="tabbable">
               <ul class="nav nav-tabs nav-tabs-bottom" id="userTab">
                 <li class="active"><a href="#company_details" data-toggle="tab">Company Details <i class="icon-office position-right"></i></a></li>
-                <li><a href="#new_employee" data-toggle="tab">New Employee <i class="icon-users position-right"></i></a></li>
+                <li><a href="#new_employee" data-toggle="tab">New Employee <i class="icon-user position-right"></i></a></li>
+                <li><a href="#all_employees" data-toggle="tab">All Employees <i class="icon-users position-right"></i></a></li>
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="company_details">
@@ -230,6 +231,23 @@
                       <div class="col-md-4"></div>
                     </div>
                   </form>
+                </div>
+                <div class="tab-pane" id="all_employees">
+                  <div class="row">
+                    <table id="allemployees" class="table datatable-responsive table-xxs">
+                      <thead style="">
+                        <tr class="bg-teal-400">
+                          <th style="width: 50px">ID #</th>
+                          <th style="width: 250px">Fullname</th>
+                          <th style="width: 160px">Phone No.</th>
+                          <th style="width: 150px">Email </th>
+                          <th>Residence</th>
+                          <th>Emergency</th>
+                        </tr>
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>

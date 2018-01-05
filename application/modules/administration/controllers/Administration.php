@@ -248,10 +248,10 @@ class Administration extends MX_Controller
             'phone_number_1' => ucwords($this->input->post('primary_tel')),
             'phone_number_2' => ucwords($this->input->post('secondary_tel')),
             'email' => ucwords($this->input->post('email')),
-            'emergency_fullname' => ucwords($this->input->post('gender')),
-            'emergency_relationship' => ucwords($this->input->post('marital_status')),
-            'emergency_phone_1' => ucwords($this->input->post('marital_status')),
-            'emergency_residence' => ucwords($this->input->post('marital_status')),
+            'emergency_fullname' => ucwords($this->input->post('emergency_fullname')),
+            'emergency_relationship' => ucwords($this->input->post('emergency_relationship')),
+            'emergency_phone_1' => ucwords($this->input->post('emergency_phone_1')),
+            'emergency_residence' => ucwords($this->input->post('emergency_residence')),
           ];  
 
           $work_data = [
