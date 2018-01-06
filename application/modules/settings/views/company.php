@@ -243,6 +243,7 @@
                           <th style="width: 150px">Email </th>
                           <th>Residence</th>
                           <th>Emergency</th>
+                          <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody></tbody>
