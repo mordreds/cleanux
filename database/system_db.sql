@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 30, 2017 at 05:52 PM
+-- Generation Time: Jan 05, 2018 at 05:25 AM
 -- Server version: 5.7.20-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -90,7 +90,10 @@ INSERT INTO `successful_logins` (`id`, `user_id`, `time_in`, `time_out`, `online
 (15, 1, '2017-12-30 15:00:47', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
 (16, 1, '2017-12-30 15:16:17', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
 (17, 7, '2017-12-30 15:19:24', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
-(18, 1, '2017-12-30 15:19:29', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL);
+(18, 1, '2017-12-30 15:19:29', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(19, 1, '2018-01-04 13:40:03', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(20, 1, '2018-01-04 21:45:41', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(21, 1, '2018-01-05 05:18:51', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -143,7 +146,7 @@ ALTER TABLE `failed_logins`
 -- AUTO_INCREMENT for table `successful_logins`
 --
 ALTER TABLE `successful_logins`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=19;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `sysaudit`
 --
@@ -256,13 +259,6 @@ CREATE TABLE `hr_employee_biodata` (
   `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
---
--- Dumping data for table `hr_employee_biodata`
---
-
-INSERT INTO `hr_employee_biodata` (`id`, `first_name`, `middle_name`, `last_name`, `gender`, `date_of_birth`, `id_type`, `id_number`, `id_expiry_date`, `id_issue_date`, `id_card_photo_id`, `marital_status`, `nationality`, `postal_address`, `social_security`, `bank_name`, `bank_branch`, `account_number`, `user_id`, `photo_id`, `status`, `created_date`) VALUES
-(1, 'Akosua', '', 'Pompey', 'Female', NULL, NULL, NULL, NULL, NULL, 0, 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '2017-12-30 13:22:17');
-
 -- --------------------------------------------------------
 
 --
@@ -285,13 +281,6 @@ CREATE TABLE `hr_employee_contact_info` (
   `emergency_postal_addr` varchar(50) CHARACTER SET utf8 NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `hr_employee_contact_info`
---
-
-INSERT INTO `hr_employee_contact_info` (`id`, `biodata_id`, `phone_number_1`, `phone_number_2`, `email`, `residence`, `emergency_fullname`, `emergency_relationship`, `emergency_occupation`, `emergency_phone_1`, `emergency_phone_2`, `emergency_residence`, `emergency_postal_addr`, `date_created`) VALUES
-(1, 1, '0541786220', '', 'Akosuapompey@maviscolaundry.com', 'Kotoku', 'Female', 'Single', '', 'Single', NULL, 'Single', '', '2017-12-30 13:22:18');
 
 -- --------------------------------------------------------
 
@@ -325,13 +314,6 @@ CREATE TABLE `hr_employee_work_info` (
   `date_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
---
--- Dumping data for table `hr_employee_work_info`
---
-
-INSERT INTO `hr_employee_work_info` (`id`, `biodata_id`, `employee_id`, `position_id`, `department_id`, `employment_type`, `employment_startdate`, `work_email`, `resume_id`, `application_id`, `date_created`) VALUES
-(1, 1, 'BG/EMP/001', 2, 1, '', NULL, NULL, NULL, 0, '2017-12-30 13:22:18');
-
 -- --------------------------------------------------------
 
 --
@@ -351,7 +333,7 @@ CREATE TABLE `hr_position` (
 
 INSERT INTO `hr_position` (`id`, `name`, `description`, `status`) VALUES
 (1, 'Administrator', 'Head Of Administration', 'active'),
-(2, 'Receptionist', NULL, 'active');
+(2, 'Receptionist', 'Welcomes All Guests', 'active');
 
 -- --------------------------------------------------------
 
@@ -871,12 +853,12 @@ ALTER TABLE `hr_departments`
 -- AUTO_INCREMENT for table `hr_employee_biodata`
 --
 ALTER TABLE `hr_employee_biodata`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `hr_employee_contact_info`
 --
 ALTER TABLE `hr_employee_contact_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `hr_employee_other_info`
 --
@@ -886,7 +868,7 @@ ALTER TABLE `hr_employee_other_info`
 -- AUTO_INCREMENT for table `hr_employee_work_info`
 --
 ALTER TABLE `hr_employee_work_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `hr_position`
 --
@@ -983,7 +965,7 @@ INSERT INTO `dashboard_tabs` (`id`, `name`, `comment`, `icon`, `link`, `bg`, `pr
 (7, 'new registration', 'New Product / Category / Description', 'fa fa-plus', 'settings/new_registration', 'text-teal-400', 'Can Add Prod / Cat / Desc|Can Edit Prod / Cat / Desc|Can Delete Prod / Cat / Desc', 'Stores', 'active'),
 (8, 'settings', 'For Administrators Only', 'fa fa-gears', 'settings/', 'text-teal-400', 'Can Activate / Deactivate System', 'Administration', 'active'),
 (9, 'system settings', 'For Developers Only', 'fa fa-lock', 'system/settings', 'text-teal-400', '', 'Reserved', 'inactive'),
-(10, 'install models', 'For Developers Only', 'fa fa-lock', 'system/settings', 'text-teal-400', '', 'Reserved', 'inactive'),
+(10, 'sms', 'Send messages', 'fa fa-envelope', 'sms', 'text-teal-400', 'can delete|can edit|can add', 'Reserved', 'active'),
 (13, 'statistics', 'Informational Statistics', 'fa fa-bar-chart', 'statistics', 'text-teal-400', '', 'General', 'active'),
 (14, 'overview', 'All Services Made', 'fa fa-tasks', 'overview', 'text-teal-400', 'can delete|can add|can edit', 'oms', 'active'),
 (15, 'inhouse', 'All Services Made', 'fa fa-inbox', 'inhouse', 'text-teal-400', 'can delete|can add|can edit', 'oms', 'active'),
@@ -1027,7 +1009,7 @@ CREATE TABLE `roles_privileges_group` (
 --
 
 INSERT INTO `roles_privileges_group` (`id`, `name`, `roles`, `privileges`, `description`, `login_url`, `status`, `date_created`) VALUES
-(1, 'System Developer', 'statistics|overview|inhouse|dispatch|new registration|company|users|permissions|customers|reports', '', 'Designers of this software', 'dashboard', 'active', '2017-10-16 17:42:32'),
+(1, 'System Developer', 'statistics|overview|inhouse|dispatch|new registration|company|users|permissions|customers|reports|sms', '', 'Designers of this software', 'dashboard', 'active', '2017-10-16 17:42:32'),
 (2, 'Administrator', '', '', 'Administrator Group', 'dashboard', 'active', '2017-10-16 17:42:32'),
 (3, 'Reception', 'overview', '', 'Receptionist Group', 'overview', 'active', '2017-12-30 12:46:49');
 
@@ -1205,10 +1187,16 @@ CREATE TABLE `vw_employee_details` (
 ,`fullname` varchar(252)
 ,`gender` varchar(20)
 ,`date_of_birth` date
-,`id_type` varchar(50)
+,`residence_address` text
 ,`phone_number_1` varchar(25)
 ,`phone_number_2` varchar(25)
 ,`email` varchar(50)
+,`emergency_fullname` varchar(255)
+,`emergency_relationship` varchar(50)
+,`emergency_occupation` varchar(50)
+,`emergency_phone_1` varchar(20)
+,`emergency_phone_2` varchar(20)
+,`emergency_residence` varchar(50)
 ,`id_number` varchar(50)
 ,`id_expiry_date` date
 ,`id_issue_date` date
@@ -1354,7 +1342,7 @@ CREATE TABLE `vw_user_details` (
 --
 DROP TABLE IF EXISTS `vw_employee_details`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_employee_details`  AS  select `a`.`id` AS `id`,`a`.`first_name` AS `first_name`,`a`.`middle_name` AS `middle_name`,`a`.`last_name` AS `last_name`,concat(`a`.`first_name`,' ',`a`.`middle_name`,' ',`a`.`last_name`) AS `fullname`,`a`.`gender` AS `gender`,`a`.`date_of_birth` AS `date_of_birth`,`a`.`id_type` AS `id_type`,`g`.`phone_number_1` AS `phone_number_1`,`g`.`phone_number_2` AS `phone_number_2`,`g`.`email` AS `email`,`a`.`id_number` AS `id_number`,`a`.`id_expiry_date` AS `id_expiry_date`,`a`.`id_issue_date` AS `id_issue_date`,`a`.`marital_status` AS `marital_status`,`a`.`nationality` AS `nationality`,`a`.`postal_address` AS `postal_address`,`a`.`social_security` AS `social_security`,`a`.`bank_name` AS `bank_name`,`a`.`bank_branch` AS `bank_branch`,`a`.`account_number` AS `account_number`,`a`.`user_id` AS `user_id`,`a`.`status` AS `status`,`a`.`created_date` AS `created_date`,`d`.`employment_type` AS `employment_type`,`d`.`employment_startdate` AS `employment_startdate`,`d`.`employee_id` AS `employee_id`,`d`.`work_email` AS `work_email`,`e`.`name` AS `department`,`f`.`name` AS `current_position`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`a`.`photo_id` = `bgee_db`.`blobs`.`id`)) AS `profile_photo`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`d`.`resume_id` = `bgee_db`.`blobs`.`id`)) AS `resume_file_path`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`d`.`application_id` = `bgee_db`.`blobs`.`id`)) AS `application_file_path` from (((((`bgee_db`.`hr_employee_biodata` `a` left join `bgee_db`.`hr_employee_other_info` `c` on((`a`.`id` = `c`.`biodata_id`))) left join `bgee_db`.`hr_employee_work_info` `d` on((`a`.`id` = `d`.`biodata_id`))) left join `bgee_db`.`hr_employee_contact_info` `g` on((`a`.`id` = `g`.`biodata_id`))) left join `bgee_db`.`hr_departments` `e` on((`d`.`department_id` = `e`.`id`))) left join `bgee_db`.`hr_position` `f` on((`d`.`position_id` = `f`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_employee_details`  AS  select `a`.`id` AS `id`,`a`.`first_name` AS `first_name`,`a`.`middle_name` AS `middle_name`,`a`.`last_name` AS `last_name`,concat(`a`.`first_name`,' ',`a`.`middle_name`,' ',`a`.`last_name`) AS `fullname`,`a`.`gender` AS `gender`,`a`.`date_of_birth` AS `date_of_birth`,`g`.`residence` AS `residence_address`,`g`.`phone_number_1` AS `phone_number_1`,`g`.`phone_number_2` AS `phone_number_2`,`g`.`email` AS `email`,`g`.`emergency_fullname` AS `emergency_fullname`,`g`.`emergency_relationship` AS `emergency_relationship`,`g`.`emergency_occupation` AS `emergency_occupation`,`g`.`emergency_phone_1` AS `emergency_phone_1`,`g`.`emergency_phone_2` AS `emergency_phone_2`,`g`.`emergency_residence` AS `emergency_residence`,`a`.`id_number` AS `id_number`,`a`.`id_expiry_date` AS `id_expiry_date`,`a`.`id_issue_date` AS `id_issue_date`,`a`.`marital_status` AS `marital_status`,`a`.`nationality` AS `nationality`,`a`.`postal_address` AS `postal_address`,`a`.`social_security` AS `social_security`,`a`.`bank_name` AS `bank_name`,`a`.`bank_branch` AS `bank_branch`,`a`.`account_number` AS `account_number`,`a`.`user_id` AS `user_id`,`a`.`status` AS `status`,`a`.`created_date` AS `created_date`,`d`.`employment_type` AS `employment_type`,`d`.`employment_startdate` AS `employment_startdate`,`d`.`employee_id` AS `employee_id`,`d`.`work_email` AS `work_email`,`e`.`name` AS `department`,`f`.`name` AS `current_position`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`a`.`photo_id` = `bgee_db`.`blobs`.`id`)) AS `profile_photo`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`d`.`resume_id` = `bgee_db`.`blobs`.`id`)) AS `resume_file_path`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`d`.`application_id` = `bgee_db`.`blobs`.`id`)) AS `application_file_path` from (((((`bgee_db`.`hr_employee_biodata` `a` left join `bgee_db`.`hr_employee_other_info` `c` on((`a`.`id` = `c`.`biodata_id`))) left join `bgee_db`.`hr_employee_work_info` `d` on((`a`.`id` = `d`.`biodata_id`))) left join `bgee_db`.`hr_employee_contact_info` `g` on((`a`.`id` = `g`.`biodata_id`))) left join `bgee_db`.`hr_departments` `e` on((`d`.`department_id` = `e`.`id`))) left join `bgee_db`.`hr_position` `f` on((`d`.`position_id` = `f`.`id`))) ;
 
 -- --------------------------------------------------------
 
