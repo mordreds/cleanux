@@ -1065,139 +1065,174 @@
       $(document).on("click",".edit_employee_info",function(){
         $('#deletename_').text($(this).data('deletename'));
         // Filling Form Component
-        $('[name="client_id"]').val($(this).data('client_id'));
-        $('[name="fullname"]').val($(this).data('fullname'));
-        $('[name="company_name"]').val($(this).data('company'));
+        $('[name="employee_id"]').val($(this).data('employee_id'));
+        $('[name="first_name"]').val($(this).data('firstname'));
+        $('[name="middle_name"]').val($(this).data('middlename'));
+        $('[name="last_name"]').val($(this).data('lastname'));
+        $('[name="gender"]').val($(this).data('gender'));
+        $('[name="marital_status"]').val($(this).data('marital'));
         $('[name="residence_addr"]').val($(this).data('residence_address'));
-        $('[name="postal_addr"]').val($(this).data('postal_address'));
+        $('[name="position"]').val($(this).data('position'));
         $('[name="email"]').val($(this).data('email'));
         $('[name="primary_tel"]').val($(this).data('phone_number_1'));
         $('[name="secondary_tel"]').val($(this).data('phone_number_2'));
-        
-        let gender = $(this).data('gender');
-        if(gender) {
-          $('[name="gender"]').val(gender).change();
-        }
+        $('[name="emergency_fullname"]').val($(this).data('emergency_fullname'));
+        $('[name="emergency_phone_1"]').val($(this).data('emergency_phone_1'));
+        $('[name="emergency_residence"]').val($(this).data('emergency_residence'));
+        $('[name="emergency_relationship"]').val($(this).data('emergency_relationship'));
 
-        let sms = $(this).data('sms_alert');
-        if(sms) {
-          $('[name="sms"]').attr('checked',true);
-        }
-
-        let online_portal = $(this).data('online_access');
-        if(online_portal) {
-          $('[name="online"]').attr('checked',true);
-        }
+        $(".selectbox").selectBoxIt({
+          autoWidth: false,
+          defaultText: "<em style='color: #827f7f'>Select One</em>",
+        });
 
         $('#edit_employee_modal').modal('show');
       });
     </script>
     <div id="edit_employee_modal" class="modal fade">
-      <div class="modal-dialog" style="width:800px">
+      <div class="modal-dialog" style="width:900px">
         <div class="modal-content">
           <div class="modal-header bg-teal-400">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h6 class="modal-title">Edit Customer Info</h6>
+            <h6 class="modal-title">Edit Employee Info</h6>
           </div>
+          <form>
           <div class="modal-body">
-            <form action="#" method="post">
-              <input type="hidden" name="client_id"/>
-              <div class="">
-                <div class="col-md-4 col-sm-4">
-                  <div class="form-group">
-                    <input type="text" name="fullname" placeholder="Full Name :" class="form-control" required>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                  <div class="form-group">
-                    <input type="text" name="company_name" placeholder="Company Name (optional) :" class="form-control">
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                  <div class="form-group">
-                    <input type="text" style="display:none" name="gender_alt" class="form-control" readonly >
-                    <select class="form-control selectbox" name="gender" data-defaultText="Gender" required>
-                      <option value="" selected="true">Select One</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                    </select>
-                  </div>
+            <input type="hidden" name="employee_id"/>
+            <div class="row">
+              <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                  <label class="display-block">First Name <span style="color:red;">*</span></label>
+                  <input type="text" name="first_name" placeholder="First Name" class="form-control" required>
                 </div>
               </div>
-              <div class="">
-                <div class="col-md-4 col-sm-4">
-                  <div class="form-group">
-                    <input type="text" name="residence_addr" placeholder="Residence Address" class="form-control" required>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                  <div class="form-group">
-                    <input type="text" name="postal_addr" placeholder="Postal Address" class="form-control">
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                  <div class="form-group">
-                    <input type="email" name="email" placeholder="Email Address:" class="form-control">
-                  </div>
+              <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                  <label class="display-block">Middle Name <span style="color:red;">*</span></label>
+                  <input type="text" name="middle_name" placeholder="Middle Name" class="form-control">
                 </div>
               </div>
-              <div class="">
-                <div class="col-md-4 col-sm-4">
-                  <div class="form-group">
-                    <input type="text" name="primary_tel" placeholder="Phone No #1:" class="form-control" minlength="10" required>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                  <div class="form-group">
-                    <input type="text" name="secondary_tel" placeholder="Phone No #2:" class="form-control">
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <div class="checkbox checkbox-switchery">
-                      <label><input type="checkbox" name="sms" class="switchery">
-                        SMS Alert
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <div class="checkbox checkbox-switchery">
-                      <label><input type="checkbox" name="online" class="switchery">
-                      Online Portal
-                      </label>
-                    </div>
-                  </div>
+              <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                  <label class="display-block">Last Name <span style="color:red;">*</span></label>
+                  <input type="text" name="last_name" placeholder="Last Name" class="form-control">
                 </div>
               </div>
-            </form>
+              <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                  <label class="display-block">Gender <span style="color:red;">*</span></label>
+                  <select class="form-control selectbox" name="gender" data-defaultText="Gender" required>
+                    <option value="" selected="true">Select One</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                  <label class="display-block">Marital Status <span style="color:red;">*</span></label>
+                  <select name="marital_status" class="form-control selectbox">
+                    <option value=""><em>Select One</em></option>
+                    <option>Single</option>
+                    <option>Married</option>
+                    <option>Divorced</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                  <label class="display-block">Residence Address <span style="color:red;">*</span></label>
+                  <input type="text" name="residence_addr" placeholder="Residence Address" class="form-control" required>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                  <label class="display-block">Phone Number 1 <span style="color:red;">*</span></label>
+                  <input type="text" name="primary_tel" placeholder="Phone No #1:" class="form-control" minlength="10" required>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                  <label class="display-block">Phone Number 2 <span style="color:red;">*</span></label>
+                  <input type="text" name="secondary_tel" placeholder="Phone No #2:" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                  <label class="display-block">Email <span style="color:red;">*</span></label>
+                  <input type="email" name="email" placeholder="Email Address:" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                  <label class="display-block">Position <span style="color:red;">*</span></label>
+                  <select name="position" class="form-control display_positions" required></select>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                  <label class="display-block">Contact Name <span style="color:red;">*</span> (<em style="color:#b57171">emergency</em>)</label>
+                  <input type="text" name="emergency_fullname" class="form-control" required>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                  <label class="display-block">Residence Address <span style="color:red;">*</span> (<em style="color:#b57171">emergency</em>)</label>
+                  <input type="text" name="emergency_residence" class="form-control" required>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                  <label class="display-block">Phone Number <span style="color:red;">*</span> (<em style="color:#b57171">emergency</em>)</label>
+                  <input type="text" name="emergency_phone_1" class="form-control" required>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <div class="form-group">
+                  <label class="display-block">Relationship <span style="color:red;">*</span> (<em style="color:#b57171">emergency</em>)</label>
+                  <select name="emergency_relationship" class="form-control selectbox">
+                    <option value=""><em>Select One</em></option>
+                    <option>Father</option>
+                    <option>Mother</option>
+                    <option>Sibling</option>
+                    <option>Guardian</option>
+                  </select>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button> 
-            <button type="button" data-action="reload" class="btn btn-success legitRipple" id="edit_client_submit" data-dismiss="modal">Save <i class="icon-database2 position-right"></i></button>
+            <button type="button" id="edit_employee_submit" class="btn btn-success legitRipple">Save <i class="icon-database2 position-right"></i></button>
           </div>
+          </form>
         </div>
       </div>
     </div>
     <script type="text/javascript">
-      $(document).on("click","#edit_client_submit",function(){
-        let formurl = "<?=base_url()?>settings/save_client_info";
-        let tableid = "allcustomers";
+      $(document).on("click","#edit_employee_submit",function(){
+        let formurl = "<?=base_url()?>administration/save_employee";
+        let tableid = "allemployees";
         let formData = { 
-          'id': $('[name="client_id"]').val(),
-          'fullname': $('[name="fullname"]').val(),
-          'company_name': $('[name="company_name"]').val(),
-          'gender': $('[name="gender"]').val(),
+          'employee_id': $('[name="employee_id"]').val(),
+          'first_name': $('[name="first_name"]').val(),
+          'middle_name': $('[name="middle_name"]').val(),
+          'last_name': $('[name="last_name"]').val(),
+          'gender': $('[name="gender"] option:selected').val(),
+          'marital_status': $('[name="marital_status"] option:selected').val(),
+          'position': $('[name="position"] option:selected').val(),
           'residence_addr': $('[name="residence_addr"]').val(),
-          'postal_addr': $('[name="postal_addr"]').val(),
           'primary_tel': $('[name="primary_tel"]').val(),
           'secondary_tel': $('[name="secondary_tel"]').val(),
           'email': $('[name="email"]').val(),
-          'sms': $('[name="sms"]').val(),
-          'online': $('[name="online"]').val(),
+          'emergency_fullname': $('[name="emergency_fullname"]').val(),
+          'emergency_residence': $('[name="emergency_residence"]').val(),
+          'emergency_phone_1': $('[name="emergency_phone_1"]').val(),
+          'emergency_relationship': $('[name="emergency_relationship"] option:selected').val(),
         };
-        ajax_post(formurl,formData,tableid);
+        //ajax_post(formurl,formData,tableid);
+        //console.log(formData);
+        alert($('[name="first_name"]').val());
       });
     </script>
   <?php endif;?>

@@ -237,7 +237,7 @@
                     <table id="allemployees" class="table datatable-responsive table-xxs">
                       <thead style="">
                         <tr class="bg-teal-400">
-                          <th style="width: 50px">ID #</th>
+                          <th style="width: 100px">ID #</th>
                           <th style="width: 250px">Fullname</th>
                           <th style="width: 160px">Phone No.</th>
                           <th style="width: 150px">Email </th>

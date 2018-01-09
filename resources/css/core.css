@@ -128,7 +128,7 @@ ul.list-circle{list-style-type:circle}
 .list-feed-time>li .feed-time{position:absolute;left:-48px;top:0;font-size:12px}
 .icons-list{margin:0;padding:0;line-height:1;font-size:0}
 .table-xlg>tbody>tr>td,.table-xlg>tbody>tr>th,.table-xlg>tfoot>tr>td,.table-xlg>tfoot>tr>th,.table-xlg>thead>tr>td,.table-xlg>thead>tr>th,pre{padding:20px}
-.icons-list>li{position:relative;display:inline-block;margin-left:5px;font-size:13px}
+.icons-list>li{position:absolute;margin-top: -10px; display:inline-block;margin-left:5px;font-size:13px}
 .icons-list>li:first-child{margin-left:0}
 .icons-list>li>a{color:inherit;display:block;opacity:1;filter:alpha(opacity=100)}
 .icons-list>li>a:focus,.icons-list>li>a:hover{opacity:.75;filter:alpha(opacity=75)}

@@ -74,7 +74,7 @@
           return '<ul class="icons-list"><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="label '+label_class+' change_order_status" style="cursor:pointer">'+row.status+'</span></a><ul class="dropdown-menu dropdown-menu-right"><li><a href="#" class="change_status" data-status="Pending" data-tableid="allpending_orders" data-order_id="'+row.id+'"><i class="icon-file-stats"></i> Pending</a></li><li><a href="#" class="change_status" data-status="Processing" data-tableid="allpending_orders" data-order_id="'+row.id+'"><i class="icon-hour-glass"></i> Processing</a></li><li><a href="#" class="change_status" data-status="Dispatch" data-tableid="allpending_orders" data-order_id="'+row.id+'" data-order_no="'+row.order_number+'"><i class="icon-truck"></i> Dispatch</a></li><li class="divider"></li><li ><a href="#" style="color:red" class="change_status" data-status="Cancelled" data-tableid="allpending_orders" data-order_id="'+row.id+'" data-order_no="'+row.order_number+'"><i class="icon-cross2"></i> Cancel</a></li></ul></li></ul>';
         }},
         {render: function(data,type,row,meta) { 
-          return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments ('+row.total_comments+')</button></li></ul>';
+          return '<ul class="action_btns" style="margin-bottom:0px;"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments ('+row.total_comments+')</button></li></ul>';
         }}
       ],
     });

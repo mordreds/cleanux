@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jan 05, 2018 at 05:25 AM
--- Server version: 5.7.20-0ubuntu0.16.04.1
--- PHP Version: 7.0.22-0ubuntu0.16.04.1
+-- Host: 127.0.0.1
+-- Generation Time: Jan 09, 2018 at 05:15 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.0.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -93,7 +93,10 @@ INSERT INTO `successful_logins` (`id`, `user_id`, `time_in`, `time_out`, `online
 (18, 1, '2017-12-30 15:19:29', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
 (19, 1, '2018-01-04 13:40:03', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
 (20, 1, '2018-01-04 21:45:41', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
-(21, 1, '2018-01-05 05:18:51', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL);
+(21, 1, '2018-01-05 05:18:51', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
+(22, 1, '2018-01-09 13:04:40', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36 OPR/50.0.2762.45', '::1', 'London', NULL, NULL),
+(23, 1, '2018-01-09 13:04:36', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36 OPR/50.0.2762.45', '192.168.3.40', 'London', ',', NULL),
+(24, 1, '2018-01-09 13:05:19', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.97 Safari/537.36 Vivaldi/1.94.1008.40', '192.168.3.24', 'NII-OFFICE', ',', NULL);
 
 -- --------------------------------------------------------
 
@@ -146,7 +149,7 @@ ALTER TABLE `failed_logins`
 -- AUTO_INCREMENT for table `successful_logins`
 --
 ALTER TABLE `successful_logins`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=22;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `sysaudit`
 --
@@ -259,6 +262,13 @@ CREATE TABLE `hr_employee_biodata` (
   `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
+--
+-- Dumping data for table `hr_employee_biodata`
+--
+
+INSERT INTO `hr_employee_biodata` (`id`, `first_name`, `middle_name`, `last_name`, `gender`, `date_of_birth`, `id_type`, `id_number`, `id_expiry_date`, `id_issue_date`, `id_card_photo_id`, `marital_status`, `nationality`, `postal_address`, `social_security`, `bank_name`, `bank_branch`, `account_number`, `user_id`, `photo_id`, `status`, `created_date`) VALUES
+(1, 'Claude', 'Nii', 'Nai', 'Male', NULL, NULL, NULL, NULL, NULL, 0, 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '2018-01-09 11:48:33');
+
 -- --------------------------------------------------------
 
 --
@@ -281,6 +291,13 @@ CREATE TABLE `hr_employee_contact_info` (
   `emergency_postal_addr` varchar(50) CHARACTER SET utf8 NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `hr_employee_contact_info`
+--
+
+INSERT INTO `hr_employee_contact_info` (`id`, `biodata_id`, `phone_number_1`, `phone_number_2`, `email`, `residence`, `emergency_fullname`, `emergency_relationship`, `emergency_occupation`, `emergency_phone_1`, `emergency_phone_2`, `emergency_residence`, `emergency_postal_addr`, `date_created`) VALUES
+(1, 1, '0244444444', '0544444444', 'Claude@africaloop.com', 'Hse  No 12, Trade Fair Function.', 'Edem', 'Father', '', '0344444444', NULL, 'Dodowa', '', '2018-01-09 11:48:33');
 
 -- --------------------------------------------------------
 
@@ -313,6 +330,13 @@ CREATE TABLE `hr_employee_work_info` (
   `application_id` bigint(20) NOT NULL,
   `date_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `hr_employee_work_info`
+--
+
+INSERT INTO `hr_employee_work_info` (`id`, `biodata_id`, `employee_id`, `position_id`, `department_id`, `employment_type`, `employment_startdate`, `work_email`, `resume_id`, `application_id`, `date_created`) VALUES
+(1, 1, 'BG/EMP/001', 2, 1, '', NULL, NULL, NULL, 0, '2018-01-09 11:48:33');
 
 -- --------------------------------------------------------
 
@@ -362,7 +386,10 @@ CREATE TABLE `laundry_clients` (
 --
 
 INSERT INTO `laundry_clients` (`id`, `fullname`, `gender`, `company`, `residence_address`, `postal_address`, `phone_number_1`, `phone_number_2`, `email`, `sms_alert`, `online_access`, `status`, `date_created`) VALUES
-(1, 'Mavis Amenyo', 'Female', '', 'Meri Cresent, Fise - Accra', '', '0547843221', '', 'mavis.mordreds@gmail.com', 1, 0, 'active', '2017-12-30 12:44:17');
+(2, 'Hope Avalon', 'Male', 'Hackerton', 'Kaneshie', '', '0233333333', '0533333333', 'hopeavalon@hackerton.com', 1, 1, 'active', '2018-01-09 11:51:50'),
+(3, 'Salama Jintey James', 'Male', 'Hackernoon', 'Kwabenya', '', '0222222222', '0522222222', 'jamessalama@hackernoon.com', 1, 1, 'active', '2018-01-09 11:53:58'),
+(4, 'Evans Ofori Owusu', 'Male', '', 'Adenta Barrier', '', '0211111111', '0511111111', 'evansofori@gmail.com', 1, 0, 'active', '2018-01-09 11:55:12'),
+(5, 'Ivan Pink', 'Male', 'Phalaa', 'Sonitra - Amasaman', '', '0255555555', '0255555555', 'ivanpink@gmail.com', 1, 0, 'active', '2018-01-09 11:57:51');
 
 -- --------------------------------------------------------
 
@@ -470,7 +497,9 @@ CREATE TABLE `laundry_order_details` (
 --
 
 INSERT INTO `laundry_order_details` (`id`, `order_id`, `pricelist_ids`, `quantities`, `unit_prices`, `total_sums`, `description`, `service_status`, `status_change_userids`, `status_change_dates`, `date_created`) VALUES
-(1, 1, '3', '5', '5', '25', '', '', '', '', '2017-12-30 15:03:27');
+(1, 1, '3', '5', '5', '25', '', '', '', '', '2017-12-30 15:03:27'),
+(2, 2, '3', '4', '5', '20', '', '', '', '', '2018-01-09 12:08:03'),
+(3, 3, '3|2', '60|5', '5|40', '300|40', '|5 Blankets', '', '', '', '2018-01-09 12:10:42');
 
 -- --------------------------------------------------------
 
@@ -503,7 +532,8 @@ CREATE TABLE `laundry_orders` (
 --
 
 INSERT INTO `laundry_orders` (`id`, `order_number`, `total_cost`, `amount_paid`, `balance`, `tax_id`, `client_id`, `processor_user_id`, `delivery_method_id`, `delivery_location`, `due_date`, `status`, `modified_by`, `modified_date`, `delivered_by`, `processing_stages`, `date_created`) VALUES
-(1, '77796104', 25, 25, 0, 1, 1, 1, 5, 'Pickup', '2018-01-02', 'Pending', 0, NULL, 0, 'Pending', '2017-12-30 15:03:27');
+(2, '46844374', 20, 20, 0, 1, 5, 1, 5, 'Pickup', '2018-01-12', 'Pending', 0, NULL, 0, 'Pending', '2018-01-09 12:08:03'),
+(3, '08547680', 355, 200, 155, 1, 2, 1, 2, 'Kaneshie First light', '2018-01-13', 'Pending', 0, NULL, 0, 'Pending', '2018-01-09 12:10:42');
 
 -- --------------------------------------------------------
 
@@ -603,6 +633,7 @@ INSERT INTO `tax_system` (`id`, `value`, `user_id`, `date_created`) VALUES
 
 --
 -- Stand-in structure for view `vw_employee_details`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_employee_details` (
 `id` bigint(20)
@@ -644,6 +675,7 @@ CREATE TABLE `vw_employee_details` (
 
 --
 -- Stand-in structure for view `vw_laundry_prices`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_prices` (
 `id` bigint(20)
@@ -663,6 +695,7 @@ CREATE TABLE `vw_laundry_prices` (
 
 --
 -- Stand-in structure for view `vw_laundry_weights`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_weights` (
 `id` bigint(20)
@@ -853,12 +886,12 @@ ALTER TABLE `hr_departments`
 -- AUTO_INCREMENT for table `hr_employee_biodata`
 --
 ALTER TABLE `hr_employee_biodata`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `hr_employee_contact_info`
 --
 ALTER TABLE `hr_employee_contact_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `hr_employee_other_info`
 --
@@ -868,7 +901,7 @@ ALTER TABLE `hr_employee_other_info`
 -- AUTO_INCREMENT for table `hr_employee_work_info`
 --
 ALTER TABLE `hr_employee_work_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `hr_position`
 --
@@ -878,7 +911,7 @@ ALTER TABLE `hr_position`
 -- AUTO_INCREMENT for table `laundry_clients`
 --
 ALTER TABLE `laundry_clients`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `laundry_delivery_method`
 --
@@ -903,12 +936,12 @@ ALTER TABLE `laundry_order_comments`
 -- AUTO_INCREMENT for table `laundry_order_details`
 --
 ALTER TABLE `laundry_order_details`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `laundry_orders`
 --
 ALTER TABLE `laundry_orders`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `laundry_prices`
 --
@@ -1072,6 +1105,7 @@ INSERT INTO `users` (`id`, `username`, `passwd`, `default_passwd`, `fullname`, `
 
 --
 -- Stand-in structure for view `vw_user_details`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_user_details` (
 `id` bigint(20)
@@ -1178,6 +1212,7 @@ USE `bgee_views`;
 
 --
 -- Stand-in structure for view `vw_employee_details`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_employee_details` (
 `id` bigint(20)
@@ -1225,6 +1260,7 @@ CREATE TABLE `vw_employee_details` (
 
 --
 -- Stand-in structure for view `vw_laundry_order_comments`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_order_comments` (
 `id` bigint(20)
@@ -1240,6 +1276,7 @@ CREATE TABLE `vw_laundry_order_comments` (
 
 --
 -- Stand-in structure for view `vw_laundry_prices`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_prices` (
 `id` bigint(20)
@@ -1259,6 +1296,7 @@ CREATE TABLE `vw_laundry_prices` (
 
 --
 -- Stand-in structure for view `vw_laundry_weights`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_weights` (
 `id` bigint(20)
@@ -1274,6 +1312,7 @@ CREATE TABLE `vw_laundry_weights` (
 
 --
 -- Stand-in structure for view `vw_orderlist_summary`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_orderlist_summary` (
 `id` bigint(20)
@@ -1310,6 +1349,7 @@ CREATE TABLE `vw_orderlist_summary` (
 
 --
 -- Stand-in structure for view `vw_user_details`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_user_details` (
 `id` bigint(20)

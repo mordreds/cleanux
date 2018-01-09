@@ -28,7 +28,7 @@
       ?>
       </div>
       <div class="col-lg-1"></div>
-      <div class="col-lg-2 col-md-2" style="margin-left:-40px;">
+      <div class="col-lg-2 col-md-2" style="margin-left:-40px;display: none">
         <div class="sidebar-detached">
           <div class="sidebar sidebar-default">
             <div class="sidebar-content">

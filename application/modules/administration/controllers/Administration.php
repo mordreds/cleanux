@@ -209,6 +209,7 @@ class Administration extends MX_Controller
     /****** Save New Employee ***********/
     public function save_employee() {
       if(in_array('new registration', $_SESSION['user']['roles'])) {
+        $this->form_validation->set_rules('employee_id','Employee ID','trim');
         $this->form_validation->set_rules('first_name','First Name','trim|required');
         $this->form_validation->set_rules('middle_name','Middle Name','trim');
         $this->form_validation->set_rules('last_name','Last Name','trim|required');
@@ -266,14 +267,22 @@ class Administration extends MX_Controller
             redirect('settings/company');
           } 
           else {
-            # bio data insert
-            $tablename = "hr_employee_biodata";
-            $save_data = $this->custom_retrievals->save_employee_details($bio_data,$contact_data,$work_data);
+            $employee_id = $this->input->post('employee_id');
 
-            if($save_data) 
-              $this->session->set_flashdata('success', 'Saving Data Successful');
-            else 
-              $this->session->set_flashdata('error', 'Saving Data Failed');
+            if(!$employee_id) {
+              # bio data insert
+              $tablename = "hr_employee_biodata";
+              $save_data = $this->custom_retrievals->save_employee_details($bio_data,$contact_data,$work_data);
+
+              if($save_data) 
+                $this->session->set_flashdata('success', 'Saving Data Successful');
+              else 
+                $this->session->set_flashdata('error', 'Saving Data Failed');
+            }
+            else {
+              print "<pre>"; print_r($_POST); print "</pre>";
+              exit;
+            }
               
               redirect('settings/company');
           }
