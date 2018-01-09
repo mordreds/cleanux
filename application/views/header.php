@@ -66,6 +66,17 @@
 		  <?php endif; ?>
 		<!-- ***** Users Page ***** -->
 
+			<!-- ***** Users Page ***** -->
+			<?php if($controller_function == "sms") : ?>
+		  	<script type="text/javascript" src="<?=base_url()?>resource/js/plugins/editors/wysihtml5/wysihtml5.min.js"></script>
+			<script type="text/javascript" src="<?=base_url()?>resource/js/plugins/editors/wysihtml5/toolbar.js"></script>
+			<script type="text/javascript" src="<?=base_url()?>resource/js/plugins/editors/wysihtml5/parsers.js"></script>
+			<script type="text/javascript" src="<?=base_url()?>resource/js/plugins/editors/wysihtml5/locales/bootstrap-wysihtml5.ua-UA.js"></script>
+		  <?php endif; ?>
+		<!-- ***** Users Page ***** -->
+
+		
+
   <!-- *********** Custom JS Need For Pages ************ -->
 	<script type="text/javascript" src="<?=base_url()?>resources/js/core/app.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/ui/ripple.min.js"></script>
