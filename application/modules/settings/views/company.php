@@ -176,7 +176,9 @@
                       <div class="col-md-3">
                         <div class="form-group">
                           <label class="display-block" style="padding-bottom: 4px">Position <span style="color:red;">*</span></label>
-                          <select name="position" class="display_positions" required></select>
+                          <select name="position" class="display_positions" required>
+                            <option value=""><em>Select One</em></option>
+                          </select>
                         </div>
                       </div>
                       <div class="col-md-3">

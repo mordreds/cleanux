@@ -209,7 +209,10 @@ class Administration extends MX_Controller
     /****** Save New Employee ***********/
     public function save_employee() {
       if(in_array('new registration', $_SESSION['user']['roles'])) {
-        $this->form_validation->set_rules('employee_id','Employee ID','trim');
+        $this->form_validation->set_rules('id','Employee ID','trim');
+        $this->form_validation->set_rules('delete_item','Delete','trim');
+        $this->form_validation->set_rules('response_type','Response Type','trim');
+
         $this->form_validation->set_rules('first_name','First Name','trim|required');
         $this->form_validation->set_rules('middle_name','Middle Name','trim');
         $this->form_validation->set_rules('last_name','Last Name','trim|required');
@@ -217,18 +220,28 @@ class Administration extends MX_Controller
         $this->form_validation->set_rules('marital_status','Marital Status','trim|required');
         $this->form_validation->set_rules('position','Position','trim|required');
         $this->form_validation->set_rules('residence_addr','Residence Address','trim|required');
-        $this->form_validation->set_rules('primary_tel','Phone Number 1','trim|required|is_unique[hr_employee_contact_info.phone_number_1]',array('is_unique'=>"%s Already Exists"));
-        $this->form_validation->set_rules('secondary_tel','Phone No #2','trim');
-        $this->form_validation->set_rules('email','Email Address','trim|required|is_unique[hr_employee_contact_info.email]',array('is_unique'=>"%s Already Exists"));
+        $this->form_validation->set_rules('primary_tel','Phone Number 1','trim|required|min_length[10]');
+        $this->form_validation->set_rules('secondary_tel','Phone No #2','trim|min_length[10]');
+        $this->form_validation->set_rules('email','Email Address','trim|required');
         $this->form_validation->set_rules('emergency_fullname','Emergency Name','trim|required');
         $this->form_validation->set_rules('emergency_residence','Emergency Residence','trim|required');
         $this->form_validation->set_rules('emergency_phone_1','Emergency Phone Number','trim|required');
         $this->form_validation->set_rules('emergency_relationship','Emergency Relationship','trim|required');
 
+        $response_type = $this->input->post('response_type');
+        $biodata_id = $this->input->post('id');
+
         if($this->form_validation->run() === FALSE) {
-          $errors = str_replace(array("\r","\n","<p>","</p>"),'\n',validation_errors());
-          $this->session->set_flashdata('validation_error',$errors);
-          redirect('settings/company');
+          $errors = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+          
+          if($response_type == "JSON") {
+            $return_data['error'] = $errors;
+            print_r(json_encode($return_data));
+          } 
+          else {
+            $this->session->set_flashdata('validation_error',$errors);
+            redirect('settings/company');
+          }
         }
         else {
           $this->load->model('custom_retrievals');
@@ -260,32 +273,69 @@ class Administration extends MX_Controller
             'department_id' => 1,
             'position_id' => ucwords($this->input->post('position')),
           ];
-          //print_r($work_info)
           /***** Data Definition *****/
-          if(strlen($contact_data['phone_number_1']) < 10) {
-            $this->session->set_flashdata('error',"Invalid Phone Number");
+          /******** Insertion Of New Data ***********/
+          if(!$biodata_id) {
+            # bio data insert
+            $tablename = "hr_employee_biodata";
+            $save_data = $this->custom_retrievals->save_employee_details($bio_data,$contact_data,$work_data);
+
+            if($save_data) 
+              $this->session->set_flashdata('success', 'Saving Data Successful');
+            else 
+              $this->session->set_flashdata('error', 'Saving Data Failed');
+
             redirect('settings/company');
-          } 
+          }
+          /******** Insertion Of New Data ***********/
+          /******** Updating Of Record ***********/
           else {
-            $employee_id = $this->input->post('employee_id');
+            $this->load->model('globals/model_update');
+            $where_condition = array('id' => $biodata_id);
 
-            if(!$employee_id) {
-              # bio data insert
+            if($delete_item = $this->input->post('delete_item')){
+              $update_data = array('status'=>"deleted");
               $tablename = "hr_employee_biodata";
-              $save_data = $this->custom_retrievals->save_employee_details($bio_data,$contact_data,$work_data);
 
-              if($save_data) 
-                $this->session->set_flashdata('success', 'Saving Data Successful');
-              else 
-                $this->session->set_flashdata('error', 'Saving Data Failed');
+              $biodata_query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType="php_object",$bio_data,$where_condition);
+              if($response_type == "JSON") {
+                if($biodata_query_result)
+                  $return_data['success'] = "Delete Successful";
+                else
+                  $return_data['error'] = "Delete Failed";
+
+                print_r(json_encode($return_data));
+              }
+              else{
+                if($biodata_query_result)
+                  $this->session->set_flashdata('success', 'Delete Successful');
+                else
+                  $this->session->set_flashdata('error', 'Delete Failed');
+
+                redirect('settings/company');
+              }
             }
             else {
-              print "<pre>"; print_r($_POST); print "</pre>";
-              exit;
+              # Employee Biodata Update
+              $tablename = "hr_employee_biodata";
+              $biodata_query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType="php_object",$bio_data,$where_condition);
+              # Employee Contact Info
+              $tablename = "hr_employee_contact_info";
+              $contact_data_query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType="php_object",$contact_data,$where_condition);
+               # Employee Contact Info
+              $tablename = "hr_employee_work_info";
+              $work_data = array('position_id' => $this->input->post('position'));
+              $work_data_query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType="php_object",$work_data,$where_condition);
+
+              if($biodata_query_result && $contact_data_query_result && $work_data_query_result)
+                $return_data['success'] = "Update Successful";
+              else
+                $return_data['error'] = "Update Failed";
+
+              print_r(json_encode($return_data));
             }
-              
-              redirect('settings/company');
           }
+          /******** Updating Of Record ***********/
         }
       }
       else {
@@ -420,6 +470,20 @@ class Administration extends MX_Controller
     }
     /*********************************	Data Update	****************************/
 
+  /*********************************  Data Deletion  ***********************/
+  public function delete() {
+    $this->form_validation->set_rules('id','Delete ID','required|trim');
+    $this->form_validation->set_rules('dbres','DB Res','required|trim');
+
+    if ($this->form_validation->run() === FALSE) {
+      $return_data['error'] = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+      print_r(json_encode($return_data));
+    }
+    else {
+      
+    }
+  }
+  /*********************************  Data Deletion  ***********************/
     
   /*********************************	AJAX CALLS	**************************/
     /*******************************

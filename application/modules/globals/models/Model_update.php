@@ -17,10 +17,10 @@ class Model_update extends CI_Model {
     if($query)
       $return_data = $query;
     else
-      $return_data = ['ERR' => $dbres->error()];
+      $return_data = ['DB_ERR' => $dbres->error()];
     /*************** Query check ************/
             
-    if($return_dataType == "json")          
+    if($return_dataType == "JSON")          
       return json_encode($return_data);
     else 
       return $return_data;
