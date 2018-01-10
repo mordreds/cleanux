@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2018 at 05:15 PM
+-- Generation Time: Jan 10, 2018 at 06:17 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.0.15
 
@@ -96,7 +96,9 @@ INSERT INTO `successful_logins` (`id`, `user_id`, `time_in`, `time_out`, `online
 (21, 1, '2018-01-05 05:18:51', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux i686 (x86_64)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 OPR/45.0.2552.898', '::1', 'ip6-localhost', NULL, NULL),
 (22, 1, '2018-01-09 13:04:40', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36 OPR/50.0.2762.45', '::1', 'London', NULL, NULL),
 (23, 1, '2018-01-09 13:04:36', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36 OPR/50.0.2762.45', '192.168.3.40', 'London', ',', NULL),
-(24, 1, '2018-01-09 13:05:19', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.97 Safari/537.36 Vivaldi/1.94.1008.40', '192.168.3.24', 'NII-OFFICE', ',', NULL);
+(24, 1, '2018-01-09 13:05:19', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.97 Safari/537.36 Vivaldi/1.94.1008.40', '192.168.3.24', 'NII-OFFICE', ',', NULL),
+(25, 1, '2018-01-10 09:03:37', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36 OPR/50.0.2762.45', '::1', 'London', NULL, NULL),
+(26, 1, '2018-01-10 14:38:11', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36 OPR/50.0.2762.45', '::1', 'London', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -149,7 +151,7 @@ ALTER TABLE `failed_logins`
 -- AUTO_INCREMENT for table `successful_logins`
 --
 ALTER TABLE `successful_logins`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=25;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `sysaudit`
 --
@@ -886,7 +888,7 @@ ALTER TABLE `hr_departments`
 -- AUTO_INCREMENT for table `hr_employee_biodata`
 --
 ALTER TABLE `hr_employee_biodata`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `hr_employee_contact_info`
 --
@@ -1250,6 +1252,7 @@ CREATE TABLE `vw_employee_details` (
 ,`employee_id` varchar(50)
 ,`work_email` varchar(50)
 ,`department` varchar(255)
+,`position_id` tinyint(2)
 ,`current_position` varchar(50)
 ,`profile_photo` text
 ,`resume_file_path` text
@@ -1382,7 +1385,7 @@ CREATE TABLE `vw_user_details` (
 --
 DROP TABLE IF EXISTS `vw_employee_details`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_employee_details`  AS  select `a`.`id` AS `id`,`a`.`first_name` AS `first_name`,`a`.`middle_name` AS `middle_name`,`a`.`last_name` AS `last_name`,concat(`a`.`first_name`,' ',`a`.`middle_name`,' ',`a`.`last_name`) AS `fullname`,`a`.`gender` AS `gender`,`a`.`date_of_birth` AS `date_of_birth`,`g`.`residence` AS `residence_address`,`g`.`phone_number_1` AS `phone_number_1`,`g`.`phone_number_2` AS `phone_number_2`,`g`.`email` AS `email`,`g`.`emergency_fullname` AS `emergency_fullname`,`g`.`emergency_relationship` AS `emergency_relationship`,`g`.`emergency_occupation` AS `emergency_occupation`,`g`.`emergency_phone_1` AS `emergency_phone_1`,`g`.`emergency_phone_2` AS `emergency_phone_2`,`g`.`emergency_residence` AS `emergency_residence`,`a`.`id_number` AS `id_number`,`a`.`id_expiry_date` AS `id_expiry_date`,`a`.`id_issue_date` AS `id_issue_date`,`a`.`marital_status` AS `marital_status`,`a`.`nationality` AS `nationality`,`a`.`postal_address` AS `postal_address`,`a`.`social_security` AS `social_security`,`a`.`bank_name` AS `bank_name`,`a`.`bank_branch` AS `bank_branch`,`a`.`account_number` AS `account_number`,`a`.`user_id` AS `user_id`,`a`.`status` AS `status`,`a`.`created_date` AS `created_date`,`d`.`employment_type` AS `employment_type`,`d`.`employment_startdate` AS `employment_startdate`,`d`.`employee_id` AS `employee_id`,`d`.`work_email` AS `work_email`,`e`.`name` AS `department`,`f`.`name` AS `current_position`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`a`.`photo_id` = `bgee_db`.`blobs`.`id`)) AS `profile_photo`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`d`.`resume_id` = `bgee_db`.`blobs`.`id`)) AS `resume_file_path`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`d`.`application_id` = `bgee_db`.`blobs`.`id`)) AS `application_file_path` from (((((`bgee_db`.`hr_employee_biodata` `a` left join `bgee_db`.`hr_employee_other_info` `c` on((`a`.`id` = `c`.`biodata_id`))) left join `bgee_db`.`hr_employee_work_info` `d` on((`a`.`id` = `d`.`biodata_id`))) left join `bgee_db`.`hr_employee_contact_info` `g` on((`a`.`id` = `g`.`biodata_id`))) left join `bgee_db`.`hr_departments` `e` on((`d`.`department_id` = `e`.`id`))) left join `bgee_db`.`hr_position` `f` on((`d`.`position_id` = `f`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_employee_details`  AS  select `a`.`id` AS `id`,`a`.`first_name` AS `first_name`,`a`.`middle_name` AS `middle_name`,`a`.`last_name` AS `last_name`,concat(`a`.`first_name`,' ',`a`.`middle_name`,' ',`a`.`last_name`) AS `fullname`,`a`.`gender` AS `gender`,`a`.`date_of_birth` AS `date_of_birth`,`g`.`residence` AS `residence_address`,`g`.`phone_number_1` AS `phone_number_1`,`g`.`phone_number_2` AS `phone_number_2`,`g`.`email` AS `email`,`g`.`emergency_fullname` AS `emergency_fullname`,`g`.`emergency_relationship` AS `emergency_relationship`,`g`.`emergency_occupation` AS `emergency_occupation`,`g`.`emergency_phone_1` AS `emergency_phone_1`,`g`.`emergency_phone_2` AS `emergency_phone_2`,`g`.`emergency_residence` AS `emergency_residence`,`a`.`id_number` AS `id_number`,`a`.`id_expiry_date` AS `id_expiry_date`,`a`.`id_issue_date` AS `id_issue_date`,`a`.`marital_status` AS `marital_status`,`a`.`nationality` AS `nationality`,`a`.`postal_address` AS `postal_address`,`a`.`social_security` AS `social_security`,`a`.`bank_name` AS `bank_name`,`a`.`bank_branch` AS `bank_branch`,`a`.`account_number` AS `account_number`,`a`.`user_id` AS `user_id`,`a`.`status` AS `status`,`a`.`created_date` AS `created_date`,`d`.`employment_type` AS `employment_type`,`d`.`employment_startdate` AS `employment_startdate`,`d`.`employee_id` AS `employee_id`,`d`.`work_email` AS `work_email`,`e`.`name` AS `department`,`f`.`id` AS `position_id`,`f`.`name` AS `current_position`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`a`.`photo_id` = `bgee_db`.`blobs`.`id`)) AS `profile_photo`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`d`.`resume_id` = `bgee_db`.`blobs`.`id`)) AS `resume_file_path`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`d`.`application_id` = `bgee_db`.`blobs`.`id`)) AS `application_file_path` from (((((`bgee_db`.`hr_employee_biodata` `a` left join `bgee_db`.`hr_employee_other_info` `c` on((`a`.`id` = `c`.`biodata_id`))) left join `bgee_db`.`hr_employee_work_info` `d` on((`a`.`id` = `d`.`biodata_id`))) left join `bgee_db`.`hr_employee_contact_info` `g` on((`a`.`id` = `g`.`biodata_id`))) left join `bgee_db`.`hr_departments` `e` on((`d`.`department_id` = `e`.`id`))) left join `bgee_db`.`hr_position` `f` on((`d`.`position_id` = `f`.`id`))) ;
 
 -- --------------------------------------------------------
 
