@@ -210,7 +210,6 @@ class Administration extends MX_Controller
     public function save_employee() {
       if(in_array('new registration', $_SESSION['user']['roles'])) {
         $this->form_validation->set_rules('id','Employee ID','trim');
-        $this->form_validation->set_rules('delete_item','Delete','trim');
         $this->form_validation->set_rules('response_type','Response Type','trim');
 
         $this->form_validation->set_rules('first_name','First Name','trim|required');
@@ -471,16 +470,37 @@ class Administration extends MX_Controller
     /*********************************	Data Update	****************************/
 
   /*********************************  Data Deletion  ***********************/
-  public function delete() {
+  public function delete_record() {
     $this->form_validation->set_rules('id','Delete ID','required|trim');
-    $this->form_validation->set_rules('dbres','DB Res','required|trim');
+    $this->form_validation->set_rules('tbl_ref','Table Reference','required|trim');
 
     if ($this->form_validation->run() === FALSE) {
       $return_data['error'] = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
       print_r(json_encode($return_data));
     }
     else {
-      
+      # Loading Model
+      $this->load->model('globals/model_update');
+      $keyword = $this->input->post('tbl_ref');
+      $delete_id = $this->input->post('id');
+      /***** Delete Employee *****/
+      if($keyword == "employee") {
+        # code...
+        $dbres = self::$_Default_DB;
+        $tablename = "hr_employee_biodata";
+        $update_data = array('status' => "deleted");
+        $where_condition = array('id' => $delete_id);
+
+        $query_result = $this->model_update->update_info($dbres,$tablename,@$return_dataType,$update_data,$where_condition);
+
+        if($query_result)
+          $return_data['success'] = "Delete Successful";
+        else
+          $return_data['error'] = "Delete Failed";
+
+        print_r(json_encode($return_data));
+      }
+      /***** Delete Employee *****/
     }
   }
   /*********************************  Data Deletion  ***********************/

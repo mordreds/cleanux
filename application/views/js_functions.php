@@ -5,7 +5,7 @@
     });
   /************ Page Loading Gif ************/
 
-  /************ Panel Tabs Retain ************
+  /************ Panel Tabs Retain ************/
   	$(document).ready(function() {
       if(location.hash) {
         $('a[href=' + location.hash + ']').tab('show');

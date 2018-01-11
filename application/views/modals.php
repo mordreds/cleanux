@@ -8,6 +8,7 @@
         $('.delete_confirmed_').attr('data-formurl',$(this).data('formurl'));
         $('.delete_confirmed_').attr('data-deleteid',$(this).data('deleteid'));
         $('.delete_confirmed_').attr('data-tableid',$(this).data('tableid'));
+        $('.delete_confirmed_').attr('data-keyword',$(this).data('keyword'));
         $('#delete_modal_').modal('show');
       });
     </script>
@@ -36,7 +37,7 @@
         let formData = { 
           'id': $(this).data('deleteid'),
           'delete_item': "Confirmed",
-          'response_type': "JSON"
+          'tbl_ref': $(this).data('keyword'),
         };
         ajax_post(formurl,formData,tableid);
       });

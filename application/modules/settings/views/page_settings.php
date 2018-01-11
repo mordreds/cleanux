@@ -215,6 +215,7 @@
       $(".display_positions").data("selectBox-selectBoxIt").add({value:"", text: "<em>Select One</em>"});
 
       $('#allemployees').dataTable({
+        order:[],
         ajax: {
           type : 'GET',
           url : '<?= base_url()?>settings/retrieve_alldata/employees/views',
@@ -235,7 +236,7 @@
           }},
           {data: "id", render: function(data,type,row,meta) { 
             if(row.status == "active") {
-              button = '<ul class="action_btns" style="margin-bottom:0px"><li><a class="edit_employee_info" data-firstname="'+row.first_name+'" data-lastname="'+row.last_name+'" data-middlename="'+row.middle_name+'" data-gender="'+row.gender+'"  data-marital="'+row.marital_status+'" data-residence_address="'+row.residence_address+'"  data-phone_number_1="'+row.phone_number_1+'" data-phone_number_2="'+row.phone_number_2+'" data-email="'+row.email+'" data-employee_id="'+row.id+'" data-position="'+row.position_id+'" data-emergency_fullname="'+row.emergency_fullname+'" data-emergency_phone_1="'+row.emergency_phone_1+'" data-emergency_residence="'+row.emergency_residence+'" data-emergency_relationship="'+row.emergency_relationship+'" data-popup="tooltip" data-original-title="Edit Info" ><i class="icon-pencil" style="font-size:18px"></i></a></li><li><a data-client_tel="'+row.phone_number_1+'" data-id="'+row.id+'" data-popup="tooltip" data-original-title="Send SMS"><i class="icon-envelop3" style="font-size:18px"></i></a></li><li><a class="" data-popup="tooltip" data-popup="tooltip" data-original-title="Delete"><i class="icon-trash text-danger delete_button" data-deletename="'+row.fullname+'" data-deleteid="'+row.id+'" data-formurl="<?=base_url()?>administration/save_employee" data-tableid="allemployees" style="font-size: 18px"></i></a></li></ul>';
+              button = '<ul class="action_btns" style="margin-bottom:0px"><li><a class="edit_employee_info" data-firstname="'+row.first_name+'" data-lastname="'+row.last_name+'" data-middlename="'+row.middle_name+'" data-gender="'+row.gender+'"  data-marital="'+row.marital_status+'" data-residence_address="'+row.residence_address+'"  data-phone_number_1="'+row.phone_number_1+'" data-phone_number_2="'+row.phone_number_2+'" data-email="'+row.email+'" data-employee_id="'+row.id+'" data-position="'+row.position_id+'" data-emergency_fullname="'+row.emergency_fullname+'" data-emergency_phone_1="'+row.emergency_phone_1+'" data-emergency_residence="'+row.emergency_residence+'" data-emergency_relationship="'+row.emergency_relationship+'" data-popup="tooltip" data-original-title="Edit Info" ><i class="icon-pencil" style="font-size:18px"></i></a></li><li><a data-client_tel="'+row.phone_number_1+'" data-id="'+row.id+'" data-popup="tooltip" data-original-title="Send SMS"><i class="icon-envelop3" style="font-size:18px"></i></a></li><li><a class="" data-popup="tooltip" data-popup="tooltip" data-original-title="Delete"><i class="icon-trash text-danger delete_button" data-deletename="'+row.fullname+'" data-deleteid="'+row.id+'" data-formurl="<?=base_url()?>administration/delete_record" data-tableid="allemployees" data-keyword="employee" style="font-size: 18px"></i></a></li></ul>';
             } 
             else if(user_status == "deleted"){ }
 
