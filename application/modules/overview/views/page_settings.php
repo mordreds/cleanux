@@ -506,6 +506,7 @@
             $('#receipt_table').DataTable().destroy();
             $('#receipt_table').DataTable({
               searching: false,
+              responsive: false,
               paging: false,
               order: [],
               autoWidth: false,
