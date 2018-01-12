@@ -1,149 +1,161 @@
  <!-- Content area -->
   <div class="content">
     <?php //print "<pre>"; print_r($_SESSION); print "</pre>";?>
-
-
-    
     <!-- Main charts -->
     <div class="row">
-      <div class="col-md-12">
-        <div class="col-xs-1"></div>
-      <div class="panel panel-body col-xs-3">
-                <div class="row text-center">
-                  <div class="col-xs-6">
-                    <p><i class="icon-users2 icon-2x display-inline-block text-info"></i></p>
-                    <h5 class="text-semibold no-margin"><?=number_format($total_users)?></h5>
-                    <span class="text-muted text-size-small">users</span>
-                  </div>
+      <div class="col-sm-6 col-md-2">
+        <div class="panel panel-body panel-body-accent">
+          <div class="media no-margin">
+            <div class="media-left media-middle">
+              <i class="icon-hour-glass2 icon-3x text-info-400"></i>
+            </div>
 
-                  <div class="col-xs-6">
-                    <p><i class="icon-users4 icon-2x display-inline-block text-warning"></i></p>
-                    <h5 class="text-semibold no-margin"><?=number_format($total_customers)?></h5>
-                    <span class="text-muted text-size-small">Customers</span>
-                  </div>
-
-                </div>
-              </div>
-              
-              <div class="panel panel-body col-xs-3">
-                <div class="row text-center">
-                 
-                  <div class="col-xs-6">
-                    <p><i class="icon-hour-glass icon-2x display-inline-block text-success"></i></p>
-                    <h5 class="text-semibold no-margin"><?=number_format($pending_orders)?></h5>
-                    <span class="text-muted text-size-small">pending Orders</span>
-                  </div>
-                  <div class="col-xs-6">
-                    <p><i class="icon-hour-glass3 icon-2x display-inline-block text-success"></i></p>
-                    <h5 class="text-semibold no-margin"><?=number_format($month_orders)?></h5>
-                    <span class="text-muted text-size-small">Monthly Successful Orders</span>
-                  </div>
-                </div>
-              </div>
-             
-              
-               
-              <div class="panel panel-body col-xs-3">
-                <div class="row text-center">
-                 
-                  <div class="col-xs-6">
-                    <p><i class="icon-cash2 icon-2x display-inline-block text-success"></i></p>
-                    <h5 class="text-semibold no-margin">GHC 9,693</h5>
-                    <span class="text-muted text-size-small">Daily Sales</span>
-                  </div>
-                  <div class="col-xs-6">
-                    <p><i class="icon-cash3 icon-2x display-inline-block text-success"></i></p>
-                    <h5 class="text-semibold no-margin">GHC 9,693</h5>
-                    <span class="text-muted text-size-small">Total</span>
-                  </div>
-                </div>
-              </div>
-              
-      </div>
-      <div class="col-md-12">
-
-        <!-- Individual column searching (text inputs) -->
-        <legend> Garment status</legend>
-          <div class="panel panel-flat">
-
-           <table id="alluser" class="table table-responsive datatable-column-search-inputs">
-              <thead>
-                <tr class="bg-teal-400">
-                  <th style="background-color:#405c8b;color:#ffffff">Status</th>
-                    <th style="background-color:#009688;color:#ffffff">1 Day </th>
-                    <th style="background-color:#509600;color:#ffffff">1 - 2 Days</th>
-                    <th style="background-color:#f1d316;color:#ffffff">2 - 3 Days</th>
-                    <th style="background-color:rgb(255, 153, 0);color:#ffffff">3 - 5 Days</th>
-                    <th style="background-color:#f11616;color:#ffffff">5 - 10 Days</th>
-                    <th style="background-color:#121213;color:#ffffff">10 - 15 Days and Beyond</th>
-                  <th class="text-center">Total</th>
-                   <th class="text-center">GHC</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td >Washing</td>
-                    <td><i data-toggle="modal" data-target="#orders">0</i></td>
-                    <td><i data-toggle="modal" data-target="#orders">1</i></td>
-                    <td><i data-toggle="modal" data-target="#orders">0</i></td>
-                    <td><i data-toggle="modal" data-target="#orders">1</i></td>
-                    <td><i data-toggle="modal" data-target="#orders">0</i></td>
-                    <td><i data-toggle="modal" data-target="#orders">5</i></td>
-                  <td >7</td>
-                  <td >GHC 70</td>
-                      </tr>
-                      <tr>
-                  <td>Washing & Ironing</td>
-                    <td><i data-toggle="modal" data-target="#orders">0</i></td>
-                    <td><i data-toggle="modal" data-target="#orders">0</i></td>
-                    <td><i data-toggle="modal" data-target="#orders">1</i></td>
-                    <td><i data-toggle="modal" data-target="#orders">0</i></td>
-                     <td><i data-toggle="modal" data-target="#orders">0</i></td>
-                    <td><i data-toggle="modal" data-target="#orders">5</i></td>
-                  <td >6</td>
-                  <td >GHC 70</td>
-                      </tr>
-                         <tr>
-                  <td>Ironing</td>
-                    <td><i data-toggle="modal" data-target="#orders">0</i></td>
-                    <td><i data-toggle="modal" data-target="#orders">0</i></td>
-                    <td><i data-toggle="modal" data-target="#orders">1</i></td>
-                    <td><i data-toggle="modal" data-target="#orders">0</i></td>
-                     <td><i data-toggle="modal" data-target="#orders">0</i></td>
-                    <td><i data-toggle="modal" data-target="#orders">5</i></td>
-                  <td >6</td>
-                  <td >GHC 70</td>
-                      </tr>
-                         <tr>
-                  <td>Dry & Cleaning</td>
-                    <td><i data-toggle="modal" data-target="#orders">0</i></td>
-                    <td><i data-toggle="modal" data-target="#orders">0</i></td>
-                    <td><i data-toggle="modal" data-target="#orders">1</i></td>
-                    <td><i data-toggle="modal" data-target="#orders">0</i></td>
-                     <td><i data-toggle="modal" data-target="#orders">0</i></td>
-                    <td><i data-toggle="modal" data-target="#orders">5</i></td>
-                  <td >6</td>
-                  <td >GHC 70</td>
-                      </tr>
-              </tbody>
-              <tfoot>
-                 <tr class="bg-teal-400">
-                  <th style="background-color:#405c8b;color:#ffffff">Status</th>
-                    <th style="background-color:#009688;color:#ffffff">1 Day </th>
-                    <th style="background-color:#509600;color:#ffffff">1 - 2 Days</th>
-                    <th style="background-color:#f1d316;color:#ffffff">2 - 3 Days</th>
-                    <th style="background-color:rgb(255, 153, 0);color:#ffffff">3 - 5 Days</th>
-                    <th style="background-color:#f11616;color:#ffffff">5 - 10 Days</th>
-                    <th style="background-color:#121213;color:#ffffff">10 - 15 Days and Beyond</th>
-                  <th class="text-center">Total</th>
-                  <th class="text-center">GHC</th>
-                </tr>
-              </tfoot>
-            </table>
-
+            <div class="media-body text-right">
+              <h3 class="no-margin text-semibold"><?=number_format($pending_orders)?></h3>
+              <span class="text-uppercase text-size-mini text-muted">Pending Orders </span>
+            </div>
           </div>
-      
-    </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-2">
+        <div class="panel panel-body panel-body-accent">
+          <div class="media no-margin">
+            <div class="media-left media-middle">
+              <i class="icon-watch2 icon-3x text-warning-400"></i>
+            </div>
+
+            <div class="media-body text-right">
+              <h3 class="no-margin text-semibold"><?=number_format($overdue_orders)?></h3>
+              <span class="text-uppercase text-size-mini text-muted">OverDue Orders </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-2">
+        <div class="panel panel-body panel-body-accent">
+          <div class="media no-margin">
+            <div class="media-left media-middle" style="padding-right: 0px">
+              <i class="icon-basket icon-3x text-success-400"></i>
+            </div>
+            <div class="media-body text-right">
+              <h3 class="no-margin text-semibold"><?=number_format($month_orders)?></h3>
+              <span class="text-uppercase text-size-mini text-muted">Successful Orders</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-2">
+        <div class="panel panel-body panel-body-accent">
+          <div class="media no-margin">
+            <div class="media-left media-middle" style="padding-right: 0px">
+              <i class="icon-truck icon-3x text-warning-400"></i>
+            </div>
+            <div class="media-body text-right">
+              <h3 class="no-margin text-semibold"><?=number_format($pending_orders)?></h3>
+              <span class="text-uppercase text-size-mini text-muted">OverDue Delivery </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-2">
+        <div class="panel panel-body panel-body-accent">
+          <div class="media no-margin">
+            <div class="media-left media-middle">
+              <i class="icon-basket icon-3x text-success-400"></i>
+            </div>
+            <div class="media-body text-right">
+              <h3 class="no-margin text-semibold"><?=number_format($month_orders)?></h3>
+              <span class="text-uppercase text-size-mini text-muted">Total Orders </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-2">
+        <div class="panel panel-body panel-body-accent">
+          <div class="media no-margin">
+            <div class="media-left media-middle">
+              <i class="icon-cash2 icon-3x text-success-400"></i>
+            </div>
+            <div class="media-body text-right">
+              <h3 class="no-margin text-semibold"><?=number_format($month_orders)?></h3>
+              <span class="text-uppercase text-size-mini text-muted">Total Sales</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-2">
+        <div class="panel panel-body text-center">
+          <h6 class="text-semibold no-margin-bottom mt-5">Orders in April</h6>
+          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
+          <div class="svg-center" id="donut_basic_stats"></div>
+          <div class="row text-center">
+            <div class="col-xs-6">
+              <div class="mt-20">
+                <h5 class="text-semibold no-margin">23,568</h5>
+                <span class="text-muted text-size-small">Revenue</span>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="mt-20">
+                <h5 class="text-semibold no-margin">$9,464</h5>
+                <span class="text-muted text-size-small">Tax</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+
+        <div class="panel panel-body col-xs-9">
+          <div class="row text-center">
+            <div class="col-xs-2">
+              <p><i class="icon-hour-glass3 icon-2x display-inline-block text-info"></i></p>
+              <h5 class="text-semibold no-margin"><?=number_format($pending_orders)?></h5>
+              <span class="text-muted text-size-small">Pending Orders</span>
+            </div>
+            <div class="col-xs-2">
+              <p><i class="icon-hour-glass2 icon-2x display-inline-block text-info"></i></p>
+              <h5 class="text-semibold no-margin"><?=number_format($pending_orders)?></h5>
+              <span class="text-muted text-size-small">Processing Orders</span>
+            </div>
+            <div class="col-xs-2">
+              <p><i class="icon-watch2 icon-2x display-inline-block text-danger"></i></p>
+              <h5 class="text-semibold no-margin"><?=number_format($pending_orders)?></h5>
+              <span class="text-muted text-size-small">Overdue Orders</span>
+            </div>
+            <div class="col-xs-2">
+              <p><i class="icon-truck icon-2x display-inline-block text-danger"></i></p>
+              <h5 class="text-semibold no-margin"><?=number_format($pending_orders)?></h5>
+              <span class="text-muted text-size-small">Overdue Dispatch</span>
+            </div>
+            <div class="col-xs-2">
+              <p><i class="icon-cart5 icon-2x display-inline-block text-success"></i></p>
+              <h5 class="text-semibold no-margin"><?=number_format($month_orders)?></h5>
+              <span class="text-muted text-size-small">Successful Orders</span>
+            </div>
+            <div class="col-xs-2">
+              <p><i class="icon-cash2 icon-2x display-inline-block text-success"></i></p>
+              <h5 class="text-semibold no-margin">GHC 9,693</h5>
+              <span class="text-muted text-size-small">Daily Sales</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-body col-xs-3">
+          <div class="row text-center">
+            <div class="col-xs-6">
+              <p><i class="icon-users2 icon-2x display-inline-block text-info"></i></p>
+              <h5 class="text-semibold no-margin"><?=number_format($total_users)?></h5>
+              <span class="text-muted text-size-small">users</span>
+            </div>
+            <div class="col-xs-6">
+              <p><i class="icon-users4 icon-2x display-inline-block text-warning"></i></p>
+              <h5 class="text-semibold no-margin"><?=number_format($total_customers)?></h5>
+              <span class="text-muted text-size-small">Customers</span>
+            </div>
+          </div>
+        </div>   
+      </div>
 
   </div>
   <!-- /main charts -->

@@ -36,6 +36,7 @@ class Statistics extends MX_Controller
             $data['total_users'] = sizeof($total_users);
           else
             $data['total_users'] = 0;
+          
           # Total Clients
           $dbres = self::$_Default_DB;
           $tablename = "laundry_clients";
@@ -45,15 +46,17 @@ class Statistics extends MX_Controller
             $data['total_customers'] = sizeof($total_customers);
           else
             $data['total_customers'] = 0;
+          
           # Total Pending Orders
           $dbres = self::$_Views_DB;
           $tablename = "vw_orderlist_summary";
-          $condition = array('status' => "Pending");
+          $condition = "status IN ('Pending','Processing')";
           $pending_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
           if(!isset($pending_orders['DB_ERROR']))
             $data['pending_orders'] = sizeof($pending_orders);
           else
             $data['pending_orders'] = 0;
+          
           # Total Monthly Orders
           $dbres = self::$_Views_DB;
           $tablename = "vw_orderlist_summary";
@@ -63,6 +66,16 @@ class Statistics extends MX_Controller
             $data['month_orders'] = sizeof($month_orders);
           else
             $data['month_orders'] = 0;
+          
+          # Total Overdue Orders
+          $dbres = self::$_Views_DB;
+          $tablename = "vw_orderlist_summary";
+          $condition = "due_date < Now() AND status != 'Delivered'";
+          $overdue_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
+          if(!isset($overdue_orders['DB_ERROR']))
+            $data['overdue_orders'] = sizeof($overdue_orders);
+          else
+            $data['overdue_orders'] = 0;
 
         /****** Additional Functions  ****************/
 
