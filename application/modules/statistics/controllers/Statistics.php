@@ -76,7 +76,6 @@ class Statistics extends MX_Controller
             $data['overdue_orders'] = sizeof($overdue_orders);
           else
             $data['overdue_orders'] = 0;
-
         /****** Additional Functions  ****************/
 
         /***************** Interface *****************/

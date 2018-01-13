@@ -353,7 +353,7 @@
           success: function(response) { 
             response = JSON.parse(response)
             let comments = "";
-            if(!response.ERR) {
+            if(!response.DB_ERROR) {
               $.each(response, function(key,value){
                 commenter_fullname = value.commenter_fullname;
                 comment = value.comment;
@@ -402,10 +402,10 @@
               <div class="row">
                 <div class="col-xs-6">
                   <ul class="icons-list icons-list-extended mt-10">
-                      <li><a href="#"><i class="icon-mic2"></i></a></li>
-                      <li><a href="#"><i class="icon-file-picture"></i></a></li>
-                      <li><a href="#"><i class="icon-file-plus"></i></a></li>
-                    </ul>
+                    <li><a href="#"><i class="icon-mic2"></i></a></li>
+                    <li><a href="#"><i class="icon-file-picture"></i></a></li>
+                    <li><a href="#"><i class="icon-file-plus"></i></a></li>
+                  </ul>
                 </div>
                 <div class="col-xs-6 text-right">
                   <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Send</button>

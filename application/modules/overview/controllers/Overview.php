@@ -694,8 +694,8 @@ class Overview extends MX_Controller
               'status' => $query_result[$a]->status,
               'date_created' => $query_result[$a]->date_created,
               'total_comments' => $query_result[$a]->total_comments,
-              'billing_info_total_cost' => $billing_info_total_cost,
-              'billing_info_total_amount_paid' => $billing_info_total_amount_paid,
+              'billing_info_total_cost' => @$billing_info_total_cost,
+              'billing_info_total_amount_paid' => @$billing_info_total_amount_paid,
             ];
 
           }

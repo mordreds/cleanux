@@ -75,6 +75,12 @@
 		  <?php endif; ?>
 		<!-- ***** Users Page ***** -->
 
+		<!-- ***** Statistics Page ***** -->
+			<?php if($page_controller == "statistics") : ?>
+				<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/visualization/d3/d3.min.js"></script>
+				<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/visualization/d3/d3_tooltip.js"></script>
+			<?php endif; ?>
+		<!-- ***** Statistics Page ***** -->
 		
 
   <!-- *********** Custom JS Need For Pages ************ -->
