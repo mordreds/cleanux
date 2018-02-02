@@ -79,6 +79,8 @@
 			<?php if($page_controller == "statistics") : ?>
 				<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/visualization/d3/d3.min.js"></script>
 				<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/visualization/d3/d3_tooltip.js"></script>
+				<script type="text/javascript" src="<?=base_url()?>resources/js/plugins/visualization/echarts/echarts.js"></script>
+				<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 			<?php endif; ?>
 		<!-- ***** Statistics Page ***** -->
 		
