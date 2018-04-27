@@ -57,14 +57,20 @@
                 <tr class="bg-slate-800">
                   <th>Customers Name</th>
                   <th>Order Number</th>
-                  <th>Balance</th>
                   <th>Due Date</th>
                   <th>Delivery Method</th>
                   <th>Delivery Location</th>
                   <th>Status</th>
+                  <th>Amount</th>
                 </tr>
               </thead>
               <tbody></tbody>
+              <tfoot>
+                <tr>
+                  <th colspan="6" style="text-align:right">Total:</th>
+                  <th style="font-size: 15px; font-style: bold"></th>
+                </tr>
+              </tfoot>
             </table>
           </div>
         </div>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 11, 2018 at 05:58 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.0.15
+-- Host: localhost
+-- Generation Time: Apr 27, 2018 at 06:34 AM
+-- Server version: 5.7.22-0ubuntu0.16.04.1
+-- PHP Version: 7.0.28-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -99,7 +99,85 @@ INSERT INTO `successful_logins` (`id`, `user_id`, `time_in`, `time_out`, `online
 (24, 1, '2018-01-09 13:05:19', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.97 Safari/537.36 Vivaldi/1.94.1008.40', '192.168.3.24', 'NII-OFFICE', ',', NULL),
 (25, 1, '2018-01-10 09:03:37', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36 OPR/50.0.2762.45', '::1', 'London', NULL, NULL),
 (26, 1, '2018-01-10 14:38:11', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36 OPR/50.0.2762.45', '::1', 'London', NULL, NULL),
-(27, 1, '2018-01-11 11:07:50', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36 OPR/50.0.2762.45', '::1', 'London', NULL, NULL);
+(27, 1, '2018-01-11 18:26:42', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36 OPR/50.0.2762.45', '::1', 'London', NULL, NULL),
+(28, 1, '2018-01-11 18:27:02', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.211.7.70', '41.211.7.70', 'Accra,Greater Accra Region', 'Ghana'),
+(29, 2, '2018-01-12 00:02:24', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.208.74', '41.57.208.74', 'Accra,Greater Accra Region', 'Ghana'),
+(30, 2, '2018-01-12 00:02:34', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/63.0.3239.73 Mobile/15C153 Safari/604.1', '41.57.208.74', '41.57.208.74', 'Accra,Greater Accra Region', 'Ghana'),
+(31, 2, '2018-01-12 07:29:06', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_2 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/63.0.3239.73 Mobile/15C202 Safari/604.1', '41.57.217.52', '41.57.217.52', 'Accra,Greater Accra Region', 'Ghana'),
+(32, 2, '2018-01-12 21:18:12', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.208.24', '41.57.208.24', 'Accra,Greater Accra Region', 'Ghana'),
+(33, 2, '2018-01-13 14:08:10', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.217.88', '41.57.217.88', 'Accra,Greater Accra Region', 'Ghana'),
+(34, 2, '2018-01-14 22:24:00', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.217.95', '41.57.217.95', 'Accra,Greater Accra Region', 'Ghana'),
+(35, 1, '2018-01-15 11:49:27', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.222.232.246', '41.222.232.246', 'Accra,Greater Accra Region', 'Ghana'),
+(36, 2, '2018-01-15 11:08:42', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.217.109', '41.57.217.109', 'Accra,Greater Accra Region', 'Ghana'),
+(37, 2, '2018-01-15 11:56:50', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.222.232.246', '41.222.232.246', 'Accra,Greater Accra Region', 'Ghana'),
+(38, 2, '2018-01-15 11:59:53', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.222.232.246', '41.222.232.246', 'Accra,Greater Accra Region', 'Ghana'),
+(39, 1, '2018-01-15 17:00:57', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.217.109', '41.57.217.109', 'Accra,Greater Accra Region', 'Ghana'),
+(40, 1, '2018-01-16 05:40:47', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36 OPR/43.0.2442.1144', '41.57.217.40', '41.57.217.40', 'Accra,Greater Accra Region', 'Ghana'),
+(41, 2, '2018-01-16 05:55:22', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.217.40', '41.57.217.40', 'Accra,Greater Accra Region', 'Ghana'),
+(42, 2, '2018-01-16 13:01:34', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.222.232.246', '41.222.232.246', 'Accra,Greater Accra Region', 'Ghana'),
+(43, 1, '2018-01-16 17:37:31', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.217.10', '41.57.217.10', 'Accra,Greater Accra Region', 'Ghana'),
+(44, 1, '2018-01-16 17:38:05', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.217.10', '41.57.217.10', 'Accra,Greater Accra Region', 'Ghana'),
+(45, 1, '2018-01-17 15:23:39', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.208.86', '41.57.208.86', 'Accra,Greater Accra Region', 'Ghana'),
+(46, 2, '2018-01-17 17:42:44', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.208.86', '41.57.208.86', 'Accra,Greater Accra Region', 'Ghana'),
+(47, 1, '2018-01-17 17:43:14', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.208.86', '41.57.208.86', 'Accra,Greater Accra Region', 'Ghana'),
+(48, 1, '2018-01-17 17:43:56', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.208.86', '41.57.208.86', 'Accra,Greater Accra Region', 'Ghana'),
+(49, 1, '2018-01-17 17:44:00', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.208.86', '41.57.208.86', 'Accra,Greater Accra Region', 'Ghana'),
+(50, 2, '2018-01-17 21:59:55', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_2 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/63.0.3239.73 Mobile/15C202 Safari/604.1', '41.57.217.63', '41.57.217.63', 'Accra,Greater Accra Region', 'Ghana'),
+(51, 2, '2018-01-17 22:21:01', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.217.63', '41.57.217.63', 'Accra,Greater Accra Region', 'Ghana'),
+(52, 1, '2018-01-17 22:41:52', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36 OPR/43.0.2442.1144', '41.57.217.63', '41.57.217.63', 'Accra,Greater Accra Region', 'Ghana'),
+(53, 1, '2018-01-18 05:06:02', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36 OPR/43.0.2442.1144', '41.57.217.63', '41.57.217.63', 'Accra,Greater Accra Region', 'Ghana'),
+(54, 2, '2018-01-18 10:28:38', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_2 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/63.0.3239.73 Mobile/15C202 Safari/604.1', '41.211.7.70', '41.211.7.70', 'Accra,Greater Accra Region', 'Ghana'),
+(55, 1, '2018-01-18 11:00:35', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.211.7.70', '41.211.7.70', 'Accra,Greater Accra Region', 'Ghana'),
+(56, 1, '2018-01-18 17:19:15', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '154.160.1.161', '154.160.1.161', 'Accra,Greater Accra Region', 'Ghana'),
+(57, 2, '2018-01-20 08:02:44', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.217.85', '41.57.217.85', 'Accra,Greater Accra Region', 'Ghana'),
+(58, 1, '2018-01-20 19:14:12', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36 OPR/43.0.2442.1144', '154.160.2.75', '154.160.2.75', 'Accra,Greater Accra Region', 'Ghana'),
+(59, 1, '2018-01-20 19:20:20', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36 OPR/43.0.2442.1144', '154.160.2.75', '154.160.2.75', 'Accra,Greater Accra Region', 'Ghana'),
+(60, 2, '2018-01-21 13:09:58', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.217.62', '41.57.217.62', 'Accra,Greater Accra Region', 'Ghana'),
+(61, 2, '2018-01-24 19:03:54', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_2 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/63.0.3239.73 Mobile/15C202 Safari/604.1', '41.189.161.120', '41.189.161.120', 'Accra,Greater Accra Region', 'Ghana'),
+(62, 2, '2018-01-24 19:04:16', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_2 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/63.0.3239.73 Mobile/15C202 Safari/604.1', '41.189.163.62', '41.189.163.62', 'Accra (Ashiedu Keteke),Greater Accra', 'Ghana'),
+(63, 2, '2018-01-25 19:05:42', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_2 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/63.0.3239.73 Mobile/15C202 Safari/604.1', '41.189.163.52', '41.189.163.52', 'Accra (Ashiedu Keteke),Greater Accra', 'Ghana'),
+(64, 1, '2018-01-27 15:05:15', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(65, 2, '2018-01-28 01:17:33', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '154.160.4.227', '154.160.4.227', 'Accra (Ashiedu Keteke),Greater Accra', 'Ghana'),
+(66, 2, '2018-01-30 15:39:56', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Linux; Android 4.0.4; SmartTabII7 Build/IMM76D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19', '41.242.138.8', '41.242.138.8', 'Accra,Greater Accra Region', 'Ghana'),
+(67, 1, '2018-01-30 15:48:11', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.211.7.70', '41.211.7.70', 'Accra,Greater Accra Region', 'Ghana'),
+(68, 1, '2018-01-31 11:43:45', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36 OPR/50.0.2762.67', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(69, 1, '2018-02-01 07:39:06', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '138.197.174.111', '138.197.174.111', 'Toronto,Ontario', 'Canada'),
+(70, 1, '2018-02-02 09:47:40', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36 OPR/50.0.2762.67', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(71, 1, '2018-02-02 12:48:36', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36 OPR/50.0.2762.67', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(72, 1, '2018-02-02 13:09:53', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36 OPR/50.0.2762.67', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(73, 1, '2018-02-02 14:02:11', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.242.136.5', '41.242.136.5', 'Accra,Greater Accra Region', 'Ghana'),
+(74, 2, '2018-02-02 20:27:55', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_5 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/64.0.3282.112 Mobile/15D60 Safari/604.1', '154.160.7.219', '154.160.7.219', 'Accra (Ashiedu Keteke),Greater Accra', 'Ghana'),
+(75, 1, '2018-02-02 23:32:13', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '138.197.172.126', '138.197.172.126', 'Toronto,Ontario', 'Canada'),
+(76, 1, '2018-02-03 06:13:25', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_5 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/64.0.3282.112 Mobile/15D60 Safari/604.1', '154.160.2.245', '154.160.2.245', 'Accra,Greater Accra Region', 'Ghana'),
+(77, 1, '2018-02-03 08:46:05', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36', '41.189.163.63', '41.189.163.63', 'Accra (Ashiedu Keteke),Greater Accra', 'Ghana'),
+(78, 1, '2018-02-04 22:19:26', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_5 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/64.0.3282.112 Mobile/15D60 Safari/604.1', '41.189.161.118', '41.189.161.118', 'Accra,Greater Accra Region', 'Ghana'),
+(79, 1, '2018-02-05 08:32:42', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_5 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/64.0.3282.112 Mobile/15D60 Safari/604.1', '41.189.161.124', '41.189.161.124', 'Accra,Greater Accra Region', 'Ghana'),
+(80, 1, '2018-02-05 09:27:50', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.211.7.70', '41.211.7.70', 'Accra,Greater Accra Region', 'Ghana'),
+(81, 1, '2018-02-06 21:23:30', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_5 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/64.0.3282.112 Mobile/15D60 Safari/604.1', '41.189.163.204', '41.189.163.204', 'Accra (Ashiedu Keteke),Greater Accra', 'Ghana'),
+(82, 1, '2018-02-08 16:22:17', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.211.7.70', '41.211.7.70', 'Accra,Greater Accra Region', 'Ghana'),
+(83, 2, '2018-02-11 12:20:53', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.189.161.102', '41.189.161.102', 'Accra,Greater Accra Region', 'Ghana'),
+(84, 2, '2018-02-17 19:08:48', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.189.163.34', '41.189.163.34', 'Accra,Greater Accra Region', 'Ghana'),
+(85, 2, '2018-02-18 15:41:02', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.189.163.59', '41.189.163.59', 'Accra,Greater Accra Region', 'Ghana'),
+(86, 1, '2018-02-21 12:59:13', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36', '41.242.137.33', '41.242.137.33', 'Accra,Greater Accra Region', 'Ghana'),
+(87, 2, '2018-02-23 14:24:33', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '154.160.0.77', '154.160.0.77', 'Accra,Greater Accra Region', 'Ghana'),
+(88, 1, '2018-02-24 01:15:43', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(89, 1, '2018-02-24 07:15:39', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(90, 1, '2018-03-07 13:43:21', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36', '41.211.7.70', '41.211.7.70', 'Accra,Greater Accra Region', 'Ghana'),
+(91, 1, '2018-03-07 13:43:27', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36', '41.211.7.70', '41.211.7.70', 'Accra,Greater Accra Region', 'Ghana'),
+(92, 2, '2018-04-07 12:03:11', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36', '41.211.7.70', '41.211.7.70', 'Accra,Greater Accra Region', 'Ghana'),
+(93, 2, '2018-04-09 08:17:39', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36', '41.211.7.70', '41.211.7.70', 'Accra,Greater Accra Region', 'Ghana'),
+(94, 2, '2018-04-09 08:17:50', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36', '41.211.7.70', '41.211.7.70', 'Accra,Greater Accra Region', 'Ghana'),
+(95, 2, '2018-04-11 17:58:54', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36', '41.211.7.70', '41.211.7.70', 'Accra,Greater Accra Region', 'Ghana'),
+(96, 2, '2018-04-11 17:59:00', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36', '41.211.7.70', '41.211.7.70', 'Accra,Greater Accra Region', 'Ghana'),
+(97, 2, '2018-04-11 17:59:10', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36', '41.211.7.70', '41.211.7.70', 'Accra,Greater Accra Region', 'Ghana'),
+(98, 2, '2018-04-12 07:51:28', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Linux; Android 4.0.4; SmartTabII7 Build/IMM76D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19', '41.211.7.70', '41.211.7.70', 'Accra,Greater Accra Region', 'Ghana'),
+(99, 2, '2018-04-14 05:01:24', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36', '154.160.4.199', '154.160.4.199', 'Accra,Greater Accra Region', 'Ghana'),
+(100, 1, '2018-04-16 09:02:27', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(101, 1, '2018-04-24 10:23:03', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36 OPR/52.0.2871.64', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(102, 1, '2018-04-26 19:21:10', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36 OPR/52.0.2871.64', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(103, 1, '2018-04-26 19:44:57', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36 OPR/52.0.2871.64', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(104, 1, '2018-04-26 20:08:04', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36 OPR/52.0.2871.64', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(105, 1, '2018-04-27 09:08:04', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36 OPR/52.0.2871.64', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana');
 
 -- --------------------------------------------------------
 
@@ -152,7 +230,7 @@ ALTER TABLE `failed_logins`
 -- AUTO_INCREMENT for table `successful_logins`
 --
 ALTER TABLE `successful_logins`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=28;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=106;
 --
 -- AUTO_INCREMENT for table `sysaudit`
 --
@@ -214,7 +292,7 @@ CREATE TABLE `hr_company_info` (
 --
 
 INSERT INTO `hr_company_info` (`id`, `name`, `telephone_1`, `telephone_2`, `fax`, `email`, `postal_address`, `residence_address`, `website`, `mission`, `vision`, `tin_number`, `date_of_commence`) VALUES
-(1, 'BG\'S LAUNDRY', '0506139739', '0244949261', '', 'bgslaundry@gmail.com', 'BOX K47, OFANKOR - ACCRA', 'GROUND FLOOR - MR MEGA PLAZA. OFANKOR BARRIER - ACCRA.', 'www.bgslaundry.com', '', '', 'TN10245682-GA', '0000-00-00');
+(1, 'LAUNDRY APP', '0506139739', '0244949261', '', 'bgslaundry@gmail.com', 'BOX K47, OFANKOR - ACCRA', 'GROUND FLOOR - MR MEGA PLAZA. OFANKOR BARRIER - ACCRA.', 'www.bgslaundry.com', 'To Be Filled By The Company', 'To Be Filled By The Company', 'TN10245682-GA', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -271,7 +349,8 @@ CREATE TABLE `hr_employee_biodata` (
 
 INSERT INTO `hr_employee_biodata` (`id`, `first_name`, `middle_name`, `last_name`, `gender`, `date_of_birth`, `id_type`, `id_number`, `id_expiry_date`, `id_issue_date`, `id_card_photo_id`, `marital_status`, `nationality`, `postal_address`, `social_security`, `bank_name`, `bank_branch`, `account_number`, `user_id`, `photo_id`, `status`, `created_date`) VALUES
 (1, 'Claude', 'Nii', 'Nai', 'Male', NULL, NULL, NULL, NULL, NULL, 0, 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '2018-01-09 11:48:33'),
-(3, 'Daniella', '', 'Eshun', 'Female', NULL, NULL, NULL, NULL, NULL, 0, 'Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '2018-01-11 13:06:57');
+(3, 'Daniella', '', 'Eshun', 'Female', NULL, NULL, NULL, NULL, NULL, 0, 'Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '2018-01-11 13:06:57'),
+(4, 'Bismark', '', 'Nana', 'Male', NULL, NULL, NULL, NULL, NULL, 0, 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '2018-01-17 12:41:57');
 
 -- --------------------------------------------------------
 
@@ -302,7 +381,8 @@ CREATE TABLE `hr_employee_contact_info` (
 
 INSERT INTO `hr_employee_contact_info` (`id`, `biodata_id`, `phone_number_1`, `phone_number_2`, `email`, `residence`, `emergency_fullname`, `emergency_relationship`, `emergency_occupation`, `emergency_phone_1`, `emergency_phone_2`, `emergency_residence`, `emergency_postal_addr`, `date_created`) VALUES
 (1, 1, '0244444444', '0544444444', 'Claude@africaloop.com', 'Hse  No 12, Trade Fair Function.', 'Rebel Leader', 'Guardian', '', '0344444444', NULL, 'Dodowa', '', '2018-01-09 11:48:33'),
-(2, 3, '0266666666', '0566666666', 'Daniella@gmailcom', 'Kasoa - Overhead', 'Guardian', 'Guardian', '', '0277777777', NULL, 'Kasoa - Kalabule', '', '2018-01-11 13:06:57');
+(2, 3, '0266666666', '0566666666', 'Daniella@gmailcom', 'Kasoa - Overhead', 'Guardian', 'Guardian', '', '0277777777', NULL, 'Kasoa - Kalabule', '', '2018-01-11 13:06:57'),
+(3, 4, '1234567890', '', 'Watara@gmail.com', 'Taifa', '1234567890', 'Father', '', '1234567890', NULL, 'Taifa', '', '2018-01-17 17:41:57');
 
 -- --------------------------------------------------------
 
@@ -342,7 +422,8 @@ CREATE TABLE `hr_employee_work_info` (
 
 INSERT INTO `hr_employee_work_info` (`id`, `biodata_id`, `employee_id`, `position_id`, `department_id`, `employment_type`, `employment_startdate`, `work_email`, `resume_id`, `application_id`, `date_created`) VALUES
 (1, 1, 'BG/EMP/001', 2, 1, '', NULL, NULL, NULL, 0, '2018-01-09 11:48:33'),
-(2, 3, 'BG/EMP/002', 2, 1, '', NULL, NULL, NULL, 0, '2018-01-11 13:06:57');
+(2, 3, 'BG/EMP/002', 2, 1, '', NULL, NULL, NULL, 0, '2018-01-11 13:06:57'),
+(3, 4, 'BG/EMP/003', 1, 1, '', NULL, NULL, NULL, 0, '2018-01-17 17:41:57');
 
 -- --------------------------------------------------------
 
@@ -395,7 +476,9 @@ INSERT INTO `laundry_clients` (`id`, `fullname`, `gender`, `company`, `residence
 (2, 'Hope Avalon', 'Male', 'Hackerton', 'Kaneshie', '', '0233333333', '0533333333', 'hopeavalon@hackerton.com', 1, 1, 'active', '2018-01-09 11:51:50'),
 (3, 'Salama Jintey James', 'Male', 'Hackernoon', 'Kwabenya', '', '0222222222', '0522222222', 'jamessalama@hackernoon.com', 1, 1, 'active', '2018-01-09 11:53:58'),
 (4, 'Evans Ofori Owusu', 'Male', '', 'Adenta Barrier', '', '0211111111', '0511111111', 'evansofori@gmail.com', 1, 0, 'active', '2018-01-09 11:55:12'),
-(5, 'Ivan Pink', 'Male', 'Phalaa', 'Sonitra - Amasaman', '', '0255555555', '0255555555', 'ivanpink@gmail.com', 1, 0, 'active', '2018-01-09 11:57:51');
+(5, 'Ivan Pink', 'Male', 'Phalaa', 'Sonitra - Amasaman', '', '0255555555', '0255555555', 'ivanpink@gmail.com', 1, 0, 'active', '2018-01-09 11:57:51'),
+(6, 'Barkson Saddam', 'Male', '', '14 Gurugu Street', 'GP2556', '0000000000', '', 'bark@gmail.com', 1, 1, 'active', '2018-01-15 07:10:43'),
+(7, 'Bismark Offei', 'Male', 'Phalaa.com', 'Box Ta 353', 'Accra', '0245626487', '0245626487', 'wikills22@gmail.com', 1, 0, 'active', '2018-02-23 09:26:23');
 
 -- --------------------------------------------------------
 
@@ -421,7 +504,7 @@ INSERT INTO `laundry_delivery_method` (`id`, `location`, `duration`, `price`, `s
 (2, 'Express Service (Within Accra)', '0 ~ 1 Days', 15, 'active', '2017-12-27 19:46:57'),
 (3, 'Regular (Outside Accra)', '5 ~ 7 Days', 15, 'active', '2017-12-27 19:51:11'),
 (4, 'Regular (Within Accra)', '3 ~ 4 Days', 5, 'active', '2017-12-27 20:08:13'),
-(5, 'Pickup (At Office)', 'At Users Discretion', 0, 'active', '2017-12-27 20:08:58');
+(5, 'Pickup (At Office)', 'At Users Discretion', 0, 'deleted', '2017-12-27 20:08:58');
 
 -- --------------------------------------------------------
 
@@ -463,6 +546,13 @@ CREATE TABLE `laundry_order_balances` (
   `payment_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `laundry_order_balances`
+--
+
+INSERT INTO `laundry_order_balances` (`id`, `order_id`, `balance_paid`, `user_id`, `status`, `payment_date`) VALUES
+(1, 8, 16, 2, 'Paid', '2018-04-09 04:19:08');
+
 -- --------------------------------------------------------
 
 --
@@ -477,6 +567,15 @@ CREATE TABLE `laundry_order_comments` (
   `status` enum('active','inactive') NOT NULL DEFAULT 'active',
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `laundry_order_comments`
+--
+
+INSERT INTO `laundry_order_comments` (`id`, `order_id`, `user_id`, `comment`, `status`, `date_created`) VALUES
+(1, 2, 1, 'process ASAP', 'active', '2018-01-16 12:48:19'),
+(2, 3, 1, 'i tear the shada', 'active', '2018-01-20 14:01:37'),
+(3, 8, 2, 'customer will come for item on Wednesday', 'active', '2018-04-07 08:06:30');
 
 -- --------------------------------------------------------
 
@@ -506,7 +605,13 @@ INSERT INTO `laundry_order_details` (`id`, `order_id`, `pricelist_ids`, `quantit
 (1, 1, '3', '5', '5', '25', '', '', '', '', '2017-12-30 15:03:27'),
 (2, 2, '3', '4', '5', '20', '', '', '', '', '2018-01-09 12:08:03'),
 (3, 3, '3|2', '60|5', '5|40', '300|40', '|5 Blankets', '', '', '', '2018-01-09 12:10:42'),
-(4, 4, '2|3', '10|5', '40|5', '40|25', '10 kingsize pillow cases|', '', '', '', '2018-01-11 15:32:11');
+(4, 4, '2|3', '10|5', '40|5', '40|25', '10 kingsize pillow cases|', '', '', '', '2018-01-11 15:32:11'),
+(5, 5, '3', '4', '5', '20', '', '', '', '', '2018-01-16 00:44:06'),
+(6, 6, '5|7', '2|3', '30|15', '60|15', '|a', '', '', '', '2018-01-16 08:45:13'),
+(7, 7, '3|6', '3|4', '5|10', '15|10', '|2 boxers, 2 singlets', '', '', '', '2018-01-20 13:57:14'),
+(8, 8, '7', '2', '15', '15', 'jean', '', '', '', '2018-01-21 08:41:48'),
+(9, 9, '5|7', '1|5', '30|15', '30|15', '|towel', '', '', '', '2018-02-23 09:27:58'),
+(10, 10, '7', '1', '15', '15', 'blanket', '', '', '', '2018-04-07 08:15:01');
 
 -- --------------------------------------------------------
 
@@ -539,9 +644,15 @@ CREATE TABLE `laundry_orders` (
 --
 
 INSERT INTO `laundry_orders` (`id`, `order_number`, `total_cost`, `amount_paid`, `balance`, `tax_id`, `client_id`, `processor_user_id`, `delivery_method_id`, `delivery_location`, `due_date`, `status`, `modified_by`, `modified_date`, `delivered_by`, `processing_stages`, `date_created`) VALUES
-(2, '46844374', 20, 20, 0, 1, 5, 1, 5, 'Pickup', '2018-01-12', 'Pending', 0, NULL, 0, 'Pending', '2018-01-09 12:08:03'),
-(3, '08547680', 355, 200, 155, 1, 2, 1, 2, 'Kaneshie First light', '2018-01-13', 'Pending', 0, NULL, 0, 'Pending', '2018-01-09 12:10:42'),
-(4, '34616706', 65, 65, 0, 1, 3, 1, 5, 'pickup', '2018-01-13', 'Pending', 0, NULL, 0, 'Pending', '2018-01-11 15:32:11');
+(2, '46844374', 20, 20, 0, 1, 5, 1, 5, 'Pickup', '2018-01-12', 'Delivered', 1, '2018-01-18 17:19:57', 0, 'Pending', '2018-01-09 12:08:03'),
+(3, '08547680', 355, 200, 155, 1, 2, 1, 2, 'Kaneshie First light', '2018-01-13', 'Dispatch', 2, '2018-01-28 01:18:23', 0, 'Pending', '2018-01-09 12:10:42'),
+(4, '34616706', 65, 65, 0, 1, 3, 1, 5, 'pickup', '2018-01-13', 'Delivered', 1, '2018-01-18 17:20:21', 0, 'Pending', '2018-01-11 15:32:11'),
+(5, '61591005', 20, 20, 0, 1, 2, 1, 5, 'Pickup', '2018-01-18', 'Delivered', 1, '2018-01-20 19:01:00', 0, 'Pending', '2018-01-16 00:44:06'),
+(6, '00705567', 80, 10, 70, 1, 6, 2, 4, 'Asawasi', '2018-02-02', 'Dispatch', 2, '2018-04-07 12:04:52', 0, 'Pending', '2018-01-16 08:45:13'),
+(7, '31945768', 40, 30, 10, 1, 4, 1, 2, 'Amasaman', '2018-01-21', 'Dispatch', 2, '2018-04-07 12:17:44', 0, 'Pending', '2018-01-20 13:57:14'),
+(8, '96991535', 30, 14, 16, 1, 6, 2, 2, 'none', '2018-01-22', 'Dispatch', 2, '2018-02-23 14:30:12', 0, 'Pending', '2018-01-21 08:41:48'),
+(9, '36579657', 50, 22, 28, 1, 7, 2, 4, 'taifa- Daavi', '2018-02-26', 'Dispatch', 2, '2018-04-07 12:18:05', 0, 'Pending', '2018-02-23 09:27:58'),
+(10, '94202363', 20, 15, 5, 1, 6, 2, 4, 'taifa', '2018-04-09', 'Pending', 0, NULL, 0, 'Pending', '2018-04-07 08:15:01');
 
 -- --------------------------------------------------------
 
@@ -566,7 +677,11 @@ CREATE TABLE `laundry_prices` (
 INSERT INTO `laundry_prices` (`id`, `service_id`, `weight_id`, `garment_id`, `amount`, `status`, `date_created`) VALUES
 (1, 1, 3, 0, 25, 'active', '2017-12-28 04:55:04'),
 (2, 1, 2, 0, 40, 'active', '2017-12-28 04:55:32'),
-(3, 4, 0, 1, 5, 'active', '2017-12-28 04:56:21');
+(3, 4, 0, 1, 5, 'active', '2017-12-28 04:56:21'),
+(4, 2, 1, 5, 20, 'active', '2018-01-16 08:38:47'),
+(5, 2, 2, 5, 30, 'active', '2018-01-16 08:39:17'),
+(6, 1, 1, 5, 10, 'active', '2018-01-16 08:39:53'),
+(7, 1, 2, 5, 15, 'active', '2018-01-16 08:40:15');
 
 -- --------------------------------------------------------
 
@@ -591,7 +706,8 @@ INSERT INTO `laundry_services` (`id`, `name`, `code`, `description`, `status`, `
 (1, 'Washing Only', 'WO', 'All items in this category are weighed', 'active', '2017-12-24 12:37:39'),
 (2, 'Washing & Ironing', 'WI', 'Individual Items Are Charged Here', 'active', '2017-12-27 19:18:22'),
 (3, 'Dry Cleaning', 'DC', 'Dry cleaning description', 'active', '2017-12-27 19:18:42'),
-(4, 'Ironing', 'IR', 'Item Brought for ironing only', 'active', '2017-12-27 19:29:43');
+(4, 'Ironing', 'IR', 'Item Brought for ironing only', 'active', '2017-12-27 19:29:43'),
+(5, 'Delivery', 'DL', 'Deliver washed items', 'active', '2018-01-15 07:06:48');
 
 -- --------------------------------------------------------
 
@@ -641,7 +757,6 @@ INSERT INTO `tax_system` (`id`, `value`, `user_id`, `date_created`) VALUES
 
 --
 -- Stand-in structure for view `vw_employee_details`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_employee_details` (
 `id` bigint(20)
@@ -683,7 +798,6 @@ CREATE TABLE `vw_employee_details` (
 
 --
 -- Stand-in structure for view `vw_laundry_prices`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_prices` (
 `id` bigint(20)
@@ -703,7 +817,6 @@ CREATE TABLE `vw_laundry_prices` (
 
 --
 -- Stand-in structure for view `vw_laundry_weights`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_weights` (
 `id` bigint(20)
@@ -894,12 +1007,12 @@ ALTER TABLE `hr_departments`
 -- AUTO_INCREMENT for table `hr_employee_biodata`
 --
 ALTER TABLE `hr_employee_biodata`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `hr_employee_contact_info`
 --
 ALTER TABLE `hr_employee_contact_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `hr_employee_other_info`
 --
@@ -909,7 +1022,7 @@ ALTER TABLE `hr_employee_other_info`
 -- AUTO_INCREMENT for table `hr_employee_work_info`
 --
 ALTER TABLE `hr_employee_work_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `hr_position`
 --
@@ -919,7 +1032,7 @@ ALTER TABLE `hr_position`
 -- AUTO_INCREMENT for table `laundry_clients`
 --
 ALTER TABLE `laundry_clients`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `laundry_delivery_method`
 --
@@ -934,32 +1047,32 @@ ALTER TABLE `laundry_garments`
 -- AUTO_INCREMENT for table `laundry_order_balances`
 --
 ALTER TABLE `laundry_order_balances`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `laundry_order_comments`
 --
 ALTER TABLE `laundry_order_comments`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `laundry_order_details`
 --
 ALTER TABLE `laundry_order_details`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `laundry_orders`
 --
 ALTER TABLE `laundry_orders`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `laundry_prices`
 --
 ALTER TABLE `laundry_prices`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `laundry_services`
 --
 ALTER TABLE `laundry_services`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `laundry_weights`
 --
@@ -1076,7 +1189,9 @@ CREATE TABLE `roles_privileges_user` (
 INSERT INTO `roles_privileges_user` (`id`, `user_id`, `custom_roles`, `custom_privileges`, `group_id`, `status`) VALUES
 (1, 1, '', '', 1, 'active'),
 (2, 2, '', '', 1, 'active'),
-(9, 7, '', '', 3, 'active');
+(9, 7, '', '', 3, 'active'),
+(10, 8, '', '', 2, 'active'),
+(11, 9, '', '', 2, 'active');
 
 -- --------------------------------------------------------
 
@@ -1107,13 +1222,14 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `passwd`, `default_passwd`, `fullname`, `phone_number`, `temp_employee_id`, `biodata_id`, `first_login`, `login_attempt`, `status`, `created_by`, `date_created`) VALUES
 (1, 'osborne.mordred@gmail.com', '$2y$10$GuOFXrr8Xdd5JFHD9vzm8.tUeafbhkUfvImwdDkswS8NJJOqzV3BC', '', 'Osborne Mordreds', '0541786220', 'KAD/SYS/1', 0, 0, 5, 'active', 1, '2017-05-25 06:05:10'),
 (2, 'wikills2k@gmail.com', '$2y$10$GuOFXrr8Xdd5JFHD9vzm8.tUeafbhkUfvImwdDkswS8NJJOqzV3BC', '', 'Bismark Offei ', '0245626487', 'KAD/SYS/2', 0, 0, 5, 'active', 1, '2017-05-25 06:05:10'),
-(7, 'Akosuapompey@maviscolaundry.com', '', '$2y$10$qdYdPNneNRwV6EJfj8oOY.NN6tXe.puxiu8Iu0coC0ubFDdBthmQ6', 'Akosua  Pompey', '', '', 1, 0, 5, 'active', 0, '2017-12-30 14:09:44');
+(7, 'Akosuapompey@maviscolaundry.com', '', '$2y$10$qdYdPNneNRwV6EJfj8oOY.NN6tXe.puxiu8Iu0coC0ubFDdBthmQ6', 'Akosua  Pompey', '', '', 1, 0, 5, 'active', 0, '2017-12-30 14:09:44'),
+(8, 'Claude@africaloop.com', '', '$2y$10$SJ9epSqbPTOE1dZaGtcCZOZkhMOHOrfGYFAzwzVXK9YiT0e5kFD1y', 'Claude Nii Nai', '', '', 1, 0, 5, 'inactive', 0, '2018-01-17 17:38:37'),
+(9, 'Watara@gmail.com', '', '$2y$10$R1kViRYSZQ37XsnREjvJxuCSuDtIZN6eo.wxl80ms.1iFcQ/1dMCy', 'Bismark  Nana', '', '', 4, 0, 5, 'active', 0, '2018-01-17 17:42:36');
 
 -- --------------------------------------------------------
 
 --
 -- Stand-in structure for view `vw_user_details`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_user_details` (
 `id` bigint(20)
@@ -1205,12 +1321,12 @@ ALTER TABLE `roles_privileges_group`
 -- AUTO_INCREMENT for table `roles_privileges_user`
 --
 ALTER TABLE `roles_privileges_user`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;--
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;--
 -- Database: `bgee_views`
 --
 CREATE DATABASE IF NOT EXISTS `bgee_views` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
@@ -1220,7 +1336,6 @@ USE `bgee_views`;
 
 --
 -- Stand-in structure for view `vw_employee_details`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_employee_details` (
 `id` bigint(20)
@@ -1268,8 +1383,30 @@ CREATE TABLE `vw_employee_details` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `vw_laundry_clients`
+--
+CREATE TABLE `vw_laundry_clients` (
+`id` bigint(20)
+,`fullname` varchar(255)
+,`gender` varchar(10)
+,`company` varchar(255)
+,`residence_address` text
+,`postal_address` text
+,`phone_number_1` varchar(20)
+,`phone_number_2` varchar(20)
+,`email` varchar(30)
+,`sms_alert` tinyint(1)
+,`online_access` tinyint(1)
+,`status` enum('active','inactive','deleted')
+,`date_created` datetime
+,`pending_orders` bigint(21)
+,`completed_orders` bigint(21)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `vw_laundry_order_comments`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_order_comments` (
 `id` bigint(20)
@@ -1285,7 +1422,6 @@ CREATE TABLE `vw_laundry_order_comments` (
 
 --
 -- Stand-in structure for view `vw_laundry_prices`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_prices` (
 `id` bigint(20)
@@ -1305,7 +1441,6 @@ CREATE TABLE `vw_laundry_prices` (
 
 --
 -- Stand-in structure for view `vw_laundry_weights`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_weights` (
 `id` bigint(20)
@@ -1321,7 +1456,6 @@ CREATE TABLE `vw_laundry_weights` (
 
 --
 -- Stand-in structure for view `vw_orderlist_summary`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_orderlist_summary` (
 `id` bigint(20)
@@ -1358,7 +1492,6 @@ CREATE TABLE `vw_orderlist_summary` (
 
 --
 -- Stand-in structure for view `vw_user_details`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_user_details` (
 `id` bigint(20)
@@ -1392,6 +1525,15 @@ CREATE TABLE `vw_user_details` (
 DROP TABLE IF EXISTS `vw_employee_details`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_employee_details`  AS  select `a`.`id` AS `id`,`a`.`first_name` AS `first_name`,`a`.`middle_name` AS `middle_name`,`a`.`last_name` AS `last_name`,concat(`a`.`first_name`,' ',`a`.`middle_name`,' ',`a`.`last_name`) AS `fullname`,`a`.`gender` AS `gender`,`a`.`date_of_birth` AS `date_of_birth`,`g`.`residence` AS `residence_address`,`g`.`phone_number_1` AS `phone_number_1`,`g`.`phone_number_2` AS `phone_number_2`,`g`.`email` AS `email`,`g`.`emergency_fullname` AS `emergency_fullname`,`g`.`emergency_relationship` AS `emergency_relationship`,`g`.`emergency_occupation` AS `emergency_occupation`,`g`.`emergency_phone_1` AS `emergency_phone_1`,`g`.`emergency_phone_2` AS `emergency_phone_2`,`g`.`emergency_residence` AS `emergency_residence`,`a`.`id_number` AS `id_number`,`a`.`id_expiry_date` AS `id_expiry_date`,`a`.`id_issue_date` AS `id_issue_date`,`a`.`marital_status` AS `marital_status`,`a`.`nationality` AS `nationality`,`a`.`postal_address` AS `postal_address`,`a`.`social_security` AS `social_security`,`a`.`bank_name` AS `bank_name`,`a`.`bank_branch` AS `bank_branch`,`a`.`account_number` AS `account_number`,`a`.`user_id` AS `user_id`,`a`.`status` AS `status`,`a`.`created_date` AS `created_date`,`d`.`employment_type` AS `employment_type`,`d`.`employment_startdate` AS `employment_startdate`,`d`.`employee_id` AS `employee_id`,`d`.`work_email` AS `work_email`,`e`.`name` AS `department`,`f`.`id` AS `position_id`,`f`.`name` AS `current_position`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`a`.`photo_id` = `bgee_db`.`blobs`.`id`)) AS `profile_photo`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`d`.`resume_id` = `bgee_db`.`blobs`.`id`)) AS `resume_file_path`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`d`.`application_id` = `bgee_db`.`blobs`.`id`)) AS `application_file_path` from (((((`bgee_db`.`hr_employee_biodata` `a` left join `bgee_db`.`hr_employee_other_info` `c` on((`a`.`id` = `c`.`biodata_id`))) left join `bgee_db`.`hr_employee_work_info` `d` on((`a`.`id` = `d`.`biodata_id`))) left join `bgee_db`.`hr_employee_contact_info` `g` on((`a`.`id` = `g`.`biodata_id`))) left join `bgee_db`.`hr_departments` `e` on((`d`.`department_id` = `e`.`id`))) left join `bgee_db`.`hr_position` `f` on((`d`.`position_id` = `f`.`id`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vw_laundry_clients`
+--
+DROP TABLE IF EXISTS `vw_laundry_clients`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_laundry_clients`  AS  select `a`.`id` AS `id`,`a`.`fullname` AS `fullname`,`a`.`gender` AS `gender`,`a`.`company` AS `company`,`a`.`residence_address` AS `residence_address`,`a`.`postal_address` AS `postal_address`,`a`.`phone_number_1` AS `phone_number_1`,`a`.`phone_number_2` AS `phone_number_2`,`a`.`email` AS `email`,`a`.`sms_alert` AS `sms_alert`,`a`.`online_access` AS `online_access`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created`,coalesce((select count(`bgee_db`.`laundry_orders`.`id`) from `bgee_db`.`laundry_orders` where ((`bgee_db`.`laundry_orders`.`client_id` = `a`.`id`) and (`bgee_db`.`laundry_orders`.`status` = 'pending'))),0) AS `pending_orders`,coalesce((select count(`bgee_db`.`laundry_orders`.`id`) from `bgee_db`.`laundry_orders` where ((`bgee_db`.`laundry_orders`.`client_id` = `a`.`id`) and (`bgee_db`.`laundry_orders`.`status` = 'delivered'))),0) AS `completed_orders` from `bgee_db`.`laundry_clients` `a` ;
 
 -- --------------------------------------------------------
 

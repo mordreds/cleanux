@@ -114,7 +114,6 @@
             {data: "order_number",render: function(data,type,row,meta) { 
               return "<a href='#' data-action='reload' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
             }},
-            {data: "balance"},
             {data: "due_date"},
             {data: "delivery_method"},
             {data: "delivery_location"},
@@ -133,7 +132,44 @@
                 label_color = "label-default";
               return "<span class='label "+label_color+"'>"+row.status+"</span>"; 
             }},
+            {data: "total_amount_paid"/*,render:  function(data,type,row,meta) {
+              return 
+            }*/},
           ],
+          "footerCallback": function (row,data,start,end,display) {
+            var api = this.api();
+        
+            // Remove the formatting to get integer data for summation
+            var intVal = function (i) {
+                return typeof i === 'string' ?
+                    i.replace(/[\$,]/g, '')*1 :
+                    typeof i === 'number' ?
+                        i : 0;
+            };
+        
+            // Total over all pages
+            total =  api.column(6).data().reduce( function (a, b) {
+              return intVal(a) + intVal(b);
+            }, 0);
+        
+            // Total over this page
+            pageTotal = api.column( 6, {page: 'current'}).data().reduce( function (a, b) {
+              return intVal(a) + intVal(b);
+            }, 0);
+        
+            // Update footer
+            $( api.column(6).footer()).html(
+                'GH₵ '+pageTotal.toFixed(2) +' ( GH₵ '+ total.toFixed(2) +' total)'
+            );
+          }
+          /*"footerCallback": function(row,data,start,end,display) {
+            var api = this.api();
+            $( api.column(6).footer() ).html(
+                api.column(6).data().reduce(function (a,b) {
+                    return parseFloat(a)+ parseFloat(b);
+                }, 0)
+            );
+          }*/
         });
         /**** Fetch Data Ajax Call ******/
         $('#search_result').attr('style',"display:block");
