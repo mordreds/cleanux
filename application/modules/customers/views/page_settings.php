@@ -11,7 +11,7 @@
       }],
       dom: '<"datatable-header"fl><"datatable-scroll-wrap"t><"datatable-footer"ip>',
       language: {
-        search: '<span>Filter:</span> _INPUT_',
+        search: '<span>Search:</span> _INPUT_',
         lengthMenu: '<span>Show:</span> _MENU_',
         paginate: { 'first': 'First', 'last': 'Last', 'next': '&rarr;', 'previous': '&larr;' }
       },
@@ -37,14 +37,19 @@
         }
       },
       columns: [
-        {data: "fullname"/*,render: function(data,type,row,meta) { 
-          return '<a class="edit_client_info" data-fullname="'+row.fullname+'" data-gender="'+row.gender+'" data-company="'+row.company+'" data-residence_address="'+row.residence_address+'" data-postal_address="'+row.postal_address+'" data-phone_number_1="'+row.phone_number_1+'" data-phone_number_2="'+row.phone_number_2+'" data-email="'+row.email+'" data-sms_alert="'+row.sms_alert+'" data-online_access="'+row.online_access+'" data-status="'+row.status+'" data-client_id="'+row.id+'" title="Edit Client Info">'+row.fullname+'</a>'; 
-        }*/},
-        {data: "email"},
-        {data: "phone_number_1"},
-        {data: "phone_number_2"},
+        {data: "fullname",render: function(data,type,row,meta) { 
+          return '<div class="media" style="display:inline-flex"><a href="#" onclick="return false;" class="media-left"><img src="<?=base_url()?>/resources/images/users/default.jpg" width="40" height="40" class="img-circle img-md" alt=""></a><div class="media-middle"><a href="#" onclick="return false;" class="text-semibold">'+row.fullname+'</a><div class="text-muted text-size-small">Latest order: 2016.08.20</div></div></div>'; 
+        }},
+        {data: "email", render: function(data,type,row,meta) {
+          return '<a href="#" onclick="return false;">'+row.email+'</a>'
+        }},
+        {data: "phone_number_1", render: function(data,type,row,meta){
+          return '<ul class="list list-unstyled no-margin"><li class="no-margin"><i class="icon-phone text-size-base text-success position-left"></i>Primary #: <a href="#">'+row.phone_number_1+'</a></li><li class="no-margin"><i class="icon-phone text-size-base text-danger position-left"></i><em>Secondary #: <a href="#" class="text-muted text-size-small">'+row.phone_number_2+'</a></em></li></ul>'
+        }},
         {data: "residence_address"},
-        {data: "company"},
+        {data: "pending_orders", render: function(data,type,row,meta) {
+          return '<ul class="list list-unstyled no-margin"><li class="no-margin"><i class="icon-infinite text-size-base text-warning position-left"></i>Pending: <a href="#">'+row.pending_orders+' orders</a></li><li class="no-margin"><i class="icon-checkmark3 text-size-base text-success position-left"></i>Processed: <a href="#">'+row.completed_orders+' orders</a></li></ul>'
+        }},
         {data: "status", render: function(data,type,row,meta) { 
           if(row.status == "active") {
             label_class = "label-success";
@@ -57,7 +62,7 @@
         },
         {data: "id", render: function(data,type,row,meta) { 
           if(user_status == "active") {
-            button = '<ul class="action_btns" style="margin-bottom:0px"><li><a class="edit_client_info" data-fullname="'+row.fullname+'" data-gender="'+row.gender+'" data-company="'+row.company+'" data-residence_address="'+row.residence_address+'" data-postal_address="'+row.postal_address+'" data-phone_number_1="'+row.phone_number_1+'" data-phone_number_2="'+row.phone_number_2+'" data-email="'+row.email+'" data-sms_alert="'+row.sms_alert+'" data-online_access="'+row.online_access+'" data-status="'+row.status+'" data-client_id="'+row.id+'" data-popup="tooltip" data-original-title="Edit Info" ><i class="icon-pencil" style="font-size:18px"></i></a></li><li><a class="customer_new_order" data-client_tel="'+row.phone_number_1+'" data-popup="tooltip" data-original-title="Create Order"><i class="icon-basket" style="font-size:18px"></i></a></li><li><a data-client_tel="'+row.phone_number_1+'" data-id="'+row.id+'" data-popup="tooltip" data-original-title="Send SMS"><i class="icon-envelop3" style="font-size:18px"></i></a></li><li><a class="" data-popup="tooltip" data-popup="tooltip" data-original-title="Delete"><i class="icon-trash text-danger delete_button" data-deletename="'+row.fullname+'" data-deleteid="'+row.id+'" data-formurl="<?=base_url()?>settings/save_client_info" data-tableid="allcustomers" style="font-size: 18px"></i></a></li></ul>';
+            button = '<ul class="icons-list"><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a><ul class="dropdown-menu dropdown-menu-right"><li><a class="edit_client_info" data-fullname="'+row.fullname+'" data-gender="'+row.gender+'" data-company="'+row.company+'" data-residence_address="'+row.residence_address+'" data-postal_address="'+row.postal_address+'" data-phone_number_1="'+row.phone_number_1+'" data-phone_number_2="'+row.phone_number_2+'" data-email="'+row.email+'" data-sms_alert="'+row.sms_alert+'" data-online_access="'+row.online_access+'" data-status="'+row.status+'" data-client_id="'+row.id+'" data-popup="tooltip" data-original-title="Edit Info" ><i class="icon-pencil text-warning" style="font-size:18px"></i> Edit Client Info</a></li><li><a class="customer_new_order" data-client_tel="'+row.phone_number_1+'" data-popup="tooltip" data-original-title="Create Order"><i class="icon-basket text-primary" style="font-size:18px"></i> Make New Order</a></li><li><a data-client_tel="'+row.phone_number_1+'" data-id="'+row.id+'" data-popup="tooltip" data-original-title="Send SMS"><i class="icon-envelop3 text-success" style="font-size:18px"></i> Send SMS</a></li><li class="divider"></li><li><a class="" data-popup="tooltip" data-popup="tooltip" data-original-title="Delete"><i class="icon-trash text-danger delete_button" data-deletename="'+row.fullname+'" data-deleteid="'+row.id+'" data-formurl="<?=base_url()?>settings/save_client_info" data-tableid="allcustomers" style="font-size: 18px"></i> Delete Customer</a></li></ul></li></ul>';
           } 
           else if(user_status == "deleted"){ }
 

@@ -722,7 +722,8 @@ class Settings extends MX_Controller
         }
 
         if($table == "clients") {
-          $tablename = "laundry_clients";
+          $dbres = self::$_Views_DB;
+          $tablename = "vw_laundry_clients";
           $return_dataType = "json";
         }
 

@@ -6,15 +6,14 @@
       <div class="col-md-12">
         <div class="panel panel-flat">
           <div class="panel-body">
-            <table id="allcustomers" class="table datatable-responsive table-xs">
+            <table id="allcustomers" class="table datatable-responsive table-xxs">
               <thead>
                 <tr class="bg-teal-400">
                   <th>Full name</th>
                   <th>Email </th>
-                  <th>Phone No 1</th>
-                  <th>Phone No 2</th>
-                  <th>Residence address</th>
-                  <th>Company</th>
+                  <th>Phone No #</th>
+                  <th>Residence</th>
+                  <th>Order's history</th>
                   <th>Status</th>
                   <th class="text-center">Actions</th>
                 </tr>
