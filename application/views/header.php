@@ -67,7 +67,7 @@
 		<!-- ***** Users Page ***** -->
 
 			<!-- ***** Users Page ***** -->
-			<?php if($controller_function == "sms") : ?>
+			<?php if($page_controller == "sms") : $added_class = "sidebar-main-hidden has-detached-left";?>
 		  	<script type="text/javascript" src="<?=base_url()?>resource/js/plugins/editors/wysihtml5/wysihtml5.min.js"></script>
 			<script type="text/javascript" src="<?=base_url()?>resource/js/plugins/editors/wysihtml5/toolbar.js"></script>
 			<script type="text/javascript" src="<?=base_url()?>resource/js/plugins/editors/wysihtml5/parsers.js"></script>
@@ -91,6 +91,6 @@
   <script type="text/javascript" src="<?=base_url()?>resources/js/plugins/ui/prism.min.js"></script>
 	<!-- /theme JS files -->
 </head>
-<body class="hold-transition">
+<body class="hold-transition <?=@$added_class?>">
   <div class="pageloader"></div>
   <?php include_once('nav.php'); ?>

@@ -41,7 +41,7 @@
           return '<div class="media" style="display:inline-flex"><a href="#" onclick="return false;" class="media-left"><img src="<?=base_url()?>/resources/images/users/default.jpg" width="40" height="40" class="img-circle img-md" alt=""></a><div class="media-middle"><a href="#" onclick="return false;" class="text-semibold">'+row.fullname+'</a><div class="text-muted text-size-small">Latest order: 2016.08.20</div></div></div>'; 
         }},
         {data: "email", render: function(data,type,row,meta) {
-          return '<a href="#" onclick="return false;">'+row.email+'</a>'
+          return '<a href="<?=base_url()?>sms/?s='+row.email+'">'+row.email+'</a>'
         }},
         {data: "phone_number_1", render: function(data,type,row,meta){
           return '<ul class="list list-unstyled no-margin"><li class="no-margin"><i class="icon-phone text-size-base text-success position-left"></i>Primary #: <a href="#">'+row.phone_number_1+'</a></li><li class="no-margin"><i class="icon-phone text-size-base text-danger position-left"></i><em>Secondary #: <a href="#" class="text-muted text-size-small">'+row.phone_number_2+'</a></em></li></ul>'

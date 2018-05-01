@@ -31,7 +31,7 @@ class Sms extends MX_Controller
         $data['title'] = " SMS"; 
         $this->load->view('header',$data); 
         $this->load->view('sms',$data); 
-        $this->load->view('footer'); 
+        //$this->load->view('footer'); 
         /***************** Interface *****************/
       }
     }
