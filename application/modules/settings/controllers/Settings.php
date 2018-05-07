@@ -240,284 +240,446 @@ class Settings extends MX_Controller
     /****** Save Services    ***********/
 
     /****** Save Weight      ***********/
-    public function save_weight() {
-      if(in_array('new registration', $_SESSION['user']['roles'])) {
-        $this->form_validation->set_rules('id','ID','trim');
-        $this->form_validation->set_rules('service_type','Service Type','trim');
-        $this->form_validation->set_rules('weight','Weight','trim');
-        $this->form_validation->set_rules('weight_unit','Unit','trim');
-        $this->form_validation->set_rules('weight_description','Note','trim');
-        $this->form_validation->set_rules('delete_item','Delete Action','trim');
+      public function save_weight() {
+        if(in_array('new registration', $_SESSION['user']['roles'])) {
+          $this->form_validation->set_rules('id','ID','trim');
+          $this->form_validation->set_rules('service_type','Service Type','trim');
+          $this->form_validation->set_rules('weight','Weight','trim');
+          $this->form_validation->set_rules('weight_unit','Unit','trim');
+          $this->form_validation->set_rules('weight_description','Note','trim');
+          $this->form_validation->set_rules('delete_item','Delete Action','trim');
 
-        if($this->form_validation->run() === FALSE) {
-          $this->session->set_flashdata('error',"Validation Error");
-          redirect('settings/new_registration');
-        }
-        else {
-          $this->load->model('globals/model_insertion');
-          $this->load->model('globals/model_update');
-          /***** Data Definition *****/
-          $id = $this->input->post('id');
-          $dbres = self::$_Default_DB;
-          $tablename = "laundry_weights";
-          $data = [
-            'service_type' => ucwords($this->input->post('service_type')),
-            'weight' => ucwords($this->input->post('weight'))." ".strtoupper($this->input->post('weight_unit')),
-            'description' => ucwords($this->input->post('weight_description')),
-          ];
-          $return_dataType="php_object";
-          $delete_confirmed = $this->input->post('delete_item');
-          /***** Data Definition *****/
-          
-          if(isset($delete_confirmed) && isset($id)) {
-            $delete_data['status'] = "deleted";
-
-            $where_condition = ['id' => $id];
-
-            $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$delete_data,$where_condition) ;
-            if($query_result)
-              $return_data['success'] = "Delete Successul";
-            else
-              $return_data['error'] = "Delete Failed";
-
-            print_r(json_encode($return_data));
-          } 
+          if($this->form_validation->run() === FALSE) {
+            $this->session->set_flashdata('error',"Validation Error");
+            redirect('settings/new_registration');
+          }
           else {
-            if(empty($id)) {
-              $data['status'] = "active";
+            $this->load->model('globals/model_insertion');
+            $this->load->model('globals/model_update');
+            /***** Data Definition *****/
+            $id = $this->input->post('id');
+            $dbres = self::$_Default_DB;
+            $tablename = "laundry_weights";
+            $data = [
+              'service_type' => ucwords($this->input->post('service_type')),
+              'weight' => ucwords($this->input->post('weight'))." ".strtoupper($this->input->post('weight_unit')),
+              'description' => ucwords($this->input->post('weight_description')),
+            ];
+            $return_dataType="php_object";
+            $delete_confirmed = $this->input->post('delete_item');
+            /***** Data Definition *****/
+            
+            if(isset($delete_confirmed) && isset($id)) {
+              $delete_data['status'] = "deleted";
 
-              $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
-              if($query_result)
-                $this->session->set_flashdata('success',"Save Successful");
-              else
-                $this->session->set_flashdata('error',"Save Failed");
-
-              redirect('settings/new_registration#weight');
-            }
-            else {
               $where_condition = ['id' => $id];
 
-              $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
+              $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$delete_data,$where_condition) ;
               if($query_result)
-                $return_data['success'] = "Update Successul";
+                $return_data['success'] = "Delete Successul";
               else
-                $return_data['error'] = "Update Failed";
+                $return_data['error'] = "Delete Failed";
 
               print_r(json_encode($return_data));
+            } 
+            else {
+              if(empty($id)) {
+                $data['status'] = "active";
+
+                $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
+                if($query_result)
+                  $this->session->set_flashdata('success',"Save Successful");
+                else
+                  $this->session->set_flashdata('error',"Save Failed");
+
+                redirect('settings/new_registration#weight');
+              }
+              else {
+                $where_condition = ['id' => $id];
+
+                $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
+                if($query_result)
+                  $return_data['success'] = "Update Successul";
+                else
+                  $return_data['error'] = "Update Failed";
+
+                print_r(json_encode($return_data));
+              }
             }
           }
         }
+        else {
+          $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
+          redirect('settings/new_registration#weight');
+        }
       }
-      else {
-        $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
-        redirect('settings/new_registration#weight');
-      }
-    }
     /****** Save Weight      ***********/
 
     /****** Save Garments      ***********/
-    public function save_garment() {
-      if(in_array('new registration', $_SESSION['user']['roles'])) {
-        $this->form_validation->set_rules('id','ID','trim');
-        $this->form_validation->set_rules('garment_name','Garment Name','trim');
-        $this->form_validation->set_rules('garment_desc','Description','trim');
-        $this->form_validation->set_rules('delete_item','Delete Action','trim');
+      public function save_garment() {
+        if(in_array('new registration', $_SESSION['user']['roles'])) {
+          $this->form_validation->set_rules('id','ID','trim');
+          $this->form_validation->set_rules('garment_name','Garment Name','trim');
+          $this->form_validation->set_rules('garment_desc','Description','trim');
+          $this->form_validation->set_rules('delete_item','Delete Action','trim');
 
-        if($this->form_validation->run() === FALSE) {
-          $this->session->set_flashdata('error',"Validation Error");
-          redirect('settings/new_registration');
-        }
-        else {
-          $this->load->model('globals/model_insertion');
-          $this->load->model('globals/model_update');
-          /***** Data Definition *****/
-          $id = $this->input->post('id');
-          $dbres = self::$_Default_DB;
-          $tablename = "laundry_garments";
-          $data = [
-            'name' => ucwords($this->input->post('garment_name')),
-            'description' => ucwords($this->input->post('garment_desc')),
-          ];
-          $return_dataType="php_object";
-          $delete_confirmed = $this->input->post('delete_item');
-          /***** Data Definition *****/
-          
-          if(isset($delete_confirmed) && isset($id)) {
-            $delete_data['status'] = "deleted";
-
-            $where_condition = ['id' => $id];
-
-            $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$delete_data,$where_condition) ;
-            if($query_result)
-              $return_data['success'] = "Delete Successul";
-            else
-              $return_data['error'] = "Delete Failed";
-
-            print_r(json_encode($return_data));
-          } 
+          if($this->form_validation->run() === FALSE) {
+            $this->session->set_flashdata('error',"Validation Error");
+            redirect('settings/new_registration');
+          }
           else {
-            if(empty($id)) {
-              $data['status'] = "active";
+            $this->load->model('globals/model_insertion');
+            $this->load->model('globals/model_update');
+            /***** Data Definition *****/
+            $id = $this->input->post('id');
+            $dbres = self::$_Default_DB;
+            $tablename = "laundry_garments";
+            $data = [
+              'name' => ucwords($this->input->post('garment_name')),
+              'description' => ucwords($this->input->post('garment_desc')),
+            ];
+            $return_dataType="php_object";
+            $delete_confirmed = $this->input->post('delete_item');
+            /***** Data Definition *****/
+            
+            if(isset($delete_confirmed) && isset($id)) {
+              $delete_data['status'] = "deleted";
 
-              $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
-              if($query_result)
-                $this->session->set_flashdata('success',"Save Successful");
-              else
-                $this->session->set_flashdata('error',"Save Failed");
-
-              redirect('settings/new_registration#garments');
-            }
-            else {
               $where_condition = ['id' => $id];
 
-              $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
+              $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$delete_data,$where_condition) ;
               if($query_result)
-                $return_data['success'] = "Update Successul";
+                $return_data['success'] = "Delete Successul";
               else
-                $return_data['error'] = "Update Failed";
+                $return_data['error'] = "Delete Failed";
 
               print_r(json_encode($return_data));
+            } 
+            else {
+              if(empty($id)) {
+                $data['status'] = "active";
+
+                $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
+                if($query_result)
+                  $this->session->set_flashdata('success',"Save Successful");
+                else
+                  $this->session->set_flashdata('error',"Save Failed");
+
+                redirect('settings/new_registration#garments');
+              }
+              else {
+                $where_condition = ['id' => $id];
+
+                $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
+                if($query_result)
+                  $return_data['success'] = "Update Successul";
+                else
+                  $return_data['error'] = "Update Failed";
+
+                print_r(json_encode($return_data));
+              }
             }
           }
         }
+        else {
+          $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
+          redirect('settings/new_registration#garments');
+        }
       }
-      else {
-        $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
-        redirect('settings/new_registration#garments');
-      }
-    }
     /****** Save Garments    ***********/
 
     /****** Save Prices      ***********/
-    public function save_price() {
-      if(in_array('new registration', $_SESSION['user']['roles'])) {
-        $this->form_validation->set_rules('id','ID','trim');
-        $this->form_validation->set_rules('service_id','Service Type','trim');
-        $this->form_validation->set_rules('weight_id','Weight','trim');
-        $this->form_validation->set_rules('garment_id','Garment Type','trim');
-        $this->form_validation->set_rules('amount','Amount','trim');
-        $this->form_validation->set_rules('delete_item','Delete Action','trim');
+      public function save_price() {
+        if(in_array('new registration', $_SESSION['user']['roles'])) {
+          $this->form_validation->set_rules('id','ID','trim');
+          $this->form_validation->set_rules('service_id','Service Type','trim');
+          $this->form_validation->set_rules('weight_id','Weight','trim');
+          $this->form_validation->set_rules('garment_id','Garment Type','trim');
+          $this->form_validation->set_rules('amount','Amount','trim');
+          $this->form_validation->set_rules('delete_item','Delete Action','trim');
 
-        if($this->form_validation->run() === FALSE) {
-          $this->session->set_flashdata('error',"Validation Error");
-          redirect('settings/new_registration');
-        }
-        else {
-          $this->load->model('globals/model_insertion');
-          $this->load->model('globals/model_update');
-          /***** Data Definition *****/
-          $id = $this->input->post('id');
-          $dbres = self::$_Default_DB;
-          $tablename = "laundry_prices";
-          $data = [
-            'service_id' => ucwords($this->input->post('service_id')),
-            'weight_id' => ucwords($this->input->post('weight_id')),
-            'garment_id' => ucwords($this->input->post('garment_id')),
-            'amount' => (float)$this->input->post('amount'),
-          ];
-          $return_dataType="php_object";
-          $delete_confirmed = $this->input->post('delete_item');
-          /***** Data Definition *****/
-          if(isset($delete_confirmed) && isset($id)) {
-            $delete_data['status'] = "deleted";
-
-            $where_condition = ['id' => $id];
-
-            $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$delete_data,$where_condition) ;
-            if($query_result)
-              $return_data['success'] = "Delete Successul";
-            else
-              $return_data['error'] = "Delete Failed";
-
-            print_r(json_encode($return_data));
-          } 
+          if($this->form_validation->run() === FALSE) {
+            $this->session->set_flashdata('error',"Validation Error");
+            redirect('settings/new_registration');
+          }
           else {
-            if(empty($id)) {
-              $data['status'] = "active";
+            $this->load->model('globals/model_insertion');
+            $this->load->model('globals/model_update');
+            /***** Data Definition *****/
+            $id = $this->input->post('id');
+            $dbres = self::$_Default_DB;
+            $tablename = "laundry_prices";
+            $data = [
+              'service_id' => ucwords($this->input->post('service_id')),
+              'weight_id' => ucwords($this->input->post('weight_id')),
+              'garment_id' => ucwords($this->input->post('garment_id')),
+              'amount' => (float)$this->input->post('amount'),
+            ];
+            $return_dataType="php_object";
+            $delete_confirmed = $this->input->post('delete_item');
+            /***** Data Definition *****/
+            if(isset($delete_confirmed) && isset($id)) {
+              $delete_data['status'] = "deleted";
 
-              $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
-              if($query_result)
-                $this->session->set_flashdata('success',"Save Successful");
-              else
-                $this->session->set_flashdata('error',"Save Failed");
-
-              redirect('settings/new_registration#pricing');
-            }
-            else {
               $where_condition = ['id' => $id];
 
-              $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
+              $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$delete_data,$where_condition) ;
               if($query_result)
-                $return_data['success'] = "Update Successul";
+                $return_data['success'] = "Delete Successul";
               else
-                $return_data['error'] = "Update Failed";
+                $return_data['error'] = "Delete Failed";
 
               print_r(json_encode($return_data));
+            } 
+            else {
+              if(empty($id)) {
+                $data['status'] = "active";
+
+                $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
+                if($query_result)
+                  $this->session->set_flashdata('success',"Save Successful");
+                else
+                  $this->session->set_flashdata('error',"Save Failed");
+
+                redirect('settings/new_registration#pricing');
+              }
+              else {
+                $where_condition = ['id' => $id];
+
+                $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
+                if($query_result)
+                  $return_data['success'] = "Update Successul";
+                else
+                  $return_data['error'] = "Update Failed";
+
+                print_r(json_encode($return_data));
+              }
             }
           }
         }
+        else {
+          $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
+          redirect('settings/new_registration#pricing');
+        }
       }
-      else {
-        $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
-        redirect('settings/new_registration#pricing');
-      }
-    }
     /****** Save Prices    ***********/
 
     /****** Save Weight      ***********/
-    public function save_delivery() {
-      if(in_array('new registration', $_SESSION['user']['roles'])) {
-        $this->form_validation->set_rules('id','ID','trim');
-        $this->form_validation->set_rules('location','Location','trim');
-        $this->form_validation->set_rules('duration','Duration','trim');
-        $this->form_validation->set_rules('price','Price','trim');
-        $this->form_validation->set_rules('delete_item','Delete Action','trim');
+      public function save_delivery() {
+        if(in_array('new registration', $_SESSION['user']['roles'])) {
+          $this->form_validation->set_rules('id','ID','trim');
+          $this->form_validation->set_rules('location','Location','trim');
+          $this->form_validation->set_rules('duration','Duration','trim');
+          $this->form_validation->set_rules('price','Price','trim');
+          $this->form_validation->set_rules('delete_item','Delete Action','trim');
 
-        if($this->form_validation->run() === FALSE) {
-          $this->session->set_flashdata('error',"Validation Error");
-          redirect('settings/new_registration#delivery');
+          if($this->form_validation->run() === FALSE) {
+            $this->session->set_flashdata('error',"Validation Error");
+            redirect('settings/new_registration#delivery');
+          }
+          else {
+            $this->load->model('globals/model_insertion');
+            $this->load->model('globals/model_update');
+            /***** Data Definition *****/
+            $id = $this->input->post('id');
+            $dbres = self::$_Default_DB;
+            $tablename = "laundry_delivery_method";
+            $data = [
+              'location' => ucwords($this->input->post('location')),
+              'duration' => ucwords($this->input->post('duration')),
+              'price' => ucwords($this->input->post('price')),
+            ];
+            $return_dataType="php_object";
+            $delete_confirmed = $this->input->post('delete_item');
+            /***** Data Definition *****/
+            
+            if(isset($delete_confirmed) && isset($id)) {
+              $delete_data['status'] = "deleted";
+
+              $where_condition = ['id' => $id];
+
+              $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$delete_data,$where_condition) ;
+              if($query_result)
+                $return_data['success'] = "Delete Successul";
+              else
+                $return_data['error'] = "Delete Failed";
+
+              print_r(json_encode($return_data));
+            } 
+            else {
+              if(empty($id)) {
+                $data['status'] = "active";
+
+                $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
+                if($query_result)
+                  $this->session->set_flashdata('success',"Save Successful");
+                else
+                  $this->session->set_flashdata('error',"Save Failed");
+
+                redirect('settings/new_registration#delivery');
+              }
+              else {
+                $where_condition = ['id' => $id];
+
+                $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
+                if($query_result)
+                  $return_data['success'] = "Update Successul";
+                else
+                  $return_data['error'] = "Update Failed";
+
+                print_r(json_encode($return_data));
+              }
+            }
+          }
         }
         else {
-          $this->load->model('globals/model_insertion');
-          $this->load->model('globals/model_update');
-          /***** Data Definition *****/
-          $id = $this->input->post('id');
-          $dbres = self::$_Default_DB;
-          $tablename = "laundry_delivery_method";
-          $data = [
-            'location' => ucwords($this->input->post('location')),
-            'duration' => ucwords($this->input->post('duration')),
-            'price' => ucwords($this->input->post('price')),
-          ];
-          $return_dataType="php_object";
-          $delete_confirmed = $this->input->post('delete_item');
-          /***** Data Definition *****/
-          
-          if(isset($delete_confirmed) && isset($id)) {
-            $delete_data['status'] = "deleted";
+          $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
+          redirect('settings/new_registration#delivery');
+        }
+      }
+    /****** Save Weight      ***********/
 
-            $where_condition = ['id' => $id];
+    /****** Save Client Info ***********/
+      public function save_client_info() {
+        if(in_array('new registration', $_SESSION['user']['roles'])) {
+          $this->form_validation->set_rules('id','ID','trim');
+          $this->form_validation->set_rules('fullname','Fullname','trim');
+          $this->form_validation->set_rules('gender','Gender','trim');
+          $this->form_validation->set_rules('company_name','Company Name','trim');
+          $this->form_validation->set_rules('residence_addr','Residence Address','trim');
+          $this->form_validation->set_rules('postal_addr','Postal Address','trim');
+          $this->form_validation->set_rules('primary_tel','Phone No #1','trim');
+          $this->form_validation->set_rules('secondary_tel','Phone No #2','trim');
+          $this->form_validation->set_rules('email','Email','trim');
+          $this->form_validation->set_rules('sms','SMS','trim');
+          $this->form_validation->set_rules('online','Online Access','trim');
+          $this->form_validation->set_rules('update_item','Update Action','trim');
+          $this->form_validation->set_rules('delete_item','Delete Action','trim');
 
-            $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$delete_data,$where_condition) ;
-            if($query_result)
-              $return_data['success'] = "Delete Successul";
-            else
-              $return_data['error'] = "Delete Failed";
-
-            print_r(json_encode($return_data));
-          } 
+          if($this->form_validation->run() === FALSE) {
+            $this->session->set_flashdata('error', "Validation Error");
+            redirect('overview');
+          }
           else {
-            if(empty($id)) {
-              $data['status'] = "active";
+            $this->load->model('globals/model_insertion');
+            $this->load->model('globals/model_update');
+            $this->load->model('globals/model_retrieval');
+            /***** Data Definition *****/
+            $id = $this->input->post('id');
+            $dbres = self::$_Default_DB;
+            $tablename = "laundry_clients";
+            $data = [
+              'fullname' => ucwords($this->input->post('fullname')),
+              'gender' => ucwords($this->input->post('gender')),
+              'company' => ucwords($this->input->post('company_name')),
+              'residence_address' => ucwords($this->input->post('residence_addr')),
+              'postal_address' => $this->input->post('postal_addr'),
+              'phone_number_1' => $this->input->post('primary_tel'),
+              'phone_number_2' => $this->input->post('secondary_tel'),
+              'email' => $this->input->post('email'),
+              'sms_alert' => ($this->input->post('sms') == "on") ? 1 : 0,
+              'online_access' => ($this->input->post('online')== "on") ? 1 : 0,
+            ]; 
+            $return_dataType="php_object";
+            $delete_confirmed = $this->input->post('delete_item');
+            /***** Data Definition *****/
+            if(isset($delete_confirmed) && isset($id)) {
+              $delete_data['status'] = "deleted";
 
+              $where_condition = ['id' => $id];
+
+              $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$delete_data,$where_condition) ;
+              if($query_result)
+                $return_data['success'] = "Delete Successul";
+              else
+                $return_data['error'] = "Delete Failed";
+
+              print_r(json_encode($return_data));
+              exit();
+            } 
+            else {
+              if(empty($id)) {
+                $data['status'] = "active";
+                /****** Form Validation ********/
+                $primary_tel_search = $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType,$select = "phone_number_1",$where=array('phone_number_1' => $data['phone_number_1']));
+                
+                if(strlen($data['phone_number_1']) < 10) {
+                  $this->session->set_flashdata('error',"Invalid Phone Number");
+                  redirect('overview');
+                }
+                
+                if($primary_tel_search) {
+                  $this->session->set_flashdata('error',"Phone Number Already Exists");
+                  redirect('overview');
+                }
+                /****** Form Validation ********/
+                $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
+                
+                if($query_result) {
+                  $this->session->set_flashdata('success',"Save Successful");
+                  $_SESSION['laundry']['new_order']['client']['phone_number'] = $this->input->post('primary_tel');
+                }
+                else
+                  $this->session->set_flashdata('error',"Save Failed");
+                redirect('overview');
+              }
+              else {
+                $where_condition = ['id' => $id];
+                $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
+                
+                if($query_result)
+                  $return_data['success'] = "Client Info Updated";
+                else
+                  $return_data['error'] = "Update Failed";
+
+                print_r(json_encode($return_data));
+              }
+            }
+          }
+        }
+        else {
+          $return_data['error'] = 'Permission Denied.Contact Administrator';
+          print_r(json_encode($return_data));
+        }
+      }
+    /****** Save Client Info ***********/
+
+    /****** Save Weight      ***********/
+      public function save_department($id = null) {
+        if(in_array('new registration', $_SESSION['user']['roles'])) {
+          $this->form_validation->set_rules('parent_department','Parent Department','trim');
+          $this->form_validation->set_rules('department','Departmennt Name','trim|required');
+          $this->form_validation->set_rules('description','Description','trim|required');
+          //$this->form_validation->set_rules('delete_item','Delete Action','trim');
+
+          if($this->form_validation->run() === FALSE) {
+            $this->session->set_flashdata('error',"Validation Error");
+            redirect('settings/new_registration');
+          }
+          else {
+            $this->load->model('globals/model_insertion');
+            $this->load->model('globals/model_update');
+            /***** Data Definition *****/
+            $dbres = self::$_Default_DB;
+            $return_dataType="php_object";
+            $tablename = "hr_departments";
+            $data = [
+              'parent_department' => ucwords($this->input->post('parent_department')),
+              'name' => ucwords($this->input->post('department')),
+              'description' => ucwords($this->input->post('description')),
+            ];
+            /***** Data Definition *****/
+            /***** Save New Department ***********/
+            if(empty($id)) {
               $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
               if($query_result)
                 $this->session->set_flashdata('success',"Save Successful");
               else
                 $this->session->set_flashdata('error',"Save Failed");
 
-              redirect('settings/new_registration#delivery');
+              redirect('settings/company#departments');
             }
+            /***** Update Department ***********/
             else {
               $where_condition = ['id' => $id];
 
@@ -529,120 +691,16 @@ class Settings extends MX_Controller
 
               print_r(json_encode($return_data));
             }
+
+            exit;
           }
-        }
-      }
-      else {
-        $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
-        redirect('settings/new_registration#delivery');
-      }
-    }
-    /****** Save Weight      ***********/
-
-    /****** Save Client Info ***********/
-    public function save_client_info() {
-      if(in_array('new registration', $_SESSION['user']['roles'])) {
-        $this->form_validation->set_rules('id','ID','trim');
-        $this->form_validation->set_rules('fullname','Fullname','trim');
-        $this->form_validation->set_rules('gender','Gender','trim');
-        $this->form_validation->set_rules('company_name','Company Name','trim');
-        $this->form_validation->set_rules('residence_addr','Residence Address','trim');
-        $this->form_validation->set_rules('postal_addr','Postal Address','trim');
-        $this->form_validation->set_rules('primary_tel','Phone No #1','trim');
-        $this->form_validation->set_rules('secondary_tel','Phone No #2','trim');
-        $this->form_validation->set_rules('email','Email','trim');
-        $this->form_validation->set_rules('sms','SMS','trim');
-        $this->form_validation->set_rules('online','Online Access','trim');
-        $this->form_validation->set_rules('update_item','Update Action','trim');
-        $this->form_validation->set_rules('delete_item','Delete Action','trim');
-
-        if($this->form_validation->run() === FALSE) {
-          $this->session->set_flashdata('error', "Validation Error");
-          redirect('overview');
         }
         else {
-          $this->load->model('globals/model_insertion');
-          $this->load->model('globals/model_update');
-          $this->load->model('globals/model_retrieval');
-          /***** Data Definition *****/
-          $id = $this->input->post('id');
-          $dbres = self::$_Default_DB;
-          $tablename = "laundry_clients";
-          $data = [
-            'fullname' => ucwords($this->input->post('fullname')),
-            'gender' => ucwords($this->input->post('gender')),
-            'company' => ucwords($this->input->post('company_name')),
-            'residence_address' => ucwords($this->input->post('residence_addr')),
-            'postal_address' => $this->input->post('postal_addr'),
-            'phone_number_1' => $this->input->post('primary_tel'),
-            'phone_number_2' => $this->input->post('secondary_tel'),
-            'email' => $this->input->post('email'),
-            'sms_alert' => ($this->input->post('sms') == "on") ? 1 : 0,
-            'online_access' => ($this->input->post('online')== "on") ? 1 : 0,
-          ]; 
-          $return_dataType="php_object";
-          $delete_confirmed = $this->input->post('delete_item');
-          /***** Data Definition *****/
-          if(isset($delete_confirmed) && isset($id)) {
-            $delete_data['status'] = "deleted";
-
-            $where_condition = ['id' => $id];
-
-            $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$delete_data,$where_condition) ;
-            if($query_result)
-              $return_data['success'] = "Delete Successul";
-            else
-              $return_data['error'] = "Delete Failed";
-
-            print_r(json_encode($return_data));
-            exit();
-          } 
-          else {
-            if(empty($id)) {
-              $data['status'] = "active";
-              /****** Form Validation ********/
-              $primary_tel_search = $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType,$select = "phone_number_1",$where=array('phone_number_1' => $data['phone_number_1']));
-              
-              if(strlen($data['phone_number_1']) < 10) {
-                $this->session->set_flashdata('error',"Invalid Phone Number");
-                redirect('overview');
-              }
-              
-              if($primary_tel_search) {
-                $this->session->set_flashdata('error',"Phone Number Already Exists");
-                redirect('overview');
-              }
-              /****** Form Validation ********/
-              $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
-              
-              if($query_result) {
-                $this->session->set_flashdata('success',"Save Successful");
-                $_SESSION['laundry']['new_order']['client']['phone_number'] = $this->input->post('primary_tel');
-              }
-              else
-                $this->session->set_flashdata('error',"Save Failed");
-              redirect('overview');
-            }
-            else {
-              $where_condition = ['id' => $id];
-              $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
-              
-              if($query_result)
-                $return_data['success'] = "Client Info Updated";
-              else
-                $return_data['error'] = "Update Failed";
-
-              print_r(json_encode($return_data));
-            }
-          }
+          $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
+          redirect('settings/new_registration#weight');
         }
       }
-      else {
-        $return_data['error'] = 'Permission Denied.Contact Administrator';
-        print_r(json_encode($return_data));
-      }
-    }
-    /****** Save Client Info ***********/
+    /****** Save Weight      ***********/
 
   /**************** Insertions ****************/
 
@@ -712,6 +770,7 @@ class Settings extends MX_Controller
         }
 
         if($table == "vw_prices") {
+          $dbres = self::$_Views_DB;
           $tablename = "vw_laundry_prices";
           $return_dataType = "json";
         }
@@ -750,6 +809,16 @@ class Settings extends MX_Controller
         if($table == "positions") {
           $tablename = "hr_position";
           $return_dataType = "json";
+        }
+
+        if($table == "departments") {
+          $tablename = "vw_hr_departments";
+          $return_dataType = "json";
+          /***** Checking System Developer Role ******/
+          if($_SESSION['user']['group_name'] == "System Developer")
+            $condition = array();
+          else
+          $condition = "id != 1 && status not in ('deleted')";
         }
 
         $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition,@$orderby);

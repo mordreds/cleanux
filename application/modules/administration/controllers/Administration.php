@@ -562,11 +562,16 @@ class Administration extends MX_Controller
         # Loading Model 
         $this->load->model('globals/model_retrieval');
 
-        $dbres = self::$_Default_DB;
-        $tablename = "hr_departments";
+        $dbres = self::$_Views_DB;
+        $tablename = "vw_hr_departments";
         $return_dataType = "json";
+        /***** Checking System Developer Role ******/
+        if($_SESSION['user']['group_name'] == "System Developer")
+          $condition = array();
+        else
+        $condition = array('id !=' => "1");
 
-        $search_result = $this->model_retrieval->all_info_return_result($dbres,$tablename,$condition=array(),$return_dataType);
+        $search_result = $this->model_retrieval->all_info_return_result($dbres,$tablename,$condition,$return_dataType);
             
         print_r((!empty($search_result)) ? $search_result : $search_result = array());
       }

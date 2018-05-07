@@ -8,7 +8,9 @@
               <ul class="nav nav-tabs nav-tabs-bottom" id="userTab">
                 <li class="active"><a href="#company_details" data-toggle="tab">Company Details <i class="icon-office position-right"></i></a></li>
                 <li><a href="#new_employee" data-toggle="tab">New Employee <i class="icon-user position-right"></i></a></li>
-                <li><a href="#all_employees" data-toggle="tab">All Employees <i class="icon-users position-right"></i></a></li>
+                <li><a href="#employees" data-toggle="tab">All Employees <i class="icon-users position-right"></i></a></li>
+                <li><a href="#departments" data-toggle="tab">Departments <i class="icon-office position-right"></i></a></li>
+                <li><a href="#positions" data-toggle="tab">Positions <i class="icon-medal2 position-right"></i></a></li>
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="company_details">
@@ -234,7 +236,7 @@
                     </div>
                   </form>
                 </div>
-                <div class="tab-pane" id="all_employees">
+                <div class="tab-pane" id="employees">
                   <div class="row">
                     <table id="allemployees" class="table datatable-responsive table-xxs">
                       <thead style="">
@@ -250,6 +252,98 @@
                       </thead>
                       <tbody></tbody>
                     </table>
+                  </div>
+                </div>
+                <div class="tab-pane" id="departments">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <form action="<?=base_url();?>settings/save_department" method="post" style="margin-left: 10px; margin-right: 10px">
+                        <div class="row">
+                          <div class="col-md-11">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="display-block">Parent Department</label>
+                                  <select id="all_departments" name="parent_department" class="selectbox">
+                                  </select>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="display-block">Department Name <span style="color:red;">*</span></label>
+                                 <input type="text" name="department" class="form-control" required>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-11">
+                            <div class="form-group">
+                              <label class="display-block">Description <span style="color:red;">*</span></label>
+                               <input type="text" name="description" class="form-control" required>
+                            </div>
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save <i class="icon-arrow-right14 position-right"></i></button>
+                      </form>
+                    </div>
+                    <div class="col-md-7">
+                      <table id="department_tbl" class="table datatable-responsive table-xxs">
+                        <thead style="background-color:#009688;color:white">
+                          <tr>
+                            <th style="width: 5%">ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Parent Department</th>
+                            <th>Status</th>
+                            <th class="text-center" style="width: 10%">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="positions">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <form action="<?=base_url();?>settings/save_services" method="post" style="margin-left: 10px; margin-right: 10px">
+                        <div class="row">
+                          <div class="col-md-11">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="display-block">Name <span style="color:red;">*</span></label>
+                                 <input type="text" name="service_name" class="form-control" required>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="display-block">Code <span style="color:red;">*</span></label>
+                                 <input type="text" name="code" class="form-control" maxlength="2" required>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-11">
+                            <div class="form-group">
+                              <label class="display-block">Description</label>
+                               <input type="text" name="service_desc" class="form-control">
+                            </div>
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save <i class="icon-arrow-right14 position-right"></i></button>
+                      </form>
+                    </div>
+                    <div class="col-md-7">
+                      <table id="laundry_services" class="table datatable-responsive">
+                        <thead style="background-color:#009688;color:white">
+                          <tr>
+                            <th style="width: 5%">ID</th>
+                            <th>Name</th>
+                            <th>Code</th>
+                            <th>Description</th>
+                            <th class="text-center" style="width: 20%">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody></tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -57,8 +57,8 @@
               }
             },
             columns: [
-              {data: "fullname"},
               {data: "employee_id"},
+              {data: "fullname"},
               {data: "username"},
               {data: "group_name"},
               {data: "status", render: function(data,type,row,meta) { 
@@ -226,23 +226,25 @@
         /********** Deleted Accounts **************/
 
         /********** Displaying Departments ********/
-          $("#all_departments").selectBoxIt({
-            autoWidth: false,
-            defaultText: "Select One",
-            populate: function(){
-              var deferred = $.Deferred(), arr = [], x = -1;
-              $.ajax({
-              url: '<?= base_url()?>administration/all_departments'}).done(function(data) {
-                data = JSON.parse(data);  
-                while(++x < data.length){
-                  arr.push(data[x].name);
-                }
-                deferred.resolve(arr);
-              });
-              return deferred;
-            }
-          });
-          $("#all_departments").data("selectBox-selectBoxIt").add({value:"", text: "<em>Select One</em>"});
+          /******* In Dropdown ********/
+            $("#all_departments").selectBoxIt({
+              autoWidth: false,
+              defaultText: "Select One",
+              populate: function(){
+                var deferred = $.Deferred(), arr = [], x = -1;
+                $.ajax({
+                url: '<?= base_url()?>administration/all_departments'}).done(function(data) {
+                  data = JSON.parse(data);  
+                  while(++x < data.length){
+                    arr.push(data[x].name);
+                  }
+                  deferred.resolve(arr);
+                });
+                return deferred;
+              }
+            });
+            $("#all_departments").data("selectBox-selectBoxIt").add({value:"", text: "<em>Select One</em>"});
+          /******* In Dropdown ********/
         /********** Displaying Departments ********/
 
         /**** Displaying Department Employees *****/

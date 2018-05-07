@@ -18,8 +18,8 @@
                   <table id="active_accounts_tbl" class="table datatable-responsive table-xxs">
                     <thead style="background-color:#009688;color:white">
                       <tr>
-                        <th>Fullname</th>
                         <th>Staff ID</th>
+                        <th>Fullname</th>
                         <th>Username</th>
                         <th>User Group</th>
                         <th>Status</th>
