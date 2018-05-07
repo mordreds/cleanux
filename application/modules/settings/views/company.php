@@ -13,6 +13,7 @@
                 <li><a href="#positions" data-toggle="tab">Positions <i class="icon-medal2 position-right"></i></a></li>
               </ul>
               <div class="tab-content">
+
                 <div class="tab-pane active" id="company_details">
                   <form action="<?=base_url()?>/settings/save_company_details" method="post">
                     <input type="hidden" name="id" value="<?=@strtoupper($company_info[0]->id)?>">
@@ -105,6 +106,7 @@
                     <button type="submit" class="btn btn-primary legitRipple">Save <i class="icon-database2 position-right"></i></button>
                   </form>
                 </div>
+
                 <div class="tab-pane" id="new_employee">
                   <form action="<?=base_url()?>administration/save_employee" method="post">
                     <div class="row">
@@ -236,6 +238,7 @@
                     </div>
                   </form>
                 </div>
+
                 <div class="tab-pane" id="employees">
                   <div class="row">
                     <table id="allemployees" class="table datatable-responsive table-xxs">
@@ -254,6 +257,7 @@
                     </table>
                   </div>
                 </div>
+
                 <div class="tab-pane" id="departments">
                   <div class="row">
                     <div class="col-md-5">
@@ -263,8 +267,7 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="display-block">Parent Department</label>
-                                  <select id="all_departments" name="parent_department" class="selectbox">
-                                  </select>
+                                  <select name="parent_department" class="selectbox all_departments"></select>
                               </div>
                             </div>
                             <div class="col-md-6">
@@ -301,10 +304,11 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="tab-pane" id="positions">
                   <div class="row">
                     <div class="col-md-5">
-                      <form action="<?=base_url();?>settings/save_services" method="post" style="margin-left: 10px; margin-right: 10px">
+                      <form action="<?=base_url();?>settings/save_position" method="post" style="margin-left: 10px; margin-right: 10px">
                         <div class="row">
                           <div class="col-md-11">
                             <div class="col-md-6">
@@ -315,15 +319,29 @@
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label class="display-block">Code <span style="color:red;">*</span></label>
-                                 <input type="text" name="code" class="form-control" maxlength="2" required>
+                                <label class="display-block">Parent Postion (<em>If Any</em>) <span style="color:red;">*</span></label>
+                                <select name="parent_position" class="selectbox all_positions"></select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-11">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="display-block">Department <span style="color:red;">*</span></label>
+                                 <select id="" name="department" class="selectbox all_departments"></select>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="display-block">Salary <span style="color:red;">*</span></label>
+                                 <input type="number" minlength="0" name="salary" class="form-control" required>
                               </div>
                             </div>
                           </div>
                           <div class="col-md-11">
                             <div class="form-group">
-                              <label class="display-block">Description</label>
-                               <input type="text" name="service_desc" class="form-control">
+                              <label class="display-block">Duties & Responsibilities</label>
+                               <input type="text" name="descriptions" class="form-control">
                             </div>
                           </div>
                         </div>
@@ -331,13 +349,15 @@
                       </form>
                     </div>
                     <div class="col-md-7">
-                      <table id="laundry_services" class="table datatable-responsive">
+                      <table id="positions_tbl" class="table datatable-responsive table-xxs">
                         <thead style="background-color:#009688;color:white">
                           <tr>
                             <th style="width: 5%">ID</th>
                             <th>Name</th>
-                            <th>Code</th>
+                            <th>Reports To</th>
                             <th>Description</th>
+                            <th>Salary</th>
+                            <th>Status</th>
                             <th class="text-center" style="width: 20%">Actions</th>
                           </tr>
                         </thead>
@@ -346,6 +366,7 @@
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>

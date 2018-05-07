@@ -25,7 +25,7 @@
     /************** Default Settings **************/
 
     /********** Displaying User Groups ************/
-      $("#usertypes").selectBoxIt({
+      $("#all_positions").selectBoxIt({
         autoWidth: false,
         defaultText: "Select One",
         populate: function(){
@@ -33,9 +33,9 @@
           $.ajax({
           url: '<?=base_url()?>administration/usergroups'}).done(function(data) {
             data = JSON.parse(data);
-            $("#usertypes").data("selectBox-selectBoxIt").add({value:"", text: "<em>Select One</em>"});  
+            $("#all_positions").data("selectBox-selectBoxIt").add({value:"", text: "<em>Select One</em>"});  
             $.each(data, function(array_index) {
-              $("#usertypes").data("selectBox-selectBoxIt").add({ value: data[array_index].id, text: data[array_index].name});
+              $("#all_positions").data("selectBox-selectBoxIt").add({ value: data[array_index].id, text: data[array_index].name});
             });
           });
         }

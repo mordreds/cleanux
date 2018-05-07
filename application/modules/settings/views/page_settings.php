@@ -249,9 +249,9 @@
     <?php endif; ?>
   /***************************** Company Settings      *****************************/
 
-  /********** Displaying Departments ********/
+  /********** Departments Managment ********/
     /******* In Dropdown ********/
-      $("#all_departments").selectBoxIt({
+      $(".all_departments").selectBoxIt({
         autoWidth: false,
         defaultText: "Select One",
         populate: function(){
@@ -260,14 +260,15 @@
           url: '<?=base_url()?>administration/all_departments'}).done(function(data) {
             data = JSON.parse(data);  
             $.each(data, function(array_index) {
-              $("#all_departments").data("selectBox-selectBoxIt").add({ value: data[array_index].id, text: data[array_index].name});
+              $(".all_departments").data("selectBox-selectBoxIt").add({ value: data[array_index].id, text: data[array_index].name});
             });
           });
           return deferred;
         }
       });
-      $("#all_departments").data("selectBox-selectBoxIt").add({value:"", text: "<em>Select One</em>"});
+      $(".all_departments").data("selectBox-selectBoxIt").add({value:"", text: "<em>Select One</em>"});
     /******* In Dropdown ********/
+
     /******* In Table ********/
       $('#department_tbl').dataTable({
         searching : false,
@@ -301,14 +302,77 @@
             return '<span class="label '+label_class+'">'+row.status+'</span>';
           }},
           {data: "id", render: function(data,type,row,meta) { 
-            button = '<ul class="action_btns"><li><a class="edit_delivery_price_btn" data-id="'+row.id+'"  data-tableid="department_tbl" data-popup="tooltip" title="Edit"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-tableid="department_tbl"></i></a></li></ul>';
+            button = '<ul class="action_btns"><li><a class="edit_department" data-id="'+row.id+'"  data-tableid="department_tbl" data-popup="tooltip" title="Edit Department" data-name="'+row.name+'" data-descrip="'+row.description+'" data-p_dept="'+row.parent_department_name+'"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-tableid="department_tbl"></i></a></li></ul>';
             return button; 
             }
           },
         ], 
       });
     /******* In Table ********/
-  /********** Displaying Departments ********/
+  /********** Departments Managment ********/
+
+  /********** Position Managment ********/
+    /******* In Dropdown ********/
+      $(".all_positions").selectBoxIt({
+        autoWidth: false,
+        defaultText: "Select One",
+        populate: function(){
+          var deferred = $.Deferred(), arr = [], x = -1;
+          $.ajax({
+          url: '<?=base_url()?>administration/all_postions'}).done(function(data) {
+            data = JSON.parse(data);  
+            $.each(data, function(array_index) {
+              $(".all_positions").data("selectBox-selectBoxIt").add({ value: data[array_index].id, text: data[array_index].name});
+            });
+          });
+          return deferred;
+        }
+      });
+      $(".all_positions").data("selectBox-selectBoxIt").add({value:"", text: "<em>Select One</em>"});
+    /******* In Dropdown ********/
+
+    /******* In Table ********/
+      $('#positions_tbl').dataTable({
+        searching : false,
+        paging: false,
+        ajax: {
+          type : 'GET',
+          url : '<?= base_url()?>settings/retrieve_alldata/positions/views',
+          dataSrc: '',
+        },
+        columns: [
+          {data: "id", render: function(data,type,row,meta) { 
+              return meta.row +1;
+            } 
+          },
+          {data: "name"},
+          {data: "parent_position_name"},
+          {data: "description",render: function(data,type,row,meta) {
+            return row.description.substring(0,37);
+          }},
+          {data: "status"},
+          {data: "status",render: function(data,type,row,meta) {
+            if(row.status == "active") {
+              label_class = "label-success";
+            }
+            else if(row.status == "suspended"){
+              label_class = "label-warning bg-orange";
+            }
+            else if(row.status == "deleted"){
+              label_class = "label-danger";
+            }
+
+            return '<span class="label '+label_class+'">'+row.status+'</span>';
+          }},
+          {data: "id", render: function(data,type,row,meta) { 
+            button = '<ul class="action_btns"><li><a class="edit_department" data-id="'+row.id+'"  data-tableid="department_tbl" data-popup="tooltip" title="Edit Department" data-name="'+row.name+'" data-descrip="'+row.description+'" data-p_dept="'+row.parent_department_name+'"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-tableid="department_tbl"></i></a></li></ul>';
+            return button; 
+            }
+          },
+        ], 
+      });
+    /******* In Table ********/
+  /********** Position Managment ********/
 
 
 </script>
