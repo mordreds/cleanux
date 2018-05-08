@@ -211,189 +211,130 @@
   /***************************** Company Settings      *****************************/
     <?php if($controller_function == "company") : ?>
     $(document).ready(function(){
+      selectbox_initialize('.display_departments','departments','views');
       selectbox_initialize('.display_positions','positions');
-      $(".display_positions").data("selectBox-selectBoxIt").add({value:"", text: "<em>Select One</em>"});
 
-      $('#allemployees').dataTable({
-        order:[],
-        ajax: {
-          type : 'GET',
-          url : '<?= base_url()?>settings/retrieve_alldata/employees/views',
-          dataSrc: ''
-        },
-        columns: [
-          {data:"employee_id"},
-          {render: function(data,type,row,meta){
-            return '<div class="media-left media-middle"><a href="#" class="btn bg-teal-400 btn-rounded btn-icon btn-xs"><span class="letter-icon">A</span></a></div><div class="media-body"><a href="#" class="display-inline-block text-default text-semibold letter-icon-title">'+row.fullname+'</a><div class="text-muted text-size-small"><span class="status-mark border-blue position-left"></span> '+row.current_position+'</div></div>';
-          }},
-          {data:"phone_number_1",render: function(data,type,row,meta){
-            return '<a class="text-default display-inline"><span class="text-semibold">'+row.phone_number_1+'</span><div class="text-muted text-size-small"><span class="status-mark border-blue position-left"></span> '+row.phone_number_2+'</div></a>';
-          }},
-          {data:"email"},
-          {data:"residence_address"},
-          {data:"phone_number_1",render: function(data,type,row,meta){
-            return '<a class="text-default display-inline"><span class="text-semibold">'+row.emergency_fullname+'</span><div class="text-muted text-size-small"><span class="status-mark border-blue position-left"></span> '+row.emergency_phone_1+'</div></a>';
-          }},
-          {data: "id", render: function(data,type,row,meta) { 
-            if(row.status == "active") {
-              button = '<ul class="action_btns" style="margin-bottom:0px"><li><a class="edit_employee_info" data-firstname="'+row.first_name+'" data-lastname="'+row.last_name+'" data-middlename="'+row.middle_name+'" data-gender="'+row.gender+'"  data-marital="'+row.marital_status+'" data-residence_address="'+row.residence_address+'"  data-phone_number_1="'+row.phone_number_1+'" data-phone_number_2="'+row.phone_number_2+'" data-email="'+row.email+'" data-employee_id="'+row.id+'" data-position="'+row.position_id+'" data-emergency_fullname="'+row.emergency_fullname+'" data-emergency_phone_1="'+row.emergency_phone_1+'" data-emergency_residence="'+row.emergency_residence+'" data-emergency_relationship="'+row.emergency_relationship+'" data-popup="tooltip" data-original-title="Edit Info" ><i class="icon-pencil" style="font-size:18px"></i></a></li><li><a data-client_tel="'+row.phone_number_1+'" data-id="'+row.id+'" data-popup="tooltip" data-original-title="Send SMS"><i class="icon-envelop3" style="font-size:18px"></i></a></li><li><a class="" data-popup="tooltip" data-popup="tooltip" data-original-title="Delete"><i class="icon-trash text-danger delete_button" data-deletename="'+row.fullname+'" data-deleteid="'+row.id+'" data-formurl="<?=base_url()?>administration/delete_record" data-tableid="allemployees" data-keyword="employee" style="font-size: 18px"></i></a></li></ul>';
-            } 
-            else if(user_status == "deleted"){ }
+      /********** Tables Managment ********/
+        /******* Employees ********/
+          $('#allemployees').dataTable({
+            order:[],
+            ajax: {
+              type : 'GET',
+              url : '<?= base_url()?>settings/retrieve_alldata/employees/views',
+              dataSrc: ''
+            },
+            columns: [
+              {data:"employee_id"},
+              {render: function(data,type,row,meta){
+                return '<div class="media-left media-middle"><a href="#" class="btn bg-teal-400 btn-rounded btn-icon btn-xs"><span class="letter-icon">A</span></a></div><div class="media-body"><a href="#" class="display-inline-block text-default text-semibold letter-icon-title">'+row.fullname+'</a><div class="text-muted text-size-small"><span class="status-mark border-blue position-left"></span> '+row.current_position+'</div></div>';
+              }},
+              {data:"phone_number_1",render: function(data,type,row,meta){
+                return '<a class="text-default display-inline"><span class="text-semibold">'+row.phone_number_1+'</span><div class="text-muted text-size-small"><span class="status-mark border-blue position-left"></span> '+row.phone_number_2+'</div></a>';
+              }},
+              {data:"email"},
+              {data:"residence_address"},
+              {data:"phone_number_1",render: function(data,type,row,meta){
+                return '<a class="text-default display-inline"><span class="text-semibold">'+row.emergency_fullname+'</span><div class="text-muted text-size-small"><span class="status-mark border-blue position-left"></span> '+row.emergency_phone_1+'</div></a>';
+              }},
+              {data: "id", render: function(data,type,row,meta) { 
+                if(row.status == "active") {
+                  button = '<ul class="action_btns" style="margin-bottom:0px"><li><a class="edit_employee_info" data-firstname="'+row.first_name+'" data-lastname="'+row.last_name+'" data-middlename="'+row.middle_name+'" data-gender="'+row.gender+'"  data-marital="'+row.marital_status+'" data-residence_address="'+row.residence_address+'"  data-phone_number_1="'+row.phone_number_1+'" data-phone_number_2="'+row.phone_number_2+'" data-email="'+row.email+'" data-employee_id="'+row.id+'" data-position="'+row.position_id+'" data-emergency_fullname="'+row.emergency_fullname+'" data-emergency_phone_1="'+row.emergency_phone_1+'" data-emergency_residence="'+row.emergency_residence+'" data-emergency_relationship="'+row.emergency_relationship+'" data-popup="tooltip" data-original-title="Edit Info" ><i class="icon-pencil" style="font-size:18px"></i></a></li><li><a data-client_tel="'+row.phone_number_1+'" data-id="'+row.id+'" data-popup="tooltip" data-original-title="Send SMS"><i class="icon-envelop3" style="font-size:18px"></i></a></li><li><a class="" data-popup="tooltip" data-popup="tooltip" data-original-title="Delete"><i class="icon-trash text-danger delete_button" data-deletename="'+row.fullname+'" data-deleteid="'+row.id+'" data-formurl="<?=base_url()?>administration/delete_record" data-tableid="allemployees" data-keyword="employee" style="font-size: 18px"></i></a></li></ul>';
+                } 
+                else if(user_status == "deleted"){ }
 
-            return button; 
-            }
-          },
-        ]
-      });
+                return button; 
+                }
+              },
+            ]
+          });
+        /******* Employees ********/
+
+        /******* Departments ********/
+          $('#department_tbl').dataTable({
+            searching : false,
+            paging: false,
+            ajax: {
+              type : 'GET',
+              url : '<?= base_url()?>settings/retrieve_alldata/departments/views',
+              dataSrc: '',
+            },
+            columns: [
+              {data: "id", render: function(data,type,row,meta) { 
+                  return meta.row +1;
+                } 
+              },
+              {data: "name"},
+              {data: "description",render: function(data,type,row,meta) {
+                return row.description.substring(0,37);
+              }},
+              {data: "parent_department_name"},
+              {data: "status",render: function(data,type,row,meta) {
+                if(row.status == "active") {
+                  label_class = "label-success";
+                }
+                else if(row.status == "suspended"){
+                  label_class = "label-warning bg-orange";
+                }
+                else if(row.status == "deleted"){
+                  label_class = "label-danger";
+                }
+
+                return '<span class="label '+label_class+'">'+row.status+'</span>';
+              }},
+              {data: "id", render: function(data,type,row,meta) { 
+                button = '<ul class="action_btns"><li><a class="edit_department" data-id="'+row.id+'"  data-tableid="department_tbl" data-popup="tooltip" title="Edit Department" data-name="'+row.name+'" data-descrip="'+row.description+'" data-p_dept="'+row.parent_department_name+'"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-tableid="department_tbl"></i></a></li></ul>';
+                return button; 
+                }
+              },
+            ], 
+          });
+        /******* Departments ********/
+        
+        /******* Positions ********/
+          $('#positions_tbl').dataTable({
+            searching : false,
+            paging: false,
+            ajax: {
+              type : 'GET',
+              url : '<?= base_url()?>settings/retrieve_alldata/positions/views',
+              dataSrc: '',
+            },
+            columns: [
+              {data: "id", render: function(data,type,row,meta) { 
+                  return meta.row +1;
+                } 
+              },
+              {data: "name"},
+              {data: "parent_position_name"},
+              {data: "description",render: function(data,type,row,meta) {
+                return row.description.substring(0,37);
+              }},
+              {data: "status"},
+              {data: "status",render: function(data,type,row,meta) {
+                if(row.status == "active") {
+                  label_class = "label-success";
+                }
+                else if(row.status == "suspended"){
+                  label_class = "label-warning bg-orange";
+                }
+                else if(row.status == "deleted"){
+                  label_class = "label-danger";
+                }
+
+                return '<span class="label '+label_class+'">'+row.status+'</span>';
+              }},
+              {data: "id", render: function(data,type,row,meta) { 
+                button = '<ul class="action_btns"><li><a class="edit_department" data-id="'+row.id+'"  data-tableid="department_tbl" data-popup="tooltip" title="Edit Department" data-name="'+row.name+'" data-descrip="'+row.description+'" data-p_dept="'+row.parent_department_name+'"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-tableid="department_tbl"></i></a></li></ul>';
+                return button; 
+                }
+              },
+            ], 
+          });
+        /******* Positions ********/
+      /********** Tables Managment ********/
     });
     <?php endif; ?>
   /***************************** Company Settings      *****************************/
-
-  /********** Departments Managment ********/
-    $(".all_departments").selectBoxIt({
-    defaultText: "Greg Franko Github Repos",
-    // Populates the drop down using a jQuery deferred object
-    populate: function() {
-        var deferred = $.Deferred(),
-            arr = [],
-            x = -1;
-        $.ajax({
-            url: '<?=base_url()?>administration/all_departments'
-        }).done(function(data) {
-            while(++x < data.length) {
-                arr.push(data[x].name);
-            }
-            deferred.resolve(arr);
-        });
-        return deferred;
-    }
-
-  });
-    /******* In Dropdown ********
-      $(".all_departments").selectBoxIt({
-        autoWidth: false,
-        defaultText: "Select One",
-        populate: function(){
-          var deferred = $.Deferred(), arr = [], x = -1;
-          $.ajax({
-          url: '<?=base_url()?>administration/all_departments'}).done(function(data) {
-            data = JSON.parse(data);  
-            for (var i = 0; i < Object.keys(data).length; i++) {
-              $(".all_departments").data("selectBox-selectBoxIt").add({ value: data[i].id, text: data[i].name});
-            }
-          });
-          //return deferred;
-        }
-      });
-      $(".all_departments").data("selectBox-selectBoxIt").add({value:"", text: "<em>Select One</em>"});
-    /******* In Dropdown ********/
-
-    /******* In Table ********/
-      $('#department_tbl').dataTable({
-        searching : false,
-        paging: false,
-        ajax: {
-          type : 'GET',
-          url : '<?= base_url()?>settings/retrieve_alldata/departments/views',
-          dataSrc: '',
-        },
-        columns: [
-          {data: "id", render: function(data,type,row,meta) { 
-              return meta.row +1;
-            } 
-          },
-          {data: "name"},
-          {data: "description",render: function(data,type,row,meta) {
-            return row.description.substring(0,37);
-          }},
-          {data: "parent_department_name"},
-          {data: "status",render: function(data,type,row,meta) {
-            if(row.status == "active") {
-              label_class = "label-success";
-            }
-            else if(row.status == "suspended"){
-              label_class = "label-warning bg-orange";
-            }
-            else if(row.status == "deleted"){
-              label_class = "label-danger";
-            }
-
-            return '<span class="label '+label_class+'">'+row.status+'</span>';
-          }},
-          {data: "id", render: function(data,type,row,meta) { 
-            button = '<ul class="action_btns"><li><a class="edit_department" data-id="'+row.id+'"  data-tableid="department_tbl" data-popup="tooltip" title="Edit Department" data-name="'+row.name+'" data-descrip="'+row.description+'" data-p_dept="'+row.parent_department_name+'"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-tableid="department_tbl"></i></a></li></ul>';
-            return button; 
-            }
-          },
-        ], 
-      });
-    /******* In Table ********/
-  /********** Departments Managment ********/
-
-  /********** Position Managment ********/
-    /******* In Dropdown ********
-      $("#all_positions").selectBoxIt({
-        autoWidth: false,
-        defaultText: "Select One",
-        populate: function(){
-          var deferred = $.Deferred(), arr = [], x = -1;
-          $.ajax({
-          url: '<?=base_url()?>administration/all_postions'}).done(function(data) {
-            data = JSON.parse(data);  
-            $.each(data, function(array_index) {
-              $("#all_positions").data("selectBox-selectBoxIt").add({ value: data[array_index].id, text: data[array_index].name});
-            });
-          });
-          return deferred;
-        }
-      });
-      $("#all_positions").data("selectBox-selectBoxIt").add({value:"", text: "<em>Select One</em>"});
-    /******* In Dropdown ********/
-
-    /******* In Table ********
-      $('#positions_tbl').dataTable({
-        searching : false,
-        paging: false,
-        ajax: {
-          type : 'GET',
-          url : '<?= base_url()?>settings/retrieve_alldata/positions/views',
-          dataSrc: '',
-        },
-        columns: [
-          {data: "id", render: function(data,type,row,meta) { 
-              return meta.row +1;
-            } 
-          },
-          {data: "name"},
-          {data: "parent_position_name"},
-          {data: "description",render: function(data,type,row,meta) {
-            return row.description.substring(0,37);
-          }},
-          {data: "status"},
-          {data: "status",render: function(data,type,row,meta) {
-            if(row.status == "active") {
-              label_class = "label-success";
-            }
-            else if(row.status == "suspended"){
-              label_class = "label-warning bg-orange";
-            }
-            else if(row.status == "deleted"){
-              label_class = "label-danger";
-            }
-
-            return '<span class="label '+label_class+'">'+row.status+'</span>';
-          }},
-          {data: "id", render: function(data,type,row,meta) { 
-            button = '<ul class="action_btns"><li><a class="edit_department" data-id="'+row.id+'"  data-tableid="department_tbl" data-popup="tooltip" title="Edit Department" data-name="'+row.name+'" data-descrip="'+row.description+'" data-p_dept="'+row.parent_department_name+'"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-tableid="department_tbl"></i></a></li></ul>';
-            return button; 
-            }
-          },
-        ], 
-      });
-    /******* In Table ********/
-  /********** Position Managment ********/
-
-
 </script>
 <?php endif; ?>
   

@@ -267,7 +267,9 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="display-block">Parent Department</label>
-                                  <select name="parent_department" class="selectbox all_departments"></select>
+                                  <select name="parent_department" class="display_departments">
+                                    <option value=""><em>Select One</em></option>
+                                  </select>
                               </div>
                             </div>
                             <div class="col-md-6">
@@ -314,13 +316,15 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="display-block">Name <span style="color:red;">*</span></label>
-                                 <input type="text" name="service_name" class="form-control" required>
+                                 <input type="text" name="position_name" class="form-control" required>
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="display-block">Parent Postion (<em>If Any</em>) <span style="color:red;">*</span></label>
-                                <select name="parent_position" class="selectbox all_positions"></select>
+                                <select name="parent_position" class="display_positions">
+                                   <option value=""><em>Select One</em></option>
+                                </select>
                               </div>
                             </div>
                           </div>
@@ -328,13 +332,15 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="display-block">Department <span style="color:red;">*</span></label>
-                                 <select id="" name="department" class="selectbox all_departments"></select>
+                                 <select id="" name="department" class="display_departments">
+                                    <option value=""><em>Select One</em></option>
+                                 </select>
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label class="display-block">Salary <span style="color:red;">*</span></label>
-                                 <input type="number" minlength="0" name="salary" class="form-control" required>
+                                <label class="display-block">Salary (<em>GH₵</em>) <span style="color:red;">*</span></label>
+                                 <input type="number" min="0" name="salary" class="form-control" required>
                               </div>
                             </div>
                           </div>

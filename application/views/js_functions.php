@@ -96,14 +96,14 @@
   /************ Ajax Post Function  *********/
 
   /************ SelectBoxIt Plugin  *********/
-    function selectbox_initialize(doc_element,tablename,default_select="null"){
+    function selectbox_initialize(doc_element,tablename,default_select="default"){
       $(doc_element).selectBoxIt({
         autoWidth: false,
-        defaultText: "Select One",
+        //defaultText: "Select One",
         populate: function(){
           var deferred = $.Deferred(), arr = [], x = -1;
           $.ajax({
-          url: '<?= base_url()?>settings/retrieve_alldata/'+tablename+'/default'}).done(function(data) {
+          url: '<?= base_url()?>settings/retrieve_alldata/'+tablename+"/"+default_select}).done(function(data) {
             data = JSON.parse(data);
 
             while(++x < data.length){

@@ -90,6 +90,129 @@ class Settings extends MX_Controller
   /**************** Interfaces ****************/
 
   /**************** Insertions ****************/
+    /****** Save Position      ***********/
+      public function save_position($id = null) {
+        if(in_array('new registration', $_SESSION['user']['roles'])) {
+          $this->form_validation->set_rules('parent_position','Parent Position','trim');
+          $this->form_validation->set_rules('position_name','Position Name','trim|required');
+          $this->form_validation->set_rules('department','Department','trim|required');
+          $this->form_validation->set_rules('salary','Salary','trim|required');
+          $this->form_validation->set_rules('description','Duties & Repsonsibilities','trim|required');
+          //$this->form_validation->set_rules('delete_item','Delete Action','trim');
+
+          if($this->form_validation->run() === FALSE) {
+            $error_msg = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+            $this->session->set_flashdata('error',$error_msg);
+            redirect('settings/company#positions');
+          }
+          else {
+            if(empty($id))
+              $this->load->model('globals/model_insertion');
+            else
+              $this->load->model('globals/model_update');
+            /***** Data Definition *****/
+            $dbres = self::$_Default_DB;
+            $return_dataType="php_object";
+            $tablename = "hr_position";
+            $data = [
+              'parent_position' => ucwords($this->input->post('parent_department')),
+              'name' => ucwords($this->input->post('position_name')),
+              'department_id' => ucwords($this->input->post('department')),
+              'salary' => ucwords($this->input->post('salary')),
+              'description' => ucwords($this->input->post('description')),
+            ];
+            /***** Data Definition *****/
+            /***** Save New Department ***********/
+            if(empty($id)) {
+              $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
+              if($query_result)
+                $this->session->set_flashdata('success',"Save Successful");
+              else
+                $this->session->set_flashdata('error',"Save Failed");
+
+              redirect('settings/company#positions');
+            }
+            /***** Update Department ***********/
+            else {
+              $where_condition = ['id' => $id];
+
+              $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
+              if($query_result)
+                $return_data['success'] = "Update Successul";
+              else
+                $return_data['error'] = "Update Failed";
+
+              print_r(json_encode($return_data));
+            }
+
+            exit;
+          }
+        }
+        else {
+          $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
+          redirect('settings/company#positions');
+        }
+      }
+    /****** Save Position      ***********/
+
+    /****** Save Department      ***********/
+      public function save_department($id = null) {
+        if(in_array('new registration', $_SESSION['user']['roles'])) {
+          $this->form_validation->set_rules('parent_department','Parent Department','trim');
+          $this->form_validation->set_rules('department','Departmennt Name','trim|required');
+          $this->form_validation->set_rules('description','Description','trim|required');
+          //$this->form_validation->set_rules('delete_item','Delete Action','trim');
+
+          if($this->form_validation->run() === FALSE) {
+            $this->session->set_flashdata('error',"Validation Error");
+            redirect('settings/new_registration');
+          }
+          else {
+            $this->load->model('globals/model_insertion');
+            $this->load->model('globals/model_update');
+            /***** Data Definition *****/
+            $dbres = self::$_Default_DB;
+            $return_dataType="php_object";
+            $tablename = "hr_departments";
+            $data = [
+              'parent_department' => ucwords($this->input->post('parent_department')),
+              'name' => ucwords($this->input->post('department')),
+              'description' => ucwords($this->input->post('description')),
+            ];
+            /***** Data Definition *****/
+            /***** Save New Department ***********/
+            if(empty($id)) {
+              $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
+              if($query_result)
+                $this->session->set_flashdata('success',"Save Successful");
+              else
+                $this->session->set_flashdata('error',"Save Failed");
+
+              redirect('settings/company#departments');
+            }
+            /***** Update Department ***********/
+            else {
+              $where_condition = ['id' => $id];
+
+              $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
+              if($query_result)
+                $return_data['success'] = "Update Successul";
+              else
+                $return_data['error'] = "Update Failed";
+
+              print_r(json_encode($return_data));
+            }
+
+            exit;
+          }
+        }
+        else {
+          $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
+          redirect('settings/company#departments');
+        }
+      }
+    /****** Save Department      ***********/
+
     /****** Save Company Details  ******/
       public function save_company_details() {
         if(in_array('users', $_SESSION['user']['roles'])) {
@@ -643,69 +766,9 @@ class Settings extends MX_Controller
         }
       }
     /****** Save Client Info ***********/
-
-    /****** Save Weight      ***********/
-      public function save_department($id = null) {
-        if(in_array('new registration', $_SESSION['user']['roles'])) {
-          $this->form_validation->set_rules('parent_department','Parent Department','trim');
-          $this->form_validation->set_rules('department','Departmennt Name','trim|required');
-          $this->form_validation->set_rules('description','Description','trim|required');
-          //$this->form_validation->set_rules('delete_item','Delete Action','trim');
-
-          if($this->form_validation->run() === FALSE) {
-            $this->session->set_flashdata('error',"Validation Error");
-            redirect('settings/new_registration');
-          }
-          else {
-            $this->load->model('globals/model_insertion');
-            $this->load->model('globals/model_update');
-            /***** Data Definition *****/
-            $dbres = self::$_Default_DB;
-            $return_dataType="php_object";
-            $tablename = "hr_departments";
-            $data = [
-              'parent_department' => ucwords($this->input->post('parent_department')),
-              'name' => ucwords($this->input->post('department')),
-              'description' => ucwords($this->input->post('description')),
-            ];
-            /***** Data Definition *****/
-            /***** Save New Department ***********/
-            if(empty($id)) {
-              $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
-              if($query_result)
-                $this->session->set_flashdata('success',"Save Successful");
-              else
-                $this->session->set_flashdata('error',"Save Failed");
-
-              redirect('settings/company#departments');
-            }
-            /***** Update Department ***********/
-            else {
-              $where_condition = ['id' => $id];
-
-              $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
-              if($query_result)
-                $return_data['success'] = "Update Successul";
-              else
-                $return_data['error'] = "Update Failed";
-
-              print_r(json_encode($return_data));
-            }
-
-            exit;
-          }
-        }
-        else {
-          $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
-          redirect('settings/new_registration#weight');
-        }
-      }
-    /****** Save Weight      ***********/
-
   /**************** Insertions ****************/
 
   /**************** Retrievals ****************/
-
     /****** Search From Customers Table ***********/
     public function customer_new_order($phone_number) {
       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
@@ -806,13 +869,19 @@ class Settings extends MX_Controller
           $orderby = array('modified_date' => "DESC");
         }
 
-        if($table == "positions") {
-          $tablename = "hr_position";
-          $return_dataType = "json";
-        }
-
         if($table == "departments") {
           $tablename = "vw_hr_departments";
+          $return_dataType = "json";
+          /***** Checking System Developer Role ******/
+          if($_SESSION['user']['group_name'] == "System Developer")
+            $condition = array();
+          else
+          $condition = "id != 1 && status not in ('deleted')";
+        }
+
+        if($table == "positions") {
+          $dbres = self::$_Views_DB;
+          $tablename = "vw_hr_positions";
           $return_dataType = "json";
           /***** Checking System Developer Role ******/
           if($_SESSION['user']['group_name'] == "System Developer")
@@ -956,36 +1025,36 @@ class Settings extends MX_Controller
   /*********************************  AJAX CALLS **************************/
 
   /********************************* Other Functions *********************/
-  protected function generate_userid() {
-    # Loading Model 
-    $this->load->model('globals/model_retrieval');
-    $this->load->model('custom_retrievals');
+    protected function generate_userid() {
+      # Loading Model 
+      $this->load->model('globals/model_retrieval');
+      $this->load->model('custom_retrievals');
 
-    /******** Generating New User Id *********/
-    $dbres = self::$_Permission_DB;
-    $return_dataType = "";
+      /******** Generating New User Id *********/
+      $dbres = self::$_Permission_DB;
+      $return_dataType = "";
 
-    $last_employee_id  = $this->custom_retrievals->last_temp_employee_id($dbres,$return_dataType);
-    
-    if(empty($last_employee_id[0]->temp_employee_id)) 
-      $next_usr_id = "KAD/TEMP/001"; 
-    else {
-      $last_emp_id = explode("/", $last_employee_id[0]->temp_employee_id);
-      $last_emp_id = (int)$last_emp_id[2];
+      $last_employee_id  = $this->custom_retrievals->last_temp_employee_id($dbres,$return_dataType);
+      
+      if(empty($last_employee_id[0]->temp_employee_id)) 
+        $next_usr_id = "KAD/TEMP/001"; 
+      else {
+        $last_emp_id = explode("/", $last_employee_id[0]->temp_employee_id);
+        $last_emp_id = (int)$last_emp_id[2];
 
-      if(strlen($last_emp_id) == 1)
-      $next_usr_id = "KAD/TEMP/00".($last_emp_id + 1);
+        if(strlen($last_emp_id) == 1)
+        $next_usr_id = "KAD/TEMP/00".($last_emp_id + 1);
 
-      elseif(strlen($last_emp_id) == 2)
-        $next_usr_id = "KAD/TEMP/0".($last_emp_id + 1);
+        elseif(strlen($last_emp_id) == 2)
+          $next_usr_id = "KAD/TEMP/0".($last_emp_id + 1);
 
-      elseif(strlen($last_emp_id) == 3)
-        $next_usr_id = "KAD/TEMP/".($last_emp_id + 1);
+        elseif(strlen($last_emp_id) == 3)
+          $next_usr_id = "KAD/TEMP/".($last_emp_id + 1);
+      }
+
+      return $next_usr_id;  
+      /********** Generating New User Id ************/
     }
-
-    return $next_usr_id;  
-    /********** Generating New User Id ************/
-  }
   /********************************* Other Functions *********************/
 
   
