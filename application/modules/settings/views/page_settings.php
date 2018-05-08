@@ -250,7 +250,26 @@
   /***************************** Company Settings      *****************************/
 
   /********** Departments Managment ********/
-    /******* In Dropdown ********/
+    $(".all_departments").selectBoxIt({
+    defaultText: "Greg Franko Github Repos",
+    // Populates the drop down using a jQuery deferred object
+    populate: function() {
+        var deferred = $.Deferred(),
+            arr = [],
+            x = -1;
+        $.ajax({
+            url: '<?=base_url()?>administration/all_departments'
+        }).done(function(data) {
+            while(++x < data.length) {
+                arr.push(data[x].name);
+            }
+            deferred.resolve(arr);
+        });
+        return deferred;
+    }
+
+  });
+    /******* In Dropdown ********
       $(".all_departments").selectBoxIt({
         autoWidth: false,
         defaultText: "Select One",
@@ -259,11 +278,11 @@
           $.ajax({
           url: '<?=base_url()?>administration/all_departments'}).done(function(data) {
             data = JSON.parse(data);  
-            $.each(data, function(array_index) {
-              $(".all_departments").data("selectBox-selectBoxIt").add({ value: data[array_index].id, text: data[array_index].name});
-            });
+            for (var i = 0; i < Object.keys(data).length; i++) {
+              $(".all_departments").data("selectBox-selectBoxIt").add({ value: data[i].id, text: data[i].name});
+            }
           });
-          return deferred;
+          //return deferred;
         }
       });
       $(".all_departments").data("selectBox-selectBoxIt").add({value:"", text: "<em>Select One</em>"});
@@ -312,8 +331,8 @@
   /********** Departments Managment ********/
 
   /********** Position Managment ********/
-    /******* In Dropdown ********/
-      $(".all_positions").selectBoxIt({
+    /******* In Dropdown ********
+      $("#all_positions").selectBoxIt({
         autoWidth: false,
         defaultText: "Select One",
         populate: function(){
@@ -322,16 +341,16 @@
           url: '<?=base_url()?>administration/all_postions'}).done(function(data) {
             data = JSON.parse(data);  
             $.each(data, function(array_index) {
-              $(".all_positions").data("selectBox-selectBoxIt").add({ value: data[array_index].id, text: data[array_index].name});
+              $("#all_positions").data("selectBox-selectBoxIt").add({ value: data[array_index].id, text: data[array_index].name});
             });
           });
           return deferred;
         }
       });
-      $(".all_positions").data("selectBox-selectBoxIt").add({value:"", text: "<em>Select One</em>"});
+      $("#all_positions").data("selectBox-selectBoxIt").add({value:"", text: "<em>Select One</em>"});
     /******* In Dropdown ********/
 
-    /******* In Table ********/
+    /******* In Table ********
       $('#positions_tbl').dataTable({
         searching : false,
         paging: false,

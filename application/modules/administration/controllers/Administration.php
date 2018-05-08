@@ -581,6 +581,34 @@ class Administration extends MX_Controller
       }
     }
     /*******************************
+      Retrieve All Positions
+    *******************************/
+    public function all_positions()
+    {
+      if(isset($_SESSION['user']['username']) && in_array('users', $_SESSION['user']['roles']))
+      {
+        # Loading Model 
+        $this->load->model('globals/model_retrieval');
+
+        $dbres = self::$_Views_DB;
+        $tablename = "vw_hr_positions";
+        $return_dataType = "json";
+        /***** Checking System Developer Role ******/
+        if($_SESSION['user']['group_name'] == "System Developer")
+          $condition = array();
+        else
+        $condition = array('id !=' => "1");
+
+        $search_result = $this->model_retrieval->all_info_return_result($dbres,$tablename,$condition,$return_dataType);
+            
+        print_r((!empty($search_result)) ? $search_result : $search_result = array());
+      }
+      else {
+        $data = array('name' => "Permission Denied.Contact Administrator");
+        print $data;
+      }
+    }
+    /*******************************
       Retrieve Employees From Department
     *******************************/
     public function department_employees($department)

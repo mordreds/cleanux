@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 27, 2018 at 06:34 AM
--- Server version: 5.7.22-0ubuntu0.16.04.1
+-- Generation Time: May 08, 2018 at 06:25 AM
+-- Server version: 5.7.21-0ubuntu0.16.04.1
 -- PHP Version: 7.0.28-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -105,7 +105,7 @@ INSERT INTO `successful_logins` (`id`, `user_id`, `time_in`, `time_out`, `online
 (30, 2, '2018-01-12 00:02:34', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/63.0.3239.73 Mobile/15C153 Safari/604.1', '41.57.208.74', '41.57.208.74', 'Accra,Greater Accra Region', 'Ghana'),
 (31, 2, '2018-01-12 07:29:06', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_2 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/63.0.3239.73 Mobile/15C202 Safari/604.1', '41.57.217.52', '41.57.217.52', 'Accra,Greater Accra Region', 'Ghana'),
 (32, 2, '2018-01-12 21:18:12', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.208.24', '41.57.208.24', 'Accra,Greater Accra Region', 'Ghana'),
-(33, 2, '2018-01-13 14:08:10', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.217.88', '41.57.217.88', 'Accra,Greater Accra Region', 'Ghana'),
+(33, 2, '2018-04-29 00:09:50', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.217.88', '41.57.217.88', 'Accra,Greater Accra Region', 'Ghana'),
 (34, 2, '2018-01-14 22:24:00', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.217.95', '41.57.217.95', 'Accra,Greater Accra Region', 'Ghana'),
 (35, 1, '2018-01-15 11:49:27', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.222.232.246', '41.222.232.246', 'Accra,Greater Accra Region', 'Ghana'),
 (36, 2, '2018-01-15 11:08:42', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', '41.57.217.109', '41.57.217.109', 'Accra,Greater Accra Region', 'Ghana'),
@@ -177,7 +177,15 @@ INSERT INTO `successful_logins` (`id`, `user_id`, `time_in`, `time_out`, `online
 (102, 1, '2018-04-26 19:21:10', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36 OPR/52.0.2871.64', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
 (103, 1, '2018-04-26 19:44:57', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36 OPR/52.0.2871.64', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
 (104, 1, '2018-04-26 20:08:04', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36 OPR/52.0.2871.64', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
-(105, 1, '2018-04-27 09:08:04', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36 OPR/52.0.2871.64', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana');
+(105, 1, '2018-04-27 09:08:04', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36 OPR/52.0.2871.64', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(106, 1, '2018-04-29 14:37:21', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36 OPR/52.0.2871.30', '::1', 'ip6-localhost', NULL, NULL),
+(107, 1, '2018-05-01 08:28:58', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36 OPR/52.0.2871.30', '::1', 'ip6-localhost', NULL, NULL),
+(108, 1, '2018-05-01 12:49:58', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36 OPR/52.0.2871.30', '::1', 'ip6-localhost', NULL, NULL),
+(109, 1, '2018-05-01 12:59:41', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36 OPR/52.0.2871.30', '::1', 'ip6-localhost', NULL, NULL),
+(110, 1, '2018-05-01 21:47:41', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36 OPR/52.0.2871.30', '::1', 'ip6-localhost', NULL, NULL),
+(111, 1, '2018-05-02 21:18:15', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36 OPR/52.0.2871.30', '::1', 'ip6-localhost', NULL, NULL),
+(112, 1, '2018-05-03 20:04:21', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36 OPR/52.0.2871.30', '::1', 'ip6-localhost', NULL, NULL),
+(113, 1, '2018-05-07 18:40:38', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36 OPR/52.0.2871.30', '::1', 'ip6-localhost', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -230,7 +238,7 @@ ALTER TABLE `failed_logins`
 -- AUTO_INCREMENT for table `successful_logins`
 --
 ALTER TABLE `successful_logins`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=106;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=114;
 --
 -- AUTO_INCREMENT for table `sysaudit`
 --
@@ -302,15 +310,21 @@ INSERT INTO `hr_company_info` (`id`, `name`, `telephone_1`, `telephone_2`, `fax`
 
 CREATE TABLE `hr_departments` (
   `id` tinyint(2) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+  `parent_department` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` mediumtext NOT NULL,
+  `status` enum('active','suspended','deleted') NOT NULL DEFAULT 'active',
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `hr_departments`
 --
 
-INSERT INTO `hr_departments` (`id`, `name`) VALUES
-(1, 'Administration');
+INSERT INTO `hr_departments` (`id`, `parent_department`, `name`, `description`, `status`, `date_created`) VALUES
+(1, 0, 'SYSTEM DEVELOPERS', 'THIS DEPARTMENTS ARE USED BY THE SYSTEM DEVELOPERS GROUP FOR THE MAINTENANCE OF THE SYSTEM VIA LOCAL OR REMOTELY. ', 'active', '2018-05-03 21:31:58'),
+(2, 0, 'Administration', 'Pending Some Contrary Rabbit Up That The More Conditionally Ouch Confidently Far So Was Darn Logic Thus Dove The Juicily Because That Placed Otter.', 'active', '2018-05-03 21:40:32'),
+(5, 2, 'Human Resource', 'Pending Some Contrary Rabbit Up That The More Conditionally Ouch Confidently Far So Was Darn Logic Thus Dove The Juicily Because That Placed Otter.', 'active', '2018-05-03 22:49:30');
 
 -- --------------------------------------------------------
 
@@ -434,7 +448,8 @@ INSERT INTO `hr_employee_work_info` (`id`, `biodata_id`, `employee_id`, `positio
 CREATE TABLE `hr_position` (
   `id` tinyint(2) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `description` varchar(100) DEFAULT NULL,
+  `parent_position` int(11) NOT NULL,
+  `description` text,
   `status` enum('active','deleted') NOT NULL DEFAULT 'active'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -442,9 +457,9 @@ CREATE TABLE `hr_position` (
 -- Dumping data for table `hr_position`
 --
 
-INSERT INTO `hr_position` (`id`, `name`, `description`, `status`) VALUES
-(1, 'Administrator', 'Head Of Administration', 'active'),
-(2, 'Receptionist', 'Welcomes All Guests', 'active');
+INSERT INTO `hr_position` (`id`, `name`, `parent_position`, `description`, `status`) VALUES
+(1, 'Administrator', 0, 'Head Of Administration', 'active'),
+(2, 'Receptionist', 0, 'Welcomes All Guests', 'active');
 
 -- --------------------------------------------------------
 
@@ -753,108 +768,6 @@ CREATE TABLE `tax_system` (
 INSERT INTO `tax_system` (`id`, `value`, `user_id`, `date_created`) VALUES
 (1, 23.5, 1, '2017-12-30 15:03:19');
 
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `vw_employee_details`
---
-CREATE TABLE `vw_employee_details` (
-`id` bigint(20)
-,`first_name` varchar(100)
-,`middle_name` varchar(50)
-,`last_name` varchar(100)
-,`fullname` varchar(252)
-,`gender` varchar(20)
-,`date_of_birth` date
-,`id_type` varchar(50)
-,`phone_number_1` varchar(25)
-,`phone_number_2` varchar(25)
-,`email` varchar(50)
-,`id_number` varchar(50)
-,`id_expiry_date` date
-,`id_issue_date` date
-,`marital_status` varchar(50)
-,`nationality` varchar(255)
-,`postal_address` text
-,`social_security` varchar(50)
-,`bank_name` varchar(255)
-,`bank_branch` varchar(255)
-,`account_number` varchar(50)
-,`user_id` bigint(20)
-,`status` enum('active','inactive','deleted')
-,`created_date` datetime
-,`employment_type` varchar(50)
-,`employment_startdate` date
-,`employee_id` varchar(50)
-,`work_email` varchar(50)
-,`department` varchar(255)
-,`current_position` varchar(50)
-,`profile_photo` text
-,`resume_file_path` text
-,`application_file_path` text
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `vw_laundry_prices`
---
-CREATE TABLE `vw_laundry_prices` (
-`id` bigint(20)
-,`service_id` bigint(20)
-,`service_code` char(2)
-,`service_name` varchar(150)
-,`weight_id` varchar(20)
-,`weight` varchar(20)
-,`garment_id` varchar(20)
-,`garment_name` varchar(50)
-,`amount` float
-,`status` enum('active','inactive','deleted','')
-,`date_created` datetime
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `vw_laundry_weights`
---
-CREATE TABLE `vw_laundry_weights` (
-`id` bigint(20)
-,`service_type` bigint(20)
-,`weight` varchar(20)
-,`description` varchar(255)
-,`status` enum('active','inactive','deleted','')
-,`date_created` datetime
-,`service` varchar(150)
-);
-
--- --------------------------------------------------------
-
---
--- Structure for view `vw_employee_details`
---
-DROP TABLE IF EXISTS `vw_employee_details`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_employee_details`  AS  select `a`.`id` AS `id`,`a`.`first_name` AS `first_name`,`a`.`middle_name` AS `middle_name`,`a`.`last_name` AS `last_name`,concat(`a`.`first_name`,' ',`a`.`middle_name`,' ',`a`.`last_name`) AS `fullname`,`a`.`gender` AS `gender`,`a`.`date_of_birth` AS `date_of_birth`,`a`.`id_type` AS `id_type`,`g`.`phone_number_1` AS `phone_number_1`,`g`.`phone_number_2` AS `phone_number_2`,`g`.`email` AS `email`,`a`.`id_number` AS `id_number`,`a`.`id_expiry_date` AS `id_expiry_date`,`a`.`id_issue_date` AS `id_issue_date`,`a`.`marital_status` AS `marital_status`,`a`.`nationality` AS `nationality`,`a`.`postal_address` AS `postal_address`,`a`.`social_security` AS `social_security`,`a`.`bank_name` AS `bank_name`,`a`.`bank_branch` AS `bank_branch`,`a`.`account_number` AS `account_number`,`a`.`user_id` AS `user_id`,`a`.`status` AS `status`,`a`.`created_date` AS `created_date`,`d`.`employment_type` AS `employment_type`,`d`.`employment_startdate` AS `employment_startdate`,`d`.`employee_id` AS `employee_id`,`d`.`work_email` AS `work_email`,`e`.`name` AS `department`,`f`.`name` AS `current_position`,(select `blobs`.`file_path` from `blobs` where (`a`.`photo_id` = `blobs`.`id`)) AS `profile_photo`,(select `blobs`.`file_path` from `blobs` where (`d`.`resume_id` = `blobs`.`id`)) AS `resume_file_path`,(select `blobs`.`file_path` from `blobs` where (`d`.`application_id` = `blobs`.`id`)) AS `application_file_path` from (((((`hr_employee_biodata` `a` left join `hr_employee_other_info` `c` on((`a`.`id` = `c`.`biodata_id`))) left join `hr_employee_work_info` `d` on((`a`.`id` = `d`.`biodata_id`))) left join `hr_employee_contact_info` `g` on((`a`.`id` = `g`.`biodata_id`))) left join `hr_departments` `e` on((`d`.`department_id` = `e`.`id`))) left join `hr_position` `f` on((`d`.`position_id` = `f`.`id`))) ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `vw_laundry_prices`
---
-DROP TABLE IF EXISTS `vw_laundry_prices`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_laundry_prices`  AS  select `a`.`id` AS `id`,`a`.`service_id` AS `service_id`,`b`.`code` AS `service_code`,`b`.`name` AS `service_name`,coalesce(`a`.`weight_id`,'') AS `weight_id`,coalesce(`c`.`weight`,'') AS `weight`,coalesce(`a`.`garment_id`,'') AS `garment_id`,coalesce(`d`.`name`,'') AS `garment_name`,`a`.`amount` AS `amount`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created` from (((`laundry_prices` `a` left join `laundry_services` `b` on((`a`.`service_id` = `b`.`id`))) left join `laundry_weights` `c` on((`a`.`weight_id` = `c`.`id`))) left join `laundry_garments` `d` on((`a`.`garment_id` = `d`.`id`))) ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `vw_laundry_weights`
---
-DROP TABLE IF EXISTS `vw_laundry_weights`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_laundry_weights`  AS  select `a`.`id` AS `id`,`a`.`service_type` AS `service_type`,`a`.`weight` AS `weight`,`a`.`description` AS `description`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created`,`b`.`name` AS `service` from (`laundry_weights` `a` left join `laundry_services` `b` on((`a`.`service_type` = `b`.`id`))) ;
-
 --
 -- Indexes for dumped tables
 --
@@ -1002,7 +915,7 @@ ALTER TABLE `hr_company_info`
 -- AUTO_INCREMENT for table `hr_departments`
 --
 ALTER TABLE `hr_departments`
-  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `hr_employee_biodata`
 --
@@ -1383,6 +1296,21 @@ CREATE TABLE `vw_employee_details` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `vw_hr_departments`
+--
+CREATE TABLE `vw_hr_departments` (
+`id` tinyint(2)
+,`parent_department` int(11)
+,`name` varchar(255)
+,`description` mediumtext
+,`status` enum('active','suspended','deleted')
+,`date_created` datetime
+,`parent_department_name` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `vw_laundry_clients`
 --
 CREATE TABLE `vw_laundry_clients` (
@@ -1525,6 +1453,15 @@ CREATE TABLE `vw_user_details` (
 DROP TABLE IF EXISTS `vw_employee_details`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_employee_details`  AS  select `a`.`id` AS `id`,`a`.`first_name` AS `first_name`,`a`.`middle_name` AS `middle_name`,`a`.`last_name` AS `last_name`,concat(`a`.`first_name`,' ',`a`.`middle_name`,' ',`a`.`last_name`) AS `fullname`,`a`.`gender` AS `gender`,`a`.`date_of_birth` AS `date_of_birth`,`g`.`residence` AS `residence_address`,`g`.`phone_number_1` AS `phone_number_1`,`g`.`phone_number_2` AS `phone_number_2`,`g`.`email` AS `email`,`g`.`emergency_fullname` AS `emergency_fullname`,`g`.`emergency_relationship` AS `emergency_relationship`,`g`.`emergency_occupation` AS `emergency_occupation`,`g`.`emergency_phone_1` AS `emergency_phone_1`,`g`.`emergency_phone_2` AS `emergency_phone_2`,`g`.`emergency_residence` AS `emergency_residence`,`a`.`id_number` AS `id_number`,`a`.`id_expiry_date` AS `id_expiry_date`,`a`.`id_issue_date` AS `id_issue_date`,`a`.`marital_status` AS `marital_status`,`a`.`nationality` AS `nationality`,`a`.`postal_address` AS `postal_address`,`a`.`social_security` AS `social_security`,`a`.`bank_name` AS `bank_name`,`a`.`bank_branch` AS `bank_branch`,`a`.`account_number` AS `account_number`,`a`.`user_id` AS `user_id`,`a`.`status` AS `status`,`a`.`created_date` AS `created_date`,`d`.`employment_type` AS `employment_type`,`d`.`employment_startdate` AS `employment_startdate`,`d`.`employee_id` AS `employee_id`,`d`.`work_email` AS `work_email`,`e`.`name` AS `department`,`f`.`id` AS `position_id`,`f`.`name` AS `current_position`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`a`.`photo_id` = `bgee_db`.`blobs`.`id`)) AS `profile_photo`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`d`.`resume_id` = `bgee_db`.`blobs`.`id`)) AS `resume_file_path`,(select `bgee_db`.`blobs`.`file_path` from `bgee_db`.`blobs` where (`d`.`application_id` = `bgee_db`.`blobs`.`id`)) AS `application_file_path` from (((((`bgee_db`.`hr_employee_biodata` `a` left join `bgee_db`.`hr_employee_other_info` `c` on((`a`.`id` = `c`.`biodata_id`))) left join `bgee_db`.`hr_employee_work_info` `d` on((`a`.`id` = `d`.`biodata_id`))) left join `bgee_db`.`hr_employee_contact_info` `g` on((`a`.`id` = `g`.`biodata_id`))) left join `bgee_db`.`hr_departments` `e` on((`d`.`department_id` = `e`.`id`))) left join `bgee_db`.`hr_position` `f` on((`d`.`position_id` = `f`.`id`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vw_hr_departments`
+--
+DROP TABLE IF EXISTS `vw_hr_departments`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`admin`@`localhost` SQL SECURITY DEFINER VIEW `vw_hr_departments`  AS  select `a`.`id` AS `id`,`a`.`parent_department` AS `parent_department`,`a`.`name` AS `name`,`a`.`description` AS `description`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created`,coalesce(`b`.`name`,'None') AS `parent_department_name` from (`bgee_db`.`hr_departments` `a` left join `bgee_db`.`hr_departments` `b` on((`a`.`parent_department` = `b`.`id`))) ;
 
 -- --------------------------------------------------------
 
