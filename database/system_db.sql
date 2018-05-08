@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2018 at 01:14 PM
+-- Generation Time: May 08, 2018 at 01:38 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.1.14
 
@@ -467,8 +467,9 @@ CREATE TABLE `hr_position` (
 --
 
 INSERT INTO `hr_position` (`id`, `name`, `parent_position`, `department_id`, `description`, `salary`, `status`, `created_date`) VALUES
-(1, 'Administrator', 0, 0, 'Head Of Administration', 0, 'active', '2018-05-08 11:04:04'),
-(2, 'Receptionist', 0, 0, 'Welcomes All Guests', 0, 'active', '2018-05-08 11:04:04');
+(1, 'SYSTEM DEVELOPER', 0, 0, 'Developers Of the System', 0, 'active', '2018-05-08 11:04:04'),
+(2, 'Administrator', 2, 2, 'Head Of Administration', 0, 'active', '2018-05-08 11:04:04'),
+(3, 'Receptionist', 1, 2, 'Responsible to seeing client first hand', 700, 'active', '2018-05-08 11:27:34');
 
 -- --------------------------------------------------------
 
@@ -956,7 +957,7 @@ ALTER TABLE `hr_employee_work_info`
 -- AUTO_INCREMENT for table `hr_position`
 --
 ALTER TABLE `hr_position`
-  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `laundry_clients`
@@ -1347,6 +1348,25 @@ CREATE TABLE `vw_hr_departments` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `vw_hr_positions`
+-- (See below for the actual view)
+--
+CREATE TABLE `vw_hr_positions` (
+`id` tinyint(2)
+,`name` varchar(50)
+,`parent_position` int(11)
+,`department_id` int(11)
+,`description` text
+,`salary` int(11)
+,`status` enum('active','deleted')
+,`created_date` datetime
+,`department_name` varchar(255)
+,`parent_position_name` varchar(50)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `vw_laundry_clients`
 -- (See below for the actual view)
 --
@@ -1504,6 +1524,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `vw_hr_departments`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_hr_departments`  AS  select `a`.`id` AS `id`,`a`.`parent_department` AS `parent_department`,`a`.`name` AS `name`,`a`.`description` AS `description`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created`,coalesce(`b`.`name`,'None') AS `parent_department_name` from (`bgee_db`.`hr_departments` `a` left join `bgee_db`.`hr_departments` `b` on((`a`.`parent_department` = `b`.`id`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vw_hr_positions`
+--
+DROP TABLE IF EXISTS `vw_hr_positions`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_hr_positions`  AS  select `a`.`id` AS `id`,`a`.`name` AS `name`,`a`.`parent_position` AS `parent_position`,`a`.`department_id` AS `department_id`,`a`.`description` AS `description`,`a`.`salary` AS `salary`,`a`.`status` AS `status`,`a`.`created_date` AS `created_date`,coalesce(`b`.`name`,'None') AS `department_name`,coalesce((select `bgee_db`.`hr_position`.`name` from `bgee_db`.`hr_position` where (`bgee_db`.`hr_position`.`id` = `a`.`parent_position`)),'None') AS `parent_position_name` from (`bgee_db`.`hr_position` `a` left join `bgee_db`.`hr_departments` `b` on((`a`.`department_id` = `b`.`id`))) ;
 
 -- --------------------------------------------------------
 

@@ -873,7 +873,7 @@ class Settings extends MX_Controller
           $tablename = "vw_hr_departments";
           $return_dataType = "json";
           /***** Checking System Developer Role ******/
-          if($_SESSION['user']['group_name'] == "System Developer")
+          if($_SESSION['user']['group_name'] == "SYSTEM DEVELOPER")
             $condition = array();
           else
           $condition = "id != 1 && status not in ('deleted')";
@@ -887,7 +887,7 @@ class Settings extends MX_Controller
           if($_SESSION['user']['group_name'] == "System Developer")
             $condition = array();
           else
-          $condition = "id != 1 && status not in ('deleted')";
+          $condition = "name != 'SYSTEM DEVELOPER' && status not in ('deleted')";
         }
 
         $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition,@$orderby);
