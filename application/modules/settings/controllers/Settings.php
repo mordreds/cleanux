@@ -102,7 +102,10 @@ class Settings extends MX_Controller
           if($this->form_validation->run() === FALSE) {
             $error_msg = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
             $this->session->set_flashdata('error',$error_msg);
-            redirect('settings/company#positions');
+            if(empty($id))
+              redirect('settings/company#positions');
+            else
+              print_r(json_encode(['error' => $error_msg]));
           }
           else {
             if(empty($id))
@@ -163,8 +166,12 @@ class Settings extends MX_Controller
           //$this->form_validation->set_rules('delete_item','Delete Action','trim');
 
           if($this->form_validation->run() === FALSE) {
-            $this->session->set_flashdata('error',"Validation Error");
-            redirect('settings/new_registration');
+            $error_msg = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+            $this->session->set_flashdata('error',$error_msg);
+            if(empty($id))
+              redirect('settings/company#departments');
+            else
+              print_r(json_encode(['error' => $error_msg]));
           }
           else {
             if(empty($id))

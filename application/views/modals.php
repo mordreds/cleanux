@@ -1335,11 +1335,11 @@
           selectbox.find("option:selected").removeAttr('selected');
           selectbox.find("option[value = "+$(this).data('parent_pos')+"]").attr('selected',"selected");
           selectbox.data("selectBox-selectBoxIt").refresh();
-/*
+
           selectbox = $("#modal_pos_dept");
           selectbox.find("option:selected").removeAttr('selected');
           selectbox.find("option[value = "+$(this).data('pos_dept')+"]").attr('selected',"selected");
-          selectbox.data("selectBox-selectBoxIt").refresh();*/
+          selectbox.data("selectBox-selectBoxIt").refresh();
 
           $('#edit_poistions_modal').modal('show');
         });
@@ -1350,7 +1350,7 @@
           let formData = { 
             'parent_position': $('[name="modal_parent_position"]').val(),
             'position_name': $('[name="modal_pos_name"]').val(),
-            'department': $('[name="modal_department_id"]').val(),
+            'department': $('[name="modal_pos_department"]').val(),
             'salary': $('[name="modal_salary"]').val(),
             'description': $('[name="modal_description"]').val(),
           };
@@ -1385,7 +1385,7 @@
                 <div class="col-md-6 col-sm-6">
                   <div class="form-group">
                     <label class="display-block">Department <span style="color:red;">*</span></label>
-                    <select id="modal_pos_dept" name="modal_department_id" class="form-control display_departments" required>
+                    <select id="modal_pos_dept" name="modal_pos_department" class="form-control display_departments" required>
                        <option value="0"><em>Select One</em></option>
                     </select>
                   </div>
@@ -1393,7 +1393,7 @@
                 <div class="col-md-6 col-sm-6">
                   <div class="form-group">
                     <label class="display-block">Salary <span style="color:red;">*</span></label>
-                    <input type="text" name="modal_salary" placeholder="Salary" class="form-control" required>
+                    <input type="number" min="0" name="modal_salary" placeholder="Salary" class="form-control" required>
                   </div>
                 </div>
                 <div class="col-md-12 col-sm-12">
