@@ -90,7 +90,7 @@ class Settings extends MX_Controller
   /**************** Interfaces ****************/
 
   /**************** Insertions ****************/
-    /****** Save Position      ***********/
+    /****** Save Position ***********/
       public function save_position($id = null) {
         if(in_array('new registration', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('parent_position','Parent Position','trim');
@@ -98,7 +98,6 @@ class Settings extends MX_Controller
           $this->form_validation->set_rules('department','Department','trim|required');
           $this->form_validation->set_rules('salary','Salary','trim|required');
           $this->form_validation->set_rules('description','Duties & Repsonsibilities','trim|required');
-          //$this->form_validation->set_rules('delete_item','Delete Action','trim');
 
           if($this->form_validation->run() === FALSE) {
             $error_msg = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
@@ -135,7 +134,7 @@ class Settings extends MX_Controller
             /***** Update Department ***********/
             else {
               $where_condition = ['id' => $id];
-
+              $return_dataType="json";
               $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
               if($query_result)
                 $return_data['success'] = "Update Successul";
@@ -153,9 +152,9 @@ class Settings extends MX_Controller
           redirect('settings/company#positions');
         }
       }
-    /****** Save Position      ***********/
+    /****** Save Position ***********/
 
-    /****** Save Department      ***********/
+    /****** Save Department *********/
       public function save_department($id = null) {
         if(in_array('new registration', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('parent_department','Parent Department','trim');
@@ -168,8 +167,10 @@ class Settings extends MX_Controller
             redirect('settings/new_registration');
           }
           else {
-            $this->load->model('globals/model_insertion');
-            $this->load->model('globals/model_update');
+            if(empty($id))
+              $this->load->model('globals/model_insertion');
+            else
+              $this->load->model('globals/model_update');
             /***** Data Definition *****/
             $dbres = self::$_Default_DB;
             $return_dataType="php_object";
@@ -193,7 +194,7 @@ class Settings extends MX_Controller
             /***** Update Department ***********/
             else {
               $where_condition = ['id' => $id];
-
+              $return_dataType="JSON";
               $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$data,$where_condition) ;
               if($query_result)
                 $return_data['success'] = "Update Successul";
@@ -211,9 +212,9 @@ class Settings extends MX_Controller
           redirect('settings/company#departments');
         }
       }
-    /****** Save Department      ***********/
+    /****** Save Department *********/
 
-    /****** Save Company Details  ******/
+    /****** Save Company Details ****/
       public function save_company_details() {
         if(in_array('users', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('id','ID','trim');
@@ -285,9 +286,9 @@ class Settings extends MX_Controller
           $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
           redirect('settings/company');
       }
-    /****** Save Company Details  ******/
+    /****** Save Company Details ****/
 
-    /****** Save Services    ***********/
+    /****** Save Services ***********/
       public function save_services() {
         if(in_array('new registration', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('id','ID','trim');
@@ -360,9 +361,9 @@ class Settings extends MX_Controller
           redirect('settings/new_registration');
         }
       }
-    /****** Save Services    ***********/
+    /****** Save Services ***********/
 
-    /****** Save Weight      ***********/
+    /****** Save Weight *************/
       public function save_weight() {
         if(in_array('new registration', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('id','ID','trim');
@@ -436,9 +437,9 @@ class Settings extends MX_Controller
           redirect('settings/new_registration#weight');
         }
       }
-    /****** Save Weight      ***********/
+    /****** Save Weight *************/
 
-    /****** Save Garments      ***********/
+    /****** Save Garments ***********/
       public function save_garment() {
         if(in_array('new registration', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('id','ID','trim');
@@ -509,9 +510,9 @@ class Settings extends MX_Controller
           redirect('settings/new_registration#garments');
         }
       }
-    /****** Save Garments    ***********/
+    /****** Save Garments ***********/
 
-    /****** Save Prices      ***********/
+    /****** Save Prices ************/
       public function save_price() {
         if(in_array('new registration', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('id','ID','trim');
@@ -585,9 +586,9 @@ class Settings extends MX_Controller
           redirect('settings/new_registration#pricing');
         }
       }
-    /****** Save Prices    ***********/
+    /****** Save Prices ************/
 
-    /****** Save Weight      ***********/
+    /****** Save Weight ************/
       public function save_delivery() {
         if(in_array('new registration', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('id','ID','trim');
@@ -660,9 +661,9 @@ class Settings extends MX_Controller
           redirect('settings/new_registration#delivery');
         }
       }
-    /****** Save Weight      ***********/
+    /****** Save Weight ************/
 
-    /****** Save Client Info ***********/
+    /****** Save Client Info *******/
       public function save_client_info() {
         if(in_array('new registration', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('id','ID','trim');
@@ -765,8 +766,47 @@ class Settings extends MX_Controller
           print_r(json_encode($return_data));
         }
       }
-    /****** Save Client Info ***********/
+    /****** Save Client Info *******/
   /**************** Insertions ****************/
+
+  /**************** Deletion ****************/
+    /****** General Deletion ***********/
+      public function delete_record() {
+        $this->form_validation->set_rules('id','Delete ID','required|trim');
+        $this->form_validation->set_rules('tbl_ref','Table Reference','required|trim');
+
+        if ($this->form_validation->run() === FALSE) {
+          $return_data['error'] = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+          print_r(json_encode($return_data));
+        }
+        else {
+          # Loading Model
+          $this->load->model('globals/model_update');
+          $keyword = $this->input->post('tbl_ref');
+          $delete_id = $this->input->post('id');
+          $dbres = self::$_Default_DB;
+          $update_data = array('status' => "deleted");
+          $where_condition = array('id' => $delete_id);
+          
+          /***** Delete Codes *****/
+          if($keyword == "departments")
+            $tablename = "hr_departments";
+          if($keyword == "positions")
+            $tablename = "hr_position";
+          /***** Delete Codes *****/
+
+          $query_result = $this->model_update->update_info($dbres,$tablename,@$return_dataType,$update_data,$where_condition);
+
+          if($query_result)
+            $return_data['success'] = "Delete Successful";
+          else
+            $return_data['error'] = "Delete Failed";
+
+          print_r(json_encode($return_data));
+        }
+      }
+    /****** General Deletion ***********/
+  /**************** Deletion ****************/
 
   /**************** Retrievals ****************/
     /****** Search From Customers Table ***********/
@@ -873,10 +913,14 @@ class Settings extends MX_Controller
           $tablename = "vw_hr_departments";
           $return_dataType = "json";
           /***** Checking System Developer Role ******/
-          if($_SESSION['user']['group_name'] == "SYSTEM DEVELOPER")
+          if($_SESSION['user']['group_name'] == "System Developer") {
             $condition = array();
-          else
-          $condition = "id != 1 && status not in ('deleted')";
+            $orderby = array('id' => "ASC");
+          }
+          else {
+            $condition = array('id !=' => "1", 'status !=' => "deleted");
+            $orderby = array('id' => "ASC");
+          }
         }
 
         if($table == "positions") {
@@ -884,10 +928,14 @@ class Settings extends MX_Controller
           $tablename = "vw_hr_positions";
           $return_dataType = "json";
           /***** Checking System Developer Role ******/
-          if($_SESSION['user']['group_name'] == "System Developer")
+          if($_SESSION['user']['group_name'] == "System Developer") {
             $condition = array();
-          else
-          $condition = "name != 'SYSTEM DEVELOPER' && status not in ('deleted')";
+            $orderby = array('id' => "ASC");
+          }
+          else {
+            $condition = array('id !=' => "1", 'status !=' => "deleted");
+            $orderby = array('id' => "ASC");
+          }
         }
 
         $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition,@$orderby);

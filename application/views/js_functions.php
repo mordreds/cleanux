@@ -90,9 +90,7 @@
           });
         }
       });
-    }
-
-    
+    } 
   /************ Ajax Post Function  *********/
 
   /************ SelectBoxIt Plugin  *********/
@@ -146,6 +144,20 @@
     }
   /************ SelectBoxIt Plugin  *********/
 
+  /************ Number Formatting  *********/
+    function number_format(num) {
+      num += '';
+      x = num.split('.');
+      x1 = x[0];
+      x2 = x.length > 1 ? '.' + x[1] : '';
+      var rgx = /(\d+)(\d{3})/;
+      while(rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+      }
+      return x1 + x2;
+    }
+  /************ Number Formatting  *********/
+
   /************ Swtichery Plugin  *********
     function setSwitchery(switchElement,checkedBool) {
       if((checkedBool && !switchElement.ischecked()) || (!checkedBool && switchElement.isChecked())) {
@@ -154,7 +166,6 @@
       }
     }
   /************ Swtichery Plugin  *********/
-
 
   /************************ All Ajax Functions  ******************/
     /******** Retrieve All Data  **********/

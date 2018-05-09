@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: May 08, 2018 at 01:38 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.1.14
+-- Host: localhost
+-- Generation Time: May 09, 2018 at 04:26 AM
+-- Server version: 5.7.21-0ubuntu0.16.04.1
+-- PHP Version: 7.0.28-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -188,7 +186,9 @@ INSERT INTO `successful_logins` (`id`, `user_id`, `time_in`, `time_out`, `online
 (111, 1, '2018-05-02 21:18:15', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36 OPR/52.0.2871.30', '::1', 'ip6-localhost', NULL, NULL),
 (112, 1, '2018-05-03 20:04:21', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36 OPR/52.0.2871.30', '::1', 'ip6-localhost', NULL, NULL),
 (113, 1, '2018-05-07 18:40:38', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36 OPR/52.0.2871.30', '::1', 'ip6-localhost', NULL, NULL),
-(114, 1, '2018-05-08 11:12:28', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'London', NULL, NULL);
+(114, 1, '2018-05-08 11:12:28', '0000-00-00 00:00:00', 0, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'London', NULL, NULL),
+(115, 1, '2018-05-08 19:37:40', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36 OPR/52.0.2871.30', '::1', 'ip6-localhost', NULL, NULL),
+(116, 1, '2018-05-09 00:53:07', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36 OPR/52.0.2871.30', '::1', 'ip6-localhost', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -237,19 +237,16 @@ ALTER TABLE `sysaudit`
 --
 ALTER TABLE `failed_logins`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto', AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `successful_logins`
 --
 ALTER TABLE `successful_logins`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=115;
-
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=117;
 --
 -- AUTO_INCREMENT for table `sysaudit`
 --
 ALTER TABLE `sysaudit`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
---
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;--
 -- Database: `bgee_db`
 --
 CREATE DATABASE IF NOT EXISTS `bgee_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -306,7 +303,7 @@ CREATE TABLE `hr_company_info` (
 --
 
 INSERT INTO `hr_company_info` (`id`, `name`, `telephone_1`, `telephone_2`, `fax`, `email`, `postal_address`, `residence_address`, `website`, `mission`, `vision`, `tin_number`, `date_of_commence`) VALUES
-(1, 'LAUNDRY APP', '0506139739', '0244949261', '', 'bgslaundry@gmail.com', 'BOX K47, OFANKOR - ACCRA', 'GROUND FLOOR - MR MEGA PLAZA. OFANKOR BARRIER - ACCRA.', 'www.bgslaundry.com', 'To Be Filled By The Company', 'To Be Filled By The Company', 'TN10245682-GA', '0000-00-00');
+(1, 'MARKSBON LIMITED', '0506139739', '0244949261', '', 'bgslaundry@gmail.com', 'BOX K47, OFANKOR - ACCRA', 'GROUND FLOOR - MR MEGA PLAZA. OFANKOR BARRIER - ACCRA.', 'www.bgslaundry.com', 'To Be Filled By The Company', 'To Be Filled By The Company', 'TN10245682-GA', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -330,7 +327,8 @@ CREATE TABLE `hr_departments` (
 INSERT INTO `hr_departments` (`id`, `parent_department`, `name`, `description`, `status`, `date_created`) VALUES
 (1, 0, 'SYSTEM DEVELOPERS', 'THIS DEPARTMENTS ARE USED BY THE SYSTEM DEVELOPERS GROUP FOR THE MAINTENANCE OF THE SYSTEM VIA LOCAL OR REMOTELY. ', 'active', '2018-05-03 21:31:58'),
 (2, 0, 'Administration', 'Pending Some Contrary Rabbit Up That The More Conditionally Ouch Confidently Far So Was Darn Logic Thus Dove The Juicily Because That Placed Otter.', 'active', '2018-05-03 21:40:32'),
-(5, 2, 'Human Resource', 'Pending Some Contrary Rabbit Up That The More Conditionally Ouch Confidently Far So Was Darn Logic Thus Dove The Juicily Because That Placed Otter.', 'active', '2018-05-03 22:49:30');
+(5, 2, 'Human Resource', 'Pending Some Contrary Rabbit Up That The More Conditionally Ouch Confidently Far So Was Darn Logic Thus Dove The Juicily Because That Placed Otter.', 'active', '2018-05-03 22:49:30'),
+(6, 0, 'Accounts', 'Handles All Matters Relating To Money Of The Company', 'active', '2018-05-08 19:38:39');
 
 -- --------------------------------------------------------
 
@@ -468,7 +466,7 @@ CREATE TABLE `hr_position` (
 
 INSERT INTO `hr_position` (`id`, `name`, `parent_position`, `department_id`, `description`, `salary`, `status`, `created_date`) VALUES
 (1, 'SYSTEM DEVELOPER', 0, 0, 'Developers Of the System', 0, 'active', '2018-05-08 11:04:04'),
-(2, 'Administrator', 2, 2, 'Head Of Administration', 0, 'active', '2018-05-08 11:04:04'),
+(2, 'Administrator', 2, 2, 'Head Of Administration', 4200, 'active', '2018-05-08 11:04:04'),
 (3, 'Receptionist', 1, 2, 'Responsible to seeing client first hand', 700, 'active', '2018-05-08 11:27:34');
 
 -- --------------------------------------------------------
@@ -559,47 +557,6 @@ INSERT INTO `laundry_garments` (`id`, `name`, `description`, `status`, `date_cre
 -- --------------------------------------------------------
 
 --
--- Table structure for table `laundry_orders`
---
-
-CREATE TABLE `laundry_orders` (
-  `id` bigint(20) NOT NULL,
-  `order_number` varchar(20) NOT NULL,
-  `total_cost` double NOT NULL,
-  `amount_paid` double NOT NULL,
-  `balance` double NOT NULL,
-  `tax_id` int(11) NOT NULL,
-  `client_id` bigint(20) NOT NULL,
-  `processor_user_id` bigint(20) NOT NULL,
-  `delivery_method_id` bigint(20) NOT NULL,
-  `delivery_location` varchar(255) NOT NULL,
-  `due_date` date NOT NULL,
-  `status` enum('Pending','Processing','Dispatch','Delivered','Cancelled') NOT NULL DEFAULT 'Pending',
-  `modified_by` bigint(20) NOT NULL,
-  `modified_date` datetime DEFAULT NULL,
-  `delivered_by` bigint(20) NOT NULL,
-  `processing_stages` enum('Pending','Washing','Drying','Ironing','Ready For Dispatch') NOT NULL DEFAULT 'Pending',
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `laundry_orders`
---
-
-INSERT INTO `laundry_orders` (`id`, `order_number`, `total_cost`, `amount_paid`, `balance`, `tax_id`, `client_id`, `processor_user_id`, `delivery_method_id`, `delivery_location`, `due_date`, `status`, `modified_by`, `modified_date`, `delivered_by`, `processing_stages`, `date_created`) VALUES
-(2, '46844374', 20, 20, 0, 1, 5, 1, 5, 'Pickup', '2018-01-12', 'Delivered', 1, '2018-01-18 17:19:57', 0, 'Pending', '2018-01-09 12:08:03'),
-(3, '08547680', 355, 200, 155, 1, 2, 1, 2, 'Kaneshie First light', '2018-01-13', 'Dispatch', 2, '2018-01-28 01:18:23', 0, 'Pending', '2018-01-09 12:10:42'),
-(4, '34616706', 65, 65, 0, 1, 3, 1, 5, 'pickup', '2018-01-13', 'Delivered', 1, '2018-01-18 17:20:21', 0, 'Pending', '2018-01-11 15:32:11'),
-(5, '61591005', 20, 20, 0, 1, 2, 1, 5, 'Pickup', '2018-01-18', 'Delivered', 1, '2018-01-20 19:01:00', 0, 'Pending', '2018-01-16 00:44:06'),
-(6, '00705567', 80, 10, 70, 1, 6, 2, 4, 'Asawasi', '2018-02-02', 'Dispatch', 2, '2018-04-07 12:04:52', 0, 'Pending', '2018-01-16 08:45:13'),
-(7, '31945768', 40, 30, 10, 1, 4, 1, 2, 'Amasaman', '2018-01-21', 'Dispatch', 2, '2018-04-07 12:17:44', 0, 'Pending', '2018-01-20 13:57:14'),
-(8, '96991535', 30, 14, 16, 1, 6, 2, 2, 'none', '2018-01-22', 'Dispatch', 2, '2018-02-23 14:30:12', 0, 'Pending', '2018-01-21 08:41:48'),
-(9, '36579657', 50, 22, 28, 1, 7, 2, 4, 'taifa- Daavi', '2018-02-26', 'Dispatch', 2, '2018-04-07 12:18:05', 0, 'Pending', '2018-02-23 09:27:58'),
-(10, '94202363', 20, 15, 5, 1, 6, 2, 4, 'taifa', '2018-04-09', 'Pending', 0, NULL, 0, 'Pending', '2018-04-07 08:15:01');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `laundry_order_balances`
 --
 
@@ -678,6 +635,47 @@ INSERT INTO `laundry_order_details` (`id`, `order_id`, `pricelist_ids`, `quantit
 (8, 8, '7', '2', '15', '15', 'jean', '', '', '', '2018-01-21 08:41:48'),
 (9, 9, '5|7', '1|5', '30|15', '30|15', '|towel', '', '', '', '2018-02-23 09:27:58'),
 (10, 10, '7', '1', '15', '15', 'blanket', '', '', '', '2018-04-07 08:15:01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `laundry_orders`
+--
+
+CREATE TABLE `laundry_orders` (
+  `id` bigint(20) NOT NULL,
+  `order_number` varchar(20) NOT NULL,
+  `total_cost` double NOT NULL,
+  `amount_paid` double NOT NULL,
+  `balance` double NOT NULL,
+  `tax_id` int(11) NOT NULL,
+  `client_id` bigint(20) NOT NULL,
+  `processor_user_id` bigint(20) NOT NULL,
+  `delivery_method_id` bigint(20) NOT NULL,
+  `delivery_location` varchar(255) NOT NULL,
+  `due_date` date NOT NULL,
+  `status` enum('Pending','Processing','Dispatch','Delivered','Cancelled') NOT NULL DEFAULT 'Pending',
+  `modified_by` bigint(20) NOT NULL,
+  `modified_date` datetime DEFAULT NULL,
+  `delivered_by` bigint(20) NOT NULL,
+  `processing_stages` enum('Pending','Washing','Drying','Ironing','Ready For Dispatch') NOT NULL DEFAULT 'Pending',
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `laundry_orders`
+--
+
+INSERT INTO `laundry_orders` (`id`, `order_number`, `total_cost`, `amount_paid`, `balance`, `tax_id`, `client_id`, `processor_user_id`, `delivery_method_id`, `delivery_location`, `due_date`, `status`, `modified_by`, `modified_date`, `delivered_by`, `processing_stages`, `date_created`) VALUES
+(2, '46844374', 20, 20, 0, 1, 5, 1, 5, 'Pickup', '2018-01-12', 'Delivered', 1, '2018-01-18 17:19:57', 0, 'Pending', '2018-01-09 12:08:03'),
+(3, '08547680', 355, 200, 155, 1, 2, 1, 2, 'Kaneshie First light', '2018-01-13', 'Dispatch', 2, '2018-01-28 01:18:23', 0, 'Pending', '2018-01-09 12:10:42'),
+(4, '34616706', 65, 65, 0, 1, 3, 1, 5, 'pickup', '2018-01-13', 'Delivered', 1, '2018-01-18 17:20:21', 0, 'Pending', '2018-01-11 15:32:11'),
+(5, '61591005', 20, 20, 0, 1, 2, 1, 5, 'Pickup', '2018-01-18', 'Delivered', 1, '2018-01-20 19:01:00', 0, 'Pending', '2018-01-16 00:44:06'),
+(6, '00705567', 80, 10, 70, 1, 6, 2, 4, 'Asawasi', '2018-02-02', 'Dispatch', 2, '2018-04-07 12:04:52', 0, 'Pending', '2018-01-16 08:45:13'),
+(7, '31945768', 40, 30, 10, 1, 4, 1, 2, 'Amasaman', '2018-01-21', 'Dispatch', 2, '2018-04-07 12:17:44', 0, 'Pending', '2018-01-20 13:57:14'),
+(8, '96991535', 30, 14, 16, 1, 6, 2, 2, 'none', '2018-01-22', 'Dispatch', 2, '2018-02-23 14:30:12', 0, 'Pending', '2018-01-21 08:41:48'),
+(9, '36579657', 50, 22, 28, 1, 7, 2, 4, 'taifa- Daavi', '2018-02-26', 'Dispatch', 2, '2018-04-07 12:18:05', 0, 'Pending', '2018-02-23 09:27:58'),
+(10, '94202363', 20, 15, 5, 1, 6, 2, 4, 'taifa', '2018-04-09', 'Pending', 0, NULL, 0, 'Pending', '2018-04-07 08:15:01');
 
 -- --------------------------------------------------------
 
@@ -859,12 +857,6 @@ ALTER TABLE `laundry_garments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `laundry_orders`
---
-ALTER TABLE `laundry_orders`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `laundry_order_balances`
 --
 ALTER TABLE `laundry_order_balances`
@@ -880,6 +872,12 @@ ALTER TABLE `laundry_order_comments`
 -- Indexes for table `laundry_order_details`
 --
 ALTER TABLE `laundry_order_details`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `laundry_orders`
+--
+ALTER TABLE `laundry_orders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -916,115 +914,96 @@ ALTER TABLE `tax_system`
 --
 ALTER TABLE `blobs`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id';
-
 --
 -- AUTO_INCREMENT for table `hr_company_info`
 --
 ALTER TABLE `hr_company_info`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `hr_departments`
 --
 ALTER TABLE `hr_departments`
-  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
+  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `hr_employee_biodata`
 --
 ALTER TABLE `hr_employee_biodata`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `hr_employee_contact_info`
 --
 ALTER TABLE `hr_employee_contact_info`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `hr_employee_other_info`
 --
 ALTER TABLE `hr_employee_other_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `hr_employee_work_info`
 --
 ALTER TABLE `hr_employee_work_info`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `hr_position`
 --
 ALTER TABLE `hr_position`
   MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `laundry_clients`
 --
 ALTER TABLE `laundry_clients`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `laundry_delivery_method`
 --
 ALTER TABLE `laundry_delivery_method`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `laundry_garments`
 --
 ALTER TABLE `laundry_garments`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `laundry_orders`
---
-ALTER TABLE `laundry_orders`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT for table `laundry_order_balances`
 --
 ALTER TABLE `laundry_order_balances`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `laundry_order_comments`
 --
 ALTER TABLE `laundry_order_comments`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `laundry_order_details`
 --
 ALTER TABLE `laundry_order_details`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
+--
+-- AUTO_INCREMENT for table `laundry_orders`
+--
+ALTER TABLE `laundry_orders`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `laundry_prices`
 --
 ALTER TABLE `laundry_prices`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `laundry_services`
 --
 ALTER TABLE `laundry_services`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `laundry_weights`
 --
 ALTER TABLE `laundry_weights`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tax_system`
 --
 ALTER TABLE `tax_system`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;--
 -- Database: `bgee_permissions`
 --
 CREATE DATABASE IF NOT EXISTS `bgee_permissions` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -1172,7 +1151,6 @@ INSERT INTO `users` (`id`, `username`, `passwd`, `default_passwd`, `fullname`, `
 
 --
 -- Stand-in structure for view `vw_user_details`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_user_details` (
 `id` bigint(20)
@@ -1250,31 +1228,26 @@ ALTER TABLE `users`
 --
 ALTER TABLE `dashboard_tabs`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
 --
 -- AUTO_INCREMENT for table `password_reset_requests`
 --
 ALTER TABLE `password_reset_requests`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `roles_privileges_group`
 --
 ALTER TABLE `roles_privileges_group`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT for table `roles_privileges_user`
 --
 ALTER TABLE `roles_privileges_user`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
---
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;--
 -- Database: `bgee_views`
 --
 CREATE DATABASE IF NOT EXISTS `bgee_views` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
@@ -1284,7 +1257,6 @@ USE `bgee_views`;
 
 --
 -- Stand-in structure for view `vw_employee_details`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_employee_details` (
 `id` bigint(20)
@@ -1333,7 +1305,6 @@ CREATE TABLE `vw_employee_details` (
 
 --
 -- Stand-in structure for view `vw_hr_departments`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_hr_departments` (
 `id` tinyint(2)
@@ -1349,7 +1320,6 @@ CREATE TABLE `vw_hr_departments` (
 
 --
 -- Stand-in structure for view `vw_hr_positions`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_hr_positions` (
 `id` tinyint(2)
@@ -1368,7 +1338,6 @@ CREATE TABLE `vw_hr_positions` (
 
 --
 -- Stand-in structure for view `vw_laundry_clients`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_clients` (
 `id` bigint(20)
@@ -1392,7 +1361,6 @@ CREATE TABLE `vw_laundry_clients` (
 
 --
 -- Stand-in structure for view `vw_laundry_order_comments`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_order_comments` (
 `id` bigint(20)
@@ -1408,7 +1376,6 @@ CREATE TABLE `vw_laundry_order_comments` (
 
 --
 -- Stand-in structure for view `vw_laundry_prices`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_prices` (
 `id` bigint(20)
@@ -1428,7 +1395,6 @@ CREATE TABLE `vw_laundry_prices` (
 
 --
 -- Stand-in structure for view `vw_laundry_weights`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_weights` (
 `id` bigint(20)
@@ -1444,7 +1410,6 @@ CREATE TABLE `vw_laundry_weights` (
 
 --
 -- Stand-in structure for view `vw_orderlist_summary`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_orderlist_summary` (
 `id` bigint(20)
@@ -1481,7 +1446,6 @@ CREATE TABLE `vw_orderlist_summary` (
 
 --
 -- Stand-in structure for view `vw_user_details`
--- (See below for the actual view)
 --
 CREATE TABLE `vw_user_details` (
 `id` bigint(20)
@@ -1587,7 +1551,6 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `vw_user_details`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_user_details`  AS  select `a`.`id` AS `id`,`a`.`username` AS `username`,`a`.`passwd` AS `passwd`,`a`.`default_passwd` AS `default_passwd`,coalesce(convert((select concat(`bgee_db`.`hr_employee_biodata`.`first_name`,' ',`bgee_db`.`hr_employee_biodata`.`middle_name`,' ',`bgee_db`.`hr_employee_biodata`.`last_name`) from `bgee_db`.`hr_employee_biodata` where (`bgee_db`.`hr_employee_biodata`.`id` = `a`.`biodata_id`)) using utf8),`a`.`fullname`) AS `fullname`,coalesce((select `bgee_db`.`hr_employee_contact_info`.`phone_number_1` from `bgee_db`.`hr_employee_contact_info` where (`bgee_db`.`hr_employee_contact_info`.`biodata_id` = `a`.`biodata_id`)),`a`.`phone_number`) AS `phone_number`,coalesce((select `bgee_db`.`hr_employee_work_info`.`employee_id` from `bgee_db`.`hr_employee_work_info` where (`bgee_db`.`hr_employee_work_info`.`biodata_id` = `a`.`biodata_id`)),`a`.`temp_employee_id`) AS `employee_id`,`a`.`biodata_id` AS `biodata_id`,`a`.`first_login` AS `first_login`,`a`.`login_attempt` AS `login_attempt`,`a`.`status` AS `status`,`a`.`created_by` AS `created_by`,`a`.`date_created` AS `date_created`,coalesce(`b`.`custom_roles`,'') AS `custom_roles`,coalesce(`b`.`custom_privileges`,'') AS `custom_privileges`,coalesce(`b`.`group_id`,'') AS `group_id`,coalesce(`b`.`status`,'') AS `user_roles_status`,coalesce(`c`.`name`,'') AS `group_name`,coalesce(`c`.`roles`,'') AS `group_roles`,coalesce(`c`.`privileges`,'') AS `group_privileges`,`c`.`login_url` AS `group_login_url` from (((`bgee_permissions`.`users` `a` left join `bgee_permissions`.`roles_privileges_user` `b` on((`a`.`id` = `b`.`user_id`))) left join `bgee_permissions`.`roles_privileges_group` `c` on((`b`.`group_id` = `c`.`id`))) left join `bgee_db`.`hr_employee_work_info` `d` on((`a`.`biodata_id` = `d`.`biodata_id`))) ;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

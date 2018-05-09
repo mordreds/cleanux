@@ -1061,187 +1061,360 @@
   <?php endif;?>
 <!-- ***************************** Dispatch Page ************************************* -->
 
-<!-- ***************************** Employee Page ************************************* -->
+<!-- *************** Settings Page *************** -->
   <?php if($controller_function == "company") : ?>
-    <script type="text/javascript">
-      $(document).on("click",".edit_employee_info",function(){
-        $('#deletename_').text($(this).data('deletename'));
-        // Filling Form Component
-        $('[name="modal_employee_id"]').val($(this).data('employee_id'));
-        $('[name="modal_first_name"]').val($(this).data('firstname'));
-        $('[name="modal_middle_name"]').val($(this).data('middlename'));
-        $('[name="modal_last_name"]').val($(this).data('lastname'));
-        $('[name="modal_gender"]').val($(this).data('gender'));
-        $('[name="modal_marital_status"]').val($(this).data('marital'));
-        $('[name="modal_residence_addr"]').val($(this).data('residence_address'));
-        $('[name="modal_position"]').val($(this).data('position'));
-        $('[name="modal_email"]').val($(this).data('email'));
-        $('[name="modal_primary_tel"]').val($(this).data('phone_number_1'));
-        $('[name="modal_secondary_tel"]').val($(this).data('phone_number_2'));
-        $('[name="modal_emergency_fullname"]').val($(this).data('emergency_fullname'));
-        $('[name="modal_emergency_phone_1"]').val($(this).data('emergency_phone_1'));
-        $('[name="modal_emergency_residence"]').val($(this).data('emergency_residence'));
-        $('[name="modal_emergency_relationship"]').val($(this).data('emergency_relationship'));
+    <!-- /****** Edit Employee ******/ -->
+      <script type="text/javascript">
+        $(document).on("click",".edit_employee_info",function(){
+          $('#deletename_').text($(this).data('deletename'));
+          $(".selectbox").selectBoxIt({
+            autoWidth: false,
+          });
+          // Filling Form Component
+          $('[name="modal_employee_id"]').val($(this).data('employee_id'));
+          $('[name="modal_first_name"]').val($(this).data('firstname'));
+          $('[name="modal_middle_name"]').val($(this).data('middlename'));
+          $('[name="modal_last_name"]').val($(this).data('lastname'));
+          $('[name="modal_residence_addr"]').val($(this).data('residence_address'));
+          $('[name="modal_email"]').val($(this).data('email'));
+          $('[name="modal_primary_tel"]').val($(this).data('phone_number_1'));
+          $('[name="modal_secondary_tel"]').val($(this).data('phone_number_2'));
+          $('[name="modal_emergency_fullname"]').val($(this).data('emergency_fullname'));
+          $('[name="modal_emergency_phone_1"]').val($(this).data('emergency_phone_1'));
+          $('[name="modal_emergency_residence"]').val($(this).data('emergency_residence'));
 
-        $(".selectbox").selectBoxIt({
-          autoWidth: false,
-          defaultText: "<em style='color: #827f7f'>Select One</em>",
+          selectbox = $("#modal_gender_select");
+          selectbox.find("option:selected").removeAttr('selected');
+          selectbox.find("option[value = "+$(this).data('gender')+"]").attr('selected',"selected");
+          selectbox.data("selectBox-selectBoxIt").refresh();
+
+          selectbox = $("#modal_mstatus_select");
+          selectbox.find("option:selected").removeAttr('selected');
+          selectbox.find("option[value = "+$(this).data('marital')+"]").attr('selected',"selected");
+          selectbox.data("selectBox-selectBoxIt").refresh();
+
+          selectbox = $("#modal_position_select");
+          selectbox.find("option:selected").removeAttr('selected');
+          selectbox.find("option[value = "+$(this).data('position')+"]").attr('selected',"selected");
+          selectbox.data("selectBox-selectBoxIt").refresh();
+
+          selectbox = $("#modal_emergencyrel_select");
+          selectbox.find("option:selected").removeAttr('selected');
+          selectbox.find("option[value = "+$(this).data('emergency_relationship')+"]").attr('selected',"selected");
+          selectbox.data("selectBox-selectBoxIt").refresh();
+
+          $('#edit_employee_modal').modal('show');
         });
 
-        $('#edit_employee_modal').modal('show');
-      });
-    </script>
-    <div id="edit_employee_modal" class="modal fade">
-      <div class="modal-dialog" style="width:900px">
-        <div class="modal-content">
-          <div class="modal-header bg-teal-400">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h6 class="modal-title">Edit Employee Info</h6>
-          </div>
-          <form>
-          <div class="modal-body">
-            <input type="hidden" name="modal_employee_id"/>
-            <div class="row">
-              <div class="col-md-4 col-sm-4">
-                <div class="form-group">
-                  <label class="display-block">First Name <span style="color:red;">*</span></label>
-                  <input type="text" name="modal_first_name" placeholder="First Name" class="form-control" required>
+        $(document).on("click","#edit_employee_submit",function(){
+          let formurl = "<?=base_url()?>administration/save_employee";
+          let tableid = "allemployees";
+          let formData = { 
+            'response_type' : "JSON",
+            'id': $('[name="modal_employee_id"]').val(),
+            'first_name': $('[name="modal_first_name"]').val(),
+            'middle_name': $('[name="modal_middle_name"]').val(),
+            'last_name': $('[name="modal_last_name"]').val(),
+            'gender': $('[name="modal_gender"] option:selected').val(),
+            'marital_status': $('[name="modal_marital_status"] option:selected').val(),
+            'position': $('[name="modal_position"] option:selected').val(),
+            'residence_addr': $('[name="modal_residence_addr"]').val(),
+            'primary_tel': $('[name="modal_primary_tel"]').val(),
+            'secondary_tel': $('[name="modal_secondary_tel"]').val(),
+            'email': $('[name="modal_email"]').val(),
+            'emergency_fullname': $('[name="modal_emergency_fullname"]').val(),
+            'emergency_residence': $('[name="modal_emergency_residence"]').val(),
+            'emergency_phone_1': $('[name="modal_emergency_phone_1"]').val(),
+            'emergency_relationship': $('[name="modal_emergency_relationship"] option:selected').val(),
+          };
+          ajax_post(formurl,formData,tableid);
+          //console.log(formData);
+          //alert($('[name="modal_position"] option:selected').val());
+        });
+      </script>
+      <div id="edit_employee_modal" class="modal fade">
+        <div class="modal-dialog" style="width:900px">
+          <div class="modal-content">
+            <div class="modal-header bg-teal-400">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h6 class="modal-title">Edit Employee Info</h6>
+            </div>
+            <form>
+            <div class="modal-body">
+              <input type="hidden" name="modal_employee_id"/>
+              <div class="row">
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <label class="display-block">First Name <span style="color:red;">*</span></label>
+                    <input type="text" name="modal_first_name" placeholder="First Name" class="form-control" required>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-4 col-sm-4">
-                <div class="form-group">
-                  <label class="display-block">Middle Name <span style="color:red;">*</span></label>
-                  <input type="text" name="modal_middle_name" placeholder="Middle Name" class="form-control">
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <label class="display-block">Middle Name <span style="color:red;">*</span></label>
+                    <input type="text" name="modal_middle_name" placeholder="Middle Name" class="form-control">
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-4 col-sm-4">
-                <div class="form-group">
-                  <label class="display-block">Last Name <span style="color:red;">*</span></label>
-                  <input type="text" name="modal_last_name" placeholder="Last Name" class="form-control">
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <label class="display-block">Last Name <span style="color:red;">*</span></label>
+                    <input type="text" name="modal_last_name" placeholder="Last Name" class="form-control">
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-4 col-sm-4">
-                <div class="form-group">
-                  <label class="display-block">Gender <span style="color:red;">*</span></label>
-                  <select class="form-control selectbox" name="modal_gender" data-defaultText="Gender" required>
-                    <option value="" selected="true">Select One</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                  </select>
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <label class="display-block">Gender <span style="color:red;">*</span></label>
+                    <select id="modal_gender_select" class="form-control selectbox" name="modal_gender" required>
+                      <option value="">Select One</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-4 col-sm-4">
-                <div class="form-group">
-                  <label class="display-block">Marital Status <span style="color:red;">*</span></label>
-                  <select name="modal_marital_status" class="form-control selectbox">
-                    <option value=""><em>Select One</em></option>
-                    <option>Single</option>
-                    <option>Married</option>
-                    <option>Divorced</option>
-                  </select>
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <label class="display-block">Marital Status <span style="color:red;">*</span></label>
+                    <select id="modal_mstatus_select" name="modal_marital_status" class="form-control selectbox">
+                      <option value=""><em>Select One</em></option>
+                      <option>Single</option>
+                      <option>Married</option>
+                      <option>Divorced</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-4 col-sm-4">
-                <div class="form-group">
-                  <label class="display-block">Residence Address <span style="color:red;">*</span></label>
-                  <input type="text" name="modal_residence_addr" placeholder="Residence Address" class="form-control" required>
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <label class="display-block">Residence Address <span style="color:red;">*</span></label>
+                    <input type="text" name="modal_residence_addr" placeholder="Residence Address" class="form-control" required>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-4 col-sm-4">
-                <div class="form-group">
-                  <label class="display-block">Phone Number 1 <span style="color:red;">*</span></label>
-                  <input type="text" name="modal_primary_tel" placeholder="Phone No #1:" class="form-control" minlength="10" required>
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <label class="display-block">Phone Number 1 <span style="color:red;">*</span></label>
+                    <input type="text" name="modal_primary_tel" placeholder="Phone No #1:" class="form-control" minlength="10" required>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-4 col-sm-4">
-                <div class="form-group">
-                  <label class="display-block">Phone Number 2 <span style="color:red;">*</span></label>
-                  <input type="text" name="modal_secondary_tel" placeholder="Phone No #2:" class="form-control">
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <label class="display-block">Phone Number 2 <span style="color:red;">*</span></label>
+                    <input type="text" name="modal_secondary_tel" placeholder="Phone No #2:" class="form-control">
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-4 col-sm-4">
-                <div class="form-group">
-                  <label class="display-block">Email <span style="color:red;">*</span></label>
-                  <input type="email" name="modal_email" placeholder="Email Address:" class="form-control">
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <label class="display-block">Email <span style="color:red;">*</span></label>
+                    <input type="email" name="modal_email" placeholder="Email Address:" class="form-control">
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-4 col-sm-4">
-                <div class="form-group">
-                  <label class="display-block">Position <span style="color:red;">*</span></label>
-                  <select name="modal_position" class="form-control display_positions" required>
-                    <option value=""><em>Select One</em></option>
-                  </select>
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <label class="display-block">Position <span style="color:red;">*</span></label>
+                    <select id="modal_position_select" name="modal_position" class="form-control display_positions" required>
+                      <option value=""><em>Select One</em></option>
+                    </select>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-4 col-sm-4">
-                <div class="form-group">
-                  <label class="display-block">Contact Name <span style="color:red;">*</span> (<em style="color:#b57171">emergency</em>)</label>
-                  <input type="text" name="modal_emergency_fullname" class="form-control" required>
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <label class="display-block">Contact Name <span style="color:red;">*</span> (<em style="color:#b57171">emergency</em>)</label>
+                    <input type="text" name="modal_emergency_fullname" class="form-control" required>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-4 col-sm-4">
-                <div class="form-group">
-                  <label class="display-block">Residence Address <span style="color:red;">*</span> (<em style="color:#b57171">emergency</em>)</label>
-                  <input type="text" name="modal_emergency_residence" class="form-control" required>
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <label class="display-block">Residence Address <span style="color:red;">*</span> (<em style="color:#b57171">emergency</em>)</label>
+                    <input type="text" name="modal_emergency_residence" class="form-control" required>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-4 col-sm-4">
-                <div class="form-group">
-                  <label class="display-block">Phone Number <span style="color:red;">*</span> (<em style="color:#b57171">emergency</em>)</label>
-                  <input type="text" name="modal_emergency_phone_1" class="form-control" required>
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <label class="display-block">Phone Number <span style="color:red;">*</span> (<em style="color:#b57171">emergency</em>)</label>
+                    <input type="text" name="modal_emergency_phone_1" class="form-control" required>
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-4 col-sm-4">
-                <div class="form-group">
-                  <label class="display-block">Relationship <span style="color:red;">*</span> (<em style="color:#b57171">emergency</em>)</label>
-                  <select name="modal_emergency_relationship" class="form-control selectbox">
-                    <option value=""><em>Select One</em></option>
-                    <option>Father</option>
-                    <option>Mother</option>
-                    <option>Sibling</option>
-                    <option>Guardian</option>
-                  </select>
+                <div class="col-md-4 col-sm-4">
+                  <div class="form-group">
+                    <label class="display-block">Relationship <span style="color:red;">*</span> (<em style="color:#b57171">emergency</em>)</label>
+                    <select id="modal_emergencyrel_select" name="modal_emergency_relationship" class="form-control selectbox">
+                      <option value=""><em>Select One</em></option>
+                      <option>Father</option>
+                      <option>Mother</option>
+                      <option>Sibling</option>
+                      <option>Guardian</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button> 
+              <button type="button" data-dismiss="modal" id="edit_employee_submit" class="btn btn-success legitRipple">Save <i class="icon-database2 position-right"></i></button>
+            </div>
+            </form>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button> 
-            <button type="button" data-dismiss="modal" id="edit_employee_submit" class="btn btn-success legitRipple">Save <i class="icon-database2 position-right"></i></button>
-          </div>
-          </form>
         </div>
       </div>
-    </div>
-    <script type="text/javascript">
-      $(document).on("click","#edit_employee_submit",function(){
-        let formurl = "<?=base_url()?>administration/save_employee";
-        let tableid = "allemployees";
-        let formData = { 
-          'response_type' : "JSON",
-          'id': $('[name="modal_employee_id"]').val(),
-          'first_name': $('[name="modal_first_name"]').val(),
-          'middle_name': $('[name="modal_middle_name"]').val(),
-          'last_name': $('[name="modal_last_name"]').val(),
-          'gender': $('[name="modal_gender"] option:selected').val(),
-          'marital_status': $('[name="modal_marital_status"] option:selected').val(),
-          'position': $('[name="modal_position"] option:selected').val(),
-          'residence_addr': $('[name="modal_residence_addr"]').val(),
-          'primary_tel': $('[name="modal_primary_tel"]').val(),
-          'secondary_tel': $('[name="modal_secondary_tel"]').val(),
-          'email': $('[name="modal_email"]').val(),
-          'emergency_fullname': $('[name="modal_emergency_fullname"]').val(),
-          'emergency_residence': $('[name="modal_emergency_residence"]').val(),
-          'emergency_phone_1': $('[name="modal_emergency_phone_1"]').val(),
-          'emergency_relationship': $('[name="modal_emergency_relationship"] option:selected').val(),
-        };
-        ajax_post(formurl,formData,tableid);
-        //console.log(formData);
-        //alert($('[name="modal_position"] option:selected').val());
-      });
-    </script>
+    <!-- /****** Edit Employee ******/ -->
+
+    <!-- /****** Edit Department ******/ -->
+      <script type="text/javascript">
+        $(document).on("click",".edit_department",function(){
+          $('[name="modal_department_id"]').val($(this).data('dept_id'));
+          $('[name="modal_dept_name"]').val($(this).data('dept_name'));
+          $('[name="modal_description"]').val($(this).data('description'));
+          selectbox = $("#modal_p_dept");
+          selectbox.find("option:selected").removeAttr('selected');
+          selectbox.find("option[value = "+$(this).data('parent_dept')+"]").attr('selected',"selected");
+          selectbox.data("selectBox-selectBoxIt").refresh();
+          $('#edit_department_modal').modal('show');
+        });
+
+        $(document).on("click","#edit_department_submit",function(){
+          let formurl = "<?=base_url()?>settings/save_department/"+$('[name="modal_department_id"]').val();
+          let tableid = "department_tbl";
+          let formData = { 
+            'parent_department': $('[name="modal_p_dept"]').val(),
+            'department': $('[name="modal_dept_name"]').val(),
+            'description': $('[name="modal_description"]').val(),
+          };
+          ajax_post(formurl,formData,tableid);
+        });
+      </script>
+      <div id="edit_department_modal" class="modal fade">
+        <div class="modal-dialog" style="width:500px">
+          <div class="modal-content">
+            <div class="modal-header bg-teal-400">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h6 class="modal-title">Edit Department Info</h6>
+            </div>
+            <form>
+            <div class="modal-body">
+              <input type="hidden" name="modal_department_id"/>
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label class="display-block">Parent Department <span style="color:red;">*</span></label>
+                    <select id="modal_p_dept" class="form-control display_departments" name="modal_parent_dept" required>
+                      <option value="0">Select One</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label class="display-block">Department Name <span style="color:red;">*</span></label>
+                    <input type="text" name="modal_dept_name" placeholder="Department Name" class="form-control" required>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                  <div class="form-group">
+                    <label class="display-block">Description <span style="color:red;">*</span></label>
+                    <textarea name="modal_description" class="form-control"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button> 
+              <button type="button" data-dismiss="modal" id="edit_department_submit" class="btn btn-success legitRipple">Save <i class="icon-database2 position-right"></i></button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    <!-- /****** Edit Department ******/ -->
+
+    <!-- /****** Edit Positions ******/ -->
+      <script type="text/javascript">
+        $(document).on("click",".edit_positions",function(){
+          $('[name="modal_position_id"]').val($(this).data('pos_id'));
+          $('[name="modal_pos_name"]').val($(this).data('pos_name'));
+          $('[name="modal_salary"]').val($(this).data('salary'));
+          $('[name="modal_description"]').val($(this).data('description'));
+
+          selectbox = $("#modal_parent_pos");
+          selectbox.find("option:selected").removeAttr('selected');
+          selectbox.find("option[value = "+$(this).data('parent_pos')+"]").attr('selected',"selected");
+          selectbox.data("selectBox-selectBoxIt").refresh();
+/*
+          selectbox = $("#modal_pos_dept");
+          selectbox.find("option:selected").removeAttr('selected');
+          selectbox.find("option[value = "+$(this).data('pos_dept')+"]").attr('selected',"selected");
+          selectbox.data("selectBox-selectBoxIt").refresh();*/
+
+          $('#edit_poistions_modal').modal('show');
+        });
+
+        $(document).on("click","#edit_position_submit",function(){
+          let formurl = "<?=base_url()?>settings/save_position/"+$('[name="modal_position_id"]').val();
+          let tableid = "positions_tbl";
+          let formData = { 
+            'parent_position': $('[name="modal_parent_position"]').val(),
+            'position_name': $('[name="modal_pos_name"]').val(),
+            'department': $('[name="modal_department_id"]').val(),
+            'salary': $('[name="modal_salary"]').val(),
+            'description': $('[name="modal_description"]').val(),
+          };
+          ajax_post(formurl,formData,tableid);
+        });
+      </script>
+      <div id="edit_poistions_modal" class="modal fade">
+        <div class="modal-dialog" style="width:500px">
+          <div class="modal-content">
+            <div class="modal-header bg-teal-400">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h6 class="modal-title">Edit Position Info</h6>
+            </div>
+            <form>
+            <div class="modal-body">
+              <input type="hidden" name="modal_position_id"/>
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label class="display-block">Parent Position <span style="color:red;">*</span></label>
+                    <select id="modal_parent_pos" name="modal_parent_position" class="form-control display_positions" required>
+                       <option value="0"><em>Select One</em></option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label class="display-block">Position Name <span style="color:red;">*</span></label>
+                    <input type="text" name="modal_pos_name" placeholder="Name" class="form-control" required>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label class="display-block">Department <span style="color:red;">*</span></label>
+                    <select id="modal_pos_dept" name="modal_department_id" class="form-control display_departments" required>
+                       <option value="0"><em>Select One</em></option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                    <label class="display-block">Salary <span style="color:red;">*</span></label>
+                    <input type="text" name="modal_salary" placeholder="Salary" class="form-control" required>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                  <div class="form-group">
+                    <label class="display-block">Description <span style="color:red;">*</span></label>
+                    <textarea name="modal_description" placeholder="Duties & Responsibilites" class="form-control"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button> 
+              <button type="button" data-dismiss="modal" id="edit_position_submit" class="btn btn-success legitRipple">Save <i class="icon-database2 position-right"></i></button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    <!-- /****** Edit Positions ******/ -->
   <?php endif;?>
-<!-- ***************************** Employee Page ************************************* -->
+<!-- *************** Settings Page *************** -->
 
 <!-- *********** check out ********* -->
   <div id="order_receipt" class="modal fade" >

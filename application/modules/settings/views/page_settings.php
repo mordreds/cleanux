@@ -282,10 +282,14 @@
                 return '<span class="label '+label_class+'">'+row.status+'</span>';
               }},
               {data: "id", render: function(data,type,row,meta) { 
-                button = '<ul class="action_btns"><li><a class="edit_department" data-id="'+row.id+'"  data-tableid="department_tbl" data-popup="tooltip" title="Edit Department" data-name="'+row.name+'" data-descrip="'+row.description+'" data-p_dept="'+row.parent_department_name+'"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-tableid="department_tbl"></i></a></li></ul>';
-                return button; 
+                if (row.status != "deleted") {
+                  button = '<ul class="action_btns"><li><a class="edit_department" data-tableid="department_tbl" data-popup="tooltip" title="Edit Department" data-dept_id="'+row.id+'" data-dept_name="'+row.name+'" data-description="'+row.description+'" data-parent_dept="'+row.parent_department+'"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-tableid="department_tbl" data-formurl="<?=base_url()?>settings/delete_record" data-keyword="departments"></i></a></li></ul>';
+                  return button; 
                 }
-              },
+                else {
+                  return "";
+                }
+              }},
             ], 
           });
         /******* Departments ********/
@@ -309,7 +313,9 @@
               {data: "description",render: function(data,type,row,meta) {
                 return row.description.substring(0,37);
               }},
-              {data: "status"},
+              {data: "salary", render: function(data,type,row,meta){
+                return "<b>₵"+number_format(row.salary)+"</b>";
+              }},
               {data: "status",render: function(data,type,row,meta) {
                 if(row.status == "active") {
                   label_class = "label-success";
@@ -323,11 +329,18 @@
 
                 return '<span class="label '+label_class+'">'+row.status+'</span>';
               }},
-              {data: "id", render: function(data,type,row,meta) { 
-                button = '<ul class="action_btns"><li><a class="edit_department" data-id="'+row.id+'"  data-tableid="department_tbl" data-popup="tooltip" title="Edit Department" data-name="'+row.name+'" data-descrip="'+row.description+'" data-p_dept="'+row.parent_department_name+'"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-tableid="department_tbl"></i></a></li></ul>';
-                return button; 
+              {render: function(data,type,row,meta) { 
+                if (row.name == "SYSTEM DEVELOPER") {
+                  return "";
                 }
-              },
+                else if (row.status != "deleted") {
+                  button = '<ul class="action_btns"><li><a class="edit_positions" data-pos_id="'+row.id+'"  data-tableid="positions_tbl" data-popup="tooltip" title="Edit Position" data-parent_pos="'+row.parent_position+'" data-pos_name="'+row.name+'" data-description="'+row.description+'" data-pos_dept="'+row.department_id+'" data-salary="'+row.salary+'"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-tableid="positions_tbl" data-formurl="<?=base_url()?>settings/delete_record" data-keyword="positions"></i></a></li></ul>';
+                  return button; 
+                }
+                else {
+                  return "";
+                }
+              }},
             ], 
           });
         /******* Positions ********/

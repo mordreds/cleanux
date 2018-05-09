@@ -315,16 +315,16 @@
                           <div class="col-md-11">
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label class="display-block">Name <span style="color:red;">*</span></label>
-                                 <input type="text" name="position_name" class="form-control" required>
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
                                 <label class="display-block">Parent Postion (<em>If Any</em>) <span style="color:red;">*</span></label>
                                 <select name="parent_position" class="display_positions">
                                    <option value=""><em>Select One</em></option>
                                 </select>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="display-block">Name <span style="color:red;">*</span></label>
+                                 <input type="text" name="position_name" class="form-control" required>
                               </div>
                             </div>
                           </div>
@@ -358,7 +358,7 @@
                       <table id="positions_tbl" class="table datatable-responsive table-xxs">
                         <thead style="background-color:#009688;color:white">
                           <tr>
-                            <th style="width: 5%">ID</th>
+                            <th style="width: 4%">ID</th>
                             <th>Name</th>
                             <th>Reports To</th>
                             <th>Description</th>
