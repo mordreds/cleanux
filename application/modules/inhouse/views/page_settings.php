@@ -118,6 +118,11 @@
       }
     });
   /************** Changing Status ******************/
+
+   /**************Statistics for inhouse ******************/
+   
+    
+  /************** Statistics for inhouse ******************/
 </script>
 
 <?php endif; ?>

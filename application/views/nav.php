@@ -200,9 +200,12 @@
 				</li>
 				<li><a href="<?=base_url()?>access/logout"><i class="icon-switch2"></i> Logout</a></li>
 			</ul>
+
+
 		</div>
 	</div>
 	<!-- /main navbar -->
+	
 
 	<!-- /secondary navbar -->
 	<div class="navbar navbar-default navbar-fixed-bottom" style="display: none">
