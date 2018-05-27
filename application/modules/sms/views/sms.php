@@ -38,7 +38,7 @@
           <!-- Detached content -->
           <div class="container-detached">
             <div class="content-detached">
-
+              <form action="<?=base_url();?>sms/send_sms" method="post">
               <!-- Single mail -->
               <div class="panel panel-white">
 
@@ -55,7 +55,7 @@
 
                     <div class="navbar-collapse collapse" id="inbox-toolbar-toggle-single">
                       <div class="btn-group navbar-btn">
-                        <button type="button" class="btn bg-blue"><i class="icon-checkmark3 position-left"></i> Send mail</button>
+                        <button type="submit" class="btn bg-blue"><i class="icon-checkmark3 position-left"></i> Send mail</button>
                       </div>
 
                       <div class="btn-group navbar-btn">
@@ -74,59 +74,34 @@
                   </div>
                 </div>
                 <!-- /mail toolbar -->
-
-
                 <!-- Mail details -->
                 <div class="table-responsive mail-details-write">
                   <table class="table">
                     <tbody>
                       <tr>
                         <td style="width: 150px">To:</td>
-                        <td class="no-padding"><input type="text" class="form-control" placeholder="Add recipients" value=""></td>
+                        <td class="no-padding"><input type="text" name="to" class="form-control" placeholder="Add recipients" value="<?=@$_GET['tel']?>" required></td>
                         <td style="width: 250px" class="text-right">
                          
                         </td>
                       </tr>
                       <tr>
                         <td>Subject:</td>
-                        <td class="no-padding"><input type="text" class="form-control" placeholder="Add subject"></td>
+                        <td class="no-padding"><input type="text" name="subject" class="form-control" placeholder="Add subject" required></td>
                         <td>&nbsp;</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
                 <!-- /mail details -->
-
-
                 <!-- Mail container -->
                 <div class="mail-container-write">
-                  <textarea class="summernote" style="margin: 0px; width: 1022px; height: 254px;">
-
-                  </textarea> 
+                  <textarea class="summernote" name="message" required style="margin: 0px; width: 1022px; height: 254px;"></textarea> 
                 </div>
                 <!-- /mail container -->
-
               </div>
               <!-- /single mail -->
-
+              </form>
             </div>
           </div>
           <!-- /detached content -->
-
-
-        </div>
-        <!-- /content area -->
-
-      </div>
-      <!-- /main content -->
-
-    </div>
-    <!-- /page content -->
-
-  </div>
-  <!-- /page container -->
-
-</body>
-
-<!-- Mirrored from demo.interface.club/limitless/layout_1/LTR/material/mail_write.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Apr 2017 08:33:01 GMT -->
-</html>
