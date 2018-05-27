@@ -420,7 +420,254 @@ class Access extends MX_Controller
       }
       else
         redirect('access/password_reset');
-    }      
+    }    
+
+    /***********************************************
+      Login Validation 
+    ************************************************/
+    public function order_validation() 
+    {
+      if(isset($_POST['login'])) 
+      {
+        $this->form_validation->set_rules('search_text', 'Order / Phone Number', 'required|trim');
+
+        if($this->form_validation->run() === FALSE) 
+        {
+          $this->session->set_flashdata('error','Order / Phone Number Required');
+          redirect('access/users');
+        }
+        else 
+        {
+          # Loading Helper / Models
+          $this->load->model('model_access');
+          $this->load->model('globals/model_retrieval');
+
+          # Performing Database Verfication ==> Username
+          $search_text = $this->input->post('search_text',TRUE);
+          $order_result = $this->model_access->verify_order(self::$_Views_DB,$search_text);
+          
+          if(empty($order_result)){
+            $this->session->set_flashdata('error',"Invalid Order / Phone Number");
+            redirect('access/users');
+          }
+
+          # Deleted Accounts
+          if($user->status == "deleted") {
+            $this->session->set_flashdata('error',"Invalid Username / Password Combination");
+            redirect('access/login');
+          }
+          # Inactive Accounts
+          else if($user->status == "inactive") {
+            $this->session->set_flashdata('error',"Account Disabled.<br/>Please Contact Administrator");
+            redirect('access/login');
+          }
+          # Active Accounts
+          else if($user->status == "active") {
+            # Login Attempt
+            if($user->login_attempt <= 0 ) {
+              $this->session->set_flashdata('error',"Login Attempts Exceeded. Please Contact Administrator");
+              redirect('access/login');
+            }
+            else {
+              # Password Verifications
+              $user_password = ($user->passwd) ? $user->passwd : $user->default_passwd;
+              //print_r($user_password); exit;
+              if(!empty($user_password)) {
+                # Calling Helper
+                $this->load->helper('encryption');
+                # Checking if Password Is Default
+                if(password_decrypt($password, $user_password)) { 
+                  /************************ Retrieving Company Info ********************/
+                    $companyinfo = $this->model_access->retrieve_company_info();
+                    
+                    if(!empty($companyinfo->name)) {
+                      $session_array['companyinfo'] = [  
+                        'id'            => $companyinfo->id,
+                        'name'          => $companyinfo->name,
+                        'telephone_1'   => $companyinfo->telephone_1,
+                        'telephone_2'   => $companyinfo->telephone_2,
+                        'fax'           => $companyinfo->fax,
+                        'email'         => $companyinfo->email,
+                        'postal_address'    => $companyinfo->postal_address,
+                        'residence_address' => $companyinfo->residence_address,
+                        'website'           => $companyinfo->website,
+                        'tin_number'    => $companyinfo->tin_number,
+                        'date_of_commence' => $companyinfo->date_of_commence,
+                        'mission' => $companyinfo->mission,
+                        'vision' => $companyinfo->vision
+                      ];
+                      # Retrieving logo
+                      /*$condition = ['id' => $companyinfo->logo_id];
+                      $logo_search = $this->model_retrieval->all_info_return_row(self::$_Default_DB,'blobs',$condition);
+                      $session_array['companyinfo']['logo'] = @$logo_search->blob_path;*/
+                    } 
+                    else
+                      $session_array['companyinfo']['name'] = "Company Name" ;
+                  /************************ End of Company Info ********************/
+                  /************************ User Roles & Priviledges ********************/
+                    if(!empty($user) && $user->user_roles_status == "active") {
+                      $custom_roles = $user->custom_roles;
+                      $custom_privileges  = $user->custom_privileges;
+                      $group_id         = $user->group_id;
+                      $group_roles      = $user->group_roles; 
+                      # If user has no roles completely
+                      
+                      if(empty($custom_roles) && empty($group_roles)) {
+                        $this->session->set_flashdata('error','No Permissions Set For User.<br/>Please Contact Administrator');
+                        redirect('access/login');
+                      }
+                      # If user belongs to a group or has custom roles & priviledges
+                      else {
+                        if(!empty($user)) {
+                          $temp_array['group_roles'] = explode("|",trim($user->group_roles));
+                          $temp_array['group_privileges'] = explode("|",trim($user->group_privileges));
+                        } else {
+                          $temp_array['group_roles'] = $temp_array['group_priviledges'] = array();
+                        }
+                        # Custom roles and priviledges processing
+                        if(!empty($custom_roles) || !empty($custom_privileges)) {
+                          $temp_array['custom_roles'] = explode("|",$custom_roles);
+                          $temp_array['custom_privileges'] = explode("|",$custom_privileges);
+                        } else {
+                          $temp_array['custom_roles'] = $temp_array['custom_privileges'] = array();
+                        }
+                        # assignment into session variable
+                        $user_roles['roles'] = array_merge($temp_array['group_roles'],$temp_array['custom_roles']);
+                        $user_privileges['privileges'] = array_merge($temp_array['group_privileges'],$temp_array['custom_privileges']);
+                      }
+                    
+                    } else {
+                      $this->session->set_flashdata('error','No Permissions Set For User. Contact Administrator');
+                      redirect('access/login');
+                    }
+                  /************************ End User Roles & Priviledges ****************/
+                  
+                  /************************ Employee's Personal Info  ********************/
+                    # Merging Emploee Data with client
+                      unset($user->group_description,$user->group_roles,$user->group_privileges,$user->group_status,$user->passwd);
+                      $session_array['user'] = array_merge((array)$user,$user_roles,$user_privileges);
+
+                    /*$employee_data = $this->model_retrieval->all_info_return_row(self::$_Default_DB,"",$user->employee_id); 
+                    
+                    if(!empty($employee_data->id)) 
+                    {
+                      #Storing in variable
+                      $employee = [
+                        'fullname' => $employee_data->lastname." ".$employee_data->firstname,
+                        'username' => $username,
+                      ];
+                      
+                    }
+                    else
+                      $this->session->set_flashdata('error',"Employee Personal Data Loading Failed<br>");
+                  /************************ Employee's Personal Info  ********************/
+                  
+                  /************************ Recording Login Information ******************/
+                  $client_ip = $this->get_ip_address();
+                  # If Local 
+                  if($client_ip == "::1" || $client_ip == "127.0.0.1")
+                  {
+                    $login_data = 
+                    [
+                      'user_id'     => $user->id,
+                      'user_agent'  =>  $_SERVER['HTTP_USER_AGENT'] ,
+                      'ipaddress'   => $client_ip,
+                      'hostname'    => gethostbyaddr($client_ip),
+                    ];
+                  }                  
+                  else
+                  {
+                    $ip_API_result = file_get_contents("http://ip-api.com/json/$client_ip");
+                    $Ip_Info = json_decode($ip_API_result);
+                    
+                    $login_data = 
+                    [
+                      'user_id'     => $user->id,
+                      'user_agent'  =>  $_SERVER['HTTP_USER_AGENT'] ,
+                      'ipaddress'   => $client_ip,
+                      'hostname'    => gethostbyaddr($client_ip),
+                      'city_region' => $Ip_Info->city.",".$Ip_Info->regionName,
+                      'country'     => $Ip_Info->country
+                    ];
+                  }
+                  
+                  # Condition Array
+                  $condition = array(
+                      'password_check'=> TRUE,
+                      'users_dbres' => self::$_Permission_DB,
+                  );
+
+                  $result = $this->model_access->record_login(self::$_Audit_DB,$condition,$login_data);
+                  
+                  if(!empty($result['login_id'])) 
+                  {
+                    $session_array['user']['login_id'] = $result['login_id'];
+                    $session_array['user']['login_attempt'] = $result['login_attempt'];
+                    $session_array['user']['fullname'] = $user->fullname;
+                    $this->session->set_userdata($session_array);
+                    redirect(base_url().$user->group_login_url);
+                    //print "<pre>";print_r($_SESSION);print "</pre>";
+                  }
+                  /************************ Recording Login Success **********************/  
+                }
+                else {
+                  /************************ Recording Failed Login Information ************/
+                    $client_ip = $this->get_ip_address();
+                    # Local 
+                    if($client_ip == "::1" || $client_ip == "127.0.0.1") {
+                      $password = password_encrypt($password);
+                      $login_data = 
+                      [
+                        'username'    => $username,
+                        'user_id'     => $user->id,
+                        'password'    => $password,
+                        'user_agent'  => $_SERVER['HTTP_USER_AGENT'],
+                        'ipaddress'   => $client_ip,
+                        'hostname'    => gethostbyaddr($client_ip),
+                      ];
+                    }  
+                    # Online                 
+                    else {
+                      $ip_API_result = file_get_contents("http://ip-api.com/json/$client_ip");
+                      $Ip_Info = json_decode($ip_API_result);
+                      $login_data = 
+                      [
+                        'username'    => $username,
+                        'user_id'     => $user->id,
+                        'password'    => $this->password_encrypt($password),
+                        'user_agent'  => $_SERVER['HTTP_USER_AGENT'] ,
+                        'ipaddress'   => $client_ip,
+                        'hostname'    => gethostbyaddr($client_ip),
+                        'city_region' => $Ip_Info->city.",".$Ip_Info->regionName,
+                        'country'     => $Ip_Info->country
+                      ];
+                    }
+
+                    # Condition Array
+                    $condition = array(
+                      'password_check'=> FALSE,
+                      'users_dbres' => self::$_Permission_DB,
+                      'login_attempt' => $user->login_attempt,
+                    );
+
+                    $result = $this->model_access->record_login(self::$_Audit_DB,$condition,$login_data);
+                    $this->session->set_flashdata('error',"Invalid Username / Password Combination.<br/>Remaining Login Attempts:<b> ".$result['login_attempt']."</b>");
+                    
+                    redirect('access/login');
+                  /************************ Recording Failed Login Success ****************/
+                }
+              }
+              else {
+                $this->session->set_flashdata('error','Invalid Username / Password');
+                redirect('access/login');
+              }
+            }
+          }
+        }
+      }
+      else
+        redirect('access');
+    }  
   /**************** Verifying Methods ********************/
 
   /***********************************************

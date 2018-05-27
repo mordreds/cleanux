@@ -13,7 +13,7 @@
           </div>
           <div class="col-sm-6">
             <div class="col-sm-6"></div>
-          <form action="<?=base_url()?>access/login_validation" method="post">
+          <form action="<?=base_url()?>access/order_validation" method="post">
             <div class="panel panel-body login-form" style="background-color:#82891f8a;color: #fff ">
               <div class="text-center">
                 
@@ -29,7 +29,7 @@
                 </h5>
               </div>
               <div class="form-group has-feedback has-feedback-left">
-                <input type="email" class="form-control" placeholder="Order Number / Phone Number " oncopy="return false;" onpaste="return false;" onselectstart="return false;" autocomplete="off" name="email" required style="background:#51561c00;background-color: #51561c00 !important;border-radius:10px;">
+                <input type="email" class="form-control" placeholder="Order Number / Phone Number " oncopy="return false;" onpaste="return false;" onselectstart="return false;" autocomplete="off" name="search_text" required style="background:#51561c00;background-color: #51561c00 !important;border-radius:10px;">
                 <div class="form-control-feedback">
                   <i class="icon-user text-muted"></i>
                 </div>

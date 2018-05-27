@@ -238,6 +238,18 @@ class Model_Access extends CI_Model
 		return(($query->num_rows() == 1) ? $query->row() : FALSE );	
 	}
 
+	/***********************************************
+		Verify Order No / Phone Number
+	************************************************/
+	public function verify_order($dbres,$group_id)
+	{
+		$tablename = 'roles_priviledges_group';
+		$where_clause = ['id' => $group_id, 'status' => "active"];
+		$dbres->where($where_clause);
+		$query = $dbres->get($tablename);
+		return(($query->num_rows() == 1) ? $query->row() : FALSE );	
+	}
+
 
 
 
