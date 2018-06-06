@@ -1,40 +1,4 @@
 <body class="login-container login-cover">
-
-  <!-- Main navbar --
-  <div class="navbar navbar-inverse bg-indigo">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="<?=base_url()?>"><img src="<?=base_url()?>resources/images/logo_light.png" alt=""></a>
-
-      <ul class="nav navbar-nav pull-right visible-xs-block">
-        <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
-      </ul>
-    </div>
-
-    <div class="navbar-collapse collapse" id="navbar-mobile">
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a href="#">
-            <i class="icon-display4"></i> <span class="visible-xs-inline-block position-right"> Go to website</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            <i class="icon-user-tie"></i> <span class="visible-xs-inline-block position-right"> Contact admin</span>
-          </a>
-        </li>
-
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown">
-            <i class="icon-cog3"></i>
-            <span class="visible-xs-inline-block position-right"> Options</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!-- /main navbar -->
-
   <!-- Page container -->
   <div class="page-container">
     <!-- Page content -->
@@ -46,40 +10,28 @@
           <!-- Registration form -->
           <form action="<?=base_url()?>access/login_validation" method="post">
             <div class="row">
-              <div class="col-lg-6 col-lg-offset-3">
-                <div class="panel registration-form">
+              <div class="col-md-2"></div>
+              <div class="col-md-9">
+                <div class="panel panel-body app-info col-md-4 col-sm-12">
+                  <div class="text-center">
+                    <div class="icon-object border-slate-300 text-slate-300">
+                      <img src="<?=base_url()?>resources/images/logo.png" alt="">
+                    </div>
+                    <h3>Welcome To Poseidon!</h3>
+                    <h4>Lorem ipsum dolor sit amet, nulla consectetur adipiscing elit Sed.</h4>
+                    <p> Nam eleifend velit eget dolor vestibulum ornare. Vestibulum est nulla, fermentum eget euismod et, tincidunt at dui. Nulla tellus nisl, semper id justo vel, rutrum finibus risus. Cras vel auctor odio.</p>
+                  </div>
+                </div>
+                <div class="panel registration-form col-md-6 col-sm-12">
                   <div class="panel-body">
                     <div class="text-center">
-                      <div class="icon-object border-success text-success">
-                        <img src="<?=base_url()?>resources/images/logo.png" alt="">
-                      </div>
-                      <h5 class="content-group-lg">Create account <small class="display-block">All fields are required</small></h5>
+                      <h5 class="content-group-lg">Create Account <small class="display-block">All fields are required</small></h5>
                     </div>
 
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group has-feedback">
-                          <input type="email" class="form-control" placeholder="Your email">
-                          <div class="form-control-feedback">
-                            <i class="icon-mention text-muted"></i>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-6">
-                        <div class="form-group has-feedback">
-                          <input type="email" class="form-control" placeholder="Repeat email">
-                          <div class="form-control-feedback">
-                            <i class="icon-mention text-muted"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group has-feedback">
-                          <input type="text" class="form-control" placeholder="First name">
+                          <input type="text" name="surname" class="form-control" placeholder="Surname">
                           <div class="form-control-feedback">
                             <i class="icon-user-check text-muted"></i>
                           </div>
@@ -88,9 +40,49 @@
 
                       <div class="col-md-6">
                         <div class="form-group has-feedback">
-                          <input type="text" class="form-control" placeholder="Second name">
+                          <input type="text" name="othernames" class="form-control" placeholder="Other Name(s)">
                           <div class="form-control-feedback">
                             <i class="icon-user-check text-muted"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group has-feedback">
+                          <input type="email" name="email" class="form-control" placeholder="Business Email">
+                          <div class="form-control-feedback">
+                            <i class="icon-envelope text-muted"></i>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group has-feedback">
+                          <input type="text" name="contact" class="form-control" placeholder="Contact Number(s)">
+                          <div class="form-control-feedback">
+                            <i class="icon-phone text-muted"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group has-feedback">
+                          <input type="text" name="Company_name" class="form-control" placeholder="Company Name">
+                          <div class="form-control-feedback">
+                            <i class="icon-office text-muted"></i>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group has-feedback">
+                          <input type="text" name="location" class="form-control" placeholder="Company Location">
+                          <div class="form-control-feedback">
+                            <i class="icon-map text-muted"></i>
                           </div>
                         </div>
                       </div>
@@ -119,33 +111,34 @@
                     <div class="form-group">
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox" class="styled" checked="checked">
-                          Send me <a href="#">test account settings</a>
-                        </label>
-                      </div>
-
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" class="styled" checked="checked">
-                          Subscribe to monthly newsletter
+                          <input type="checkbox" class="styled">
+                          Send me <a href="#">Test Account Settings</a>
                         </label>
                       </div>
 
                       <div class="checkbox">
                         <label>
                           <input type="checkbox" class="styled">
-                          Accept <a href="#">terms of service</a>
+                          Accept <a href="#">Terms of Service</a>
                         </label>
                       </div>
+
+                     <!--  <div class="checkbox">
+                        <label>
+                          <input type="checkbox" class="styled" checked="checked">
+                          I acknowledge that Sprout Social uses my personal information in accordance with its Privacy Policy.
+                        </label>
+                      </div> -->
                     </div>
 
                     <div class="text-right">
-                      <button type="submit" class="btn btn-link"><i class="icon-arrow-left13 position-left"></i> Back to login form</button>
+                      <a href="<?=base_url()?>access/login" class="btn btn-link"><i class="icon-arrow-left13 position-left"></i> Back to login form</button>
                       <button type="submit" class="btn bg-indigo-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b> Create account</button>
                     </div>
                   </div>
                 </div>
               </div>
+              <div class="col-md-1"></div>
             </div>
           </form>
           <!-- /registration form -->

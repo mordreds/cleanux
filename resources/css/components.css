@@ -20371,7 +20371,7 @@ thead .htCollapseButton:after {
 }
 
 .login-container .page-container {
-				/*padding-top: 40px;*/
+				padding-top: 40px;
 				position: static
 }
 
@@ -20384,13 +20384,17 @@ thead .htCollapseButton:after {
 .login-container .page-container .registration-form {
 				margin: 0 auto 20px;
 				float: left;
-    		/*margin-right: 15%;*/
+				border-bottom-left-radius: 0px;
+				border-top-left-radius: 0px;
+			  min-height: 563px;
 }
 
 .login-container .page-container .app-info {
 				margin: 0 auto 20px;
 				float: left;
-    		/*margin-right: 15%;*/
+			  min-height: 563px;
+			  border-bottom-right-radius: 0px;
+			  border-btop-right-radius: 0px;
 }
 
 .login-container .page-container .app-info p {
@@ -20402,7 +20406,8 @@ thead .htCollapseButton:after {
 @media (max-width:480px) {
 				.login-container .page-container .login-form,
 				.login-container .page-container .registration-form {
-								width: 100%
+								width: 100%;
+								margin-bottom: 0px;
 				}
 }
 
