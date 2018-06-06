@@ -20366,7 +20366,7 @@ thead .htCollapseButton:after {
 }
 
 .login-cover {
-				background: url(../images/login_cover.jpg) no-repeat;
+				background: url(../images/login_cover.jpg) repeat;
 				background-size: cover
 }
 
@@ -20376,13 +20376,27 @@ thead .htCollapseButton:after {
 }
 
 .login-container .page-container .login-form {
-				width: 320px
+				/*width: 350px*/
 }
 
 .login-container .page-container .login-form,
 .login-container .page-container .login-form .thumb,
 .login-container .page-container .registration-form {
-				margin: 0 auto 20px
+				margin: 0 auto 20px;
+				float: left;
+    		/*margin-right: 15%;*/
+}
+
+.login-container .page-container .app-info {
+				margin: 0 auto 20px;
+				float: left;
+    		/*margin-right: 15%;*/
+}
+
+.login-container .page-container .app-info p {
+    font-size: 16px;
+    margin: 1em 0;
+    line-height: 28px;
 }
 
 @media (max-width:480px) {
