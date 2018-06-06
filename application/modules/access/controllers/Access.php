@@ -53,8 +53,24 @@ class Access extends MX_Controller
       {
         $title['title'] = "lOMS - Login"; 
         $this->load->view('login_header',$title); 
-        $this->load->view('login'); 
-        $this->load->view('login_footer'); 
+        $this->load->view('login_1'); 
+        //$this->load->view('login_footer'); 
+      }
+    }
+
+    /*******************************
+      Signup 
+    *******************************/
+    public function signup() 
+    {
+      if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
+        redirect('dashboard');
+      else
+      {
+        $title['title'] = "lOMS - Login"; 
+        $this->load->view('login_header',$title); 
+        $this->load->view('signup'); 
+        //$this->load->view('login_footer'); 
       }
     }
 

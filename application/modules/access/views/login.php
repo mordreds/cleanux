@@ -16,7 +16,6 @@
           <form action="<?=base_url()?>access/login_validation" method="post">
             <div class="panel panel-body login-form" style="background-color:#82891f8a;color: #fff ">
               <div class="text-center">
-                
                 <h5 class="content-group-lg">Login to your account
                   <?php 
                     if($this->session->flashdata('error'))
