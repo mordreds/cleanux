@@ -12,7 +12,7 @@
             <div class="row">
               <div class="col-md-2"></div>
               <div class="col-md-9">
-                <div class="panel panel-body app-info col-md-4 col-sm-12">
+                <div class="panel panel-body app-info col-md-4">
                   <div class="text-center">
                     <div class="icon-object border-slate-300 text-slate-300">
                       <img src="<?=base_url()?>resources/images/logo.png" alt="">
@@ -22,7 +22,7 @@
                     <p> Nam eleifend velit eget dolor vestibulum ornare. Vestibulum est nulla, fermentum eget euismod et, tincidunt at dui. Nulla tellus nisl, semper id justo vel, rutrum finibus risus. Cras vel auctor odio.</p>
                   </div>
                 </div>
-                <div class="panel registration-form col-md-6 col-sm-12">
+                <div class="panel registration-form col-md-6 col-sm-12 col-xs-12">
                   <div class="panel-body">
                     <div class="text-center">
                       <h5 class="content-group-lg">Create Account <small class="display-block">All fields are required</small></h5>
@@ -132,7 +132,8 @@
                     </div>
 
                     <div class="text-right">
-                      <a href="<?=base_url()?>access/login" class="btn btn-link"><i class="icon-arrow-left13 position-left"></i> Back to login form</button>
+                      <!-- <button type="button" class="btn btn-link"><i class="icon-arrow-left13 position-left"></i> Back to login form</button> -->
+                      <a href="<?=base_url()?>access"><button type="submit" class="btn bg-pink-600 btn-labeled btn-labeled-elft ml-10"><b><i class="icon-reset"></i></b> Back to login form</button></a>
                       <button type="submit" class="btn bg-indigo-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b> Create account</button>
                     </div>
                   </div>

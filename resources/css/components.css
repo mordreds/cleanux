@@ -20386,7 +20386,7 @@ thead .htCollapseButton:after {
 				float: left;
 				border-bottom-left-radius: 0px;
 				border-top-left-radius: 0px;
-			  max-height: 563px;
+			  min-height: 563px;
 }
 
 .login-container .page-container .app-info {

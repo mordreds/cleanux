@@ -20,7 +20,7 @@
                   <h4>Lorem ipsum dolor sit amet, nulla consectetur adipiscing elit Sed.Nam eleifend velit eget dolor vestibulum ornare. Vestibulum est nulla, fermentum eget euismod et, tincidunt at duite.</h4>
                 </div>
               </div>
-              <div class="panel panel-body login-form col-md-4">
+              <div class="panel panel-body login-form col-md-4 col-sm-12 col-xs-12">
                 <div class="text-center">
                   <!-- <div class="icon-object border-slate-300 text-slate-300">
                     <img src="<?=base_url()?>resources/images/logo.png" alt="">

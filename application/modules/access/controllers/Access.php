@@ -51,7 +51,7 @@ class Access extends MX_Controller
         redirect('dashboard');
       else
       {
-        $title['title'] = "lOMS - Login"; 
+        $title['title'] = "Login"; 
         $this->load->view('login_header',$title); 
         $this->load->view('login_1'); 
         //$this->load->view('login_footer'); 
@@ -67,7 +67,7 @@ class Access extends MX_Controller
         redirect('dashboard');
       else
       {
-        $title['title'] = "lOMS - Login"; 
+        $title['title'] = "Create Account"; 
         $this->load->view('login_header',$title); 
         $this->load->view('signup'); 
         //$this->load->view('login_footer'); 

@@ -14,6 +14,7 @@
     <link href="<?=base_url()?>resources/css/core.css" rel="stylesheet" type="text/css">
     <link href="<?=base_url()?>resources/css/components.css" rel="stylesheet" type="text/css">
     <link href="<?=base_url()?>resources/css/colors.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>resources/images/favicon.ico" rel="icon" type="image/png" sizes="16x16">
     <!-- /global stylesheets -->
 
     <!-- Core JS files -->
