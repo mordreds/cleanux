@@ -9,8 +9,9 @@
         <div class="content">
           <!-- Advanced login -->
           <form action="<?=base_url()?>access/login_validation" method="post">
-            <div class="row" style="margin: 3% 15%;">
-              <div class="panel panel-body app-info col-md-4">
+            <div class="row">
+              <div class="col-md-2"></div>
+              <div class="panel panel-body app-info col-md-3">
                 <div class="text-center">
                   <div class="icon-object border-slate-300 text-slate-300">
                     <img src="<?=base_url()?>resources/images/logo.png" alt="">
@@ -19,7 +20,7 @@
                   <h4>Lorem ipsum dolor sit amet, nulla consectetur adipiscing elit Sed.Nam eleifend velit eget dolor vestibulum ornare. Vestibulum est nulla, fermentum eget euismod et, tincidunt at duite.</h4>
                 </div>
               </div>
-              <div class="panel panel-body login-form col-md-5">
+              <div class="panel panel-body login-form col-md-4">
                 <div class="text-center">
                   <!-- <div class="icon-object border-slate-300 text-slate-300">
                     <img src="<?=base_url()?>resources/images/logo.png" alt="">
