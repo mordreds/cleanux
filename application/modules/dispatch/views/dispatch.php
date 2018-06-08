@@ -3,6 +3,76 @@
     <?php //print "<pre>"; print_r($_SESSION); print "</pre>";?>
     <!-- Main charts -->
     <div class="row">
+    <!--  <div class="col-md-12">
+        <div class="panel panel-flat">
+          <div class="panel-body">
+                  <!-- Support tickets -
+                  <div class="panel panel-flat">
+                      <div class="col-md-12">
+                        <div class="col-md-3"></div>
+                    <div class="col-md-2 ">
+                            <div class="content-group ">
+                            <h5 class="text-semibold no-margin"><a href="#" class="btn border-pink text-pink btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
+                             <span class="text-muted text-size-small">laundey readied </span>
+                            </div>
+                           </div>
+                           <div class="col-md-2">
+                            <div class="content-group">
+                            <h5 class="text-semibold no-margin"><a href="#" class="btn border-green text-green btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
+                             <span class="text-muted text-size-small">Laundry Delivered</span>
+                            </div>
+                           </div>
+                           <div class="col-md-2">
+                            <div class="content-group">
+                            <h5 class="text-semibold no-margin"><a href="#" class="btn border-blue text-blue btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
+                             <span class="text-muted text-size-small">All Laundry </span>
+                            </div>
+                           </div>
+                           </div>
+                  </div>
+                  <!-- /support tickets --
+          </div>
+
+        </div>
+      </div>-->
+      <div class="col-md-12">
+      <div class="col-md-4">
+
+                  <!-- Available hours -->
+                  <div class="panel text-center">
+                    <div class="panel-body">
+                            <div class="content-group ">
+                            <h5 class="text-semibold no-margin"><a href="#" class="btn border-pink text-pink btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
+                             <span class="text-muted text-size-small">laundey readied </span>
+                            </div>
+                    </div>
+                  </div>
+        </div>
+        <div class="col-md-4">
+
+                  <!-- Available hours -->
+                  <div class="panel text-center">
+                    <div class="panel-body">
+                            <div class="content-group">
+                            <h5 class="text-semibold no-margin"><a href="#" class="btn border-green text-green btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
+                             <span class="text-muted text-size-small">Laundry Delivered</span>
+                            </div>
+                    </div>
+                  </div>
+        </div>
+         <div class="col-md-4">
+
+                  <!-- Available hours -->
+                  <div class="panel text-center">
+                    <div class="panel-body">
+                           <div class="content-group">
+                            <h5 class="text-semibold no-margin"><a href="#" class="btn border-blue text-blue btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
+                             <span class="text-muted text-size-small">All Laundry </span>
+                            </div>
+                    </div>
+                  </div>
+        </div>
+        </div>
       <div class="col-md-12">
         <div class="panel panel-flat">
           <div class="panel-body">

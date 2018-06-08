@@ -5,63 +5,57 @@
     <?php //print "<pre>"; print_r($_SESSION); print "</pre>";?>
     <!-- Main charts -->
     <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-flat">
-          <div class="panel-body">
-                  <!-- Support tickets -->
-                  <div class="panel panel-flat">
 
-                    <div class="table-responsive">
-                      <table class="table table-xlg text-nowrap">
-                        <tbody>
-                          <tr>
-                            <td class="col-md-4">
-                              <div class="media-left media-middle">
-                                <div id="tickets-status"></div>
-                              </div>
+        <div class="col-md-12">
+      <div class="col-md-3">
 
-                              <div class="media-left">
-                                <h5 class="text-semibold no-margin">14,327 <small class="text-success text-size-base"><i class="icon-arrow-up12"></i> (+2.9%)</small></h5>
-                                <span class="text-muted"><span class="status-mark border-success position-left"></span> Jun 16, 10:00 am</span>
-                              </div>
-                            </td>
-
-                            <td class="col-md-3">
-                              <div class="media-left media-middle">
-                                <a href="#" class="btn border-indigo-400 text-indigo-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-alarm-add"></i></a>
-                              </div>
-
-                              <div class="media-left">
-                                <h5 class="text-semibold no-margin">
-                                  1,132 <small class="display-block no-margin">total tickets</small>
-                                </h5>
-                              </div>
-                            </td>
-
-                            <td class="col-md-3">
-                              <div class="media-left media-middle">
-                                <a href="#" class="btn border-indigo-400 text-indigo-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-spinner11"></i></a>
-                              </div>
-
-                              <div class="media-left">
-                                <h5 class="text-semibold no-margin">
-                                  06:25:00 <small class="display-block no-margin">response time</small>
-                                </h5>
-                              </div>
-                            </td>
-
-                            <td class="text-right col-md-2">
-                              <a href="#" class="btn bg-teal-400"><i class="icon-statistics position-left"></i> Report</a>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>  
+                  <!-- Available hours -->
+                  <div class="panel text-center">
+                    <div class="panel-body">
+                            <div class="content-group ">
+                            <h5 class="text-semibold no-margin"><a href="#" class="btn border-pink text-pink btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
+                             <span class="text-muted text-size-small">laundry Pending</span>
+                            </div>
                     </div>
                   </div>
-                  <!-- /support tickets -->
-          </div>
         </div>
-      </div>
+        <div class="col-md-3">
+
+                  <!-- Available hours -->
+                  <div class="panel text-center">
+                    <div class="panel-body">
+                          <div class="content-group">
+                            <h5 class="text-semibold no-margin"><a href="#" class="btn border-blue text-blue btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
+                             <span class="text-muted text-size-small">laundry Processing</span>
+                            </div>
+                    </div>
+                  </div>
+        </div>
+         <div class="col-md-3">
+
+                  <!-- Available hours -->
+                  <div class="panel text-center">
+                    <div class="panel-body">
+                           <div class="content-group">
+                            <h5 class="text-semibold no-margin"><a href="#" class="btn border-green text-green btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
+                             <span class="text-muted text-size-small">laundry Dispatched</span>
+                            </div>
+                    </div>
+                  </div>
+        </div>
+        <div class="col-md-3">
+
+                  <!-- Available hours -->
+                  <div class="panel text-center">
+                    <div class="panel-body">
+                           <div class="content-group">
+                            <h5 class="text-semibold no-margin"><a href="#" class="btn border-blue text-blue btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
+                             <span class="text-muted text-size-small">All orders </span>
+                            </div>
+                    </div>
+                  </div>
+        </div>
+        </div>
       <div class="col-md-12">
         <div class="panel panel-flat">
           <div class="panel-body">
