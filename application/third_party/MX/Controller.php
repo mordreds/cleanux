@@ -39,10 +39,10 @@ require dirname(__FILE__).'/Base.php';
 class MX_Controller 
 {
  	# Initializing All Needed Database Connections
-  public static $_Audit_DB = array();
-  public static $_Default_DB = array();
+ 	public static $_Default_DB = array();
+ /* public static $_Audit_DB = array();
   public static $_Permission_DB = array();
-  public static $_Views_DB = array();
+  public static $_Views_DB = array();*/
 	public $autoload = array();
 	
 	public function __construct() 
@@ -60,9 +60,9 @@ class MX_Controller
 
 		# Loading Multiple Database 
     self::$_Default_DB = $this->load->database('default',TRUE);
-		self::$_Audit_DB = $this->load->database('audit',TRUE);
+		/*self::$_Audit_DB = $this->load->database('audit',TRUE);
     self::$_Permission_DB = $this->load->database('permissions',TRUE);
-    self::$_Views_DB = $this->load->database('system_views',TRUE);
+    self::$_Views_DB = $this->load->database('system_views',TRUE);*/
 	}
 	
 	public function __get($class) 

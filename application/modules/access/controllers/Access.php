@@ -6,89 +6,87 @@ class Access extends MX_Controller
     /*******************************
       Constructor 
     *******************************/
-    public function __construct() {
-      parent::__construct();
-    }
+      public function __construct() {
+        parent::__construct();
+      }
 
     /*******************************
-           Logout
+      Logout Logic
     *******************************/
-    public function logout() {
-      if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['login_id']) ) 
-      {
-        $this->load->model('model_access');
-        $result = $this->model_access->logout_user(self::$_Audit_DB,'successful_logins',$_SESSION['user']['login_id']);
-        
-        if($result) {
-          session_destroy();
-          redirect('access');
-        } 
-        
-        else {
-          $this->session->set_flashdata('error',"Log Out Failed");
-          redirect('dashboard');
+      public function logout() {
+        if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['login_id']))  {
+          $this->load->model('model_access');
+          $result = $this->model_access->logout_user(self::$_Default_DB,'successful_logins',$_SESSION['user']['login_id']);
+          
+          if($result) {
+            session_destroy();
+            redirect('access');
+          } 
+          else {
+            $this->session->set_flashdata('error',"Log Out Failed");
+            redirect('dashboard');
+          }
         }
+        else
+           redirect('access/login');
       }
-      else
-         redirect('access/login');
-    }
 
   /**************** Interface ********************/
     /*******************************
       Index Function
     *******************************/
-    public function index() 
-    {
-      $this->login();
-    }
+      public function index() 
+      {
+        $this->login();
+      }
 
     /*******************************
-      Login 
+      Login Page
     *******************************/
-    public function login() 
-    {
-      if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
-        redirect('dashboard');
-      else
+      public function login() 
       {
-        $title['title'] = "Login"; 
-        $this->load->view('login_header',$title); 
-        $this->load->view('login_1'); 
-        //$this->load->view('login_footer'); 
+        if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
+          redirect('dashboard');
+        else
+        {
+          $title['title'] = "Login"; 
+          $this->load->view('login_header',$title); 
+          $this->load->view('login_1'); 
+          //$this->load->view('login_footer'); 
+        }
       }
-    }
 
     /*******************************
       Signup 
     *******************************/
-    public function signup() 
-    {
-      if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
-        redirect('dashboard');
-      else
+      public function signup() 
       {
-        $title['title'] = "Create Account"; 
-        $this->load->view('login_header',$title); 
-        $this->load->view('signup'); 
-        //$this->load->view('login_footer'); 
+        if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
+          redirect('dashboard');
+        else
+        {
+          $title['title'] = "Create Account"; 
+          $this->load->view('login_header',$title); 
+          $this->load->view('signup'); 
+          //$this->load->view('login_footer'); 
+        }
       }
-    }
-
-       /*******************************
-      Login 
+    
+    /*******************************
+      All Users 
     *******************************/
-    public function users() 
-    {
-      if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
-        redirect('dashboard');
-      else
+      public function users() 
       {
-        $title['title'] = "lOMS - Login"; 
-        $this->load->view('login_header',$title); 
-        $this->load->view('users'); 
-        $this->load->view('login_footer'); 
+        if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
+          redirect('dashboard');
+        else
+        {
+          $title['title'] = "lOMS - Login"; 
+          $this->load->view('login_header',$title); 
+          $this->load->view('users'); 
+          $this->load->view('login_footer'); 
+        }
       }
-    }
 
     /*******************************
       Password Recovery 
@@ -106,7 +104,6 @@ class Access extends MX_Controller
         $this->load->view('login_footer'); 
       }
     }
-
   /**************** Interface ********************/
 
   /**************** Verifying Methods ********************/
@@ -135,7 +132,7 @@ class Access extends MX_Controller
           $username = $this->input->post('email',TRUE);
           $password = $this->input->post('passwd',TRUE);
                 
-          $user = $this->model_access->verify_username(self::$_Views_DB,$username);
+          $user = $this->model_access->verify_username(self::$_Default_DB,$username);
           //print_r($user); exit;
           if(empty($user)){
             $this->session->set_flashdata('error',"Invalid Username / Password Combination");
@@ -285,10 +282,10 @@ class Access extends MX_Controller
                   # Condition Array
                   $condition = array(
                       'password_check'=> TRUE,
-                      'users_dbres' => self::$_Permission_DB,
+                      'users_dbres' => self::$_Default_DB,
                   );
 
-                  $result = $this->model_access->record_login(self::$_Audit_DB,$condition,$login_data);
+                  $result = $this->model_access->record_login(self::$_Default_DB,$condition,$login_data);
                   
                   if(!empty($result['login_id'])) 
                   {
@@ -686,41 +683,78 @@ class Access extends MX_Controller
     }  
   /**************** Verifying Methods ********************/
 
-  /***********************************************
-      Password Reset Approval
+  /**************** Insertion Methods ********************/
+    /***********************************************
+      Signup Request / Request Demo
     ************************************************/
-    public function reset_password_approved() 
-    {
-      if(isset($_POST['reset_password_approval'])) 
-      {
-        $this->form_validation->set_rules('email', 'Email', 'required|trim');
-
-        if($this->form_validation->run() === FALSE) 
+      public function signup_request() {
+        if(isset($_POST['company_resgister'])) 
         {
-          $this->session->set_flashdata('error','Email Fields Required');
-          redirect('access/password_reset');
-        }
-        else 
-        {
-          # Loading Helper / Models
-          $this->load->helper('encryption');
+          $this->form_validation->set_rules('surname', 'Surname', 'required|trim');
+          $this->form_validation->set_rules('othernames', 'Other Names', 'required|trim');
+          $this->form_validation->set_rules('email', 'Email', 'required|trim');
+          $this->form_validation->set_rules('contact', 'Contact No.', 'required|trim');
+          $this->form_validation->set_rules('Company_name', 'Company Name', 'required|trim');
+          $this->form_validation->set_rules('location', 'Location', 'required|trim');
+          $this->form_validation->set_rules('othernames', 'Other Names', 'required|trim');
+          $this->form_validation->set_rules('othernames', 'Other Names', 'required|trim');
+          $this->form_validation->set_rules('othernames', 'Other Names', 'required|trim');
+          $this->form_validation->set_rules('othernames', 'Other Names', 'required|trim');
 
-          # Generating Verification Token
-          $token = getToken(15);
-          $message = "Please your request for change of password has been approved by the Administrator. Your new password is <b>$token</b>. Please Note that upon login you shall be requested to set a new password. Thank You. ";
+          if($this->form_validation->run() === FALSE) 
+          {
+            $this->session->set_flashdata('error','All Fields Required');
+            redirect('access/login');
+          }
+          else 
+          {
+            # Loading Helper / Models
+            $this->load->model('model_access');
+            $this->load->model('globals/model_retrieval');
 
-          # Sending Token to Email
-          $this->load->library('email');
-          $this->email->from($email,$query_result->firstname.' '.$query_result->lastname);
-          $this->email->to('another@another-example.com');
-
-          $this->email->subject('Password Reset');
-          $this->email->message('Testing the email class.');
-
-          $this->email->send();
+            # Performing Database Verfication ==> Username
+            $username = $this->input->post('email',TRUE);
+            $password = $this->input->post('passwd',TRUE);
+          }
         }
       }
+  /**************** Insertion Methods ********************/
+
+  /***********************************************
+    Password Reset Approval
+  ************************************************/
+  public function reset_password_approved() 
+  {
+    if(isset($_POST['reset_password_approval'])) 
+    {
+      $this->form_validation->set_rules('email', 'Email', 'required|trim');
+
+      if($this->form_validation->run() === FALSE) 
+      {
+        $this->session->set_flashdata('error','Email Fields Required');
+        redirect('access/password_reset');
+      }
+      else 
+      {
+        # Loading Helper / Models
+        $this->load->helper('encryption');
+
+        # Generating Verification Token
+        $token = getToken(15);
+        $message = "Please your request for change of password has been approved by the Administrator. Your new password is <b>$token</b>. Please Note that upon login you shall be requested to set a new password. Thank You. ";
+
+        # Sending Token to Email
+        $this->load->library('email');
+        $this->email->from($email,$query_result->firstname.' '.$query_result->lastname);
+        $this->email->to('another@another-example.com');
+
+        $this->email->subject('Password Reset');
+        $this->email->message('Testing the email class.');
+
+        $this->email->send();
+      }
     }
+  }
 
   /**************** Other Functions **********************/
     /**

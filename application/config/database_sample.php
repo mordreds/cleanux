@@ -78,7 +78,7 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'template_db',
+	'database' => 'bgee_db',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -100,7 +100,7 @@ $db['default'] = array(
 			System User 		==> All Roles & Privileges of the system
 			admin User 			==> Only Roles & Privileges Pertaining to System User are limited to this user.
 			mypassword.
-*/
+
 
 $db['permissions'] = array(
 	'dsn'	=> '',
@@ -130,7 +130,7 @@ $db['permissions'] = array(
 			change of password
 			root changes a user's roles & privileges 
 			mypassword...
-*/
+
 $db['audit'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
@@ -154,7 +154,7 @@ $db['audit'] = array(
 );
 
 
-/**** Contains All Views Of The System ******/
+/**** Contains All Views Of The System ******
 $db['system_views'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
