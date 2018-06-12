@@ -1,4 +1,4 @@
-<?php if(isset($_SESSION['user']['roles'])) : ?>
+<?php //if(isset($_SESSION['user']['roles'])) : ?>
 
 <script type="text/javascript">
   /************** Default Settings **************/
@@ -546,5 +546,5 @@
     /********** Print Button ************/
   });
 </script>
-<?php endif; ?>
+<?php //endif; ?>
   

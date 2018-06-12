@@ -1,4 +1,4 @@
-<?php if(isset($_SESSION['user']['roles'])) : ?>
+<?php //if(isset($_SESSION['user']['roles'])) : ?>
 
 <script type="text/javascript">
   $(document).ready(function() {
@@ -272,5 +272,5 @@
 
   
 </script>
-<?php endif; ?>
+<?php//endif; ?>
   

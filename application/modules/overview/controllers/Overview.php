@@ -418,7 +418,7 @@ class Overview extends MX_Controller
     public function search() 
     {
       # Permission Check
-       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+       if(false/*!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])*/) {
           $return_data['error'] = "Permission Denied. Please Contact Admin";
           print_r(json_encode($return_data));
        }
@@ -522,7 +522,7 @@ class Overview extends MX_Controller
       Total Order Details
     *******************************/  
     public function retrieve_order($day,$display_limit) {
-      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+      if(false/*!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])*/) {
         $return_data = ['error' => "Permission Denied. Contact Amin"];
         print_r(json_encode($return_data));
       }
@@ -558,7 +558,7 @@ class Overview extends MX_Controller
       Search Order By Order No
     *******************************/  
     public function search_order_by_orderno($order_number) {
-      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+      if(false/*!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])*/) {
         $return_data = ['error' => "Permission Denied. Contact Amin"];
         print_r(json_encode($return_data));
       }
@@ -598,7 +598,7 @@ class Overview extends MX_Controller
       Search Order Details By Order No
     *******************************/  
     public function search_order_details_by_orderno($order_id,$page = null) {
-      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+      if(false/*!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])*/) {
         $return_data = ['error' => "Permission Denied. Contact Amin"];
         print_r(json_encode($return_data));
       }
@@ -686,7 +686,7 @@ class Overview extends MX_Controller
       Search Order By Telephone No
     *******************************/  
     public function search_order_by_telno($phone_number) {
-      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
+      if(false/*!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])*/) {
         $return_data = ['error' => "Permission Denied. Contact Amin"];
         print_r(json_encode($return_data));
       }
