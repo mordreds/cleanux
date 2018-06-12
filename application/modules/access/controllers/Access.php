@@ -91,19 +91,19 @@ class Access extends MX_Controller
     /*******************************
       Password Recovery 
     *******************************/
-    public function password_reset() 
-    {
-      if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
-        redirect('dashboard');
-
-      else
+      public function password_reset() 
       {
-        $title['title'] = "Login - ProjectName"; 
-        $this->load->view('login_header',$title); 
-        $this->load->view('forgot_password'); 
-        $this->load->view('login_footer'); 
+        if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
+          redirect('dashboard');
+
+        else
+        {
+          $title['title'] = "Login - ProjectName"; 
+          $this->load->view('login_header',$title); 
+          $this->load->view('forgot_password'); 
+          $this->load->view('login_footer'); 
+        }
       }
-    }
   /**************** Interface ********************/
 
   /**************** Verifying Methods ********************/
@@ -688,33 +688,52 @@ class Access extends MX_Controller
       Signup Request / Request Demo
     ************************************************/
       public function signup_request() {
-        if(isset($_POST['company_resgister'])) 
+        if(isset($_POST['company_register'])) 
         {
+          $this->form_validation->set_rules('response_type','Response Type','trim');
+
           $this->form_validation->set_rules('surname', 'Surname', 'required|trim');
           $this->form_validation->set_rules('othernames', 'Other Names', 'required|trim');
           $this->form_validation->set_rules('email', 'Email', 'required|trim');
           $this->form_validation->set_rules('contact', 'Contact No.', 'required|trim');
           $this->form_validation->set_rules('Company_name', 'Company Name', 'required|trim');
           $this->form_validation->set_rules('location', 'Location', 'required|trim');
-          $this->form_validation->set_rules('othernames', 'Other Names', 'required|trim');
-          $this->form_validation->set_rules('othernames', 'Other Names', 'required|trim');
-          $this->form_validation->set_rules('othernames', 'Other Names', 'required|trim');
-          $this->form_validation->set_rules('othernames', 'Other Names', 'required|trim');
+          $this->form_validation->set_rules('password', 'Password', 'required|trim');
+          $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|trim');
+          $this->form_validation->set_rules('guest_request', 'Guest Request', 'required|trim');
+          $this->form_validation->set_rules('terms', 'Terms & Condition', 'required|trim');
 
-          if($this->form_validation->run() === FALSE) 
-          {
-            $this->session->set_flashdata('error','All Fields Required');
-            redirect('access/login');
+          if($this->form_validation->run() === FALSE) {
+            $errors = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+            $response_type = $this->input->post('response_type');
+
+            if($response_type == "JSON") {
+              $return_data['error'] = $errors;
+              print_r(json_encode($return_data));
+            } 
+            else {
+              $this->session->set_flashdata('validation_error',$errors);
+              redirect('access/signup');
+            }
           }
           else 
           {
             # Loading Helper / Models
             $this->load->model('model_access');
-            $this->load->model('globals/model_retrieval');
 
-            # Performing Database Verfication ==> Username
-            $username = $this->input->post('email',TRUE);
-            $password = $this->input->post('passwd',TRUE);
+            $register_data = [
+              'surname' => $this->input->post('surname',TRUE),
+              'other_names' => $this->input->post('othernames',TRUE),
+              'email' => $this->input->post('email',TRUE),
+              'contact' => $this->input->post('contact',TRUE),
+              'company_name' => $this->input->post('company_name',TRUE),
+              'company_location' => $this->input->post('company_location',TRUE),
+              'guest_account_request' => $this->input->post('guest_request',TRUE),
+              'email_verification_token' => password_hash($this->input->post('contact'),PASSWORD_DEFAULT)
+            ];
+
+            $query_result = $this->model_access->signup_request(self::$_Default_DB);
+
           }
         }
       }

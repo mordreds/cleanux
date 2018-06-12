@@ -100,7 +100,7 @@
 
                       <div class="col-md-6">
                         <div class="form-group has-feedback">
-                          <input type="password" class="form-control" placeholder="Repeat password" required>
+                          <input type="password" name="confirm_password" class="form-control" placeholder="Repeat password" required>
                           <div class="form-control-feedback">
                             <i class="icon-user-lock text-muted"></i>
                           </div>
@@ -111,7 +111,7 @@
                     <div class="form-group">
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox" class="styled">
+                          <input type="checkbox" name="guest_request" class="styled" value="Yes">
                           Send me <a href="#">Guest Account Credentials</a>
                         </label>
                       </div>
@@ -134,7 +134,7 @@
                     <div class="text-right">
                       <!-- <button type="button" class="btn btn-link"><i class="icon-arrow-left13 position-left"></i> Back to login form</button> -->
                       <a href="<?=base_url()?>access"><button type="button" class="btn bg-pink-600 btn-labeled btn-labeled-elft ml-10"><b><i class="icon-reset"></i></b> Back to login </button></a>
-                      <button name="company_resgister" type="submit" class="btn bg-indigo-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b> Create account</button>
+                      <button name="company_register" type="submit" class="btn bg-indigo-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b> Create account</button>
                     </div>
                   </div>
                 </div>

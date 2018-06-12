@@ -250,6 +250,31 @@ class Model_Access extends CI_Model
 		return(($query->num_rows() == 1) ? $query->row() : FALSE );	
 	}
 
+	/***********************************************
+		Verify Order No / Phone Number
+	************************************************/
+	public function signup_request($dbres,$verification_token = Null)
+	{
+		$tablename  = 'hr_signup_companies';
+		# New Request
+		if(empty($verification_token))
+			$query_result = $dbres->insert($tablename,$sysaudit_data);
+		# Updating Request
+		else {
+			$where_clause = ['email_verification_token' => $verification_token];
+			$query = $dbres->get_where($tablename,$where_clause);
+			
+			if($query->num_rows() == 1) {
+				$dbres->set('date_verified',gmdate('Y-m-d H:i:s'));
+				$dbres->where($where_clause);
+				$query_result = $dbres->update($tablename);
+			}	
+		}
+		
+		$result 		= $dbres->affected_rows();
+		return(($query->num_rows() == 1) ? $query->row() : FALSE );	
+	}
+
 
 
 

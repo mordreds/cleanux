@@ -54,7 +54,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <button type="submit" name="login" class="btn bg-pink-400 btn-block">Login <i class="icon-circle-right2 position-right"></i></button>
+                <button type="submit" name="login" class="btn bg-pink-400 btn-block">Search <i class="icon-circle-right2 position-right"></i></button>
               </div>
               <!-- <div class="content-divider text-muted form-group"><span>or sign in with</span></div>
               <ul class="list-inline form-group list-inline-condensed text-center">
