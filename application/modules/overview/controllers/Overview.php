@@ -287,9 +287,32 @@ class Overview extends MX_Controller
             $order_details_insert = $this->Model_insertion->datainsert($dbres,$tablename,$order_details_info);
             /********* Saving Order DEtails **********/
             if($order_details_insert) {
-              unset($_SESSION['laundry']['new_order']);
               $this->session->set_flashdata('success', "Order Saving Successful");
               $this->session->set_flashdata('order_successful', $order_info_insert);
+
+              # Sending Sms To Client To Monitor
+              $key = "058289f6054524bbd6fa";
+              $sender_id = "BGs";
+              $to = $_SESSION['laundry']['new_order']['client']['phone_number'];
+              $message = "Dear customer , your order <a href='".base_url()."overview/users/?ord=".$order_table_info['order_number']."'></a> has been confirmed! Please you will be alerted when launder is ready on the expected delivery time.";
+              $mnotify_error_messages = [
+                '1000' => "Sending SMS Successful",
+                '1002' => "Sms Sending Failed",
+                '1003' => "Insufficient SMS Balance",
+                '1005' => "Invalid Recipient Phone Number",
+              ];
+
+              if(!empty($key) && !empty($sender_id) && !empty($to) && !empty($message)) {
+                $url = "https://apps.mnotify.net/smsapi?key=".$key."&to=".$to."&msg=".$message."&sender_id=".$sender_id;
+                $url_result = file_get_contents($url);
+                
+                if(array_key_exists($url_result, $mnotify_error_messages)) {
+                  if($url_result != 1000)
+                    $this->session->set_flashdata('error',$mnotify_error_messages[$url_result]);
+                }
+              }
+
+              unset($_SESSION['laundry']['new_order']);
 
               redirect($_SERVER['HTTP_REFERER']);
             }

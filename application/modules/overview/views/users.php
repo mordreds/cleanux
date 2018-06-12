@@ -206,7 +206,7 @@
                           <div class="panel panel-flat">
                             <div class="panel-body">
                               <div class="form-group">
-                                <input type="text" id="search_text" value="<?=@$new_client_number?>" placeholder="Order Number :" class="form-control">
+                                <input type="text" id="search_text" value="<?=@$_GET['ord']?>" placeholder="Order Number :" class="form-control">
                               </div>
                               <button type="button" data-action="reload" class="btn btn-primary" id="search_submit">Search  <i class="icon-search4 position-right"></i></button>
                               <button type="button" data-action="reload" class="btn btn-warning clear_cart pull-right">Clear Record <i class="icon-x position-right"></i></button>
