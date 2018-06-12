@@ -1,4 +1,4 @@
-<?php if(isset($_SESSION['user']['id'])) : ?>
+<?php //if(isset($_SESSION['user']['id'])) : ?>
 
 <script type="text/javascript">
 	/*************** Selectbox ***************/
@@ -111,8 +111,8 @@
   /*************** Date Pickers ************/
 </script>
 
-<?php else : 
+<?php /*else : 
 		$this->session->set_flashdata('error',"Permission Denied.");
     redirect('dashboard');
-	endif; 
+	endif; */
 ?>

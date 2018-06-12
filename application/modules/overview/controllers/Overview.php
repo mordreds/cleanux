@@ -49,6 +49,28 @@ class Overview extends MX_Controller
     }
 
     /*******************************
+      Users Function
+    *******************************/
+    public function users() {
+      /****** Required Parameters To Render A Page ******/
+      $this->load->model('access/model_access');
+      $this->load->model('globals/model_retrieval');
+      $data['_Permission_DB'] = self::$_Permission_DB;
+      $data['page_controller'] = $this->uri->segment(1);
+      $data['controller_function'] = $this->uri->segment(2); 
+        /****** Required Parameters To Render A Page ******/
+        $data['new_client_number'] = @$_SESSION['laundry']['new_order']['client']['phone_number'];
+        
+        /***************** Interface *****************/
+        $data['title'] = "Overview"; 
+        $this->load->view('header_2',$data); 
+        $this->load->view('users',$data); 
+        $this->load->view('footer'); 
+        /***************** Interface *****************/
+      
+    }
+
+    /*******************************
       Index Function
     *******************************/
     public function receipt($order_id) {
