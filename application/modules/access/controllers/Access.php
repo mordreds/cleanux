@@ -53,7 +53,7 @@ class Access extends MX_Controller
       {
         $title['title'] = "Login"; 
         $this->load->view('login_header',$title); 
-        $this->load->view('login_1'); 
+        $this->load->view('login'); 
         //$this->load->view('login_footer'); 
       }
     }
