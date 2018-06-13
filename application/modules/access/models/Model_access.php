@@ -257,8 +257,15 @@ class Model_Access extends CI_Model
 	{
 		$tablename  = 'hr_signup_companies';
 		# New Request
-		if(empty($verification_token))
-			$query_result = $dbres->insert($tablename,$sysaudit_data);
+		if(empty($where_condition)) {
+			if(empty($form_data['verification_token']))
+				$query_result = $dbres->insert($tablename,$sysaudit_data);
+		}
+		# Updating Request
+		else {
+
+		}
+		
 		# Updating Request
 		else {
 			$where_clause = ['email_verification_token' => $verification_token];
