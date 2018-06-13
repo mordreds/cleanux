@@ -3,48 +3,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Access extends MX_Controller 
 {
-    /*******************************
-      Constructor 
-    *******************************/
-      public function __construct() {
-        parent::__construct();
-      }
+  /*******************************
+    Constructor 
+  *******************************/
+    public function __construct() {
+      parent::__construct();
+    }
 
-    /*******************************
-      Logout Logic
-    *******************************/
-      public function logout() {
-        if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['login_id']))  {
-          $this->load->model('model_access');
-          $result = $this->model_access->logout_user(self::$_Default_DB,'successful_logins',$_SESSION['user']['login_id']);
-          
-          if($result) {
-            session_destroy();
-            redirect('access');
-          } 
-          else {
-            $this->session->set_flashdata('error',"Log Out Failed");
-            redirect('dashboard');
-          }
+  /*******************************
+    Logout Logic
+  *******************************/
+    public function logout() {
+      if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['login_id']))  {
+        $this->load->model('model_access');
+        $result = $this->model_access->logout_user(self::$_Default_DB,'successful_logins',$_SESSION['user']['login_id']);
+        
+        if($result) {
+          session_destroy();
+          redirect('access');
+        } 
+        else {
+          $this->session->set_flashdata('error',"Log Out Failed");
+          redirect('dashboard');
         }
-        else
-           redirect('access/login');
       }
+      else
+         redirect('access/login');
+    }
 
   /**************** Interface ********************/
     /*******************************
       Index Function
     *******************************/
-      public function index() 
-      {
+      public function index() {
         $this->login();
       }
 
     /*******************************
       Login Page
     *******************************/
-      public function login() 
-      {
+      public function login() {
         if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
           redirect('dashboard');
         else
@@ -59,8 +57,7 @@ class Access extends MX_Controller
     /*******************************
       Signup 
     *******************************/
-      public function signup() 
-      {
+      public function signup() {
         if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
           redirect('dashboard');
         else
@@ -75,8 +72,7 @@ class Access extends MX_Controller
     /*******************************
       All Users 
     *******************************/
-      public function users() 
-      {
+      public function users() {
         if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
           redirect('dashboard');
         else
@@ -91,8 +87,7 @@ class Access extends MX_Controller
     /*******************************
       Password Recovery 
     *******************************/
-      public function password_reset() 
-      {
+      public function password_reset() {
         if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
           redirect('dashboard');
 
@@ -683,41 +678,46 @@ class Access extends MX_Controller
     }  
   /**************** Verifying Methods ********************/
 
-  /**************** Insertion Methods ********************/
+  /**************** Client Signup ********************/
+    
     /***********************************************
       Signup Request / Request Demo
     ************************************************/
       public function signup_request() {
         if(isset($_POST['company_register'])) 
         {
+          $this->form_validation->set_rules('id','Response ID','trim');
           $this->form_validation->set_rules('response_type','Response Type','trim');
 
           $this->form_validation->set_rules('surname', 'Surname', 'required|trim');
           $this->form_validation->set_rules('othernames', 'Other Names', 'required|trim');
-          $this->form_validation->set_rules('email', 'Email', 'required|trim');
+          $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[hr_signup_companies.email]');
           $this->form_validation->set_rules('contact', 'Contact No.', 'required|trim');
-          $this->form_validation->set_rules('Company_name', 'Company Name', 'required|trim');
+          $this->form_validation->set_rules('company_name', 'Company Name', 'required|trim');
           $this->form_validation->set_rules('location', 'Location', 'required|trim');
           $this->form_validation->set_rules('password', 'Password', 'required|trim');
-          $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|trim');
-          $this->form_validation->set_rules('guest_request', 'Guest Request', 'required|trim');
+          $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|trim|matches[password]',array('matches' => 'Password Mismatch. Try Again'));
+          $this->form_validation->set_rules('guest_request', 'Guest Request', 'trim');
           $this->form_validation->set_rules('terms', 'Terms & Condition', 'required|trim');
 
           if($this->form_validation->run() === FALSE) {
             $errors = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
             $response_type = $this->input->post('response_type');
-
+            # Setting Form Data For repopulating the form
+            foreach ($_POST as $key => $value) {
+              $this->session->set_flashdata($key, $value);
+            }
+            
             if($response_type == "JSON") {
               $return_data['error'] = $errors;
               print_r(json_encode($return_data));
             } 
             else {
-              $this->session->set_flashdata('validation_error',$errors);
+              $this->session->set_flashdata('error',$errors);
               redirect('access/signup');
             }
           }
-          else 
-          {
+          else {
             # Loading Helper / Models
             $this->load->model('model_access');
 
@@ -727,17 +727,20 @@ class Access extends MX_Controller
               'email' => $this->input->post('email',TRUE),
               'contact' => $this->input->post('contact',TRUE),
               'company_name' => $this->input->post('company_name',TRUE),
-              'company_location' => $this->input->post('company_location',TRUE),
+              'company_location' => $this->input->post('location',TRUE),
               'guest_account_request' => $this->input->post('guest_request',TRUE),
               'email_verification_token' => password_hash($this->input->post('contact'),PASSWORD_DEFAULT)
             ];
 
-            $query_result = $this->model_access->signup_request(self::$_Default_DB);
+            print "<pre>"; print_r($register_data);print "</pre>";  exit;
+
+            $query_result = $this->model_access->signup_request(self::$_Default_DB,$register_data);
 
           }
         }
       }
-  /**************** Insertion Methods ********************/
+
+  /**************** Client Signup ********************/
 
   /***********************************************
     Password Reset Approval

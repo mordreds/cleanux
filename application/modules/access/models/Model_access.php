@@ -251,9 +251,9 @@ class Model_Access extends CI_Model
 	}
 
 	/***********************************************
-		Verify Order No / Phone Number
+		Signup Request - New / Update
 	************************************************/
-	public function signup_request($dbres,$verification_token = Null)
+	public function signup_request($dbres,$form_data,$where_condition = array(),$return_dataType="php_object",)
 	{
 		$tablename  = 'hr_signup_companies';
 		# New Request
