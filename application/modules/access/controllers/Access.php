@@ -57,17 +57,32 @@ class Access extends MX_Controller
     /*******************************
       Signup 
     *******************************/
-      public function signup() {
+      public function request_demo() {
         if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
           redirect('dashboard');
         else
         {
           $title['title'] = "Create Account"; 
           $this->load->view('login_header',$title); 
-          $this->load->view('signup'); 
+          $this->load->view('request_demo'); 
           //$this->load->view('login_footer'); 
         }
       }
+
+      /*******************************
+        Signup 
+      *******************************/
+        public function demo() {
+          if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
+            redirect('dashboard');
+          else
+          {
+            $title['title'] = "Create Account"; 
+            $this->load->view('login_header',$title); 
+            $this->load->view('try_demo'); 
+            //$this->load->view('login_footer'); 
+          }
+        }
     
     /*******************************
       All Users 
