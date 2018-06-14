@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2018 at 08:38 AM
+-- Generation Time: Jun 14, 2018 at 10:49 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.1.14
 
@@ -360,6 +360,34 @@ CREATE TABLE `hr_company_info` (
 
 INSERT INTO `hr_company_info` (`id`, `name`, `telephone_1`, `telephone_2`, `fax`, `email`, `postal_address`, `residence_address`, `website`, `mission`, `vision`, `tin_number`, `date_of_commence`) VALUES
 (1, 'MARKSBON LIMITED', '0506139739', '0244949261', '', 'bgslaundry@gmail.com', 'BOX K47, OFANKOR - ACCRA', 'GROUND FLOOR - MR MEGA PLAZA. OFANKOR BARRIER - ACCRA.', 'www.bgslaundry.com', 'To Be Filled By The Company', 'To Be Filled By The Company', 'TN10245682-GA', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hr_demo_requests`
+--
+
+CREATE TABLE `hr_demo_requests` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `contact` varchar(150) NOT NULL,
+  `company_name` varchar(200) NOT NULL,
+  `company_location` varchar(255) NOT NULL,
+  `expectations` text NOT NULL,
+  `date_scheduled` datetime DEFAULT NULL,
+  `feedback` text,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hr_demo_requests`
+--
+
+INSERT INTO `hr_demo_requests` (`id`, `first_name`, `last_name`, `email`, `contact`, `company_name`, `company_location`, `expectations`, `date_scheduled`, `feedback`, `date_created`) VALUES
+(1, 'Osborne', 'Mordreds', 'germain@greenfieldtest.com', '0571786220', 'Duraplast Company Limited', 'North Industrial Area', 'Client Monitoring', NULL, NULL, '2018-06-14 07:09:22'),
+(2, 'Mavis', 'Amenyo', 'mavis.mordreds@gmail.com', '0547843221', 'May Company', 'Kasoa - Amanfrom', 'Wrong Delivery', NULL, NULL, '2018-06-14 07:25:25');
 
 -- --------------------------------------------------------
 
@@ -984,13 +1012,6 @@ CREATE TABLE `vw_laundry_clients` (
 -- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_order_comments` (
-`id` bigint(20)
-,`order_id` bigint(20)
-,`user_id` bigint(20)
-,`comment` varchar(255)
-,`status` enum('active','inactive')
-,`date_created` datetime
-,`commenter_fullname` varchar(255)
 );
 
 -- --------------------------------------------------------
@@ -1045,27 +1066,6 @@ CREATE TABLE `vw_orderlist_summary` (
 -- (See below for the actual view)
 --
 CREATE TABLE `vw_user_details` (
-`id` bigint(20)
-,`username` varchar(255)
-,`passwd` varchar(100)
-,`default_passwd` varchar(255)
-,`fullname` varchar(255)
-,`phone_number` varchar(25)
-,`employee_id` varchar(50)
-,`biodata_id` bigint(20)
-,`first_login` tinyint(1)
-,`login_attempt` tinyint(1)
-,`status` enum('active','inactive','deleted','')
-,`created_by` bigint(20)
-,`date_created` timestamp
-,`custom_roles` mediumtext
-,`custom_privileges` mediumtext
-,`group_id` varchar(11)
-,`user_roles_status` varchar(8)
-,`group_name` varchar(255)
-,`group_roles` mediumtext
-,`group_privileges` mediumtext
-,`group_login_url` varchar(255)
 );
 
 -- --------------------------------------------------------
@@ -1138,7 +1138,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vw_orderlist_summary`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_orderlist_summary`  AS  select `a`.`id` AS `id`,`a`.`order_number` AS `order_number`,`a`.`total_cost` AS `total_cost`,`f`.`value` AS `tax`,`a`.`amount_paid` AS `amount_paid`,`a`.`balance` AS `previous_balance`,coalesce(`e`.`balance_paid`,0) AS `balance_paid`,(`a`.`amount_paid` + coalesce(`e`.`balance_paid`,0)) AS `total_amount_paid`,coalesce((`a`.`balance` - `e`.`balance_paid`),`a`.`balance`) AS `balance`,coalesce((select `vw_user_details`.`fullname` from `bgee_permissions`.`vw_user_details` where (`vw_user_details`.`id` = `e`.`user_id`)),'') AS `balance_received_by`,coalesce(`e`.`payment_date`,'') AS `balance_payment_date`,`a`.`client_id` AS `client_id`,`a`.`processor_user_id` AS `processor_user_id`,`a`.`delivery_method_id` AS `delivery_method_id`,`a`.`delivery_location` AS `delivery_location`,`a`.`due_date` AS `due_date`,`a`.`status` AS `status`,coalesce(`a`.`modified_by`,'') AS `modified_by`,coalesce(`a`.`modified_date`,'') AS `modified_date`,coalesce((select count(`laundry_order_comments`.`comment`) from `laundry_order_comments` where (`laundry_order_comments`.`order_id` = `a`.`id`)),'') AS `total_comments`,`a`.`date_created` AS `date_created`,`b`.`fullname` AS `client_fullname`,coalesce(`b`.`company`,'') AS `client_company`,`b`.`phone_number_1` AS `client_phone_no_1`,`b`.`phone_number_2` AS `client_phone_no_2`,`c`.`fullname` AS `processor_name`,`d`.`location` AS `delivery_method`,`d`.`price` AS `delivery_cost` from (((((`laundry_orders` `a` left join `laundry_clients` `b` on((`a`.`client_id` = `b`.`id`))) left join `bgee_permissions`.`vw_user_details` `c` on((`a`.`processor_user_id` = `c`.`id`))) left join `laundry_delivery_method` `d` on((`a`.`delivery_method_id` = `d`.`id`))) left join `laundry_order_balances` `e` on((`a`.`id` = `e`.`order_id`))) left join `tax_system` `f` on((`a`.`tax_id` = `f`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_orderlist_summary`  AS  select `a`.`id` AS `id`,`a`.`order_number` AS `order_number`,`a`.`total_cost` AS `total_cost`,`f`.`value` AS `tax`,`a`.`amount_paid` AS `amount_paid`,`a`.`balance` AS `previous_balance`,coalesce(`e`.`balance_paid`,0) AS `balance_paid`,(`a`.`amount_paid` + coalesce(`e`.`balance_paid`,0)) AS `total_amount_paid`,coalesce((`a`.`balance` - `e`.`balance_paid`),`a`.`balance`) AS `balance`,coalesce((select `vw_user_details`.`fullname` from `bgee_permissions`.`vw_user_details` where (`vw_user_details`.`id` = `e`.`user_id`)),'') AS `balance_received_by`,coalesce(`e`.`payment_date`,'') AS `balance_payment_date`,`a`.`client_id` AS `client_id`,`a`.`processor_user_id` AS `processor_user_id`,`a`.`delivery_method_id` AS `delivery_method_id`,`a`.`delivery_location` AS `delivery_location`,`a`.`due_date` AS `due_date`,`a`.`status` AS `status`,coalesce(`a`.`modified_by`,'') AS `modified_by`,coalesce(`a`.`modified_date`,'') AS `modified_date`,coalesce((select count(`laundry_order_comments`.`comment`) from `laundry_order_comments` where (`laundry_order_comments`.`order_id` = `a`.`id`)),'') AS `total_comments`,`a`.`date_created` AS `date_created`,`b`.`fullname` AS `client_fullname`,coalesce(`b`.`company`,'') AS `client_company`,`b`.`phone_number_1` AS `client_phone_no_1`,`b`.`phone_number_2` AS `client_phone_no_2`,`c`.`fullname` AS `processor_name`,`d`.`location` AS `delivery_method`,`d`.`price` AS `delivery_cost` from (((((`laundry_orders` `a` left join `laundry_clients` `b` on((`a`.`client_id` = `b`.`id`))) left join `bgee_permissions`.`vw_user_details` `c` on((`a`.`processor_user_id` = `c`.`id`))) left join `laundry_delivery_method` `d` on((`a`.`delivery_method_id` = `d`.`id`))) left join `laundry_order_balances` `e` on((`a`.`id` = `e`.`order_id`))) left join `settings_tax_system` `f` on((`a`.`tax_id` = `f`.`id`))) ;
 
 -- --------------------------------------------------------
 
@@ -1207,6 +1207,12 @@ ALTER TABLE `blobs`
 -- Indexes for table `hr_company_info`
 --
 ALTER TABLE `hr_company_info`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hr_demo_requests`
+--
+ALTER TABLE `hr_demo_requests`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1385,6 +1391,12 @@ ALTER TABLE `blobs`
 --
 ALTER TABLE `hr_company_info`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `hr_demo_requests`
+--
+ALTER TABLE `hr_demo_requests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `hr_departments`
