@@ -251,35 +251,42 @@ class Model_Access extends CI_Model
 	}
 
 	/***********************************************
-		Signup Request - New / Update
+		Demo Request
 	************************************************/
-	public function signup_request($dbres,$form_data,$where_condition = array(),$return_dataType="php_object",)
+	public function signup_request($dbres,$form_data)
 	{
-		$tablename  = 'hr_signup_companies';
+		$tablename  = 'hr_demo_requests';
+		$return_dataType = $form_data['response_type'];
+		unset($form_data['response_type']);
 		# New Request
-		if(empty($where_condition)) {
-			if(empty($form_data['verification_token']))
-				$query_result = $dbres->insert($tablename,$sysaudit_data);
+		if(empty($form_data['id'])) {
+			$query_result = $dbres->insert($tablename,$form_data);
+			$last_insert_id = $dbres->insert_id();
 		}
 		# Updating Request
 		else {
+			$query_result = $dbres->update($tablename,$form_data,array('id' => $form_data['id']));
+			$last_insert_id = $form_data['id'];
+		}
 
-		}
-		
-		# Updating Request
-		else {
-			$where_clause = ['email_verification_token' => $verification_token];
-			$query = $dbres->get_where($tablename,$where_clause);
+		if($dbres->affected_rows() == 1) {
 			
-			if($query->num_rows() == 1) {
-				$dbres->set('date_verified',gmdate('Y-m-d H:i:s'));
-				$dbres->where($where_clause);
-				$query_result = $dbres->update($tablename);
-			}	
+			if(strtolower($return_dataType) == "php_object") 
+				return $last_insert_id;
+			
+			elseif(strtolower($return_dataType) == "json") 
+				print_r(json_encode($last_insert_id));
 		}
-		
-		$result 		= $dbres->affected_rows();
-		return(($query->num_rows() == 1) ? $query->row() : FALSE );	
+			
+		else {
+			$db_error['error'] = $this->db->error();
+			
+			if(strtolower($return_dataType) == "php_object") 
+				return $db_error;
+			
+			elseif(strtolower($return_dataType) == "json") 
+				print_r(json_encode($db_error));
+		}	
 	}
 
 

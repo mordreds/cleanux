@@ -73,7 +73,7 @@
                 <div class="content-divider text-muted form-group"><span>Don't have an account?</span></div>
                 <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-6"><a href="<?=base_url()?>access/request_demo" class="btn bg-indigo-400 btn-block legitRipple">Request Demo</a></div>
-                <div class="col-md-6 col-sm-6 col-xs-6"><a href="<?=base_url()?>access/demo" class="btn bg-pink-600 btn-block legitRipple">Try it now</a></div>
+                <div class="col-md-6 col-sm-6 col-xs-6"><a href="<?=base_url()?>access/demo" class="btn bg-pink-600 btn-block legitRipple">Try Demo now</a></div>
                 </div><br/>
                 <div class="content-divider text-muted form-group"><span>or Signup With</span></div>
                 <ul class="list-inline form-group list-inline-condensed text-center">

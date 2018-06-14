@@ -62,7 +62,7 @@ class Access extends MX_Controller
           redirect('dashboard');
         else
         {
-          $title['title'] = "Create Account"; 
+          $title['title'] = "Demo Request"; 
           $this->load->view('login_header',$title); 
           $this->load->view('request_demo'); 
           //$this->load->view('login_footer'); 
@@ -698,22 +698,21 @@ class Access extends MX_Controller
     /***********************************************
       Signup Request / Request Demo
     ************************************************/
-      public function signup_request() {
-        if(isset($_POST['company_register'])) 
+      public function save_demo_request() {
+        if(isset($_POST['demo_request'])) 
         {
-          $this->form_validation->set_rules('id','Response ID','trim');
+          $this->form_validation->set_rules('reference','Response ID','trim');
           $this->form_validation->set_rules('response_type','Response Type','trim');
 
-          $this->form_validation->set_rules('surname', 'Surname', 'required|trim');
-          $this->form_validation->set_rules('othernames', 'Other Names', 'required|trim');
-          $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[hr_signup_companies.email]');
+          $this->form_validation->set_rules('firstname', 'First Name', 'required|trim');
+          $this->form_validation->set_rules('lastname', 'Last Name', 'required|trim');
+          $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[hr_demo_requests.email]',array('is_unique' => "User With Email Already Exist"));
           $this->form_validation->set_rules('contact', 'Contact No.', 'required|trim');
           $this->form_validation->set_rules('company_name', 'Company Name', 'required|trim');
           $this->form_validation->set_rules('location', 'Location', 'required|trim');
           $this->form_validation->set_rules('password', 'Password', 'required|trim');
           $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|trim|matches[password]',array('matches' => 'Password Mismatch. Try Again'));
-          $this->form_validation->set_rules('guest_request', 'Guest Request', 'trim');
-          $this->form_validation->set_rules('terms', 'Terms & Condition', 'required|trim');
+          $this->form_validation->set_rules('expectations', 'Expectations', 'required|trim');
 
           if($this->form_validation->run() === FALSE) {
             $errors = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
@@ -723,33 +722,46 @@ class Access extends MX_Controller
               $this->session->set_flashdata($key, $value);
             }
             
-            if($response_type == "JSON") {
+            if(strtolower($response_type) == "json") {
               $return_data['error'] = $errors;
               print_r(json_encode($return_data));
             } 
             else {
               $this->session->set_flashdata('error',$errors);
-              redirect('access/signup');
+              redirect('access/request_demo');
             }
           }
           else {
             # Loading Helper / Models
             $this->load->model('model_access');
 
-            $register_data = [
-              'surname' => $this->input->post('surname',TRUE),
-              'other_names' => $this->input->post('othernames',TRUE),
+            $demo_request_data = [
+              'first_name' => ucwords($this->input->post('firstname',TRUE)),
+              'last_name' => ucwords($this->input->post('lastname',TRUE)),
               'email' => $this->input->post('email',TRUE),
               'contact' => $this->input->post('contact',TRUE),
-              'company_name' => $this->input->post('company_name',TRUE),
-              'company_location' => $this->input->post('location',TRUE),
-              'guest_account_request' => $this->input->post('guest_request',TRUE),
-              'email_verification_token' => password_hash($this->input->post('contact'),PASSWORD_DEFAULT)
+              'company_name' => ucwords($this->input->post('company_name',TRUE)),
+              'company_location' => ucwords($this->input->post('location',TRUE)),
+              'expectations' => ucwords($this->input->post('expectations',TRUE)),
+              //'email_verification_token' => password_hash($this->input->post('contact'),PASSWORD_DEFAULT)
             ];
+            # Added information
+            if($this->input->post('reference',TRUE))
+              $demo_request_data['id'] = $this->input->post('reference',TRUE);
 
-            print "<pre>"; print_r($register_data);print "</pre>";  exit;
+            if($this->input->post('response_type',TRUE))
+              $demo_request_data['response_type'] = $this->input->post('response_type',TRUE);
+            else
+              $demo_request_data['response_type'] = "php_object";
 
-            $query_result = $this->model_access->signup_request(self::$_Default_DB,$register_data);
+            $query_result = $this->model_access->signup_request(self::$_Default_DB,$demo_request_data);
+
+            if(isset($query_result['error']))
+              $this->session->set_flashdata('error_alert', $query_result['error']);
+            elseif($query_result)
+              $this->session->set_flashdata('success_alert', 'Request Send Successful, Our Team Would Contact You Soon. Thanks');
+
+            redirect('access/request_demo');
 
           }
         }
