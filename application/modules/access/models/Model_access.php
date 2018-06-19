@@ -16,25 +16,109 @@ class Model_Access extends CI_Model
 	}
 
 	/***********************************************
+		Demo Request
+	************************************************/
+		public function demo_request($dbres,$form_data)
+		{
+			$tablename  = 'demo_requests';
+			$return_dataType = $form_data['response_type'];
+			unset($form_data['response_type']);
+			# New Request
+			if(empty($form_data['id'])) {
+				$query_result = $dbres->insert($tablename,$form_data);
+				$last_insert_id = $dbres->insert_id();
+			}
+			# Updating Request
+			else {
+				$query_result = $dbres->update($tablename,$form_data,array('id' => $form_data['id']));
+				$last_insert_id = $form_data['id'];
+			}
+
+			if($dbres->affected_rows() == 1) {
+				
+				if(strtolower($return_dataType) == "php_object") 
+					return $last_insert_id;
+				
+				elseif(strtolower($return_dataType) == "json") 
+					print_r(json_encode($last_insert_id));
+			}
+				
+			else {
+				$db_error['error'] = $this->db->error();
+				
+				if(strtolower($return_dataType) == "php_object") 
+					return $db_error;
+				
+				elseif(strtolower($return_dataType) == "json") 
+					print_r(json_encode($db_error));
+			}	
+		}
+
+	/***********************************************
+		Demo Trial
+	************************************************/
+		public function try_demo_request($dbres,$form_data)
+		{
+			$tablename  = 'demo_request_userinfo';
+			$return_dataType = $form_data['response_type'];
+			unset($form_data['response_type']);
+			# New Request
+			if(empty($form_data['id'])) {
+				# Saving User Info
+				$query_result = $dbres->insert($tablename,$form_data['user_info']);
+				$last_insert_id['id'] = $dbres->insert_id();
+				# Saving Login Info
+				$tablename = "access_users";
+				$form_data['login_info']['demo_user_id'] = $last_insert_id['id'];
+				$query_result = $dbres->insert($tablename,$form_data['login_info']);
+			}
+			# Updating Request
+			else {
+				$query_result = $dbres->update($tablename,$form_data,array('id' => $form_data['id']));
+				$last_insert_id['id'] = $form_data['id'];
+			}
+
+			if($dbres->affected_rows() == 1) {
+				
+				if(strtolower($return_dataType) == "php_object") 
+					return $last_insert_id;
+				
+				elseif(strtolower($return_dataType) == "json") 
+					print_r(json_encode($last_insert_id));
+			}
+				
+			else {
+				$db_error['error'] = $this->db->error();
+				
+				if(strtolower($return_dataType) == "php_object") 
+					return $db_error;
+				
+				elseif(strtolower($return_dataType) == "json") 
+					print_r(json_encode($db_error));
+			}	
+		}
+
+
+	/***********************************************
 		Username dblookup => Login Page
 	************************************************/
-	public function verify_username($dbres,$username)
-	{
-		$tablename = "vw_user_details";
-		$dbres->where('username',$username);
-		$query = $dbres->get($tablename);
-		return $query->row();
-	}
+		public function verify_username($dbres,$username)
+		{
+			$tablename = "vw_user_details";
+			$dbres->where('username',$username);
+			$query = $dbres->get($tablename);
+			return $query->row();
+		}
 
 	/***********************************************
 		Retrieve Company Info
 	************************************************/
-	public function retrieve_company_info()
-	{
-		$tablename = "hr_company_info";
-		$query = $this->db->get($tablename);
-		return $query->row();
-	}
+		public function retrieve_company_info()
+		{
+			$tablename = "hr_company_info";
+			$query = $this->db->get($tablename);
+			return $query->row();
+		}
 	
 	/***********************************************
 		Logging Sign Out
@@ -85,32 +169,33 @@ class Model_Access extends CI_Model
 	/***********************************************
 		Logging Sign In
 	***********************************************/
-	public function record_login($dbres,$condition,$data) 
-	{
-		if($condition['password_check']) {
-			# code...
-			$tablename = "successful_logins";
-			$query = $dbres->insert($tablename,$data);
-			$return_id = $dbres->insert_id();
+		public function record_login($dbres,$condition,$data) 
+		{
+			if($condition['password_check']) {
+				$tablename = "access_login_successful";
+				$query = $dbres->insert($tablename,$data);
+				$return_id = $dbres->insert_id();
+				
+				if(!empty($return_id)) {
+					$data_returned = $this->revert_login_attempt($dbres,$data['user_id']);
+					$data_returned['login_id'] = $return_id;
+				}
+
+			} else {
+				# code...
+				$tablename = "access_login_failed";
+				$query = $dbres->insert($tablename,$data);
+				$return_id = $dbres->insert_id();
+
+				if(!empty($return_id)) {
+					$data_returned = $this->decrease_login_attempt($dbres,$data['user_id'],$condition['login_attempt']);
+				}
+				else 
+					$data_returned = FALSE;
+			}
 			
-			if(!empty($return_id)) {
-				$data_returned = $this->revert_login_attempt($condition['users_dbres'],$data['user_id']);
-				$data_returned['login_id'] = $return_id;
-			}
-
-		} else {
-			# code...
-			$tablename = "failed_logins";
-			$query = $dbres->insert($tablename,$data);
-			$return_id = $dbres->insert_id();
-
-			if(!empty($return_id)) {
-				$data_returned = $this->decrease_login_attempt($condition['users_dbres'],$data['user_id'],$condition['login_attempt']);
-			}
-
-		}
-		return $data_returned;
-		
+			return $data_returned;
+			
 	}
 
 	/***********************************************
@@ -118,7 +203,7 @@ class Model_Access extends CI_Model
 	************************************************/
 	public function decrease_login_attempt($dbres,$user_id,$login_attempt) 
   {
-    $tablename = "users";
+    $tablename = "access_users";
 
     if($login_attempt > 0) {
       $attempt_left = $login_attempt - 1;
@@ -143,7 +228,7 @@ class Model_Access extends CI_Model
 
 	public function revert_login_attempt($dbres,$user_id) 
   {
-    $tablename = "users";
+    $tablename = "access_users";
     $dbres->set('login_attempt',"5");
 	  $dbres->where('id',$user_id);
 	  $query = $dbres->update($tablename);
@@ -249,47 +334,6 @@ class Model_Access extends CI_Model
 		$query = $dbres->get($tablename);
 		return(($query->num_rows() == 1) ? $query->row() : FALSE );	
 	}
-
-	/***********************************************
-		Demo Request
-	************************************************/
-	public function signup_request($dbres,$form_data)
-	{
-		$tablename  = 'hr_demo_requests';
-		$return_dataType = $form_data['response_type'];
-		unset($form_data['response_type']);
-		# New Request
-		if(empty($form_data['id'])) {
-			$query_result = $dbres->insert($tablename,$form_data);
-			$last_insert_id = $dbres->insert_id();
-		}
-		# Updating Request
-		else {
-			$query_result = $dbres->update($tablename,$form_data,array('id' => $form_data['id']));
-			$last_insert_id = $form_data['id'];
-		}
-
-		if($dbres->affected_rows() == 1) {
-			
-			if(strtolower($return_dataType) == "php_object") 
-				return $last_insert_id;
-			
-			elseif(strtolower($return_dataType) == "json") 
-				print_r(json_encode($last_insert_id));
-		}
-			
-		else {
-			$db_error['error'] = $this->db->error();
-			
-			if(strtolower($return_dataType) == "php_object") 
-				return $db_error;
-			
-			elseif(strtolower($return_dataType) == "json") 
-				print_r(json_encode($db_error));
-		}	
-	}
-
-
 
 
 

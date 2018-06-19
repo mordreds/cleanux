@@ -3,42 +3,212 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Access extends MX_Controller 
 {
-  /*******************************
-    Constructor 
-  *******************************/
-    public function __construct() {
-      parent::__construct();
-    }
-
-  /*******************************
-    Logout Logic
-  *******************************/
-    public function logout() {
-      if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['login_id']))  {
-        $this->load->model('model_access');
-        $result = $this->model_access->logout_user(self::$_Default_DB,'successful_logins',$_SESSION['user']['login_id']);
-        
-        if($result) {
-          session_destroy();
-          redirect('access');
-        } 
-        else {
-          $this->session->set_flashdata('error',"Log Out Failed");
-          redirect('dashboard');
-        }
+  /**************** Important ** ********************/
+    /*******************************
+      Constructor 
+    *******************************/
+      public function __construct() {
+        parent::__construct();
       }
-      else
-         redirect('access/login');
-    }
 
-  /**************** Interface ********************/
     /*******************************
       Index Function
     *******************************/
       public function index() {
         $this->login();
       }
+  /**************** Important ** ********************/
 
+  /**************** Demo Logics ********************/
+    /*******************************
+      Request Demo Interface
+    *******************************/
+      public function request_demo() {
+        if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
+          redirect('dashboard');
+        else
+        {
+          $title['title'] = "Demo Request"; 
+          $this->load->view('login_header',$title); 
+          $this->load->view('request_demo'); 
+          $this->load->view('globals/notifications'); 
+        }
+      }
+
+    /******************************
+      Save Request Demo Data
+    ******************************/
+      public function save_demo_request() {
+        if(isset($_POST['demo_request'])) 
+        {
+          $this->form_validation->set_rules('reference','Response ID','trim');
+          $this->form_validation->set_rules('response_type','Response Type','trim');
+
+          $this->form_validation->set_rules('firstname', 'First Name', 'required|trim');
+          $this->form_validation->set_rules('lastname', 'Last Name', 'required|trim');
+          $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[demo_requests.email]',array('is_unique' => "User With Email Already Exist"));
+          $this->form_validation->set_rules('contact', 'Contact No.', 'required|trim');
+          $this->form_validation->set_rules('company_name', 'Company Name', 'required|trim');
+          $this->form_validation->set_rules('location', 'Location', 'required|trim');
+          $this->form_validation->set_rules('expectations', 'Expectations', 'required|trim');
+
+          if($this->form_validation->run() === FALSE) {
+            $errors = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+            $response_type = $this->input->post('response_type');
+            # Setting Form Data For repopulating the form
+            foreach ($_POST as $key => $value) {
+              $this->session->set_flashdata($key, $value);
+            }
+            
+            if(strtolower($response_type) == "json") {
+              $return_data['error'] = $errors;
+              print_r(json_encode($return_data));
+            } 
+            else {
+              $this->session->set_flashdata('error',$errors);
+              redirect('access/request_demo');
+            }
+          }
+          else {
+            # Loading Helper / Models
+            $this->load->model('model_access');
+
+            $demo_request_data = [
+              'first_name' => ucwords($this->input->post('firstname',TRUE)),
+              'last_name' => ucwords($this->input->post('lastname',TRUE)),
+              'email' => $this->input->post('email',TRUE),
+              'contact' => $this->input->post('contact',TRUE),
+              'company_name' => ucwords($this->input->post('company_name',TRUE)),
+              'company_location' => ucwords($this->input->post('location',TRUE)),
+              'expectations' => ucwords($this->input->post('expectations',TRUE)),
+              //'email_verification_token' => password_hash($this->input->post('contact'),PASSWORD_DEFAULT)
+            ];
+            # Added information
+            if($this->input->post('reference',TRUE))
+              $demo_request_data['id'] = $this->input->post('reference',TRUE);
+
+            if($this->input->post('response_type',TRUE))
+              $demo_request_data['response_type'] = $this->input->post('response_type',TRUE);
+            else
+              $demo_request_data['response_type'] = "php_object";
+
+            $query_result = $this->model_access->demo_request(self::$_Default_DB,$demo_request_data);
+
+            if(isset($query_result['error'])) {
+              $this->session->set_flashdata('error_alert_title', $query_result['error']);
+              $this->session->set_flashdata('error_alert', $query_result['error']);
+            }
+            elseif($query_result){
+              $this->session->set_flashdata('success_alert_title', 'Hooray !!!! Request Recieved.');
+              $this->session->set_flashdata('success_alert', 'Our Team Would Contact You Soon For a Meeting. Thanks');
+            }
+
+            redirect('access/request_demo');
+
+          }
+        }
+      }
+
+    /*******************************
+      Try Demo Interface 
+    *******************************/
+      public function demo() {
+        if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
+          redirect('dashboard');
+        else
+        {
+          $title['title'] = "Try Demo - Create Account"; 
+          $this->load->view('login_header',$title); 
+          $this->load->view('try_demo'); 
+          $this->load->view('globals/notifications'); 
+        }
+      }
+
+    /******************************
+      Save Try Demo Data
+    ******************************/
+      public function try_demo_request() {
+        if(isset($_POST['try_demo_request'])) 
+        {
+          $this->form_validation->set_rules('reference','Response ID','trim');
+          $this->form_validation->set_rules('response_type','Response Type','trim');
+
+          $this->form_validation->set_rules('firstname', 'First Name', 'required|trim');
+          $this->form_validation->set_rules('lastname', 'Last Name', 'required|trim');
+          $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[demo_request_userinfo.email]',array('is_unique' => "User With Email Already Exist"));
+          $this->form_validation->set_rules('contact', 'Contact No.', 'required|trim');
+          $this->form_validation->set_rules('company_name', 'Company Name', 'required|trim');
+          $this->form_validation->set_rules('location', 'Location', 'required|trim');
+          $this->form_validation->set_rules('password', 'Password', 'required|trim');
+          $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|trim|matches[password]',array('matches' => 'Password Mismatch. Try Again'));
+
+          if($this->form_validation->run() === FALSE) {
+            $errors = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+            $response_type = $this->input->post('response_type');
+            # Setting Form Data For repopulating the form
+            foreach ($_POST as $key => $value) {
+              $this->session->set_flashdata($key, $value);
+            }
+            
+            if(strtolower($response_type) == "json") {
+              $return_data['error'] = $errors;
+              print_r(json_encode($return_data));
+            } 
+            else {
+              $this->session->set_flashdata('error',$errors);
+              redirect('access/demo');
+            }
+          }
+          else {
+            # Loading Helper / Models
+            $this->load->model('model_access');
+
+            $demo_request_data['user_info'] = [
+              'first_name' => ucwords($this->input->post('firstname',TRUE)),
+              'last_name' => ucwords($this->input->post('lastname',TRUE)),
+              'email' => strtolower($this->input->post('email',TRUE)),
+              'contact' => $this->input->post('contact',TRUE),
+              'company_name' => ucwords($this->input->post('company_name',TRUE)),
+              'company_location' => ucwords($this->input->post('location',TRUE)),
+            ];
+            $demo_request_data['login_info'] = [
+              'username' => strtolower($this->input->post('email',TRUE)),
+              'passwd' => password_hash($this->input->post('password',TRUE),PASSWORD_DEFAULT),
+              'fullname' => ucwords($this->input->post('firstname',TRUE)." ".$this->input->post('lastname',TRUE)),
+              'phone_number' => $this->input->post('contact',TRUE),
+            ];
+            # Added information
+            if($this->input->post('reference',TRUE))
+              $demo_request_data['id'] = $this->input->post('reference',TRUE);
+
+            if($this->input->post('response_type',TRUE))
+              $demo_request_data['response_type'] = $this->input->post('response_type',TRUE);
+            else
+              $demo_request_data['response_type'] = "php_object";
+      
+            $query_result = $this->model_access->try_demo_request(self::$_Default_DB,$demo_request_data);
+            # Notification Messages
+            if(isset($query_result['error'])) {
+              $this->session->set_flashdata('error_alert_title', $query_result['error']);
+              $this->session->set_flashdata('error_alert', $query_result['error']);
+            }
+            elseif(isset($query_result['id'])) {
+              $this->session->set_flashdata('success_alert_title', 'Hooray !!!!');
+              $this->session->set_flashdata('success_alert', 'Your Account Is Ready For Testing. Login Now');
+            }
+            else {
+              $this->session->set_flashdata('error_alert_title', 'Ooops ....... !!!!');
+              $this->session->set_flashdata('error_alert', '');
+            }
+            # Notification Messages
+            redirect('access/login');
+
+          }
+        }
+      }
+  /**************** Demo Logics ********************/
+
+  /************ Login / Logout Logics ***************/
     /*******************************
       Login Page
     *******************************/
@@ -50,39 +220,303 @@ class Access extends MX_Controller
           $title['title'] = "Login"; 
           $this->load->view('login_header',$title); 
           $this->load->view('login_1'); 
-          //$this->load->view('login_footer'); 
+          $this->load->view('globals/notifications'); 
         }
       }
-
+    
     /*******************************
-      Signup 
+      Logout Process
     *******************************/
-      public function request_demo() {
-        if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
-          redirect('dashboard');
-        else
-        {
-          $title['title'] = "Demo Request"; 
-          $this->load->view('login_header',$title); 
-          $this->load->view('request_demo'); 
-          //$this->load->view('login_footer'); 
-        }
-      }
-
-      /*******************************
-        Signup 
-      *******************************/
-        public function demo() {
-          if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['roles']))
+      public function logout() {
+        if(isset($_SESSION['user']['username']) && isset($_SESSION['user']['login_id']))  {
+          $this->load->model('model_access');
+          $result = $this->model_access->logout_user(self::$_Default_DB,'successful_logins',$_SESSION['user']['login_id']);
+          
+          if($result) {
+            session_destroy();
+            redirect('access');
+          } 
+          else {
+            $this->session->set_flashdata('error',"Log Out Failed");
             redirect('dashboard');
-          else
-          {
-            $title['title'] = "Create Account"; 
-            $this->load->view('login_header',$title); 
-            $this->load->view('try_demo'); 
-            //$this->load->view('login_footer'); 
           }
         }
+        else
+           redirect('access/login');
+      }
+
+    /***********************************************
+      Login Validation 
+    ************************************************/
+      public function login_validation() 
+      {
+        if(isset($_POST['login'])) 
+        {
+          $this->form_validation->set_rules('email', 'Email', 'required|trim');
+          $this->form_validation->set_rules('passwd', 'Password', 'required|trim');
+
+          if($this->form_validation->run() === FALSE) 
+          {
+            $this->session->set_flashdata('error','All Fields Required');
+            redirect('access/login');
+          }
+          else 
+          {
+            # Loading Helper / Models
+            $this->load->model('model_access');
+            $this->load->model('globals/model_retrieval');
+
+            # Performing Database Verfication ==> Username
+            $username = $this->input->post('email',TRUE);
+            $password = $this->input->post('passwd',TRUE);
+                  
+            $user = $this->model_access->verify_username(self::$_Default_DB,$username);
+            //print "<pre>"; var_dump($user->status);print "</pre>"; exit;
+            if(empty($user)){
+              $this->session->set_flashdata('error',"Invalid Username / Password Combination");
+              redirect('access/login');
+            }
+
+            # Deleted Accounts
+            else if($user->status == "deleted") {
+              $this->session->set_flashdata('error',"Invalid Username / Password Combination");
+              redirect('access/login');
+            }
+            # Inactive Accounts
+            else if($user->status == "inactive") {
+              $this->session->set_flashdata('error',"Account Disabled.<br/>Please Contact Administrator");
+              redirect('access/login');
+            }
+            # Active Accounts
+            else if($user->status == "active") {
+              # Login Attempt
+              if($user->login_attempt <= 0 ) {
+                $this->session->set_flashdata('error',"Login Attempts Exceeded. Please Contact Administrator");
+                redirect('access/login');
+              }
+              else {
+                # Password Verifications
+                $user_password = ($user->passwd) ? $user->passwd : $user->default_passwd;
+                
+                if(!empty($user_password)) {
+                  # Calling Helper
+                  $this->load->helper('encryption');
+                  # Password Match Found
+                  if(password_decrypt($password, $user_password)) { 
+                    /************************ Retrieving Company Info ********************/
+                      $companyinfo = $this->model_access->retrieve_company_info();
+                      
+                      if(!empty($companyinfo->name)) {
+                        $session_array['companyinfo'] = [  
+                          'id'            => $companyinfo->id,
+                          'name'          => $companyinfo->name,
+                          'telephone_1'   => $companyinfo->telephone_1,
+                          'telephone_2'   => $companyinfo->telephone_2,
+                          'fax'           => $companyinfo->fax,
+                          'email'         => $companyinfo->email,
+                          'postal_address'    => $companyinfo->postal_address,
+                          'residence_address' => $companyinfo->residence_address,
+                          'website'           => $companyinfo->website,
+                          'tin_number'    => $companyinfo->tin_number,
+                          'date_of_commence' => $companyinfo->date_of_commence,
+                          'mission' => $companyinfo->mission,
+                          'vision' => $companyinfo->vision
+                        ];
+                        # Retrieving logo
+                        $condition = ['id' => $companyinfo->logo_id];
+                        $logo_search = $this->model_retrieval->all_info_return_row(self::$_Default_DB,'blobs',$condition);
+                        $session_array['companyinfo']['logo'] = @$logo_search->blob_path;
+                      } 
+                      else
+                        $session_array['companyinfo']['name'] = "Company Name" ;
+                    /************************ End of Company Info ********************/
+                    /************************ User Roles & Priviledges ********************/
+                      if(!empty($user) && $user->user_roles_status == "active") {
+                        $custom_roles = $user->custom_roles;
+                        $custom_privileges  = $user->custom_privileges;
+                        $group_id         = $user->group_id;
+                        $group_roles      = $user->group_roles; 
+                        # If user has no roles completely
+                        
+                        if(empty($custom_roles) && empty($group_roles)) {
+                          $this->session->set_flashdata('error','No Permissions Set For User.<br/>Please Contact Administrator');
+                          redirect('access/login');
+                        }
+                        # If user belongs to a group or has custom roles & priviledges
+                        else {
+                          if(!empty($user)) {
+                            $temp_array['group_roles'] = explode("|",trim($user->group_roles));
+                            $temp_array['group_privileges'] = explode("|",trim($user->group_privileges));
+                          } else {
+                            $temp_array['group_roles'] = $temp_array['group_priviledges'] = array();
+                          }
+                          # Custom roles and priviledges processing
+                          if(!empty($custom_roles) || !empty($custom_privileges)) {
+                            $temp_array['custom_roles'] = explode("|",$custom_roles);
+                            $temp_array['custom_privileges'] = explode("|",$custom_privileges);
+                          } else {
+                            $temp_array['custom_roles'] = $temp_array['custom_privileges'] = array();
+                          }
+                          # assignment into session variable
+                          $user_roles['roles'] = array_merge($temp_array['group_roles'],$temp_array['custom_roles']);
+                          $user_privileges['privileges'] = array_merge($temp_array['group_privileges'],$temp_array['custom_privileges']);
+                        }
+                      
+                      } else {
+                        $this->session->set_flashdata('error','No Permissions Set For User. Contact Administrator');
+                        redirect('access/login');
+                      }
+                    /************************ End User Roles & Priviledges ****************/
+                    
+                    /************************ Employee's Personal Info  ********************/
+                      # Merging Emploee Data with client
+                        unset($user->group_description,$user->group_roles,$user->group_privileges,$user->group_status,$user->passwd);
+                        $session_array['user'] = array_merge((array)$user,$user_roles,$user_privileges);
+
+                      /*$employee_data = $this->model_retrieval->all_info_return_row(self::$_Default_DB,"",$user->employee_id); 
+                      
+                      if(!empty($employee_data->id)) 
+                      {
+                        #Storing in variable
+                        $employee = [
+                          'fullname' => $employee_data->lastname." ".$employee_data->firstname,
+                          'username' => $username,
+                        ];
+                        
+                      }
+                      else
+                        $this->session->set_flashdata('error',"Employee Personal Data Loading Failed<br>");
+                    /************************ Employee's Personal Info  ********************/
+                    
+                    /************************ Recording Login Information ******************/
+                    $client_ip = $this->get_ip_address();
+                    # If Local 
+                    if($client_ip == "::1" || $client_ip == "127.0.0.1")
+                    {
+                      $login_data = 
+                      [
+                        'user_id'     => $user->id,
+                        'user_agent'  =>  $_SERVER['HTTP_USER_AGENT'] ,
+                        'ipaddress'   => $client_ip,
+                        'hostname'    => gethostbyaddr($client_ip),
+                      ];
+                    }                  
+                    else
+                    {
+                      $ip_API_result = file_get_contents("http://ip-api.com/json/$client_ip");
+                      $Ip_Info = json_decode($ip_API_result);
+                      
+                      $login_data = 
+                      [
+                        'user_id'     => $user->id,
+                        'user_agent'  =>  $_SERVER['HTTP_USER_AGENT'] ,
+                        'ipaddress'   => $client_ip,
+                        'hostname'    => gethostbyaddr($client_ip),
+                        'city_region' => $Ip_Info->city.",".$Ip_Info->regionName,
+                        'country'     => $Ip_Info->country
+                      ];
+                    }
+                    
+                    # Condition Array
+                    $condition = array(
+                        'password_check'=> TRUE,
+                        'users_dbres' => self::$_Default_DB,
+                    );
+
+                    $result = $this->model_access->record_login(self::$_Default_DB,$condition,$login_data);
+                    
+                    if(!empty($result['login_id'])) 
+                    {
+                      $session_array['user']['login_id'] = $result['login_id'];
+                      $session_array['user']['login_attempt'] = $result['login_attempt'];
+                      $session_array['user']['fullname'] = $user->fullname;
+                      $this->session->set_userdata($session_array);
+                      redirect(base_url().$user->group_login_url);
+                      //print "<pre>";print_r($_SESSION);print "</pre>";
+                    }
+                    /************************ Recording Login Success **********************/  
+                  }
+                  # Incorrect Password
+                  else {
+                    $client_ip = $this->get_ip_address();
+                    # Accessed Locally 
+                    if($client_ip == "::1" || $client_ip == "127.0.0.1") {
+                      $password = md5($password);
+                      $login_data = [
+                        'username'    => $username,
+                        'user_id'     => $user->id,
+                        'password'    => $password,
+                        'user_agent'  => $_SERVER['HTTP_USER_AGENT'],
+                        'ipaddress'   => $client_ip,
+                        'hostname'    => gethostbyaddr($client_ip),
+                      ];
+                    }  
+                    # Accessed from Online                 
+                    else {
+                      $ip_API_result = file_get_contents("http://ip-api.com/json/$client_ip");
+                      $Ip_Info = json_decode($ip_API_result);
+                      $login_data = [
+                        'username'    => $username,
+                        'user_id'     => $user->id,
+                        'password'    => $password,
+                        'user_agent'  => $_SERVER['HTTP_USER_AGENT'] ,
+                        'ipaddress'   => $client_ip,
+                        'hostname'    => gethostbyaddr($client_ip),
+                        'city_region' => $Ip_Info->city.",".$Ip_Info->regionName,
+                        'country'     => $Ip_Info->country
+                      ];
+                    }
+
+                    $condition = array(
+                      'password_check'=> FALSE,
+                      'login_attempt' => $user->login_attempt,
+                    );
+
+                    $result = $this->model_access->record_login(self::$_Default_DB,$condition,$login_data);
+                    $this->session->set_flashdata('error',"Invalid Username / Password Combination.<br/>Remaining Login Attempts:<b> ".$result['login_attempt']."</b>");
+                    
+                    redirect('access/login');
+                  }
+                }
+                else {
+                  $this->session->set_flashdata('error','Invalid Username / Password');
+                  redirect('access/login');
+                }
+              }
+            }
+          }
+        }
+        else
+          redirect('access');
+      } 
+  /************ Login / Logout Logics ***************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /**************** Interface ********************/
+
+
+
+
     
     /*******************************
       All Users 
@@ -117,255 +551,6 @@ class Access extends MX_Controller
   /**************** Interface ********************/
 
   /**************** Verifying Methods ********************/
-    /***********************************************
-      Login Validation 
-    ************************************************/
-    public function login_validation() 
-    {
-      if(isset($_POST['login'])) 
-      {
-        $this->form_validation->set_rules('email', 'Email', 'required|trim');
-        $this->form_validation->set_rules('passwd', 'Password', 'required|trim');
-
-        if($this->form_validation->run() === FALSE) 
-        {
-          $this->session->set_flashdata('error','All Fields Required');
-          redirect('access/login');
-        }
-        else 
-        {
-          # Loading Helper / Models
-          $this->load->model('model_access');
-          $this->load->model('globals/model_retrieval');
-
-          # Performing Database Verfication ==> Username
-          $username = $this->input->post('email',TRUE);
-          $password = $this->input->post('passwd',TRUE);
-                
-          $user = $this->model_access->verify_username(self::$_Default_DB,$username);
-          //print_r($user); exit;
-          if(empty($user)){
-            $this->session->set_flashdata('error',"Invalid Username / Password Combination");
-            redirect('access/login');
-          }
-
-          # Deleted Accounts
-          if($user->status == "deleted") {
-            $this->session->set_flashdata('error',"Invalid Username / Password Combination");
-            redirect('access/login');
-          }
-          # Inactive Accounts
-          else if($user->status == "inactive") {
-            $this->session->set_flashdata('error',"Account Disabled.<br/>Please Contact Administrator");
-            redirect('access/login');
-          }
-          # Active Accounts
-          else if($user->status == "active") {
-            # Login Attempt
-            if($user->login_attempt <= 0 ) {
-              $this->session->set_flashdata('error',"Login Attempts Exceeded. Please Contact Administrator");
-              redirect('access/login');
-            }
-            else {
-              # Password Verifications
-              $user_password = ($user->passwd) ? $user->passwd : $user->default_passwd;
-              //print_r($user_password); exit;
-              if(!empty($user_password)) {
-                # Calling Helper
-                $this->load->helper('encryption');
-                # Checking if Password Is Default
-                if(password_decrypt($password, $user_password)) { 
-                  /************************ Retrieving Company Info ********************/
-                    $companyinfo = $this->model_access->retrieve_company_info();
-                    
-                    if(!empty($companyinfo->name)) {
-                      $session_array['companyinfo'] = [  
-                        'id'            => $companyinfo->id,
-                        'name'          => $companyinfo->name,
-                        'telephone_1'   => $companyinfo->telephone_1,
-                        'telephone_2'   => $companyinfo->telephone_2,
-                        'fax'           => $companyinfo->fax,
-                        'email'         => $companyinfo->email,
-                        'postal_address'    => $companyinfo->postal_address,
-                        'residence_address' => $companyinfo->residence_address,
-                        'website'           => $companyinfo->website,
-                        'tin_number'    => $companyinfo->tin_number,
-                        'date_of_commence' => $companyinfo->date_of_commence,
-                        'mission' => $companyinfo->mission,
-                        'vision' => $companyinfo->vision
-                      ];
-                      # Retrieving logo
-                      /*$condition = ['id' => $companyinfo->logo_id];
-                      $logo_search = $this->model_retrieval->all_info_return_row(self::$_Default_DB,'blobs',$condition);
-                      $session_array['companyinfo']['logo'] = @$logo_search->blob_path;*/
-                    } 
-                    else
-                      $session_array['companyinfo']['name'] = "Company Name" ;
-                  /************************ End of Company Info ********************/
-                  /************************ User Roles & Priviledges ********************/
-                    if(!empty($user) && $user->user_roles_status == "active") {
-                      $custom_roles = $user->custom_roles;
-                      $custom_privileges  = $user->custom_privileges;
-                      $group_id         = $user->group_id;
-                      $group_roles      = $user->group_roles; 
-                      # If user has no roles completely
-                      
-                      if(empty($custom_roles) && empty($group_roles)) {
-                        $this->session->set_flashdata('error','No Permissions Set For User.<br/>Please Contact Administrator');
-                        redirect('access/login');
-                      }
-                      # If user belongs to a group or has custom roles & priviledges
-                      else {
-                        if(!empty($user)) {
-                          $temp_array['group_roles'] = explode("|",trim($user->group_roles));
-                          $temp_array['group_privileges'] = explode("|",trim($user->group_privileges));
-                        } else {
-                          $temp_array['group_roles'] = $temp_array['group_priviledges'] = array();
-                        }
-                        # Custom roles and priviledges processing
-                        if(!empty($custom_roles) || !empty($custom_privileges)) {
-                          $temp_array['custom_roles'] = explode("|",$custom_roles);
-                          $temp_array['custom_privileges'] = explode("|",$custom_privileges);
-                        } else {
-                          $temp_array['custom_roles'] = $temp_array['custom_privileges'] = array();
-                        }
-                        # assignment into session variable
-                        $user_roles['roles'] = array_merge($temp_array['group_roles'],$temp_array['custom_roles']);
-                        $user_privileges['privileges'] = array_merge($temp_array['group_privileges'],$temp_array['custom_privileges']);
-                      }
-                    
-                    } else {
-                      $this->session->set_flashdata('error','No Permissions Set For User. Contact Administrator');
-                      redirect('access/login');
-                    }
-                  /************************ End User Roles & Priviledges ****************/
-                  
-                  /************************ Employee's Personal Info  ********************/
-                    # Merging Emploee Data with client
-                      unset($user->group_description,$user->group_roles,$user->group_privileges,$user->group_status,$user->passwd);
-                      $session_array['user'] = array_merge((array)$user,$user_roles,$user_privileges);
-
-                    /*$employee_data = $this->model_retrieval->all_info_return_row(self::$_Default_DB,"",$user->employee_id); 
-                    
-                    if(!empty($employee_data->id)) 
-                    {
-                      #Storing in variable
-                      $employee = [
-                        'fullname' => $employee_data->lastname." ".$employee_data->firstname,
-                        'username' => $username,
-                      ];
-                      
-                    }
-                    else
-                      $this->session->set_flashdata('error',"Employee Personal Data Loading Failed<br>");
-                  /************************ Employee's Personal Info  ********************/
-                  
-                  /************************ Recording Login Information ******************/
-                  $client_ip = $this->get_ip_address();
-                  # If Local 
-                  if($client_ip == "::1" || $client_ip == "127.0.0.1")
-                  {
-                    $login_data = 
-                    [
-                      'user_id'     => $user->id,
-                      'user_agent'  =>  $_SERVER['HTTP_USER_AGENT'] ,
-                      'ipaddress'   => $client_ip,
-                      'hostname'    => gethostbyaddr($client_ip),
-                    ];
-                  }                  
-                  else
-                  {
-                    $ip_API_result = file_get_contents("http://ip-api.com/json/$client_ip");
-                    $Ip_Info = json_decode($ip_API_result);
-                    
-                    $login_data = 
-                    [
-                      'user_id'     => $user->id,
-                      'user_agent'  =>  $_SERVER['HTTP_USER_AGENT'] ,
-                      'ipaddress'   => $client_ip,
-                      'hostname'    => gethostbyaddr($client_ip),
-                      'city_region' => $Ip_Info->city.",".$Ip_Info->regionName,
-                      'country'     => $Ip_Info->country
-                    ];
-                  }
-                  
-                  # Condition Array
-                  $condition = array(
-                      'password_check'=> TRUE,
-                      'users_dbres' => self::$_Default_DB,
-                  );
-
-                  $result = $this->model_access->record_login(self::$_Default_DB,$condition,$login_data);
-                  
-                  if(!empty($result['login_id'])) 
-                  {
-                    $session_array['user']['login_id'] = $result['login_id'];
-                    $session_array['user']['login_attempt'] = $result['login_attempt'];
-                    $session_array['user']['fullname'] = $user->fullname;
-                    $this->session->set_userdata($session_array);
-                    redirect(base_url().$user->group_login_url);
-                    //print "<pre>";print_r($_SESSION);print "</pre>";
-                  }
-                  /************************ Recording Login Success **********************/  
-                }
-                else {
-                  /************************ Recording Failed Login Information ************/
-                    $client_ip = $this->get_ip_address();
-                    # Local 
-                    if($client_ip == "::1" || $client_ip == "127.0.0.1") {
-                      $password = password_encrypt($password);
-                      $login_data = 
-                      [
-                        'username'    => $username,
-                        'user_id'     => $user->id,
-                        'password'    => $password,
-                        'user_agent'  => $_SERVER['HTTP_USER_AGENT'],
-                        'ipaddress'   => $client_ip,
-                        'hostname'    => gethostbyaddr($client_ip),
-                      ];
-                    }  
-                    # Online                 
-                    else {
-                      $ip_API_result = file_get_contents("http://ip-api.com/json/$client_ip");
-                      $Ip_Info = json_decode($ip_API_result);
-                      $login_data = 
-                      [
-                        'username'    => $username,
-                        'user_id'     => $user->id,
-                        'password'    => $this->password_encrypt($password),
-                        'user_agent'  => $_SERVER['HTTP_USER_AGENT'] ,
-                        'ipaddress'   => $client_ip,
-                        'hostname'    => gethostbyaddr($client_ip),
-                        'city_region' => $Ip_Info->city.",".$Ip_Info->regionName,
-                        'country'     => $Ip_Info->country
-                      ];
-                    }
-
-                    # Condition Array
-                    $condition = array(
-                      'password_check'=> FALSE,
-                      'users_dbres' => self::$_Permission_DB,
-                      'login_attempt' => $user->login_attempt,
-                    );
-
-                    $result = $this->model_access->record_login(self::$_Audit_DB,$condition,$login_data);
-                    $this->session->set_flashdata('error',"Invalid Username / Password Combination.<br/>Remaining Login Attempts:<b> ".$result['login_attempt']."</b>");
-                    
-                    redirect('access/login');
-                  /************************ Recording Failed Login Success ****************/
-                }
-              }
-              else {
-                $this->session->set_flashdata('error','Invalid Username / Password');
-                redirect('access/login');
-              }
-            }
-          }
-        }
-      }
-      else
-        redirect('access');
-    } 
 
     /***********************************************
       Password Reset
@@ -692,82 +877,6 @@ class Access extends MX_Controller
         redirect('access');
     }  
   /**************** Verifying Methods ********************/
-
-  /**************** Client Signup ********************/
-    
-    /***********************************************
-      Signup Request / Request Demo
-    ************************************************/
-      public function save_demo_request() {
-        if(isset($_POST['demo_request'])) 
-        {
-          $this->form_validation->set_rules('reference','Response ID','trim');
-          $this->form_validation->set_rules('response_type','Response Type','trim');
-
-          $this->form_validation->set_rules('firstname', 'First Name', 'required|trim');
-          $this->form_validation->set_rules('lastname', 'Last Name', 'required|trim');
-          $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[hr_demo_requests.email]',array('is_unique' => "User With Email Already Exist"));
-          $this->form_validation->set_rules('contact', 'Contact No.', 'required|trim');
-          $this->form_validation->set_rules('company_name', 'Company Name', 'required|trim');
-          $this->form_validation->set_rules('location', 'Location', 'required|trim');
-          $this->form_validation->set_rules('password', 'Password', 'required|trim');
-          $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|trim|matches[password]',array('matches' => 'Password Mismatch. Try Again'));
-          $this->form_validation->set_rules('expectations', 'Expectations', 'required|trim');
-
-          if($this->form_validation->run() === FALSE) {
-            $errors = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
-            $response_type = $this->input->post('response_type');
-            # Setting Form Data For repopulating the form
-            foreach ($_POST as $key => $value) {
-              $this->session->set_flashdata($key, $value);
-            }
-            
-            if(strtolower($response_type) == "json") {
-              $return_data['error'] = $errors;
-              print_r(json_encode($return_data));
-            } 
-            else {
-              $this->session->set_flashdata('error',$errors);
-              redirect('access/request_demo');
-            }
-          }
-          else {
-            # Loading Helper / Models
-            $this->load->model('model_access');
-
-            $demo_request_data = [
-              'first_name' => ucwords($this->input->post('firstname',TRUE)),
-              'last_name' => ucwords($this->input->post('lastname',TRUE)),
-              'email' => $this->input->post('email',TRUE),
-              'contact' => $this->input->post('contact',TRUE),
-              'company_name' => ucwords($this->input->post('company_name',TRUE)),
-              'company_location' => ucwords($this->input->post('location',TRUE)),
-              'expectations' => ucwords($this->input->post('expectations',TRUE)),
-              //'email_verification_token' => password_hash($this->input->post('contact'),PASSWORD_DEFAULT)
-            ];
-            # Added information
-            if($this->input->post('reference',TRUE))
-              $demo_request_data['id'] = $this->input->post('reference',TRUE);
-
-            if($this->input->post('response_type',TRUE))
-              $demo_request_data['response_type'] = $this->input->post('response_type',TRUE);
-            else
-              $demo_request_data['response_type'] = "php_object";
-
-            $query_result = $this->model_access->signup_request(self::$_Default_DB,$demo_request_data);
-
-            if(isset($query_result['error']))
-              $this->session->set_flashdata('error_alert', $query_result['error']);
-            elseif($query_result)
-              $this->session->set_flashdata('success_alert', 'Request Send Successful, Our Team Would Contact You Soon. Thanks');
-
-            redirect('access/request_demo');
-
-          }
-        }
-      }
-
-  /**************** Client Signup ********************/
 
   /***********************************************
     Password Reset Approval

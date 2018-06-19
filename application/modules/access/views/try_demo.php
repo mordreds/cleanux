@@ -8,7 +8,7 @@
         <!-- Content area -->
         <div class="content">
           <!-- Registration form -->
-          <form action="<?=base_url()?>access/signup_request" method="post">
+          <form action="<?=base_url()?>access/try_demo_request" method="post">
             <div class="row">
               <div class="col-md-2"></div>
               <div class="col-md-9">
@@ -26,19 +26,21 @@
                   <div class="panel-body">
                     <div class="text-center">
                       <h5 class="content-group-lg">Create Account 
+                        <!-- Notifications -->
                         <?php 
                           if($this->session->flashdata('error'))
                             print '<small class="display-block" style="color:red">'.@$this->session->flashdata('error').'</small>';
                           else
                             print '<small class="display-block">All fields are required</small>';
                         ?>
+                        <!-- Notifications -->
                       </h5>
                     </div>
 
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group has-feedback">
-                          <input type="text" name="othernames" class="form-control" placeholder="First Name" value="<?=$this->session->flashdata('othernames');?>" required>
+                          <input type="text" name="firstname" class="form-control" placeholder="First Name" value="<?=$this->session->flashdata('firstname');?>" required>
                           <div class="form-control-feedback">
                             <i class="icon-user-check text-muted"></i>
                           </div>
@@ -47,7 +49,7 @@
 
                       <div class="col-md-6">
                         <div class="form-group has-feedback">
-                          <input type="text" name="surname" class="form-control" placeholder="Last Name" value="<?=$this->session->flashdata('surname');?>" required>
+                          <input type="text" name="lastname" class="form-control" placeholder="Last Name" value="<?=$this->session->flashdata('lastname');?>" required>
                           <div class="form-control-feedback">
                             <i class="icon-user-check text-muted"></i>
                           </div>
@@ -126,14 +128,14 @@
                       <div class="checkbox">
                         <label>
                           <input type="checkbox" name="terms" class="styled" checked readonly>
-                          Accept <a href="#">Terms of Service</a>
+                          Accept <a href="<?=base_url()?>/" target="_blank">Terms of Service</a>
                         </label>
                       </div>
                     </div>
 
                     <div class="text-right">
+                      <button name="try_demo_request" type="submit" class="btn bg-indigo-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b> Create account</button>
                       <a href="<?=base_url()?>access"><button type="button" class="btn bg-pink-600 btn-labeled btn-labeled-elft ml-10"><b><i class="icon-reset"></i></b> Back to login </button></a>
-                      <button name="company_register" type="submit" class="btn bg-indigo-400 btn-labeled btn-labeled-right ml-10"><b><i class="icon-plus3"></i></b> Create account</button>
                     </div>
                   </div>
                 </div>
