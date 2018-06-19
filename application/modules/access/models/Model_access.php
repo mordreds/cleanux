@@ -7,17 +7,17 @@ class Model_Access extends CI_Model
 	/***********************************************
 		Sysaudit Recording 
 	************************************************/
-	public function sysaudit_record($dbres,$sysaudit_data)
-	{
-		$tablename	= "sysaudit";
-	  $query 			= $dbres->insert($tablename,$sysaudit_data);
-		$result 		= $dbres->affected_rows();			
-		return (($result) ? TRUE : FALSE );
-	}
+		public function sysaudit_record($dbres,$sysaudit_data)
+		{
+			$tablename	= "sysaudit";
+		  $query 			= $dbres->insert($tablename,$sysaudit_data);
+			$result 		= $dbres->affected_rows();			
+			return (($result) ? TRUE : FALSE );
+		}
 
-	/***********************************************
+	/******************************
 		Demo Request
-	************************************************/
+	******************************/
 		public function demo_request($dbres,$form_data)
 		{
 			$tablename  = 'demo_requests';
@@ -54,9 +54,9 @@ class Model_Access extends CI_Model
 			}	
 		}
 
-	/***********************************************
+	/*****************************
 		Demo Trial
-	************************************************/
+	******************************/
 		public function try_demo_request($dbres,$form_data)
 		{
 			$tablename  = 'demo_request_userinfo';
@@ -98,10 +98,9 @@ class Model_Access extends CI_Model
 			}	
 		}
 
-
-	/***********************************************
-		Username dblookup => Login Page
-	************************************************/
+	/*****************************
+		Verify Username
+	******************************/
 		public function verify_username($dbres,$username)
 		{
 			$tablename = "vw_user_details";
@@ -110,9 +109,9 @@ class Model_Access extends CI_Model
 			return $query->row();
 		}
 
-	/***********************************************
+	/*****************************
 		Retrieve Company Info
-	************************************************/
+	******************************/
 		public function retrieve_company_info()
 		{
 			$tablename = "hr_company_info";
@@ -120,9 +119,9 @@ class Model_Access extends CI_Model
 			return $query->row();
 		}
 	
-	/***********************************************
+	/*****************************
 		Logging Sign Out
-	************************************************/
+	******************************/
 	public function logout_user($dbres,$tablename,$login_id) 
 	{
 		$condition = ['online' => 0,];

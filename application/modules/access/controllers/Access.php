@@ -284,14 +284,14 @@ class Access extends MX_Controller
             }
             # Inactive Accounts
             else if($user->status == "inactive") {
-              $this->session->set_flashdata('error',"Account Disabled.<br/>Please Contact Administrator");
+              $this->session->set_flashdata('error',"<strong>Your Account Has Been Disabled</strong>.<br/> Please Contact Your Administrator");
               redirect('access/login');
             }
             # Active Accounts
             else if($user->status == "active") {
               # Login Attempt
               if($user->login_attempt <= 0 ) {
-                $this->session->set_flashdata('error',"Login Attempts Exceeded. Please Contact Administrator");
+                $this->session->set_flashdata('error',"Login Attempts Exceeded. Please Contact Your Administrator");
                 redirect('access/login');
               }
               else {
