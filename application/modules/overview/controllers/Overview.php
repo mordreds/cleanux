@@ -232,7 +232,7 @@ class Overview extends MX_Controller
             $delivery_price = $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType,$select,$where_condition); 
             # Retrieve Tax Value
             $dbres = self::$_Default_DB;
-            $tablename = "tax_system";
+            $tablename = "settings_tax_system";
             $return_dataType = "php_object";
             $select = "MAX(id) as id";
             $where_condition = array();
