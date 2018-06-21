@@ -97,37 +97,16 @@ class Model_Access extends CI_Model
 					print_r(json_encode($db_error));
 			}	
 		}
-
-	/*****************************
-		Verify Username
-	******************************/
-		public function verify_username($dbres,$username)
-		{
-			$tablename = "vw_user_details";
-			$dbres->where('username',$username);
-			$query = $dbres->get($tablename);
-			return $query->row();
-		}
-
-	/*****************************
-		Retrieve Company Info
-	******************************/
-		public function retrieve_company_info()
-		{
-			$tablename = "hr_company_info";
-			$query = $this->db->get($tablename);
-			return $query->row();
-		}
 	
 	/*****************************
 		Logging Sign Out
 	******************************/
-	public function logout_user($dbres,$tablename,$login_id) 
+	public function logout_user($dbres,$login_id) 
 	{
 		$condition = ['online' => 0,];
 		$dbres->set($condition);
 		$dbres->where('id',$login_id);
-		$query = $dbres->update($tablename);
+		$query = $dbres->update(EDIT_USER_TABLE);
 		$result = $dbres->affected_rows();
 		return (($query) ? TRUE : FALSE );
 	}

@@ -93,3 +93,9 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 |
 */
 define('IMAGE_PATH', 'http://localhost/marksbon/projects/test/resources/images');
+
+define('EDIT_COMPANY_TABLE', 'hr_company_info');
+define('VIEW_COMPANY_TABLE', 'vw_company_info');
+
+define('EDIT_USER_TABLE', 'access_users');
+define('VIEW_USER_TABLE', 'vw_user_details');

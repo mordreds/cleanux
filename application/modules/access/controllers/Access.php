@@ -269,9 +269,10 @@ class Access extends MX_Controller
             # Performing Database Verfication ==> Username
             $username = $this->input->post('email',TRUE);
             $password = $this->input->post('passwd',TRUE);
+            $where_condition = ['username' => $username];
                   
-            $user = $this->model_access->verify_username(self::$_Default_DB,$username);
-            //print "<pre>"; var_dump($user->status);print "</pre>"; exit;
+            $user = $this->model_retrieval->all_info_return_row(self::$_Default_DB,VIEW_USER_TABLE,$where_condition);
+            
             if(empty($user)){
               $this->session->set_flashdata('error',"Invalid Username / Password Combination");
               redirect('access/login');
@@ -304,7 +305,7 @@ class Access extends MX_Controller
                   # Password Match Found
                   if(password_decrypt($password, $user_password)) { 
                     /************************ Retrieving Company Info ********************/
-                      $companyinfo = $this->model_access->retrieve_company_info();
+                      $companyinfo = $this->model_retrieval->all_info_return_row(self::$_Default_DB,VIEW_COMPANY_TABLE);
                       
                       if(!empty($companyinfo->name)) {
                         $session_array['companyinfo'] = [  
@@ -320,16 +321,14 @@ class Access extends MX_Controller
                           'tin_number'    => $companyinfo->tin_number,
                           'date_of_commence' => $companyinfo->date_of_commence,
                           'mission' => $companyinfo->mission,
-                          'vision' => $companyinfo->vision
+                          'vision' => $companyinfo->vision,
+                          'logo' => $companyinfo->company_logo
                         ];
-                        # Retrieving logo
-                        $condition = ['id' => $companyinfo->logo_id];
-                        $logo_search = $this->model_retrieval->all_info_return_row(self::$_Default_DB,'blobs',$condition);
-                        $session_array['companyinfo']['logo'] = @$logo_search->blob_path;
                       } 
                       else
                         $session_array['companyinfo']['name'] = "Company Name" ;
                     /************************ End of Company Info ********************/
+                    print "<pre>"; print_r($companyinfo); print "</pre>"; exit;
                     /************************ User Roles & Priviledges ********************/
                       if(!empty($user) && $user->user_roles_status == "active") {
                         $custom_roles = $user->custom_roles;
