@@ -322,13 +322,13 @@ class Access extends MX_Controller
                           'date_of_commence' => $companyinfo->date_of_commence,
                           'mission' => $companyinfo->mission,
                           'vision' => $companyinfo->vision,
-                          'logo' => $companyinfo->company_logo
+                          'logo' => $companyinfo->logo_id
                         ];
                       } 
                       else
                         $session_array['companyinfo']['name'] = "Company Name" ;
                     /************************ End of Company Info ********************/
-                    print "<pre>"; print_r($companyinfo); print "</pre>"; exit;
+                    //print "<pre>"; print_r($companyinfo); print "</pre>"; exit;
                     /************************ User Roles & Priviledges ********************/
                       if(!empty($user) && $user->user_roles_status == "active") {
                         $custom_roles = $user->custom_roles;

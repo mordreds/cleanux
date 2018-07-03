@@ -2,7 +2,7 @@
 	/*********** Rearranging Dashboard Tabs From User Permissions *********/
   $user_roles = $_SESSION['user']['roles'];
 
-  $dashboard_items_details =  $this->model_access->retrieve_all_system_types($_Permission_DB);
+  $dashboard_items_details =  $this->model_access->retrieve_all_system_types($_Default_DB);
  	
  	/********* Creating Different Types Of System ***************/
  	foreach ($dashboard_items_details as $value) {
@@ -14,7 +14,7 @@
  	/********* Creating Different Types Of System ***************/
   foreach($user_roles As $role_name) 
   {
-    $roles_details = $this->model_access->retrieve_dashboard_tab_details($_Permission_DB,$role_name);
+    $roles_details = $this->model_access->retrieve_dashboard_tab_details($_Default_DB,$role_name);
     
     if(!empty($roles_details)) 
     {

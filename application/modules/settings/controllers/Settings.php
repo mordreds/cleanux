@@ -25,7 +25,7 @@ class Settings extends MX_Controller
           /****** Required Parameters To Render A Page ******/
           $this->load->model('access/model_access');
           $this->load->model('globals/model_retrieval');
-          $data['_Permission_DB'] = self::$_Permission_DB;
+          $data['_Default_DB'] = self::$_Default_DB;
           $data['page_controller'] = $this->uri->segment(1);
           $data['controller_function'] = $this->uri->segment(2); 
           /****** Required Parameters To Render A Page ******/
@@ -67,7 +67,7 @@ class Settings extends MX_Controller
           /****** Required Parameters To Render A Page ******/
           $this->load->model('access/model_access');
           $this->load->model('globals/model_retrieval');
-          $data['_Permission_DB'] = self::$_Permission_DB;
+          $data['_Default_DB'] = self::$_Default_DB;
           $data['page_controller'] = $this->uri->segment(1);
           $data['controller_function'] = $this->uri->segment(2); 
           /****** Required Parameters To Render A Page ******/
@@ -226,16 +226,17 @@ class Settings extends MX_Controller
         if(in_array('users', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('id','ID','trim');
           $this->form_validation->set_rules('name','Name','trim|required');
-          $this->form_validation->set_rules('postal_addr','Postal Address','trim|required');
+          $this->form_validation->set_rules('postal_addr','Postal Address','trim');
           $this->form_validation->set_rules('residence_addr','Residence Address','trim|required');
           $this->form_validation->set_rules('phone_num_1','Primary Telephone','trim|required');
           $this->form_validation->set_rules('phone_num_2','Secondary Telephone','trim|required');
           $this->form_validation->set_rules('fax','Fax','trim');
-          $this->form_validation->set_rules('email','Email','trim|required');
+          $this->form_validation->set_rules('email','Email','trim');
           $this->form_validation->set_rules('website','Website','trim');
           $this->form_validation->set_rules('mission','Mission Statment','trim');
           $this->form_validation->set_rules('vision','vision Statment','trim');
           $this->form_validation->set_rules('tin_number','Tin Number','trim');
+          $this->form_validation->set_rules('gps_location','GPS Location','trim');
           if ($this->form_validation->run() === FALSE) {
             $this->session->set_flashdata('error',"Validation Error");
             redirect('settings/company');
@@ -258,7 +259,8 @@ class Settings extends MX_Controller
               'website' => $this->input->post('website'),
               'mission' => $this->input->post('mission'),
               'vision' => $this->input->post('vision'),
-              'tin_number' => $this->input->post('tin_number')
+              'tin_number' => $this->input->post('tin_number'),
+              'gps_location' => $this->input->post('gps_location'),
             ];
             $return_dataType="php_object";
             # Uploading Logo
@@ -844,11 +846,11 @@ class Settings extends MX_Controller
         if($dbtype == "default")
           $dbres = self::$_Default_DB;
         else if($dbtype == "permissions") {
-          $dbres = self::$_Permission_DB;
+          $dbres = self::$_Default_DB;
           $return_dataType = "json";
         }
          else if($dbtype == "views") {
-          $dbres = self::$_Views_DB;
+          $dbres = self::$_Default_DB;
         }
         
         if(!empty($where_field) && !empty($where_value)) {
@@ -880,7 +882,6 @@ class Settings extends MX_Controller
         }
 
         if($table == "vw_prices") {
-          $dbres = self::$_Views_DB;
           $tablename = "vw_laundry_prices";
           $return_dataType = "json";
         }
@@ -891,7 +892,6 @@ class Settings extends MX_Controller
         }
 
         if($table == "clients") {
-          $dbres = self::$_Views_DB;
           $tablename = "vw_laundry_clients";
           $return_dataType = "json";
         }
@@ -902,14 +902,12 @@ class Settings extends MX_Controller
         }
 
         if($table == "inhouse_orders") {
-          $dbres = self::$_Views_DB;
           $tablename = "vw_orderlist_summary";
           $return_dataType = "json";
           $condition = "status not in ('Cancelled','Dispatch','Delivered')" /*array('status !=' => "Completed",'status !=' => "Dispatch",'status !=' => "Delivered")*/;
         }
 
         if($table == "dispatch_orders") {
-          $dbres = self::$_Views_DB;
           $tablename = "vw_orderlist_summary";
           $return_dataType = "json";
           $condition = array('status' => "Dispatch");
@@ -931,7 +929,6 @@ class Settings extends MX_Controller
         }
 
         if($table == "positions") {
-          $dbres = self::$_Views_DB;
           $tablename = "vw_hr_positions";
           $return_dataType = "json";
           /***** Checking System Developer Role ******/
@@ -1053,7 +1050,7 @@ class Settings extends MX_Controller
         # Loading Model 
         $this->load->model('globals/model_retrieval');
 
-        $dbres = self::$_Permission_DB;
+        $dbres = self::$_Default_DB;
         if($target == "users") {
           $tablename = "vw_user_details";
           $condition = array('group_id !=' => 1);
@@ -1086,7 +1083,7 @@ class Settings extends MX_Controller
       $this->load->model('custom_retrievals');
 
       /******** Generating New User Id *********/
-      $dbres = self::$_Permission_DB;
+      $dbres = self::$_Default_DB;
       $return_dataType = "";
 
       $last_employee_id  = $this->custom_retrievals->last_temp_employee_id($dbres,$return_dataType);

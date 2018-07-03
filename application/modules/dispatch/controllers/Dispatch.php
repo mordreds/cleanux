@@ -22,7 +22,7 @@ class Dispatch extends MX_Controller
         /****** Required Parameters To Render A Page ******/
         $this->load->model('access/model_access');
         $this->load->model('globals/model_retrieval');
-        $data['_Permission_DB'] = self::$_Permission_DB;
+        $data['_Default_DB'] = self::$_Default_DB;
         /****** Required Parameters To Render A Page ******/
 
         /***************** Interface *****************/

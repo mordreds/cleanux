@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2018 at 12:10 AM
+-- Generation Time: Jul 03, 2018 at 07:02 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.1.14
 
@@ -76,6 +76,13 @@ CREATE TABLE `access_login_successful` (
   `country` varchar(255) DEFAULT NULL COMMENT 'country of the user at the time of system access'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `access_login_successful`
+--
+
+INSERT INTO `access_login_successful` (`id`, `user_id`, `time_in`, `time_out`, `online`, `user_agent`, `ipaddress`, `hostname`, `city_region`, `country`) VALUES
+(1, 1, '2018-07-03 15:59:41', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -115,7 +122,7 @@ CREATE TABLE `access_roles_privileges_group` (
 
 INSERT INTO `access_roles_privileges_group` (`id`, `name`, `roles`, `privileges`, `description`, `login_url`, `status`, `date_created`) VALUES
 (1, 'System Developer', 'statistics|overview|inhouse|dispatch|new registration|company|users|permissions|customers|reports|sms', '', 'Designers of this software', 'dashboard', 'active', '2017-10-16 17:42:32'),
-(2, 'Administrator', '', '', 'Administrator Group', 'dashboard', 'active', '2017-10-16 17:42:32'),
+(2, 'Administrator', 'statistics|overview|inhouse|dispatch|new registration|company|users|permissions|customers|reports|sms', '', 'Administrator Group', 'dashboard', 'active', '2017-10-16 17:42:32'),
 (3, 'Reception', 'overview', '', 'Receptionist Group', 'overview', 'active', '2017-12-30 12:46:49');
 
 -- --------------------------------------------------------
@@ -138,11 +145,7 @@ CREATE TABLE `access_roles_privileges_user` (
 --
 
 INSERT INTO `access_roles_privileges_user` (`id`, `user_id`, `custom_roles`, `custom_privileges`, `group_id`, `status`) VALUES
-(1, 1, '', '', 1, 'active'),
-(2, 2, '', '', 1, 'active'),
-(9, 7, '', '', 3, 'active'),
-(10, 8, '', '', 2, 'active'),
-(11, 9, '', '', 2, 'active');
+(1, 1, '', '', 2, 'active');
 
 -- --------------------------------------------------------
 
@@ -188,13 +191,7 @@ CREATE TABLE `access_users` (
 --
 
 INSERT INTO `access_users` (`id`, `username`, `passwd`, `default_passwd`, `fullname`, `phone_number`, `temp_employee_id`, `biodata_id`, `demo_user_id`, `first_login`, `login_attempt`, `status`, `created_by`, `date_created`) VALUES
-(1, 'osborne.mordred@gmail.com', '$2y$10$GuOFXrr8Xdd5JFHD9vzm8.tUeafbhkUfvImwdDkswS8NJJOqzV3BC', '', 'Osborne Mordreds', '0541786220', 'KAD/SYS/1', 0, 0, 0, 0, 'inactive', 1, '2017-05-25 06:05:10'),
-(2, 'wikills2k@gmail.com', '$2y$10$GuOFXrr8Xdd5JFHD9vzm8.tUeafbhkUfvImwdDkswS8NJJOqzV3BC', '', 'Bismark Offei ', '0245626487', 'KAD/SYS/2', 0, 0, 0, 5, 'active', 1, '2017-05-25 06:05:10'),
-(7, 'Akosuapompey@maviscolaundry.com', '', '$2y$10$qdYdPNneNRwV6EJfj8oOY.NN6tXe.puxiu8Iu0coC0ubFDdBthmQ6', 'Akosua  Pompey', '', '', 1, 0, 0, 5, 'active', 0, '2017-12-30 14:09:44'),
-(8, 'Claude@africaloop.com', '', '$2y$10$SJ9epSqbPTOE1dZaGtcCZOZkhMOHOrfGYFAzwzVXK9YiT0e5kFD1y', 'Claude Nii Nai', '', '', 1, 0, 0, 5, 'inactive', 0, '2018-01-17 17:38:37'),
-(9, 'Watara@gmail.com', '', '$2y$10$R1kViRYSZQ37XsnREjvJxuCSuDtIZN6eo.wxl80ms.1iFcQ/1dMCy', 'Bismark  Nana', '', '', 4, 0, 0, 5, 'active', 0, '2018-01-17 17:42:36'),
-(10, 'hope@africaloop.com', '$2y$10$LXvay6pcFlOwKfMWHjftJOqViw2hEjNwhBzHqMwkVbSvhlhJTWsbe', '', 'Hope Avalon', '0233444567', '', 0, 0, 0, 5, 'active', 0, '2018-06-15 01:49:23'),
-(11, 'test3@example.com', '$2y$10$zl41VsJTdsDHMuhWupatU.HsREMrDCE0FcamlFxs1HA3VmGO3LCwm', '', 'Monday Test 3', '023456789', '', 0, 4, 0, 5, 'active', 0, '2018-06-18 10:50:59');
+(1, 'eahlijah@gmail.com', '$2y$10$O/swrfsJ6TbhtHiyzR7GmurgN4u49VcaMFzrOtZ9.3N511hoPhOVi', '', 'Edem Ahlijah', '023456789', '', 0, 1, 0, 5, 'active', 0, '2018-07-03 15:59:37');
 
 -- --------------------------------------------------------
 
@@ -230,21 +227,6 @@ CREATE TABLE `demo_requests` (
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `demo_requests`
---
-
-INSERT INTO `demo_requests` (`id`, `first_name`, `last_name`, `email`, `contact`, `company_name`, `company_location`, `expectations`, `date_scheduled`, `feedback`, `date_created`) VALUES
-(1, 'Osborne', 'Mordreds', 'germain@greenfieldtest.com', '0571786220', 'Duraplast Company Limited', 'North Industrial Area', 'Client Monitoring', NULL, NULL, '2018-06-14 07:09:22'),
-(2, 'Mavis', 'Amenyo', 'mavis.mordreds@gmail.com', '0547843221', 'May Company', 'Kasoa - Amanfrom', 'Wrong Delivery', NULL, NULL, '2018-06-14 07:25:25'),
-(3, 'Jamil', 'Khan', 'jamil@khan.com', '0243223959', 'Khan Inc', 'Accra', 'I Am An SME Who Would Want An Affordable System For My Laundry Chain', NULL, NULL, '2018-06-14 08:58:45'),
-(4, 'Test User', '2', 'test@example.com', '0571862990', 'Test Company Inc', 'Legon', 'Nothing. Just Interested', NULL, NULL, '2018-06-14 12:22:10'),
-(5, 'Kelvin', 'Mitnick', 'kelvin@testcompany.com', '+2948595743', 'PenTest Inc', 'Virginia', 'Test The Security Of The System', NULL, NULL, '2018-06-14 14:49:34'),
-(6, 'Evans', 'Ofori', 'evans@gmail.com', '+194749485082', 'TestCode Inc', 'USA', 'Test The Optimization Of System Code', NULL, NULL, '2018-06-14 14:54:16'),
-(7, 'Claude', 'Nii Nai', 'claude@africaloop.com', '+19479574947', 'Africaloop Ltd', 'USA', 'Get SEO Optimization', NULL, NULL, '2018-06-14 14:56:03'),
-(8, 'Hope', 'Avalon', 'hope@africaloop.com', '03456789', 'AL Inc', 'Abelemkpe', 'Testing 2', NULL, NULL, '2018-06-14 14:59:50'),
-(9, 'Mondaye', 'Morning', 'monday@test.com', '02345678', 'Test Inc', 'Test', 'Ftyuikmnbgyuik,', NULL, NULL, '2018-06-18 10:46:10');
-
 -- --------------------------------------------------------
 
 --
@@ -269,29 +251,7 @@ CREATE TABLE `demo_request_userinfo` (
 --
 
 INSERT INTO `demo_request_userinfo` (`id`, `first_name`, `last_name`, `email`, `contact`, `company_name`, `company_location`, `remarks`, `date_scheduled`, `date_created`) VALUES
-(1, 'Test User', '2', 'test2@example.com', '0233444555', 'Test Company Inc', 'Accra', '', NULL, '2018-06-14 14:45:49'),
-(2, 'Claude', 'Test', 'claude@africaloop.com', '+233456787654', 'Africaloop Ltd', 'Korle Bu Accra', '', NULL, '2018-06-14 15:01:15'),
-(3, 'Hope', 'Avalon', 'hope@africaloop.com', '0233444567', 'Africaloop Limited', 'Abelemkpe', '', NULL, '2018-06-15 01:49:23'),
-(4, 'Monday', 'Test 3', 'test3@example.com', '023456789', 'ComSys Limited', 'North Industrial Area', '', NULL, '2018-06-18 10:50:59');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `demo_successful_logins`
---
-
-CREATE TABLE `demo_successful_logins` (
-  `id` int(20) NOT NULL COMMENT 'auto generated id',
-  `user_id` int(5) NOT NULL COMMENT 'auto generated id from users table',
-  `time_in` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'time of login by user',
-  `time_out` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'time of logout by user',
-  `online` int(1) NOT NULL DEFAULT '1' COMMENT 'online status of the user',
-  `user_agent` varchar(255) NOT NULL COMMENT 'browser info of the user at the time of system access',
-  `ipaddress` varchar(20) NOT NULL DEFAULT '0.0.0.0' COMMENT 'ip address of the user at the time of system access',
-  `hostname` varchar(255) NOT NULL COMMENT 'computer name of the user at the time of system access',
-  `city_region` text COMMENT 'city & region of the user at the time of system access',
-  `country` varchar(255) DEFAULT NULL COMMENT 'country of the user at the time of system access'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+(1, 'Edem', 'Ahlijah', 'eahlijah@gmail.com', '023456789', 'Duraplast Company Limited', 'North Industrial Area', '', NULL, '2018-07-03 15:59:36');
 
 -- --------------------------------------------------------
 
@@ -322,6 +282,7 @@ CREATE TABLE `hr_company_info` (
   `website` varchar(100) NOT NULL COMMENT 'website of the comany',
   `mission` varchar(255) NOT NULL,
   `vision` varchar(255) NOT NULL,
+  `gps_location` varchar(255) NOT NULL,
   `tin_number` varchar(50) NOT NULL,
   `logo_id` int(11) NOT NULL,
   `date_of_commence` date NOT NULL
@@ -331,8 +292,8 @@ CREATE TABLE `hr_company_info` (
 -- Dumping data for table `hr_company_info`
 --
 
-INSERT INTO `hr_company_info` (`id`, `name`, `telephone_1`, `telephone_2`, `fax`, `email`, `postal_address`, `residence_address`, `website`, `mission`, `vision`, `tin_number`, `logo_id`, `date_of_commence`) VALUES
-(1, 'MARKSBON LIMITED', '0506139739', '0244949261', '', 'bgslaundry@gmail.com', 'BOX K47, OFANKOR - ACCRA', 'GROUND FLOOR - MR MEGA PLAZA. OFANKOR BARRIER - ACCRA.', 'www.bgslaundry.com', 'To Be Filled By The Company', 'To Be Filled By The Company', 'TN10245682-GA', 0, '0000-00-00');
+INSERT INTO `hr_company_info` (`id`, `name`, `telephone_1`, `telephone_2`, `fax`, `email`, `postal_address`, `residence_address`, `website`, `mission`, `vision`, `gps_location`, `tin_number`, `logo_id`, `date_of_commence`) VALUES
+(1, 'MARKSBON LIMITED', '0506139739', '0244949261', '', 'bgslaundry@gmail.com', 'BOX K47, OFANKOR - ACCRA', 'GROUND FLOOR - MR MEGA PLAZA. OFANKOR BARRIER - ACCRA.', 'www.bgslaundry.com', 'To Be Filled By The Company', 'To Be Filled By The Company', '5\'0090585948N, 0\'94854948S', 'TN10245682-GA', 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -556,7 +517,8 @@ INSERT INTO `laundry_delivery_method` (`id`, `location`, `duration`, `price`, `s
 (2, 'Express Service (Within Accra)', '0 ~ 1 Days', 15, 'active', '2017-12-27 19:46:57'),
 (3, 'Regular (Outside Accra)', '5 ~ 7 Days', 15, 'active', '2017-12-27 19:51:11'),
 (4, 'Regular (Within Accra)', '3 ~ 4 Days', 5, 'active', '2017-12-27 20:08:13'),
-(5, 'Pickup (At Office)', 'At Users Discretion', 0, 'deleted', '2017-12-27 20:08:58');
+(5, 'Pickup (At Office)', 'At Users Discretion', 0, 'deleted', '2017-12-27 20:08:58'),
+(6, 'Pick Up (At Office)', 'Client\'s Own Time', 0, 'active', '2018-07-03 16:27:58');
 
 -- --------------------------------------------------------
 
@@ -845,6 +807,30 @@ INSERT INTO `settings_tax_system` (`id`, `value`, `user_id`, `date_created`) VAL
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `vw_company_info`
+-- (See below for the actual view)
+--
+CREATE TABLE `vw_company_info` (
+`id` bigint(20)
+,`name` varchar(255)
+,`telephone_1` varchar(20)
+,`telephone_2` varchar(20)
+,`fax` varchar(20)
+,`email` varchar(255)
+,`postal_address` varchar(255)
+,`residence_address` varchar(255)
+,`website` varchar(100)
+,`mission` varchar(255)
+,`vision` varchar(255)
+,`gps_location` varchar(255)
+,`tin_number` varchar(50)
+,`logo_id` int(11)
+,`date_of_commence` date
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `vw_employee_details`
 -- (See below for the actual view)
 --
@@ -1072,6 +1058,15 @@ CREATE TABLE `vw_user_details` (
 -- --------------------------------------------------------
 
 --
+-- Structure for view `vw_company_info`
+--
+DROP TABLE IF EXISTS `vw_company_info`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_company_info`  AS  select `hr_company_info`.`id` AS `id`,`hr_company_info`.`name` AS `name`,`hr_company_info`.`telephone_1` AS `telephone_1`,`hr_company_info`.`telephone_2` AS `telephone_2`,`hr_company_info`.`fax` AS `fax`,`hr_company_info`.`email` AS `email`,`hr_company_info`.`postal_address` AS `postal_address`,`hr_company_info`.`residence_address` AS `residence_address`,`hr_company_info`.`website` AS `website`,`hr_company_info`.`mission` AS `mission`,`hr_company_info`.`vision` AS `vision`,`hr_company_info`.`gps_location` AS `gps_location`,`hr_company_info`.`tin_number` AS `tin_number`,`hr_company_info`.`logo_id` AS `logo_id`,`hr_company_info`.`date_of_commence` AS `date_of_commence` from `hr_company_info` ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `vw_employee_details`
 --
 DROP TABLE IF EXISTS `vw_employee_details`;
@@ -1217,12 +1212,6 @@ ALTER TABLE `demo_request_userinfo`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `demo_successful_logins`
---
-ALTER TABLE `demo_successful_logins`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `hr_company_info`
 --
 ALTER TABLE `hr_company_info`
@@ -1361,7 +1350,7 @@ ALTER TABLE `access_login_failed`
 -- AUTO_INCREMENT for table `access_login_successful`
 --
 ALTER TABLE `access_login_successful`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id';
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `access_password_reset_requests`
@@ -1379,7 +1368,7 @@ ALTER TABLE `access_roles_privileges_group`
 -- AUTO_INCREMENT for table `access_roles_privileges_user`
 --
 ALTER TABLE `access_roles_privileges_user`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `access_sysaudit`
@@ -1391,7 +1380,7 @@ ALTER TABLE `access_sysaudit`
 -- AUTO_INCREMENT for table `access_users`
 --
 ALTER TABLE `access_users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `blobs`
@@ -1403,19 +1392,13 @@ ALTER TABLE `blobs`
 -- AUTO_INCREMENT for table `demo_requests`
 --
 ALTER TABLE `demo_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `demo_request_userinfo`
 --
 ALTER TABLE `demo_request_userinfo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `demo_successful_logins`
---
-ALTER TABLE `demo_successful_logins`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=118;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `hr_company_info`
@@ -1469,7 +1452,7 @@ ALTER TABLE `laundry_clients`
 -- AUTO_INCREMENT for table `laundry_delivery_method`
 --
 ALTER TABLE `laundry_delivery_method`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `laundry_garments`

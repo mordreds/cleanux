@@ -29,7 +29,7 @@ class Dashboard extends MX_Controller
         $this->load->model('access/model_access');
         $this->load->model('globals/model_retrieval');
 
-        $data['_Permission_DB'] = self::$_Permission_DB;
+        $data['Default_DB'] = self::$_Default_DB;
 
         /*********** Interface ******************/
         	$data['title'] = "Dashboard";
@@ -53,12 +53,12 @@ class Dashboard extends MX_Controller
         $this->load->model('access/model_access');
         $this->load->model('globals/model_retrieval');
 
-        $data['_Permission_DB'] = self::$_Permission_DB;
+        $data['_Default_DB'] = self::$_Default_DB;
 
         /*********** Rearranging Dashboard Tabs From User Permissions *********/
 	        $user_roles = $_SESSION['user']['roles'];
 
-	        $dashboard_items_details =  $this->model_access->retrieve_all_system_types(self::$_Permission_DB);
+	        $dashboard_items_details =  $this->model_access->retrieve_all_system_types(self::$_Default_DB);
 	       	
 	       	/********* Creating Different Types Of System ***************/
 	       	foreach ($dashboard_items_details as $value) {
@@ -70,7 +70,7 @@ class Dashboard extends MX_Controller
 	       	/********* Creating Different Types Of System ***************/
 	        foreach($user_roles As $role_name) 
 	        {
-	          $roles_details = $this->model_access->retrieve_dashboard_tab_details(self::$_Permission_DB,$role_name);
+	          $roles_details = $this->model_access->retrieve_dashboard_tab_details(self::$_Default_DB,$role_name);
 	       		
 	          if(!empty($roles_details)) 
 	          {

@@ -20,7 +20,7 @@ class Statistics extends MX_Controller
         /****** Required Parameters To Render A Page ******/
         $this->load->model('access/model_access');
         $this->load->model('globals/model_retrieval');
-        $data['_Permission_DB'] = self::$_Permission_DB;
+        $data['_Default_DB'] = self::$_Default_DB;
          $data['page_controller'] = $this->uri->segment(1);
          $data['controller_function'] = $this->uri->segment(2);
         /****** Required Parameters To Render A Page ******/
@@ -28,7 +28,7 @@ class Statistics extends MX_Controller
         /****** Additional Functions  ****************/
           $return_dataType="php_object";
           # Total Users
-          $dbres = self::$_Permission_DB;
+          $dbres = self::$_Default_DB;
           $tablename = "vw_user_details";
           $condition = "id not in (1,2)";
           $total_users = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
@@ -38,7 +38,6 @@ class Statistics extends MX_Controller
             $data['total_users'] = 0;
           
           # Total Clients
-          $dbres = self::$_Default_DB;
           $tablename = "laundry_clients";
           $condition = array();
           $total_customers = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
@@ -48,7 +47,6 @@ class Statistics extends MX_Controller
             $data['total_customers'] = 0;
           
           # Total Pending Orders
-          $dbres = self::$_Views_DB;
           $tablename = "vw_orderlist_summary";
           $condition = "status IN ('Pending','Processing')";
           $pending_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
@@ -58,7 +56,6 @@ class Statistics extends MX_Controller
             $data['pending_orders'] = 0;
           
           # Total Monthly Orders
-          $dbres = self::$_Views_DB;
           $tablename = "vw_orderlist_summary";
           $condition = "Month(date_created) = ".gmdate('m')." And status ='Delivered'";
           $month_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
@@ -68,7 +65,6 @@ class Statistics extends MX_Controller
             $data['month_orders'] = 0;
           
           # Total Overdue Orders
-          $dbres = self::$_Views_DB;
           $tablename = "vw_orderlist_summary";
           $condition = "due_date < Now() AND status != 'Delivered'";
           $overdue_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);

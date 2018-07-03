@@ -22,7 +22,7 @@ class Inhouse extends MX_Controller
         /****** Required Parameters To Render A Page ******/
         $this->load->model('access/model_access');
         $this->load->model('globals/model_retrieval');
-        $data['_Permission_DB'] = self::$_Permission_DB;
+        $data['_Default_DB'] = self::$_Default_DB;
          $data['page_controller'] = $this->uri->segment(1);
          $data['controller_function'] = $this->uri->segment(2);
         /****** Required Parameters To Render A Page ******/
@@ -58,7 +58,7 @@ class Inhouse extends MX_Controller
           # Loading Model 
           $this->load->model('globals/model_retrieval');
 
-          $dbres = self::$_Views_DB;
+          $dbres = self::$_Default_DB;
           $tablename = "vw_laundry_order_comments";
           $return_dataType = "php_object";
           $where_condition = array('order_id' => $this->input->post('order_id'));

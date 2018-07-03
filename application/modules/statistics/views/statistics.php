@@ -337,7 +337,6 @@
         </div>
       </div>
     </div>
-<<<<<<< Updated upstream
 
           <div class="row">
             <div class="col-md-6">
@@ -713,20 +712,6 @@
             </div>
           </div>
           <!-- /3D pie charts -->
-=======
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-    <!-- <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <div class="row">
-=======
-    
-    <!-- <div class="row">
->>>>>>> Stashed changes
       <div class="panel panel-body text-center">
         <div class="col-md-2">
           <h6 class="text-semibold no-margin-bottom mt-5">January Report</h6>
@@ -957,7 +942,7 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div> 
 
       <!-- <div class="col-md-12">
         <div class="panel panel-body col-xs-9">

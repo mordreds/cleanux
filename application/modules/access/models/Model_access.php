@@ -71,6 +71,13 @@ class Model_Access extends CI_Model
 				$tablename = "access_users";
 				$form_data['login_info']['demo_user_id'] = $last_insert_id['id'];
 				$query_result = $dbres->insert($tablename,$form_data['login_info']);
+				# Saving User Permissions
+				$tablename = "access_roles_privileges_user";
+				$permissions_data = [
+					'user_id' => $last_insert_id['id'],
+					'group_id' => 2
+				];
+				$query_result = $dbres->insert($tablename,$permissions_data);
 			}
 			# Updating Request
 			else {
@@ -114,21 +121,21 @@ class Model_Access extends CI_Model
 	/***********************************************
 		Retrieving  Roles Details 
 	************************************************/
-	public function retrieve_all_system_types($dbres) 
-	{
-    $tablename = "dashboard_tabs";
-    $dbres->distinct();
-    $dbres->select('system_type');
-    $query = $dbres->get($tablename);
-    return($query->num_rows() > 0 ? $query->result() : FALSE);
-	}
+		public function retrieve_all_system_types($dbres) 
+		{
+	    $tablename = "settings_dashboard_tabs";
+	    $dbres->distinct();
+	    $dbres->select('system_type');
+	    $query = $dbres->get($tablename);
+	    return($query->num_rows() > 0 ? $query->result() : FALSE);
+		}
 
 	/***********************************************
 		Retrieving  Roles Details 
 	************************************************/
 	public function retrieve_dashboard_tab_details($dbres,$role) 
 	{
-    $tablename = "dashboard_tabs";
+    $tablename = "settings_dashboard_tabs";
     $where = array('name'=>$role, 'status' => "active");
     $query = $dbres->get_where($tablename,$where);
     return($query->num_rows() > 0 ? $query->row() : FALSE);
@@ -139,7 +146,7 @@ class Model_Access extends CI_Model
   ************************************************/
   public function dashboard_tabs()
   {
-    $tablename = "dashboard_tabs";
+    $tablename = "settings_dashboard_tabs";
     $query = $this->db->get($tablename);
     return(($query->num_rows() > 0) ? $query->result() : FALSE );    
   }

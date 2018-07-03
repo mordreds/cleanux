@@ -27,7 +27,7 @@ class Overview extends MX_Controller
         /****** Required Parameters To Render A Page ******/
         $this->load->model('access/model_access');
         $this->load->model('globals/model_retrieval');
-        $data['_Permission_DB'] = self::$_Permission_DB;
+        $data['_Default_DB'] = self::$_Default_DB;
         $data['page_controller'] = $this->uri->segment(1);
         $data['controller_function'] = $this->uri->segment(2); 
         /****** Required Parameters To Render A Page ******/
@@ -307,7 +307,7 @@ class Overview extends MX_Controller
 
           $balance = $this->input->post('balance_paid');
           # Retrieving Order Balance
-          $dbres = self::$_Views_DB;
+          $dbres = self::$_Default_DB;
           $tablename = "vw_orderlist_summary";
           $return_dataType = "php_object";
           $select = "balance";
@@ -514,7 +514,7 @@ class Overview extends MX_Controller
         # loading model 
         $this->load->model('globals/model_retrieval');
         # data definition 
-        $dbres = self::$_Views_DB;
+        $dbres = self::$_Default_DB;
         $tablename = "vw_orderlist_summary";
         $where_condition = array('DATE(date_created)' => $day, 'processor_user_id' => $_SESSION['user']['id']);
         $orderby = array('date_created'=>"desc");
@@ -544,7 +544,7 @@ class Overview extends MX_Controller
         # loading model 
         $this->load->model('globals/model_retrieval');
         # data definition 
-        $dbres = self::$_Views_DB;
+        $dbres = self::$_Default_DB;
         $tablename = "vw_orderlist_summary";
         $where_condition = array('order_number' => $order_number,'status !=' => "Completed");
 
@@ -591,7 +591,7 @@ class Overview extends MX_Controller
         
         if(!empty($page)) {
           # code...
-          $dbres = self::$_Views_DB;
+          $dbres = self::$_Default_DB;
           $tablename = "vw_orderlist_summary";
           $where_condition = array('id' => $order_id);
           $view_result = $this->model_retrieval->all_info_return_row($dbres,$tablename,$where_condition,$return_dataType="php_object");
@@ -672,7 +672,7 @@ class Overview extends MX_Controller
         # loading model 
         $this->load->model('globals/model_retrieval');
         # data definition 
-        $dbres = self::$_Views_DB;
+        $dbres = self::$_Default_DB;
         $tablename = "vw_orderlist_summary";
         $where_condition = "status Not In ('Delivered','Cancelled') AND client_phone_no_1 = $phone_number";
         $query_result = $this->model_retrieval->all_info_return_result($dbres,$tablename,$where_condition,$return_dataType="php_object");
