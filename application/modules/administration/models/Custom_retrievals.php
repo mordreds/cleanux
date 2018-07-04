@@ -13,7 +13,7 @@ class Custom_retrievals extends CI_Model
     $dbres->like('temp_employee_id',"BG/TEMP/");
     $dbres->order_by('temp_employee_id','desc');
     $dbres->limit(1);
-    $query = $dbres->get('users');
+    $query = $dbres->get('access_users');
 
     if($return_dataType == "json")          
       return json_encode($query->result());
@@ -62,7 +62,7 @@ class Custom_retrievals extends CI_Model
   **********************************/
   public function register_newuser($dbres,$return_dataType="php_object",$user_data,$roles_priv_data) 
   {
-    $tablename_1 = "users"; $tablename_2 = "roles_privileges_user";
+    $tablename_1 = "access_users"; $tablename_2 = "access_roles_privileges_user";
     
     $dbres->trans_start();
       $query = $dbres->insert($tablename_1,$user_data);
@@ -83,7 +83,7 @@ class Custom_retrievals extends CI_Model
   **********************************/
   public function retrieve_usergroup($dbres,$return_dataType="php_object") 
   {
-    $tablename = "roles_privileges_group";
+    $tablename = "access_roles_privileges_group";
     $restrictions = array('1');
     $dbres->where_not_in('id',$restrictions);
     $query = $dbres->get($tablename);

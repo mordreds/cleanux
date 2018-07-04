@@ -35,15 +35,15 @@ class Administration extends MX_Controller
               $this->load->model('access/model_access');
               $this->load->model('globals/model_retrieval');
 
-              #Extracting Data For Display
-              $data['allusers']  = $this->model_retrieval->all_info_return_result(self::$_Permission_DB,'vw_user_details');
-              $data['allgroups'] = $this->model_retrieval->all_info_return_result(self::$_Permission_DB,'roles_privileges_group');
+              # Extracting Data For Display
+              $data['allusers']  = $this->model_retrieval->all_info_return_result(self::$_Default_DB,'vw_user_details');
+              $data['allgroups'] = $this->model_retrieval->all_info_return_result(self::$_Default_DB,'access_roles_privileges_group');
 
               $data['next_usr_id'] = $this->generate_userid();
               /********** Interface ***********************/
               $data['page_controller'] = $this->uri->segment(1);
               $data['controller_function'] = $this->uri->segment(2);
-              $data['_Permission_DB'] = self::$_Permission_DB;
+              $data['_Default_DB'] = self::$_Default_DB;
 
               $data['title'] = "users";
               $this->load->view('header',$data);
@@ -71,7 +71,7 @@ class Administration extends MX_Controller
                     'id' => $this->input->post('user_id'),
                     'username' => $this->input->post('email')
                   ];
-                  $dbres = self::$_Permission_DB;
+                  $dbres = self::$_Default_DB;
                   $return_dataType="php_object";
                   $status = $this->input->post('status');
                   # Parameters settings
@@ -105,8 +105,8 @@ class Administration extends MX_Controller
                   $this->load->helper('encryption');
 
                   # Parameters settings
-                  $dbres = self::$_Permission_DB;
-                  $tablename = "users";
+                  $dbres = self::$_Default_DB;
+                  $tablename = "access_users";
                   $return_dataType="php_object";
                   $set_values = [
                     'passwd' => "",
@@ -156,7 +156,7 @@ class Administration extends MX_Controller
         #********** Interface ***********************/  
         $data['page_controller'] = $this->uri->segment(1);
         $data['controller_function'] = $this->uri->segment(2);
-        $data['_Permission_DB'] = self::$_Permission_DB;
+        $data['_Default_DB'] = self::$_Default_DB;
 
         $data['title'] = "Permissions";
         $this->load->view('header',$data);
@@ -376,8 +376,8 @@ class Administration extends MX_Controller
 
               $biodata_id = $this->input->post('biodata_id');
               $fullname   = $this->input->post('fullname');
-              $dbres = self::$_Permission_DB;
-              $tablename = "users";
+              $dbres = self::$_Default_DB;
+              $tablename = "access_users";
               
               if(!empty($biodata_id) && !empty($fullname)) {
                 # Employee Validity Check
@@ -448,9 +448,9 @@ class Administration extends MX_Controller
     public function view_allPermissions() 
     {
       $this->load->model('globals/model_retrieval');
-      $dbres = self::$_Permission_DB;
+      $dbres = self::$_Default_DB;
       $return_dataType = "php_object";
-      $tablename = "dashboard_tabs";
+      $tablename = "settings_dashboard_tabs";
       $where_condition = ['status'=>"active"];
 
       $query_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$where_condition);
@@ -515,7 +515,7 @@ class Administration extends MX_Controller
       {
         # Loading Model 
         $this->load->model('administration/custom_retrievals');
-        $dbres = self::$_Permission_DB;
+        $dbres = self::$_Default_DB;
         $return_dataType = "json";
 
         $search_result = $this->custom_retrievals->retrieve_usergroup($dbres,$return_dataType);
@@ -538,7 +538,7 @@ class Administration extends MX_Controller
         # Loading Model 
         $this->load->model('globals/model_retrieval');
 
-        $dbres = self::$_Permission_DB;
+        $dbres = self::$_Default_DB;
         $tablename = "vw_user_details";
         $condition = array('status' => $status, 'group_id !=' => "1");
         $return_dataType = "json";
@@ -562,7 +562,7 @@ class Administration extends MX_Controller
         # Loading Model 
         $this->load->model('globals/model_retrieval');
 
-        $dbres = self::$_Views_DB;
+        $dbres = self::$_Default_DB;
         $tablename = "vw_hr_departments";
         $return_dataType = "json";
         /***** Checking System Developer Role ******/
@@ -590,7 +590,7 @@ class Administration extends MX_Controller
         # Loading Model 
         $this->load->model('globals/model_retrieval');
 
-        $dbres = self::$_Views_DB;
+        $dbres = self::$_Default_DB;
         $tablename = "vw_hr_positions";
         $return_dataType = "json";
         /***** Checking System Developer Role ******/
@@ -643,7 +643,7 @@ class Administration extends MX_Controller
       $this->load->model('globals/model_retrieval');
       $this->load->model('custom_retrievals');
       /******** Generating New User Id *********/
-      $dbres = self::$_Permission_DB;
+      $dbres = self::$_Default_DB;
       $return_dataType = "";
 
       $last_employee_id  = $this->custom_retrievals->last_temp_employee_id($dbres,$return_dataType);

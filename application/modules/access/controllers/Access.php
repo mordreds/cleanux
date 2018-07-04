@@ -430,7 +430,7 @@ class Access extends MX_Controller
                       $session_array['user']['login_attempt'] = $result['login_attempt'];
                       $session_array['user']['fullname'] = $user->fullname;
                       $this->session->set_userdata($session_array);
-                      redirect(base_url().$user->group_login_url);
+                      redirect(base_url()."statistics");
                       //print "<pre>";print_r($_SESSION);print "</pre>";
                     }
                     /************************ Recording Login Success **********************/  

@@ -210,7 +210,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-6 col-md-2">
+      <!-- <div class="col-sm-6 col-md-2">
         <div class="panel panel-body text-center">
           <h6 class="text-semibold no-margin-bottom mt-5">July Report</h6>
           <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
@@ -335,98 +335,30 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
+    <div class="row">
+      <div class="col-md-6">
+        <!-- Nested pie charts -->
+        <div class="panel panel-flat">
+          <div class="panel-heading">
+            <h5 class="panel-title">Nested pie charts</h5>
+            <div class="heading-elements">
+              <ul class="icons-list">
+                <li><a data-action="collapse"></a></li>
+                <li><a data-action="reload"></a></li>
+                <li><a data-action="close"></a></li>
+              </ul>
+            </div>
+          </div>
 
-          <div class="row">
-            <div class="col-md-6">
-
-              <!-- Basic pie chart -->
-              <div class="panel panel-flat">
-                <div class="panel-heading">
-                  <h5 class="panel-title">Basic pie chart</h5>
-                  <div class="heading-elements">
-                    <ul class="icons-list">
-                              <li><a data-action="collapse"></a></li>
-                              <li><a data-action="reload"></a></li>
-                              <li><a data-action="close"></a></li>
-                            </ul>
-                          </div>
-                </div>
-
-                <div class="panel-body">
-                  <div class="chart-container has-scroll">
-                    <div class="chart has-fixed-height has-minimum-width" id="basic_pie"></div>
-                  </div>
-                </div>
-              </div>
-              <!-- /bacis pie chart -->
-
-
-              <!-- Nested pie charts -->
-              <div class="panel panel-flat">
-                <div class="panel-heading">
-                  <h5 class="panel-title">Nested pie charts</h5>
-                  <div class="heading-elements">
-                    <ul class="icons-list">
-                              <li><a data-action="collapse"></a></li>
-                              <li><a data-action="reload"></a></li>
-                              <li><a data-action="close"></a></li>
-                            </ul>
-                          </div>
-                </div>
-
-                <div class="panel-body">
-                  <div class="chart-container has-scroll">
-                    <div class="chart has-fixed-height has-minimum-width" id="nested_pie"></div>
-                  </div>
-                </div>
-              </div>
-              <!-- /nested pie charts -->
-
-
-              <!-- Nightingale roses width hidden labels -->
-              <div class="panel panel-flat">
-                <div class="panel-heading">
-                  <h5 class="panel-title">Nightingale roses (hidden labels)</h5>
-                  <div class="heading-elements">
-                    <ul class="icons-list">
-                              <li><a data-action="collapse"></a></li>
-                              <li><a data-action="reload"></a></li>
-                              <li><a data-action="close"></a></li>
-                            </ul>
-                          </div>
-                </div>
-
-                <div class="panel-body">
-                  <div class="chart-container has-scroll">
-                    <div class="chart has-fixed-height has-minimum-width" id="rose_diagram_hidden"></div>
-                  </div>
-                </div>
-              </div>
-              <!-- /nightingale roses width hidden labels -->
-
-
-              <!-- Multi level donut -->
-              <div class="panel panel-flat">
-                <div class="panel-heading">
-                  <h5 class="panel-title">Multi level donut chart</h5>
-                  <div class="heading-elements">
-                    <ul class="icons-list">
-                              <li><a data-action="collapse"></a></li>
-                              <li><a data-action="reload"></a></li>
-                              <li><a data-action="close"></a></li>
-                            </ul>
-                          </div>
-                </div>
-
-                <div class="panel-body">
-                  <div class="chart-container has-scroll">
-                    <div class="chart has-fixed-height has-minimum-width" id="lasagna_donut"></div>
-                  </div>
-                </div>
-              </div>
-              <!-- /multi level donut -->
+          <div class="panel-body">
+            <div class="chart-container has-scroll">
+              <div class="chart has-fixed-height has-minimum-width" id="nested_pie"></div>
+            </div>
+          </div>
+        </div>
+        <!-- /nested pie charts -->
 
             </div>
 
@@ -453,29 +385,6 @@
               </div>
               <!-- /basic donut chart -->
 
-
-              <!-- Infographic style -->
-              <div class="panel panel-flat">
-                <div class="panel-heading">
-                  <h5 class="panel-title">Infographic style</h5>
-                  <div class="heading-elements">
-                    <ul class="icons-list">
-                              <li><a data-action="collapse"></a></li>
-                              <li><a data-action="reload"></a></li>
-                              <li><a data-action="close"></a></li>
-                            </ul>
-                          </div>
-                </div>
-
-                <div class="panel-body">
-                  <div class="chart-container has-scroll">
-                    <div class="chart has-fixed-height has-minimum-width" id="infographic_donut"></div>
-                  </div>
-                </div>
-              </div>
-              <!-- /infographic style -->
-
-
               <!-- Nightingale roses width visible labels -->
               <div class="panel panel-flat">
                 <div class="panel-heading">
@@ -496,29 +405,6 @@
                 </div>
               </div>
               <!-- /nightingale roses width hidden labels -->
-
-
-              <!-- Pie chart timeline -->
-              <div class="panel panel-flat">
-                <div class="panel-heading">
-                  <h5 class="panel-title">Pie chart timeline</h5>
-                  <div class="heading-elements">
-                    <ul class="icons-list">
-                              <li><a data-action="collapse"></a></li>
-                              <li><a data-action="reload"></a></li>
-                              <li><a data-action="close"></a></li>
-                            </ul>
-                          </div>
-                </div>
-
-                <div class="panel-body">
-                  <div class="chart-container has-scroll">
-                    <div class="chart has-fixed-height has-minimum-width" id="pie_timeline"></div>
-                  </div>
-                </div>
-              </div>
-              <!-- /pie chart timeline -->
-
             </div>
           </div>
 
@@ -712,236 +598,6 @@
             </div>
           </div>
           <!-- /3D pie charts -->
-      <div class="panel panel-body text-center">
-        <div class="col-md-2">
-          <h6 class="text-semibold no-margin-bottom mt-5">January Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center" id="january1_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <h6 class="text-semibold no-margin-bottom mt-5">Febuary Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="febuary1_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <h6 class="text-semibold no-margin-bottom mt-5">March Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="march1_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <h6 class="text-semibold no-margin-bottom mt-5">April Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="april1_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <h6 class="text-semibold no-margin-bottom mt-5">May Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="may1_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <h6 class="text-semibold no-margin-bottom mt-5">June Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="june1_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <h6 class="text-semibold no-margin-bottom mt-5">July Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="july1_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <h6 class="text-semibold no-margin-bottom mt-5">August Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="august1_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <h6 class="text-semibold no-margin-bottom mt-5">September Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="september1_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <h6 class="text-semibold no-margin-bottom mt-5">October Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="october1_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <h6 class="text-semibold no-margin-bottom mt-5">November Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="november1_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <h6 class="text-semibold no-margin-bottom mt-5">December Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="december1_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div> 
 
       <!-- <div class="col-md-12">
