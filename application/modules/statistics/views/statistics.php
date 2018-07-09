@@ -1,530 +1,68 @@
  <!-- Content area -->
   <div class="content">
-    <?php //print "<pre>"; print_r($_SESSION); print "</pre>";?>
     <!-- Main charts -->
     <div class="row">
-      <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body panel-body-accent">
-          <div class="media no-margin">
-            <div class="media-left media-middle">
-              <i class="icon-hour-glass2 icon-3x text-info-400"></i>
-            </div>
-            <div class="media-body text-right">
-              <h3 class="no-margin text-semibold"><?=number_format($pending_orders)?></h3>
-              <span class="text-uppercase text-size-mini text-muted">Pending Orders </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body panel-body-accent">
-          <div class="media no-margin">
-            <div class="media-left media-middle">
-              <i class="icon-watch2 icon-3x text-warning-400"></i>
-            </div>
-            <div class="media-body text-right">
-              <h3 class="no-margin text-semibold"><?=number_format($overdue_orders)?></h3>
-              <span class="text-uppercase text-size-mini text-muted">OverDue Orders </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body panel-body-accent">
-          <div class="media no-margin">
-            <div class="media-left media-middle" style="padding-right: 0px">
-              <i class="icon-basket icon-3x text-success-400"></i>
-            </div>
-            <div class="media-body text-right">
-              <h3 class="no-margin text-semibold"><?=number_format($month_orders)?></h3>
-              <span class="text-uppercase text-size-mini text-muted">Successful Orders</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body panel-body-accent">
-          <div class="media no-margin">
-            <div class="media-left media-middle">
-              <i class="icon-basket icon-3x text-success-400"></i>
-            </div>
-            <div class="media-body text-right">
-              <h3 class="no-margin text-semibold"><?=number_format($month_orders)?></h3>
-              <span class="text-uppercase text-size-mini text-muted">Total Orders </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body panel-body-accent">
-          <div class="media no-margin">
-            <div class="media-left media-middle">
-              <i class="icon-cash2 icon-3x text-success-400"></i>
-            </div>
-            <div class="media-body text-right">
-              <h3 class="no-margin text-semibold"><?=number_format($month_orders)?></h3>
-              <span class="text-uppercase text-size-mini text-muted">Total Sales</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body panel-body-accent">
-          <div class="media no-margin">
-            <div class="media-left media-middle">
-              <i class="icon-cash2 icon-3x text-success-400"></i>
-            </div>
-            <div class="media-body text-right">
-              <h3 class="no-margin text-semibold"><?=number_format($month_orders)?></h3>
-              <span class="text-uppercase text-size-mini text-muted">Total Sales</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body text-center">
-          <h6 class="text-semibold no-margin-bottom mt-5">January Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="january_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
+      <div class="col-sm-6 col-md-9">
+        <!-- Statisics Widgets ---->
+        <div class="col-sm-6 col-md-3">
+          <div class="panel panel-body panel-body-accent">
+            <div class="media no-margin">
+              <div class="media-left media-middle">
+                <i class="icon-hour-glass2 icon-3x text-info-400"></i>
               </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
+              <div class="media-body text-right">
+                <h3 class="no-margin text-semibold"><?=number_format($daily_orders)?></h3>
+                <span class="text-uppercase text-size-mini text-muted">Today Orders </span>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body text-center">
-          <h6 class="text-semibold no-margin-bottom mt-5">Febuary Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="febuary_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
+        <div class="col-sm-6 col-md-3">
+          <div class="panel panel-body panel-body-accent">
+            <div class="media no-margin">
+              <div class="media-left media-middle" style="padding-right: 0px">
+                <i class="icon-basket icon-3x text-success-400"></i>
               </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
+              <div class="media-body text-right">
+                <h3 class="no-margin text-semibold"><?=number_format($pending_orders)?></h3>
+                <span class="text-uppercase text-size-mini text-muted">Total Pending</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body text-center">
-          <h6 class="text-semibold no-margin-bottom mt-5">March Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="march_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
+        <div class="col-sm-6 col-md-3">
+          <div class="panel panel-body panel-body-accent">
+            <div class="media no-margin">
+              <div class="media-left media-middle">
+                <i class="icon-watch2 icon-3x text-warning-400"></i>
               </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
+              <div class="media-body text-right">
+                <h3 class="no-margin text-semibold"><?=number_format($overdue_orders)?></h3>
+                <span class="text-uppercase text-size-mini text-muted">OverDue Orders </span>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body text-center">
-          <h6 class="text-semibold no-margin-bottom mt-5">April Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="april_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
+        <div class="col-sm-6 col-md-3">
+          <div class="panel panel-body panel-body-accent">
+            <div class="media no-margin">
+              <div class="media-left media-middle">
+                <i class="icon-basket icon-3x text-success-400"></i>
               </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
+              <div class="media-body text-right">
+                <h3 class="no-margin text-semibold"><?=number_format($monthly_orders)?></h3>
+                <span class="text-uppercase text-size-mini text-muted">Awaiting Delivery </span>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body text-center">
-          <h6 class="text-semibold no-margin-bottom mt-5">May Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="may_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body text-center">
-          <h6 class="text-semibold no-margin-bottom mt-5">June Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="june_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body text-center">
-          <h6 class="text-semibold no-margin-bottom mt-5">July Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="july_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body text-center">
-          <h6 class="text-semibold no-margin-bottom mt-5">August Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="august_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body text-center">
-          <h6 class="text-semibold no-margin-bottom mt-5">September Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="september_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body text-center">
-          <h6 class="text-semibold no-margin-bottom mt-5">October Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="october_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body text-center">
-          <h6 class="text-semibold no-margin-bottom mt-5">November Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="november_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-2">
-        <div class="panel panel-body text-center">
-          <h6 class="text-semibold no-margin-bottom mt-5">December Report</h6>
-          <div class="text-size-small text-muted content-group-sm">+24% since 2016</div>
-          <div class="svg-center"  id="december_report"></div>
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">23,568</h5>
-                <span class="text-muted text-size-small">Revenue</span>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="mt-20">
-                <h5 class="text-semibold no-margin">$9,464</h5>
-                <span class="text-muted text-size-small">Tax</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <!-- Nested pie charts -->
-        <div class="panel panel-flat">
-          <div class="panel-heading">
-            <h5 class="panel-title">Nested pie charts</h5>
-            <div class="heading-elements">
-              <ul class="icons-list">
-                <li><a data-action="collapse"></a></li>
-                <li><a data-action="reload"></a></li>
-                <li><a data-action="close"></a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="panel-body">
-            <div class="chart-container has-scroll">
-              <div class="chart has-fixed-height has-minimum-width" id="nested_pie"></div>
-            </div>
-          </div>
-        </div>
-        <!-- /nested pie charts -->
-
-            </div>
-
-            <div class="col-md-6">
-
-              <!-- Basic donut chart -->
-              <div class="panel panel-flat">
-                <div class="panel-heading">
-                  <h5 class="panel-title">Basic donut chart</h5>
-                  <div class="heading-elements">
-                    <ul class="icons-list">
-                              <li><a data-action="collapse"></a></li>
-                              <li><a data-action="reload"></a></li>
-                              <li><a data-action="close"></a></li>
-                            </ul>
-                          </div>
-                </div>
-
-                <div class="panel-body">
-                  <div class="chart-container has-scroll">
-                    <div class="chart has-fixed-height has-minimum-width" id="basic_donut"></div>
-                  </div>
-                </div>
-              </div>
-              <!-- /basic donut chart -->
-
-              <!-- Nightingale roses width visible labels -->
-              <div class="panel panel-flat">
-                <div class="panel-heading">
-                  <h5 class="panel-title">Nightingale roses (visible labels)</h5>
-                  <div class="heading-elements">
-                    <ul class="icons-list">
-                              <li><a data-action="collapse"></a></li>
-                              <li><a data-action="reload"></a></li>
-                              <li><a data-action="close"></a></li>
-                            </ul>
-                          </div>
-                </div>
-
-                <div class="panel-body">
-                  <div class="chart-container has-scroll">
-                    <div class="chart has-fixed-height has-minimum-width" id="rose_diagram_visible"></div>
-                  </div>
-                </div>
-              </div>
-              <!-- /nightingale roses width hidden labels -->
-            </div>
-          </div>
-
-
-          <!-- Multiple donut charts -->
-          <div class="panel panel-flat">
-            <div class="panel-heading">
-              <h5 class="panel-title">Multiple donuts</h5>
-              <div class="heading-elements">
-                <ul class="icons-list">
-                          <li><a data-action="collapse"></a></li>
-                          <li><a data-action="reload"></a></li>
-                          <li><a data-action="close"></a></li>
-                        </ul>
-                      </div>
-            </div>
-
-            <div class="panel-body">
-              <div class="chart-container has-scroll">
-                <div class="chart has-fixed-height has-minimum-width" id="multiple_donuts" style="height: 450px;"></div>
-              </div>
-            </div>
-          </div>
-          <!-- /multiple donut charts -->
-
-          <!-- Basic column chart -->
-          <div class="panel panel-flat">
-            <div class="panel-heading">
-              <h5 class="panel-title">Basic column chart</h5>
-              <div class="heading-elements">
-                <ul class="icons-list">
-                          <li><a data-action="collapse"></a></li>
-                          <li><a data-action="reload"></a></li>
-                          <li><a data-action="close"></a></li>
-                        </ul>
-                      </div>
-            </div>
-
-            <div class="panel-body">
-              <div class="chart-container">
-                <div class="chart has-fixed-height" id="basic_columns"></div>
-              </div>
-            </div>
-          </div>
-          <!-- /basic column chart -->
-
-          <!-- Columns timeline -->
-          <div class="panel panel-flat">
-            <div class="panel-heading">
-              <h5 class="panel-title">Columns timeline</h5>
-              <div class="heading-elements">
-                <ul class="icons-list">
-                          <li><a data-action="collapse"></a></li>
-                          <li><a data-action="reload"></a></li>
-                          <li><a data-action="close"></a></li>
-                        </ul>
-                      </div>
-            </div>
-
-            <div class="panel-body">
-              <div class="chart-container">
-                <div class="chart has-fixed-height" id="columns_timeline"></div>
-              </div>
-            </div>
-          </div>
-          <!-- /columns timeline -->
-
-          <!-- Stacked bar chart -->
-          <div class="panel panel-flat">
-            <div class="panel-heading">
-              <h5 class="panel-title">Stacked bar chart</h5>
-              <div class="heading-elements">
-                <ul class="icons-list">
-                          <li><a data-action="collapse"></a></li>
-                          <li><a data-action="reload"></a></li>
-                          <li><a data-action="close"></a></li>
-                        </ul>
-                      </div>
-            </div>
-
-            <div class="panel-body">
-              <div class="chart-container">
-                <div class="chart has-fixed-height" id="stacked_bars"></div>
-              </div>
-            </div>
-          </div>
-          <!-- /stacked bar chart -->
-
-          <!-- Tornado with negative stack -->
-          <div class="panel panel-flat">
-            <div class="panel-heading">
-              <h5 class="panel-title">Negative stack tornado</h5>
-              <div class="heading-elements">
-                <ul class="icons-list">
-                          <li><a data-action="collapse"></a></li>
-                          <li><a data-action="reload"></a></li>
-                          <li><a data-action="close"></a></li>
-                        </ul>
-                      </div>
-            </div>
-
-            <div class="panel-body">
-              <div class="chart-container">
-                <div class="chart has-fixed-height" id="tornado_bars_negative"></div>
-              </div>
-            </div>
-          </div>
-          <!-- /tornado with negative stack -->
-
+        
+        <!-- Graphs Reporting --->
+        <div class="col-md-12">
           <!-- Combination and connection -->
           <div class="panel panel-flat">
             <div class="panel-heading">
-              <h5 class="panel-title">Combination and connection</h5>
-              <div class="heading-elements">
-                <ul class="icons-list">
-                          <li><a data-action="collapse"></a></li>
-                          <li><a data-action="reload"></a></li>
-                          <li><a data-action="close"></a></li>
-                        </ul>
-                      </div>
+              <h5 class="panel-title">Services Report</h5>
             </div>
 
             <div class="panel-body">
@@ -534,7 +72,6 @@
                     <div class="chart has-fixed-height" id="connect_pie"></div>
                   </div>
                 </div>
-
                 <div class="col-lg-6">
                   <div class="chart-container">
                     <div class="chart has-fixed-height" id="connect_column"></div>
@@ -544,112 +81,110 @@
             </div>
           </div>
           <!-- /combination and connection -->
+        </div>
+        <!-- Graphs Reporting --->
+      </div>
 
-          <!-- Line and bar combination -->
-          <div class="panel panel-flat">
-            <div class="panel-heading">
-              <h5 class="panel-title">Line and bar combination</h5>
-              <div class="heading-elements">
-                <ul class="icons-list">
-                          <li><a data-action="collapse"></a></li>
-                          <li><a data-action="reload"></a></li>
-                          <li><a data-action="close"></a></li>
-                        </ul>
-                      </div>
-            </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="panel panel-white">
+          <div class="panel-heading">
+            <h5 class="panel-title">Announcements & Notices<a class="heading-elements-toggle"><i class="icon-more"></i></a></h5>
 
-            <div class="panel-body">
-              <div class="chart-container">
-                <div class="chart has-fixed-height" id="line_bar"></div>
-              </div>
-            </div>
+            <div class="heading-elements">
+              <a href="#" class="heading-text">See all →</a>
+                    </div>
           </div>
-          <!-- /line and bar combination -->
 
-          <!-- 3D pie charts -->
-          <div class="panel panel-flat">
-            <div class="panel-heading">
-              <h5 class="panel-title">3D pie charts</h5>
-              <div class="heading-elements">
-                <ul class="icons-list">
-                          <li><a data-action="collapse"></a></li>
-                          <li><a data-action="reload"></a></li>
-                          <li><a data-action="close"></a></li>
-                        </ul>
-                      </div>
-            </div>
-
-            <div class="panel-body">
-              <p class="content-group">A <code>3D pie</code> chart is used to give the chart a 3D look. Often used for aesthetic reasons, the third dimension does not improve the reading of the data; on the contrary, these plots are difficult to interpret because of the distorted effect of perspective associated with the third dimension. The use of superfluous dimensions not used to display the data of interest is discouraged for charts in general, not only for pie charts.</p>
-
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="chart-container text-center content-group">
-                    <div class="display-inline-block" id="google-pie-3d"></div>
-                  </div>
+          <div class="panel-body">
+            <ul class="media-list">
+              <li class="media">
+                <div class="media-left">
+                  <a href="#" class="btn border-primary text-primary btn-flat btn-icon btn-rounded btn-sm legitRipple">
+                    <i class="icon-spinner11"></i>
+                  </a>
                 </div>
 
-                <div class="col-md-6">
-                  <div class="chart-container text-center content-group">
-                    <div class="display-inline-block" id="google-3d-exploded"></div>
-                  </div>
+                <div class="media-body">
+                  <a href="#">David Linner</a> requested refund for a double card
+                  <div class="media-annotation">12 minutes ago</div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <!-- /3D pie charts -->
-    </div> 
+              </li>
 
-      <!-- <div class="col-md-12">
-        <div class="panel panel-body col-xs-9">
-          <div class="row text-center">
-            <div class="col-xs-2">
-              <p><i class="icon-hour-glass3 icon-2x display-inline-block text-info"></i></p>
-              <h5 class="text-semibold no-margin"><?=number_format($pending_orders)?></h5>
-              <span class="text-muted text-size-small">Pending Orders</span>
-            </div>
-            <div class="col-xs-2">
-              <p><i class="icon-hour-glass2 icon-2x display-inline-block text-info"></i></p>
-              <h5 class="text-semibold no-margin"><?=number_format($pending_orders)?></h5>
-              <span class="text-muted text-size-small">Processing Orders</span>
-            </div>
-            <div class="col-xs-2">
-              <p><i class="icon-watch2 icon-2x display-inline-block text-danger"></i></p>
-              <h5 class="text-semibold no-margin"><?=number_format($pending_orders)?></h5>
-              <span class="text-muted text-size-small">Overdue Orders</span>
-            </div>
-            <div class="col-xs-2">
-              <p><i class="icon-truck icon-2x display-inline-block text-danger"></i></p>
-              <h5 class="text-semibold no-margin"><?=number_format($pending_orders)?></h5>
-              <span class="text-muted text-size-small">Overdue Dispatch</span>
-            </div>
-            <div class="col-xs-2">
-              <p><i class="icon-cart5 icon-2x display-inline-block text-success"></i></p>
-              <h5 class="text-semibold no-margin"><?=number_format($month_orders)?></h5>
-              <span class="text-muted text-size-small">Successful Orders</span>
-            </div>
-            <div class="col-xs-2">
-              <p><i class="icon-cash2 icon-2x display-inline-block text-success"></i></p>
-              <h5 class="text-semibold no-margin">GHC 9,693</h5>
-              <span class="text-muted text-size-small">Daily Sales</span>
-            </div>
+              <li class="media">
+                <div class="media-left">
+                  <a href="#" class="btn border-danger text-danger btn-flat btn-icon btn-rounded btn-sm legitRipple">
+                    <i class="icon-infinite"></i>
+                  </a>
+                </div>
+
+                <div class="media-body">
+                  User <a href="#">Christopher Wallace</a> is awaiting for 
+                  <div class="media-annotation">16 minutes ago</div>
+                </div>
+              </li>
+
+              <li class="media">
+                  <div class="media-left">
+                    <a href="#" class="btn border-slate text-slate btn-flat btn-icon btn-rounded btn-sm legitRipple">
+                      <i class="icon-cash3"></i>
+                    </a>
+                  </div>
+
+                  <div class="media-body">
+                    All sellers have received monthly payouts
+                    <div class="media-annotation">4 hours ago</div>
+                  </div>
+                </li>
+            </ul>
           </div>
         </div>
-        <div class="panel panel-body col-xs-3">
-          <div class="row text-center">
-            <div class="col-xs-6">
-              <p><i class="icon-users2 icon-2x display-inline-block text-info"></i></p>
-              <h5 class="text-semibold no-margin"><?=number_format($total_users)?></h5>
-              <span class="text-muted text-size-small">users</span>
-            </div>
-            <div class="col-xs-6">
-              <p><i class="icon-users4 icon-2x display-inline-block text-warning"></i></p>
-              <h5 class="text-semibold no-margin"><?=number_format($total_customers)?></h5>
-              <span class="text-muted text-size-small">Customers</span>
-            </div>
+
+         <!-- Left aligned -->
+        <div class="panel panel-white"> 
+          <div class="panel-heading" style="padding-top: 5px; padding-bottom: 7px;">
+            <h5 class="content-group">
+              <span class="label label-flat label-rounded label-icon border-grey text-grey mr-10">
+                <i class="icon-statistics"></i>
+              </span>
+
+              <a href="#" class="text-default">
+                Last Work Timeline
+              </a>
+            </h5>
+
+            <div class="heading-elements">
+              <a href="#" class="heading-text">See all →</a>
+                    </div>
           </div>
-        </div>   
-      </div> -->
+          <div class="panel-body border-top-teal">
+            <ul class="list-feed list-feed-time">
+              <li class="border-warning-400">
+                <span class="feed-time text-muted">12:47</span>
+                <a href="#">David Linner</a> requested refund for a double bank card charge
+              </li>
+
+              <li class="border-info-400">
+                <span class="feed-time text-muted">10:25</span>
+                User <a href="#">Christopher Wallace</a> from Google is awaiting for staff reply
+              </li>
+
+              <li class="border-pink-400">
+                <span class="feed-time text-muted">09:37</span>
+                Ticket <strong>#43683</strong> has been resolved by <a href="#">Victoria Wilson</a>
+              </li>
+
+              <li class="border-danger-400">
+                <span class="feed-time text-muted">06:32</span>
+                <a href="#">Chris Arney</a> created a new ticket <strong>#43136</strong> and assigned to <a href="#">John Nod</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- /left aligned -->
+      </div>
+    </div>
+
+    </div> 
   </div>
   <!-- /main charts -->
 

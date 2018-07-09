@@ -46,9 +46,9 @@ class Model_retrieval extends CI_Model
       }
     }
     $query_result = $dbres->get($tablename);
-    //print $dbres->get_compiled_select($tablename);
+    //print $dbres->get_compiled_select($tablename,$condition); print "<br/><br/>";
     /*************** Query check ************/
-    if($query_result->num_rows() > 0) 
+    if($query_result->num_rows() >= 0) 
       $return_data = $query_result->result();
     else
       $return_data = ['DB_ERROR' => $dbres->error()];

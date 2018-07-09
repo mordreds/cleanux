@@ -20,6 +20,8 @@ class Statistics extends MX_Controller
         /****** Required Parameters To Render A Page ******/
         $this->load->model('access/model_access');
         $this->load->model('globals/model_retrieval');
+        $this->load->model('statistics/model_statistics');
+        $this->load->library('../../overview/controllers/overview');
         $data['_Default_DB'] = self::$_Default_DB;
          $data['page_controller'] = $this->uri->segment(1);
          $data['controller_function'] = $this->uri->segment(2);
@@ -46,8 +48,8 @@ class Statistics extends MX_Controller
           else
             $data['total_customers'] = 0;
           
-          # Total Pending Orders
           $tablename = "vw_orderlist_summary";
+          # Total Pending Orders
           $condition = "status IN ('Pending','Processing')";
           $pending_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
           if(!isset($pending_orders['DB_ERROR']))
@@ -55,23 +57,48 @@ class Statistics extends MX_Controller
           else
             $data['pending_orders'] = 0;
           
-          # Total Monthly Orders
-          $tablename = "vw_orderlist_summary";
-          $condition = "Month(date_created) = ".gmdate('m')." And status ='Delivered'";
-          $month_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
-          if(!isset($month_orders['DB_ERROR']))
-            $data['month_orders'] = sizeof($month_orders);
+          # Total Daily Orders Recieved
+          $condition = "DATE(date_created) = ".gmdate('Y-m-d')."";
+          $daily_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
+          print_r($daily_orders); exit;
+          if(!isset($daily_orders['DB_ERROR']))
+            $data['daily_orders'] = sizeof($daily_orders);
           else
-            $data['month_orders'] = 0;
+            $data['daily_orders'] = 0;
+
+          # Total Monthly Orders
+          $condition = "Month(date_created) = ".gmdate('m')." And status ='Delivered'";
+          $monthly_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
+          
+          if(!isset($monthly_orders['DB_ERROR']))
+            $data['monthly_orders'] = sizeof($monthly_orders);
+          else
+            $data['monthly_orders'] = 0;
           
           # Total Overdue Orders
-          $tablename = "vw_orderlist_summary";
           $condition = "due_date < Now() AND status != 'Delivered'";
           $overdue_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
           if(!isset($overdue_orders['DB_ERROR']))
             $data['overdue_orders'] = sizeof($overdue_orders);
           else
             $data['overdue_orders'] = 0;
+
+          # List Of All Services & Total Count
+          if(!empty($monthly_orders)) {
+            $services_count = array();
+            foreach ($monthly_orders as $order) {
+              $full_order_details = $this->overview->search_order_details_by_orderno($order->id,null,"PHP"); 
+              
+              foreach ($full_order_details as $key => $value) {
+                if(array_key_exists($value['service_name'], @$services_count)) 
+                  $services_count["'".$value['service_name']."'"] += 1;
+                else
+                  $services_count["'".$value['service_name']."'"] = 1;
+              }
+            }
+          }
+          $data['all_services_count'] = $services_count;
+          //print_r($services_count); exit;
         /****** Additional Functions  ****************/
 
         /***************** Interface *****************/

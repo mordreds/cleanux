@@ -210,7 +210,7 @@ class Overview extends MX_Controller
             $delivery_price = $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType,$select,$where_condition); 
             # Retrieve Tax Value
             $dbres = self::$_Default_DB;
-            $tablename = "tax_system";
+            $tablename = "settings_tax_system";
             $return_dataType = "php_object";
             $select = "MAX(id) as id";
             $where_condition = array();
@@ -268,7 +268,9 @@ class Overview extends MX_Controller
               unset($_SESSION['laundry']['new_order']);
               $this->session->set_flashdata('success', "Order Saving Successful");
               $this->session->set_flashdata('order_successful', $order_info_insert);
-
+              /******** Sending Email & SMS Notice ************/
+              
+              /******** Sending Email & SMS Notice ************/
               redirect($_SERVER['HTTP_REFERER']);
             }
             else {
@@ -575,7 +577,7 @@ class Overview extends MX_Controller
     /*******************************
       Search Order Details By Order No
     *******************************/  
-    public function search_order_details_by_orderno($order_id,$page = null) {
+    public function search_order_details_by_orderno($order_id,$page = null,$return_type="JSON") {
       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) {
         $return_data = ['error' => "Permission Denied. Contact Amin"];
         print_r(json_encode($return_data));
@@ -655,8 +657,11 @@ class Overview extends MX_Controller
         }
         else
           $return_data = array();
-        
-        print_r(json_encode($return_data));
+
+        if($return_type != "JSON")
+          return $return_data;
+        else
+          print_r(json_encode($return_data));
       }
     }
 
