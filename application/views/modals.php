@@ -1263,6 +1263,7 @@
           $('[name="modal_dept_name"]').val($(this).data('dept_name'));
           $('[name="modal_description"]').val($(this).data('description'));
           selectbox = $("#modal_p_dept");
+          selectbox.data("selectBox-selectBoxIt").refresh();
           selectbox.find("option:selected").removeAttr('selected');
           selectbox.find("option[value = "+$(this).data('parent_dept')+"]").attr('selected',"selected");
           selectbox.data("selectBox-selectBoxIt").refresh();

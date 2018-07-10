@@ -20,7 +20,6 @@ class Statistics extends MX_Controller
         /****** Required Parameters To Render A Page ******/
         $this->load->model('access/model_access');
         $this->load->model('globals/model_retrieval');
-        $this->load->model('statistics/model_statistics');
         $this->load->library('../../overview/controllers/overview');
         $data['_Default_DB'] = self::$_Default_DB;
          $data['page_controller'] = $this->uri->segment(1);
@@ -58,16 +57,16 @@ class Statistics extends MX_Controller
             $data['pending_orders'] = 0;
           
           # Total Daily Orders Recieved
-          $condition = "DATE(date_created) = ".gmdate('Y-m-d')."";
+          $condition = array('DATE(date_created)' => gmdate('Y-m-d'));
           $daily_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
-          print_r($daily_orders); exit;
+          
           if(!isset($daily_orders['DB_ERROR']))
             $data['daily_orders'] = sizeof($daily_orders);
           else
             $data['daily_orders'] = 0;
 
           # Total Monthly Orders
-          $condition = "Month(date_created) = ".gmdate('m')." And status ='Delivered'";
+          $condition = array('Month(date_created)' => gmdate('m'), 'status' => "Delivered");
           $monthly_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
           
           if(!isset($monthly_orders['DB_ERROR']))
