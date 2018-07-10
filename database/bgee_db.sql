@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2018 at 07:02 PM
+-- Generation Time: Jul 10, 2018 at 11:26 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.1.14
 
@@ -81,7 +81,24 @@ CREATE TABLE `access_login_successful` (
 --
 
 INSERT INTO `access_login_successful` (`id`, `user_id`, `time_in`, `time_out`, `online`, `user_agent`, `ipaddress`, `hostname`, `city_region`, `country`) VALUES
-(1, 1, '2018-07-03 15:59:41', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL);
+(1, 1, '2018-07-03 15:59:41', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
+(2, 1, '2018-07-03 21:15:31', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
+(3, 1, '2018-07-03 23:08:53', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
+(4, 1, '2018-07-04 10:38:03', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '192.168.3.40', 'London', ',', NULL),
+(5, 1, '2018-07-04 10:38:28', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.183 Safari/537.36 Vivaldi/1.96.1147.47', '192.168.3.22', 'LAPTOP-PP1FHF0I', ',', NULL),
+(6, 1, '2018-07-05 02:24:52', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
+(7, 1, '2018-07-05 09:51:23', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.183 Safari/537.36 Vivaldi/1.96.1147.52', '192.168.3.22', 'LAPTOP-PP1FHF0I', ',', NULL),
+(8, 1, '2018-07-05 16:08:59', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '192.168.3.40', 'London', ',', NULL),
+(9, 1, '2018-07-05 22:27:35', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
+(10, 1, '2018-07-06 06:50:02', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
+(11, 1, '2018-07-06 08:27:41', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
+(12, 1, '2018-07-06 15:22:24', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
+(13, 1, '2018-07-08 09:52:51', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
+(14, 1, '2018-07-08 17:19:41', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
+(15, 1, '2018-07-09 03:40:15', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
+(16, 1, '2018-07-09 20:50:34', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
+(17, 1, '2018-07-09 20:50:47', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
+(18, 1, '2018-07-09 23:10:25', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -181,6 +198,7 @@ CREATE TABLE `access_users` (
   `demo_user_id` int(11) NOT NULL,
   `first_login` tinyint(1) NOT NULL DEFAULT '0',
   `login_attempt` tinyint(1) NOT NULL DEFAULT '5',
+  `online` tinyint(4) NOT NULL,
   `status` enum('active','inactive','deleted','') CHARACTER SET utf8 NOT NULL DEFAULT 'active',
   `created_by` bigint(20) NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -190,8 +208,8 @@ CREATE TABLE `access_users` (
 -- Dumping data for table `access_users`
 --
 
-INSERT INTO `access_users` (`id`, `username`, `passwd`, `default_passwd`, `fullname`, `phone_number`, `temp_employee_id`, `biodata_id`, `demo_user_id`, `first_login`, `login_attempt`, `status`, `created_by`, `date_created`) VALUES
-(1, 'eahlijah@gmail.com', '$2y$10$O/swrfsJ6TbhtHiyzR7GmurgN4u49VcaMFzrOtZ9.3N511hoPhOVi', '', 'Edem Ahlijah', '023456789', '', 0, 1, 0, 5, 'active', 0, '2018-07-03 15:59:37');
+INSERT INTO `access_users` (`id`, `username`, `passwd`, `default_passwd`, `fullname`, `phone_number`, `temp_employee_id`, `biodata_id`, `demo_user_id`, `first_login`, `login_attempt`, `online`, `status`, `created_by`, `date_created`) VALUES
+(1, 'eahlijah@gmail.com', '$2y$10$O/swrfsJ6TbhtHiyzR7GmurgN4u49VcaMFzrOtZ9.3N511hoPhOVi', '', 'Edem Ahlijah', '023456789', '', 0, 1, 0, 5, 0, 'active', 0, '2018-07-03 15:59:37');
 
 -- --------------------------------------------------------
 
@@ -316,9 +334,11 @@ CREATE TABLE `hr_departments` (
 
 INSERT INTO `hr_departments` (`id`, `parent_department`, `name`, `description`, `status`, `date_created`) VALUES
 (1, 0, 'SYSTEM DEVELOPERS', 'THIS DEPARTMENTS ARE USED BY THE SYSTEM DEVELOPERS GROUP FOR THE MAINTENANCE OF THE SYSTEM VIA LOCAL OR REMOTELY. ', 'active', '2018-05-03 21:31:58'),
-(2, 0, 'Administration', 'Pending Some Contrary Rabbit Up That The More Conditionally Ouch Confidently Far So Was Darn Logic Thus Dove The Juicily Because That Placed Otter.', 'active', '2018-05-03 21:40:32'),
-(5, 2, 'Human Resource', 'Pending Some Contrary Rabbit Up That The More Conditionally Ouch Confidently Far So Was Darn Logic Thus Dove The Juicily Because That Placed Otter.', 'active', '2018-05-03 22:49:30'),
-(6, 0, 'Accounts', 'Handles All Matters Relating To Money Of The Company', 'active', '2018-05-08 19:38:39');
+(2, 0, 'ADMINISTRATION', 'Pending Some Contrary Rabbit Up That The More Conditionally Ouch Confidently Far So Was Darn Logic Thus Dove The Juicily Because That Placed Otter.', 'active', '2018-05-03 21:40:32'),
+(5, 0, 'HUMAN RESOURCE', 'Pending Some Contrary Rabbit Up That The More Conditionally Ouch Confidently Far So Was Darn Logic Thus Dove The Juicily Because That Placed Otter.', 'active', '2018-05-03 22:49:30'),
+(6, 0, 'ACCOUNTS', 'Handles All Matters Relating To Money Of The Company', 'active', '2018-05-08 19:38:39'),
+(7, 0, 'OPERATIONS', 'All Operational Roles', 'active', '2018-07-09 23:22:55'),
+(8, 7, 'LOGISTICS', 'Keeping All Accouterments', 'active', '2018-07-09 23:35:01');
 
 -- --------------------------------------------------------
 
@@ -431,7 +451,7 @@ CREATE TABLE `hr_employee_work_info` (
 INSERT INTO `hr_employee_work_info` (`id`, `biodata_id`, `employee_id`, `position_id`, `department_id`, `employment_type`, `employment_startdate`, `work_email`, `resume_id`, `application_id`, `date_created`) VALUES
 (1, 1, 'BG/EMP/001', 2, 1, '', NULL, NULL, NULL, 0, '2018-01-09 11:48:33'),
 (2, 3, 'BG/EMP/002', 2, 1, '', NULL, NULL, NULL, 0, '2018-01-11 13:06:57'),
-(3, 4, 'BG/EMP/003', 1, 1, '', NULL, NULL, NULL, 0, '2018-01-17 17:41:57');
+(3, 4, 'BG/EMP/003', 1, 5, '', NULL, NULL, NULL, 0, '2018-01-17 17:41:57');
 
 -- --------------------------------------------------------
 
@@ -583,8 +603,9 @@ INSERT INTO `laundry_orders` (`id`, `order_number`, `total_cost`, `amount_paid`,
 (6, '00705567', 80, 10, 70, 1, 6, 2, 4, 'Asawasi', '2018-02-02', 'Dispatch', 2, '2018-04-07 12:04:52', 0, 'Pending', '2018-01-16 08:45:13'),
 (7, '31945768', 40, 30, 10, 1, 4, 1, 2, 'Amasaman', '2018-01-21', 'Dispatch', 2, '2018-04-07 12:17:44', 0, 'Pending', '2018-01-20 13:57:14'),
 (8, '96991535', 30, 14, 16, 1, 6, 2, 2, 'none', '2018-01-22', 'Dispatch', 2, '2018-02-23 14:30:12', 0, 'Pending', '2018-01-21 08:41:48'),
-(9, '36579657', 50, 22, 28, 1, 7, 2, 4, 'taifa- Daavi', '2018-02-26', 'Dispatch', 2, '2018-04-07 12:18:05', 0, 'Pending', '2018-02-23 09:27:58'),
-(10, '94202363', 20, 15, 5, 1, 6, 2, 4, 'taifa', '2018-04-09', 'Pending', 0, NULL, 0, 'Pending', '2018-04-07 08:15:01');
+(9, '36579657', 50, 22, 28, 1, 7, 2, 4, 'taifa- Daavi', '2018-02-26', 'Delivered', 2, '2018-04-07 12:18:05', 0, 'Pending', '2018-07-06 09:27:58'),
+(10, '94202363', 20, 15, 5, 1, 6, 2, 4, 'taifa', '2018-04-09', 'Pending', 0, NULL, 0, 'Pending', '2018-04-07 08:15:01'),
+(11, '43247490', 15, 15, 0, 1, 6, 1, 6, 'At Office', '2018-07-09', 'Delivered', 0, NULL, 0, 'Pending', '2018-07-06 11:41:00');
 
 -- --------------------------------------------------------
 
@@ -666,7 +687,8 @@ INSERT INTO `laundry_order_details` (`id`, `order_id`, `pricelist_ids`, `quantit
 (7, 7, '3|6', '3|4', '5|10', '15|10', '|2 boxers, 2 singlets', '', '', '', '2018-01-20 13:57:14'),
 (8, 8, '7', '2', '15', '15', 'jean', '', '', '', '2018-01-21 08:41:48'),
 (9, 9, '5|7', '1|5', '30|15', '30|15', '|towel', '', '', '', '2018-02-23 09:27:58'),
-(10, 10, '7', '1', '15', '15', 'blanket', '', '', '', '2018-04-07 08:15:01');
+(10, 10, '7', '1', '15', '15', 'blanket', '', '', '', '2018-04-07 08:15:01'),
+(11, 11, '7', '2', '15', '15', 'shirts', '', '', '', '2018-07-06 11:41:00');
 
 -- --------------------------------------------------------
 
@@ -1350,7 +1372,7 @@ ALTER TABLE `access_login_failed`
 -- AUTO_INCREMENT for table `access_login_successful`
 --
 ALTER TABLE `access_login_successful`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=2;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `access_password_reset_requests`
@@ -1410,7 +1432,7 @@ ALTER TABLE `hr_company_info`
 -- AUTO_INCREMENT for table `hr_departments`
 --
 ALTER TABLE `hr_departments`
-  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `hr_employee_biodata`
@@ -1464,7 +1486,7 @@ ALTER TABLE `laundry_garments`
 -- AUTO_INCREMENT for table `laundry_orders`
 --
 ALTER TABLE `laundry_orders`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `laundry_order_balances`
@@ -1482,7 +1504,7 @@ ALTER TABLE `laundry_order_comments`
 -- AUTO_INCREMENT for table `laundry_order_details`
 --
 ALTER TABLE `laundry_order_details`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `laundry_prices`
