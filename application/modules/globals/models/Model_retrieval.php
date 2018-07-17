@@ -14,6 +14,59 @@ class Model_retrieval extends CI_Model
 	}
 
   /*******************************
+    Return Data Array
+  *******************************/
+  public function retrieve_allinfo($dbres,$tablename,$condition=array(),$return_dataType="php_object") 
+  {
+
+    # Selecting Sepecific Fields  ==> $condition['fields'] = array('id','name') }
+    $select_fields = (@$condition['fields']) ? @$condition['fields'] : array();
+    if(!empty($select_fields))
+      $dbres->select(implode(",", @$select_fields));
+    
+    # Retrieving Data By Condition
+    $where_condition = (@$condition['where_condition']) ? @$condition['where_condition'] : array();
+    if(!empty($where_condition))
+      $dbres->where($where_condition);
+
+    # Retrieving Data By Condition ==> 'wherein_condition' => array('status' => 'Pending,Processing')
+    $wherein_condition = (@$condition['wherein_condition']) ? @$condition['wherein_condition'] : array();
+    if(!empty($wherein_condition)) {
+      foreach ($wherein_condition as $key => $value) { 
+        $list = explode(',', $value);
+        $dbres->where_in($key,$list); 
+      }
+    }
+    
+    # Ordering Data with OrderBY Condition ==> $condition['order_by' => array('id'=>"Desc",'name'=>ASC)]
+    $orderby = @$condition['orderby'];
+    if(!empty($orderby)) {
+      foreach ($orderby as $key => $value) { $dbres->order_by($key,$value); }
+    }
+
+    # Setting Limit For Data ==> $condition['limit'] = array('0','5')
+    $data_limit = @$condition['limit'];
+    if(!empty($data_limit)) 
+      $dbres->limit($data_limit[0],$data_limit[1]);
+    
+    
+    # Running DB Query
+    $query_result = $dbres->get($tablename);
+    //print_r($dbres->get_compiled_select($tablename));
+    /*************** Query check ************/
+    if($query_result->num_rows() >= 0) 
+      $return_data = $query_result->result();
+    else
+      $return_data = ['DB_ERROR' => $dbres->error()];
+    /*************** Query check ************/
+    
+    if($return_dataType == "json")          
+      return json_encode($return_data);
+    else 
+      return ($return_data);
+  }
+
+  /*******************************
     Return Count of Result
   *******************************/
   public function return_count($dbres,$tablename,$return_dataType="php_object",$where_condition=array()) 
@@ -25,34 +78,6 @@ class Model_retrieval extends CI_Model
       $return_data = $query_result->num_rows();
     else
       $return_data = 0;
-    
-    if($return_dataType == "json")          
-      return json_encode($return_data);
-    else 
-      return ($return_data);
-  }
-  
-  /*******************************
-    Return Array of Information
-  *******************************/
-  public function retrieve_allinfo($dbres,$tablename,$return_dataType="php_object",$condition=array(),$orderby = array()) 
-  {
-    $dbres->where($condition); 
-
-    if($orderby) {
-      foreach ($orderby as $key => $value) {
-        # code...
-        $dbres->order_by($key,$value); 
-      }
-    }
-    $query_result = $dbres->get($tablename);
-    //print $dbres->get_compiled_select($tablename,$condition); print "<br/><br/>";
-    /*************** Query check ************/
-    if($query_result->num_rows() >= 0) 
-      $return_data = $query_result->result();
-    else
-      $return_data = ['DB_ERROR' => $dbres->error()];
-    /*************** Query check ************/
     
     if($return_dataType == "json")          
       return json_encode($return_data);

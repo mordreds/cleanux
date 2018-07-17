@@ -62,7 +62,7 @@
           <!-- Combination and connection -->
           <div class="panel panel-flat">
             <div class="panel-heading">
-              <h5 class="panel-title">Services Report</h5>
+              <h5 class="panel-title">Monthly & Weekely Report</h5>
             </div>
 
             <div class="panel-body">
