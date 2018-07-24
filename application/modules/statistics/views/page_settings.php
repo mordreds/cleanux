@@ -73,7 +73,7 @@
                   legend: {
                       orient: 'vertical',
                       x: 'left',
-                      data: [<?=implode(', ', array_keys($all_services_count))?>]
+                      data: [<?=implode(', ', array_keys($monthly_services_count))?>]
                   },
 
                   // Enable drag recalculate
@@ -87,7 +87,7 @@
                       center: ['50%', '57.5%'],
                       data: [
                         <?php 
-                          foreach ($all_services_count as $key => $value) {
+                          foreach ($monthly_services_count as $key => $value) {
                             print "{value: ".$value.", name: ".$key."},";
                           }
                         ?>
@@ -160,36 +160,14 @@
 
                   // Add series
                   series: [
+                      <?php if(!empty($all_weekly_orders)) { foreach($all_weekly_orders as $key => $value) { ?>
                       {
-                          name: 'Internet Explorer',
+                          name: '<?=$key?>',
                           type: 'bar',
                           stack: 'Total',
-                          data: [320, 332, 301, 334, 390, 330, 320]
+                          data: [<?=implode(', ',array_values($value))?>]
                       },
-                      {
-                          name: 'Opera',
-                          type: 'bar',
-                          stack: 'Total',
-                          data: [120, 132, 101, 134, 90, 230, 210]
-                      },
-                      {
-                          name: 'Safari',
-                          type: 'bar',
-                          stack: 'Total',
-                          data: [220, 182, 191, 234, 290, 330, 310]
-                      },
-                      {
-                          name: 'Firefox',
-                          type: 'bar',
-                          stack: 'Total',
-                          data: [150, 232, 201, 154, 190, 330, 410]
-                      },
-                      {
-                          name: 'Chrome',
-                          type: 'bar',
-                          stack: 'Total',
-                          data: [820, 932, 901, 934, 1290, 1330, 1320]
-                      }
+                    <?php } } ?>
                   ]
               };
 

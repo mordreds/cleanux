@@ -34,8 +34,8 @@ class Settings extends MX_Controller
           $dbres = self::$_Default_DB;
           $tablename = "hr_company_info";
           $return_dataType="php_object";
-          $condition = array('id' => 1);
-          $company_info = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
+          $condition = ['where_condition' => array('id' => 1)];
+          $company_info = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
 
           if(isset($company_info['ERR']['message'])) {
             $data['company_info'] = "";
@@ -71,13 +71,14 @@ class Settings extends MX_Controller
           $data['page_controller'] = $this->uri->segment(1);
           $data['controller_function'] = $this->uri->segment(2); 
           /****** Required Parameters To Render A Page ******/
+          
           /****** Additional Functions  ****************/
           $dbres = self::$_Default_DB;
           $tablename = "laundry_services";
-          $condition = array('status' => "active");
-
-          $data['services'] = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType="php_object",$condition); 
+          $condition = ['where_condition' => array('status' => "active")];
+          $data['services'] = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType="php_object"); 
           /****** Additional Functions  ****************/
+          
           /***************** Interface *****************/
           $data['title'] = "New Registration"; 
           $this->load->view('header',$data); 

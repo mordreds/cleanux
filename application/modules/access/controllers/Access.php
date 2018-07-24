@@ -328,7 +328,7 @@ class Access extends MX_Controller
                       else
                         $session_array['companyinfo']['name'] = "Company Name" ;
                     /************************ End of Company Info ********************/
-                    //print "<pre>"; print_r($companyinfo); print "</pre>"; exit;
+                    //print "<pre>"; print_r($user); print "</pre>"; exit;
                     /************************ User Roles & Priviledges ********************/
                       if(!empty($user) && $user->user_roles_status == "active") {
                         $custom_roles = $user->custom_roles;

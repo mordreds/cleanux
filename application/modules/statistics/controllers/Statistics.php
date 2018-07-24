@@ -20,13 +20,16 @@ class Statistics extends MX_Controller
         /****** Required Parameters To Render A Page ******/
           $this->load->model('access/model_access');
           $this->load->model('globals/model_retrieval');
-          $this->load->library('../../overview/controllers/overview');
           $data['_Default_DB'] = self::$_Default_DB;
-           $data['page_controller'] = $this->uri->segment(1);
-           $data['controller_function'] = $this->uri->segment(2);
+          $data['page_controller'] = $this->uri->segment(1);
+          $data['controller_function'] = $this->uri->segment(2);
         /****** Required Parameters To Render A Page ******/
 
         /****** Additional Functions  ****************/
+          # Including Controller Overview
+            require_once(APPPATH.'modules/overview/controllers/Overview.php');
+            $overview_controller = new Overview();
+           
           # Global Variable Declaration
             $dbres = self::$_Default_DB;
             $return_dataType="php_object";
@@ -98,12 +101,27 @@ class Statistics extends MX_Controller
               $data['overdue_orders'] = sizeof($overdue_orders);
             else
               $data['overdue_orders'] = 0;
+          
+          # Retrieving all services
+          $tablename = "laundry_services";
+          $condition = [
+            'fields' => array('id','name','code'),
+            'where_condition' => array('status' => "active")
+          ];
+          $all_services = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
+          if(!empty($all_services)) {
+            foreach ($all_services as $key => $value) {
+              @$services_ref[$value->id] = $services_ref[$value->name];
+            }
+          }
 
+          print "<pre>"; print_r(@$services_ref); print "</pre> <br/><br/>";
+          exit;
           # Total Monthly Services Stats
             if(!empty($monthly_orders)) {
               $services_count = array();
               foreach ($monthly_orders as $order) {
-                $full_order_details = $this->overview->search_order_details_by_orderno($order->id,null,"PHP"); 
+                $full_order_details = $overview_controller->search_order_details_by_orderno($order->id,null,$return_dataType); 
                 
                 foreach ($full_order_details as $key => $value) {
                   if(array_key_exists($value['service_name'], @$services_count)) 
@@ -114,36 +132,22 @@ class Statistics extends MX_Controller
               }
             }
             $data['monthly_services_count'] = $services_count;
-          
-          # Retrieving all services into array
-            $tablename = "vw_laundry_prices";
-            $condition = [
-              'fields' => array('id','service_name'),
-              'where_condition' => array('status' => "active")
-            ];
-            $all_prices = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
+
+          # Retrieving all services thru prices
+            // $tablename = "vw_laundry_prices";
+            // $condition = [
+            //   'fields' => array('id','service_name'),
+            //   'where_condition' => array('status' => "active")
+            // ];
+            // $all_prices = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
             
-            if(isset($all_prices['DB_ERROR'])) 
-              $this->session->set_flashdata('error', $all_prices['DB_ERROR']);
-            else {
-              foreach ($all_prices as $prices) { $services_array[$prices->id] = $prices->service_name; }
-            }
-            
-          /*# Total Weekly Services Stats
-            if(!empty($weekly_orders)) {
-              $weekly_orders = array();
-              foreach ($weekly_orders as $order) {
-                $full_order_details = $this->overview->search_order_details_by_orderno($order->id,null,"PHP"); 
-                
-                foreach ($full_order_details as $key => $value) {
-                  if(array_key_exists($value['service_name'], @$weekly_orders)) 
-                    $weekly_orders["'".$value['service_name']."'"] += 1;
-                  else
-                    $weekly_orders["'".$value['service_name']."'"] = 1;
-                }
-              }
-          }*/
-          
+            // if(isset($all_prices['DB_ERROR'])) 
+            //   $this->session->set_flashdata('error', $all_prices['DB_ERROR']);
+            // else {
+            //   foreach ($all_prices as $prices) { $services_array[$prices->id] = $prices->service_name; }
+            // }
+            // print "<pre>"; print_r($services_count); print "</pre>"; exit;
+
           # Setting Weekly Dates
             $weekstart = date('Y-m-d',strtotime('monday this week'));
             $weekstop = date('Y-m-d',strtotime('sunday this week 23:59:59'));
@@ -152,46 +156,53 @@ class Statistics extends MX_Controller
 
           # Retrieving data from weekly date
             $tablename = "vw_orderlist_summary";
-
+            
             for($forloop_start; $forloop_start <= $forloop_stop; $forloop_start++) {
               $search_date = date('Y-m-d',strtotime($forloop_start));
               $condition = [
                 'where_condition' => array('DATE(date_created)' => $search_date , 'status !=' => "Delivered")
               ];
-              $a_days_record = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
-              
-              if(!empty($a_days_record)) {
-                # Querying Order Details
+              $adays_record = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
+             
+              # Querying Order Details
+              if(!empty($adays_record)) {
                 $tablename_2 = "laundry_order_details";
-                foreach ($a_days_record as $week_orders) {
+                foreach ($adays_record as $weekly_order) {
                   $condition = [
-                    'where_condition' => array('order_id' => $week_orders->id),
+                    'where_condition' => array('order_id' => $weekly_order->id),
                   ];
                   $record_details = $this->model_retrieval->retrieve_allinfo($dbres,$tablename_2,$condition,$return_dataType);
-
-                  if(!empty($record_details)) {
-                    $temp_price_list = explode('|', $record_details[0]->pricelist_ids);
-                    if(!empty($temp_price_list)) {
-                      foreach ($temp_price_list as $price) {
-                        if(array_key_exists($price, $services_array))
-                      }
+                  
+                  $temp_price_list = explode('|', $record_details[0]->pricelist_ids);
+                  if(!empty($temp_price_list)) {
+                    foreach ($temp_price_list as $price) {
+                      if(array_key_exists($price, $services_array)) 
+                        @$weekly_orders[$services_array[$price]][date('l',strtotime($search_date))] += 1;
+                      else
+                        $weekly_orders[$services_array[$price]][date('l',strtotime($search_date))] = 1;
                     }
+                  }
+                  else {
+                    $weekly_orders[$services_array[$price]][date('l',strtotime($search_date))] = 0;
                   }
                 }
               }
-
-              //print date('l',strtotime($forloop_start))."<br/><br/> ";
-
-              //print "<pre>"; print_r($orders); print "</pre> <br/><br/>";
+              else {
+                foreach ($services_count as $key => $value) {
+                  $weekly_orders[$services_array[$price]][date('l',strtotime($search_date))];
+                }
+              }
             }
+            $data['all_weekly_orders'] = $weekly_orders;
+            print "<pre>"; print_r($weekly_orders); print "</pre> <br/><br/>";
             exit;
         /****** Additional Functions  ****************/  
 
         /***************** Interface *****************/
-        $data['title'] = "Statistics"; 
-        $this->load->view('header',$data); 
-        $this->load->view('statistics',$data); 
-        $this->load->view('footer'); 
+          $data['title'] = "Statistics"; 
+          $this->load->view('header',$data); 
+          $this->load->view('statistics',$data); 
+          $this->load->view('footer'); 
         /***************** Interface *****************/
       }
     }
