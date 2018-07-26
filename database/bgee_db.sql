@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 24, 2018 at 06:00 AM
+-- Generation Time: Jul 26, 2018 at 09:35 AM
 -- Server version: 5.7.21-0ubuntu0.16.04.1
 -- PHP Version: 7.0.28-0ubuntu0.16.04.1
 
@@ -105,7 +105,9 @@ INSERT INTO `access_login_successful` (`id`, `user_id`, `time_in`, `time_out`, `
 (24, 1, '2018-07-22 14:14:02', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
 (25, 1, '2018-07-22 17:26:08', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
 (26, 1, '2018-07-22 23:09:56', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
-(27, 1, '2018-07-23 22:45:57', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL);
+(27, 1, '2018-07-23 22:45:57', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
+(28, 1, '2018-07-25 19:37:16', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
+(29, 1, '2018-07-26 08:03:11', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -598,22 +600,6 @@ CREATE TABLE `laundry_orders` (
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `laundry_orders`
---
-
-INSERT INTO `laundry_orders` (`id`, `order_number`, `total_cost`, `amount_paid`, `balance`, `tax_id`, `client_id`, `processor_user_id`, `delivery_method_id`, `delivery_location`, `due_date`, `status`, `modified_by`, `modified_date`, `delivered_by`, `processing_stages`, `date_created`) VALUES
-(2, '46844374', 20, 20, 0, 1, 5, 1, 5, 'Pickup', '2018-01-12', 'Delivered', 1, '2018-01-18 17:19:57', 0, 'Pending', '2018-01-09 12:08:03'),
-(3, '08547680', 355, 200, 155, 1, 2, 1, 2, 'Kaneshie First light', '2018-01-13', 'Dispatch', 2, '2018-01-28 01:18:23', 0, 'Pending', '2018-01-09 12:10:42'),
-(4, '34616706', 65, 65, 0, 1, 3, 1, 5, 'pickup', '2018-01-13', 'Delivered', 1, '2018-01-18 17:20:21', 0, 'Pending', '2018-01-11 15:32:11'),
-(5, '61591005', 20, 20, 0, 1, 2, 1, 5, 'Pickup', '2018-01-18', 'Delivered', 1, '2018-01-20 19:01:00', 0, 'Pending', '2018-01-16 00:44:06'),
-(6, '00705567', 80, 10, 70, 1, 6, 2, 4, 'Asawasi', '2018-02-02', 'Dispatch', 2, '2018-04-07 12:04:52', 0, 'Pending', '2018-01-16 08:45:13'),
-(7, '31945768', 40, 30, 10, 1, 4, 1, 2, 'Amasaman', '2018-01-21', 'Dispatch', 2, '2018-04-07 12:17:44', 0, 'Pending', '2018-01-20 13:57:14'),
-(8, '96991535', 30, 14, 16, 1, 6, 2, 2, 'none', '2018-01-22', 'Dispatch', 2, '2018-02-23 14:30:12', 0, 'Pending', '2018-01-21 08:41:48'),
-(9, '36579657', 50, 22, 28, 1, 7, 2, 4, 'taifa- Daavi', '2018-02-26', 'Delivered', 2, '2018-04-07 12:18:05', 0, 'Pending', '2018-07-06 09:27:58'),
-(10, '94202363', 20, 15, 5, 1, 6, 2, 4, 'taifa', '2018-04-09', 'Pending', 0, NULL, 0, 'Pending', '2018-07-19 08:15:01'),
-(11, '43247490', 15, 15, 0, 1, 6, 1, 6, 'At Office', '2018-07-09', 'Processing', 0, NULL, 0, 'Pending', '2018-07-18 11:41:00');
-
 -- --------------------------------------------------------
 
 --
@@ -629,13 +615,6 @@ CREATE TABLE `laundry_order_balances` (
   `payment_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `laundry_order_balances`
---
-
-INSERT INTO `laundry_order_balances` (`id`, `order_id`, `balance_paid`, `user_id`, `status`, `payment_date`) VALUES
-(1, 8, 16, 2, 'Paid', '2018-04-09 04:19:08');
-
 -- --------------------------------------------------------
 
 --
@@ -650,15 +629,6 @@ CREATE TABLE `laundry_order_comments` (
   `status` enum('active','inactive') NOT NULL DEFAULT 'active',
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `laundry_order_comments`
---
-
-INSERT INTO `laundry_order_comments` (`id`, `order_id`, `user_id`, `comment`, `status`, `date_created`) VALUES
-(1, 2, 1, 'process ASAP', 'active', '2018-01-16 12:48:19'),
-(2, 3, 1, 'i tear the shada', 'active', '2018-01-20 14:01:37'),
-(3, 8, 2, 'customer will come for item on Wednesday', 'active', '2018-04-07 08:06:30');
 
 -- --------------------------------------------------------
 
@@ -676,26 +646,8 @@ CREATE TABLE `laundry_order_details` (
   `description` varchar(100) NOT NULL,
   `service_status` varchar(255) NOT NULL,
   `status_change_userids` varchar(255) NOT NULL,
-  `status_change_dates` text NOT NULL,
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `status_change_dates` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `laundry_order_details`
---
-
-INSERT INTO `laundry_order_details` (`id`, `order_id`, `pricelist_ids`, `quantities`, `unit_prices`, `total_sums`, `description`, `service_status`, `status_change_userids`, `status_change_dates`, `date_created`) VALUES
-(1, 1, '3', '5', '5', '25', '', '', '', '', '2017-12-30 15:03:27'),
-(2, 2, '3', '4', '5', '20', '', '', '', '', '2018-01-09 12:08:03'),
-(3, 3, '3|2', '60|5', '5|40', '300|40', '|5 Blankets', '', '', '', '2018-01-09 12:10:42'),
-(4, 4, '2|3', '10|5', '40|5', '40|25', '10 kingsize pillow cases|', '', '', '', '2018-01-11 15:32:11'),
-(5, 5, '3', '4', '5', '20', '', '', '', '', '2018-01-16 00:44:06'),
-(6, 6, '5|7', '2|3', '30|15', '60|15', '|a', '', '', '', '2018-01-16 08:45:13'),
-(7, 7, '3|6', '3|4', '5|10', '15|10', '|2 boxers, 2 singlets', '', '', '', '2018-01-20 13:57:14'),
-(8, 8, '7', '2', '15', '15', 'jean', '', '', '', '2018-01-21 08:41:48'),
-(9, 9, '5|7', '1|5', '30|15', '30|15', '|towel', '', '', '', '2018-02-23 09:27:58'),
-(10, 10, '7', '1', '15', '15', 'blanket', '', '', '', '2018-04-07 08:15:01'),
-(11, 11, '7|5', '2|2', '15|30', '90', 'shirts', '', '', '', '2018-07-06 11:41:00');
 
 -- --------------------------------------------------------
 
@@ -723,7 +675,7 @@ INSERT INTO `laundry_prices` (`id`, `service_id`, `weight_id`, `garment_id`, `am
 (3, 4, 0, 1, 5, 'active', '2017-12-28 04:56:21'),
 (4, 2, 1, 5, 20, 'active', '2018-01-16 08:38:47'),
 (5, 2, 2, 5, 30, 'active', '2018-01-16 08:39:17'),
-(6, 1, 1, 5, 10, 'active', '2018-01-16 08:39:53'),
+(6, 1, 1, 0, 10, 'active', '2018-01-16 08:39:53'),
 (7, 1, 2, 5, 15, 'active', '2018-01-16 08:40:15');
 
 -- --------------------------------------------------------
@@ -773,8 +725,7 @@ CREATE TABLE `laundry_weights` (
 
 INSERT INTO `laundry_weights` (`id`, `service_type`, `weight`, `description`, `status`, `date_created`) VALUES
 (1, 1, '1 - 10 KG', '', 'active', '2017-12-27 19:30:48'),
-(2, 1, '15 - 30 KG', '', 'active', '2017-12-27 19:33:34'),
-(3, 3, '1 - 10 KG', 'Blowing With Dryer', 'deleted', '2017-12-27 19:34:20');
+(2, 1, '15 - 30 KG', '', 'active', '2017-12-27 19:33:34');
 
 -- --------------------------------------------------------
 
@@ -1368,7 +1319,7 @@ ALTER TABLE `access_login_failed`
 -- AUTO_INCREMENT for table `access_login_successful`
 --
 ALTER TABLE `access_login_successful`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=28;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `access_password_reset_requests`
 --
@@ -1463,22 +1414,22 @@ ALTER TABLE `laundry_garments`
 -- AUTO_INCREMENT for table `laundry_orders`
 --
 ALTER TABLE `laundry_orders`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `laundry_order_balances`
 --
 ALTER TABLE `laundry_order_balances`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `laundry_order_comments`
 --
 ALTER TABLE `laundry_order_comments`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `laundry_order_details`
 --
 ALTER TABLE `laundry_order_details`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `laundry_prices`
 --
@@ -1493,7 +1444,7 @@ ALTER TABLE `laundry_services`
 -- AUTO_INCREMENT for table `laundry_weights`
 --
 ALTER TABLE `laundry_weights`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `settings_dashboard_tabs`
 --
