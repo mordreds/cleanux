@@ -3,7 +3,7 @@
     <!-- Main charts -->
     <div class="row">
       <div class="col-sm-6 col-md-9">
-        <!-- Statisics Widgets ---->
+        <!-- Statisics Widgets -->
         <div class="col-sm-6 col-md-3">
           <div class="panel panel-body panel-body-accent">
             <div class="media no-margin">
@@ -57,12 +57,12 @@
           </div>
         </div>
         
-        <!-- Graphs Reporting --->
+        <!-- Graphs Reporting -->
         <div class="col-md-12">
           <!-- Combination and connection -->
           <div class="panel panel-flat">
             <div class="panel-heading">
-              <h5 class="panel-title">Monthly & Weekely Report</h5>
+              <h5 class="panel-title">Report Overview</h5>
             </div>
 
             <div class="panel-body">
@@ -82,7 +82,7 @@
           </div>
           <!-- /combination and connection -->
         </div>
-        <!-- Graphs Reporting --->
+        <!-- Graphs Reporting -->
       </div>
 
       <div class="col-sm-6 col-md-3">

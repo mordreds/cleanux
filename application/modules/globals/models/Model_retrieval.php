@@ -37,6 +37,15 @@ class Model_retrieval extends CI_Model
         $dbres->where_in($key,$list); 
       }
     }
+
+    # Retrieving Data By Condition ==> 'where_not_in_condition' => array('status' => 'Pending,Processing')
+    $wherein_condition = (@$condition['where_not_in_condition']) ? @$condition['where_not_in_condition'] : array();
+    if(!empty($wherein_condition)) {
+      foreach ($wherein_condition as $key => $value) { 
+        $list = explode(',', $value);
+        $dbres->where_not_in($key,$list); 
+      }
+    }
     
     # Ordering Data with OrderBY Condition ==> $condition['order_by' => array('id'=>"Desc",'name'=>ASC)]
     $orderby = @$condition['orderby'];

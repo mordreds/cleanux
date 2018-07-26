@@ -625,11 +625,12 @@ class Overview extends MX_Controller
                 $description = $pricelist_query_result->garment_name;
 
               $return_data_array[] = [
+                'price_list_id' => $pricelist_query_result->id,
                 'service_name' => $pricelist_query_result->service_name,
                 'description' => $description,
                 'quantity' => $quantities[$a],
-                'unit_price' => $unit_prices[$a],
-                'total_sums' => $total_sums[$a],
+                'unit_price' => @$unit_prices[$a],
+                'total_sums' => @$total_sums[$a],
                 'status'  => @$status[$a],
                 'changed_by' => @$changed_by[$a],
                 'change_date' => @$change_date[$a],

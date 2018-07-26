@@ -160,7 +160,7 @@
 
                   // Add series
                   series: [
-                      <?php if(!empty($all_weekly_orders)) { foreach($all_weekly_orders as $key => $value) { ?>
+                      <?php if(!empty($weekly_report)) { foreach($weekly_report as $key => $value) { ?>
                       {
                           name: '<?=$key?>',
                           type: 'bar',

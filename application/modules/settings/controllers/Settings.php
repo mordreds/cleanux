@@ -864,7 +864,7 @@ class Settings extends MX_Controller
 
         }
         else {
-          $condition = array('status' => "active");
+          $condition = ['where_condition' => array('status' => "active")];
         }
 
         if($table == "services") {
@@ -905,13 +905,13 @@ class Settings extends MX_Controller
         if($table == "inhouse_orders") {
           $tablename = "vw_orderlist_summary";
           $return_dataType = "json";
-          $condition = "status not in ('Cancelled','Dispatch','Delivered')" /*array('status !=' => "Completed",'status !=' => "Dispatch",'status !=' => "Delivered")*/;
+          $condition = ['where_not_in_condition' => array("status" => "'Cancelled','Dispatch','Delivered'")];
         }
 
         if($table == "dispatch_orders") {
           $tablename = "vw_orderlist_summary";
           $return_dataType = "json";
-          $condition = array('status' => "Dispatch");
+          $condition = ['where_condition' => array('status' => "Dispatch")];
           $orderby = array('modified_date' => "DESC");
         }
 
@@ -924,7 +924,7 @@ class Settings extends MX_Controller
             $orderby = array('id' => "ASC");
           }
           else {
-            $condition = array('id !=' => "1", 'status !=' => "deleted");
+            $condition = ['where_condition' => array('id !=' => "1", 'status !=' => "deleted")];
             $orderby = array('id' => "ASC");
           }
         }
@@ -938,12 +938,12 @@ class Settings extends MX_Controller
             $orderby = array('id' => "ASC");
           }
           else {
-            $condition = array('id !=' => "1", 'status !=' => "deleted");
+            $condition = ['where_condition' => array('id !=' => "1", 'status !=' => "deleted")];
             $orderby = array('id' => "ASC");
           }
         }
 
-        $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition,@$orderby);
+        $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType,@$orderby);
         /**** DB ERROR Check *****/
         $check = json_decode($search_result);
         if(isset($check->DB_ERROR)) {
@@ -990,7 +990,7 @@ class Settings extends MX_Controller
               'client' => $value->client_fullname,
             ]; 
           }
-          $return_data = json_encode($return_data);
+          $return_data = json_encode(@$return_data);
         }
         else if(!empty($search_result) && $table == "dispatch_orders") {
           $new_array = json_decode($search_result);
@@ -1030,7 +1030,7 @@ class Settings extends MX_Controller
               'client_phone_no_2' => $value->client_phone_no_2,
             ]; 
           }
-          $return_data = json_encode($return_data);
+          $return_data = json_encode(@$return_data);
         }
         else
           $return_data['error'] = "Data Retrieval Failed";
@@ -1038,7 +1038,7 @@ class Settings extends MX_Controller
       else 
         $return_data['error'] = "Permission Denied.Contact Administrator";
       
-      print_r(json_encode(array_reverse(json_decode($return_data))));
+      print_r(json_encode(@array_reverse(json_decode($return_data))));
     }
 
     /*******************************
@@ -1054,15 +1054,15 @@ class Settings extends MX_Controller
         $dbres = self::$_Default_DB;
         if($target == "users") {
           $tablename = "vw_user_details";
-          $condition = array('group_id !=' => 1);
+          $condition = ['where_condition' => array('group_id !=' => 1)];
         }
         else if($target == "groups"){
           $tablename = "roles_privileges_group";
-          $condition = array('id !=' => 1);
+          $condition = ['where_condition' => array('id !=' => 1)];
         }
         $return_dataType = "json";
 
-        $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$condition);
+        $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
             
         if(!empty($search_result)) 
           $return_data = $search_result;

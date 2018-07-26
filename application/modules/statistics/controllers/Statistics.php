@@ -33,7 +33,7 @@ class Statistics extends MX_Controller
           # Global Variable Declaration
             $dbres = self::$_Default_DB;
             $return_dataType="php_object";
-            $all_weekly_sales = array();
+            $all_weekly_sales = $weekly_orders = $services_count = array();
           
           # Total Users Count 
             $tablename = "vw_user_details";
@@ -103,23 +103,21 @@ class Statistics extends MX_Controller
               $data['overdue_orders'] = 0;
           
           # Retrieving all services
-          $tablename = "laundry_services";
-          $condition = [
-            'fields' => array('id','name','code'),
-            'where_condition' => array('status' => "active")
-          ];
-          $all_services = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
-          if(!empty($all_services)) {
-            foreach ($all_services as $key => $value) {
-              @$services_ref[$value->id] = $services_ref[$value->name];
+            $tablename = "laundry_services";
+            $condition = [
+              'fields' => array('id','name','code'),
+              'where_condition' => array('status' => "active")
+            ];
+            $all_services = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
+            
+            if(!empty($all_services)) {
+              foreach ($all_services as $value) {
+                @$services_ref[$value->id] = $value->name;
+              }
             }
-          }
 
-          print "<pre>"; print_r(@$services_ref); print "</pre> <br/><br/>";
-          exit;
           # Total Monthly Services Stats
             if(!empty($monthly_orders)) {
-              $services_count = array();
               foreach ($monthly_orders as $order) {
                 $full_order_details = $overview_controller->search_order_details_by_orderno($order->id,null,$return_dataType); 
                 
@@ -131,22 +129,19 @@ class Statistics extends MX_Controller
                 }
               }
             }
-            $data['monthly_services_count'] = $services_count;
-
-          # Retrieving all services thru prices
-            // $tablename = "vw_laundry_prices";
-            // $condition = [
-            //   'fields' => array('id','service_name'),
-            //   'where_condition' => array('status' => "active")
-            // ];
-            // $all_prices = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
             
-            // if(isset($all_prices['DB_ERROR'])) 
-            //   $this->session->set_flashdata('error', $all_prices['DB_ERROR']);
-            // else {
-            //   foreach ($all_prices as $prices) { $services_array[$prices->id] = $prices->service_name; }
-            // }
-            // print "<pre>"; print_r($services_count); print "</pre>"; exit;
+          # Retrieving all services thru prices
+            $tablename = "vw_laundry_prices";
+            $condition = [
+              'where_condition' => array('status' => "active")
+            ];
+            $all_prices = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
+            
+            if(isset($all_prices['DB_ERROR'])) 
+              $this->session->set_flashdata('error', $all_prices['DB_ERROR']);
+            else {
+              foreach ($all_prices as $prices) { $services_array[$prices->id] = array('code' => $prices->service_code, 'name' => $prices->service_name); }
+            }
 
           # Setting Weekly Dates
             $weekstart = date('Y-m-d',strtotime('monday this week'));
@@ -160,46 +155,46 @@ class Statistics extends MX_Controller
             for($forloop_start; $forloop_start <= $forloop_stop; $forloop_start++) {
               $search_date = date('Y-m-d',strtotime($forloop_start));
               $condition = [
-                'where_condition' => array('DATE(date_created)' => $search_date , 'status !=' => "Delivered")
+                'where_condition' => array('DATE(date_created)' => $search_date)
               ];
               $adays_record = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
              
               # Querying Order Details
               if(!empty($adays_record)) {
-                $tablename_2 = "laundry_order_details";
-                foreach ($adays_record as $weekly_order) {
+                foreach ($adays_record as $adays_order) {
                   $condition = [
-                    'where_condition' => array('order_id' => $weekly_order->id),
+                    'where_condition' => array('order_id' => $adays_order->id),
                   ];
-                  $record_details = $this->model_retrieval->retrieve_allinfo($dbres,$tablename_2,$condition,$return_dataType);
+                  $record_details = $overview_controller->search_order_details_by_orderno($adays_order->id,NULL,$return_dataType);
                   
-                  $temp_price_list = explode('|', $record_details[0]->pricelist_ids);
-                  if(!empty($temp_price_list)) {
-                    foreach ($temp_price_list as $price) {
-                      if(array_key_exists($price, $services_array)) 
-                        @$weekly_orders[$services_array[$price]][date('l',strtotime($search_date))] += 1;
-                      else
-                        $weekly_orders[$services_array[$price]][date('l',strtotime($search_date))] = 1;
-                    }
-                  }
-                  else {
-                    $weekly_orders[$services_array[$price]][date('l',strtotime($search_date))] = 0;
+                  foreach ($record_details as $record) {
+                    $array_search_key = date('l',strtotime($search_date));
+                    $service_name = $record['service_name'];
+                    $services_ordered[$service_name] = 1;
+
+                    if(@array_key_exists($array_search_key, $weekly_orders[$service_name])) 
+                      $weekly_orders[$service_name][$array_search_key] += $record['total_sums'];
+                    else
+                      $weekly_orders[$service_name][$array_search_key] = ($record['total_sums']) ? $record['total_sums'] : 0;
                   }
                 }
               }
+              # Data Syncing & Reconciliation From Empty Transaction
               else {
-                foreach ($services_count as $key => $value) {
-                  $weekly_orders[$services_array[$price]][date('l',strtotime($search_date))];
+                $array_search_key = date('l',strtotime($search_date));
+                if(!empty($services_ordered))
+                foreach ($services_ordered as $key => $value) {
+                  $weekly_orders[$key][$array_search_key] = 0;
                 }
               }
             }
-            $data['all_weekly_orders'] = $weekly_orders;
-            print "<pre>"; print_r($weekly_orders); print "</pre> <br/><br/>";
-            exit;
         /****** Additional Functions  ****************/  
 
         /***************** Interface *****************/
           $data['title'] = "Statistics"; 
+          $data['monthly_services_count'] = $services_count;
+          $data['weekly_report'] = $weekly_orders;
+          //print "<pre>"; print_r($data); print "</pre> <br/><br/>";exit;
           $this->load->view('header',$data); 
           $this->load->view('statistics',$data); 
           $this->load->view('footer'); 
