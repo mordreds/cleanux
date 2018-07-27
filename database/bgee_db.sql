@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.7.7
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jul 26, 2018 at 09:35 AM
--- Server version: 5.7.21-0ubuntu0.16.04.1
--- PHP Version: 7.0.28-0ubuntu0.16.04.1
+-- Host: 127.0.0.1
+-- Generation Time: Jul 27, 2018 at 11:25 PM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.1.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -107,7 +109,11 @@ INSERT INTO `access_login_successful` (`id`, `user_id`, `time_in`, `time_out`, `
 (26, 1, '2018-07-22 23:09:56', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
 (27, 1, '2018-07-23 22:45:57', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
 (28, 1, '2018-07-25 19:37:16', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
-(29, 1, '2018-07-26 08:03:11', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL);
+(29, 1, '2018-07-26 08:03:11', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
+(30, 1, '2018-07-26 10:09:12', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
+(31, 1, '2018-07-27 04:29:49', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
+(32, 1, '2018-07-27 04:31:03', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
+(33, 1, '2018-07-27 09:37:35', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -320,7 +326,7 @@ CREATE TABLE `hr_company_info` (
 --
 
 INSERT INTO `hr_company_info` (`id`, `name`, `telephone_1`, `telephone_2`, `fax`, `email`, `postal_address`, `residence_address`, `website`, `mission`, `vision`, `gps_location`, `tin_number`, `logo_id`, `date_of_commence`) VALUES
-(1, 'MARKSBON LIMITED', '0506139739', '0244949261', '', 'bgslaundry@gmail.com', 'BOX K47, OFANKOR - ACCRA', 'GROUND FLOOR - MR MEGA PLAZA. OFANKOR BARRIER - ACCRA.', 'www.bgslaundry.com', 'To Be Filled By The Company', 'To Be Filled By The Company', '5\'0090585948N, 0\'94854948S', 'TN10245682-GA', 0, '0000-00-00');
+(1, 'MARKSBON LIMITED', '0506139739', '0244949261', '0494', 'bgslaundry@gmail.com', 'BOX K47, OFANKOR - ACCRA', 'GROUND FLOOR - MR MEGA PLAZA. OFANKOR BARRIER - ACCRA.', '5\'0090585948N, 0\'94854948S', 'TO BE FILLED BY THE COMPANY', 'TO BE FILLED BY THE COMPANY', '', 'TN10245682-GA', 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -347,7 +353,9 @@ INSERT INTO `hr_departments` (`id`, `parent_department`, `name`, `description`, 
 (5, 0, 'HUMAN RESOURCE', 'Pending Some Contrary Rabbit Up That The More Conditionally Ouch Confidently Far So Was Darn Logic Thus Dove The Juicily Because That Placed Otter.', 'active', '2018-05-03 22:49:30'),
 (6, 0, 'ACCOUNTS', 'Handles All Matters Relating To Money Of The Company', 'active', '2018-05-08 19:38:39'),
 (7, 0, 'OPERATIONS', 'All Operational Roles', 'active', '2018-07-09 23:22:55'),
-(8, 7, 'LOGISTICS', 'Keeping All Accouterments', 'active', '2018-07-09 23:35:01');
+(8, 7, 'LOGISTICS', 'Keeping All Accouterments', 'active', '2018-07-09 23:35:01'),
+(9, 2, 'INFORMATION TECHNOLOGY', 'Responsible For Resolving All IT Related Stuffs And Bookkeeping Them As Well', 'active', '2018-07-27 04:43:19'),
+(10, 0, 'MANAGEMENT', 'Decision Makers For The Company', 'active', '2018-07-27 04:46:14');
 
 -- --------------------------------------------------------
 
@@ -471,7 +479,7 @@ INSERT INTO `hr_employee_work_info` (`id`, `biodata_id`, `employee_id`, `positio
 CREATE TABLE `hr_position` (
   `id` tinyint(2) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `parent_position` int(11) NOT NULL,
+  `parent_position` int(11) DEFAULT NULL,
   `department_id` int(11) NOT NULL,
   `description` text,
   `salary` int(11) NOT NULL,
@@ -486,7 +494,8 @@ CREATE TABLE `hr_position` (
 INSERT INTO `hr_position` (`id`, `name`, `parent_position`, `department_id`, `description`, `salary`, `status`, `created_date`) VALUES
 (1, 'SYSTEM DEVELOPER', 0, 0, 'Developers Of the System', 0, 'active', '2018-05-08 11:04:04'),
 (2, 'Administrator', 2, 2, 'Head Of Administration', 4200, 'active', '2018-05-08 11:04:04'),
-(3, 'Receptionist', 1, 2, 'Responsible to seeing client first hand', 700, 'active', '2018-05-08 11:27:34');
+(3, 'RECEPTIONIST', NULL, 2, 'Responsible To Seeing Client First Hand', 700, 'active', '2018-05-08 11:27:34'),
+(4, 'CEO', NULL, 10, 'Manages The Overall Activities Of The Company', 0, 'active', '2018-07-27 04:53:36');
 
 -- --------------------------------------------------------
 
@@ -670,7 +679,7 @@ CREATE TABLE `laundry_prices` (
 --
 
 INSERT INTO `laundry_prices` (`id`, `service_id`, `weight_id`, `garment_id`, `amount`, `status`, `date_created`) VALUES
-(1, 1, 3, 0, 25, 'active', '2017-12-28 04:55:04'),
+(1, 1, 3, 0, 25, 'deleted', '2017-12-28 04:55:04'),
 (2, 1, 2, 0, 40, 'active', '2017-12-28 04:55:32'),
 (3, 4, 0, 1, 5, 'active', '2017-12-28 04:56:21'),
 (4, 2, 1, 5, 20, 'active', '2018-01-16 08:38:47'),
@@ -788,6 +797,7 @@ INSERT INTO `settings_tax_system` (`id`, `value`, `user_id`, `date_created`) VAL
 
 --
 -- Stand-in structure for view `vw_company_info`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_company_info` (
 `id` bigint(20)
@@ -811,6 +821,7 @@ CREATE TABLE `vw_company_info` (
 
 --
 -- Stand-in structure for view `vw_employee_details`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_employee_details` (
 `id` bigint(20)
@@ -859,6 +870,7 @@ CREATE TABLE `vw_employee_details` (
 
 --
 -- Stand-in structure for view `vw_hr_departments`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_hr_departments` (
 `id` tinyint(2)
@@ -874,6 +886,7 @@ CREATE TABLE `vw_hr_departments` (
 
 --
 -- Stand-in structure for view `vw_hr_positions`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_hr_positions` (
 `id` tinyint(2)
@@ -892,6 +905,7 @@ CREATE TABLE `vw_hr_positions` (
 
 --
 -- Stand-in structure for view `vw_laundry_clients`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_clients` (
 `id` bigint(20)
@@ -915,6 +929,7 @@ CREATE TABLE `vw_laundry_clients` (
 
 --
 -- Stand-in structure for view `vw_laundry_order_comments`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_order_comments` (
 `id` bigint(20)
@@ -930,6 +945,7 @@ CREATE TABLE `vw_laundry_order_comments` (
 
 --
 -- Stand-in structure for view `vw_laundry_prices`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_prices` (
 `id` bigint(20)
@@ -949,6 +965,7 @@ CREATE TABLE `vw_laundry_prices` (
 
 --
 -- Stand-in structure for view `vw_laundry_weights`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_laundry_weights` (
 `id` bigint(20)
@@ -964,6 +981,7 @@ CREATE TABLE `vw_laundry_weights` (
 
 --
 -- Stand-in structure for view `vw_orderlist_summary`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_orderlist_summary` (
 `id` bigint(20)
@@ -1000,6 +1018,7 @@ CREATE TABLE `vw_orderlist_summary` (
 
 --
 -- Stand-in structure for view `vw_user_details`
+-- (See below for the actual view)
 --
 CREATE TABLE `vw_user_details` (
 `id` bigint(20)
@@ -1315,146 +1334,176 @@ ALTER TABLE `settings_tax_system`
 --
 ALTER TABLE `access_login_failed`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto', AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `access_login_successful`
 --
 ALTER TABLE `access_login_successful`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=30;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=34;
+
 --
 -- AUTO_INCREMENT for table `access_password_reset_requests`
 --
 ALTER TABLE `access_password_reset_requests`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `access_roles_privileges_group`
 --
 ALTER TABLE `access_roles_privileges_group`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `access_roles_privileges_user`
 --
 ALTER TABLE `access_roles_privileges_user`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `access_sysaudit`
 --
 ALTER TABLE `access_sysaudit`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `access_users`
 --
 ALTER TABLE `access_users`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `blobs`
 --
 ALTER TABLE `blobs`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id';
+
 --
 -- AUTO_INCREMENT for table `demo_requests`
 --
 ALTER TABLE `demo_requests`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `demo_request_userinfo`
 --
 ALTER TABLE `demo_request_userinfo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `hr_company_info`
 --
 ALTER TABLE `hr_company_info`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `hr_departments`
 --
 ALTER TABLE `hr_departments`
-  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `hr_employee_biodata`
 --
 ALTER TABLE `hr_employee_biodata`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `hr_employee_contact_info`
 --
 ALTER TABLE `hr_employee_contact_info`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `hr_employee_other_info`
 --
 ALTER TABLE `hr_employee_other_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `hr_employee_work_info`
 --
 ALTER TABLE `hr_employee_work_info`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `hr_position`
 --
 ALTER TABLE `hr_position`
-  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `laundry_clients`
 --
 ALTER TABLE `laundry_clients`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `laundry_delivery_method`
 --
 ALTER TABLE `laundry_delivery_method`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `laundry_garments`
 --
 ALTER TABLE `laundry_garments`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `laundry_orders`
 --
 ALTER TABLE `laundry_orders`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `laundry_order_balances`
 --
 ALTER TABLE `laundry_order_balances`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `laundry_order_comments`
 --
 ALTER TABLE `laundry_order_comments`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `laundry_order_details`
 --
 ALTER TABLE `laundry_order_details`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `laundry_prices`
 --
 ALTER TABLE `laundry_prices`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `laundry_services`
 --
 ALTER TABLE `laundry_services`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `laundry_weights`
 --
 ALTER TABLE `laundry_weights`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `settings_dashboard_tabs`
 --
 ALTER TABLE `settings_dashboard_tabs`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
 -- AUTO_INCREMENT for table `settings_tax_system`
 --
 ALTER TABLE `settings_tax_system`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

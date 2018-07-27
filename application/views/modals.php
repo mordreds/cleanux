@@ -1355,6 +1355,7 @@
             'salary': $('[name="modal_salary"]').val(),
             'description': $('[name="modal_description"]').val(),
           };
+          //console.log(formData); exit;
           ajax_post(formurl,formData,tableid);
         });
       </script>
