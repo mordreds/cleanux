@@ -118,9 +118,9 @@ class Settings extends MX_Controller
             $return_dataType="php_object";
             $tablename = "hr_position";
             $data = [
-              'parent_position' => ucwords($this->input->post('parent_department')),
-              'name' => ucwords($this->input->post('position_name')),
-              'department_id' => ucwords($this->input->post('department')),
+              'parent_position' => $this->input->post('parent_department'),
+              'name' => strtoupper($this->input->post('position_name')),
+              'department_id' => $this->input->post('department'),
               'salary' => ucwords($this->input->post('salary')),
               'description' => ucwords($this->input->post('description')),
             ];
@@ -184,8 +184,8 @@ class Settings extends MX_Controller
             $return_dataType="php_object";
             $tablename = "hr_departments";
             $data = [
-              'parent_department' => ucwords($this->input->post('parent_department')),
-              'name' => ucwords($this->input->post('department')),
+              'parent_department' => $this->input->post('parent_department'),
+              'name' => strtoupper($this->input->post('department')),
               'description' => ucwords($this->input->post('description')),
             ];
             /***** Data Definition *****/
@@ -844,116 +844,113 @@ class Settings extends MX_Controller
         # Loading Model 
         $this->load->model('globals/model_retrieval');
 
-        if($dbtype == "default")
-          $dbres = self::$_Default_DB;
-        else if($dbtype == "permissions") {
-          $dbres = self::$_Default_DB;
-          $return_dataType = "json";
-        }
-         else if($dbtype == "views") {
-          $dbres = self::$_Default_DB;
-        }
+        # Global Declaration
+        $dbres = self::$_Default_DB;
+        $return_dataType = "json";
         
         if(!empty($where_field) && !empty($where_value)) {
           $fields = explode('~',$where_field);
           $values = explode('~',$where_value);
-
-          for($a=0; $a < sizeof($fields); $a++) {
-            $condition[$fields[$a]] = $values[$a];
-          }
+          for($a=0; $a < sizeof($fields); $a++) { $condition = ['where_condition' => array($fields[$a] => $values[$a])]; }
 
         }
         else {
           $condition = ['where_condition' => array('status' => "active")];
         }
 
-        if($table == "services") {
-          $tablename = "laundry_services";
-          $return_dataType = "json";
-        }
+        switch ($table) {
+          case "services":
+            $tablename = "laundry_services";
+          break;
 
-        if($table == "vw_weights") {
-          $tablename = "vw_laundry_weights";
-          $return_dataType = "json";
-        }
+          case "vw_weights":
+            $tablename = "vw_laundry_weights";
+          break;
 
-        if($table == "garments") {
-          $tablename = "laundry_garments";
-          $return_dataType = "json";
-        }
+          case "garments":
+            $tablename = "laundry_garments";
+          break;
 
-        if($table == "vw_prices") {
-          $tablename = "vw_laundry_prices";
-          $return_dataType = "json";
-        }
+          case "vw_prices":
+            $tablename = "vw_laundry_prices";
+          break;
 
-        if($table == "delivery") {
-          $tablename = "laundry_delivery_method";
-          $return_dataType = "json";
-        }
+          case "delivery":
+            $tablename = "laundry_delivery_method";
+          break;
 
-        if($table == "clients") {
-          $tablename = "vw_laundry_clients";
-          $return_dataType = "json";
-        }
+          case "clients":
+            $tablename = "vw_laundry_clients";
+          break;
 
-        if($table == "employees") {
-          $tablename = "vw_employee_details";
-          $return_dataType = "json";
-        }
+          case "employees":
+            $tablename = "vw_employee_details";
+          break;
 
-        if($table == "inhouse_orders") {
-          $tablename = "vw_orderlist_summary";
-          $return_dataType = "json";
-          $condition = ['where_not_in_condition' => array("status" => "'Cancelled','Dispatch','Delivered'")];
-        }
+          case "inhouse_orders":
+            $tablename = "vw_orderlist_summary";
+            $condition = ['where_not_in_condition' => array("status" => "'Cancelled','Dispatch','Delivered'")];
+          break;
 
-        if($table == "dispatch_orders") {
-          $tablename = "vw_orderlist_summary";
-          $return_dataType = "json";
-          $condition = ['where_condition' => array('status' => "Dispatch")];
-          $orderby = array('modified_date' => "DESC");
-        }
+          case "dispatch_orders":
+            $tablename = "vw_orderlist_summary";
+            $condition = ['where_condition' => array('status' => "Dispatch")];
+            $orderby = array('modified_date' => "DESC");
+          break;
 
-        if($table == "departments") {
-          $tablename = "vw_hr_departments";
-          $return_dataType = "json";
-          /***** Checking System Developer Role ******/
-          if($_SESSION['user']['group_name'] == "System Developer") {
-            $condition = array();
-            $orderby = array('id' => "ASC");
-          }
-          else {
-            $condition = ['where_condition' => array('id !=' => "1", 'status !=' => "deleted")];
-            $orderby = array('id' => "ASC");
-          }
-        }
+          case "departments":
+            $tablename = "vw_hr_departments";
+            # Checking System Developer Role 
+              if($_SESSION['user']['group_name'] == "System Developer") {
+                $condition = array();
+                $orderby = array('id' => "ASC");
+              }
+              else {
+                $condition = ['where_condition' => array('id !=' => "1", 'status !=' => "deleted")];
+                $orderby = array('id' => "ASC");
+              }
+            # Checking System Developer Role 
+          break;
 
-        if($table == "positions") {
-          $tablename = "vw_hr_positions";
-          $return_dataType = "json";
-          /***** Checking System Developer Role ******/
-          if($_SESSION['user']['group_name'] == "System Developer") {
-            $condition = array();
-            $orderby = array('id' => "ASC");
-          }
-          else {
-            $condition = ['where_condition' => array('id !=' => "1", 'status !=' => "deleted")];
-            $orderby = array('id' => "ASC");
-          }
+          case "positions":
+            $tablename = "vw_hr_positions";
+            # Checking System Developer Role 
+            if($_SESSION['user']['group_name'] == "System Developer") {
+              $condition = array();
+              $orderby = array('id' => "ASC");
+            }
+            else {
+              $condition = ['where_condition' => array('id !=' => "1", 'status !=' => "deleted")];
+              $orderby = array('id' => "ASC");
+            }
+            # Checking System Developer Role 
+          break;
+          
+          default:
+            // code...
+          break;
         }
 
         $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType,@$orderby);
-        /**** DB ERROR Check *****/
-        $check = json_decode($search_result);
-        if(isset($check->DB_ERROR)) {
-          $check = array();
-          print_r(json_encode($check));
-          exit;
-        }
-        /**** DB ERROR Check *****/   
+        
+        # DB ERROR & Empty Data Check 
+          $check = json_decode($search_result);
+
+          if(empty($check)) {
+            print_r(json_encode($check));
+            exit;
+          }
+          
+          elseif(isset($check->DB_ERROR)) {
+            $check = array();
+            print_r(json_encode($check));
+            exit;
+          }
+       
+        # Empty Result Check
         if(!empty($search_result) && $table != "inhouse_orders" && $table != "dispatch_orders") 
           $return_data = $search_result;
+
         else if(!empty($search_result) && $table == "inhouse_orders") {
           $new_array = json_decode($search_result);
           $new_array = array_reverse($new_array);
@@ -992,6 +989,7 @@ class Settings extends MX_Controller
           }
           $return_data = json_encode(@$return_data);
         }
+
         else if(!empty($search_result) && $table == "dispatch_orders") {
           $new_array = json_decode($search_result);
           foreach ($new_array as $key => $value) {
@@ -1032,13 +1030,11 @@ class Settings extends MX_Controller
           }
           $return_data = json_encode(@$return_data);
         }
-        else
-          $return_data['error'] = "Data Retrieval Failed";
       }
       else 
-        $return_data['error'] = "Permission Denied.Contact Administrator";
-      
-      print_r(json_encode(@array_reverse(json_decode($return_data))));
+        $return_data = json_encode(array('error' => "Permission Denied.Contact Administrator"));
+
+        print_r(json_encode(array_reverse(json_decode($return_data))));
     }
 
     /*******************************

@@ -263,11 +263,15 @@
                   return meta.row +1;
                 } 
               },
-              {data: "name"},
+              {data: "name", render: function(data,type,row,meta) {
+                return row.name.toUpperCase();
+              }},
+              {data: "parent_department_name", render: function(data,type,row,meta) {
+                return row.parent_department_name.toUpperCase();
+              }},
               {data: "description",render: function(data,type,row,meta) {
                 return row.description.substring(0,37);
               }},
-              {data: "parent_department_name"},
               {data: "status",render: function(data,type,row,meta) {
                 if(row.status == "active") {
                   label_class = "label-success";
@@ -308,8 +312,12 @@
                   return meta.row +1;
                 } 
               },
-              {data: "name"},
-              {data: "parent_position_name"},
+              {data: "name",render: function(data,type,row,meta) {
+                return row.name.toUpperCase();
+              }},
+              {data: "parent_position_name", render: function(data,type,row,meta) {
+                return row.parent_position_name.toUpperCase();
+              }},
               {data: "description",render: function(data,type,row,meta) {
                 return row.description.substring(0,37);
               }},

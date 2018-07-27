@@ -1,61 +1,31 @@
-
-
- <!-- Content area -->
+  <!-- Content area -->
   <div class="content">
-    <?php //print "<pre>"; print_r($_SESSION); print "</pre>";?>
     <!-- Main charts -->
     <div class="row">
-
-        <div class="col-md-12">
-      <div class="col-md-3">
-
-                  <!-- Available hours -->
-                  <div class="panel text-center">
-                    <div class="panel-body">
-                            <div class="content-group ">
-                            <h5 class="text-semibold no-margin"><a href="#" class="btn border-pink text-pink btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
-                             <span class="text-muted text-size-small">laundry Pending</span>
-                            </div>
-                    </div>
-                  </div>
+      <div class="col-md-12">
+        <div class="col-md-3">
+          <!-- Available hours -->
+          <div class="panel text-center">
+            <div class="panel-body">
+              <div class="content-group ">
+                <h5 class="text-semibold no-margin"><a href="#" class="btn border-pink text-pink btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
+                <span class="text-muted text-size-small">laundry Pending</span>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col-md-3">
-
-                  <!-- Available hours -->
-                  <div class="panel text-center">
-                    <div class="panel-body">
-                          <div class="content-group">
-                            <h5 class="text-semibold no-margin"><a href="#" class="btn border-blue text-blue btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
-                             <span class="text-muted text-size-small">laundry Processing</span>
-                            </div>
-                    </div>
-                  </div>
+          <!-- Available hours -->
+          <div class="panel text-center">
+            <div class="panel-body">
+              <div class="content-group">
+                <h5 class="text-semibold no-margin"><a href="#" class="btn border-blue text-blue btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
+                <span class="text-muted text-size-small">laundry Processing</span>
+              </div>
+            </div>
+          </div>
         </div>
-         <div class="col-md-3">
-
-                  <!-- Available hours -->
-                  <div class="panel text-center">
-                    <div class="panel-body">
-                           <div class="content-group">
-                            <h5 class="text-semibold no-margin"><a href="#" class="btn border-green text-green btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
-                             <span class="text-muted text-size-small">laundry Dispatched</span>
-                            </div>
-                    </div>
-                  </div>
-        </div>
-        <div class="col-md-3">
-
-                  <!-- Available hours -->
-                  <div class="panel text-center">
-                    <div class="panel-body">
-                           <div class="content-group">
-                            <h5 class="text-semibold no-margin"><a href="#" class="btn border-blue text-blue btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
-                             <span class="text-muted text-size-small">All orders </span>
-                            </div>
-                    </div>
-                  </div>
-        </div>
-        </div>
+      </div>
       <div class="col-md-12">
         <div class="panel panel-flat">
           <div class="panel-body">

@@ -33,7 +33,7 @@
         dataSrc: '',
         //success: function(response){console.log(response)},
         error: function() {
-          $.jGrowl('Retrieving Orders Failed', {
+          $.jGrowl('Internal Server Error. <br/>Retrieving Orders Failed.', {
             theme: 'alert-styled-left bg-danger'
           });
         }

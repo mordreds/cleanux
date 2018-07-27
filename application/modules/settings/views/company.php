@@ -154,6 +154,7 @@
                             <option>Single</option>
                             <option>Married</option>
                             <option>Divorced</option>
+                            <option>Widowed</option>
                           </select>
                         </div>
                       </div>
@@ -301,8 +302,8 @@
                           <tr>
                             <th style="width: 5%">ID</th>
                             <th>Name</th>
+                            <th>Reports To</th>
                             <th>Description</th>
-                            <th>Parent Department</th>
                             <th>Status</th>
                             <th class="text-center" style="width: 10%">Actions</th>
                           </tr>
@@ -353,7 +354,7 @@
                           <div class="col-md-11">
                             <div class="form-group">
                               <label class="display-block">Duties & Responsibilities</label>
-                               <input type="text" name="descriptions" class="form-control">
+                               <input type="text" name="description" class="form-control">
                             </div>
                           </div>
                         </div>
