@@ -4,33 +4,20 @@
     <div class="row">
       <div class="col-sm-6 col-md-9">
         <!-- Statisics Widgets -->
-        <div class="col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-2">
           <div class="panel panel-body panel-body-accent">
             <div class="media no-margin">
               <div class="media-left media-middle">
-                <i class="icon-hour-glass2 icon-3x text-info-400"></i>
-              </div>
-              <div class="media-body text-right">
-                <h3 class="no-margin text-semibold"><?=number_format($daily_orders)?></h3>
-                <span class="text-uppercase text-size-mini text-muted">Today Orders </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3">
-          <div class="panel panel-body panel-body-accent">
-            <div class="media no-margin">
-              <div class="media-left media-middle" style="padding-right: 0px">
                 <i class="icon-basket icon-3x text-success-400"></i>
               </div>
               <div class="media-body text-right">
-                <h3 class="no-margin text-semibold"><?=number_format($pending_orders)?></h3>
-                <span class="text-uppercase text-size-mini text-muted">Total Pending</span>
+                <h3 class="no-margin text-semibold"><?=number_format($monthly_orders)?></h3>
+                <span class="text-uppercase text-size-mini text-muted">Awaiting Delivery </span>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-2">
           <div class="panel panel-body panel-body-accent">
             <div class="media no-margin">
               <div class="media-left media-middle">
@@ -43,15 +30,41 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-2">
           <div class="panel panel-body panel-body-accent">
             <div class="media no-margin">
-              <div class="media-left media-middle">
+              <div class="media-left media-middle" style="padding-right: 0px">
                 <i class="icon-basket icon-3x text-success-400"></i>
               </div>
               <div class="media-body text-right">
-                <h3 class="no-margin text-semibold"><?=number_format($monthly_orders)?></h3>
-                <span class="text-uppercase text-size-mini text-muted">Awaiting Delivery </span>
+                <h3 class="no-margin text-semibold"><?=number_format($pending_orders)?></h3>
+                <span class="text-uppercase text-size-mini text-muted">Pending Orders</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-2">
+          <div class="panel panel-body panel-body-accent">
+            <div class="media no-margin">
+              <div class="media-left media-middle">
+                <i class="icon-hour-glass2 icon-3x text-info-400"></i>
+              </div>
+              <div class="media-body text-right">
+                <h3 class="no-margin text-semibold"><?=number_format($daily_orders)?></h3>
+                <span class="text-uppercase text-size-mini text-muted">Today's Orders </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-2">
+          <div class="panel panel-body panel-body-accent">
+            <div class="media no-margin">
+              <div class="media-left media-middle">
+                <i class="icon-cash4 icon-3x text-info-400"></i>
+              </div>
+              <div class="media-body text-right">
+                <h3 class="no-margin text-semibold"><?=number_format("5000")?></h3>
+                <span class="text-uppercase text-size-mini text-muted">Today's Total Cash </span>
               </div>
             </div>
           </div>
@@ -111,19 +124,6 @@
               </li>
 
               <li class="media">
-                <div class="media-left">
-                  <a href="#" class="btn border-danger text-danger btn-flat btn-icon btn-rounded btn-sm legitRipple">
-                    <i class="icon-infinite"></i>
-                  </a>
-                </div>
-
-                <div class="media-body">
-                  User <a href="#">Christopher Wallace</a> is awaiting for 
-                  <div class="media-annotation">16 minutes ago</div>
-                </div>
-              </li>
-
-              <li class="media">
                   <div class="media-left">
                     <a href="#" class="btn border-slate text-slate btn-flat btn-icon btn-rounded btn-sm legitRipple">
                       <i class="icon-cash3"></i>
@@ -161,11 +161,6 @@
               <li class="border-warning-400">
                 <span class="feed-time text-muted">12:47</span>
                 <a href="#">David Linner</a> requested refund for a double bank card charge
-              </li>
-
-              <li class="border-info-400">
-                <span class="feed-time text-muted">10:25</span>
-                User <a href="#">Christopher Wallace</a> from Google is awaiting for staff reply
               </li>
 
               <li class="border-pink-400">
