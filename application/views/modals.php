@@ -87,7 +87,7 @@
                 <div class="col-sm-12 ">
                   <div class="form-group">
                     <label class="display-block">Select Due Date </label>
-                    <input type="date" placeholder="0.00" class="form-control" id="collection_due_date" name="order_due_date" required>
+                    <input type="date" placeholder="0.00" class="form-control" id="collection_due_date" name="order_due_date" min="<?=gmdate('Y-m-d')?>" max="<?=gmdate('Y-m-d',strtotime('2 months'))?>" required>
                   </div>
                 </div>
                 <div class="col-sm-12 ">

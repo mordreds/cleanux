@@ -68,6 +68,26 @@ class Statistics extends MX_Controller
               $data['pending_orders'] = sizeof($pending_orders);
             else
               $data['pending_orders'] = 0;
+
+          # Total Awaiting Orders
+            $condition = [
+              'where_condition' => array('status' => 'Dispatch')
+            ];
+            $awaiting_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
+            if(!isset($awaiting_orders['DB_ERROR']))
+              $data['awaiting_orders'] = sizeof($awaiting_orders);
+            else
+              $data['awaiting_orders'] = 0;
+
+          # Total Delivered Orders
+            $condition = [
+              'where_condition' => array('status' => 'Delivered')
+            ];
+            $delivered_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
+            if(!isset($delivered_orders['DB_ERROR']))
+              $data['delivered_orders'] = sizeof($delivered_orders);
+            else
+              $data['delivered_orders'] = 0;
           
           # Total Daily Orders Recieved
             $condition  = [
@@ -75,14 +95,21 @@ class Statistics extends MX_Controller
             ];
             $daily_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
             
-            if(!isset($daily_orders['DB_ERROR']))
+            if(!isset($daily_orders['DB_ERROR'])) {
               $data['daily_orders'] = sizeof($daily_orders);
-            else
+              $total_cash = 0;
+              foreach ($daily_orders as $order) {
+                $total_cash += $order->amount_paid;
+              }
+              $data['total_cash'] = $total_cash;
+            }
+            else 
               $data['daily_orders'] = 0;
+            
           
           # Total Monthly Orders
             $condition = [
-              'where_condition' => array('Month(date_created)' => gmdate('m'), 'status' => "Delivered")
+              'where_condition' => array('Month(date_created)' => gmdate('m'))
             ];
             $monthly_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
             
@@ -149,10 +176,14 @@ class Statistics extends MX_Controller
             $forloop_start = str_replace('-', '', $weekstart);
             $forloop_stop = str_replace('-', '', $weekstop);
 
+            for ($weekstart; $weekstart < $weekstop ; $weekstart = date_add($weekstart,strtotime("+1 day"))) {
+              print $weekstart."<br/><br/>";
+            }
+            exit;
           # Retrieving data from weekly date
             $tablename = "vw_orderlist_summary";
             
-            for($forloop_start; $forloop_start <= $forloop_stop; $forloop_start++) {
+           /* for($forloop_start; $forloop_start <= $forloop_stop; $forloop_start++) {
               $search_date = date('Y-m-d',strtotime($forloop_start));
               $condition = [
                 'where_condition' => array('DATE(date_created)' => $search_date)
@@ -160,6 +191,8 @@ class Statistics extends MX_Controller
               $adays_record = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
              
               # Querying Order Details
+              $array_search_key = date('l',strtotime($search_date));
+
               if(!empty($adays_record)) {
                 foreach ($adays_record as $adays_order) {
                   $condition = [
@@ -168,7 +201,6 @@ class Statistics extends MX_Controller
                   $record_details = $overview_controller->search_order_details_by_orderno($adays_order->id,NULL,$return_dataType);
                   
                   foreach ($record_details as $record) {
-                    $array_search_key = date('l',strtotime($search_date));
                     $service_name = $record['service_name'];
                     $services_ordered[$service_name] = 1;
 
@@ -181,13 +213,13 @@ class Statistics extends MX_Controller
               }
               # Data Syncing & Reconciliation From Empty Transaction
               else {
-                $array_search_key = date('l',strtotime($search_date));
                 if(!empty($services_ordered))
                 foreach ($services_ordered as $key => $value) {
                   $weekly_orders[$key][$array_search_key] = 0;
                 }
               }
-            }
+            }*/
+            //print "<pre>"; print_r($weekly_orders); print "</pre>"; exit;
         /****** Additional Functions  ****************/  
 
         /***************** Interface *****************/

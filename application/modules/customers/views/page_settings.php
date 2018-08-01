@@ -26,6 +26,7 @@
 
   /************** All Customers Table *********/
     $('#allcustomers').dataTable({
+      sorting: false,
       ajax: {
         type : 'GET',
         url : '<?= base_url()?>settings/retrieve_alldata/clients/default',

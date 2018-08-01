@@ -8,14 +8,29 @@
           <div class="panel panel-body panel-body-accent">
             <div class="media no-margin">
               <div class="media-left media-middle">
-                <i class="icon-basket icon-3x text-success-400"></i>
+                <i class="icon-truck icon-3x text-info-400"></i>
               </div>
               <div class="media-body text-right">
-                <h3 class="no-margin text-semibold"><?=number_format($monthly_orders)?></h3>
-                <span class="text-uppercase text-size-mini text-muted">Awaiting Delivery </span>
+                <h3 class="no-margin text-semibold"><?=number_format($delivered_orders)?></h3>
+                <span class="text-uppercase text-size-mini text-muted">Total Delivered </span>
               </div>
             </div>
           </div>
+        </div>
+        <div class="col-sm-6 col-md-2">
+          <a href="<?=base_url()?>dispatch">
+            <div class="panel panel-body panel-body-accent">
+              <div class="media no-margin">
+                <div class="media-left media-middle">
+                  <i class="icon-basket icon-3x text-success-400"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3 class="no-margin text-semibold"><?=number_format($awaiting_orders)?></h3>
+                  <span class="text-uppercase text-size-mini text-muted">Awaiting Delivery </span>
+                </div>
+              </div>
+            </div>
+          </a>
         </div>
         <div class="col-sm-6 col-md-2">
           <div class="panel panel-body panel-body-accent">
@@ -31,17 +46,19 @@
           </div>
         </div>
         <div class="col-sm-6 col-md-2">
-          <div class="panel panel-body panel-body-accent">
-            <div class="media no-margin">
-              <div class="media-left media-middle" style="padding-right: 0px">
-                <i class="icon-basket icon-3x text-success-400"></i>
-              </div>
-              <div class="media-body text-right">
-                <h3 class="no-margin text-semibold"><?=number_format($pending_orders)?></h3>
-                <span class="text-uppercase text-size-mini text-muted">Pending Orders</span>
+          <a href="<?=base_url()?>inhouse">
+            <div class="panel panel-body panel-body-accent">
+              <div class="media no-margin">
+                <div class="media-left media-middle" style="padding-right: 0px">
+                  <i class="icon-basket icon-3x text-success-400"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3 class="no-margin text-semibold"><?=number_format($pending_orders)?></h3>
+                  <span class="text-uppercase text-size-mini text-muted">Pending Orders</span>
+                </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
         <div class="col-sm-6 col-md-2">
           <div class="panel panel-body panel-body-accent">
@@ -63,7 +80,7 @@
                 <i class="icon-cash4 icon-3x text-info-400"></i>
               </div>
               <div class="media-body text-right">
-                <h3 class="no-margin text-semibold"><?=number_format("5000")?></h3>
+                <h3 class="no-margin text-semibold"><?=number_format($total_cash,2)?></h3>
                 <span class="text-uppercase text-size-mini text-muted">Today's Total Cash </span>
               </div>
             </div>

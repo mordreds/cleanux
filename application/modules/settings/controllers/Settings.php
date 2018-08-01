@@ -881,6 +881,7 @@ class Settings extends MX_Controller
 
           case "clients":
             $tablename = "vw_laundry_clients";
+            $orderby = array('id' => "DESC");
           break;
 
           case "employees":

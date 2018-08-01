@@ -61,7 +61,7 @@ class Model_retrieval extends CI_Model
     
     # Running DB Query
     $query_result = $dbres->get($tablename);
-    //print_r($dbres->get_compiled_select($tablename));
+    //print_r($dbres->get_compiled_select($tablename)); exit;
     /*************** Query check ************/
     if($query_result->num_rows() >= 0) 
       $return_data = $query_result->result();
