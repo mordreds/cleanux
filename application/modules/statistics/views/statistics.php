@@ -54,7 +54,7 @@
                 </div>
                 <div class="media-body text-right">
                   <h3 class="no-margin text-semibold"><?=number_format($pending_orders)?></h3>
-                  <span class="text-uppercase text-size-mini text-muted">Pending Orders</span>
+                  <span class="text-uppercase text-size-mini text-muted">T. Pending Orders</span>
                 </div>
               </div>
             </div>
@@ -81,7 +81,7 @@
               </div>
               <div class="media-body text-right">
                 <h3 class="no-margin text-semibold"><?=number_format($total_cash,2)?></h3>
-                <span class="text-uppercase text-size-mini text-muted">Today's Total Cash </span>
+                <span class="text-uppercase text-size-mini text-muted">Today's Cash </span>
               </div>
             </div>
           </div>

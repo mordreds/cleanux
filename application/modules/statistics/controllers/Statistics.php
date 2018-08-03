@@ -98,6 +98,7 @@ class Statistics extends MX_Controller
             if(!isset($daily_orders['DB_ERROR'])) {
               $data['daily_orders'] = sizeof($daily_orders);
               $total_cash = 0;
+              # Computing Total Cash
               foreach ($daily_orders as $order) {
                 $total_cash += $order->amount_paid;
               }
@@ -106,7 +107,6 @@ class Statistics extends MX_Controller
             else 
               $data['daily_orders'] = 0;
             
-          
           # Total Monthly Orders
             $condition = [
               'where_condition' => array('Month(date_created)' => gmdate('m'))
@@ -149,14 +149,16 @@ class Statistics extends MX_Controller
                 $full_order_details = $overview_controller->search_order_details_by_orderno($order->id,null,$return_dataType); 
                 
                 foreach ($full_order_details as $key => $value) {
-                  if(array_key_exists($value['service_name'], @$services_count)) 
-                    $services_count["'".$value['service_name']."'"] += 1;
-                  else
-                    $services_count["'".$value['service_name']."'"] = 1;
+                  if(array_key_exists($value['service_name'], @$services_count))  
+                    $services_count[$value['service_name']] += 1;
+                  else 
+                    $services_count[$value['service_name']] = 1;
                 }
               }
             }
-            
+            //print "'".implode("','", array_keys($services_count))."'";
+            //print "<pre>"; print_r($services_count);print "</pre>";  
+            //exit;
           # Retrieving all services thru prices
             $tablename = "vw_laundry_prices";
             $condition = [
@@ -167,29 +169,25 @@ class Statistics extends MX_Controller
             if(isset($all_prices['DB_ERROR'])) 
               $this->session->set_flashdata('error', $all_prices['DB_ERROR']);
             else {
-              foreach ($all_prices as $prices) { $services_array[$prices->id] = array('code' => $prices->service_code, 'name' => $prices->service_name); }
+              foreach ($all_prices as $prices) { 
+                $services_array[$prices->id] = array('code' => $prices->service_code, 'name' => $prices->service_name); 
+              }
             }
 
           # Setting Weekly Dates
-            $weekstart = date('Y-m-d',strtotime('monday this week'));
-            $weekstop = date('Y-m-d',strtotime('sunday this week 23:59:59'));
-            $forloop_start = str_replace('-', '', $weekstart);
-            $forloop_stop = str_replace('-', '', $weekstop);
+            $weekstart = $forloop_start = date('Y-m-d',strtotime('monday this week'));
+            $weekstop = $forloop_stop = date('Y-m-d',strtotime('sunday this week 23:59:59'));
 
-            for ($weekstart; $weekstart < $weekstop ; $weekstart = date_add($weekstart,strtotime("+1 day"))) {
-              print $weekstart."<br/><br/>";
-            }
-            exit;
           # Retrieving data from weekly date
             $tablename = "vw_orderlist_summary";
-            
-           /* for($forloop_start; $forloop_start <= $forloop_stop; $forloop_start++) {
-              $search_date = date('Y-m-d',strtotime($forloop_start));
+
+            while ($forloop_start <= $forloop_stop) {
+              $search_date = $forloop_start;
               $condition = [
                 'where_condition' => array('DATE(date_created)' => $search_date)
               ];
               $adays_record = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
-             
+              
               # Querying Order Details
               $array_search_key = date('l',strtotime($search_date));
 
@@ -205,27 +203,48 @@ class Statistics extends MX_Controller
                     $services_ordered[$service_name] = 1;
 
                     if(@array_key_exists($array_search_key, $weekly_orders[$service_name])) 
-                      $weekly_orders[$service_name][$array_search_key] += $record['total_sums'];
+                      $weekly_orders[$service_name][$array_search_key] += 1; //$record['total_sums'];
                     else
-                      $weekly_orders[$service_name][$array_search_key] = ($record['total_sums']) ? $record['total_sums'] : 0;
+                      $weekly_orders[$service_name][$array_search_key] = 1; //($record['total_sums']) ? $record['total_sums'] : 0;
                   }
                 }
               }
               # Data Syncing & Reconciliation From Empty Transaction
               else {
-                if(!empty($services_ordered))
-                foreach ($services_ordered as $key => $value) {
-                  $weekly_orders[$key][$array_search_key] = 0;
+                if(!empty($services_ordered)) {
+                  foreach ($services_ordered as $key => $value) {
+                    $weekly_orders[$key][$array_search_key] = 0;
+                  }
                 }
               }
-            }*/
-            //print "<pre>"; print_r($weekly_orders); print "</pre>"; exit;
+
+              $forloop_start = date ("Y-m-d", strtotime("+1 days", strtotime($forloop_start)));
+            }
+
+          # Traversing thru Day of the week
+            $days_of_week=array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
+
+            foreach ($days_of_week as $day_of_week) {
+              
+              foreach ($weekly_orders as $key => $service_name_array) {
+
+                if(array_key_exists($day_of_week, $service_name_array)) 
+                  $new_weekly_orders[$key][$day_of_week] = $weekly_orders[$key][$day_of_week];
+                
+                else 
+                  $new_weekly_orders[$key][$day_of_week] = 0;
+              }
+
+            }
+            
+            //print "<pre>"; print_r($new_weekly_orders); print "</pre>"; exit;
         /****** Additional Functions  ****************/  
 
         /***************** Interface *****************/
           $data['title'] = "Statistics"; 
           $data['monthly_services_count'] = $services_count;
-          $data['weekly_report'] = $weekly_orders;
+          $data['weekly_report'] = @$new_weekly_orders;
+
           //print "<pre>"; print_r($data); print "</pre> <br/><br/>";exit;
           $this->load->view('header',$data); 
           $this->load->view('statistics',$data); 

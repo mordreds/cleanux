@@ -851,8 +851,11 @@ class Settings extends MX_Controller
         if(!empty($where_field) && !empty($where_value)) {
           $fields = explode('~',$where_field);
           $values = explode('~',$where_value);
-          for($a=0; $a < sizeof($fields); $a++) { $condition = ['where_condition' => array($fields[$a] => $values[$a])]; }
+          for($a=0; $a < sizeof($fields); $a++) { 
+            $condition_create [$fields[$a]] = $values[$a]; 
+          }
 
+          $condition = ['where_condition' => $condition_create];
         }
         else {
           $condition = ['where_condition' => array('status' => "active")];

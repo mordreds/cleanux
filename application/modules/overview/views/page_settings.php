@@ -459,13 +459,13 @@
   $(document).ready(function(){
     /********** Todays Order ************/
       $('#todays_order').DataTable({
-        searching: false,
-        paging: false,
+        searching: true,
+        paging: true,
         order: [],
         autoWidth: false,
         ajax: {
           type : 'GET',
-          url : '<?= base_url()?>overview/retrieve_order/today/5',
+          url : '<?= base_url()?>overview/retrieve_order/today/500',
           dataSrc: '',
           error: function() {
             $.jGrowl("Retrieving Today's Order Failed", {
@@ -494,12 +494,13 @@
             $('#receipt_date').text(response[0].date_created);
             $('#receipt_duedate').text(response[0].due_date);
             $('#receipt_subtotal').text(response[0].subtotal);
+            $('#receipt_amt_paid').text(response[0].amount_paid);
             $('#receipt_balance').text(response[0].balance);
             $('#receipt_total_cost').text(response[0].total_cost);
             $('#receipt_tax').text('('+response[0].tax+'%)');
             $('#receipt_tax_value').text(response[0].tax_value);
             $('#receipt_client').text(response[0].client);
-            $('#receipt_delivery_method').text(response[0].delivery_method);
+            $('#receipt_delivery_location').text(response[0].delivery_location);
             $('#receipt_delivery_cost').text(response[0].delivery_cost);
             $('#print_receipt').attr('data-order',order_id);
 
@@ -517,6 +518,7 @@
                 ],
               columns: [
                 {data: "description"},
+                {data: "service_code"},
                 {data: "quantity"},
                 {data: "unit_price"},
                 {data: "total_sums"},

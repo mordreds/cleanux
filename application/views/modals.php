@@ -105,7 +105,7 @@
                 <div class="col-sm-12 ">
                   <div class="form-group">
                     <label class="display-block">Enter Delivery Location</label>
-                    <input type="text" class="form-control" name="delivery_location" required/>
+                    <input type="text" class="form-control" name="delivery_location" maxlength="13" required/>
                   </div>
                 </div>
               </div>
@@ -1444,6 +1444,7 @@
                 <thead>
                   <tr>
                     <th>Description</th>
+                    <th style="width: 15px !important; text-align: center; padding: 0px">Code</th>
                     <th style="width: 15px !important; text-align: center; padding: 0px">Qty</th>
                     <th style="width: 15px !important; text-align: center; padding: 0px">Unit</th>
                     <th style="width: 15px !important; text-align: center; padding: 0px">Total</th>
@@ -1456,10 +1457,11 @@
               <span class="text-muted">Invoice To:</span>
               <ul class="list-condensed list-unstyled">
                 <li><span class="text-semibold" id="receipt_client"></span></li>
+                <li>(<span class="text-semibold" id="receipt_delivery_location"></span>)</li>
               </ul>
-              <span class="text-muted">Delivery Method:</span>
+              <span class="text-muted">Amount Paid:</span>
               <ul class="list-condensed list-unstyled">
-                <li class="text-semibold" id="receipt_delivery_method"></li>
+                <li class="text-semibold" id="receipt_amt_paid"></li>
               </ul>
               <span class="text-muted">Balance:</span>
               <ul class="list-condensed list-unstyled">
@@ -1478,7 +1480,7 @@
                         <td class="text-right" id="receipt_subtotal"></td>
                       </tr>
                       <tr>
-                        <th>Tax <span class="text-regular" id="receipt_tax"></span>:</th>
+                        <th>VAT <span class="text-regular" id="receipt_tax"></span>:</th>
                         <td class="text-right" id="receipt_tax_value"></td>
                       </tr>
                       <tr>

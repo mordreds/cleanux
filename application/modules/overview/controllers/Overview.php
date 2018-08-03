@@ -200,7 +200,7 @@ class Overview extends MX_Controller
           $this->load->model('globals/Model_insertion');
           $this->load->model('globals/model_retrieval');
           if(isset($_SESSION['laundry']['new_order']) && !empty($_SESSION['laundry']['new_order'])) {
-            //print "<pre>"; print_r($_SESSION['laundry']['new_order']); print "</pre><br/><br/>";
+            //print "<pre>"; print_r($_SESSION['laundry']['new_order']); print "</pre><br/><br/>"; exit;
             # delivery price retrieve
             $dbres = self::$_Default_DB;
             $tablename = "laundry_delivery_method";
@@ -610,6 +610,7 @@ class Overview extends MX_Controller
           $status = explode('|',$query_result->service_status);
           $changed_by = explode('|',$query_result->status_change_userids);
           $change_date = explode('|',$query_result->status_change_dates);
+          $total_amount = array_sum($total_sums);
 
           if($pricelists) {
             for ($a=0; $a < sizeof($pricelists) ; $a++) { 
@@ -624,9 +625,14 @@ class Overview extends MX_Controller
               else
                 $description = $pricelist_query_result->garment_name;
 
+              # Mathematics calculations
+              $tax_value = (@$view_result->tax * @$total_amount) / 100;
+              $sub_total = $total_amount - $tax_value;
+
               $return_data_array[] = [
                 'price_list_id' => $pricelist_query_result->id,
                 'service_name' => $pricelist_query_result->service_name,
+                'service_code' => $pricelist_query_result->service_code,
                 'description' => $description,
                 'quantity' => $quantities[$a],
                 'unit_price' => @$unit_prices[$a],
@@ -638,14 +644,15 @@ class Overview extends MX_Controller
                 'date_created' => date('M d, Y',strtotime(@$view_result->date_created)),
                 'due_date' => date('M d, Y',strtotime(@$view_result->due_date)),
                 'tax' => @$view_result->tax,
-                'tax_value' => number_format((@$view_result->tax * @$view_result->total_cost)/100,2),
-                'subtotal' => number_format(@$view_result->total_cost - ((@$view_result->tax * @$view_result->total_cost)/100),2),
+                'tax_value' => number_format($tax_value,2),
+                'subtotal' => number_format(@$sub_total,2),
                 'balance' => number_format(@$view_result->balance,2),
                 'amount_paid' => number_format(@$view_result->amount_paid,2),
-                'client' => @$view_result->client_fullname,
+                'client' => substr(@$view_result->client_fullname, 0, 13),
                 'delivery_method' => @$view_result->delivery_method,
+                'delivery_location' => substr(@$view_result->delivery_location, 0, 13),
                 'delivery_cost' => number_format(@$view_result->delivery_cost,2),
-                'total_cost' => number_format(@$view_result->total_cost + @$view_result->delivery_cost,2)
+                'total_cost' => number_format(@$sub_total + $tax_value + @$view_result->delivery_cost,2)
               ]; 
               /***** Return Data Array ******/
             }

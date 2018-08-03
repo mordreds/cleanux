@@ -38,6 +38,7 @@
                 <thead>
                   <tr>
                     <th>Description</th>
+                    <th style="width: 15px !important; text-align: center; padding: 0px">Code</th>
                     <th style="width: 15px !important; text-align: center; padding: 0px">Qty</th>
                     <th style="width: 15px !important; text-align: center; padding: 0px">Unit</th>
                     <th style="width: 15px !important; text-align: center; padding: 0px">Total</th>
@@ -50,10 +51,11 @@
                 <span class="text-muted">Invoice To:</span>
                 <ul class="list-condensed list-unstyled">
                   <li><span class="text-semibold" id="receipt_client"></span></li>
+                  <li>(<span class="text-semibold" id="receipt_delivery_location"></span>)</li>
                 </ul>
-                <span class="text-muted">Delivery Method:</span>
+                <span class="text-muted">Amount Paid:</span>
                 <ul class="list-condensed list-unstyled">
-                  <li class="text-semibold" id="receipt_delivery_method"></li>
+                  <li class="text-semibold" id="receipt_amt_paid"></li>
                 </ul>
                 <span class="text-muted">Balance:</span>
                 <ul class="list-condensed list-unstyled">
@@ -71,7 +73,7 @@
                           <td class="text-right" id="receipt_subtotal"></td>
                         </tr>
                         <tr>
-                          <th>Tax<span class="text-regular" id="receipt_tax"></span>:</th>
+                          <th>VAT<span class="text-regular" id="receipt_tax"></span>:</th>
                           <td class="text-right" id="receipt_tax_value"></td>
                         </tr>
                         <tr>
@@ -105,12 +107,13 @@
             $('#receipt_date').text(response[0].date_created);
             $('#receipt_duedate').text(response[0].due_date);
             $('#receipt_subtotal').text(response[0].subtotal);
+            $('#receipt_amt_paid').text(response[0].amount_paid);
             $('#receipt_balance').text(response[0].balance);
             $('#receipt_total_cost').text(response[0].total_cost);
             $('#receipt_tax').text('('+response[0].tax+'%)');
             $('#receipt_tax_value').text(response[0].tax_value);
             $('#receipt_client').text(response[0].client);
-            $('#receipt_delivery_method').text(response[0].delivery_method);
+            $('#receipt_delivery_location').text(response[0].delivery_location);
             $('#receipt_delivery_cost').text(response[0].delivery_cost);
 
             $('#receipt_table').DataTable().destroy();
@@ -123,6 +126,7 @@
               data: response,
               columns: [
                 {data: "description"},
+                {data: "service_code"},
                 {data: "quantity"},
                 {data: "unit_price"},
                 {data: "total_sums"},

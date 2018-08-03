@@ -73,7 +73,7 @@
                   legend: {
                       orient: 'vertical',
                       x: 'left',
-                      data: [<?=implode(', ', array_keys($monthly_services_count))?>]
+                      data: [<?="'".implode("','", array_keys($monthly_services_count))."'"?>]
                   },
 
                   // Enable drag recalculate
@@ -88,7 +88,7 @@
                       data: [
                         <?php 
                           foreach ($monthly_services_count as $key => $value) {
-                            print "{value: ".$value.", name: ".$key."},";
+                            print "{value: ".$value.", name: '".$key."'},";
                           }
                         ?>
                       ]
@@ -116,7 +116,7 @@
 
                   // Add legend
                   legend: {
-                      data: [<?=implode(', ', array_keys($monthly_services_count))?>]
+                      data: [<?="'".implode("','", array_keys($monthly_services_count))."'"?>]
                   },
 
                   // Add toolbox
@@ -130,11 +130,11 @@
                               show: true,
                               title: {
                                   line: 'Switch to line chart',
-                                  bar: 'Switch to bar chart',
+                                 /*  bar: 'Switch to bar chart', */
                                   stack: 'Switch to stack',
                                   tiled: 'Switch to tiled'
                               },
-                              type: ['line', 'bar', 'stack', 'tiled']
+                              type: ['line', /* 'bar', */ 'stack', 'tiled']
                           },
                           restore: {
                               show: true,
