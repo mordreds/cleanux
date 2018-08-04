@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2018 at 11:25 PM
+-- Generation Time: Aug 04, 2018 at 02:04 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.1.14
 
@@ -41,22 +41,6 @@ CREATE TABLE `access_login_failed` (
   `access_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'date of access'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `access_login_failed`
---
-
-INSERT INTO `access_login_failed` (`id`, `user_id`, `username`, `password`, `user_agent`, `hostname`, `ipaddress`, `city_region`, `country`, `access_date`) VALUES
-(1, 1, 'osborne.mordred@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'London', '::1', NULL, NULL, '2018-06-18 20:29:06'),
-(2, 1, 'osborne.mordred@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'London', '::1', NULL, NULL, '2018-06-18 20:29:52'),
-(3, 1, 'osborne.mordred@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'London', '::1', NULL, NULL, '2018-06-18 20:31:17'),
-(4, 1, 'osborne.mordred@gmail.com', 'fcea920f7412b5da7be0cf42b8c93759', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'London', '::1', NULL, NULL, '2018-06-18 20:31:25'),
-(5, 1, 'osborne.mordred@gmail.com', 'fcea920f7412b5da7be0cf42b8c93759', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'London', '::1', NULL, NULL, '2018-06-18 20:31:34'),
-(6, 1, 'osborne.mordred@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'London', '::1', NULL, NULL, '2018-06-18 20:31:44'),
-(7, 1, 'osborne.mordred@gmail.com', 'e0cbf0e62d03796f31da47099682b72b', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'London', '::1', NULL, NULL, '2018-06-19 15:45:57'),
-(8, 1, 'osborne.mordred@gmail.com', 'b041e50e35e0cd8735401984eb25d04d', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'London', '::1', NULL, NULL, '2018-06-19 15:48:01'),
-(9, 1, 'osborne.mordred@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'London', '::1', NULL, NULL, '2018-06-19 15:50:58'),
-(10, 1, 'osborne.mordred@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'London', '::1', NULL, NULL, '2018-06-19 15:52:10');
-
 -- --------------------------------------------------------
 
 --
@@ -75,45 +59,6 @@ CREATE TABLE `access_login_successful` (
   `city_region` text COMMENT 'city & region of the user at the time of system access',
   `country` varchar(255) DEFAULT NULL COMMENT 'country of the user at the time of system access'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `access_login_successful`
---
-
-INSERT INTO `access_login_successful` (`id`, `user_id`, `time_in`, `time_out`, `online`, `user_agent`, `ipaddress`, `hostname`, `city_region`, `country`) VALUES
-(1, 1, '2018-07-03 15:59:41', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
-(2, 1, '2018-07-03 21:15:31', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
-(3, 1, '2018-07-03 23:08:53', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
-(4, 1, '2018-07-04 10:38:03', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '192.168.3.40', 'London', ',', NULL),
-(5, 1, '2018-07-04 10:38:28', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.183 Safari/537.36 Vivaldi/1.96.1147.47', '192.168.3.22', 'LAPTOP-PP1FHF0I', ',', NULL),
-(6, 1, '2018-07-05 02:24:52', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
-(7, 1, '2018-07-05 09:51:23', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.183 Safari/537.36 Vivaldi/1.96.1147.52', '192.168.3.22', 'LAPTOP-PP1FHF0I', ',', NULL),
-(8, 1, '2018-07-05 16:08:59', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '192.168.3.40', 'London', ',', NULL),
-(9, 1, '2018-07-05 22:27:35', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
-(10, 1, '2018-07-06 06:50:02', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
-(11, 1, '2018-07-06 08:27:41', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
-(12, 1, '2018-07-06 15:22:24', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
-(13, 1, '2018-07-08 09:52:51', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
-(14, 1, '2018-07-08 17:19:41', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
-(15, 1, '2018-07-09 03:40:15', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
-(16, 1, '2018-07-09 20:50:34', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
-(17, 1, '2018-07-09 20:50:47', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
-(18, 1, '2018-07-09 23:10:25', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
-(19, 1, '2018-07-17 20:10:41', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
-(20, 1, '2018-07-17 23:33:35', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
-(21, 1, '2018-07-20 00:11:44', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
-(22, 1, '2018-07-21 11:09:27', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
-(23, 1, '2018-07-21 22:03:40', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
-(24, 1, '2018-07-22 14:14:02', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
-(25, 1, '2018-07-22 17:26:08', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
-(26, 1, '2018-07-22 23:09:56', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
-(27, 1, '2018-07-23 22:45:57', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
-(28, 1, '2018-07-25 19:37:16', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
-(29, 1, '2018-07-26 08:03:11', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36', '::1', 'ip6-localhost', NULL, NULL),
-(30, 1, '2018-07-26 10:09:12', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
-(31, 1, '2018-07-27 04:29:49', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
-(32, 1, '2018-07-27 04:31:03', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL),
-(33, 1, '2018-07-27 09:37:35', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '::1', 'London', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -153,9 +98,7 @@ CREATE TABLE `access_roles_privileges_group` (
 --
 
 INSERT INTO `access_roles_privileges_group` (`id`, `name`, `roles`, `privileges`, `description`, `login_url`, `status`, `date_created`) VALUES
-(1, 'System Developer', 'statistics|overview|inhouse|dispatch|new registration|company|users|permissions|customers|reports|sms', '', 'Designers of this software', 'dashboard', 'active', '2017-10-16 17:42:32'),
-(2, 'Administrator', 'statistics|overview|inhouse|dispatch|new registration|company|users|permissions|customers|reports|sms', '', 'Administrator Group', 'dashboard', 'active', '2017-10-16 17:42:32'),
-(3, 'Reception', 'overview', '', 'Receptionist Group', 'overview', 'active', '2017-12-30 12:46:49');
+(0, 'System Developer', 'statistics|overview|inhouse|dispatch|new registration|company|users|permissions|customers|reports|sms', '', 'Designers of this software', 'dashboard', 'active', '2017-10-16 17:42:32');
 
 -- --------------------------------------------------------
 
@@ -177,7 +120,7 @@ CREATE TABLE `access_roles_privileges_user` (
 --
 
 INSERT INTO `access_roles_privileges_user` (`id`, `user_id`, `custom_roles`, `custom_privileges`, `group_id`, `status`) VALUES
-(1, 1, '', '', 2, 'active');
+(1, 1, '', '', 0, 'active');
 
 -- --------------------------------------------------------
 
@@ -224,7 +167,7 @@ CREATE TABLE `access_users` (
 --
 
 INSERT INTO `access_users` (`id`, `username`, `passwd`, `default_passwd`, `fullname`, `phone_number`, `temp_employee_id`, `biodata_id`, `demo_user_id`, `first_login`, `login_attempt`, `online`, `status`, `created_by`, `date_created`) VALUES
-(1, 'eahlijah@gmail.com', '$2y$10$O/swrfsJ6TbhtHiyzR7GmurgN4u49VcaMFzrOtZ9.3N511hoPhOVi', '', 'Edem Ahlijah', '023456789', '', 0, 1, 0, 5, 0, 'active', 0, '2018-07-03 15:59:37');
+(1, 'eahlijah@gmail.com', '$2y$10$O/swrfsJ6TbhtHiyzR7GmurgN4u49VcaMFzrOtZ9.3N511hoPhOVi', '', 'Edem Ahlijah', '023456789', 'KAD/SYS/001', 0, 0, 0, 5, 0, 'active', 0, '2018-07-03 15:59:37');
 
 -- --------------------------------------------------------
 
@@ -279,13 +222,6 @@ CREATE TABLE `demo_request_userinfo` (
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `demo_request_userinfo`
---
-
-INSERT INTO `demo_request_userinfo` (`id`, `first_name`, `last_name`, `email`, `contact`, `company_name`, `company_location`, `remarks`, `date_scheduled`, `date_created`) VALUES
-(1, 'Edem', 'Ahlijah', 'eahlijah@gmail.com', '023456789', 'Duraplast Company Limited', 'North Industrial Area', '', NULL, '2018-07-03 15:59:36');
-
 -- --------------------------------------------------------
 
 --
@@ -308,25 +244,18 @@ CREATE TABLE `hr_company_info` (
   `name` varchar(255) NOT NULL,
   `telephone_1` varchar(20) NOT NULL,
   `telephone_2` varchar(20) NOT NULL,
-  `fax` varchar(20) NOT NULL,
+  `fax` varchar(20) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `postal_address` varchar(255) NOT NULL,
   `residence_address` varchar(255) NOT NULL COMMENT 'physical location and street name where company is located',
   `website` varchar(100) NOT NULL COMMENT 'website of the comany',
   `mission` varchar(255) NOT NULL,
   `vision` varchar(255) NOT NULL,
-  `gps_location` varchar(255) NOT NULL,
+  `gps_location` varchar(255) DEFAULT NULL,
   `tin_number` varchar(50) NOT NULL,
   `logo_id` int(11) NOT NULL,
   `date_of_commence` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `hr_company_info`
---
-
-INSERT INTO `hr_company_info` (`id`, `name`, `telephone_1`, `telephone_2`, `fax`, `email`, `postal_address`, `residence_address`, `website`, `mission`, `vision`, `gps_location`, `tin_number`, `logo_id`, `date_of_commence`) VALUES
-(1, 'MARKSBON LIMITED', '0506139739', '0244949261', '0494', 'bgslaundry@gmail.com', 'BOX K47, OFANKOR - ACCRA', 'GROUND FLOOR - MR MEGA PLAZA. OFANKOR BARRIER - ACCRA.', '5\'0090585948N, 0\'94854948S', 'TO BE FILLED BY THE COMPANY', 'TO BE FILLED BY THE COMPANY', '', 'TN10245682-GA', 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -348,14 +277,7 @@ CREATE TABLE `hr_departments` (
 --
 
 INSERT INTO `hr_departments` (`id`, `parent_department`, `name`, `description`, `status`, `date_created`) VALUES
-(1, 0, 'SYSTEM DEVELOPERS', 'THIS DEPARTMENTS ARE USED BY THE SYSTEM DEVELOPERS GROUP FOR THE MAINTENANCE OF THE SYSTEM VIA LOCAL OR REMOTELY. ', 'active', '2018-05-03 21:31:58'),
-(2, 0, 'ADMINISTRATION', 'Pending Some Contrary Rabbit Up That The More Conditionally Ouch Confidently Far So Was Darn Logic Thus Dove The Juicily Because That Placed Otter.', 'active', '2018-05-03 21:40:32'),
-(5, 0, 'HUMAN RESOURCE', 'Pending Some Contrary Rabbit Up That The More Conditionally Ouch Confidently Far So Was Darn Logic Thus Dove The Juicily Because That Placed Otter.', 'active', '2018-05-03 22:49:30'),
-(6, 0, 'ACCOUNTS', 'Handles All Matters Relating To Money Of The Company', 'active', '2018-05-08 19:38:39'),
-(7, 0, 'OPERATIONS', 'All Operational Roles', 'active', '2018-07-09 23:22:55'),
-(8, 7, 'LOGISTICS', 'Keeping All Accouterments', 'active', '2018-07-09 23:35:01'),
-(9, 2, 'INFORMATION TECHNOLOGY', 'Responsible For Resolving All IT Related Stuffs And Bookkeeping Them As Well', 'active', '2018-07-27 04:43:19'),
-(10, 0, 'MANAGEMENT', 'Decision Makers For The Company', 'active', '2018-07-27 04:46:14');
+(0, 0, 'SYSTEM DEVELOPERS', 'THIS DEPARTMENTS ARE USED BY THE SYSTEM DEVELOPERS GROUP FOR THE MAINTENANCE OF THE SYSTEM VIA LOCAL OR REMOTELY. ', 'active', '2018-05-03 21:31:58');
 
 -- --------------------------------------------------------
 
@@ -388,15 +310,6 @@ CREATE TABLE `hr_employee_biodata` (
   `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
---
--- Dumping data for table `hr_employee_biodata`
---
-
-INSERT INTO `hr_employee_biodata` (`id`, `first_name`, `middle_name`, `last_name`, `gender`, `date_of_birth`, `id_type`, `id_number`, `id_expiry_date`, `id_issue_date`, `id_card_photo_id`, `marital_status`, `nationality`, `postal_address`, `social_security`, `bank_name`, `bank_branch`, `account_number`, `user_id`, `photo_id`, `status`, `created_date`) VALUES
-(1, 'Claude', 'Nii', 'Nai', 'Male', NULL, NULL, NULL, NULL, NULL, 0, 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '2018-01-09 11:48:33'),
-(3, 'Daniella', '', 'Eshun', 'Female', NULL, NULL, NULL, NULL, NULL, 0, 'Married', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '2018-01-11 13:06:57'),
-(4, 'Bismark', '', 'Nana', 'Male', NULL, NULL, NULL, NULL, NULL, 0, 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '2018-01-17 12:41:57');
-
 -- --------------------------------------------------------
 
 --
@@ -419,15 +332,6 @@ CREATE TABLE `hr_employee_contact_info` (
   `emergency_postal_addr` varchar(50) CHARACTER SET utf8 NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `hr_employee_contact_info`
---
-
-INSERT INTO `hr_employee_contact_info` (`id`, `biodata_id`, `phone_number_1`, `phone_number_2`, `email`, `residence`, `emergency_fullname`, `emergency_relationship`, `emergency_occupation`, `emergency_phone_1`, `emergency_phone_2`, `emergency_residence`, `emergency_postal_addr`, `date_created`) VALUES
-(1, 1, '0244444444', '0544444444', 'Claude@africaloop.com', 'Hse  No 12, Trade Fair Function.', 'Rebel Leader', 'Guardian', '', '0344444444', NULL, 'Dodowa', '', '2018-01-09 11:48:33'),
-(2, 3, '0266666666', '0566666666', 'Daniella@gmailcom', 'Kasoa - Overhead', 'Guardian', 'Guardian', '', '0277777777', NULL, 'Kasoa - Kalabule', '', '2018-01-11 13:06:57'),
-(3, 4, '1234567890', '', 'Watara@gmail.com', 'Taifa', '1234567890', 'Father', '', '1234567890', NULL, 'Taifa', '', '2018-01-17 17:41:57');
 
 -- --------------------------------------------------------
 
@@ -461,15 +365,6 @@ CREATE TABLE `hr_employee_work_info` (
   `date_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
---
--- Dumping data for table `hr_employee_work_info`
---
-
-INSERT INTO `hr_employee_work_info` (`id`, `biodata_id`, `employee_id`, `position_id`, `department_id`, `employment_type`, `employment_startdate`, `work_email`, `resume_id`, `application_id`, `date_created`) VALUES
-(1, 1, 'BG/EMP/001', 2, 1, '', NULL, NULL, NULL, 0, '2018-01-09 11:48:33'),
-(2, 3, 'BG/EMP/002', 2, 1, '', NULL, NULL, NULL, 0, '2018-01-11 13:06:57'),
-(3, 4, 'BG/EMP/003', 1, 5, '', NULL, NULL, NULL, 0, '2018-01-17 17:41:57');
-
 -- --------------------------------------------------------
 
 --
@@ -492,10 +387,7 @@ CREATE TABLE `hr_position` (
 --
 
 INSERT INTO `hr_position` (`id`, `name`, `parent_position`, `department_id`, `description`, `salary`, `status`, `created_date`) VALUES
-(1, 'SYSTEM DEVELOPER', 0, 0, 'Developers Of the System', 0, 'active', '2018-05-08 11:04:04'),
-(2, 'Administrator', 2, 2, 'Head Of Administration', 4200, 'active', '2018-05-08 11:04:04'),
-(3, 'RECEPTIONIST', NULL, 2, 'Responsible To Seeing Client First Hand', 700, 'active', '2018-05-08 11:27:34'),
-(4, 'CEO', NULL, 10, 'Manages The Overall Activities Of The Company', 0, 'active', '2018-07-27 04:53:36');
+(0, 'SYSTEM DEVELOPER', 0, 0, 'Developers Of the System', 0, 'active', '2018-05-08 11:04:04');
 
 -- --------------------------------------------------------
 
@@ -514,22 +406,11 @@ CREATE TABLE `laundry_clients` (
   `phone_number_2` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `sms_alert` tinyint(1) NOT NULL,
+  `email_alert` tinyint(1) NOT NULL,
   `online_access` tinyint(1) NOT NULL,
   `status` enum('active','inactive','deleted') NOT NULL DEFAULT 'active',
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `laundry_clients`
---
-
-INSERT INTO `laundry_clients` (`id`, `fullname`, `gender`, `company`, `residence_address`, `postal_address`, `phone_number_1`, `phone_number_2`, `email`, `sms_alert`, `online_access`, `status`, `date_created`) VALUES
-(2, 'Hope Avalon', 'Male', 'Hackerton', 'Kaneshie', '', '0233333333', '0533333333', 'hopeavalon@hackerton.com', 1, 1, 'active', '2018-01-09 11:51:50'),
-(3, 'Salama Jintey James', 'Male', 'Hackernoon', 'Kwabenya', '', '0222222222', '0522222222', 'jamessalama@hackernoon.com', 1, 1, 'active', '2018-01-09 11:53:58'),
-(4, 'Evans Ofori Owusu', 'Male', '', 'Adenta Barrier', '', '0211111111', '0511111111', 'evansofori@gmail.com', 1, 0, 'active', '2018-01-09 11:55:12'),
-(5, 'Ivan Pink', 'Male', 'Phalaa', 'Sonitra - Amasaman', '', '0255555555', '0255555555', 'ivanpink@gmail.com', 1, 0, 'active', '2018-01-09 11:57:51'),
-(6, 'Barkson Saddam', 'Male', '', '14 Gurugu Street', 'GP2556', '0000000000', '', 'bark@gmail.com', 1, 1, 'active', '2018-01-15 07:10:43'),
-(7, 'Bismark Offei', 'Male', 'Phalaa.com', 'Box Ta 353', 'Accra', '0245626487', '0245626487', 'wikills22@gmail.com', 1, 0, 'active', '2018-02-23 09:26:23');
 
 -- --------------------------------------------------------
 
@@ -682,8 +563,8 @@ INSERT INTO `laundry_prices` (`id`, `service_id`, `weight_id`, `garment_id`, `am
 (1, 1, 3, 0, 25, 'deleted', '2017-12-28 04:55:04'),
 (2, 1, 2, 0, 40, 'active', '2017-12-28 04:55:32'),
 (3, 4, 0, 1, 5, 'active', '2017-12-28 04:56:21'),
-(4, 2, 1, 5, 20, 'active', '2018-01-16 08:38:47'),
-(5, 2, 2, 5, 30, 'active', '2018-01-16 08:39:17'),
+(4, 2, 0, 5, 20, 'active', '2018-01-16 08:38:47'),
+(5, 2, 2, 5, 30, 'deleted', '2018-01-16 08:39:17'),
 (6, 1, 1, 0, 10, 'active', '2018-01-16 08:39:53'),
 (7, 1, 2, 5, 15, 'active', '2018-01-16 08:40:15');
 
@@ -785,13 +666,6 @@ CREATE TABLE `settings_tax_system` (
   `user_id` bigint(20) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `settings_tax_system`
---
-
-INSERT INTO `settings_tax_system` (`id`, `value`, `user_id`, `date_created`) VALUES
-(1, 23.5, 1, '2017-12-30 15:03:19');
 
 -- --------------------------------------------------------
 
@@ -1333,13 +1207,13 @@ ALTER TABLE `settings_tax_system`
 -- AUTO_INCREMENT for table `access_login_failed`
 --
 ALTER TABLE `access_login_failed`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto', AUTO_INCREMENT=11;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto';
 
 --
 -- AUTO_INCREMENT for table `access_login_successful`
 --
 ALTER TABLE `access_login_successful`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=34;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id';
 
 --
 -- AUTO_INCREMENT for table `access_password_reset_requests`
@@ -1351,7 +1225,7 @@ ALTER TABLE `access_password_reset_requests`
 -- AUTO_INCREMENT for table `access_roles_privileges_group`
 --
 ALTER TABLE `access_roles_privileges_group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `access_roles_privileges_user`
@@ -1387,31 +1261,31 @@ ALTER TABLE `demo_requests`
 -- AUTO_INCREMENT for table `demo_request_userinfo`
 --
 ALTER TABLE `demo_request_userinfo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hr_company_info`
 --
 ALTER TABLE `hr_company_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hr_departments`
 --
 ALTER TABLE `hr_departments`
-  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hr_employee_biodata`
 --
 ALTER TABLE `hr_employee_biodata`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hr_employee_contact_info`
 --
 ALTER TABLE `hr_employee_contact_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hr_employee_other_info`
@@ -1423,19 +1297,19 @@ ALTER TABLE `hr_employee_other_info`
 -- AUTO_INCREMENT for table `hr_employee_work_info`
 --
 ALTER TABLE `hr_employee_work_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hr_position`
 --
 ALTER TABLE `hr_position`
-  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `laundry_clients`
 --
 ALTER TABLE `laundry_clients`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `laundry_delivery_method`
@@ -1501,7 +1375,7 @@ ALTER TABLE `settings_dashboard_tabs`
 -- AUTO_INCREMENT for table `settings_tax_system`
 --
 ALTER TABLE `settings_tax_system`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

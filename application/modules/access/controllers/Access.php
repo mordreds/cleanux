@@ -325,8 +325,10 @@ class Access extends MX_Controller
                           'logo' => $companyinfo->logo_id
                         ];
                       } 
-                      else
+                      else {
+                        $redirect = base_url()."settings/company";
                         $session_array['companyinfo']['name'] = "Company Name" ;
+                      }
                     /************************ End of Company Info ********************/
                     //print "<pre>"; print_r($user); print "</pre>"; exit;
                     /************************ User Roles & Priviledges ********************/
@@ -430,7 +432,14 @@ class Access extends MX_Controller
                       $session_array['user']['login_attempt'] = $result['login_attempt'];
                       $session_array['user']['fullname'] = $user->fullname;
                       $this->session->set_userdata($session_array);
-                      redirect(base_url()."statistics");
+                      # Checking for company info
+                      if(empty(@$redirect))
+                        redirect(base_url()."statistics");
+                      else {
+                        $this->session->set_flashdata('info', "Please Set Company Info");
+                        redirect($redirect);
+                      }
+                      exit;   
                       //print "<pre>";print_r($_SESSION);print "</pre>";
                     }
                     /************************ Recording Login Success **********************/  

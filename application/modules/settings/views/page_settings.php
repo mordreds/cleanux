@@ -286,7 +286,10 @@
                 return '<span class="label '+label_class+'">'+row.status+'</span>';
               }},
               {data: "id", render: function(data,type,row,meta) { 
-                if (row.status != "deleted") {
+                if (row.name == "SYSTEM") {
+                  return "";
+                }
+                else if (row.status != "deleted") {
                   button = '<ul class="action_btns"><li><a class="edit_department" data-tableid="department_tbl" data-popup="tooltip" title="Edit Department" data-dept_id="'+row.id+'" data-dept_name="'+row.name+'" data-description="'+row.description+'" data-parent_dept="'+row.parent_department+'"><i class="icon-pencil text-primary" style="font-size: 21px"></i></a></li><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-tableid="department_tbl" data-formurl="<?=base_url()?>settings/delete_record" data-keyword="departments"></i></a></li></ul>';
                   return button; 
                 }
@@ -302,6 +305,7 @@
           $('#positions_tbl').dataTable({
             searching : false,
             paging: false,
+            pageLength: 4,
             ajax: {
               type : 'GET',
               url : '<?= base_url()?>settings/retrieve_alldata/positions/views',
@@ -338,7 +342,7 @@
                 return '<span class="label '+label_class+'">'+row.status+'</span>';
               }},
               {render: function(data,type,row,meta) { 
-                if (row.name == "SYSTEM DEVELOPER") {
+                if (row.name == "SYSTEM") {
                   return "";
                 }
                 else if (row.status != "deleted") {

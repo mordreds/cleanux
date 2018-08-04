@@ -156,6 +156,10 @@ class Statistics extends MX_Controller
                 }
               }
             }
+            else {
+              $services_count['Empty Data'] = 1;
+              $services_count['Empty Data'] = 1;
+            }
             //print "'".implode("','", array_keys($services_count))."'";
             //print "<pre>"; print_r($services_count);print "</pre>";  
             //exit;

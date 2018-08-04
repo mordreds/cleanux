@@ -118,12 +118,13 @@ class Settings extends MX_Controller
             $return_dataType="php_object";
             $tablename = "hr_position";
             $data = [
-              'parent_position' => $this->input->post('parent_department'),
+              'parent_position' => $this->input->post('parent_position'),
               'name' => strtoupper($this->input->post('position_name')),
               'department_id' => $this->input->post('department'),
               'salary' => ucwords($this->input->post('salary')),
               'description' => ucwords($this->input->post('description')),
             ];
+            //print_r($data);exit;
             /***** Data Definition *****/
             /***** Save New Department ***********/
             if(empty($id)) {
@@ -162,7 +163,7 @@ class Settings extends MX_Controller
       public function save_department($id = null) {
         if(in_array('new registration', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('parent_department','Parent Department','trim');
-          $this->form_validation->set_rules('department','Departmennt Name','trim|required');
+          $this->form_validation->set_rules('department','Departmennt Name','trim|required|is_unique[hr_departments.name]',array('is_unique' => "Department Already Exist"));
           $this->form_validation->set_rules('description','Description','trim|required');
           //$this->form_validation->set_rules('delete_item','Delete Action','trim');
 
@@ -685,13 +686,15 @@ class Settings extends MX_Controller
           $this->form_validation->set_rules('primary_tel','Phone No #1','trim');
           $this->form_validation->set_rules('secondary_tel','Phone No #2','trim');
           $this->form_validation->set_rules('email','Email','trim');
-          $this->form_validation->set_rules('sms','SMS','trim');
-          $this->form_validation->set_rules('online','Online Access','trim');
+          $this->form_validation->set_rules('sms','SMS Alert','trim');
+          $this->form_validation->set_rules('email_alert','Email Alert','trim');
+          $this->form_validation->set_rules('online','Online Portal','trim');
           $this->form_validation->set_rules('update_item','Update Action','trim');
           $this->form_validation->set_rules('delete_item','Delete Action','trim');
 
           if($this->form_validation->run() === FALSE) {
-            $this->session->set_flashdata('error', "Validation Error");
+            $errors = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+            $this->session->set_flashdata('error', $errors);
             redirect('overview');
           }
           else {
@@ -712,6 +715,7 @@ class Settings extends MX_Controller
               'phone_number_2' => $this->input->post('secondary_tel'),
               'email' => $this->input->post('email'),
               'sms_alert' => ($this->input->post('sms') == "on") ? 1 : 0,
+              'email_alert' => ($this->input->post('email_alert') == "on") ? 1 : 0,
               'online_access' => ($this->input->post('online')== "on") ? 1 : 0,
             ]; 
             $return_dataType="php_object";
@@ -906,7 +910,7 @@ class Settings extends MX_Controller
             $tablename = "vw_hr_departments";
             # Checking System Developer Role 
               if($_SESSION['user']['group_name'] == "System Developer") {
-                $condition = array();
+                $condition = ['where_condition' => array()];
                 $orderby = array('id' => "ASC");
               }
               else {

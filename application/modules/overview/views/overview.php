@@ -16,7 +16,7 @@
                       </ul>
                       <div class="tab-content">
                         <div class="tab-pane active" id="client_info">
-                          <form action="<?=base_url()?>settings/save_client_info" method="post"">
+                          <form action="<?=base_url()?>settings/save_client_info" method="post">
                             <input type="hidden" name="id"/>
                             <input type="hidden" name="update_item"/>
                             <div class="">
@@ -69,20 +69,29 @@
                                   <input type="text" name="secondary_tel" placeholder="Phone No #2:" class="form-control">
                                 </div>
                               </div>
-                              <div class="col-md-2">
+                              <div class="col-md-1" style="margin-right: 16px">
                                 <div class="form-group">
                                   <div class="checkbox checkbox-switchery">
                                     <label><input type="checkbox" name="sms" class="switchery" checked>
-                                      SMS Alert
+                                      SMS
                                     </label>
                                   </div>
                                 </div>
                               </div>
-                              <div class="col-md-2">
+                              <div class="col-md-1" style="margin-right: 22px">
                                 <div class="form-group">
                                   <div class="checkbox checkbox-switchery">
-                                    <label><input type="checkbox" name="online" class="switchery">
-                                    Online Portal
+                                    <label><input type="checkbox" name="email_alert" class="switchery" checked>
+                                    Email 
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-1">
+                                <div class="form-group">
+                                  <div class="checkbox checkbox-switchery">
+                                    <label><input type="checkbox" name="online" class="switchery" checked>
+                                     Portal
                                     </label>
                                   </div>
                                 </div>

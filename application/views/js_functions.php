@@ -54,7 +54,13 @@
 
     <?php if(!empty($_SESSION['warning'])) : ?>
       $.jGrowl('<?= $this->session->flashdata("warning") ?>', {
-        theme: 'alert-styled-left bg-danger'
+        theme: 'alert-styled-left bg-warning'
+      });
+    <?php endif; ?>
+
+    <?php if(!empty($_SESSION['info'])) : ?>
+      $.jGrowl('<?= $this->session->flashdata("info") ?>', {
+        theme: 'alert-styled-left bg-info'
       });
     <?php endif; ?>
   /************ Notifications ***************/
@@ -66,6 +72,7 @@
         url : formurl,
         data : formData,
         success: function(response) { 
+          //console.log(response); exit();
           response = JSON.parse(response)
           
           if(response.success)
