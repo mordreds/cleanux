@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2018 at 02:04 AM
+-- Generation Time: Aug 04, 2018 at 04:13 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.1.14
 
@@ -60,6 +60,17 @@ CREATE TABLE `access_login_successful` (
   `country` varchar(255) DEFAULT NULL COMMENT 'country of the user at the time of system access'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `access_login_successful`
+--
+
+INSERT INTO `access_login_successful` (`id`, `user_id`, `time_in`, `time_out`, `online`, `user_agent`, `ipaddress`, `hostname`, `city_region`, `country`) VALUES
+(1, 1, '2018-08-04 00:05:40', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36', '::1', 'London', NULL, NULL),
+(2, 1, '2018-08-04 00:22:20', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36', '::1', 'London', NULL, NULL),
+(3, 1, '2018-08-04 00:30:49', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36', '::1', 'London', NULL, NULL),
+(4, 1, '2018-08-04 00:36:42', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36', '::1', 'London', NULL, NULL),
+(5, 1, '2018-08-04 00:36:56', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -98,7 +109,7 @@ CREATE TABLE `access_roles_privileges_group` (
 --
 
 INSERT INTO `access_roles_privileges_group` (`id`, `name`, `roles`, `privileges`, `description`, `login_url`, `status`, `date_created`) VALUES
-(0, 'System Developer', 'statistics|overview|inhouse|dispatch|new registration|company|users|permissions|customers|reports|sms', '', 'Designers of this software', 'dashboard', 'active', '2017-10-16 17:42:32');
+(1, 'System Developer', 'statistics|overview|inhouse|dispatch|new registration|company|users|permissions|customers|reports|sms', '', 'Designers of this software', 'dashboard', 'active', '2017-10-16 17:42:32');
 
 -- --------------------------------------------------------
 
@@ -120,7 +131,7 @@ CREATE TABLE `access_roles_privileges_user` (
 --
 
 INSERT INTO `access_roles_privileges_user` (`id`, `user_id`, `custom_roles`, `custom_privileges`, `group_id`, `status`) VALUES
-(1, 1, '', '', 0, 'active');
+(1, 1, '', '', 1, 'active');
 
 -- --------------------------------------------------------
 
@@ -257,6 +268,13 @@ CREATE TABLE `hr_company_info` (
   `date_of_commence` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
+--
+-- Dumping data for table `hr_company_info`
+--
+
+INSERT INTO `hr_company_info` (`id`, `name`, `telephone_1`, `telephone_2`, `fax`, `email`, `postal_address`, `residence_address`, `website`, `mission`, `vision`, `gps_location`, `tin_number`, `logo_id`, `date_of_commence`) VALUES
+(1, 'BG\'S LIMITED', '+233 (0)302- 223989', '+233 (0)244 336 665', NULL, 'info@bglaundry.com', 'box an 10987', 'ofankor', 'http://www.bglaundry.com/', 'Delivering is our purpose', 'trust is our  hall mark', 'https://goo.gl/maps/SY7muBi8eBN2', 'TN-1234567-00', 0, '0000-00-00');
+
 -- --------------------------------------------------------
 
 --
@@ -277,7 +295,10 @@ CREATE TABLE `hr_departments` (
 --
 
 INSERT INTO `hr_departments` (`id`, `parent_department`, `name`, `description`, `status`, `date_created`) VALUES
-(0, 0, 'SYSTEM DEVELOPERS', 'THIS DEPARTMENTS ARE USED BY THE SYSTEM DEVELOPERS GROUP FOR THE MAINTENANCE OF THE SYSTEM VIA LOCAL OR REMOTELY. ', 'active', '2018-05-03 21:31:58');
+(1, 0, 'SYSTEM', 'THIS DEPARTMENTS ARE USED BY THE SYSTEM DEVELOPERS GROUP FOR THE MAINTENANCE OF THE SYSTEM VIA LOCAL OR REMOTELY. ', 'active', '2018-05-03 21:31:58'),
+(2, 0, 'OPERATIONS', 'Sees To The Overall Procedure Of The Laundry Process', 'active', '2018-08-04 00:49:44'),
+(3, 2, 'FRONT DESK', 'All Personnel That Relatest To The Client', 'active', '2018-08-04 00:56:24'),
+(4, 0, 'FINANCE', 'Controls All Finances Of The Business', 'active', '2018-08-04 00:59:05');
 
 -- --------------------------------------------------------
 
@@ -310,6 +331,13 @@ CREATE TABLE `hr_employee_biodata` (
   `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
+--
+-- Dumping data for table `hr_employee_biodata`
+--
+
+INSERT INTO `hr_employee_biodata` (`id`, `first_name`, `middle_name`, `last_name`, `gender`, `date_of_birth`, `id_type`, `id_number`, `id_expiry_date`, `id_issue_date`, `id_card_photo_id`, `marital_status`, `nationality`, `postal_address`, `social_security`, `bank_name`, `bank_branch`, `account_number`, `user_id`, `photo_id`, `status`, `created_date`) VALUES
+(1, 'Bismark', 'Atta Kwame', 'Offei', 'Male', NULL, NULL, NULL, NULL, NULL, 0, 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '2018-08-04 02:09:47');
+
 -- --------------------------------------------------------
 
 --
@@ -332,6 +360,13 @@ CREATE TABLE `hr_employee_contact_info` (
   `emergency_postal_addr` varchar(50) CHARACTER SET utf8 NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `hr_employee_contact_info`
+--
+
+INSERT INTO `hr_employee_contact_info` (`id`, `biodata_id`, `phone_number_1`, `phone_number_2`, `email`, `residence`, `emergency_fullname`, `emergency_relationship`, `emergency_occupation`, `emergency_phone_1`, `emergency_phone_2`, `emergency_residence`, `emergency_postal_addr`, `date_created`) VALUES
+(1, 1, '0233897468', '0240636911', 'Wikills22@gmail.com', 'Taifa', 'Osborne Mordreds', 'Guardian', '', '0541786220', NULL, 'Abelemkpe', '', '2018-08-04 02:09:47');
 
 -- --------------------------------------------------------
 
@@ -365,6 +400,13 @@ CREATE TABLE `hr_employee_work_info` (
   `date_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
+--
+-- Dumping data for table `hr_employee_work_info`
+--
+
+INSERT INTO `hr_employee_work_info` (`id`, `biodata_id`, `employee_id`, `position_id`, `department_id`, `employment_type`, `employment_startdate`, `work_email`, `resume_id`, `application_id`, `date_created`) VALUES
+(1, 1, 'BG/EMP/001', 6, 1, '', NULL, NULL, NULL, 0, '2018-08-04 02:09:47');
+
 -- --------------------------------------------------------
 
 --
@@ -387,7 +429,12 @@ CREATE TABLE `hr_position` (
 --
 
 INSERT INTO `hr_position` (`id`, `name`, `parent_position`, `department_id`, `description`, `salary`, `status`, `created_date`) VALUES
-(0, 'SYSTEM DEVELOPER', 0, 0, 'Developers Of the System', 0, 'active', '2018-05-08 11:04:04');
+(1, 'SYSTEM', 0, 1, 'Developers Of the System', 0, 'active', '2018-05-08 11:04:04'),
+(2, 'OPERATIONS MANAGER', 4, 2, 'Manage All Employees And Process Flow', 2000, 'active', '2018-08-04 01:07:23'),
+(3, 'ACCOUNTANT', 4, 4, 'Controls All Financial Matters', 2500, 'active', '2018-08-04 01:08:51'),
+(4, 'CEO', NULL, 2, 'Ceo', 1, 'active', '2018-08-04 01:09:19'),
+(5, 'RECEPTIONIST', 2, 3, 'Recieves Client On First Counter', 700, 'active', '2018-08-04 01:32:48'),
+(6, 'ADMIN', 2, 2, 'Super User Of The System And It Maintenance', 1500, 'active', '2018-08-04 01:36:57');
 
 -- --------------------------------------------------------
 
@@ -1213,7 +1260,7 @@ ALTER TABLE `access_login_failed`
 -- AUTO_INCREMENT for table `access_login_successful`
 --
 ALTER TABLE `access_login_successful`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id';
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `access_password_reset_requests`
@@ -1225,7 +1272,7 @@ ALTER TABLE `access_password_reset_requests`
 -- AUTO_INCREMENT for table `access_roles_privileges_group`
 --
 ALTER TABLE `access_roles_privileges_group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `access_roles_privileges_user`
@@ -1267,25 +1314,25 @@ ALTER TABLE `demo_request_userinfo`
 -- AUTO_INCREMENT for table `hr_company_info`
 --
 ALTER TABLE `hr_company_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `hr_departments`
 --
 ALTER TABLE `hr_departments`
-  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `hr_employee_biodata`
 --
 ALTER TABLE `hr_employee_biodata`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `hr_employee_contact_info`
 --
 ALTER TABLE `hr_employee_contact_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `hr_employee_other_info`
@@ -1297,13 +1344,13 @@ ALTER TABLE `hr_employee_other_info`
 -- AUTO_INCREMENT for table `hr_employee_work_info`
 --
 ALTER TABLE `hr_employee_work_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `hr_position`
 --
 ALTER TABLE `hr_position`
-  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `laundry_clients`
