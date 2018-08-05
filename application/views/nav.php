@@ -171,7 +171,9 @@
               </table>
               <div>
               	<div class="col-md-2">
-              		<button class="btn btn-xs btn-danger clear_cart" style="padding:5px;">Clear All <i class="icon-trash"></i></button>
+									<form action="<?=base_url()?>overview/clear_cart" method="post" style="display:inline">
+              			<button class="btn btn-xs btn-danger clear_cart" style="padding:5px;margin-bottom: 5px">Clear All <i class="icon-trash"></i></button>
+									</form>
               	</div>
               	<div class="col-md-2 pull-right" style="padding:5px;">
               		<button class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#delivery" id="checkout">Checkout <i class="icon-forward"></i></button>

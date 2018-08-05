@@ -117,6 +117,7 @@ class Settings extends MX_Controller
             $dbres = self::$_Default_DB;
             $return_dataType="php_object";
             $tablename = "hr_position";
+            $tablename2 = "access_roles_privileges_group";
             $data = [
               'parent_position' => $this->input->post('parent_position'),
               'name' => strtoupper($this->input->post('position_name')),
@@ -124,12 +125,17 @@ class Settings extends MX_Controller
               'salary' => ucwords($this->input->post('salary')),
               'description' => ucwords($this->input->post('description')),
             ];
+            $user_group_data = [
+              'name' => strtoupper($this->input->post('position_name')),
+              'description' => ucwords($this->input->post('description')),
+            ];
             //print_r($data);exit;
             /***** Data Definition *****/
             /***** Save New Department ***********/
             if(empty($id)) {
               $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
-              if($query_result)
+              $query_result_2 = $this->model_insertion->datainsert($dbres,$tablename2,$user_group_data);
+              if($query_result && $query_result_2)
                 $this->session->set_flashdata('success',"Save Successful");
               else
                 $this->session->set_flashdata('error',"Save Failed");
@@ -683,7 +689,7 @@ class Settings extends MX_Controller
           $this->form_validation->set_rules('company_name','Company Name','trim');
           $this->form_validation->set_rules('residence_addr','Residence Address','trim');
           $this->form_validation->set_rules('postal_addr','Postal Address','trim');
-          $this->form_validation->set_rules('primary_tel','Phone No #1','trim');
+          $this->form_validation->set_rules('primary_tel','Phone No #1','trim|required|is_unique[hr_employee_contact_info.phone_number_1]',array('is_unique' => "Phone No # Already Exist"));
           $this->form_validation->set_rules('secondary_tel','Phone No #2','trim');
           $this->form_validation->set_rules('email','Email','trim');
           $this->form_validation->set_rules('sms','SMS Alert','trim');
@@ -1112,6 +1118,21 @@ class Settings extends MX_Controller
       return $next_usr_id;  
       /********** Generating New User Id ************/
     }
+    
+  public function send_email($to, $from, $subject, $message) {
+    if(!empty($to) && !empty($from)) {
+      # Loading PHP Mailer Library
+      $this->load->library('email');
+      $this->email->from($from, $subject);
+      $this->email->to($recipient_email);
+      $this->email->subject($subject);
+      $this->email->message($message);
+
+      return($this->email->send());
+    }
+    else
+      return false;
+  }
   /********************************* Other Functions *********************/
 
   

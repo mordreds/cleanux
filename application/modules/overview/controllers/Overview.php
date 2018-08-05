@@ -41,6 +41,7 @@ class Overview extends MX_Controller
         /****** Total Orders ******/
         /***************** Interface *****************/
         $data['title'] = "Overview"; 
+
         $this->load->view('header',$data); 
         $this->load->view('overview',$data); 
         $this->load->view('footer'); 
@@ -483,7 +484,23 @@ class Overview extends MX_Controller
     }
 
     /*******************************
-      Clear Chart
+      Clear Record
+    *******************************/
+    public function clear_record() 
+    {
+      # Permission Check
+      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) 
+        $return_data = ['error' => "Permission Denied. Please Contact Admin"];
+      else { 
+        unset($_SESSION['laundry']['new_order']);
+        $this->session->set_flashdata('success', "Record Cleared");
+        
+        redirect(base_url()."overview");
+      }
+    }
+
+    /*******************************
+      Clear Cart
     *******************************/
     public function clear_cart() 
     {
@@ -491,11 +508,11 @@ class Overview extends MX_Controller
       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles'])) 
         $return_data = ['error' => "Permission Denied. Please Contact Admin"];
       else { 
-        unset($_SESSION['laundry']['new_order']);
-        $return_data = ['success' => "Cart Cleared"];
+        unset($_SESSION['laundry']['new_order']['orders']);
+        $this->session->set_flashdata('success', "Cart Cleared");
+        
+        redirect(base_url()."overview");
       }
-
-      print_r(json_encode($return_data));
     }
 
     /*******************************

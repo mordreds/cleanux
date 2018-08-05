@@ -69,8 +69,9 @@
       $('.clear_cart').click(function(){
         let formurl = "<?=base_url()?>overview/clear_cart";
         let formData = {'data': "clear chart"};
+        //alert(formurl); exit();
         ajax_post(formurl,formData,tableid="laundry_cart");
-        location.reload();
+        //location.reload();
       });
     /********** Viewing Laundry Cart ******/
 

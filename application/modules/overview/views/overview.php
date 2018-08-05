@@ -219,7 +219,9 @@
                                 <input type="text" id="search_text" value="<?=@$new_client_number?>" placeholder="Order Number or Phone Number :" class="form-control">
                               </div>
                               <button type="button" data-action="reload" class="btn btn-primary" id="search_submit">Search  <i class="icon-search4 position-right"></i></button>
-                              <button type="button" data-action="reload" class="btn btn-warning clear_cart pull-right">Clear Record <i class="icon-x position-right"></i></button>
+                              <form action="<?=base_url()?>overview/clear_record" method="post" style="display:inline">
+                                <button type="submit" class="btn btn-warning pull-right">Clear Record <i class="icon-x position-right"></i></button>
+                              </form>
                             </div>
                           </div>
                         </div>
