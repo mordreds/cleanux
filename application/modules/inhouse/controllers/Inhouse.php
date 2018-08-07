@@ -19,12 +19,38 @@ class Inhouse extends MX_Controller
         redirect('dashboard');
       else
       {
-        /****** Required Parameters To Render A Page ******/
         $this->load->model('access/model_access');
         $this->load->model('globals/model_retrieval');
+
+        $dbres = self::$_Default_DB;
+        $return_dataType="php_object";
+        $tablename = "vw_orderlist_summary";
+        
+        # Total Pending Orders
+          $condition = [
+            'where_condition' => array('status' => 'Pending')
+          ];
+          $pending_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
+          if(!isset($pending_orders['DB_ERROR']))
+            $data['pending_orders'] = (empty($pending_orders)) ? 0 : sizeof($pending_orders);
+          else
+            $data['pending_orders'] = 0;
+        
+        # Total Processing Orders
+          $condition = [
+            'where_condition' => array('status' => 'Processing')
+          ];
+          $processing_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
+          print_r($processing_orders); exit;
+          if(!isset($processing_orders['DB_ERROR']))
+            $data['processing_orders'] = (empty($processing_orders)) ? 0 : sizeof($processing_orders);
+          else
+            $data['processing_orders'] = 0;
+        
+        /****** Required Parameters To Render A Page ******/
         $data['_Default_DB'] = self::$_Default_DB;
-         $data['page_controller'] = $this->uri->segment(1);
-         $data['controller_function'] = $this->uri->segment(2);
+        $data['page_controller'] = $this->uri->segment(1);
+        $data['controller_function'] = $this->uri->segment(2);
         /****** Required Parameters To Render A Page ******/
 
         /***************** Interface *****************/

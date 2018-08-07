@@ -44,7 +44,7 @@ class Statistics extends MX_Controller
             $total_users = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
             
             if(!isset($total_users['DB_ERROR']))
-              $data['total_users'] = sizeof($total_users);
+              $data['total_users'] = (empty($pending_orders)) ? 0 : sizeof($total_users);
             else
               $data['total_users'] = 0;
           
@@ -53,7 +53,7 @@ class Statistics extends MX_Controller
             $condition = array();
             $total_customers = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
             if(!isset($total_customers['DB_ERROR']))
-              $data['total_customers'] = sizeof($total_customers);
+              $data['total_customers'] = (empty($pending_orders)) ? 0 : sizeof($total_customers);
             else
               $data['total_customers'] = 0;
             
@@ -65,7 +65,7 @@ class Statistics extends MX_Controller
             ];
             $pending_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
             if(!isset($pending_orders['DB_ERROR']))
-              $data['pending_orders'] = sizeof($pending_orders);
+              $data['pending_orders'] = (empty($pending_orders)) ? 0 : sizeof($pending_orders);
             else
               $data['pending_orders'] = 0;
 
@@ -75,7 +75,7 @@ class Statistics extends MX_Controller
             ];
             $awaiting_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
             if(!isset($awaiting_orders['DB_ERROR']))
-              $data['awaiting_orders'] = sizeof($awaiting_orders);
+              $data['awaiting_orders'] = (empty($pending_orders)) ? 0 : sizeof($awaiting_orders);
             else
               $data['awaiting_orders'] = 0;
 
@@ -85,7 +85,7 @@ class Statistics extends MX_Controller
             ];
             $delivered_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
             if(!isset($delivered_orders['DB_ERROR']))
-              $data['delivered_orders'] = sizeof($delivered_orders);
+              $data['delivered_orders'] = (empty($pending_orders)) ? 0 : sizeof($delivered_orders);
             else
               $data['delivered_orders'] = 0;
           

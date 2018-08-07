@@ -8,7 +8,7 @@
           <div class="panel text-center">
             <div class="panel-body">
               <div class="content-group ">
-                <h5 class="text-semibold no-margin"><a href="#" class="btn border-pink text-pink btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
+                <h5 class="text-semibold no-margin"><a href="#" class="btn border-pink text-pink btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> <?=number_format($pending_orders)?></h5>
                 <span class="text-muted text-size-small">laundry Pending</span>
               </div>
             </div>
@@ -19,7 +19,7 @@
           <div class="panel text-center">
             <div class="panel-body">
               <div class="content-group">
-                <h5 class="text-semibold no-margin"><a href="#" class="btn border-blue text-blue btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> 5,689</h5>
+                <h5 class="text-semibold no-margin"><a href="#" class="btn border-blue text-blue btn-flat btn-rounded btn-icon btn-xs legitRipple"><i class="icon-statistics"></i></a> <?=number_format($pending_orders)?></h5>
                 <span class="text-muted text-size-small">laundry Processing</span>
               </div>
             </div>
