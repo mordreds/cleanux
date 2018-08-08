@@ -41,7 +41,7 @@ class Inhouse extends MX_Controller
             'where_condition' => array('status' => 'Processing')
           ];
           $processing_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
-          print_r($processing_orders); exit;
+          
           if(!isset($processing_orders['DB_ERROR']))
             $data['processing_orders'] = (empty($processing_orders)) ? 0 : sizeof($processing_orders);
           else

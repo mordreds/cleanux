@@ -58,7 +58,7 @@ class Settings extends MX_Controller
     /********** New Registration  ********/
       public function new_registration() {
         # Permission Check
-         if(!in_array('new registration', $_SESSION['user']['roles'])) {
+         if(!in_array('Settings', $_SESSION['user']['roles'])) {
           $this->session->set_flashdata('error', "Permission Denied. Please Contact Admin");
           redirect('dashboard');
          }
@@ -245,8 +245,10 @@ class Settings extends MX_Controller
           $this->form_validation->set_rules('vision','vision Statment','trim');
           $this->form_validation->set_rules('tin_number','Tin Number','trim');
           $this->form_validation->set_rules('gps_location','GPS Location','trim');
+          
           if ($this->form_validation->run() === FALSE) {
-            $this->session->set_flashdata('error',"Validation Error");
+            $error_msg = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+            $this->session->set_flashdata('error',$error_msg);
             redirect('settings/company');
           }
           else {
@@ -315,7 +317,8 @@ class Settings extends MX_Controller
           $this->form_validation->set_rules('delete_item','Delete Action','trim');
 
           if($this->form_validation->run() === FALSE) {
-            $this->session->set_flashdata('error',"Validation Error");
+            $error_msg = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+            $this->session->set_flashdata('error',$error_msg);
             redirect('settings/new_registration');
           }
           else {
@@ -391,7 +394,8 @@ class Settings extends MX_Controller
           $this->form_validation->set_rules('delete_item','Delete Action','trim');
 
           if($this->form_validation->run() === FALSE) {
-            $this->session->set_flashdata('error',"Validation Error");
+            $error_msg = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+            $this->session->set_flashdata('error',$error_msg);
             redirect('settings/new_registration');
           }
           else {
@@ -465,7 +469,8 @@ class Settings extends MX_Controller
           $this->form_validation->set_rules('delete_item','Delete Action','trim');
 
           if($this->form_validation->run() === FALSE) {
-            $this->session->set_flashdata('error',"Validation Error");
+            $error_msg = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+            $this->session->set_flashdata('error',$error_msg);
             redirect('settings/new_registration');
           }
           else {
@@ -540,7 +545,8 @@ class Settings extends MX_Controller
           $this->form_validation->set_rules('delete_item','Delete Action','trim');
 
           if($this->form_validation->run() === FALSE) {
-            $this->session->set_flashdata('error',"Validation Error");
+            $error_msg = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+            $this->session->set_flashdata('error',$error_msg);
             redirect('settings/new_registration');
           }
           else {
@@ -615,7 +621,8 @@ class Settings extends MX_Controller
           $this->form_validation->set_rules('delete_item','Delete Action','trim');
 
           if($this->form_validation->run() === FALSE) {
-            $this->session->set_flashdata('error',"Validation Error");
+            $error_msg = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+            $this->session->set_flashdata('error',$error_msg);
             redirect('settings/new_registration#delivery');
           }
           else {
@@ -676,6 +683,47 @@ class Settings extends MX_Controller
         else {
           $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
           redirect('settings/new_registration#delivery');
+        }
+      }
+    /****** Save Weight ************/
+
+
+    /****** Save Weight ************/
+      public function save_tax() {
+        if(in_array('Settings', $_SESSION['user']['roles'])) {
+          $this->form_validation->set_rules('tax_value','ID','trim|required');
+
+          if($this->form_validation->run() === FALSE) {
+            $error_msg = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+            $this->session->set_flashdata('error',$error_msg);
+            redirect('settings/new_registration#tax');
+          }
+          else {
+            $this->load->model('globals/model_insertion');
+            /***** Data Definition *****/
+            $dbres = self::$_Default_DB;
+            $tablename = "settings_tax_system";
+            $data = [
+              'value' => (float)$this->input->post('tax_value'),
+              'user_id' => $_SESSION['user']['id'] 
+            ];
+            $return_dataType="php_object";
+            /***** Data Definition *****/
+            
+            $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
+            if($query_result) {
+              $_SESSION['tax_value'] = (float)$this->input->post('tax_value');
+              $this->session->set_flashdata('success',"Save Successful");
+            }
+            else
+              $this->session->set_flashdata('error',"Save Failed");
+
+            redirect('settings/new_registration#tax');
+          }
+        }
+        else {
+          $this->session->set_flashdata('error','Permission Denied.Contact Administrator');
+          redirect('settings/new_registration#tax');
         }
       }
     /****** Save Weight ************/

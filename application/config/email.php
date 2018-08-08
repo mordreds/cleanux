@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed.');
 
-define('MAIL_SERVER_EMAIL', "bismarkoffei22@gmail.com");
-define('MAIL_SERVER_PASSWORD', "danquah2k");
+define('MAIL_SERVER_EMAIL', "osborne.mordred@gmail.com");
+define('MAIL_SERVER_PASSWORD', "@H4ck3r5z.c0mmm");
 
 $config['useragent']        = 'PHPMailer';              // Mail engine switcher: 'CodeIgniter' or 'PHPMailer'
 $config['protocol']         = 'smtp';                   // 'mail', 'sendmail', or 'smtp'

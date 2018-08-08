@@ -1,4 +1,4 @@
- <!-- Content area -->
+ <!-- Content area --> 
   <div class="content">
     <?php //print "<pre>"; print_r($_SESSION); print "</pre>";?>
     <!-- Main charts -->
@@ -13,6 +13,7 @@
                 <li><a href="#garments" data-toggle="tab">Garments<i class="icon-menu3 position-right"></i></a></li>
                 <li><a href="#pricing" data-toggle="tab">Pricing<i class="icon-menu3 position-right"></i></a></li>
                 <li><a href="#delivery" data-toggle="tab">delivery<i class="icon-menu3 position-right"></i></a></li>
+                <li><a href="#tax" data-toggle="tab">TAX Settings<i class="icon-cash position-right"></i></a></li>
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="service">
@@ -152,7 +153,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="tab-pane" id="pricing">
                   <div class="row">
                     <div class="col-md-5">
@@ -248,6 +248,28 @@
                         </thead>
                         <tbody></tbody>
                       </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="tax">
+                  <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-2">
+                      <form action="<?=base_url();?>settings/save_tax" method="post" style="margin-left: 10px; margin-right: 10px">
+                        <div class="row">
+                          <div class="col-md-11">
+                            <div class="form-group">
+                              <label class="display-block">Current Tax Holdings  <span style="color:red;">*</span></label>
+                               <input type="number" placeholder="3.7" name="tax_value" value="<?= number_format(@$_SESSION['tax_value'],2) ?>" class="form-control" step=".01"  required>
+                            </div>
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save <i class="icon-arrow-right14 position-right"></i></button>
+                      </form>
+                    </div>
+                    <div class="col-md-2">
+                     <h3> Current Tax</h3>
+                     <h2><?= number_format(@$_SESSION['tax_value'],2) ?></h2>
                     </div>
                   </div>
                 </div>

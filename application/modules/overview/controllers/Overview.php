@@ -217,6 +217,11 @@ class Overview extends MX_Controller
             $where_condition = array();
             $tax_value = $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType,$select,$where_condition);
             //print_r($tax_value); exit;
+            if(empty($tax_value->id)) {
+              $this->session->set_flashdata('error', 'Please Setup VAT Percent First');
+              redirect($_SERVER['HTTP_REFERER'],'refresh');
+            }
+
             # variable declaration
             $pricelist_ids = $quantities = $unit_prices = $total_sums = $description = array();
             $delivery_price = $delivery_price->price;
@@ -704,8 +709,11 @@ class Overview extends MX_Controller
         # data definition 
         $dbres = self::$_Default_DB;
         $tablename = "vw_orderlist_summary";
-        $where_condition = "status Not In ('Delivered','Cancelled') AND client_phone_no_1 = $phone_number";
-        $query_result = $this->model_retrieval->all_info_return_result($dbres,$tablename,$where_condition,$return_dataType="php_object");
+        $where_condition = [
+          'where_condition' => array('client_phone_no_1' => $phone_number),
+          'where_not_in_condition' => array('status' => "'Delivered','Cancelled'")
+        ];
+        $query_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$where_condition);
 
         if($query_result) {
           for ($a=0; $a < sizeof($query_result); $a++) { 
