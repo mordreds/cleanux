@@ -14,7 +14,7 @@ class Overview extends MX_Controller
     /*******************************
       Index Function
     *******************************/
-    public function index() {
+    public function index() { //print "<pre>"; print_r($_SESSION); print "</pre>";
       # Permission Check
        if(!isset($_SESSION['user']['username']))
         redirect('access/login');

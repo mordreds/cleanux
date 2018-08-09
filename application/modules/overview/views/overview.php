@@ -18,89 +18,159 @@
                           <form action="<?=base_url()?>settings/save_client_info" method="post">
                             <input type="hidden" name="id"/>
                             <input type="hidden" name="update_item"/>
-                            <div class="">
-                              <div class="col-md-4 col-sm-4">
-                                <div class="form-group">
-                                  <input type="text" name="fullname" placeholder="Full Name :" class="form-control" required>
+                            
+                            <div id="client_submit_form" class="col-md-12">
+                              <div class="">
+                                <div class="col-md-4 col-sm-4">
+                                  <div class="form-group">
+                                    <input type="text" name="fullname" placeholder="Full Name :" class="form-control" required>
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="col-md-4 col-sm-4">
-                                <div class="form-group">
-                                  <input type="text" name="company_name" placeholder="Company Name (optional) :" class="form-control">
+                                <div class="col-md-4 col-sm-4">
+                                  <div class="form-group">
+                                    <input type="text" name="company_name" placeholder="Company Name (optional) :" class="form-control">
+                                  </div>
                                 </div>
-                              </div>
-                              <div class="col-md-4 col-sm-4">
-                                <div class="form-group">
-                                  <input type="text" style="display:none" name="gender_alt" class="form-control" readonly >
-                                  <select class="form-control selectbox" name="gender" data-defaultText="Gender" required>
-                                    <option value="">Select One</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="">
-                              <div class="col-md-4 col-sm-4">
-                                <div class="form-group">
-                                  <input type="text" name="residence_addr" placeholder="Residence Address" class="form-control" required>
-                                </div>
-                              </div>
-                              <div class="col-md-4 col-sm-4">
-                                <div class="form-group">
-                                  <input type="text" name="postal_addr" placeholder="Postal Address" class="form-control">
-                                </div>
-                              </div>
-                              <div class="col-md-4 col-sm-4">
-                                <div class="form-group">
-                                  <input type="email" name="email" placeholder="Email Address:" class="form-control">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="">
-                              <div class="col-md-4 col-sm-4">
-                                <div class="form-group">
-                                  <input type="text" name="primary_tel" placeholder="Phone No #1:" class="form-control" minlength="10" required>
-                                </div>
-                              </div>
-                              <div class="col-md-4 col-sm-4">
-                                <div class="form-group">
-                                  <input type="text" name="secondary_tel" placeholder="Phone No #2:" class="form-control">
-                                </div>
-                              </div>
-                              <div class="col-md-1" style="margin-right: 16px">
-                                <div class="form-group">
-                                  <div class="checkbox checkbox-switchery">
-                                    <label><input type="checkbox" name="sms" class="switchery" checked>
-                                      SMS
-                                    </label>
+                                <div class="col-md-4 col-sm-4">
+                                  <div class="form-group">
+                                    <input type="text" style="display:none" name="gender_alt" class="form-control" readonly >
+                                    <select class="form-control selectbox" name="gender" data-defaultText="Gender" required>
+                                      <option value="">Select One</option>
+                                      <option value="Male">Male</option>
+                                      <option value="Female">Female</option>
+                                    </select>
                                   </div>
                                 </div>
                               </div>
-                              <div class="col-md-1" style="margin-right: 22px">
-                                <div class="form-group">
-                                  <div class="checkbox checkbox-switchery">
-                                    <label><input type="checkbox" name="email_alert" class="switchery" checked>
-                                    Email 
-                                    </label>
+                              <div class="">
+                                <div class="col-md-4 col-sm-4">
+                                  <div class="form-group">
+                                    <input type="text" name="residence_addr" placeholder="Residence Address" class="form-control" required>
+                                  </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                  <div class="form-group">
+                                    <input type="text" name="postal_addr" placeholder="Postal Address" class="form-control">
+                                  </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                  <div class="form-group">
+                                    <input type="email" name="email" placeholder="Email Address:" class="form-control">
                                   </div>
                                 </div>
                               </div>
+                              <div class="">
+                                <div class="col-md-4 col-sm-4">
+                                  <div class="form-group">
+                                    <input type="text" name="primary_tel" placeholder="Phone No #1:" class="form-control" minlength="10" required>
+                                  </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                  <div class="form-group">
+                                    <input type="text" name="secondary_tel" placeholder="Phone No #2:" class="form-control">
+                                  </div>
+                                </div>
+                                <div class="col-md-1" style="margin-right: 16px">
+                                  <div class="form-group">
+                                    <div class="checkbox checkbox-switchery">
+                                      <label><input type="checkbox" name="sms" class="switchery" checked>
+                                        SMS
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-1" style="margin-right: 22px">
+                                  <div class="form-group">
+                                    <div class="checkbox checkbox-switchery">
+                                      <label><input type="checkbox" name="email_alert" class="switchery" checked>
+                                      Email 
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-1">
+                                  <div class="form-group">
+                                    <div class="checkbox checkbox-switchery">
+                                      <label><input type="checkbox" name="online" class="switchery" checked>
+                                       Portal
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-5"></div>
                               <div class="col-md-1">
-                                <div class="form-group">
-                                  <div class="checkbox checkbox-switchery">
-                                    <label><input type="checkbox" name="online" class="switchery" checked>
-                                     Portal
-                                    </label>
+                                <button id="save_btn" type="submit" class="btn btn-primary legitRipple">Save <i class="icon-database2 position-right"></i></button>
+                              </div>
+                              <div class="col-md-6"></div>
+                            </div>
+                            
+                            <div class="col-md-12" id="client_summary_info" style="display:none">
+                              <div class="col-md-6">
+                                <div class="content-group">
+                                  <div class="panel-body bg-blue border-radius-top text-center" style="background-image: url(../../../assets/images/bg.png); background-size: contain;">
+                                    <div class="content-group-sm">
+                                      <h5 class="text-semibold no-margin-bottom client_name">
+                                        Client Name
+                                      </h5>
+                                      <span class="display-block" id="client_residence">Residence</span>
+                                    </div>
+
+                                    <ul class="list-inline no-margin-bottom">
+                                      <li><a href="#" class="btn bg-blue-700 btn-rounded btn-icon legitRipple"><i class="icon-phone"></i></a></li>
+                                      <li><a href="#" class="btn bg-blue-700 btn-rounded btn-icon legitRipple"><i class="icon-bubbles4"></i></a></li>
+                                      <li><a href="#" class="btn bg-blue-700 btn-rounded btn-icon legitRipple"><i class="icon-envelop4"></i></a></li>
+                                    </ul>
+                                  </div>
+
+                                  <div class="panel panel-body no-border-top no-border-radius-top">
+                                    <div class="form-group mt-5">
+                                      <label class="text-semibold">Phone number:</label>
+                                      <span class="pull-right-sm"><a href="" id="client_phone">phone No #1 / phone No #2</a></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label class="text-semibold">Company Name :</label>
+                                      <span class="pull-right-sm"><a href="#" id="client_company_info">Company Name</a></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label class="text-semibold">Postal Address :</label>
+                                      <span class="pull-right-sm"><a href="#" id="client_postal">corporate@domain.com</a></span>
+                                    </div>
+
+                                    <div class="form-group no-margin-bottom">
+                                      <label class="text-semibold">Email:</label>
+                                      <span class="pull-right-sm"><a href="#" id="client_email">personal@domain.com</a></span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-1"></div>
+                              <div class="col-md-4">
+                                <div class="panel panel-body">
+                                  <div class="row text-center">
+                                    <div class="col-xs-4">
+                                      <p><i class="icon-users2 icon-2x display-inline-block text-info"></i></p>
+                                      <h5 class="text-semibold no-margin">2,345</h5>
+                                      <span class="text-muted text-size-small">users</span>
+                                    </div>
+
+                                    <div class="col-xs-4">
+                                      <p><i class="icon-point-up icon-2x display-inline-block text-warning"></i></p>
+                                      <h5 class="text-semibold no-margin">3,568</h5>
+                                      <span class="text-muted text-size-small">clicks</span>
+                                    </div>
+
+                                    <div class="col-xs-4">
+                                      <p><i class="icon-cash3 icon-2x display-inline-block text-success"></i></p>
+                                      <h5 class="text-semibold no-margin">$9,693</h5>
+                                      <span class="text-muted text-size-small">revenue</span>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                            <div class="col-md-5"></div>
-                            <div class="col-md-1">
-                              <button type="submit" class="btn btn-primary legitRipple">Save <i class="icon-database2 position-right"></i></button>
-                            </div>
-                            <div class="col-md-6"></div>
                           </form>
                         </div>
                         <div class="tab-pane" id="neworder">
@@ -245,6 +315,10 @@
           </div>
           <div class="col-md-12" id="pending_order_table_display" style="display:none">
             <div class="panel panel-flat">
+              <div class="panel-heading">
+                <h4 class="panel-title">Pending Orders<a class="heading-elements-toggle"><i class="icon-more"></i></a></h4>
+              </div>
+            
               <div class="table-responsive">
                 <table class="table table-xxs" id="pending_order_table">
                   <thead>

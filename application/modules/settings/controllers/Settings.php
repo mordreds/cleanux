@@ -93,7 +93,7 @@ class Settings extends MX_Controller
   /**************** Insertions ****************/
     /****** Save Position ***********/
       public function save_position($id = null) {
-        if(in_array('new registration', $_SESSION['user']['roles'])) {
+        if(in_array('Settings', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('parent_position','Parent Position','trim');
           $this->form_validation->set_rules('position_name','Position Name','trim|required');
           $this->form_validation->set_rules('department','Department','trim|required');
@@ -167,7 +167,7 @@ class Settings extends MX_Controller
 
     /****** Save Department *********/
       public function save_department($id = null) {
-        if(in_array('new registration', $_SESSION['user']['roles'])) {
+        if(in_array('Settings', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('parent_department','Parent Department','trim');
           $this->form_validation->set_rules('department','Departmennt Name','trim|required|is_unique[hr_departments.name]',array('is_unique' => "Department Already Exist"));
           $this->form_validation->set_rules('description','Description','trim|required');
@@ -309,7 +309,7 @@ class Settings extends MX_Controller
 
     /****** Save Services ***********/
       public function save_services() {
-        if(in_array('new registration', $_SESSION['user']['roles'])) {
+        if(in_array('Settings', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('id','ID','trim');
           $this->form_validation->set_rules('service_name','Name','trim');
           $this->form_validation->set_rules('service_desc','Description','trim');
@@ -385,7 +385,7 @@ class Settings extends MX_Controller
 
     /****** Save Weight *************/
       public function save_weight() {
-        if(in_array('new registration', $_SESSION['user']['roles'])) {
+        if(in_array('Settings', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('id','ID','trim');
           $this->form_validation->set_rules('service_type','Service Type','trim');
           $this->form_validation->set_rules('weight','Weight','trim');
@@ -462,7 +462,7 @@ class Settings extends MX_Controller
 
     /****** Save Garments ***********/
       public function save_garment() {
-        if(in_array('new registration', $_SESSION['user']['roles'])) {
+        if(in_array('Settings', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('id','ID','trim');
           $this->form_validation->set_rules('garment_name','Garment Name','trim');
           $this->form_validation->set_rules('garment_desc','Description','trim');
@@ -536,7 +536,7 @@ class Settings extends MX_Controller
 
     /****** Save Prices ************/
       public function save_price() {
-        if(in_array('new registration', $_SESSION['user']['roles'])) {
+        if(in_array('Settings', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('id','ID','trim');
           $this->form_validation->set_rules('service_id','Service Type','trim');
           $this->form_validation->set_rules('weight_id','Weight','trim');
@@ -613,7 +613,7 @@ class Settings extends MX_Controller
 
     /****** Save Weight ************/
       public function save_delivery() {
-        if(in_array('new registration', $_SESSION['user']['roles'])) {
+        if(in_array('Settings', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('id','ID','trim');
           $this->form_validation->set_rules('location','Location','trim');
           $this->form_validation->set_rules('duration','Duration','trim');
@@ -730,7 +730,7 @@ class Settings extends MX_Controller
 
     /****** Save Client Info *******/
       public function save_client_info() {
-        if(in_array('new registration', $_SESSION['user']['roles'])) {
+        if(in_array('Settings', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('id','ID','trim');
           $this->form_validation->set_rules('fullname','Fullname','trim');
           $this->form_validation->set_rules('gender','Gender','trim');

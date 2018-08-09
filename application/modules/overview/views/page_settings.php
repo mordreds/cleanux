@@ -50,7 +50,7 @@
             var total_billing_cost = "";
             if(response[0]) {  
               /****** Client Info ***********/
-                $('[name="id"]').val(response[0].id);
+                /*$('[name="id"]').val(response[0].id);
                 $('[name="fullname"]').val(response[0].fullname);
                 $('[name="fullname"]').attr('readonly',"readonly");
                 $('[name="company_name"]').val(response[0].company);
@@ -68,6 +68,15 @@
                 $('[name="gender_alt"]').val(response[0].gender);
                 $('[name="gender_alt"]').attr('style',"display:block");
                 $('[name="gender"]').attr('style',"display:none");
+                $('#save_btn').attr('style',"display:none")*/
+                $('#client_submit_form').attr('style',"display:none");
+                $('#client_summary_info').attr('style',"display:block");
+                $('.client_name').text(response[0].fullname);
+                $('#client_residence').text(response[0].residence_address);
+                $('#client_company_info').text(response[0].company);
+                $('#client_postal').text(response[0].postal_address);
+                $('#client_phone').text(response[0].phone_number_1 + " / " + response[0].phone_number_2);
+                $('#client_email').text(response[0].email);
               /****** Client Info ***********/
 
               /****** Pending Order Table ***********/
