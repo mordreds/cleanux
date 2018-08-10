@@ -422,7 +422,7 @@ class Overview extends MX_Controller
           $dbres = self::$_Default_DB;
           /***** Search By Phone Number ********/
           if(is_numeric($search) && strlen($search) >= 10) {
-            $tablename = "laundry_clients";
+            $tablename = "vw_laundry_clients";
             $where_condition = ['phone_number_1' => $search];
             $query_result = $this->model_retrieval->all_info_return_result($dbres,$tablename,$where_condition,$return_dataType="php_object");
 
@@ -445,7 +445,7 @@ class Overview extends MX_Controller
             if($query_result) {
               $client_id = $query_result->client_id;
               /********** Phone Number Search **********/
-              $tablename = "laundry_clients";
+              $tablename = "vw_laundry_clients";
               $where_condition = ['id' => $client_id];
               $query_result = $this->model_retrieval->all_info_return_result($dbres,$tablename,$where_condition,$return_dataType="php_object");
 

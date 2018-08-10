@@ -72,11 +72,15 @@
                 $('#client_submit_form').attr('style',"display:none");
                 $('#client_summary_info').attr('style',"display:block");
                 $('.client_name').text(response[0].fullname);
-                $('#client_residence').text(response[0].residence_address);
+                $('.client_residence').text(response[0].residence_address);
                 $('#client_company_info').text(response[0].company);
                 $('#client_postal').text(response[0].postal_address);
                 $('#client_phone').text(response[0].phone_number_1 + " / " + response[0].phone_number_2);
                 $('#client_email').text(response[0].email);
+
+                $('.client_pending_orders').text(response[0].pending_orders);
+                $('.client_completed_orders').text(response[0].completed_orders);
+                $('.client_total_balance').text(response[0].total_balance);
               /****** Client Info ***********/
 
               /****** Pending Order Table ***********/

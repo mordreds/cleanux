@@ -11,7 +11,7 @@
                       <ul class="nav nav-tabs nav-tabs-bottom" id="overview_tabs">
                         <li class="active"><a href="#client_info" data-toggle="tab" class="legitRipple">Client Info <i class="icon-user position-right"></i></a></li>
                         <li><a href="#neworder" data-toggle="tab" class="legitRipple">New Order <i class="icon-user position-right"></i></a></li>
-                        <li><a href="#billing_info" data-toggle="tab" class="legitRipple">Billing Info <i class="icon-cash3 position-left text-slate"></i></a></li>
+                        <!-- <li><a href="#billing_info" data-toggle="tab" class="legitRipple">Billing Info <i class="icon-cash3 position-left text-slate"></i></a></li> -->
                       </ul>
                       <div class="tab-content">
                         <div class="tab-pane active" id="client_info">
@@ -106,16 +106,8 @@
                             </div>
                             
                             <div class="col-md-12" id="client_summary_info" style="display:none">
-                              <div class="col-md-6">
-                                <div class="content-group">
-                                  <div class="panel-body bg-blue border-radius-top text-center" style="background-image: url(../../../assets/images/bg.png); background-size: contain;">
-                                    <div class="content-group-sm">
-                                      <h5 class="text-semibold no-margin-bottom client_name">
-                                        Client Name
-                                      </h5>
-                                      <span class="display-block" id="client_residence">Residence</span>
-                                    </div>
-
+                              <div class="col-md-4">
+                                <div class="panel-body bg-blue border-radius-top text-center" style="background-image: url(../../../assets/images/bg.png); background-size: contain;">
                                     <ul class="list-inline no-margin-bottom">
                                       <li><a href="#" class="btn bg-blue-700 btn-rounded btn-icon legitRipple"><i class="icon-phone"></i></a></li>
                                       <li><a href="#" class="btn bg-blue-700 btn-rounded btn-icon legitRipple"><i class="icon-bubbles4"></i></a></li>
@@ -123,7 +115,7 @@
                                     </ul>
                                   </div>
 
-                                  <div class="panel panel-body no-border-top no-border-radius-top">
+                                   <div class="panel panel-body no-border-top no-border-radius-top">
                                     <div class="form-group mt-5">
                                       <label class="text-semibold">Phone number:</label>
                                       <span class="pull-right-sm"><a href="" id="client_phone">phone No #1 / phone No #2</a></span>
@@ -143,29 +135,34 @@
                                       <label class="text-semibold">Email:</label>
                                       <span class="pull-right-sm"><a href="#" id="client_email">personal@domain.com</a></span>
                                     </div>
+                                  </div> 
+                              </div>
+                              <div class="col-md-4">
+                                <div class="thumbnail" style="background-image: url(../../../assets/images/bg.png); background-size: contain;">
+                                  <div class="thumb thumb-slide">
+                                    <img src="<?=base_url()?>/resources/images/users/default.jpg" alt="" height="150px !important">
                                   </div>
                                 </div>
                               </div>
-                              <div class="col-md-1"></div>
                               <div class="col-md-4">
-                                <div class="panel panel-body">
+                                <div class="panel panel-body no-border-top no-border-radius-top">
                                   <div class="row text-center">
                                     <div class="col-xs-4">
-                                      <p><i class="icon-users2 icon-2x display-inline-block text-info"></i></p>
-                                      <h5 class="text-semibold no-margin">2,345</h5>
-                                      <span class="text-muted text-size-small">users</span>
+                                      <p><i class="icon-basket icon-2x display-inline-block text-info"></i></p>
+                                      <h5 class="text-semibold no-margin client_pending_orders">2,345</h5>
+                                      <span class="text-muted text-size-small">Pending</span>
                                     </div>
 
                                     <div class="col-xs-4">
                                       <p><i class="icon-point-up icon-2x display-inline-block text-warning"></i></p>
-                                      <h5 class="text-semibold no-margin">3,568</h5>
-                                      <span class="text-muted text-size-small">clicks</span>
+                                      <h5 class="text-semibold no-margin client_completed_orders">3,568</h5>
+                                      <span class="text-muted text-size-small">Completed</span>
                                     </div>
 
                                     <div class="col-xs-4">
                                       <p><i class="icon-cash3 icon-2x display-inline-block text-success"></i></p>
-                                      <h5 class="text-semibold no-margin">$9,693</h5>
-                                      <span class="text-muted text-size-small">revenue</span>
+                                      <h5 class="text-semibold no-margin client_total_balance">$9,693</h5>
+                                      <span class="text-muted text-size-small">Balance</span>
                                     </div>
                                   </div>
                                 </div>
@@ -278,7 +275,7 @@
                     <div class="tabbable">
                       <ul class="nav nav-tabs nav-tabs-bottom">
                         <li class="active"><a href="#Search" data-toggle="tab" class="legitRipple">Search <i class="icon-eye8 position-right"></i></a></li>
-                        <li><a href="#Remarks" data-toggle="tab" class="legitRipple"> <i class="icon-menu7 position-left"></i> Total Orders <span class="badge bg-warning-400" id=""><?=@$total_orders?></span></a></li>                  
+                        <li><a href="#Remarks" data-toggle="tab" class="legitRipple"> <i class="icon-menu7 position-left"></i> Today's Orders <span class="badge bg-warning-400" id=""><?=@$total_orders?></span></a></li>                  
                       </ul>
                       <div class="tab-content">
                         <div class="tab-pane active" id="Search">

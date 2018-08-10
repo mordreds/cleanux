@@ -58,6 +58,7 @@ class Statistics extends MX_Controller
               $data['total_customers'] = 0;
             
             $tablename = "vw_orderlist_summary";
+            $laundry_orders = "laundry_orders";
           
           # Total Pending Orders
             $condition = [
@@ -102,11 +103,41 @@ class Statistics extends MX_Controller
               foreach ($daily_orders as $order) {
                 $total_cash += $order->amount_paid;
               }
-              $data['total_cash'] = $total_cash;
+              # Computing Balances Paid today
+              $condition = ['where_condition' => array('DATE(balance_payment_date)' => gmdate('Y-m-d'))];
+              $balance_paid_today = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
+              foreach ($balance_paid_today as $balance_paid) {
+                $total_cash += $order->balance_paid;
+              }
             }
             else 
               $data['daily_orders'] = 0;
+
+          # Timeline For User Logged in
+            $condition  = [
+              'where_condition' =>  array('processor_user_id' => $_SESSION['user']['id']),
+              'orderby' => array('id' => "desc"),
+              'limit' => 1
+            ];
+            $retrieve_last_work_date = $this->model_retrieval->retrieve_allinfo($dbres,$laundry_orders,$condition);
             
+            if(!isset($retrieve_last_work_date['DB_ERROR'])) {
+                $retrieve_last_work_date = $retrieve_last_work_date[0];
+              # Retrieving timeline
+              $condition = [
+                'where_condition' => array('DATE(date_created)' => date('Y-m-d',strtotime($retrieve_last_work_date->date_created)), 'processor_user_id' => $_SESSION['user']['id']),
+                'orderby' => array('id' => "desc")
+              ];
+              
+              $retrieve_timeline = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition);
+              
+              if(!isset($retrieve_timeline['DB_ERROR'])) {
+                $data['timeline'] = $retrieve_timeline;
+                $data['timeline_date'] = date('D M d, Y',strtotime($retrieve_last_work_date->date_created));
+                //print_r(date('l F d, Y',strtotime($retrieve_last_work_date->date_created)));
+              }
+            }
+          
           # Total Monthly Orders
             $condition = [
               'where_condition' => array('Month(date_created)' => gmdate('m'))
@@ -248,6 +279,7 @@ class Statistics extends MX_Controller
           $data['title'] = "Statistics"; 
           $data['monthly_services_count'] = $services_count;
           $data['weekly_report'] = @$new_weekly_orders;
+          $data['total_cash'] = $total_cash;
 
           //print "<pre>"; print_r($data); print "</pre> <br/><br/>";exit;
           $this->load->view('header',$data); 

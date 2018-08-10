@@ -28,6 +28,14 @@
 		.action_btns li {
 			padding-right: 5px;
 		}
+
+	/*.icons-list>li {
+			position: relative; 
+			display: inline-block;
+			margin-left: 5px;
+			font-size: 13px;
+			margin-top: -10px; 
+	}*/
 	</style>
 	<!-- Custom CSS -->
 

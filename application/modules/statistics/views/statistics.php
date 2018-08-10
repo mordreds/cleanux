@@ -161,11 +161,11 @@
           <div class="panel-heading" style="padding-top: 5px; padding-bottom: 7px;">
             <h5 class="content-group">
               <span class="label label-flat label-rounded label-icon border-grey text-grey mr-10">
-                <i class="icon-statistics"></i>
+                <i class="icon-watch2"></i>
               </span>
 
               <a href="#" class="text-default">
-                Last Work Timeline
+                Timeline - <strong><i><?=(empty($timeline_date)) ? "" : $timeline_date?></i></strong> 
               </a>
             </h5>
 
@@ -175,20 +175,12 @@
           </div>
           <div class="panel-body border-top-teal">
             <ul class="list-feed list-feed-time">
+              <?php if(!empty($timeline)) : foreach($timeline as $record_timeline) : ?>
               <li class="border-warning-400">
-                <span class="feed-time text-muted">12:47</span>
-                <a href="#">David Linner</a> requested refund for a double bank card charge
+                <span class="feed-time text-muted"><?=date('G : i', strtotime($record_timeline->date_created))?></span>
+                <a href="#"><?=$record_timeline->client_fullname?></a> placed this order <a href=""><?=$record_timeline->order_number?></a>
               </li>
-
-              <li class="border-pink-400">
-                <span class="feed-time text-muted">09:37</span>
-                Ticket <strong>#43683</strong> has been resolved by <a href="#">Victoria Wilson</a>
-              </li>
-
-              <li class="border-danger-400">
-                <span class="feed-time text-muted">06:32</span>
-                <a href="#">Chris Arney</a> created a new ticket <strong>#43136</strong> and assigned to <a href="#">John Nod</a>
-              </li>
+              <?php endforeach; endif; ?>
             </ul>
           </div>
         </div>
