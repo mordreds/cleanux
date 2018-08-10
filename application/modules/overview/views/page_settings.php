@@ -75,7 +75,8 @@
                 $('.client_residence').text(response[0].residence_address);
                 $('#client_company_info').text(response[0].company);
                 $('#client_postal').text(response[0].postal_address);
-                $('#client_phone').text(response[0].phone_number_1 + " / " + response[0].phone_number_2);
+                $('#client_phone').text(response[0].phone_number_1);
+                $('#client_phone_2').text(response[0].phone_number_2);
                 $('#client_email').text(response[0].email);
 
                 $('.client_pending_orders').text(response[0].pending_orders);
