@@ -359,7 +359,7 @@
                 comment = value.comment;
                 comment_time = value.date_created;
 
-                comments += '<li class="media"><a href="#" class="media-left"><img src="assets/images/demo/users/face25.jpg" class="img-circle img-sm" alt=""></a><div class="media-body"><div class="media-heading text-semibold"><a href="#">'+commenter_fullname+'</a> <span class="media-annotation pull-right">'+comment_time+'</span></div>'+comment+'</div></li>';
+                comments += '<li class="media"><a href="#" class="media-left"><img src="<?=base_url()?>resources/images/users/default.jpg" class="img-circle img-sm" alt=""></a><div class="media-body"><div class="media-heading text-semibold"><a href="#">'+commenter_fullname+'</a> <span class="media-annotation pull-right">'+comment_time+'</span></div>'+comment+'</div></li>';
               });
             }
 
@@ -389,7 +389,7 @@
     <div id="comment" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header bg-slate-800">
+          <div class="modal-header bg-teal-600">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h6 class="modal-title">Comments On Order</h6>
           </div>
@@ -398,17 +398,17 @@
               <form action="<?=base_url()?>overview/save_comment" method="post">
                 <input type="hidden" name="order_id" />
               <ul class="media-list content-group" id="all_comments_view"></ul>
-              <textarea name="comment" class="form-control content-group" rows="2" cols="1" placeholder="Add comment" required></textarea>
+              <textarea name="comment" class="form-control content-group" rows="2" cols="1" placeholder="Add comment" style="resize:none" required></textarea>
               <div class="row">
                 <div class="col-xs-6">
-                  <ul class="icons-list icons-list-extended mt-10">
+                  <ul id="list_items_rearrange" class="icons-list icons-list-extended mt-10">
                     <li><a href="#"><i class="icon-mic2"></i></a></li>
                     <li><a href="#"><i class="icon-file-picture"></i></a></li>
                     <li><a href="#"><i class="icon-file-plus"></i></a></li>
                   </ul>
                 </div>
                 <div class="col-xs-6 text-right">
-                  <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Send</button>
+                  <button type="submit" class="btn bg-primary btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Save</button>
                 </div>
               </div>
               </form>
@@ -443,7 +443,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <form id="confirmation_modal_form"  method="post">
-            <div class="modal-header bg-slate-800">
+            <div class="modal-header bg-danger-800">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h6 class="modal-title" id="modal_heading"></h6>
             </div>
@@ -453,8 +453,8 @@
               Do You Confirm that order number <strong><em id='cancel_orderno_'></em></strong> should be <b>Cancelled</b> .. ?
             </div>
             <div class="modal-footer"><hr/>
-              <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button> 
-              <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Confirm</button>
+              <button type="button" class="btn bg-primary btn-labeled btn-labeled-right pull-left" data-dismiss="modal"><b><i class="icon-cross3"></i></b> No</button>
+              <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-checkmark4"></i></b> Yes</button>
             </div>
           </form>
         </div>

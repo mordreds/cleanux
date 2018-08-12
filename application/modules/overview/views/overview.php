@@ -107,27 +107,28 @@
                             
                             <div class="col-md-12" id="client_summary_info" style="display:none">
                               <div class="col-md-4">
-                                <div class="panel-body bg-blue border-radius-top text-center" style="background-image: url(../../../assets/images/bg.png); background-size: contain;">
+                                <div class="panel-body bg-teal border-radius-top text-center">
                                     <ul class="list-inline no-margin-bottom">
-                                      <li><a href="#" class="btn bg-blue-700 btn-rounded btn-icon legitRipple"><i class="icon-phone"></i></a></li>
-                                      <li><a href="#" class="btn bg-blue-700 btn-rounded btn-icon legitRipple"><i class="icon-bubbles4"></i></a></li>
-                                      <li><a href="#" class="btn bg-blue-700 btn-rounded btn-icon legitRipple"><i class="icon-envelop4"></i></a></li>
+                                      <li><a href="#" class="btn bg-teal-700 btn-rounded btn-icon legitRipple"><i class="icon-phone"></i></a></li>
+                                      <li><a href="#" class="btn bg-teal-700 btn-rounded btn-icon legitRipple"><i class="icon-office"></i></a></li>
+                                      <li><a href="#" class="btn bg-teal-700 btn-rounded btn-icon legitRipple"><i class="icon-mailbox"></i></a></li>
+                                      <li><a href="#" class="btn bg-teal-700 btn-rounded btn-icon legitRipple"><i class="icon-envelop4"></i></a></li>
                                     </ul>
                                   </div>
 
                                    <div class="panel panel-body no-border-top no-border-radius-top">
                                     <div class="form-group mt-5">
-                                      <label class="text-semibold">Phone number:</label>
+                                      <label class="text-semibold">Phone No #:</label>
                                       <span class="pull-right-sm"><a href="" id="client_phone">phone No #1 / phone No #2</a></span>
                                     </div>
 
                                     <div class="form-group">
-                                      <label class="text-semibold">Company Name :</label>
+                                      <label class="text-semibold">Company :</label>
                                       <span class="pull-right-sm"><a href="#" id="client_company_info">Company Name</a></span>
                                     </div>
 
                                     <div class="form-group">
-                                      <label class="text-semibold">Postal Address :</label>
+                                      <label class="text-semibold">Postal Addr :</label>
                                       <span class="pull-right-sm"><a href="#" id="client_postal">corporate@domain.com</a></span>
                                     </div>
 
@@ -138,9 +139,14 @@
                                   </div> 
                               </div>
                               <div class="col-md-4">
-                                <div class="thumbnail" style="background-image: url(../../../assets/images/bg.png); background-size: contain;">
-                                  <div class="thumb thumb-slide">
-                                    <img src="<?=base_url()?>/resources/images/users/default.jpg" alt="" height="150px !important">
+                                <div class="thumbnail">
+                                  <div class="thumb thumb-rounded">
+                                    <img src="<?=base_url()?>/resources/images/users/default.jpg" alt="">
+                                  </div>
+
+                                  <div class="caption text-center">
+                                    <h6 class="text-semibold no-margin client_name">James Alexander</h6>
+                                    <small class="display-block client_residence">Lead developer</small>
                                   </div>
                                 </div>
                               </div>

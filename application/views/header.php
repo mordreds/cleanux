@@ -29,7 +29,7 @@
 			padding-right: 5px;
 		}
 
-	#client_overview_info > li {
+	#list_items_rearrange > li {
 			position: relative; 
 			display: inline-block;
 			margin-left: 5px;

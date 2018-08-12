@@ -236,8 +236,8 @@
 	        <div class="page-header page-header-default">
 	          <div class="breadcrumb-line">
 	            <ul class="breadcrumb">
-	              <li><a href="<?=base_url();?>dashboard"><i class="icon-home2 position-left"></i> Dashboard</a></li>
-	              <li><a href="#"><?=$page_controller?></a></li>
+	              <li><a href="<?=base_url()?>dashboard"><i class="icon-home2 position-left"></i> Dashboard</a></li>
+	              <li><a href="<?=base_url().$page_controller?>"><?=$page_controller?></a></li>
 	              <li class="active"><a href="#"><?=$controller_function?></a></li>
 	            </ul>
 	          </div>

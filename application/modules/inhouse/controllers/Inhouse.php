@@ -21,32 +21,23 @@ class Inhouse extends MX_Controller
       {
         $this->load->model('access/model_access');
         $this->load->model('globals/model_retrieval');
-
-        $dbres = self::$_Default_DB;
-        $return_dataType="php_object";
-        $tablename = "vw_orderlist_summary";
         
         # Total Pending Orders
-          $condition = [
-            'where_condition' => array('status' => 'Pending')
-          ];
-          $pending_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
-          if(!isset($pending_orders['DB_ERROR']))
-            $data['pending_orders'] = (empty($pending_orders)) ? 0 : sizeof($pending_orders);
-          else
-            $data['pending_orders'] = 0;
+          $condition = array('status' => 'Pending');
+          $data['pending_orders'] = $this->order_status($condition);
         
         # Total Processing Orders
-          $condition = [
-            'where_condition' => array('status' => 'Processing')
-          ];
-          $processing_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
-          
-          if(!isset($processing_orders['DB_ERROR']))
-            $data['processing_orders'] = (empty($processing_orders)) ? 0 : sizeof($processing_orders);
-          else
-            $data['processing_orders'] = 0;
+          $condition = array('status' => 'Processing');
+          $data['processing_orders'] = $this->order_status($condition);
         
+        # Total Cancelled Orders
+          $condition = array('status' => 'Cancelled');
+          $data['cancelled_orders'] = $this->order_status($condition);
+         
+        # Total Overdue Orders
+          $condition = array('due_date <' => gmdate('Y-m-d'), 'status !=' => 'Delivered');
+          $data['overdue_orders'] = $this->order_status($condition);
+
         /****** Required Parameters To Render A Page ******/
         $data['_Default_DB'] = self::$_Default_DB;
         $data['page_controller'] = $this->uri->segment(1);
@@ -57,6 +48,31 @@ class Inhouse extends MX_Controller
         $data['title'] = "Inhouse"; 
         $this->load->view('header',$data); 
         $this->load->view('inhouse',$data); 
+        $this->load->view('footer'); 
+        /***************** Interface *****************/
+      }
+    }
+
+    public function cancelled_orders() 
+    {
+      # Permission Check
+       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles']))
+        redirect('dashboard');
+      else
+      {
+        $this->load->model('access/model_access');
+        $this->load->model('globals/model_retrieval');
+        
+        /****** Required Parameters To Render A Page ******/
+        $data['_Default_DB'] = self::$_Default_DB;
+        $data['page_controller'] = $this->uri->segment(1);
+        $data['controller_function'] = $this->uri->segment(2);
+        /****** Required Parameters To Render A Page ******/
+
+        /***************** Interface *****************/
+        $data['title'] = "Inhouse"; 
+        $this->load->view('header',$data); 
+        $this->load->view('cancelled_orders',$data); 
         $this->load->view('footer'); 
         /***************** Interface *****************/
       }
@@ -86,9 +102,10 @@ class Inhouse extends MX_Controller
 
           $dbres = self::$_Default_DB;
           $tablename = "vw_laundry_order_comments";
-          $return_dataType = "php_object";
-          $where_condition = array('order_id' => $this->input->post('order_id'));
-          $query_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$where_condition); 
+          $where_condition = [
+            'where_condition' => array('order_id' => $this->input->post('order_id'))
+          ];
+          $query_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$where_condition); 
           if($query_result) 
             $return_data = $query_result;
           else 
@@ -266,6 +283,36 @@ class Inhouse extends MX_Controller
       }
     }
   /**************** Data Insertion ********************/
+
+
+  /************ Optimization Functions ****************/
+  public function order_status($status = array(), $return_dataType = "php_object") {
+    # loading models
+      $this->load->model('globals/model_retrieval');
+
+    # Params Definition
+    $dbres = self::$_Default_DB;
+    $tablename = "vw_orderlist_summary";
+    $condition = [
+      'where_condition' => $status
+    ];
     
+    $cancelled_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
+    
+    if($return_dataType == "json") {
+      print_r(json_encode($return_data));
+      exit;
+    }
+    else {
+      if(!isset($cancelled_orders['DB_ERROR']))
+        $return_data = (empty($cancelled_orders)) ? 0 : sizeof($cancelled_orders);
+      else
+        $return_data = 0;
+
+      return $return_data;
+    }
+  }
+  /************ Optimization Functions ****************/
+
     
 }//End of Class

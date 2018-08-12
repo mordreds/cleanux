@@ -151,7 +151,7 @@ class Statistics extends MX_Controller
           
           # Total Overdue Orders
             $condition = [
-              'where_condition' => array('due_date <' => 'Now()', 'status !=' => 'Delivered')
+              'where_condition' => array('due_date <' => gmdate('Y-m-d'), 'status !=' => 'Delivered')
             ];
             $overdue_orders = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType);
             

@@ -951,7 +951,12 @@ class Settings extends MX_Controller
 
           case "inhouse_orders":
             $tablename = "vw_orderlist_summary";
-            $condition = ['where_not_in_condition' => array("status" => "'Cancelled','Dispatch','Delivered'")];
+            $condition = ['wherein_condition' => array('status' => 'Pending,Processing')];
+          break;
+
+          case "cancelled_orders":
+            $tablename = "vw_orderlist_summary";
+            $condition = ['where_condition' => array("status" => "Cancelled")];
           break;
 
           case "dispatch_orders":
@@ -1010,10 +1015,10 @@ class Settings extends MX_Controller
           }
        
         # Empty Result Check
-        if(!empty($search_result) && $table != "inhouse_orders" && $table != "dispatch_orders") 
+        if(!empty($search_result) && $table != "inhouse_orders" && $table != "dispatch_orders" && $table != "cancelled_orders") 
           $return_data = $search_result;
 
-        else if(!empty($search_result) && $table == "inhouse_orders") {
+        else if(!empty($search_result) && ($table == "inhouse_orders" || $table == "cancelled_orders")) {
           $new_array = json_decode($search_result);
           $new_array = array_reverse($new_array);
           foreach ($new_array as $key => $value) {
@@ -1024,7 +1029,8 @@ class Settings extends MX_Controller
             $select = "quantities";
             $where_condition = array('order_id' => $value->id);
             $return_dataType = "php_object";
-            $query_result = $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType,$select,$where_condition);;
+            $query_result = $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType,$select,$where_condition);
+            
             if($query_result) {
               $items = explode('|',$query_result->quantities);
               $order_total_items = array_sum($items);
@@ -1047,6 +1053,7 @@ class Settings extends MX_Controller
               'status' => $value->status,
               'total_comments' => $value->total_comments,
               'client' => $value->client_fullname,
+              'date_modified' => $value->modified_date
             ]; 
           }
           $return_data = json_encode(@$return_data);
