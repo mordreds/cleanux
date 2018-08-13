@@ -253,7 +253,7 @@ class Overview extends MX_Controller
             ];
             $dbres = self::$_Default_DB;
             $tablename = "laundry_orders";
-
+            
             $order_info_insert = $this->Model_insertion->datainsert($dbres,$tablename,$order_table_info);
             /*********** Saving Order Info ***********/
             /********* Saving Order DEtails **********/
@@ -271,11 +271,23 @@ class Overview extends MX_Controller
             $order_details_insert = $this->Model_insertion->datainsert($dbres,$tablename,$order_details_info);
             /********* Saving Order DEtails **********/
             if($order_details_insert) {
-              unset($_SESSION['laundry']['new_order']);
+              //unset($_SESSION['laundry']['new_order']);
               $this->session->set_flashdata('success', "Order Saving Successful");
               $this->session->set_flashdata('order_successful', $order_info_insert);
               /******** Sending Email & SMS Notice ************/
-              
+                # Sending Sms To Client To Monitor
+                $to = $_SESSION['laundry']['new_order']['client']['phone_number'];
+                $message = "Dear customer , your order <a href='".base_url()."overview/users/?ord=".$order_table_info['order_number']."'></a> has been confirmed! Please you will be alerted when launder is ready on the expected delivery time.";
+               
+                if(!empty(SMS_API_KEY) && !empty(SMS_SENDER) && !empty($to) && !empty($message)) {
+                  $url = "https://apps.mnotify.net/smsapi?key=".SMS_API_KEY."&to=".$to."&msg=".$message."&sender_id=".SMS_SENDER;
+                  $url_result = file_get_contents($url);
+                  
+                  if(array_key_exists($url_result, SMS_ERROR_MESSAGE)) {
+                    if($url_result != 1000)
+                      $this->session->set_flashdata('error',SMS_ERROR_MESSAGE[$url_result]);
+                  }
+                }
               /******** Sending Email & SMS Notice ************/
               redirect($_SERVER['HTTP_REFERER']);
             }

@@ -99,3 +99,17 @@ define('VIEW_COMPANY_TABLE', 'vw_company_info');
 
 define('EDIT_USER_TABLE', 'access_users');
 define('VIEW_USER_TABLE', 'vw_user_details');
+
+define('SMS_API_KEY', "058289f6054524bbd6fa");
+define('SMS_SENDER', 'BG');
+define('SMS_ERROR_MESSAGE', array(
+  [ 
+    '1000' => "Sending SMS Successful", 
+    '1002' => "Sms Sending Failed", 
+    '1003' => "Insufficient SMS Balance", 
+    '1005' => "Invalid Recipient Phone Number",
+    '1006' =>	"Invalid Sender ID.",
+    '1007' => "Message scheduled for later delivery",
+    '1008' =>	"Empty Message"
+  ]
+));
