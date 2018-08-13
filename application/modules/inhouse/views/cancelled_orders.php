@@ -18,6 +18,7 @@
                   <th>Due Date</th>
                   <th>Time Left</th>
                   <th>Status</th>
+                  <th>Reason</th>
                   <th class="text-center">Actions</th>
                   <th>Date Cancelled</th>
                 </tr>

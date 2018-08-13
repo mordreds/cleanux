@@ -450,7 +450,8 @@
             <div class="modal-body">
               <input type="hidden" name="order_id" />
               <input type="hidden" name="status" />
-              Do You Confirm that order number <strong><em id='cancel_orderno_'></em></strong> should be <b>Cancelled</b> .. ?
+              Do You Confirm that order number <strong><em id='cancel_orderno_'></em></strong> should be <b>Cancelled</b> .. ? <hr/>
+              <textarea name="reason_for_cancel" class="form-control border-bottom-teal" placeholder="Why Do You Want To Cancel ?? " required></textarea>
             </div>
             <div class="modal-footer"><hr/>
               <button type="button" class="btn bg-primary btn-labeled btn-labeled-right pull-left" data-dismiss="modal"><b><i class="icon-cross3"></i></b> No</button>

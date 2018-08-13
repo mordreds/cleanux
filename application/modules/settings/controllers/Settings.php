@@ -1053,7 +1053,8 @@ class Settings extends MX_Controller
               'status' => $value->status,
               'total_comments' => $value->total_comments,
               'client' => $value->client_fullname,
-              'date_modified' => $value->modified_date
+              'date_modified' => $value->modified_date,
+              'reason_for_cancel' => $value->reason_for_cancel
             ]; 
           }
           $return_data = json_encode(@$return_data);

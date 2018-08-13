@@ -141,7 +141,7 @@ class Inhouse extends MX_Controller
           if($this->input->post('status')) {
             $status = $this->input->post('status');
             $success_msg = "Status Changed";
-            $error_msg = "Status Changing";
+            $error_msg = "Status Changing Failed";
             $response = "ajax";
           }
           else {
@@ -233,14 +233,16 @@ class Inhouse extends MX_Controller
       else {
         $this->form_validation->set_rules('order_id','Order Number','trim|required');
         $this->form_validation->set_rules('status','Status','trim|required');
+        $this->form_validation->set_rules('reason_for_cancel','Reason For Cancelling','trim|required');
 
         if($this->form_validation->run() === FALSE) {
           if($response_type = "async"){
-            $return_data['error'] = "Validation Error.";
+            $return_data['error'] = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());;
             print_r(json_encode($return_data));
           }
           else if($response_type = "sync") {
-            $this->session->set_flashdata('error',"Validation Error");
+            $error_msg = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+            $this->session->set_flashdata('error',$error_msg);
             redirect('inhouse');
           }
         }
@@ -252,7 +254,8 @@ class Inhouse extends MX_Controller
           $update_data = [
             'status' => $this->input->post('status'), 
             'modified_by' => $_SESSION['user']['id'], 
-            'modified_date'=>gmdate('Y-m-d H:i:s')
+            'modified_date'=>gmdate('Y-m-d H:i:s'),
+            'reason_for_cancel' => $this->input->post('reason_for_cancel')
           ];
           $where_condition = ['id' => $this->input->post('order_id')];
           if($response_type = "sync")
