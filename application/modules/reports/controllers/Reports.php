@@ -22,7 +22,7 @@ class Reports extends MX_Controller
         /****** Required Parameters To Render A Page ******/
         $this->load->model('access/model_access');
         $this->load->model('globals/model_retrieval');
-        $data['_Permission_DB'] = self::$_Permission_DB;
+        $data['_Default_DB'] = self::$_Default_DB;
         $data['page_controller'] = $this->uri->segment(1);
         $data['controller_function'] = $this->uri->segment(2); 
         /****** Required Parameters To Render A Page ******/
@@ -79,7 +79,7 @@ class Reports extends MX_Controller
           # Loading Model 
           $this->load->model('globals/model_retrieval');
 
-          $dbres = self::$_Views_DB;
+          $dbres = self::$_Default_DB;
           $tablename = "vw_orderlist_summary";
           $return_dataType = "php_object";
           /***** Defining where clauses ********/
@@ -107,9 +107,9 @@ class Reports extends MX_Controller
           else
             $customer = array('client_id'=>$customer_temp);
           
-          $where_condition = array_merge($order,$customer,$daterange);
+          $where_condition =['where_condition' => array_merge($order,$customer,$daterange)];
           /***** Defining where clauses ********/
-          $query_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$return_dataType,$where_condition); 
+          $query_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$where_condition,$return_dataType); 
           
           if($query_result) 
             $return_data = $query_result;
@@ -131,7 +131,7 @@ class Reports extends MX_Controller
         /****** Required Parameters To Render A Page ******/
         $this->load->model('access/model_access');
         $this->load->model('globals/model_retrieval');
-        $data['_Permission_DB'] = self::$_Permission_DB;
+        $data['_Default_DB'] = self::$_Default_DB;
         $data['page_controller'] = $this->uri->segment(1);
         $data['controller_function'] = $this->uri->segment(2); 
         /****** Required Parameters To Render A Page ******/
