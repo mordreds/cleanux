@@ -194,7 +194,7 @@
 					</a>
 					
 					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a href="<?=base_url()?>user/profile"><i class="icon-user-plus"></i> My profile</a></li>
+						<li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
 						<li class="divider"></li>
 						<li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
 						
