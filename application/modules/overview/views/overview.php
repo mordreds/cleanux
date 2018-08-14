@@ -1,4 +1,5 @@
  <!-- Content area -->
+ <?php //print_r($_SESSION['laundry']); ?>
   <div class="content">
     <div class="row">
       <div class="col-md-12">

@@ -227,6 +227,7 @@ class Overview extends MX_Controller
             $delivery_price = $delivery_price->price;
             $total_cost = $_SESSION['laundry']['new_order']['cart_total_amount'] + $delivery_price;
             $balance = $total_cost - $this->input->post('amount_paid');
+            $client_fullname = $_SESSION['laundry']['new_order']['client']['fullname'];
 
             if(isset($_SESSION['laundry']['new_order']['orders']) && !empty($_SESSION['laundry']['new_order']['orders'])) {
               foreach ($_SESSION['laundry']['new_order']['orders'] as $key => $value) {
@@ -271,24 +272,23 @@ class Overview extends MX_Controller
             $order_details_insert = $this->Model_insertion->datainsert($dbres,$tablename,$order_details_info);
             /********* Saving Order DEtails **********/
             if($order_details_insert) {
-              //unset($_SESSION['laundry']['new_order']);
               $this->session->set_flashdata('success', "Order Saving Successful");
               $this->session->set_flashdata('order_successful', $order_info_insert);
               /******** Sending Email & SMS Notice ************/
+                # Load SMS Helper
+                $this->load->helper('send_sms');
+                
                 # Sending Sms To Client To Monitor
                 $to = $_SESSION['laundry']['new_order']['client']['phone_number'];
-                $message = "Dear customer , your order <a href='".base_url()."overview/users/?ord=".$order_table_info['order_number']."'></a> has been confirmed! Please you will be alerted when launder is ready on the expected delivery time.";
-               
-                if(!empty(SMS_API_KEY) && !empty(SMS_SENDER) && !empty($to) && !empty($message)) {
-                  $url = "https://apps.mnotify.net/smsapi?key=".SMS_API_KEY."&to=".$to."&msg=".$message."&sender_id=".SMS_SENDER;
-                  $url_result = file_get_contents($url);
-                  
-                  if(array_key_exists($url_result, SMS_ERROR_MESSAGE)) {
-                    if($url_result != 1000)
-                      $this->session->set_flashdata('error',SMS_ERROR_MESSAGE[$url_result]);
-                  }
-                }
+                $message = "Dear ".$client_fullname.", Thanks for choosing our services! Your Order reference number is ".$order_table_info['order_number']." Click link below for more details ".base_url()."overview/order_details";
+
+                $sendsms = sendSMS($to,$message);
+                //print_r($sendsms); exit;
+                if(!empty($sms_result['error'])) 
+                  $this->session->set_flashdata('error', $sms_result['error']);
+              
               /******** Sending Email & SMS Notice ************/
+              unset($_SESSION['laundry']['new_order']);
               redirect($_SERVER['HTTP_REFERER']);
             }
             else {
@@ -442,6 +442,7 @@ class Overview extends MX_Controller
               $return_data = $query_result;
               $_SESSION['laundry']['new_order']['client']['phone_number'] = $query_result[0]->phone_number_1;
               $_SESSION['laundry']['new_order']['client']['id'] = $query_result[0]->id;
+              $_SESSION['laundry']['new_order']['client']['fullname'] = $query_result[0]->fullname;
             }
             else {
               $return_data = array();
