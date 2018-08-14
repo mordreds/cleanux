@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2018 at 04:13 AM
+-- Generation Time: Aug 14, 2018 at 11:58 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.1.14
 
@@ -69,7 +69,36 @@ INSERT INTO `access_login_successful` (`id`, `user_id`, `time_in`, `time_out`, `
 (2, 1, '2018-08-04 00:22:20', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36', '::1', 'London', NULL, NULL),
 (3, 1, '2018-08-04 00:30:49', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36', '::1', 'London', NULL, NULL),
 (4, 1, '2018-08-04 00:36:42', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36', '::1', 'London', NULL, NULL),
-(5, 1, '2018-08-04 00:36:56', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL);
+(5, 1, '2018-08-04 00:36:56', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
+(6, 1, '2018-08-08 09:11:47', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
+(7, 1, '2018-08-08 09:16:58', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
+(8, 1, '2018-08-08 13:58:12', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
+(9, 1, '2018-08-08 17:08:11', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
+(10, 1, '2018-08-08 17:10:23', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '192.168.3.40', 'London', ',', NULL),
+(11, 1, '2018-08-08 17:11:48', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.183 Safari/537.36 Vivaldi/1.96.1147.64', '192.168.3.11', 'LAPTOP-PP1FHF0I', ',', NULL),
+(12, 1, '2018-08-08 18:45:49', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '192.168.3.11', 'LAPTOP-PP1FHF0I', ',', NULL),
+(13, 1, '2018-08-08 19:25:28', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '192.168.3.40', 'London', ',', NULL),
+(14, 1, '2018-08-08 19:33:20', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '192.168.3.40', 'London', ',', NULL),
+(15, 1, '2018-08-08 23:27:40', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
+(16, 1, '2018-08-09 09:42:45', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '192.168.3.40', 'London', ',', NULL),
+(17, 1, '2018-08-09 10:14:12', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(18, 1, '2018-08-09 10:20:36', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
+(19, 1, '2018-08-09 10:34:13', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.183 Safari/537.36 Vivaldi/1.96.1147.52', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(20, 1, '2018-08-10 05:55:21', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.183 Safari/537.36 Vivaldi/1.96.1147.52', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(21, 1, '2018-08-10 07:31:15', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
+(22, 1, '2018-08-10 13:59:48', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
+(23, 1, '2018-08-10 16:09:29', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/66.0.3359.122 Mobile/15G77 Safari/604.1', '154.160.4.162', '154.160.4.162', 'Accra,Greater Accra Region', 'Ghana'),
+(24, 1, '2018-08-10 21:48:53', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/66.0.3359.122 Mobile/15G77 Safari/604.1', '154.160.4.162', '154.160.4.162', 'Accra,Greater Accra Region', 'Ghana'),
+(25, 1, '2018-08-11 07:45:49', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Linux; Android 4.4.2; T1-701u Build/HuaweiMediaPad) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.109 Safari/537.36', '41.66.199.84', '41.66.199.84', 'Accra,Greater Accra Region', 'Ghana'),
+(26, 1, '2018-08-12 22:31:27', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/66.0.3359.122 Mobile/15G77 Safari/604.1', '197.190.168.70', '197.190.168.70', 'Kumasi,Ashanti Region', 'Ghana'),
+(27, 1, '2018-08-12 22:57:37', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Linux; Android 7.0; TECNO K7 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36', '197.191.127.252', '197.191.127.252', 'Accra (Osu Klottey),Greater Accra', 'Ghana'),
+(28, 1, '2018-08-13 09:48:10', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
+(29, 1, '2018-08-13 17:32:42', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
+(30, 1, '2018-08-13 19:56:10', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/66.0.3359.122 Mobile/15G77 Safari/604.1', '154.160.6.119', '154.160.6.119', 'Accra,Greater Accra Region', 'Ghana'),
+(31, 1, '2018-08-14 05:38:14', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '41.215.171.151', '41.215.171.151', 'Accra,Greater Accra Region', 'Ghana'),
+(32, 1, '2018-08-14 05:55:56', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/66.0.3359.122 Mobile/15G77 Safari/604.1', '154.160.3.89', '154.160.3.89', 'Gawso,', 'Ghana'),
+(33, 1, '2018-08-14 08:06:56', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
+(34, 1, '2018-08-14 09:57:40', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '::1', 'London', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -109,7 +138,7 @@ CREATE TABLE `access_roles_privileges_group` (
 --
 
 INSERT INTO `access_roles_privileges_group` (`id`, `name`, `roles`, `privileges`, `description`, `login_url`, `status`, `date_created`) VALUES
-(1, 'System Developer', 'statistics|overview|inhouse|dispatch|new registration|company|users|permissions|customers|reports|sms', '', 'Designers of this software', 'dashboard', 'active', '2017-10-16 17:42:32');
+(1, 'System Developer', 'statistics|overview|inhouse|dispatch|Settings|company|users|permissions|customers|reports|sms', '', 'Designers of this software', 'dashboard', 'active', '2017-10-16 17:42:32');
 
 -- --------------------------------------------------------
 
@@ -273,7 +302,7 @@ CREATE TABLE `hr_company_info` (
 --
 
 INSERT INTO `hr_company_info` (`id`, `name`, `telephone_1`, `telephone_2`, `fax`, `email`, `postal_address`, `residence_address`, `website`, `mission`, `vision`, `gps_location`, `tin_number`, `logo_id`, `date_of_commence`) VALUES
-(1, 'BG\'S LIMITED', '+233 (0)302- 223989', '+233 (0)244 336 665', NULL, 'info@bglaundry.com', 'box an 10987', 'ofankor', 'http://www.bglaundry.com/', 'Delivering is our purpose', 'trust is our  hall mark', 'https://goo.gl/maps/SY7muBi8eBN2', 'TN-1234567-00', 0, '0000-00-00');
+(1, 'BG\'S LAUNDRY', '0244000999', '0233888999', NULL, 'info@gblaundry.com', 'POSTAL ADDRES', 'OFANKOR', 'www.gbslaundry.com', 'MISSION STATEMENT', 'VISION STATEMAN', '', 'TN-12345678', 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -459,6 +488,19 @@ CREATE TABLE `laundry_clients` (
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `laundry_clients`
+--
+
+INSERT INTO `laundry_clients` (`id`, `fullname`, `gender`, `company`, `residence_address`, `postal_address`, `phone_number_1`, `phone_number_2`, `email`, `sms_alert`, `email_alert`, `online_access`, `status`, `date_created`) VALUES
+(1, 'Claude Nii Nai', 'Male', 'Africaloop Limited', 'Trade Fair - LA', 'Africaloop Postal Address', '0243223959', '0244444888', 'claude@africaloop.com', 1, 1, 1, 'active', '2018-08-08 09:14:48'),
+(2, 'James Agaga', 'Male', 'WeBAD', 'Dome - Kwabenya', 'Dome', '0234897463', '', 'james@africaloop.com', 1, 1, 1, 'active', '2018-08-08 19:41:41'),
+(3, 'Julius Tornyi', 'Male', 'WebAD', 'Taifa', 'Tema', '0234567890', '', 'julius@webad.com.gh', 1, 1, 1, 'active', '2018-08-08 19:47:06'),
+(4, 'Bismark', 'Male', 'OARB-Bank', 'Taifa', 'box TA 353,Accra', '0000000000', '', 'bismarkoffei22@gmail.com', 1, 1, 1, 'active', '2018-08-09 06:43:23'),
+(5, 'Eunice Asare-Owusu', 'Female', 'OARB-Bank', 'Ashoman-Estate', 'box TA 353,Accra', '1111111111', '', '', 1, 1, 1, 'active', '2018-08-10 10:06:37'),
+(6, 'BisMarck', 'Male', 'Oarb', 'Aif', 'box ta tafa', '1234567890', '', 'quuqubismark@gmail', 0, 1, 1, 'active', '2018-08-11 04:16:43'),
+(7, 'Nana', 'Male', 'BG', 'Burkina', 'Taifa’s', '0245626487', '', 'wikills22@gmail.com', 1, 1, 1, 'active', '2018-08-13 16:04:29');
+
 -- --------------------------------------------------------
 
 --
@@ -532,10 +574,26 @@ CREATE TABLE `laundry_orders` (
   `status` enum('Pending','Processing','Dispatch','Delivered','Cancelled') NOT NULL DEFAULT 'Pending',
   `modified_by` bigint(20) NOT NULL,
   `modified_date` datetime DEFAULT NULL,
+  `reason_for_cancel` varchar(255) NOT NULL,
   `delivered_by` bigint(20) NOT NULL,
   `processing_stages` enum('Pending','Washing','Drying','Ironing','Ready For Dispatch') NOT NULL DEFAULT 'Pending',
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `laundry_orders`
+--
+
+INSERT INTO `laundry_orders` (`id`, `order_number`, `total_cost`, `amount_paid`, `balance`, `tax_id`, `client_id`, `processor_user_id`, `delivery_method_id`, `delivery_location`, `due_date`, `status`, `modified_by`, `modified_date`, `reason_for_cancel`, `delivered_by`, `processing_stages`, `date_created`) VALUES
+(1, '25835244', 15, 10, 5, 2, 1, 1, 4, 'Abelemkpe', '2018-08-10', 'Dispatch', 1, '2018-08-10 07:56:14', '', 0, 'Pending', '2018-08-08 10:39:55'),
+(2, '05497071', 30, 20, 10, 2, 3, 1, 4, 'Abelemkpe', '2018-08-10', 'Dispatch', 1, '2018-08-10 07:56:02', '', 0, 'Pending', '2018-08-08 20:08:28'),
+(3, '53618062', 60, 11, 49, 2, 4, 1, 6, 'Taifa', '2018-08-11', 'Dispatch', 1, '2018-08-10 14:09:30', '', 0, 'Pending', '2018-08-09 06:47:57'),
+(4, '66814154', 20, 15, 5, 3, 4, 1, 4, 'Taifa', '2018-08-13', 'Processing', 1, '2018-08-13 09:50:49', '', 0, 'Pending', '2018-08-10 03:36:40'),
+(5, '76786381', 85, 16, 69, 3, 3, 1, 4, 'Taifa', '2018-08-13', 'Cancelled', 1, '2018-08-13 11:27:52', 'CANT PAY', 0, 'Pending', '2018-08-10 03:54:01'),
+(6, '92114828', 45, 30, 15, 3, 5, 1, 6, 'Dome', '2018-08-12', 'Dispatch', 1, '2018-08-13 09:51:46', '', 0, 'Pending', '2018-08-10 10:08:07'),
+(7, '38078637', 45, 44, 1, 3, 5, 1, 6, 'Taifa', '2018-08-14', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-12 19:04:42'),
+(8, '56771808', 230, 207, 23, 3, 7, 1, 4, 'Burkina', '2018-08-13', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-13 16:06:33'),
+(9, '62684619', 15, 10, 5, 3, 7, 1, 6, 'Kumasi', '2018-08-14', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-14 01:59:40');
 
 -- --------------------------------------------------------
 
@@ -551,6 +609,14 @@ CREATE TABLE `laundry_order_balances` (
   `status` enum('Pending','Paid') NOT NULL DEFAULT 'Pending',
   `payment_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `laundry_order_balances`
+--
+
+INSERT INTO `laundry_order_balances` (`id`, `order_id`, `balance_paid`, `user_id`, `status`, `payment_date`) VALUES
+(1, 3, 49, 1, 'Paid', '2018-08-09 07:39:19'),
+(2, 2, 10, 1, 'Paid', '2018-08-10 03:58:14');
 
 -- --------------------------------------------------------
 
@@ -586,6 +652,21 @@ CREATE TABLE `laundry_order_details` (
   `status_change_dates` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `laundry_order_details`
+--
+
+INSERT INTO `laundry_order_details` (`id`, `order_id`, `pricelist_ids`, `quantities`, `unit_prices`, `total_sums`, `description`, `service_status`, `status_change_userids`, `status_change_dates`) VALUES
+(1, 1, '6', '7', '10', '10', 'T shirts', '', '', ''),
+(2, 2, '7|3', '3|2', '15|5', '15|10', '2 blankets, 1 singlet|', '', '', ''),
+(3, 3, '5|5', '1|1', '30|30', '30|30', '|', '', '', ''),
+(4, 4, '7', '2', '15', '15', 'sweet', '', '', ''),
+(5, 5, '8|8', '1|1', '45|35', '45|35', '|', '', '', ''),
+(6, 6, '8', '1', '45', '45', '', '', '', ''),
+(7, 7, '8', '1', '45', '45', '', '', '', ''),
+(8, 8, '8', '5', '45', '225', '', '', '', ''),
+(9, 9, '7', '1', '15', '15', 'Shirt', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -613,7 +694,9 @@ INSERT INTO `laundry_prices` (`id`, `service_id`, `weight_id`, `garment_id`, `am
 (4, 2, 0, 5, 20, 'active', '2018-01-16 08:38:47'),
 (5, 2, 2, 5, 30, 'deleted', '2018-01-16 08:39:17'),
 (6, 1, 1, 0, 10, 'active', '2018-01-16 08:39:53'),
-(7, 1, 2, 5, 15, 'active', '2018-01-16 08:40:15');
+(7, 1, 2, 5, 15, 'active', '2018-01-16 08:40:15'),
+(8, 2, 0, 3, 45, 'active', '2018-08-10 03:52:43'),
+(9, 2, 0, 2, 35, 'active', '2018-08-10 03:52:55');
 
 -- --------------------------------------------------------
 
@@ -690,12 +773,12 @@ INSERT INTO `settings_dashboard_tabs` (`id`, `name`, `comment`, `icon`, `link`, 
 (1, 'customers', 'Register New Employee', 'fa fa-street-view', 'customers', 'text-teal-400', 'can delete|can add|can edit', 'Human-Resource', 'active'),
 (2, 'company', 'Organizational Structure', 'fa fa-institution', 'settings/company', 'text-teal-400', 'Can Create Company Profile|Can Edit Company Profile|Can Delete Company Profile', 'Human-Resource', 'active'),
 (3, 'users', 'Add New / Manage User(s)', 'fa fa-users', 'administration/users', 'text-teal-400', 'All Users|Add New User', 'Administration', 'active'),
-(4, 'permissions', 'Set Roles & Priv. For Users / Groups', 'fa fa-lock', 'administration/permissions', 'text-teal-400', 'All Roles|All Privileges|Set Role', 'Administration', 'active'),
+(4, 'permissions', 'Set Roles & Priv. For Users / Groups', 'fa fa-lock', 'administration/permissions', 'text-teal-400', 'All Roles|All Privileges|Set Role', 'Administration', 'inactive'),
 (6, 'Reports', 'Main Audit System', 'fa fa-database', 'reports', 'text-teal-400', 'Can Access Department Audit|Can Access All Audit', 'Administration', 'active'),
-(7, 'new registration', 'New Product / Category / Description', 'fa fa-plus', 'settings/new_registration', 'text-teal-400', 'Can Add Prod / Cat / Desc|Can Edit Prod / Cat / Desc|Can Delete Prod / Cat / Desc', 'Stores', 'active'),
+(7, 'Settings', 'New Product / Category / Description', 'fa fa-gears', 'settings/new_registration', 'text-teal-400', 'Can Add Prod / Cat / Desc|Can Edit Prod / Cat / Desc|Can Delete Prod / Cat / Desc', 'Stores', 'active'),
 (8, 'settings', 'For Administrators Only', 'fa fa-gears', 'settings/', 'text-teal-400', 'Can Activate / Deactivate System', 'Administration', 'active'),
 (9, 'system settings', 'For Developers Only', 'fa fa-lock', 'system/settings', 'text-teal-400', '', 'Reserved', 'inactive'),
-(10, 'sms', 'Send messages', 'fa fa-envelope', 'sms', 'text-teal-400', 'can delete|can edit|can add', 'Reserved', 'active'),
+(10, 'sms', 'Send messages', 'fa fa-envelope', 'sms', 'text-teal-400', 'can delete|can edit|can add', 'Reserved', 'inactive'),
 (13, 'statistics', 'Informational Statistics', 'fa fa-bar-chart', 'statistics', 'text-teal-400', '', 'General', 'active'),
 (14, 'overview', 'All Services Made', 'fa fa-tasks', 'overview', 'text-teal-400', 'can delete|can add|can edit', 'oms', 'active'),
 (15, 'inhouse', 'All Services Made', 'fa fa-inbox', 'inhouse', 'text-teal-400', 'can delete|can add|can edit', 'oms', 'active'),
@@ -713,6 +796,15 @@ CREATE TABLE `settings_tax_system` (
   `user_id` bigint(20) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `settings_tax_system`
+--
+
+INSERT INTO `settings_tax_system` (`id`, `value`, `user_id`, `date_created`) VALUES
+(1, 2, 1, '2018-08-08 09:38:33'),
+(2, 2.87, 1, '2018-08-08 09:42:18'),
+(3, 0.25, 1, '2018-08-09 09:38:47');
 
 -- --------------------------------------------------------
 
@@ -844,6 +936,7 @@ CREATE TABLE `vw_laundry_clients` (
 ,`date_created` datetime
 ,`pending_orders` bigint(21)
 ,`completed_orders` bigint(21)
+,`total_balance` double
 );
 
 -- --------------------------------------------------------
@@ -924,6 +1017,7 @@ CREATE TABLE `vw_orderlist_summary` (
 ,`status` enum('Pending','Processing','Dispatch','Delivered','Cancelled')
 ,`modified_by` varchar(20)
 ,`modified_date` varchar(19)
+,`reason_for_cancel` varchar(255)
 ,`total_comments` varbinary(21)
 ,`date_created` datetime
 ,`client_fullname` varchar(255)
@@ -1008,7 +1102,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vw_laundry_clients`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_laundry_clients`  AS  select `a`.`id` AS `id`,`a`.`fullname` AS `fullname`,`a`.`gender` AS `gender`,`a`.`company` AS `company`,`a`.`residence_address` AS `residence_address`,`a`.`postal_address` AS `postal_address`,`a`.`phone_number_1` AS `phone_number_1`,`a`.`phone_number_2` AS `phone_number_2`,`a`.`email` AS `email`,`a`.`sms_alert` AS `sms_alert`,`a`.`online_access` AS `online_access`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created`,coalesce((select count(`laundry_orders`.`id`) from `laundry_orders` where ((`laundry_orders`.`client_id` = `a`.`id`) and (`laundry_orders`.`status` = 'pending'))),0) AS `pending_orders`,coalesce((select count(`laundry_orders`.`id`) from `laundry_orders` where ((`laundry_orders`.`client_id` = `a`.`id`) and (`laundry_orders`.`status` = 'delivered'))),0) AS `completed_orders` from `laundry_clients` `a` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_laundry_clients`  AS  select `a`.`id` AS `id`,`a`.`fullname` AS `fullname`,`a`.`gender` AS `gender`,`a`.`company` AS `company`,`a`.`residence_address` AS `residence_address`,`a`.`postal_address` AS `postal_address`,`a`.`phone_number_1` AS `phone_number_1`,`a`.`phone_number_2` AS `phone_number_2`,`a`.`email` AS `email`,`a`.`sms_alert` AS `sms_alert`,`a`.`online_access` AS `online_access`,`a`.`status` AS `status`,`a`.`date_created` AS `date_created`,coalesce((select count(`laundry_orders`.`id`) from `laundry_orders` where ((`laundry_orders`.`client_id` = `a`.`id`) and (`laundry_orders`.`status` = 'pending'))),0) AS `pending_orders`,coalesce((select count(`laundry_orders`.`id`) from `laundry_orders` where ((`laundry_orders`.`client_id` = `a`.`id`) and (`laundry_orders`.`status` = 'delivered'))),0) AS `completed_orders`,coalesce((select sum(`vw_orderlist_summary`.`balance`) from `vw_orderlist_summary` where (`vw_orderlist_summary`.`client_id` = `a`.`id`)),0) AS `total_balance` from `laundry_clients` `a` ;
 
 -- --------------------------------------------------------
 
@@ -1044,7 +1138,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vw_orderlist_summary`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_orderlist_summary`  AS  select `a`.`id` AS `id`,`a`.`order_number` AS `order_number`,`a`.`total_cost` AS `total_cost`,`f`.`value` AS `tax`,`a`.`amount_paid` AS `amount_paid`,`a`.`balance` AS `previous_balance`,coalesce(`e`.`balance_paid`,0) AS `balance_paid`,(`a`.`amount_paid` + coalesce(`e`.`balance_paid`,0)) AS `total_amount_paid`,coalesce((`a`.`balance` - `e`.`balance_paid`),`a`.`balance`) AS `balance`,coalesce((select `vw_user_details`.`fullname` from `vw_user_details` where (`vw_user_details`.`id` = `e`.`user_id`)),'') AS `balance_received_by`,coalesce(`e`.`payment_date`,'') AS `balance_payment_date`,`a`.`client_id` AS `client_id`,`a`.`processor_user_id` AS `processor_user_id`,`a`.`delivery_method_id` AS `delivery_method_id`,`a`.`delivery_location` AS `delivery_location`,`a`.`due_date` AS `due_date`,`a`.`status` AS `status`,coalesce(`a`.`modified_by`,'') AS `modified_by`,coalesce(`a`.`modified_date`,'') AS `modified_date`,coalesce((select count(`laundry_order_comments`.`comment`) from `laundry_order_comments` where (`laundry_order_comments`.`order_id` = `a`.`id`)),'') AS `total_comments`,`a`.`date_created` AS `date_created`,`b`.`fullname` AS `client_fullname`,coalesce(`b`.`company`,'') AS `client_company`,`b`.`phone_number_1` AS `client_phone_no_1`,`b`.`phone_number_2` AS `client_phone_no_2`,`c`.`fullname` AS `processor_name`,`d`.`location` AS `delivery_method`,`d`.`price` AS `delivery_cost` from (((((`laundry_orders` `a` left join `laundry_clients` `b` on((`a`.`client_id` = `b`.`id`))) left join `vw_user_details` `c` on((`a`.`processor_user_id` = `c`.`id`))) left join `laundry_delivery_method` `d` on((`a`.`delivery_method_id` = `d`.`id`))) left join `laundry_order_balances` `e` on((`a`.`id` = `e`.`order_id`))) left join `settings_tax_system` `f` on((`a`.`tax_id` = `f`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_orderlist_summary`  AS  select `a`.`id` AS `id`,`a`.`order_number` AS `order_number`,`a`.`total_cost` AS `total_cost`,`f`.`value` AS `tax`,`a`.`amount_paid` AS `amount_paid`,`a`.`balance` AS `previous_balance`,coalesce(`e`.`balance_paid`,0) AS `balance_paid`,(`a`.`amount_paid` + coalesce(`e`.`balance_paid`,0)) AS `total_amount_paid`,coalesce((`a`.`balance` - `e`.`balance_paid`),`a`.`balance`) AS `balance`,coalesce((select `vw_user_details`.`fullname` from `vw_user_details` where (`vw_user_details`.`id` = `e`.`user_id`)),'') AS `balance_received_by`,coalesce(`e`.`payment_date`,'') AS `balance_payment_date`,`a`.`client_id` AS `client_id`,`a`.`processor_user_id` AS `processor_user_id`,`a`.`delivery_method_id` AS `delivery_method_id`,`a`.`delivery_location` AS `delivery_location`,`a`.`due_date` AS `due_date`,`a`.`status` AS `status`,coalesce(`a`.`modified_by`,'') AS `modified_by`,coalesce(`a`.`modified_date`,'') AS `modified_date`,coalesce(`a`.`reason_for_cancel`,'') AS `reason_for_cancel`,coalesce((select count(`laundry_order_comments`.`comment`) from `laundry_order_comments` where (`laundry_order_comments`.`order_id` = `a`.`id`)),'') AS `total_comments`,`a`.`date_created` AS `date_created`,`b`.`fullname` AS `client_fullname`,coalesce(`b`.`company`,'') AS `client_company`,`b`.`phone_number_1` AS `client_phone_no_1`,`b`.`phone_number_2` AS `client_phone_no_2`,`c`.`fullname` AS `processor_name`,`d`.`location` AS `delivery_method`,`d`.`price` AS `delivery_cost` from (((((`laundry_orders` `a` left join `laundry_clients` `b` on((`a`.`client_id` = `b`.`id`))) left join `vw_user_details` `c` on((`a`.`processor_user_id` = `c`.`id`))) left join `laundry_delivery_method` `d` on((`a`.`delivery_method_id` = `d`.`id`))) left join `laundry_order_balances` `e` on((`a`.`id` = `e`.`order_id`))) left join `settings_tax_system` `f` on((`a`.`tax_id` = `f`.`id`))) ;
 
 -- --------------------------------------------------------
 
@@ -1260,7 +1354,7 @@ ALTER TABLE `access_login_failed`
 -- AUTO_INCREMENT for table `access_login_successful`
 --
 ALTER TABLE `access_login_successful`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=6;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `access_password_reset_requests`
@@ -1356,7 +1450,7 @@ ALTER TABLE `hr_position`
 -- AUTO_INCREMENT for table `laundry_clients`
 --
 ALTER TABLE `laundry_clients`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `laundry_delivery_method`
@@ -1374,13 +1468,13 @@ ALTER TABLE `laundry_garments`
 -- AUTO_INCREMENT for table `laundry_orders`
 --
 ALTER TABLE `laundry_orders`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `laundry_order_balances`
 --
 ALTER TABLE `laundry_order_balances`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `laundry_order_comments`
@@ -1392,13 +1486,13 @@ ALTER TABLE `laundry_order_comments`
 -- AUTO_INCREMENT for table `laundry_order_details`
 --
 ALTER TABLE `laundry_order_details`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `laundry_prices`
 --
 ALTER TABLE `laundry_prices`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `laundry_services`
@@ -1422,7 +1516,7 @@ ALTER TABLE `settings_dashboard_tabs`
 -- AUTO_INCREMENT for table `settings_tax_system`
 --
 ALTER TABLE `settings_tax_system`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
