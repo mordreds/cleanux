@@ -63,6 +63,31 @@ class Overview extends MX_Controller
         /***************** Interface *****************/
       }
     }
+
+    /*******************************
+      Check order details
+    *******************************/
+    public function order_details() {
+      # Permission Check
+       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles']))
+        redirect('dashboard');
+      else {
+        /****** Required Parameters To Render A Page ******/
+        $this->load->model('access/model_access');
+        $this->load->model('globals/model_retrieval');
+        $data['_Default_DB'] = self::$_Default_DB;
+        $data['page_controller'] = $this->uri->segment(1);
+        $data['controller_function'] = $this->uri->segment(2); 
+        /****** Required Parameters To Render A Page ******/
+        /***************** Interface *****************/
+        $data['title'] = "Order Details"; 
+
+        $this->load->view('header',$data); 
+        $this->load->view('view_order_details',$data); 
+        $this->load->view('footer'); 
+        /***************** Interface *****************/
+      }
+    }
   /**************** Interface ********************/
 
   /**************** Insertions ********************/
@@ -228,6 +253,7 @@ class Overview extends MX_Controller
             $total_cost = $_SESSION['laundry']['new_order']['cart_total_amount'] + $delivery_price;
             $balance = $total_cost - $this->input->post('amount_paid');
             $client_fullname = $_SESSION['laundry']['new_order']['client']['fullname'];
+            $sms_alert = $_SESSION['laundry']['new_order']['client']['sms_alert'];
 
             if(isset($_SESSION['laundry']['new_order']['orders']) && !empty($_SESSION['laundry']['new_order']['orders'])) {
               foreach ($_SESSION['laundry']['new_order']['orders'] as $key => $value) {
@@ -280,12 +306,14 @@ class Overview extends MX_Controller
                 
                 # Sending Sms To Client To Monitor
                 $to = $_SESSION['laundry']['new_order']['client']['phone_number'];
-                $message = "Dear ".$client_fullname.", Thanks for choosing our services! Your Order reference number is ".$order_table_info['order_number']." Click link below for more details ".base_url()."overview/order_details";
+                $message = "Dear ".$client_fullname.", Thanks for choosing our services! Your Order reference number is ".$order_table_info['order_number']; /* ." Click link below for more details ".base_url()."overview/order_details"; */
 
-                $sendsms = sendSMS($to,$message);
-                //print_r($sendsms); exit;
-                if(!empty($sms_result['error'])) 
-                  $this->session->set_flashdata('error', $sms_result['error']);
+                if(!empty($sms_alert)) {
+                  $sendsms = sendSMS($to,$message);
+
+                  if(!empty($sms_result['error'])) 
+                    $this->session->set_flashdata('error', $sms_result['error']);
+                }
               
               /******** Sending Email & SMS Notice ************/
               unset($_SESSION['laundry']['new_order']);
@@ -443,6 +471,7 @@ class Overview extends MX_Controller
               $_SESSION['laundry']['new_order']['client']['phone_number'] = $query_result[0]->phone_number_1;
               $_SESSION['laundry']['new_order']['client']['id'] = $query_result[0]->id;
               $_SESSION['laundry']['new_order']['client']['fullname'] = $query_result[0]->fullname;
+              $_SESSION['laundry']['new_order']['client']['sms_alert'] = $query_result[0]->sms_alert;
             }
             else {
               $return_data = array();

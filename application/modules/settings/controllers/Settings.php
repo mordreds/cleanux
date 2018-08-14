@@ -769,8 +769,8 @@ class Settings extends MX_Controller
               'phone_number_2' => $this->input->post('secondary_tel'),
               'email' => $this->input->post('email'),
               'sms_alert' => ($this->input->post('sms') == "on") ? 1 : 0,
-              'email_alert' => ($this->input->post('email_alert') == "on") ? 1 : 0,
-              'online_access' => ($this->input->post('online')== "on") ? 1 : 0,
+              'email_alert' => /* ($this->input->post('email_alert') == "on") ? 1 : */ 0,
+              'online_access' => /* ($this->input->post('online')== "on") ? 1 : */ 0,
             ]; 
             $return_dataType="php_object";
             $delete_confirmed = $this->input->post('delete_item');

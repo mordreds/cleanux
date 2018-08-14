@@ -83,7 +83,7 @@
                                 <div class="col-md-1" style="margin-right: 22px">
                                   <div class="form-group">
                                     <div class="checkbox checkbox-switchery">
-                                      <label><input type="checkbox" name="email_alert" class="switchery" checked>
+                                      <label><input type="checkbox" name="email_alert" class="switchery" disabled>
                                       Email 
                                       </label>
                                     </div>
@@ -92,7 +92,7 @@
                                 <div class="col-md-1">
                                   <div class="form-group">
                                     <div class="checkbox checkbox-switchery">
-                                      <label><input type="checkbox" name="online" class="switchery" checked>
+                                      <label><input type="checkbox" name="online" class="switchery" disabled>
                                        Portal
                                       </label>
                                     </div>
