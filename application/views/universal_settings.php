@@ -160,8 +160,8 @@
               });
             }
             else {
-              $('#cart_total_amount').val(response.total);
-              $('.order_balance').val(response.total);
+              $('#cart_total_amount').val(response.total.toFixed(2));
+              $('.order_balance').val(response.total.toFixed(2));
             }
           },
           error: function() {
@@ -190,8 +190,10 @@
                   theme: 'alert-styled-left bg-danger'
                 });
               }
-              else
-                $('#cart_total_amount').val(response.total);
+              else {
+                let cost = response.total
+                $('#cart_total_amount').val(cost.toFixed(2));
+              }
             },
             error: function() {
               $.jGrowl('An Error Retrieving Total Cost', {
@@ -238,17 +240,23 @@
         let current_total = $('#cart_total_amount').val();
         let amount_payable = $(this).val();
 
-        if(amount_payable == "" || amount_payable == 0)
+        if(amount_payable == "" || amount_payable == 0) {
           $('.order_balance').val(current_total);
+          $('.change').val(0);
+        }
         else {
           let balance = parseFloat(current_total) - parseFloat(amount_payable);
           if(balance < 0) {
-            $.jGrowl('Invalid Amount', {
+            /*$.jGrowl('Invalid Amount', {
               theme: 'alert-styled-left bg-danger'
-            });
+            });*/
+            let reset = 0;
+            $('.order_balance').val(0.00);
+            $('.change').val(Math.abs(balance));
           }
           else {
             $('.order_balance').val(balance.toFixed(2));
+            $('.change').val(0.00);
           }
         }
       });

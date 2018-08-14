@@ -216,6 +216,7 @@ class Overview extends MX_Controller
         $this->form_validation->set_rules('delivery_method','Delivery Method','trim|required');
         $this->form_validation->set_rules('delivery_location','Delivery Location','trim|required');
         $this->form_validation->set_rules('amount_paid','Amount Paid','trim|required');
+        $this->form_validation->set_rules('change','Change Paid','trim');
 
         if($this->form_validation->run() === FALSE) {
           $this->session->set_flashdata('error',"Validation Error");
@@ -251,7 +252,8 @@ class Overview extends MX_Controller
             $pricelist_ids = $quantities = $unit_prices = $total_sums = $description = array();
             $delivery_price = $delivery_price->price;
             $total_cost = $_SESSION['laundry']['new_order']['cart_total_amount'] + $delivery_price;
-            $balance = $total_cost - $this->input->post('amount_paid');
+            $change = $this->input->post('change');
+            $balance = ($change >0) ? 0 : $total_cost - $this->input->post('amount_paid');
             $client_fullname = $_SESSION['laundry']['new_order']['client']['fullname'];
             $sms_alert = $_SESSION['laundry']['new_order']['client']['sms_alert'];
 
@@ -269,6 +271,7 @@ class Overview extends MX_Controller
               'order_number' => $this->generate_order_no(),
               'total_cost' => $total_cost,
               'amount_paid' => $this->input->post('amount_paid'),
+              'change_paid' => $change,
               'balance' => $balance,
               'tax_id' => $tax_value->id,
               'client_id' => $_SESSION['laundry']['new_order']['client']['id'],
