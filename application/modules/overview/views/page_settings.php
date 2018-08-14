@@ -90,6 +90,7 @@
                   $('#pending_order_table').DataTable({
                     searching: false,
                     paging: false,
+                    pageLength: 10,
                     order: [],
                     autoWidth: false,
                     ajax: {
@@ -475,6 +476,7 @@
       $('#todays_order').DataTable({
         searching: true,
         paging: true,
+        pageLength: 5,
         order: [],
         autoWidth: false,
         ajax: {
