@@ -208,10 +208,12 @@ class Administration extends MX_Controller
   /************** Data Insertion *****************/
     /****** Save New Employee ***********/
     public function save_employee() {
-      if(in_array('new registration', $_SESSION['user']['roles'])) {
-        $this->form_validation->set_rules('id','Employee ID','trim');
-        $this->form_validation->set_rules('response_type','Response Type','trim');
+      
+      $this->form_validation->set_rules('response_type','Response Type','trim');
+      $response_type = $this->input->post('response_type');
 
+      if(in_array('company', $_SESSION['user']['roles'])) {
+        $this->form_validation->set_rules('id','Employee ID','trim');
         $this->form_validation->set_rules('first_name','First Name','trim|required');
         $this->form_validation->set_rules('middle_name','Middle Name','trim');
         $this->form_validation->set_rules('last_name','Last Name','trim|required');
@@ -227,9 +229,6 @@ class Administration extends MX_Controller
         $this->form_validation->set_rules('emergency_phone_1','Emergency Phone Number','trim|required');
         $this->form_validation->set_rules('emergency_relationship','Emergency Relationship','trim|required');
 
-        $response_type = $this->input->post('response_type');
-        $biodata_id = $this->input->post('id');
-
         if($this->form_validation->run() === FALSE) {
           $errors = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
           
@@ -239,15 +238,16 @@ class Administration extends MX_Controller
           } 
           else {
             $this->session->set_flashdata('validation_error',$errors);
-            redirect('settings/company');
+            redirect('settings/company#new_employee');
           }
         }
         else {
           $this->load->model('custom_retrievals');
+          $this->load->model('globals/model_retrieval');
           /***** Data Definition *****/
           $dbres = self::$_Default_DB;
           $return_dataType="php_object";
-          
+          $biodata_id = $this->input->post('id');
           $bio_data = [
             'first_name' => ucwords($this->input->post('first_name')),
             'middle_name' => ucwords($this->input->post('middle_name')),
@@ -260,16 +260,28 @@ class Administration extends MX_Controller
             'residence' => ucwords($this->input->post('residence_addr')),
             'phone_number_1' => ucwords($this->input->post('primary_tel')),
             'phone_number_2' => ucwords($this->input->post('secondary_tel')),
-            'email' => ucwords($this->input->post('email')),
+            'email' => $this->input->post('email'),
             'emergency_fullname' => ucwords($this->input->post('emergency_fullname')),
             'emergency_relationship' => ucwords($this->input->post('emergency_relationship')),
             'emergency_phone_1' => ucwords($this->input->post('emergency_phone_1')),
             'emergency_residence' => ucwords($this->input->post('emergency_residence')),
           ];  
 
+          /******* Retrieving Position's Department ******/
+          $dbres = self::$_Default_DB;
+          $tablename = "vw_hr_positions";
+          $where_condition = ['where_condition' => array('id' => $this->input->post('position'))];
+          $position_department = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$where_condition);
+          
+          if(!isset($position_department['DB_ERROR']) && !empty($position_department[0]))
+            $department_id = $position_department[0]->department_id;
+          else
+            $department_id = 0;
+          /******* Retrieving Position's Department ******/
+
           $work_data = [
             'employee_id' => $this->generate_employeeid(),
-            'department_id' => 1,
+            'department_id' => $department_id,
             'position_id' => ucwords($this->input->post('position')),
           ];
           /***** Data Definition *****/
@@ -284,7 +296,7 @@ class Administration extends MX_Controller
             else 
               $this->session->set_flashdata('error', 'Saving Data Failed');
 
-            redirect('settings/company');
+            redirect('settings/company#new_employee');
           }
           /******** Insertion Of New Data ***********/
           /******** Updating Of Record ***********/
@@ -311,7 +323,7 @@ class Administration extends MX_Controller
                 else
                   $this->session->set_flashdata('error', 'Delete Failed');
 
-                redirect('settings/company');
+                redirect('settings/company#employees');
               }
             }
             else {
@@ -338,8 +350,14 @@ class Administration extends MX_Controller
         }
       }
       else {
-        $return_data['error'] = 'Permission Denied.Contact Administrator';
-        print_r(json_encode($return_data));
+        if($response_type == "json") {
+          $return_data['error'] = 'Permission Denied.Contact Administrator';
+          print_r(json_encode($return_data));
+        }
+        else {
+          $this->session->set_flashdata('error', 'Permission Denied.Contact Administrator');
+          redirect('settings/company#new_employee','refresh');
+        }
       }
     }
     /****** Save New Employee ***********/

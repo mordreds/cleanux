@@ -730,7 +730,10 @@ class Settings extends MX_Controller
 
     /****** Save Client Info *******/
       public function save_client_info() {
-        if(in_array('Settings', $_SESSION['user']['roles'])) {
+        $this->form_validation->set_rules('response_type','Response Type','trim');
+        $response_type = $this->input->post('response_type');
+
+        if(in_array('overview', $_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('id','ID','trim');
           $this->form_validation->set_rules('fullname','Fullname','trim');
           $this->form_validation->set_rules('gender','Gender','trim');
@@ -830,9 +833,15 @@ class Settings extends MX_Controller
           }
         }
         else {
-          $return_data['error'] = 'Permission Denied.Contact Administrator';
-          print_r(json_encode($return_data));
-        }
+         if($response_type == "json") {
+           $return_data['error'] = 'Permission Denied.Contact Administrator';
+           print_r(json_encode($return_data));
+         }
+         else {
+           $this->session->set_flashdata('error', 'Permission Denied.Contact Administrator');
+           redirect('overview','refresh');
+         }
+       }
       }
     /****** Save Client Info *******/
   /**************** Insertions ****************/
@@ -968,7 +977,7 @@ class Settings extends MX_Controller
           case "departments":
             $tablename = "vw_hr_departments";
             # Checking System Developer Role 
-              if($_SESSION['user']['group_name'] == "System Developer") {
+              if($_SESSION['user']['group_name'] == "SYSTEM") {
                 $condition = ['where_condition' => array()];
                 $orderby = array('id' => "ASC");
               }
@@ -982,7 +991,7 @@ class Settings extends MX_Controller
           case "positions":
             $tablename = "vw_hr_positions";
             # Checking System Developer Role 
-            if($_SESSION['user']['group_name'] == "System Developer") {
+            if($_SESSION['user']['group_name'] == "SYSTEM") {
               $condition = array();
               $orderby = array('id' => "ASC");
             }

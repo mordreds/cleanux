@@ -93,7 +93,7 @@
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="display-block">User Group</label>
-                          <select id="usertypes" name="usergroup" class="" required></select>
+                          <select id="usertypes" name="usergroup" class="form-control" required></select>
                         </div>
                       </div>
                       <div class="col-md-4">
@@ -106,7 +106,7 @@
                         </div>
                       </div>
                     </div>
-                    <button type="submiy" class="btn btn-primary">Save <i class="icon-arrow-right14 position-right"></i></button>
+                    <button type="submit" class="btn btn-primary">Save <i class="icon-arrow-right14 position-right"></i></button>
                   </form>
                   </div>
                 </div>

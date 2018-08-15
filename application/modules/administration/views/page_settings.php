@@ -348,6 +348,23 @@
           });
         /********* Passy Password Meter ***********/
 
+        /********** Displaying User Groups **********/
+          $("#usertypes").selectBoxIt({
+            autoWidth: false,
+            defaultText: "Select One",
+            populate: function(){
+              var deferred = $.Deferred(), arr = [], x = -1;
+              $.ajax({
+              url: '<?=base_url()?>administration/usergroups/roles_privileges_group'}).done(function(data) {
+                data = JSON.parse(data); 
+                $.each(data, function(array_index) {
+                  $("#usertypes").data("selectBox-selectBoxIt").add({ value: data[array_index].id, text: data[array_index].name});
+                });
+              });
+            }
+          });
+        /********** Displaying User Groups **********/
+
       <?php endif; ?>
     /**************************************** Users Page ***********************************/
 
@@ -470,7 +487,7 @@
               var deferred = $.Deferred(), arr = [], x = -1;
               $.ajax({
               url: '<?=base_url()?>administration/usergroups/roles_privileges_group'}).done(function(data) {
-                data = JSON.parse(data);  
+                data = JSON.parse(data); 
                 $.each(data, function(array_index) {
                   $("#usertypes").data("selectBox-selectBoxIt").add({ value: data[array_index].id, text: data[array_index].name});
                 });

@@ -212,7 +212,7 @@
                             <th>Name</th>
                             <th>Reports To</th>
                             <th>Description</th>
-                            <th>Salary</th>
+                            <th>Department</th>
                             <th>Status</th>
                             <th class="text-center" style="width: 20%">Actions</th>
                           </tr>
@@ -316,27 +316,33 @@
                       </div>
                     </div>
                     <div class="row">
+                      <h4 style="text-align: center;margin: 0px">
+                        <label style="color:#b57171;">
+                          Emergency Contact Info
+                        </label>
+                      </h4>
+                      <hr style="margin: 0px" />
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label class="display-block">Contact Name <span style="color:red;">*</span> (<em style="color:#b57171">emergency</em>)</label>
+                          <label class="display-block">Contact Name <span style="color:red;">*</span> <!-- (<em style="color:#b57171">Emergency</em>) --></label>
                           <input type="text" name="emergency_fullname" class="form-control" required>
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label class="display-block">Residence Address <span style="color:red;">*</span> (<em style="color:#b57171">emergency</em>)</label>
+                          <label class="display-block">Residence Address <span style="color:red;">*</span> <!-- (<em style="color:#b57171">Emergency</em>) --></label>
                           <input type="text" name="emergency_residence" class="form-control" required>
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label class="display-block">Phone Number <span style="color:red;">*</span> (<em style="color:#b57171">emergency</em>)</label>
+                          <label class="display-block">Phone Number <span style="color:red;">*</span> <!-- (<em style="color:#b57171">Emergency</em>) --></label>
                           <input type="text" name="emergency_phone_1" class="form-control" required>
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label class="display-block">Relationship <span style="color:red;">*</span> (<em style="color:#b57171">emergency</em>)</label>
+                          <label class="display-block">Relationship <span style="color:red;">*</span> <!-- (<em style="color:#b57171">Emergency</em>) --></label>
                           <select name="emergency_relationship" class="selectbox">
                             <option value=""><em>Select One</em></option>
                             <option>Father</option>

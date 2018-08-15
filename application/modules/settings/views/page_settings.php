@@ -325,8 +325,11 @@
               {data: "description",render: function(data,type,row,meta) {
                 return row.description.substring(0,37);
               }},
-              {data: "salary", render: function(data,type,row,meta){
+              /*{data: "salary", render: function(data,type,row,meta){
                 return "<b>₵"+number_format(row.salary)+"</b>";
+              }},*/
+               {data: "department_name",render: function(data,type,row,meta) {
+                return row.department_name.toUpperCase();
               }},
               {data: "status",render: function(data,type,row,meta) {
                 if(row.status == "active") {
