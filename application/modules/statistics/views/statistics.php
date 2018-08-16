@@ -164,19 +164,32 @@
                 <i class="icon-watch2"></i>
               </span>
 
-              <a href="#" class="text-default">
+              <a href="<?=base_url()?>overview/timeline" class="text-default">
                 Timeline - <strong><i><?=(empty($timeline_date)) ? "" : $timeline_date?></i></strong> 
               </a>
             </h5>
 
             <div class="heading-elements">
-              <a href="#" class="heading-text">See all →</a>
+              <a href="<?=base_url()?>overview/timeline" class="heading-text">See all →</a>
                     </div>
           </div>
           <div class="panel-body border-top-teal">
             <ul class="list-feed list-feed-time">
-              <?php if(!empty($timeline)) : foreach($timeline as $record_timeline) : ?>
-              <li class="border-warning-400">
+              <?php 
+                $line_colors = array(
+                  "border-warning-400",
+                  "border-info-400",
+                  "border-pink-400",
+                  "border-slate-600",
+                  "border-teal-400",
+                  "border-danger-400"
+                );
+                if(!empty($timeline)) : 
+                  foreach($timeline as $record_timeline) : 
+                    $color_shuffle = mt_rand(0,5);
+                    $bg_color = $line_colors[$color_shuffle];
+              ?>
+              <li class="<?=$bg_color?>">
                 <span class="feed-time text-muted"><?=date('G : i', strtotime($record_timeline->date_created))?></span>
                 <a href="#"><?=$record_timeline->client_fullname?></a> placed this order <a href=""><?=$record_timeline->order_number?></a>
               </li>

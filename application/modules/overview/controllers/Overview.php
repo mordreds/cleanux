@@ -50,7 +50,7 @@ class Overview extends MX_Controller
     }
 
     /*******************************
-      Index Function
+      Receipt Function
     *******************************/
     public function receipt($order_id) {
       # Permission Check
@@ -84,6 +84,70 @@ class Overview extends MX_Controller
 
         $this->load->view('header',$data); 
         $this->load->view('view_order_details',$data); 
+        $this->load->view('footer'); 
+        /***************** Interface *****************/
+      }
+    }
+
+    /*******************************
+      TimeLine Function
+    *******************************/
+    public function timeline() { //print "<pre>"; print_r($_SESSION); print "</pre>";
+      # Permission Check
+      if(!isset($_SESSION['user']['username']))
+        redirect('access/login');
+      else if(!in_array('overview', $_SESSION['user']['roles'])) {
+        $this->session->set_flashdata('error', 'Permission Denied. Contact Admin');
+        redirect($_SERVER['HTTP_REFERER']);
+      }
+      else { 
+
+        /****** Required Parameters To Render A Page ******/
+        $this->load->model('access/model_access');
+        $this->load->model('globals/model_retrieval');
+        $data['_Default_DB'] = self::$_Default_DB;
+        $data['page_controller'] = $this->uri->segment(1);
+        $data['controller_function'] = $this->uri->segment(2); 
+        /****** Required Parameters To Render A Page ******/
+
+        /****** Page Logics / Functions ******/
+        # Global Variable Declaration
+          $dbres = self::$_Default_DB;
+          $return_dataType="php_object";
+          $tablename = "vw_orderlist_summary";
+          $laundry_orders = "laundry_orders";
+
+        # Timeline For User Logged in
+          $condition  = [
+            'where_condition' =>  array('processor_user_id' => $_SESSION['user']['id']),
+            'orderby' => array('id' => "desc"),
+            'limit' => 1
+          ];
+          $retrieve_last_work_date = $this->model_retrieval->retrieve_allinfo($dbres,$laundry_orders,$condition);
+          
+          if(!isset($retrieve_last_work_date['DB_ERROR']) && !empty($retrieve_last_work_date[0])) {
+              $retrieve_last_work_date = $retrieve_last_work_date[0];
+            # Retrieving timeline
+            $condition = [
+              'where_condition' => array('DATE(date_created)' => date('Y-m-d',strtotime($retrieve_last_work_date->date_created)), 'processor_user_id' => $_SESSION['user']['id']),
+              'orderby' => array('id' => "desc")
+            ];
+            
+            $retrieve_timeline = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition);
+            
+            if(!isset($retrieve_timeline['DB_ERROR'])) {
+              $data['timeline'] = $retrieve_timeline;
+              $data['timeline_date'] = date('D M d, Y',strtotime($retrieve_last_work_date->date_created));
+              //print_r(date('l F d, Y',strtotime($retrieve_last_work_date->date_created)));
+            }
+          }
+        /****** Page Logics / Functions ******/
+
+        /***************** Interface *****************/
+        $data['title'] = "My TimeLine"; 
+
+        $this->load->view('header',$data); 
+        $this->load->view('timeline',$data); 
         $this->load->view('footer'); 
         /***************** Interface *****************/
       }
