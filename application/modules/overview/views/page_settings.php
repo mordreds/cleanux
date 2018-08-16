@@ -471,6 +471,78 @@
     });
   /********** Displaying Services ******/
 
+  /************** All Customers Table *********/
+    $('#allcustomers').dataTable({
+      sorting: false,
+      pageLength: 4,
+      ajax: {
+        type : 'GET',
+        url : '<?= base_url()?>settings/retrieve_alldata/clients/default',
+        dataSrc: '',
+        error: function() {
+          $.jGrowl('Retrieving Active Users Failed', {
+            theme: 'alert-styled-left bg-danger'
+          });
+        }
+      },
+      columns: [
+        {data: "fullname",render: function(data,type,row,meta) { 
+          return '<div class="media" style="display:inline-flex"><a href="#" onclick="return false;" class="media-left"><img src="<?=base_url()?>/resources/images/users/default.jpg" width="40" height="40" class="img-circle img-md" alt=""></a><div class="media-middle"><a href="#" onclick="return false;" class="text-semibold">'+row.fullname+'</a></div></div>'; 
+        }},
+        {data: "phone_number_1"},
+        {data: "id", render: function(data,type,row,meta) { 
+            button = '<a class="customer_new_order" data-client_tel="'+row.phone_number_1+'" data-popup="tooltip" data-original-title="Create Order"><i class="icon-basket text-success" style="font-size:18px"></i> Make New Order</a>';
+
+          return button; 
+          }
+        },
+      ],
+    });
+
+    $(document).on("click",".customer_new_order",function(){
+      let client_number = $(this).data('client_tel');
+      let overview_url = "<?=base_url()?>overview";
+      $.ajax({
+        type : 'POST',
+        url : '<?= base_url()?>settings/customer_new_order/'+client_number,
+        success: function(response) {
+          window.location.replace(overview_url);
+        },
+        error: function() {
+          $.jGrowl('Error Transmitting Data', {
+            theme: 'alert-styled-left bg-danger'
+          });
+        }
+      });
+    });
+
+    /*$(document).on("click",".delete_confirmed",function(){
+      let formData = { 
+        'user_id': $(this).data('user_id'),
+        'email': $(this).data('email'),
+        'status': $(this).data('status')
+      };
+      $.ajax({
+        type : 'POST',
+        url : '<?= base_url()?>administration/users/account_status',
+        data : formData,
+        success: function(response) {
+          $.jGrowl('User Deletion Successful', {
+            theme: 'alert-styled-left bg-success'
+          });
+          $('#del_acct_tbl').DataTable().ajax.reload();
+          $('#inactive_acct_tbl').DataTable().ajax.reload();
+          $('#active_accounts_tbl').DataTable().ajax.reload();
+        },
+        error: function() {
+          $.jGrowl('User Deletion Failed', {
+            theme: 'alert-styled-left bg-danger'
+          });
+        }
+      });
+    });*/
+  /************** All Customers Table *********/
+
   $(document).ready(function(){
     /********** Todays Order ************/
       $('#todays_order').DataTable({

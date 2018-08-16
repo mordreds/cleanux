@@ -5,7 +5,7 @@
       <div class="col-md-12">
           <div class="panel panel-flat">
             <div class="col-md-12">
-              <div class="col-md-8">
+              <div class="col-md-7">
                 <div class="panel panel-flat">
                   <div class="panel-body" style="padding: 2px 10px 5px 10px;">
                     <div class="tabbable">
@@ -71,7 +71,7 @@
                                     <input type="text" name="secondary_tel" placeholder="Phone No #2:" class="form-control">
                                   </div>
                                 </div>
-                                <div class="col-md-1" style="margin-right: 16px">
+                                <div class="col-md-1" style="margin-right: 25px">
                                   <div class="form-group">
                                     <div class="checkbox checkbox-switchery">
                                       <label><input type="checkbox" name="sms" class="switchery" checked>
@@ -80,7 +80,7 @@
                                     </div>
                                   </div>
                                 </div>
-                                <div class="col-md-1" style="margin-right: 22px">
+                                <!-- <div class="col-md-1" style="margin-right: 22px">
                                   <div class="form-group">
                                     <div class="checkbox checkbox-switchery">
                                       <label><input type="checkbox" name="email_alert" class="switchery" disabled>
@@ -88,7 +88,7 @@
                                       </label>
                                     </div>
                                   </div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-1">
                                   <div class="form-group">
                                     <div class="checkbox checkbox-switchery">
@@ -108,7 +108,7 @@
                             
                             <div class="col-md-12" id="client_summary_info" style="display:none">
                               <div class="col-md-4">
-                                <div class="panel-body bg-teal border-radius-top text-center">
+                                <div class="panel-body bg-teal border-radius-top text-center" style="padding: 7px">
                                     <ul class="list-inline no-margin-bottom">
                                       <li><a href="#" class="btn bg-teal-700 btn-rounded btn-icon legitRipple"><i class="icon-phone"></i></a></li>
                                       <li><a href="#" class="btn bg-teal-700 btn-rounded btn-icon legitRipple"><i class="icon-office"></i></a></li>
@@ -254,38 +254,22 @@
                             </div>
                           </form>
                         </div>
-                        <div class="tab-pane" id="billing_info">
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="col-md-2"></div>
-                              <div class="col-md-2">
-                                <label class="display-block" >Total Amount</label>
-                                <input type="text" class="form-control order_balance" name="billing_info_total_cost" readonly >
-                              </div>
-                              <div class="col-md-2">
-                              <label class="display-block" >Amount Paid</label>
-                                <input type="text" class="form-control order_balance" name="billing_info_total_amount_paid" readonly >
-                              </div>
-                              
-                              <div class="col-md-2"></div>
-                              </div>
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-5">
                 <div class="panel panel-flat">
                   <div class="panel-body"  style="padding: 2px 10px 5px 10px;">
                     <div class="tabbable">
                       <ul class="nav nav-tabs nav-tabs-bottom">
-                        <li class="active"><a href="#Search" data-toggle="tab" class="legitRipple">Search <i class="icon-eye8 position-right"></i></a></li>
-                        <li><a href="#Remarks" data-toggle="tab" class="legitRipple"> <i class="icon-menu7 position-left"></i> Today's Orders <span class="badge bg-warning-400" id=""><?=@$total_orders?></span></a></li>                  
+                        <li class="active"><a href="#search" data-toggle="tab" class="legitRipple">Search <i class="icon-eye8 position-right"></i></a></li>
+                        <li><a href="#orders" data-toggle="tab" class="legitRipple"> <i class="icon-menu7 position-left"></i> Today's Orders <span class="badge bg-warning-400" id=""><?=@$total_orders?></span></a></li>
+                        <li><a href="#customers" data-toggle="tab" class="legitRipple">Customers <i class="icon-users position-right"></i></a></li>                  
                       </ul>
                       <div class="tab-content">
-                        <div class="tab-pane active" id="Search">
+                        <div class="tab-pane active" id="search">
                           <div class="panel panel-flat">
                             <div class="panel-body">
                               <div class="form-group">
@@ -298,13 +282,25 @@
                             </div>
                           </div>
                         </div>
-                        <div class="tab-pane" id="Remarks" style="margin-top:-33px;">
+                        <div class="tab-pane" id="orders" style="margin-top:-33px;">
                           <table id="todays_order" class="table table-xs">
                             <thead>
                               <tr style="background-color:#009688;color:#ffffff"> 
                                 <th>Order #</th>
                                 <th>Total Cost</th>
                                 <th>Time</th>
+                              </tr>
+                            </thead>
+                            <tbody></tbody>
+                          </table>    
+                        </div>
+                        <div class="tab-pane" id="customers" style="margin-top:-33px;">
+                          <table id="allcustomers" class="table datatable-responsive table-xxs">
+                            <thead>
+                              <tr class="bg-teal-400">
+                                <th>Full name</th>
+                                <th>Phone No #</th>
+                                <th class="text-center">Actions</th>
                               </tr>
                             </thead>
                             <tbody></tbody>

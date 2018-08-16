@@ -89,6 +89,9 @@
                   </div>
                 </div>
               </div>
+              -------------------------------------------------------------------------------------
+              <p><strong>NB :</strong><em> Management shall only bear <strong> 30% </strong> cost of clothes and items missing, damaged or stolen. Also we are not responsible for items missing or damaged after 3 months.</em></p>
+              <p><strong>Customer Care: +233541786220</strong></p>
             </div>
           </div>
         </div><!-- /. box -->
