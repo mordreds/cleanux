@@ -130,6 +130,7 @@ class Statistics extends MX_Controller
             if(!isset($retrieve_last_work_date['DB_ERROR']) && !empty($retrieve_last_work_date[0])) {
                 $retrieve_last_work_date = $retrieve_last_work_date[0];
               # Retrieving timeline
+
               $condition = [
                 'where_condition' => array('DATE(date_created)' => date('Y-m-d',strtotime($retrieve_last_work_date->date_created)), 'processor_user_id' => $_SESSION['user']['id']),
                 'orderby' => array('id' => "desc")

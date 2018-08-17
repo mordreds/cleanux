@@ -56,7 +56,7 @@ class Model_retrieval extends CI_Model
     # Setting Limit For Data ==> $condition['limit'] = array('0','5')
     $data_limit = @$condition['limit'];
     if(!empty($data_limit)) 
-      $dbres->limit($data_limit[0],$data_limit[1]);
+      $dbres->limit($data_limit);
     
     
     # Running DB Query
