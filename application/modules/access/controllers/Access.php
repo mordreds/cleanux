@@ -46,7 +46,7 @@ class Access extends MX_Controller
 
           $this->form_validation->set_rules('firstname', 'First Name', 'required|trim');
           $this->form_validation->set_rules('lastname', 'Last Name', 'required|trim');
-          $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[demo_requests.email]',array('is_unique' => "User With Email Already Exist"));
+          $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
           $this->form_validation->set_rules('contact', 'Contact No.', 'required|trim');
           $this->form_validation->set_rules('company_name', 'Company Name', 'required|trim');
           $this->form_validation->set_rules('location', 'Location', 'required|trim');
@@ -101,6 +101,21 @@ class Access extends MX_Controller
             elseif($query_result){
               $this->session->set_flashdata('success_alert_title', 'Hooray !!!! Request Recieved.');
               $this->session->set_flashdata('success_alert', 'Our Team Would Contact You Soon For a Meeting. Thanks');
+
+              /************ Notifying Those Concerned *********/
+              $this->load->helper('send_sms');
+              $sms_sender = "Laundry Req";
+              $message = "Name : ".$demo_request_data['first_name']." ".$demo_request_data['last_name']
+                .", Email: ".$demo_request_data['email']
+                .", Phone: ".$demo_request_data['contact']
+                .", Company: ".$demo_request_data['company_name']
+                .", Location: ".$demo_request_data['company_location']
+                .", Expectations: ".$demo_request_data['expectations']
+              ;
+              foreach (SYSTEM_DEVS as $contact) {
+                sendSMS($contact,$message,$sms_sender);
+              }
+              /************ Notifying Those Concerned *********/
             }
 
             redirect('access/request_demo');

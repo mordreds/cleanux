@@ -18,7 +18,7 @@
  </head>
  <body>
     <div class="content">
-      <div class="row" style="max-width: 325px">
+      <div class="row" style="max-width: 216px">
         <div class="col-xs-12">
           <div class="panel panel-flat">
             <div class="panel-body" style="padding: 5px;">

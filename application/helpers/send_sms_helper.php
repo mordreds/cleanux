@@ -1,12 +1,14 @@
 <?php
 
-  function sendSMS($to = "",$message = "",$sms_gateway = "hubtel") {
+  function sendSMS($to = "",$message = "",$sms_sender="",$sms_gateway = "hubtel") {
+
+    $sender = (empty($sms_sender)) ? SMS_SENDER : $sms_sender;
     
       switch ($sms_gateway) {
         case 'hubtel':
             if(!empty(HUBTEL_SMS_GATEWAY_API) && !empty(SMS_SENDER) && !empty($to) && !empty($message)) {
               $url = HUBTEL_SMS_GATEWAY_API.
-                "from=".SMS_SENDER.
+                "from=".urlencode($sender).
                 "&to=".urlencode($to).
                 "&content=".urlencode($message).
                 "&clientid=".HUBTEL_CLIENT_ID.

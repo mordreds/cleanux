@@ -92,6 +92,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 | Thes Contains User Defined Constants 
 |
 */
+define('SYSTEM_DEVS', array("0541786220","0245626487","0247173741"));
 define('IMAGE_PATH', 'http://localhost/marksbon/projects/test/resources/images');
 
 define('EDIT_COMPANY_TABLE', 'hr_company_info');
