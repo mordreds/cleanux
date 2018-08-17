@@ -16,9 +16,9 @@
   <script type="text/javascript" src="<?=base_url()?>resources/js/plugins/tables/datatables/datatables.min.js"></script>
 
  </head>
- <body>
+ <body style="font-size: 9px">
     <div class="content">
-      <div class="row" style="max-width: 216px">
+      <div class="row" style="max-width: 218px">
         <div class="col-xs-12">
           <div class="panel panel-flat">
             <div class="panel-body" style="padding: 5px;">
@@ -37,11 +37,11 @@
               <table class="table table-xxs" id="receipt_table">
                 <thead>
                   <tr>
-                    <th>Description</th>
-                    <th style="width: 15px !important; text-align: center; padding: 0px">Code</th>
-                    <th style="width: 15px !important; text-align: center; padding: 0px">Qty</th>
-                    <th style="width: 15px !important; text-align: center; padding: 0px">Unit</th>
-                    <th style="width: 15px !important; text-align: center; padding: 0px">Total</th>
+                    <th>Item</th>
+                    <th style="width: 10px !important; text-align: center; padding: 0px">Code</th>
+                    <th style="width: 10px !important; text-align: center; padding: 0px">Qty</th>
+                    <th style="width: 10px !important; text-align: center; padding: 0px">Unit</th>
+                    <th style="width: 10px !important; text-align: center; padding: 0px">Total</th>
                   </tr>
                 </thead>
                 <tbody style="font-style: italic;"></tbody>
@@ -63,26 +63,25 @@
                 </ul>
               </div>
               <div class="col-xs-7">
-                <span class="text-muted">Total Due:</span>
                 <div class="content-group">
                   <div class="table-responsive no-border">
-                    <table class="table table-xxs" style="position: absolute;">
+                    <table class="table table-xxs" style="table-layout: fixed; width: 150px;">
                       <tbody>
                         <tr>
                           <th>Subtotal:</th>
-                          <td class="text-right" id="receipt_subtotal"></td>
+                          <td id="receipt_subtotal"></td>
                         </tr>
                         <tr>
                           <th>VAT<span class="text-regular" id="receipt_tax"></span>:</th>
-                          <td class="text-right" id="receipt_tax_value"></td>
+                          <td id="receipt_tax_value"></td>
                         </tr>
                         <tr>
                           <th>Delivery:</th>
-                          <td class="text-right" id="receipt_delivery_cost"></td>
+                          <td id="receipt_delivery_cost"></td>
                         </tr>
                         <tr>
-                          <th>Total(GH¢):</th>
-                          <td class="text-right text-primary"><h5 class="text-semibold" id="receipt_total_cost"></h5></td>
+                          <th>Total:</th>
+                          <td class="text-center text-primary"><h5 class="" id="receipt_total_cost"></h5></td>
                         </tr>
                       </tbody>
                     </table>
@@ -90,7 +89,7 @@
                 </div>
               </div>
               -------------------------------------------------------------------------------------
-              <p><strong>NB :</strong><em> Management shall only bear <strong> 30% </strong> cost of clothes and items missing, damaged or stolen. Also we are not responsible for items missing or damaged after 3 months.</em></p>
+              <p><strong>NB :</strong><em> Management shall only bear <strong> 30% </strong> cost of items missing, damaged or stolen. Also we are not responsible for items missing or damaged after 3 months.</em></p>
               <p><strong>Customer Care: +233541786220</strong></p>
             </div>
           </div>
