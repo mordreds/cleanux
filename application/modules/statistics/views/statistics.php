@@ -168,7 +168,7 @@
                   "border-teal-400",
                   "border-danger-400"
                 );
-                if(!empty($timeline)) :  print_r($timeline);
+                if(!empty($timeline)) : 
                   foreach($timeline as $record_timeline) : 
                     $color_shuffle = mt_rand(0,5);
                     $bg_color = $line_colors[$color_shuffle];
