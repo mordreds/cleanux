@@ -126,7 +126,7 @@ class Statistics extends MX_Controller
               'limit' => 1
             ];
             $retrieve_last_work_date = $this->model_retrieval->retrieve_allinfo($dbres,$laundry_orders,$condition);
-            print_r($retrieve_last_work_date); exit;
+            
             if(!isset($retrieve_last_work_date['DB_ERROR']) && !empty($retrieve_last_work_date[0])) {
                 $retrieve_last_work_date = $retrieve_last_work_date[0];
               # Retrieving timeline
