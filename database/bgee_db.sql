@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2018 at 11:58 AM
+-- Generation Time: Aug 17, 2018 at 06:47 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.1.14
 
@@ -98,7 +98,20 @@ INSERT INTO `access_login_successful` (`id`, `user_id`, `time_in`, `time_out`, `
 (31, 1, '2018-08-14 05:38:14', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '41.215.171.151', '41.215.171.151', 'Accra,Greater Accra Region', 'Ghana'),
 (32, 1, '2018-08-14 05:55:56', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/66.0.3359.122 Mobile/15G77 Safari/604.1', '154.160.3.89', '154.160.3.89', 'Gawso,', 'Ghana'),
 (33, 1, '2018-08-14 08:06:56', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
-(34, 1, '2018-08-14 09:57:40', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '::1', 'London', NULL, NULL);
+(34, 1, '2018-08-14 10:17:13', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0', '104.129.18.62', 'unassigned.quadranet.com', 'Atlanta,Georgia', 'United States'),
+(35, 1, '2018-08-14 13:52:50', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(36, 1, '2018-08-15 11:45:22', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
+(37, 2, '2018-08-15 11:57:35', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
+(38, 1, '2018-08-16 19:39:09', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '41.215.163.6', '41.215.163.6', 'Accra,Greater Accra Region', 'Ghana'),
+(39, 1, '2018-08-16 20:44:56', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/66.0.3359.122 Mobile/15G77 Safari/604.1', '154.160.1.182', '154.160.1.182', 'Accra,Greater Accra Region', 'Ghana'),
+(40, 1, '2018-08-16 20:45:09', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/66.0.3359.122 Mobile/15G77 Safari/604.1', '154.160.1.182', '154.160.1.182', 'Accra,Greater Accra Region', 'Ghana'),
+(41, 1, '2018-08-17 00:32:17', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '41.215.163.6', '41.215.163.6', 'Accra,Greater Accra Region', 'Ghana'),
+(42, 1, '2018-08-17 11:25:07', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(43, 1, '2018-08-17 12:19:46', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(44, 1, '2018-08-17 12:27:37', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.2 Safari/605.1.15', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
+(45, 1, '2018-08-17 12:32:34', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
+(46, 1, '2018-08-17 13:54:22', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
+(47, 1, '2018-08-17 15:02:24', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -138,7 +151,8 @@ CREATE TABLE `access_roles_privileges_group` (
 --
 
 INSERT INTO `access_roles_privileges_group` (`id`, `name`, `roles`, `privileges`, `description`, `login_url`, `status`, `date_created`) VALUES
-(1, 'System Developer', 'statistics|overview|inhouse|dispatch|Settings|company|users|permissions|customers|reports|sms', '', 'Designers of this software', 'dashboard', 'active', '2017-10-16 17:42:32');
+(1, 'SYSTEM', 'statistics|overview|inhouse|dispatch|Settings|company|users|permissions|customers|reports|sms', '', 'Designers of this software', 'dashboard', 'active', '2017-10-16 17:42:32'),
+(2, 'RECEPTIONIST', 'statistics|overview|inhouse|dispatch', '', NULL, '', 'active', '2018-08-15 10:20:37');
 
 -- --------------------------------------------------------
 
@@ -160,7 +174,8 @@ CREATE TABLE `access_roles_privileges_user` (
 --
 
 INSERT INTO `access_roles_privileges_user` (`id`, `user_id`, `custom_roles`, `custom_privileges`, `group_id`, `status`) VALUES
-(1, 1, '', '', 1, 'active');
+(1, 1, '', '', 1, 'active'),
+(2, 2, '', '', 2, 'active');
 
 -- --------------------------------------------------------
 
@@ -207,7 +222,10 @@ CREATE TABLE `access_users` (
 --
 
 INSERT INTO `access_users` (`id`, `username`, `passwd`, `default_passwd`, `fullname`, `phone_number`, `temp_employee_id`, `biodata_id`, `demo_user_id`, `first_login`, `login_attempt`, `online`, `status`, `created_by`, `date_created`) VALUES
-(1, 'eahlijah@gmail.com', '$2y$10$O/swrfsJ6TbhtHiyzR7GmurgN4u49VcaMFzrOtZ9.3N511hoPhOVi', '', 'Edem Ahlijah', '023456789', 'KAD/SYS/001', 0, 0, 0, 5, 0, 'active', 0, '2018-07-03 15:59:37');
+(1, 'eahlijah@gmail.com', '$2y$10$O/swrfsJ6TbhtHiyzR7GmurgN4u49VcaMFzrOtZ9.3N511hoPhOVi', '', 'Edem Ahlijah', '023456789', 'KAD/SYS/001', 0, 0, 0, 5, 0, 'active', 0, '2018-07-03 15:59:37'),
+(2, 'quuqubismark@yahoo.com', '', '$2y$10$k2DkumN0H4sXIKwK.C6Pr.VcBpYEmebFbxR1z/EW02SLRGG.K/ph2', 'BIAMARK  K', '', '', 3, 0, 0, 5, 0, 'active', 0, '2018-08-15 11:56:28'),
+(3, 'wikills22@gmail.com', '$2y$10$BSmfg/t6.N12rVVdJmvk4ey62u98hwHcQ/zFZfkdi2rMMgIWKK/Be', '', 'Bismark Nana', 'bv', '', 0, 1, 0, 5, 0, 'active', 0, '2018-08-15 14:57:11'),
+(4, 'bismarkoffei22@gmail.com', '$2y$10$FUkj8vCJlyE0vXlOQIk3kuYrFEqlxVI0FAFbXo7ugtvEfB5bSXbPK', '', 'Bismark Nana', 'bv', '', 0, 2, 0, 5, 0, 'active', 0, '2018-08-15 14:59:00');
 
 -- --------------------------------------------------------
 
@@ -243,6 +261,21 @@ CREATE TABLE `demo_requests` (
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `demo_requests`
+--
+
+INSERT INTO `demo_requests` (`id`, `first_name`, `last_name`, `email`, `contact`, `company_name`, `company_location`, `expectations`, `date_scheduled`, `feedback`, `date_created`) VALUES
+(1, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Test', NULL, NULL, '2018-08-17 14:34:25'),
+(2, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Test', NULL, NULL, '2018-08-17 14:35:49'),
+(3, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Test', NULL, NULL, '2018-08-17 14:37:18'),
+(4, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Test', NULL, NULL, '2018-08-17 14:39:31'),
+(5, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Test', NULL, NULL, '2018-08-17 14:48:14'),
+(6, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Test', NULL, NULL, '2018-08-17 14:53:41'),
+(7, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Test', NULL, NULL, '2018-08-17 14:54:05'),
+(8, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Test', NULL, NULL, '2018-08-17 14:56:05'),
+(9, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Some Told Me About This Laundry System. So I Want To Give It A Try.', NULL, NULL, '2018-08-17 14:59:12');
+
 -- --------------------------------------------------------
 
 --
@@ -261,6 +294,14 @@ CREATE TABLE `demo_request_userinfo` (
   `date_scheduled` datetime DEFAULT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `demo_request_userinfo`
+--
+
+INSERT INTO `demo_request_userinfo` (`id`, `first_name`, `last_name`, `email`, `contact`, `company_name`, `company_location`, `remarks`, `date_scheduled`, `date_created`) VALUES
+(1, 'Bismark', 'Nana', 'wikills22@gmail.com', 'bv', 'OARB-Bank', 'Tiafa', '', NULL, '2018-08-15 10:57:11'),
+(2, 'Bismark', 'Nana', 'bismarkoffei22@gmail.com', 'bv', 'OARB-Bank', 'Tiafa', '', NULL, '2018-08-15 10:59:00');
 
 -- --------------------------------------------------------
 
@@ -365,7 +406,8 @@ CREATE TABLE `hr_employee_biodata` (
 --
 
 INSERT INTO `hr_employee_biodata` (`id`, `first_name`, `middle_name`, `last_name`, `gender`, `date_of_birth`, `id_type`, `id_number`, `id_expiry_date`, `id_issue_date`, `id_card_photo_id`, `marital_status`, `nationality`, `postal_address`, `social_security`, `bank_name`, `bank_branch`, `account_number`, `user_id`, `photo_id`, `status`, `created_date`) VALUES
-(1, 'Bismark', 'Atta Kwame', 'Offei', 'Male', NULL, NULL, NULL, NULL, NULL, 0, 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '2018-08-04 02:09:47');
+(1, 'Bismark', 'Atta Kwame', 'Offei', 'Male', NULL, NULL, NULL, NULL, NULL, 0, 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '2018-08-04 02:09:47'),
+(3, 'BIAMARK', '', 'K', 'Male', NULL, NULL, NULL, NULL, NULL, 0, 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '2018-08-15 07:55:33');
 
 -- --------------------------------------------------------
 
@@ -395,7 +437,8 @@ CREATE TABLE `hr_employee_contact_info` (
 --
 
 INSERT INTO `hr_employee_contact_info` (`id`, `biodata_id`, `phone_number_1`, `phone_number_2`, `email`, `residence`, `emergency_fullname`, `emergency_relationship`, `emergency_occupation`, `emergency_phone_1`, `emergency_phone_2`, `emergency_residence`, `emergency_postal_addr`, `date_created`) VALUES
-(1, 1, '0233897468', '0240636911', 'Wikills22@gmail.com', 'Taifa', 'Osborne Mordreds', 'Guardian', '', '0541786220', NULL, 'Abelemkpe', '', '2018-08-04 02:09:47');
+(1, 1, '0233897468', '0240636911', 'Wikills22@gmail.com', 'Taifa', 'Osborne Mordreds', 'Guardian', '', '0541786220', NULL, 'Abelemkpe', '', '2018-08-04 02:09:47'),
+(2, 3, '0245626487', '', 'quuqubismark@yahoo.com', 'Ashoman-Estate', '0245626487', 'Father', '', '0245626487', NULL, '0245626487', '', '2018-08-15 11:55:33');
 
 -- --------------------------------------------------------
 
@@ -434,7 +477,8 @@ CREATE TABLE `hr_employee_work_info` (
 --
 
 INSERT INTO `hr_employee_work_info` (`id`, `biodata_id`, `employee_id`, `position_id`, `department_id`, `employment_type`, `employment_startdate`, `work_email`, `resume_id`, `application_id`, `date_created`) VALUES
-(1, 1, 'BG/EMP/001', 6, 1, '', NULL, NULL, NULL, 0, '2018-08-04 02:09:47');
+(1, 1, 'BG/EMP/001', 6, 1, '', NULL, NULL, NULL, 0, '2018-08-04 02:09:47'),
+(2, 3, 'BG/EMP/002', 6, 2, '', NULL, NULL, NULL, 0, '2018-08-15 11:55:33');
 
 -- --------------------------------------------------------
 
@@ -495,11 +539,12 @@ CREATE TABLE `laundry_clients` (
 INSERT INTO `laundry_clients` (`id`, `fullname`, `gender`, `company`, `residence_address`, `postal_address`, `phone_number_1`, `phone_number_2`, `email`, `sms_alert`, `email_alert`, `online_access`, `status`, `date_created`) VALUES
 (1, 'Claude Nii Nai', 'Male', 'Africaloop Limited', 'Trade Fair - LA', 'Africaloop Postal Address', '0243223959', '0244444888', 'claude@africaloop.com', 1, 1, 1, 'active', '2018-08-08 09:14:48'),
 (2, 'James Agaga', 'Male', 'WeBAD', 'Dome - Kwabenya', 'Dome', '0234897463', '', 'james@africaloop.com', 1, 1, 1, 'active', '2018-08-08 19:41:41'),
-(3, 'Julius Tornyi', 'Male', 'WebAD', 'Taifa', 'Tema', '0234567890', '', 'julius@webad.com.gh', 1, 1, 1, 'active', '2018-08-08 19:47:06'),
+(3, 'Julius Tornyi', 'Male', 'WebAD', 'Taifa', 'Tema', '0541786220', '', 'julius@webad.com.gh', 1, 0, 0, 'active', '2018-08-08 19:47:06'),
 (4, 'Bismark', 'Male', 'OARB-Bank', 'Taifa', 'box TA 353,Accra', '0000000000', '', 'bismarkoffei22@gmail.com', 1, 1, 1, 'active', '2018-08-09 06:43:23'),
 (5, 'Eunice Asare-Owusu', 'Female', 'OARB-Bank', 'Ashoman-Estate', 'box TA 353,Accra', '1111111111', '', '', 1, 1, 1, 'active', '2018-08-10 10:06:37'),
 (6, 'BisMarck', 'Male', 'Oarb', 'Aif', 'box ta tafa', '1234567890', '', 'quuqubismark@gmail', 0, 1, 1, 'active', '2018-08-11 04:16:43'),
-(7, 'Nana', 'Male', 'BG', 'Burkina', 'Taifa’s', '0245626487', '', 'wikills22@gmail.com', 1, 1, 1, 'active', '2018-08-13 16:04:29');
+(7, 'Nana', 'Male', 'BG', 'Burkina', 'Taifa’s', '0245626487', '', 'wikills22@gmail.com', 1, 1, 1, 'active', '2018-08-13 16:04:29'),
+(8, 'Wisdom', 'Male', 'Sablah', 'Ct Loop', 'YK 1407, kanda', '0247173741', '', 'sablah247@gmail.com', 1, 0, 0, 'active', '2018-08-14 06:22:07');
 
 -- --------------------------------------------------------
 
@@ -564,6 +609,7 @@ CREATE TABLE `laundry_orders` (
   `order_number` varchar(20) NOT NULL,
   `total_cost` double NOT NULL,
   `amount_paid` double NOT NULL,
+  `change_paid` double DEFAULT NULL,
   `balance` double NOT NULL,
   `tax_id` int(11) NOT NULL,
   `client_id` bigint(20) NOT NULL,
@@ -584,16 +630,22 @@ CREATE TABLE `laundry_orders` (
 -- Dumping data for table `laundry_orders`
 --
 
-INSERT INTO `laundry_orders` (`id`, `order_number`, `total_cost`, `amount_paid`, `balance`, `tax_id`, `client_id`, `processor_user_id`, `delivery_method_id`, `delivery_location`, `due_date`, `status`, `modified_by`, `modified_date`, `reason_for_cancel`, `delivered_by`, `processing_stages`, `date_created`) VALUES
-(1, '25835244', 15, 10, 5, 2, 1, 1, 4, 'Abelemkpe', '2018-08-10', 'Dispatch', 1, '2018-08-10 07:56:14', '', 0, 'Pending', '2018-08-08 10:39:55'),
-(2, '05497071', 30, 20, 10, 2, 3, 1, 4, 'Abelemkpe', '2018-08-10', 'Dispatch', 1, '2018-08-10 07:56:02', '', 0, 'Pending', '2018-08-08 20:08:28'),
-(3, '53618062', 60, 11, 49, 2, 4, 1, 6, 'Taifa', '2018-08-11', 'Dispatch', 1, '2018-08-10 14:09:30', '', 0, 'Pending', '2018-08-09 06:47:57'),
-(4, '66814154', 20, 15, 5, 3, 4, 1, 4, 'Taifa', '2018-08-13', 'Processing', 1, '2018-08-13 09:50:49', '', 0, 'Pending', '2018-08-10 03:36:40'),
-(5, '76786381', 85, 16, 69, 3, 3, 1, 4, 'Taifa', '2018-08-13', 'Cancelled', 1, '2018-08-13 11:27:52', 'CANT PAY', 0, 'Pending', '2018-08-10 03:54:01'),
-(6, '92114828', 45, 30, 15, 3, 5, 1, 6, 'Dome', '2018-08-12', 'Dispatch', 1, '2018-08-13 09:51:46', '', 0, 'Pending', '2018-08-10 10:08:07'),
-(7, '38078637', 45, 44, 1, 3, 5, 1, 6, 'Taifa', '2018-08-14', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-12 19:04:42'),
-(8, '56771808', 230, 207, 23, 3, 7, 1, 4, 'Burkina', '2018-08-13', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-13 16:06:33'),
-(9, '62684619', 15, 10, 5, 3, 7, 1, 6, 'Kumasi', '2018-08-14', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-14 01:59:40');
+INSERT INTO `laundry_orders` (`id`, `order_number`, `total_cost`, `amount_paid`, `change_paid`, `balance`, `tax_id`, `client_id`, `processor_user_id`, `delivery_method_id`, `delivery_location`, `due_date`, `status`, `modified_by`, `modified_date`, `reason_for_cancel`, `delivered_by`, `processing_stages`, `date_created`) VALUES
+(1, '25835244', 15, 10, NULL, 5, 2, 1, 1, 4, 'Abelemkpe', '2018-08-10', 'Dispatch', 1, '2018-08-10 07:56:14', '', 0, 'Pending', '2018-08-08 10:39:55'),
+(2, '05497071', 30, 20, NULL, 10, 2, 3, 1, 4, 'Abelemkpe', '2018-08-10', 'Dispatch', 1, '2018-08-10 07:56:02', '', 0, 'Pending', '2018-08-08 20:08:28'),
+(3, '53618062', 60, 11, NULL, 49, 2, 4, 1, 6, 'Taifa', '2018-08-11', 'Dispatch', 1, '2018-08-10 14:09:30', '', 0, 'Pending', '2018-08-09 06:47:57'),
+(4, '66814154', 20, 15, NULL, 5, 3, 4, 1, 4, 'Taifa', '2018-08-13', 'Delivered', 2, '2018-08-15 12:08:09', '', 0, 'Pending', '2018-08-10 03:36:40'),
+(5, '76786381', 85, 16, NULL, 69, 3, 3, 1, 4, 'Taifa', '2018-08-13', 'Cancelled', 1, '2018-08-13 11:27:52', 'CANT PAY', 0, 'Pending', '2018-08-10 03:54:01'),
+(6, '92114828', 45, 30, NULL, 15, 3, 5, 1, 6, 'Dome', '2018-08-12', 'Dispatch', 1, '2018-08-13 09:51:46', '', 0, 'Pending', '2018-08-10 10:08:07'),
+(7, '38078637', 45, 44, NULL, 1, 3, 5, 1, 6, 'Taifa', '2018-08-14', 'Cancelled', 2, '2018-08-15 12:08:32', 'not available', 0, 'Pending', '2018-08-12 19:04:42'),
+(8, '56771808', 230, 207, NULL, 23, 3, 7, 1, 4, 'Burkina', '2018-08-13', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-13 16:06:33'),
+(9, '62684619', 15, 10, NULL, 5, 3, 7, 1, 6, 'Kumasi', '2018-08-14', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-14 01:59:40'),
+(10, '46748868', 25, 50, NULL, -25, 3, 8, 1, 6, 'Osu', '2018-08-21', 'Delivered', 1, '2018-08-14 10:35:21', '', 0, 'Pending', '2018-08-14 06:27:40'),
+(11, '32568699', 15, 20, 5, 0, 3, 1, 1, 6, 'Pickup', '2018-08-15', 'Dispatch', 2, '2018-08-15 12:09:20', '', 0, 'Pending', '2018-08-14 09:58:14'),
+(12, '56705699', 60, 70, 10, 0, 3, 7, 1, 2, 'Taifa', '2018-08-16', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-15 07:49:29'),
+(13, '97788347', 5, 10, 5, 0, 3, 7, 1, 6, 'Pickup', '2018-08-17', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-16 16:50:28'),
+(14, '50557953', 105, 110, 5, 0, 3, 3, 1, 6, 'Pickup', '2018-08-20', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-17 08:22:38'),
+(15, '96104292', 10, 10, 0, 0, 3, 3, 1, 6, 'pickup', '2018-08-18', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-17 15:03:59');
 
 -- --------------------------------------------------------
 
@@ -616,7 +668,8 @@ CREATE TABLE `laundry_order_balances` (
 
 INSERT INTO `laundry_order_balances` (`id`, `order_id`, `balance_paid`, `user_id`, `status`, `payment_date`) VALUES
 (1, 3, 49, 1, 'Paid', '2018-08-09 07:39:19'),
-(2, 2, 10, 1, 'Paid', '2018-08-10 03:58:14');
+(2, 2, 10, 1, 'Paid', '2018-08-10 03:58:14'),
+(3, 8, 23, 1, 'Paid', '2018-08-16 16:52:06');
 
 -- --------------------------------------------------------
 
@@ -665,7 +718,13 @@ INSERT INTO `laundry_order_details` (`id`, `order_id`, `pricelist_ids`, `quantit
 (6, 6, '8', '1', '45', '45', '', '', '', ''),
 (7, 7, '8', '1', '45', '45', '', '', '', ''),
 (8, 8, '8', '5', '45', '225', '', '', '', ''),
-(9, 9, '7', '1', '15', '15', 'Shirt', '', '', '');
+(9, 9, '7', '1', '15', '15', 'Shirt', '', '', ''),
+(10, 10, '3', '5', '5', '25', '', '', '', ''),
+(11, 11, '3', '3', '5', '15', '', '', '', ''),
+(12, 12, '8', '1', '45', '45', '', '', '', ''),
+(13, 13, '3', '1', '5', '5', '', '', '', ''),
+(14, 14, '6|3|3', '3|5|2', '10|5|35', '10|25|70', 'blankets||', '', '', ''),
+(15, 15, '6', '1', '10', '10', 'test', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -1354,7 +1413,7 @@ ALTER TABLE `access_login_failed`
 -- AUTO_INCREMENT for table `access_login_successful`
 --
 ALTER TABLE `access_login_successful`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=35;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `access_password_reset_requests`
@@ -1366,13 +1425,13 @@ ALTER TABLE `access_password_reset_requests`
 -- AUTO_INCREMENT for table `access_roles_privileges_group`
 --
 ALTER TABLE `access_roles_privileges_group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `access_roles_privileges_user`
 --
 ALTER TABLE `access_roles_privileges_user`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `access_sysaudit`
@@ -1384,7 +1443,7 @@ ALTER TABLE `access_sysaudit`
 -- AUTO_INCREMENT for table `access_users`
 --
 ALTER TABLE `access_users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `blobs`
@@ -1396,13 +1455,13 @@ ALTER TABLE `blobs`
 -- AUTO_INCREMENT for table `demo_requests`
 --
 ALTER TABLE `demo_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `demo_request_userinfo`
 --
 ALTER TABLE `demo_request_userinfo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `hr_company_info`
@@ -1420,13 +1479,13 @@ ALTER TABLE `hr_departments`
 -- AUTO_INCREMENT for table `hr_employee_biodata`
 --
 ALTER TABLE `hr_employee_biodata`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `hr_employee_contact_info`
 --
 ALTER TABLE `hr_employee_contact_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `hr_employee_other_info`
@@ -1438,7 +1497,7 @@ ALTER TABLE `hr_employee_other_info`
 -- AUTO_INCREMENT for table `hr_employee_work_info`
 --
 ALTER TABLE `hr_employee_work_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `hr_position`
@@ -1450,7 +1509,7 @@ ALTER TABLE `hr_position`
 -- AUTO_INCREMENT for table `laundry_clients`
 --
 ALTER TABLE `laundry_clients`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `laundry_delivery_method`
@@ -1468,13 +1527,13 @@ ALTER TABLE `laundry_garments`
 -- AUTO_INCREMENT for table `laundry_orders`
 --
 ALTER TABLE `laundry_orders`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `laundry_order_balances`
 --
 ALTER TABLE `laundry_order_balances`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `laundry_order_comments`
@@ -1486,7 +1545,7 @@ ALTER TABLE `laundry_order_comments`
 -- AUTO_INCREMENT for table `laundry_order_details`
 --
 ALTER TABLE `laundry_order_details`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `laundry_prices`
