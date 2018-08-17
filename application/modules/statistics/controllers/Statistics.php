@@ -13,10 +13,16 @@ class Statistics extends MX_Controller
 
   /**************** Interface ********************/
     public function index() {
-      if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles']))
-        redirect('dashboard');
-      else
-      {
+      if(empty($_SESSION['user']['username']))
+        redirect('access');
+      
+      elseif(!in_array('statistics', $_SESSION['user']['roles'])) {
+        $this->session->set_flashdata('error', "Permission Denied. Contact Admin");
+        redirect($_SERVER['HTTP_REFERER']);
+      }
+      
+      else {
+
         /****** Required Parameters To Render A Page ******/
           $this->load->model('access/model_access');
           $this->load->model('globals/model_retrieval');
@@ -120,7 +126,7 @@ class Statistics extends MX_Controller
               'limit' => 1
             ];
             $retrieve_last_work_date = $this->model_retrieval->retrieve_allinfo($dbres,$laundry_orders,$condition);
-            
+            print_r($retrieve_last_work_date); exit;
             if(!isset($retrieve_last_work_date['DB_ERROR']) && !empty($retrieve_last_work_date[0])) {
                 $retrieve_last_work_date = $retrieve_last_work_date[0];
               # Retrieving timeline

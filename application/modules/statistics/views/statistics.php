@@ -33,17 +33,19 @@
           </a>
         </div>
         <div class="col-sm-6 col-md-2">
-          <div class="panel panel-body panel-body-accent">
-            <div class="media no-margin">
-              <div class="media-left media-middle">
-                <i class="icon-watch2 icon-3x text-warning-400"></i>
-              </div>
-              <div class="media-body text-right">
-                <h3 class="no-margin text-semibold"><?=number_format($overdue_orders)?></h3>
-                <span class="text-uppercase text-size-mini text-muted">OverDue Orders </span>
+          <a href="<?=base_url()?>inhouse">
+            <div class="panel panel-body panel-body-accent">
+              <div class="media no-margin">
+                <div class="media-left media-middle">
+                  <i class="icon-watch2 icon-3x text-warning-400"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3 class="no-margin text-semibold"><?=number_format($overdue_orders)?></h3>
+                  <span class="text-uppercase text-size-mini text-muted">OverDue Orders </span>
+                </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
         <div class="col-sm-6 col-md-2">
           <a href="<?=base_url()?>inhouse">
@@ -116,15 +118,13 @@
       </div>
 
       <div class="col-sm-6 col-md-3">
-        <div class="panel panel-white">
+        <!-- <div class="panel panel-white">
           <div class="panel-heading">
             <h5 class="panel-title">Announcements & Notices<a class="heading-elements-toggle"><i class="icon-more"></i></a></h5>
-
             <div class="heading-elements">
               <a href="#" class="heading-text">See all →</a>
-                    </div>
+            </div>
           </div>
-
           <div class="panel-body">
             <ul class="media-list">
               <li class="media">
@@ -133,28 +133,14 @@
                     <i class="icon-spinner11"></i>
                   </a>
                 </div>
-
                 <div class="media-body">
                   <a href="#">David Linner</a> requested refund for a double card
                   <div class="media-annotation">12 minutes ago</div>
                 </div>
               </li>
-
-              <li class="media">
-                  <div class="media-left">
-                    <a href="#" class="btn border-slate text-slate btn-flat btn-icon btn-rounded btn-sm legitRipple">
-                      <i class="icon-cash3"></i>
-                    </a>
-                  </div>
-
-                  <div class="media-body">
-                    All sellers have received monthly payouts
-                    <div class="media-annotation">4 hours ago</div>
-                  </div>
-                </li>
             </ul>
           </div>
-        </div>
+        </div> -->
 
          <!-- Left aligned -->
         <div class="panel panel-white"> 
@@ -163,15 +149,13 @@
               <span class="label label-flat label-rounded label-icon border-grey text-grey mr-10">
                 <i class="icon-watch2"></i>
               </span>
-
               <a href="<?=base_url()?>overview/timeline" class="text-default">
                 Timeline - <strong><i><?=(empty($timeline_date)) ? "" : $timeline_date?></i></strong> 
               </a>
             </h5>
-
             <div class="heading-elements">
               <a href="<?=base_url()?>overview/timeline" class="heading-text">See all →</a>
-                    </div>
+            </div>
           </div>
           <div class="panel-body border-top-teal">
             <ul class="list-feed list-feed-time">

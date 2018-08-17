@@ -367,19 +367,19 @@ class Administration extends MX_Controller
     *****************************/
     public function new_user() {
       if(isset($_SESSION['user']['roles'])) {
-        if(true /*in_array('user-C',$_SESSION['user']['privileges'])*/) {
+        if(in_array('users',$_SESSION['user']['roles'])) {
           $this->form_validation->set_rules('fullname','Employee Fullname','trim');
           $this->form_validation->set_rules('biodata_id','User ID','trim|required');
           $this->form_validation->set_rules('employeeid','Employee ID','trim');
-          $this->form_validation->set_rules('email','Email','trim|required');
-          $this->form_validation->set_rules('phone_num','Phone Number','trim');
+          $this->form_validation->set_rules('email','Email','trim|required|is_unique[access_users.username]',array('is_unique' => "User Already Exist"));
+          $this->form_validation->set_rules('phone_num','Phone Number','trim||is_unique[access_users.phone_number]',array('is_unique' => "Phone Number Already Exist"));
           $this->form_validation->set_rules('password','Password','trim|required|min_length[5]');
           $this->form_validation->set_rules('confirm_password','Confirm Password','trim');
           $this->form_validation->set_rules('usergroup','User Group','trim|required');
 
           if($this->form_validation->run() === FALSE) {
-            //var_dump(validation_errors());
-            $this->session->set_flashdata('error',"Validation Error");
+            $error_msg = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+            $this->session->set_flashdata('error',$error_msg);
             redirect('administration/users#new_account');
           }
           else {
@@ -406,12 +406,6 @@ class Administration extends MX_Controller
                 $validity_check = $this->model_retrieval->select_where_returnRow($check_dbres,$check_tablename,$return_dataType="php_object",$select,$where);
                 
                 if($validity_check->id) {
-                  # Duplicate User Search
-                  $where = ['username' => $this->input->post('email')];
-                  $duplicate_check = $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType="php_object",$select,$where);
-                  if(@$duplicate_check->id)
-                    $this->session->set_flashdata('error', "User Already Exists");
-                  else {
                     $user_data = [
                       'username'    => $this->input->post('email'),
                       'default_passwd'      => password_encrypt($password),
@@ -432,8 +426,7 @@ class Administration extends MX_Controller
                       $this->session->set_flashdata('success', "User Registration Successful");
                     else
                       $this->session->set_flashdata('error', "User Registration Failed");
-                  }
-                  # Duplicate User Search
+                  
                 }
                 else {
                   $this->session->set_flashdata('error',"Employee Information Mismatch");
@@ -456,7 +449,7 @@ class Administration extends MX_Controller
         }
       }
       else {
-        redirect('Access');
+        redirect('access');
       }
     }
 

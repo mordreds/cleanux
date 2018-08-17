@@ -15,10 +15,16 @@ class Inhouse extends MX_Controller
     public function index() 
     {
       # Permission Check
-       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles']))
-        redirect('dashboard');
-      else
-      {
+      if(!isset($_SESSION['user']['username']))
+        redirect('access');
+
+      elseif (!in_array('inhouse', $_SESSION['user']['roles'])) {
+        $this->session->set_flashdata('error', "Permission Denied. Contact Admin");
+        redirect($_SERVER['HTTP_REFERER']);
+      }
+      
+      else {
+        
         $this->load->model('access/model_access');
         $this->load->model('globals/model_retrieval');
         
@@ -56,8 +62,14 @@ class Inhouse extends MX_Controller
     public function cancelled_orders() 
     {
       # Permission Check
-       if(!isset($_SESSION['user']['username']) && !isset($_SESSION['user']['roles']))
-        redirect('dashboard');
+      if(!isset($_SESSION['user']['username']))
+        redirect('access');
+
+      elseif (!in_array('inhouse', $_SESSION['user']['roles'])) {
+        $this->session->set_flashdata('error', "Permission Denied. Contact Admin");
+        redirect($_SERVER['HTTP_REFERER']);
+      }
+      
       else
       {
         $this->load->model('access/model_access');

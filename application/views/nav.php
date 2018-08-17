@@ -116,37 +116,6 @@
 				</li>
 
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="icon-people"></i> 
-						<span class="visible-xs-inline-block position-right">Users</span>
-					</a>
-					
-					<div class="dropdown-menu dropdown-content">
-						<div class="dropdown-content-heading">
-							Users online
-							<ul class="icons-list">
-								<li><a href="#"><i class="icon-gear"></i></a></li>
-							</ul>
-						</div>
-
-						<ul class="media-list dropdown-content-body width-300">
-							<li class="media">
-								<div class="media-left"><img src="<?=base_url()?>resources/images/users/default.jpg" class="img-circle img-sm" alt=""></div>
-								<div class="media-body">
-									<a href="#" class="media-heading text-semibold"></a>
-									<span class="display-block text-muted text-size-small">Lead </span>
-								</div>
-								<div class="media-right media-middle"><span class="status-mark border-success"></span></div>
-							</li>
-						</ul>
-
-						<div class="dropdown-content-footer">
-							<a href="#" data-popup="tooltip" title="All users"><i class="icon-menu display-block"></i></a>
-						</div>
-					</div>
-				</li>
-
-				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="view_cart">
 						<i class="icon-basket"></i>
 						<span class="visible-xs-inline-block position-right">Messages</span>
@@ -192,13 +161,11 @@
 						<span><?=$_SESSION['user']['fullname']?></span>
 						<i class="caret"></i>
 					</a>
-					
-					<ul class="dropdown-menu dropdown-menu-right">
+					<!-- <ul class="dropdown-menu dropdown-menu-right">
 						<li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
 						<li class="divider"></li>
 						<li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
-						
-					</ul>
+					</ul> -->
 				</li>
 				<li><a href="<?=base_url()?>access/logout"><i class="icon-switch2"></i> Logout</a></li>
 			</ul>
