@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2018 at 06:47 PM
+-- Generation Time: Aug 20, 2018 at 04:29 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.1.14
 
@@ -111,7 +111,11 @@ INSERT INTO `access_login_successful` (`id`, `user_id`, `time_in`, `time_out`, `
 (44, 1, '2018-08-17 12:27:37', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.2 Safari/605.1.15', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
 (45, 1, '2018-08-17 12:32:34', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
 (46, 1, '2018-08-17 13:54:22', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(47, 1, '2018-08-17 15:02:24', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL);
+(47, 1, '2018-08-17 15:02:24', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
+(48, 1, '2018-08-17 18:40:26', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
+(49, 1, '2018-08-19 23:40:19', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
+(50, 1, '2018-08-20 09:17:12', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
+(51, 1, '2018-08-20 14:08:34', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -632,20 +636,21 @@ CREATE TABLE `laundry_orders` (
 
 INSERT INTO `laundry_orders` (`id`, `order_number`, `total_cost`, `amount_paid`, `change_paid`, `balance`, `tax_id`, `client_id`, `processor_user_id`, `delivery_method_id`, `delivery_location`, `due_date`, `status`, `modified_by`, `modified_date`, `reason_for_cancel`, `delivered_by`, `processing_stages`, `date_created`) VALUES
 (1, '25835244', 15, 10, NULL, 5, 2, 1, 1, 4, 'Abelemkpe', '2018-08-10', 'Dispatch', 1, '2018-08-10 07:56:14', '', 0, 'Pending', '2018-08-08 10:39:55'),
-(2, '05497071', 30, 20, NULL, 10, 2, 3, 1, 4, 'Abelemkpe', '2018-08-10', 'Dispatch', 1, '2018-08-10 07:56:02', '', 0, 'Pending', '2018-08-08 20:08:28'),
+(2, '05497071', 30, 20, NULL, 10, 2, 3, 1, 4, 'Abelemkpe', '2018-08-10', 'Dispatch', 1, '2018-08-20 09:29:22', '', 0, 'Pending', '2018-08-08 20:08:28'),
 (3, '53618062', 60, 11, NULL, 49, 2, 4, 1, 6, 'Taifa', '2018-08-11', 'Dispatch', 1, '2018-08-10 14:09:30', '', 0, 'Pending', '2018-08-09 06:47:57'),
 (4, '66814154', 20, 15, NULL, 5, 3, 4, 1, 4, 'Taifa', '2018-08-13', 'Delivered', 2, '2018-08-15 12:08:09', '', 0, 'Pending', '2018-08-10 03:36:40'),
 (5, '76786381', 85, 16, NULL, 69, 3, 3, 1, 4, 'Taifa', '2018-08-13', 'Cancelled', 1, '2018-08-13 11:27:52', 'CANT PAY', 0, 'Pending', '2018-08-10 03:54:01'),
 (6, '92114828', 45, 30, NULL, 15, 3, 5, 1, 6, 'Dome', '2018-08-12', 'Dispatch', 1, '2018-08-13 09:51:46', '', 0, 'Pending', '2018-08-10 10:08:07'),
 (7, '38078637', 45, 44, NULL, 1, 3, 5, 1, 6, 'Taifa', '2018-08-14', 'Cancelled', 2, '2018-08-15 12:08:32', 'not available', 0, 'Pending', '2018-08-12 19:04:42'),
-(8, '56771808', 230, 207, NULL, 23, 3, 7, 1, 4, 'Burkina', '2018-08-13', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-13 16:06:33'),
-(9, '62684619', 15, 10, NULL, 5, 3, 7, 1, 6, 'Kumasi', '2018-08-14', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-14 01:59:40'),
+(8, '56771808', 230, 207, NULL, 23, 3, 7, 1, 4, 'Burkina', '2018-08-13', 'Dispatch', 1, '2018-08-20 09:50:05', '', 0, 'Pending', '2018-08-13 16:06:33'),
+(9, '62684619', 15, 10, NULL, 5, 3, 7, 1, 6, 'Kumasi', '2018-08-14', 'Processing', 1, '2018-08-20 09:21:26', '', 0, 'Pending', '2018-08-14 01:59:40'),
 (10, '46748868', 25, 50, NULL, -25, 3, 8, 1, 6, 'Osu', '2018-08-21', 'Delivered', 1, '2018-08-14 10:35:21', '', 0, 'Pending', '2018-08-14 06:27:40'),
 (11, '32568699', 15, 20, 5, 0, 3, 1, 1, 6, 'Pickup', '2018-08-15', 'Dispatch', 2, '2018-08-15 12:09:20', '', 0, 'Pending', '2018-08-14 09:58:14'),
-(12, '56705699', 60, 70, 10, 0, 3, 7, 1, 2, 'Taifa', '2018-08-16', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-15 07:49:29'),
+(12, '56705699', 60, 70, 10, 0, 3, 7, 1, 2, 'Taifa', '2018-08-16', 'Processing', 1, '2018-08-20 00:11:07', '', 0, 'Pending', '2018-08-15 07:49:29'),
 (13, '97788347', 5, 10, 5, 0, 3, 7, 1, 6, 'Pickup', '2018-08-17', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-16 16:50:28'),
-(14, '50557953', 105, 110, 5, 0, 3, 3, 1, 6, 'Pickup', '2018-08-20', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-17 08:22:38'),
-(15, '96104292', 10, 10, 0, 0, 3, 3, 1, 6, 'pickup', '2018-08-18', 'Pending', 0, NULL, '', 0, 'Pending', '2018-08-17 15:03:59');
+(14, '50557953', 105, 110, 5, 0, 3, 3, 1, 6, 'Pickup', '2018-08-20', 'Dispatch', 1, '2018-08-20 00:21:47', '', 0, 'Pending', '2018-08-17 08:22:38'),
+(15, '96104292', 10, 10, 0, 0, 3, 3, 1, 6, 'pickup', '2018-08-18', 'Dispatch', 1, '2018-08-20 11:01:30', '', 0, 'Pending', '2018-08-17 15:03:59'),
+(16, '02919948', 15, 20, 5, 0, 3, 3, 1, 4, 'abelemkpe', '2018-08-21', 'Dispatch', 1, '2018-08-20 11:25:19', '', 0, 'Pending', '2018-08-20 09:18:38');
 
 -- --------------------------------------------------------
 
@@ -724,7 +729,8 @@ INSERT INTO `laundry_order_details` (`id`, `order_id`, `pricelist_ids`, `quantit
 (12, 12, '8', '1', '45', '45', '', '', '', ''),
 (13, 13, '3', '1', '5', '5', '', '', '', ''),
 (14, 14, '6|3|3', '3|5|2', '10|5|35', '10|25|70', 'blankets||', '', '', ''),
-(15, 15, '6', '1', '10', '10', 'test', '', '', '');
+(15, 15, '6', '1', '10', '10', 'test', '', '', ''),
+(16, 16, '6', '1', '10', '10', 'blanket', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -1413,7 +1419,7 @@ ALTER TABLE `access_login_failed`
 -- AUTO_INCREMENT for table `access_login_successful`
 --
 ALTER TABLE `access_login_successful`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=48;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `access_password_reset_requests`
@@ -1527,7 +1533,7 @@ ALTER TABLE `laundry_garments`
 -- AUTO_INCREMENT for table `laundry_orders`
 --
 ALTER TABLE `laundry_orders`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `laundry_order_balances`
@@ -1545,7 +1551,7 @@ ALTER TABLE `laundry_order_comments`
 -- AUTO_INCREMENT for table `laundry_order_details`
 --
 ALTER TABLE `laundry_order_details`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `laundry_prices`
