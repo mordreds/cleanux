@@ -147,6 +147,7 @@ class Inhouse extends MX_Controller
           redirect('inhouse');
         }
         else {
+          $this->load->model('globals/model_retrieval');
           $this->load->model('globals/model_update');
           /***** Data Definition *****/
           $id = $this->input->post('dispatch_order_id');
@@ -170,10 +171,29 @@ class Inhouse extends MX_Controller
           $where_condition = ['id' => $id];
           /***** Data Definition *****/
           $query_result = $this->model_update->update_info($dbres,$tablename,$return_dataType,$update_data,$where_condition) ;
-        
+          
           if($response == "post") {
-            if($query_result)
+            if($query_result) {
               $this->session->set_flashdata('success', $success_msg);
+              ######### Sending Sms To Client ############
+              $this->load->helper('send_sms');
+
+              $tablename = "vw_orderlist_summary";
+              $condition = ['where_condition' => array('id' => $id)];
+              $retrieve_client_info = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition);
+
+              if(empty($retrieve_client_info['DB_ERROR'])) {
+                $search = array("(",")");
+                $replace = array('--','--');
+                $to = $retrieve_client_info[0]->client_phone_no_1;
+                $message = "Dear ".$retrieve_client_info[0]->client_fullname.", your order ".$retrieve_client_info[0]->order_number." with delivery type ".$retrieve_client_info[0]->delivery_method. " is ready, with Balance of ".number_format($retrieve_client_info[0]->balance,2)." to be paid. Thanks You.";
+                //$message = str_replace($search, $replace, $message);
+                
+                $sms_response = sendSMS($to,$message);
+                //print_r($sms_response); exit();
+              }
+              ######### Sending Sms To Client ############
+            }
             else
               $this->session->set_flashdata('error', $error_msg);
 
