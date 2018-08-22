@@ -115,7 +115,8 @@ class Inhouse extends MX_Controller
           $dbres = self::$_Default_DB;
           $tablename = "vw_laundry_order_comments";
           $where_condition = [
-            'where_condition' => array('order_id' => $this->input->post('order_id'))
+            'where_condition' => array('order_id' => $this->input->post('order_id')),
+            'orderby' => array('id' => "DESC")
           ];
           $query_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$where_condition); 
           if($query_result) 
