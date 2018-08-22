@@ -124,7 +124,7 @@
                   <div class="col-sm-6"> 
                     <div class="col-sm-12">
                       <label class="display-block"><strong>Amount Paid</strong></label><br/>
-                      <input name="amount_paid" type="number" min="0" class="form-control amount_payable" style="font-size: 28px;" required>
+                      <input name="amount_paid" type="number" min="0" class="form-control amount_payable" placeholder="0.00" style="font-size: 28px;" required>
                     </div>
                     <div class="col-sm-12">
                       <label class="display-block"><strong>Change</strong></label><br/>
