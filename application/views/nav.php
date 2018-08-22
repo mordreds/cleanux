@@ -115,8 +115,8 @@
 					</div>
 				</li>
 
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="view_cart">
+				<li id="view_cart" class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-basket"></i>
 						<span class="visible-xs-inline-block position-right">Messages</span>
 						<span class="badge bg-warning-400" id="order_cart"><?=sizeof(@$_SESSION['laundry']['new_order']['orders'])?></span>

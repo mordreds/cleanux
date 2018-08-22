@@ -31,7 +31,8 @@
         type : 'GET',
         url : '<?= base_url()?>settings/retrieve_alldata/inhouse_orders/default',
         dataSrc: '',
-        //success: function(response){console.log(response)},
+       /* success: function(response){console.log(response)
+        },*/
         error: function() {
           $.jGrowl('Internal Server Error. <br/>Retrieving Orders Failed.', {
             theme: 'alert-styled-left bg-danger'

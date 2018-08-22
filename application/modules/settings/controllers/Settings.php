@@ -931,6 +931,7 @@ class Settings extends MX_Controller
         switch ($table) {
           case "services":
             $tablename = "laundry_services";
+            $condition = ['where_condition' => array('status' => "active",'name !=' => "Delivery")];
           break;
 
           case "vw_weights":
@@ -960,7 +961,10 @@ class Settings extends MX_Controller
 
           case "inhouse_orders":
             $tablename = "vw_orderlist_summary";
-            $condition = ['wherein_condition' => array('status' => 'Pending,Processing')];
+            $condition = [
+              'wherein_condition' => array('status' => 'Pending,Processing'),
+              'orderby' => array('id' => "DESC")
+            ];
           break;
 
           case "cancelled_orders":
@@ -970,20 +974,26 @@ class Settings extends MX_Controller
 
           case "dispatch_orders":
             $tablename = "vw_orderlist_summary";
-            $condition = ['where_condition' => array('status' => "Dispatch")];
-            $orderby = array('modified_date' => "DESC");
+            $condition = [
+              'where_condition' => array('status' => "Dispatch"),
+              'orderby' => array('modified_date' => "DESC")
+            ];
           break;
 
           case "departments":
             $tablename = "vw_hr_departments";
             # Checking System Developer Role 
               if($_SESSION['user']['group_name'] == "SYSTEM") {
-                $condition = ['where_condition' => array()];
-                $orderby = array('id' => "ASC");
+                $condition = [
+                  'where_condition' => array(),
+                  'orderby' => array('id' => "ASC")
+                ];
               }
               else {
-                $condition = ['where_condition' => array('id !=' => "1", 'status !=' => "deleted")];
-                $orderby = array('id' => "ASC");
+                $condition = [
+                  'where_condition' => array('id !=' => "1", 'status !=' => "deleted"),
+                  'orderby' => array('id' => "ASC")
+                ];
               }
             # Checking System Developer Role 
           break;
