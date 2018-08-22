@@ -511,7 +511,7 @@
       },
       columns: [
         {data: "fullname",render: function(data,type,row,meta) { 
-          return '<div class="media" style="display:inline-flex"><a href="#" onclick="return false;" class="media-left"><img src="<?=base_url()?>/resources/images/users/default.jpg" width="40" height="40" class="img-circle img-md" alt=""></a><div class="media-middle"><a href="#" onclick="return false;" class="text-semibold">'+row.fullname+'</a></div></div>'; 
+          return '<div class="media" style="display:inline-flex"><a href="#" onclick="return false;" class="media-left"><img src="<?=base_url()?>/resources/images/users/default.png" width="40" height="40" class="img-circle img-md" alt=""></a><div class="media-middle"><a href="#" onclick="return false;" class="text-semibold">'+row.fullname+'</a></div></div>'; 
         }},
         {data: "phone_number_1"},
         {data: "id", render: function(data,type,row,meta) { 

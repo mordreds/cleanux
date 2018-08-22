@@ -153,7 +153,7 @@
 				</li>
 
         <?php
-          $profile_pic = (!isset($_SESSION['user']['profile_pic'])) ? base_url()."resources/images/users/default.jpg" : $_SESSION['user']['profile_pic'];
+          $profile_pic = (!isset($_SESSION['user']['profile_pic'])) ? base_url()."resources/images/users/default.png" : $_SESSION['user']['profile_pic'];
         ?>
 				<li class="dropdown dropdown-user">
 					<a class="dropdown-toggle" data-toggle="dropdown">

@@ -142,7 +142,7 @@
                               <div class="col-md-4">
                                 <div class="thumbnail">
                                   <div class="thumb thumb-rounded">
-                                    <img src="<?=base_url()?>/resources/images/users/default.jpg" alt="">
+                                    <img src="<?=base_url()?>/resources/images/users/default.png" alt="">
                                   </div>
 
                                   <div class="caption text-center">
