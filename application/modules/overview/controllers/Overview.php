@@ -473,14 +473,16 @@ class Overview extends MX_Controller
       else {
         $this->form_validation->set_rules('order_id','Order','trim|required');
         $this->form_validation->set_rules('comment','Order','trim|required');
+        $this->form_validation->set_rules('alert_customer','Customer Alert','trim|required');
 
         if($this->form_validation->run() === FALSE) {
-          $this->session->set_flashdata('error',"Validation Error");
+          $this->session->set_flashdata('error',str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors()));
           redirect($_SERVER['HTTP_REFERER']);
         }
         else {
           # Loading Model 
           $this->load->model('globals/model_insertion');
+          $this->load->model('globals/model_retrieval');
           
           # variable delcarations
           $dbres = self::$_Default_DB;
@@ -490,11 +492,33 @@ class Overview extends MX_Controller
             'user_id' => $_SESSION['user']['id'], 
             'comment' => $this->input->post('comment'), 
           ];
-
+          //print_r($this->input->post('alert_customer')); exit;
           $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
 
-          if($query_result)
+          if($query_result) {
             $this->session->set_flashdata('success',"Comment Save Successful");
+            /******* Sending SMS **********/
+            $dbres = self::$_Default_DB;
+            $tablename = "vw_orderlist_summary";
+            $where_condition = [ 'where_condition' => array('id' => $data['order_id']) ];
+            $order_details = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$where_condition);
+            
+            if(empty($order_details['DB_ERROR'])) {
+              $order_details = $order_details[0];
+              $sms_option = ($this->input->post('alert_customer') == "on") ? true : false;
+              $to = $order_details->client_phone_no_1;
+              $message = "Order ".$order_details->order_number." Comment --- ". $this->input->post('comment');
+              
+              if($sms_option && !empty($to)) {
+                $this->load->helper('send_sms');
+                $sms_result = sendSMS($to,$message);
+                
+                if(empty($sms_result['error'])) 
+                  $this->session->set_flashdata('error', 'Error Sending SMS');
+              }
+            }
+            /******* Sending SMS **********/
+          }
           else
             $this->session->set_flashdata('error',"Comment Save Failed");
           

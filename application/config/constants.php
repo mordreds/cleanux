@@ -109,7 +109,7 @@ define('VIEW_USER_TABLE', 'vw_user_details');
 | Thes Contains User Defined Constants 
 |
 */
-  define('SMS_SENDER', urlencode("BGS Laundry"));
+  define('SMS_SENDER', "BGS Laundry");
   # MNOTIFY SETTINGS
   define('MNOTIFY_SMS_GATEWAY_API', "https://apps.mnotify.net/smsapi?");
   define('MNOTIFY_SMS_API_KEY', "058289f6054524bbd6fa");

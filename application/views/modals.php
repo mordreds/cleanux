@@ -350,6 +350,21 @@
     <?php if($page_controller == "inhouse" || $page_controller == "overview" | $page_controller == "dispatch") : ?>
     <script type="text/javascript">
       $('table').on("click",".view_order_comments",function(){
+        /*************** Activating Switchery ***************/
+          var switchery
+          if (Array.prototype.forEach) {
+            var elems = Array.prototype.slice.call(document.querySelectorAll('.switchery'));
+            elems.forEach(function(html) {
+                switchery = new Switchery(html);
+            });
+          }
+          else {
+            var elems = document.querySelectorAll('.switchery');
+            for (var i = 0; i < elems.length; i++) {
+                switchery = new Switchery(elems[i]);
+            }
+          }
+        /*************** Activating Switchery ***************/
         let order_id = $(this).data('order_id');
         let formurl = "<?=base_url()?>inhouse/retrieve_comments";
         let formData = {'order_id': order_id};
@@ -406,13 +421,22 @@
               <form action="<?=base_url()?>overview/save_comment" method="post">
                 <input type="hidden" name="order_id" />
               <ul class="media-list content-group" id="all_comments_view"></ul>
-              <textarea name="comment" class="form-control content-group" rows="2" cols="1" placeholder="Add comment" style="resize:none" required></textarea>
+              <textarea name="comment" class="form-control content-group" rows="2" cols="1" placeholder="Please Enter Your Comment Here" style="resize:none" required></textarea>
               <div class="row">
                 <div class="col-xs-6">
                   <ul id="list_items_rearrange" class="icons-list icons-list-extended mt-10">
-                    <li><a href="#"><i class="icon-mic2"></i></a></li>
+                    <li>
+                      <div class="form-group">
+                        <div class="checkbox checkbox-switchery">
+                          <label> ALERT CUSTOMER
+                            <input type="checkbox" name="alert_customer" class="switchery">
+                          </label>
+                        </div>
+                      </div>
+                    </li>
+                    <!-- <li><a href="#"><i class="icon-mic2"></i></a></li>
                     <li><a href="#"><i class="icon-file-picture"></i></a></li>
-                    <li><a href="#"><i class="icon-file-plus"></i></a></li>
+                    <li><a href="#"><i class="icon-file-plus"></i></a></li> -->
                   </ul>
                 </div>
                 <div class="col-xs-6 text-right">
