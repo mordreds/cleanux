@@ -121,6 +121,8 @@
                           label_color = "label-success";
                         else if(row.status == "Completed")
                           label_color = "label-success";
+                        else if(row.status == "Cancelled")
+                          label_color = "label-danger";
                         else
                           label_color = "label-default";
                         return "<span class='label "+label_color+"'>"+row.status+"</span>"; 
@@ -140,7 +142,7 @@
                       }},
                       {render: function(data,type,row,meta) { 
                         let balance = row.balance;
-                        if(balance > 0)
+                        if(balance > 0 && row.status != "Cancelled")
                           pay_button = '<li><button class="label bg-blue pay_bill" data-total_balance="'+row.balance+'" data-order_id="'+row.id+'">Pay<i class="icon-cash3 position-right "></i></button></li>'; 
                         else
                           pay_button = "";

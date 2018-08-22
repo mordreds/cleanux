@@ -316,7 +316,7 @@
           <div class="col-md-12" id="pending_order_table_display" style="display:none">
             <div class="panel panel-flat">
               <div class="panel-heading">
-                <h4 class="panel-title">Pending Orders<a class="heading-elements-toggle"><i class="icon-more"></i></a></h4>
+                <h4 class="panel-title">In-completed Orders<a class="heading-elements-toggle"><i class="icon-more"></i></a></h4>
               </div>
             
               <div class="table-responsive">
