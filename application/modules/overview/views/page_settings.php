@@ -126,6 +126,18 @@
                         return "<span class='label "+label_color+"'>"+row.status+"</span>"; 
                       }},
                       {data: "date_created"},
+                      {data: "due_date",render: function(data,type,row,meta) { 
+                        if(row.due_date < 0) 
+                          button = '<span class="label label-danger">'+Math.abs(row.due_date)+' days past</span>';
+                        else if(row.due_date == 0) 
+                          button = '<span class="label label-warning">'+Math.abs(row.due_date)+' days past</span>';
+                        else if(row.due_date > 0) 
+                          button = '<span class="label label-success">'+Math.abs(row.due_date)+' days more</span>';
+                        else
+                          button = '<span class="label label-warning">Undefined</span>';
+                        
+                        return button;
+                      }},
                       {render: function(data,type,row,meta) { 
                         let balance = row.balance;
                         if(balance > 0)
@@ -179,6 +191,18 @@
                         return "<span class='label "+label_color+"'>"+row.status+"</span>"; 
                       }},
                       {data: "date_created"},
+                      {data: "due_date",render: function(data,type,row,meta) { 
+                        if(row.due_date < 0) 
+                          button = '<span class="label label-danger">'+Math.abs(row.due_date)+' days past</span>';
+                        else if(row.due_date == 0) 
+                          button = '<span class="label label-warning">'+Math.abs(row.due_date)+' days past</span>';
+                        else if(row.due_date > 0) 
+                          button = '<span class="label label-success">'+Math.abs(row.due_date)+' days more</span>';
+                        else
+                          button = '<span class="label label-warning">Undefined</span>';
+                        
+                        return button;
+                      }},
                       {render: function(data,type,row,meta) { 
                         let balance = row.balance;
                         if(balance > 0)

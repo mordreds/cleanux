@@ -421,7 +421,7 @@
               <form action="<?=base_url()?>overview/save_comment" method="post">
                 <input type="hidden" name="order_id" />
               <ul class="media-list content-group" id="all_comments_view"></ul>
-              <textarea name="comment" class="form-control content-group" rows="2" cols="1" placeholder="Please Enter Your Comment Here" style="resize:none" required></textarea>
+              <textarea name="comment" class="form-control content-group" rows="2" cols="1" placeholder="Please Enter Your Comment Here" style="resize:none" maxlength="100" required></textarea>
               <div class="row">
                 <div class="col-xs-6">
                   <ul id="list_items_rearrange" class="icons-list icons-list-extended mt-10">

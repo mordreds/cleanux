@@ -329,7 +329,8 @@
                       <th>Balance</th>
                       <th>Delivery Method</th>
                       <th>Status</th>
-                      <th>Date</th>
+                      <th>Date Of Order</th>
+                      <th>Due Date</th>
                       <th>Action</th>
                     </tr>
                   </thead>

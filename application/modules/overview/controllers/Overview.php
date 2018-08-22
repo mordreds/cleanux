@@ -473,7 +473,7 @@ class Overview extends MX_Controller
       else {
         $this->form_validation->set_rules('order_id','Order','trim|required');
         $this->form_validation->set_rules('comment','Order','trim|required');
-        $this->form_validation->set_rules('alert_customer','Customer Alert','trim|required');
+        $this->form_validation->set_rules('alert_customer','Customer Alert','trim');
 
         if($this->form_validation->run() === FALSE) {
           $this->session->set_flashdata('error',str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors()));
@@ -513,7 +513,7 @@ class Overview extends MX_Controller
                 $this->load->helper('send_sms');
                 $sms_result = sendSMS($to,$message);
                 
-                if(empty($sms_result['error'])) 
+                if(!empty($sms_result['error'])) 
                   $this->session->set_flashdata('error', 'Error Sending SMS');
               }
             }
@@ -706,7 +706,12 @@ class Overview extends MX_Controller
         $where_condition = array('order_number' => $order_number,'status !=' => "Completed");
 
         $query_result = $this->model_retrieval->all_info_return_row($dbres,$tablename,$where_condition,$return_dataType="php_object");
-        //print_r($query_result);
+        /******* Calculating Days More Before Due Date **********/
+        $due_date = new DateTime($query_result->due_date);
+        $today = new DateTime(gmdate('Y-m-d'));
+        $interval = $today->diff($due_date);
+        $date_diff = $interval->format('%R%a');
+        /******* Calculating Days More Before Due Date **********/
         if($query_result) {
             $return_data[] = [
               'id' => $query_result->id,
@@ -719,6 +724,7 @@ class Overview extends MX_Controller
               'processing_stage' => $query_result->status,
               'status' => $query_result->status,
               'date_created' => $query_result->date_created,
+              'due_date' => $date_diff,
               'total_comments' =>$query_result->total_comments
             ];
         }
@@ -783,7 +789,7 @@ class Overview extends MX_Controller
               # Mathematics calculations
               $tax_value = (@$view_result->tax * @$total_amount) / 100;
               $sub_total = $total_amount - $tax_value;
-
+              
               $return_data_array[] = [
                 'price_list_id' => $pricelist_query_result->id,
                 'service_name' => $pricelist_query_result->service_name,
@@ -853,7 +859,12 @@ class Overview extends MX_Controller
             # code...
             @$_SESSION['laundry']['total_billing_cost'] += number_format($query_result[$a]->total_cost,2);
             @$billing_info_total_amount_paid += number_format($query_result[$a]->total_amount_paid,2);
-
+            /******* Calculating Days More Before Due Date **********/
+            $due_date = new DateTime($query_result[$a]->due_date);
+            $today = new DateTime(gmdate('Y-m-d'));
+            $interval = $today->diff($due_date);
+            $date_diff = $interval->format('%R%a');
+            /******* Calculating Days More Before Due Date **********/
             $return_data[] = [
               'id' => $query_result[$a]->id,
               'order_number' => $query_result[$a]->order_number,
@@ -864,6 +875,7 @@ class Overview extends MX_Controller
               'processing_stage' => $query_result[$a]->status,
               'status' => $query_result[$a]->status,
               'date_created' => $query_result[$a]->date_created,
+              'due_date' => $date_diff,
               'total_comments' => $query_result[$a]->total_comments,
               'billing_info_total_cost' => @$billing_info_total_cost,
               'billing_info_total_amount_paid' => @$billing_info_total_amount_paid,
