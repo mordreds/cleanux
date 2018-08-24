@@ -350,7 +350,14 @@
     <?php if($page_controller == "inhouse" || $page_controller == "overview" | $page_controller == "dispatch") : ?>
     <script type="text/javascript">
       $('table').on("click",".view_order_comments",function(){
-        /*************** Activating Switchery ***************/
+        let order_id = $(this).data('order_id');
+        let send_option = $(this).data('disable');
+        let formurl = "<?=base_url()?>inhouse/retrieve_comments";
+        let formData = {'order_id': order_id};
+
+        if(send_option != "Yes") {
+          $('#send_option_content').html('<textarea name="comment" class="form-control content-group" rows="2" cols="1" placeholder="Please Enter Your Comment Here" style="resize:none" maxlength="100" required></textarea><div class="col-xs-6"><ul id="list_items_rearrange" class="icons-list icons-list-extended mt-10"><li><div class="form-group"><div class="checkbox checkbox-switchery"><label> ALERT CUSTOMER<input type="checkbox" name="alert_customer" class="switchery"></label></div></div></li></ul></div><div class="col-xs-6 text-right"><button type="submit" class="btn bg-primary btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Save</button></div>');
+          /*************** Activating Switchery ***************/
           var switchery
           if (Array.prototype.forEach) {
             var elems = Array.prototype.slice.call(document.querySelectorAll('.switchery'));
@@ -365,9 +372,9 @@
             }
           }
         /*************** Activating Switchery ***************/
-        let order_id = $(this).data('order_id');
-        let formurl = "<?=base_url()?>inhouse/retrieve_comments";
-        let formData = {'order_id': order_id};
+        }
+        else
+         $('#send_option_content').html('<h4 style="text-align:center"><strong><em>No Comments Found</em></strong></h4>');
         
         $.ajax({
           type : 'POST',
@@ -382,7 +389,7 @@
                 comment = value.comment;
                 comment_time = value.date_created;
 
-                comments += '<li class="media"><a href="#" class="media-left"><img src="<?=base_url()?>resources/images/users/default.jpg" class="img-circle img-sm" alt=""></a><div class="media-body"><div class="media-heading text-semibold"><a href="#">'+commenter_fullname+'</a> <span class="media-annotation pull-right">'+comment_time+'</span></div>'+comment+'</div></li>';
+                comments += '<li class="media"><a href="#" class="media-left"><img src="<?=base_url()?>resources/images/users/default.png" class="img-circle img-sm" alt=""></a><div class="media-body"><div class="media-heading text-semibold"><a href="#">'+commenter_fullname+'</a> <span class="media-annotation pull-right">'+comment_time+'</span></div>'+comment+'</div></li>';
               });
             }
 
@@ -421,27 +428,8 @@
               <form action="<?=base_url()?>overview/save_comment" method="post">
                 <input type="hidden" name="order_id" />
               <ul class="media-list content-group" id="all_comments_view"></ul>
-              <textarea name="comment" class="form-control content-group" rows="2" cols="1" placeholder="Please Enter Your Comment Here" style="resize:none" maxlength="100" required></textarea>
-              <div class="row">
-                <div class="col-xs-6">
-                  <ul id="list_items_rearrange" class="icons-list icons-list-extended mt-10">
-                    <li>
-                      <div class="form-group">
-                        <div class="checkbox checkbox-switchery">
-                          <label> ALERT CUSTOMER
-                            <input type="checkbox" name="alert_customer" class="switchery">
-                          </label>
-                        </div>
-                      </div>
-                    </li>
-                    <!-- <li><a href="#"><i class="icon-mic2"></i></a></li>
-                    <li><a href="#"><i class="icon-file-picture"></i></a></li>
-                    <li><a href="#"><i class="icon-file-plus"></i></a></li> -->
-                  </ul>
-                </div>
-                <div class="col-xs-6 text-right">
-                  <button type="submit" class="btn bg-primary btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Save</button>
-                </div>
+              <div id="send_option_content" class="row">
+                
               </div>
               </form>
             </div>
@@ -463,8 +451,8 @@
               Do You Confirm that order number <strong><em id='orderno_'></em></strong> is ready for <b>Dispatch</b> .. ?
             </div>
             <div class="modal-footer"><hr/>
-              <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button> 
-              <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Confirm</button>
+              <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">No</button> 
+              <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Yes</button>
             </div>
           </form>
         </div>
@@ -1083,8 +1071,8 @@
               Do You Confirm that order number <strong><em id='delivery_orderno_'></em></strong> has been safely delivered .. ?
             </div>
             <div class="modal-footer"><hr/>
-              <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button> 
-              <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Confirm</button>
+              <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">No</button> 
+              <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Yes</button>
             </div>
           </form>
         </div>

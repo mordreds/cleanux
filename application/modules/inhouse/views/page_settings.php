@@ -131,11 +131,11 @@
           
           return '<span class="label '+label_class+'">'+row.status+'</span>';
         }},
+        {data: "date_modified"},
         {data: "reason_for_cancel"},
         {render: function(data,type,row,meta) { 
-          return '<ul class="action_btns" style="margin-bottom:0px;"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments ('+row.total_comments+')</button></li></ul>';
+          return '<ul class="action_btns" style="margin-bottom:0px;"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments" data-disable="Yes">Comments ('+row.total_comments+')</button></li></ul>';
         }},
-        {data: "date_modified"}
       ],
     });
   /************** All Pending Orders Table *********/

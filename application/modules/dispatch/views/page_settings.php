@@ -24,14 +24,14 @@
     });
   /************** Default Settings **************/
 
-  /************** All Pending Orders Table *********/
+  /************** Pending Dispatch Orders *********/
     $('#dispatch_tbl').dataTable({
       order: [],
       ajax: {
         type : 'GET',
         url : '<?= base_url()?>settings/retrieve_alldata/dispatch_orders/default',
         dataSrc: '',
-        //success: function(response){console.log(response)},
+       //success: function(response){console.log(response)},
         error: function() {
           $.jGrowl('Retrieving Orders Failed', {
             theme: 'alert-styled-left bg-danger'
@@ -64,7 +64,48 @@
         }}
       ],
     });
-  /************** All Pending Orders Table *********/
+  /************** Pending Dispatch Orders *********/
+
+  /************** All Delivered Orders *********/
+    $('#alldelivered_orders').dataTable({
+      order: [],
+      ajax: {
+        type : 'GET',
+        url : '<?= base_url()?>settings/retrieve_alldata/delivered_orders/default',
+        dataSrc: '',
+        //success: function(response){console.log(response)},
+        error: function() {
+          $.jGrowl('Retrieving Orders Failed', {
+            theme: 'alert-styled-left bg-danger'
+          });
+        }
+      },
+      columns: [
+        {data: "order_number",render: function(data,type,row,meta) { 
+          return "<a data-action='reload' class='view_order_details' data-order_id='"+row.id+"'>"+row.order_number+"</a>"; 
+        }},
+        {data: "client"},
+        {data: "client_phone_no_1"},
+        {data: "delivery_method"},
+        {data: "delivery_location"},
+        {data: "date_difference",render: function(data,type,row,meta) { 
+          if(row.date_difference < 0) 
+            button = '<span class="label label-danger">'+Math.abs(row.date_difference)+' days past</span>';
+          else if(row.date_difference == 0) 
+            button = '<span class="label label-warning">'+Math.abs(row.date_difference)+' days past</span>';
+          else if(row.date_difference > 0) 
+            button = '<span class="label label-success">'+Math.abs(row.date_difference)+' days more</span>';
+          else
+            button = '<span class="label label-warning">Undefined</span>';
+          
+          return button;
+        }},
+        {render: function(data,type,row,meta) { 
+          return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments ('+row.total_comments+')</button></li></ul>';
+        }}
+      ],
+    });
+  /************** All Delivered Orders *********/
 </script>
 <?php endif; ?>
   

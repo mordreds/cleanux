@@ -51,24 +51,24 @@
                                 </div>
                                 <div class="col-md-4 col-sm-4">
                                   <div class="form-group">
-                                    <input type="text" name="postal_addr" placeholder="Postal Address" class="form-control">
+                                    <input type="text" name="postal_addr" placeholder="Postal Address (optional)" class="form-control">
                                   </div>
                                 </div>
                                 <div class="col-md-4 col-sm-4">
                                   <div class="form-group">
-                                    <input type="email" name="email" placeholder="Email Address:" class="form-control">
+                                    <input type="email" name="email" placeholder="Email Address: (optional)" class="form-control">
                                   </div>
                                 </div>
                               </div>
                               <div class="">
                                 <div class="col-md-4 col-sm-4">
                                   <div class="form-group">
-                                    <input type="text" name="primary_tel" placeholder="Phone No #1:" class="form-control" minlength="10" required>
+                                    <input type="text" name="primary_tel" placeholder="Phone No #1:" class="form-control" minlength="10" required/>
                                   </div>
                                 </div>
                                 <div class="col-md-4 col-sm-4">
                                   <div class="form-group">
-                                    <input type="text" name="secondary_tel" placeholder="Phone No #2:" class="form-control">
+                                    <input type="text" name="secondary_tel" placeholder="Phone No #2: (optional)" class="form-control" minlength="10"/>
                                   </div>
                                 </div>
                                 <div class="col-md-1" style="margin-right: 25px">

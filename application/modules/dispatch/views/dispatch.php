@@ -2,6 +2,47 @@
   <div class="content">
     <!-- Main charts -->
     <div class="row">
+      <div class="col-sm-6 col-md-2">
+        <div class="panel panel-body panel-body-accent">
+          <div class="media no-margin">
+            <div class="media-left media-middle">
+              <i class="icon-watch2 icon-3x text-warning-400"></i>
+            </div>
+            <div class="media-body text-right">
+              <h3 class="no-margin text-semibold"><?=number_format(@$overdue_orders)?></h3>
+              <span class="text-uppercase text-size-mini text-muted">OverDue Delivery </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-2">
+        <div class="panel panel-body panel-body-accent">
+          <div class="media no-margin">
+            <div class="media-left media-middle" style="padding-right: 0px">
+              <i class="icon-spinner icon-3x text-warning-400"></i>
+            </div>
+            <div class="media-body text-right">
+              <h3 class="no-margin text-semibold"><?=number_format(@$pending_orders)?></h3>
+              <span class="text-uppercase text-size-mini text-muted">Pending Delivery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-2">
+        <a href="<?=base_url()?>dispatch/delivered">
+          <div class="panel panel-body panel-body-accent">
+            <div class="media no-margin">
+              <div class="media-left media-middle" style="padding-right: 0px">
+                <i class="icon-truck icon-3x text-success-400"></i>
+              </div>
+              <div class="media-body text-right">
+                <h3 class="no-margin text-semibold"><?=number_format(@$delivered_orders)?></h3>
+                <span class="text-uppercase text-size-mini text-muted">Total Delivery</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
       <div class="col-md-12">
         <div class="panel panel-flat">
           <div class="panel-heading" style="border-bottom: 10px solid #eeeded; padding: 10px 20px;">
