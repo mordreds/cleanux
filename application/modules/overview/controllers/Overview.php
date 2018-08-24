@@ -850,10 +850,10 @@ class Overview extends MX_Controller
         $tablename = "vw_orderlist_summary";
         $where_condition = [
           'where_condition' => array('client_phone_no_1' => $phone_number),
-          'where_not_in_condition' => array('status' => "'Delivered','Cancelled'")
+          'where_not_in_condition' => array('status' => "Delivered,Cancelled")
         ];
         $query_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$where_condition);
-
+        
         if($query_result) {
           for ($a=0; $a < sizeof($query_result); $a++) { 
             # code...

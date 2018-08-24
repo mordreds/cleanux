@@ -97,6 +97,9 @@
                       type : 'GET',
                       url : "<?= base_url()?>overview/search_order_by_telno/"+search_text,
                       dataSrc: '',
+                      /*success: function(response){
+                        console.log(response); exit();
+                      },*/
                       error: function() {
                         $.jGrowl("Retrieving Pending Orders Failed", {
                           theme: 'alert-styled-left bg-danger'

@@ -163,7 +163,7 @@
                                     <div class="col-xs-4">
                                       <p><i class="icon-point-up icon-2x display-inline-block text-warning"></i></p>
                                       <h5 class="text-semibold no-margin client_completed_orders">3,568</h5>
-                                      <span class="text-muted text-size-small">Completed</span>
+                                      <span class="text-muted text-size-small">Delivered</span>
                                     </div>
 
                                     <div class="col-xs-4">
