@@ -969,7 +969,10 @@ class Settings extends MX_Controller
 
           case "cancelled_orders":
             $tablename = "vw_orderlist_summary";
-            $condition = ['where_condition' => array("status" => "Cancelled")];
+            $condition = [
+              'where_condition' => array("status" => "Cancelled"),
+              'orderby' => array('modified_date' => "DESC")
+            ];
           break;
 
           case "dispatch_orders":
@@ -1042,10 +1045,7 @@ class Settings extends MX_Controller
           }
        
         # Empty Result Check
-        if(!empty($search_result) && $table != "inhouse_orders" && $table != "dispatch_orders" && $table != "cancelled_orders") 
-          $return_data = $search_result;
-
-        else if(!empty($search_result) && $table == "inhouse_orders") {
+        if(!empty($search_result) && $table == "inhouse_orders") {
           $new_array = json_decode($search_result);
           $new_array = array_reverse($new_array);
           foreach ($new_array as $key => $value) {
@@ -1209,6 +1209,10 @@ class Settings extends MX_Controller
             ]; 
           }
           $return_data = json_encode(@$return_data);
+        }
+
+        elseif(!empty($search_result)) {
+          $return_data = $search_result;
         }
       }
       else 

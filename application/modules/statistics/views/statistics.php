@@ -5,17 +5,19 @@
       <div class="col-sm-6 col-md-9">
         <!-- Statisics Widgets -->
         <div class="col-sm-6 col-md-2">
-          <div class="panel panel-body panel-body-accent">
-            <div class="media no-margin">
-              <div class="media-left media-middle">
-                <i class="icon-truck icon-3x text-info-400"></i>
-              </div>
-              <div class="media-body text-right">
-                <h3 class="no-margin text-semibold"><?=number_format($delivered_orders)?></h3>
-                <span class="text-uppercase text-size-mini text-muted">Total Delivered </span>
+          <a href="<?=base_url()?>dispatch/delivered">
+            <div class="panel panel-body panel-body-accent">
+              <div class="media no-margin">
+                <div class="media-left media-middle">
+                  <i class="icon-truck icon-3x text-info-400"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3 class="no-margin text-semibold"><?=number_format($delivered_orders)?></h3>
+                  <span class="text-uppercase text-size-mini text-muted">Total Delivered </span>
+                </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
         <div class="col-sm-6 col-md-2">
           <a href="<?=base_url()?>dispatch">
