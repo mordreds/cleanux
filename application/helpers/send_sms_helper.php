@@ -10,7 +10,7 @@
               $url = HUBTEL_SMS_GATEWAY_API.
                 "from=".urlencode($sender).
                 "&to=".urlencode($to).
-                "&content=".urlencode($message).
+                "&content=".urlencode(substr($message, 0, 160)).
                 "&clientid=".HUBTEL_CLIENT_ID.
                 "&clientsecret=".HUBTEL_CLIENT_SECRET_KEY;
                   
