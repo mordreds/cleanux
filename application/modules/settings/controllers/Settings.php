@@ -1189,21 +1189,22 @@ class Settings extends MX_Controller
             /******* Retrieving Total Number Of ITems **********/
             /******* Calculating Days More Before Due Date **********/
             $due_date = new DateTime($value->due_date);
-            $today = new DateTime(gmdate('Y-m-d'));
-            $interval = $today->diff($due_date);
+            $delivery_date = new DateTime($value->modified_date);
+            $interval = $delivery_date->diff($due_date);
             $date_diff = $interval->format('%R%a');
             /******* Calculating Days More Before Due Date **********/
             $return_data[] = [
               'id' => $value->id,
               'order_number' => $value->order_number,
               'total_order_items' => $order_total_items,
-              'due_date' => $value->due_date,
+              'due_date' => date('d-m-Y',strtotime($value->due_date)),
               'date_difference' => $date_diff,
               'status' => $value->status,
               'total_comments' => $value->total_comments,
               'client' => $value->client_fullname,
               'delivery_method' => $value->delivery_method,
               'delivery_location' => $value->delivery_location,
+              'delivery_date' => date('d-m-Y',strtotime($value->modified_date)),
               'client_phone_no_1' => $value->client_phone_no_1,
               'client_phone_no_2' => $value->client_phone_no_2,
             ]; 

@@ -15,7 +15,9 @@
                   <th>Phone No 1</th>
                   <th>Delivery Method</th>
                   <th>Location</th>
-                  <th>Order Due Date</th>
+                  <th>Due Date</th>
+                  <th>Delivered On</th>
+                  <th>Remarks</th>
                   <th class="text-center">Actions</th>
                 </tr>
               </thead>

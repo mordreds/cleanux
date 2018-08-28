@@ -14,7 +14,7 @@ class Overview extends MX_Controller
     /*******************************
       Index Function
     *******************************/
-    public function index() { //print "<pre>"; print_r($_SESSION); print "</pre>";
+    public function index() { 
       # Permission Check
        if(!isset($_SESSION['user']['username']))
         redirect('access/login');
@@ -23,7 +23,6 @@ class Overview extends MX_Controller
         redirect($_SERVER['HTTP_REFERER']);
       }
       else { 
-        //print "<pre>"; print_r(@$_SESSION['laundry']); print "</pre>";
         /****** Required Parameters To Render A Page ******/
         $this->load->model('access/model_access');
         $this->load->model('globals/model_retrieval');
@@ -491,8 +490,9 @@ class Overview extends MX_Controller
             'order_id' => $this->input->post('order_id'), 
             'user_id' => $_SESSION['user']['id'], 
             'comment' => $this->input->post('comment'), 
+            'client_notified' => ($this->input->post('alert_customer') == "on") ? "Yes" : "No"
           ];
-          //print_r($this->input->post('alert_customer')); exit;
+          //print_r); exit;
           $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
 
           if($query_result) {

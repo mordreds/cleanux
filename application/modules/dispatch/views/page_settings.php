@@ -88,20 +88,23 @@
         {data: "client_phone_no_1"},
         {data: "delivery_method"},
         {data: "delivery_location"},
+        {data: "due_date"},
+        {data: "delivery_date"},
         {data: "date_difference",render: function(data,type,row,meta) { 
           if(row.date_difference < 0) 
             button = '<span class="label label-danger">'+Math.abs(row.date_difference)+' days past</span>';
           else if(row.date_difference == 0) 
             button = '<span class="label label-warning">'+Math.abs(row.date_difference)+' days past</span>';
           else if(row.date_difference > 0) 
-            button = '<span class="label label-success">'+Math.abs(row.date_difference)+' days more</span>';
+            button = '<span class="label label-success">On-Time </span>';
+            /*button = '<span class="label label-success">'+Math.abs(row.date_difference)+' days Ahead</span>';*/
           else
             button = '<span class="label label-warning">Undefined</span>';
           
           return button;
         }},
         {render: function(data,type,row,meta) { 
-          return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments">Comments ('+row.total_comments+')</button></li></ul>';
+          return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments" data-disable="Yes">Comments ('+row.total_comments+')</button></li></ul>';
         }}
       ],
     });

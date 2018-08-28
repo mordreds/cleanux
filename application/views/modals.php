@@ -351,31 +351,21 @@
     <script type="text/javascript">
       $('table').on("click",".view_order_comments",function(){
         let order_id = $(this).data('order_id');
-        let send_option = $(this).data('disable');
+        let notify_client = $(this).data('notify_client');
+        let send_comment = $(this).data('send_comment');
         let formurl = "<?=base_url()?>inhouse/retrieve_comments";
         let formData = {'order_id': order_id};
-
-        if(send_option != "Yes") {
-          $('#send_option_content').html('<textarea name="comment" class="form-control content-group" rows="2" cols="1" placeholder="Please Enter Your Comment Here" style="resize:none" maxlength="100" required></textarea><div class="col-xs-6"><ul id="list_items_rearrange" class="icons-list icons-list-extended mt-10"><li><div class="form-group"><div class="checkbox checkbox-switchery"><label> ALERT CUSTOMER<input type="checkbox" name="alert_customer" class="switchery"></label></div></div></li></ul></div><div class="col-xs-6 text-right"><button type="submit" class="btn bg-primary btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Save</button></div>');
-          /*************** Activating Switchery ***************/
-          var switchery
-          if (Array.prototype.forEach) {
-            var elems = Array.prototype.slice.call(document.querySelectorAll('.switchery'));
-            elems.forEach(function(html) {
-                switchery = new Switchery(html);
-            });
-          }
-          else {
-            var elems = document.querySelectorAll('.switchery');
-            for (var i = 0; i < elems.length; i++) {
-                switchery = new Switchery(elems[i]);
-            }
-          }
-        /*************** Activating Switchery ***************/
-        }
-        else
-         $('#send_option_content').html('<h4 style="text-align:center"><strong><em>No Comments Found</em></strong></h4>');
+        /* Notify Client & Send Comment Switches */
+        if(notify_client == "No") 
+          notify_client_content = '';
+        else 
+          notify_client_content = '<ul id="list_items_rearrange" class="icons-list icons-list-extended mt-10"><li><div class="form-group"><div class="checkbox checkbox-switchery"><label> ALERT CUSTOMER<input type="checkbox" name="alert_customer" class="switchery"></label></div></div></li></ul>'
         
+        if(send_comment == "No")
+          send_form = "";
+        else 
+          send_form = '<textarea name="comment" class="form-control content-group" rows="2" cols="1" placeholder="Please Enter Your Comment Here (100 Characters Only)" style="resize:none" maxlength="100" required></textarea><div class="col-xs-6">'+notify_client_content+'</div><div class="col-xs-6 text-right"><button type="submit" class="btn bg-primary btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Save</button></div>';
+        /* Notify Client & Send Comment Switches */
         $.ajax({
           type : 'POST',
           url : formurl,
@@ -383,19 +373,46 @@
           success: function(response) { 
             response = JSON.parse(response)
             let comments = "";
-            if(!response.DB_ERROR) {
+
+            if(response.length == 0)
+              comments = '<h4 style="text-align:center"><strong><em>No Comments Yet</em></strong></h4>';
+            
+            else if(!response.DB_ERROR) {
               $.each(response, function(key,value){
                 commenter_fullname = value.commenter_fullname;
                 comment = value.comment;
                 comment_time = value.date_created;
+                
+                if(value.client_notified == "Yes")
+                  client_notified = '<span class="label label-success">Client Notified</span> ';
+                else
+                  client_notified = "";
 
-                comments += '<li class="media"><a href="#" class="media-left"><img src="<?=base_url()?>resources/images/users/default.png" class="img-circle img-sm" alt=""></a><div class="media-body"><div class="media-heading text-semibold"><a href="#">'+commenter_fullname+'</a> <span class="media-annotation pull-right">'+comment_time+'</span></div>'+comment+'</div></li>';
+                comments += '<li class="media"><a href="#" class="media-left"><img src="<?=base_url()?>resources/images/users/default.png" class="img-circle img-sm" alt=""></a><div class="media-body"><div class="media-heading text-semibold"><a href="#">'+commenter_fullname+'</a> <span class="media-annotation pull-right">'+client_notified+comment_time+'</span></div>'+comment+'</div></li>';
               });
             }
 
+            $('#send_option_content').html(send_form);
             $('#all_comments_view').html(comments);
             $('[name="order_id"]').val(order_id);
-            $('#comment').modal('show');
+
+            /*************** Activating Switchery ***************/
+            var switchery
+            if (Array.prototype.forEach) {
+              var elems = Array.prototype.slice.call(document.querySelectorAll('.switchery'));
+              elems.forEach(function(html) {
+                  switchery = new Switchery(html);
+              });
+            }
+            else {
+              var elems = document.querySelectorAll('.switchery');
+              for (var i = 0; i < elems.length; i++) {
+                  switchery = new Switchery(elems[i]);
+              }
+            }
+          /*************** Activating Switchery ***************/
+          
+          $('#comment').modal('show');
           },
           error: function() {
             $.jGrowl('View Comments Failed', {
@@ -427,10 +444,8 @@
             <div class="caption">
               <form action="<?=base_url()?>overview/save_comment" method="post">
                 <input type="hidden" name="order_id" />
-              <ul class="media-list content-group" id="all_comments_view"></ul>
-              <div id="send_option_content" class="row">
-                
-              </div>
+                <ul class="media-list content-group" id="all_comments_view"></ul>
+                <div id="send_option_content" class="row"></div>
               </form>
             </div>
           </div>
