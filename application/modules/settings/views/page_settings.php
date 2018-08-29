@@ -226,7 +226,7 @@
             columns: [
               {data:"employee_id"},
               {render: function(data,type,row,meta){
-                return '<div class="media-left media-middle"><a href="#" class="btn bg-teal-400 btn-rounded btn-icon btn-xs"><span class="letter-icon">A</span></a></div><div class="media-body"><a href="#" class="display-inline-block text-default text-semibold letter-icon-title">'+row.fullname+'</a><div class="text-muted text-size-small"><span class="status-mark border-blue position-left"></span> '+row.current_position+'</div></div>';
+                return '<div class="media-left media-middle"><a href="#" onclick="return false;" class="media-left"><img src="<?=base_url()?>/resources/images/users/default.png" width="40" height="40" class="img-circle img-md" alt=""></a></div><div class="media-body"><a href="#" class="display-inline-block text-default text-semibold letter-icon-title">'+row.fullname+'</a><div class="text-muted text-size-small"><span class="status-mark border-blue position-left"></span> '+row.current_position+'</div></div>';
               }},
               {data:"phone_number_1",render: function(data,type,row,meta){
                 return '<a class="text-default display-inline"><span class="text-semibold">'+row.phone_number_1+'</span><div class="text-muted text-size-small"><span class="status-mark border-blue position-left"></span> '+row.phone_number_2+'</div></a>';

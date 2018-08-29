@@ -382,7 +382,7 @@
                 commenter_fullname = value.commenter_fullname;
                 comment = value.comment;
                 comment_time = value.date_created;
-                
+
                 if(value.client_notified == "Yes")
                   client_notified = '<span class="label label-success">Client Notified</span> ';
                 else
@@ -1083,9 +1083,20 @@
             </div>
             <div class="modal-body">
               <input type="hidden" name="delivery_order_id" />
-              Do You Confirm that order number <strong><em id='delivery_orderno_'></em></strong> has been safely delivered .. ?
+              Do You Confirm that order number <strong><em id='delivery_orderno_'></em></strong> has been safely (<strong>picked up / delivered</strong>) by <br/>
+              <div class="row" style="margin-top: 15px">
+                <div class="col-md-5">
+                  <input type="text" class="form-control" placeholder="Enter Name Of Person" name="delivered_by" required />
+                </div>
+                <div class="col-md-2"><h4 class="text-uppercase text-center">on</h4></div> 
+                <div class="col-md-5">
+                  <input type="date" class="form-control" name="delivered_on" min="<?=gmdate('Y-m-d',strtotime('-2 weeks'))?>" max="<?=gmdate('Y-m-d',strtotime('2 months'))?>" placeholder="Select Date Of Delivery" required />
+                </div>
+              </div>
+
+              <hr style="margin-bottom: 0px" />
             </div>
-            <div class="modal-footer"><hr/>
+            <div class="modal-footer">
               <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">No</button> 
               <button type="submit" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Yes</button>
             </div>

@@ -987,7 +987,7 @@ class Settings extends MX_Controller
             $tablename = "vw_orderlist_summary";
             $condition = [
               'where_condition' => array('status' => "Delivered"),
-              'orderby' => array('modified_date' => "DESC")
+              'orderby' => array('delivery_date' => "DESC")
             ];
           break;
 
@@ -1029,7 +1029,7 @@ class Settings extends MX_Controller
         }
 
         $search_result = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition,$return_dataType,@$orderby);
-        
+        //print "<pre>"; print_r(json_decode($search_result)); print "</pre>"; exit;
         # DB ERROR & Empty Data Check 
           $check = json_decode($search_result);
 
@@ -1189,7 +1189,7 @@ class Settings extends MX_Controller
             /******* Retrieving Total Number Of ITems **********/
             /******* Calculating Days More Before Due Date **********/
             $due_date = new DateTime($value->due_date);
-            $delivery_date = new DateTime($value->modified_date);
+            $delivery_date = new DateTime($value->delivery_date);
             $interval = $delivery_date->diff($due_date);
             $date_diff = $interval->format('%R%a');
             /******* Calculating Days More Before Due Date **********/
@@ -1204,12 +1204,12 @@ class Settings extends MX_Controller
               'client' => $value->client_fullname,
               'delivery_method' => $value->delivery_method,
               'delivery_location' => $value->delivery_location,
-              'delivery_date' => date('d-m-Y',strtotime($value->modified_date)),
+              'delivery_date' => date('d-m-Y',strtotime($value->delivery_date)),
               'client_phone_no_1' => $value->client_phone_no_1,
               'client_phone_no_2' => $value->client_phone_no_2,
             ]; 
           }
-          $return_data = json_encode(@$return_data);
+          $return_data = json_encode(array_reverse(@$return_data));
         }
 
         elseif(!empty($search_result)) {

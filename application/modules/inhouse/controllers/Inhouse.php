@@ -224,8 +224,8 @@ class Inhouse extends MX_Controller
       }
       else {
         $this->form_validation->set_rules('delivery_order_id','Order','trim|required');
-        $this->form_validation->set_rules('delievered_by','Delivered BY','trim|required');
-        $this->form_validation->set_rules('delievered_on','Delivery Date','trim|required');
+        $this->form_validation->set_rules('delivered_by','Delivered BY','trim|required');
+        $this->form_validation->set_rules('delivered_on','Delivery Date','trim|required');
 
         if($this->form_validation->run() === FALSE) {
           $this->session->set_flashdata('error',"Validation Error");
@@ -239,9 +239,10 @@ class Inhouse extends MX_Controller
           $tablename = "laundry_orders";
           $update_data = [
             'status' => "Delivered",
-            'delievered_by' => $this->input->post("delievered_by"),
-            'delivery_date' => gmdate('Y-m-d H:i:s',strtotime($this->input->post("delievered_by")))
+            'delivered_by' => $this->input->post("delivered_by"),
+            'delivery_date' => gmdate('Y-m-d',strtotime($this->input->post("delivered_on")))
           ];
+          
           $return_dataType="php_object";
           $delete_confirmed = $this->input->post('delete_item');
           $where_condition = ['id' => $id];

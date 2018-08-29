@@ -37,7 +37,7 @@
               </div>
               <div class="media-body text-right">
                 <h3 class="no-margin text-semibold"><?=number_format(@$delivered_orders)?></h3>
-                <span class="text-uppercase text-size-mini text-muted">Total Delivery</span>
+                <span class="text-uppercase text-size-mini text-muted">Successful Delivery</span>
               </div>
             </div>
           </div>

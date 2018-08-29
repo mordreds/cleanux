@@ -259,7 +259,7 @@
                         <div class="row">
                           <div class="col-md-11">
                             <div class="form-group">
-                              <label class="display-block">Current Tax Holdings  <span style="color:red;">*</span></label>
+                              <label class="display-block">Current VAT Holdings  <span style="color:red;">*</span></label>
                                <input type="number" placeholder="3.7" name="tax_value" value="<?= number_format(@$_SESSION['tax_value'],2) ?>" class="form-control" step=".01"  required>
                             </div>
                           </div>
@@ -268,7 +268,7 @@
                       </form>
                     </div>
                     <div class="col-md-2">
-                     <h3> Current Tax</h3>
+                     <h3> Current VAT</h3>
                      <h2><?= number_format(@$_SESSION['tax_value'],2) ?></h2>
                     </div>
                   </div>

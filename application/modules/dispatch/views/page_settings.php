@@ -104,7 +104,7 @@
           return button;
         }},
         {render: function(data,type,row,meta) { 
-          return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments" data-disable="Yes">Comments ('+row.total_comments+')</button></li></ul>';
+          return '<ul class="action_btns"><li><button data-order_id="'+row.id+'" class="label bg-green-600 view_order_comments" data-notify_client="No" data-send_comment="No">Comments ('+row.total_comments+')</button></li></ul>';
         }}
       ],
     });

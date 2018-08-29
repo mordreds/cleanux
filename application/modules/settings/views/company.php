@@ -13,7 +13,6 @@
                 <li><a href="#employees" data-toggle="tab">All Employees <i class="icon-users position-right"></i></a></li>
               </ul>
               <div class="tab-content">
-
                 <div class="tab-pane active" id="company_details">
                   <form action="<?=base_url()?>/settings/save_company_details" method="post">
                     <input type="hidden" name="id" value="<?=@strtoupper($company_info[0]->id)?>">
