@@ -117,7 +117,7 @@
                       <input type="text" id="cart_total_amount" class="form-control order_total_cost" style="font-size: 28px;padding:0px" readonly required>
                     </div>
                     <div class="col-sm-12">
-                      <label class="display-block balance_label" ><strong>Balance</strong></label><br/>
+                      <label class="display-block balance_label" style="color:red"><strong>Balance</strong></label><br/>
                       <input type="text" class="form-control order_balance" name="order_balance" readonly required>
                     </div>
                   </div>
