@@ -19,7 +19,7 @@ class Reports extends MX_Controller
       if(empty($_SESSION['user']['username']))
         redirect('access');
       
-      elseif(!in_array('cashbook', $_SESSION['user']['roles'])) {
+      elseif(!in_array('reports', $_SESSION['user']['roles'])) {
         $this->session->set_flashdata('error', "Permission Denied. Contact Admin");
         redirect($_SERVER['HTTP_REFERER']);
       }
