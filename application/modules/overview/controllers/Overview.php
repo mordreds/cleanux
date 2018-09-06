@@ -314,7 +314,8 @@ class Overview extends MX_Controller
             # variable declaration
             $pricelist_ids = $quantities = $unit_prices = $total_sums = $description = array();
             $delivery_price = $delivery_price->price;
-            $total_cost = $_SESSION['laundry']['new_order']['cart_total_amount'] + $delivery_price;
+            $service_cost = $_SESSION['laundry']['new_order']['cart_total_amount'];
+            $total_cost = $service_cost + $delivery_price;
             $change = $this->input->post('change');
             $balance = ($change >0) ? 0 : $total_cost - $this->input->post('amount_paid');
             $client_fullname = $_SESSION['laundry']['new_order']['client']['fullname'];
@@ -332,6 +333,8 @@ class Overview extends MX_Controller
             /*********** Saving Order Info ***********/
             $order_table_info = [
               'order_number' => $this->generate_order_no(),
+              'service_charge' => number_format($service_cost,2),
+              'delivery_cost' => number_format($delivery_price,2),
               'total_cost' => $total_cost,
               'amount_paid' => $this->input->post('amount_paid'),
               'change_paid' => $change,
