@@ -145,6 +145,32 @@
         </div> -->
 
          <!-- Left aligned -->
+         <div class="panel panel-white">
+          <div class="panel-body">
+            <div class="media no-margin">
+                <div class="media-left">
+                  <i class="icon-envelop icon-3x text-info-400"></i>
+                </div>
+                <div class="media-body text-left">
+                  <h3 class="no-margin text-semibold"><?=number_format($sms_used)?></h3>
+                  <span class="text-uppercase text-size-mini text-muted">Total SMS Used</span>
+                </div>
+                <div class="media-body text-center">
+                  <?php 
+                    if($remaining_sms > 20 && $remaining_sms <= 50){ $notice = "text-warning" ;} 
+                    else if($remaining_sms <= 20){ $notice = "text-danger" ;} 
+                    else {$notice = "";}
+                  ?>
+                  <h3 class="no-margin text-semibold <?=$notice?>"><?=number_format($remaining_sms)?></h3>
+                  <span class="text-uppercase text-size-mini text-muted">Total SMS Left</span>
+                </div>
+                <div class="media-body media-middle text-right">
+                  <h3 class="no-margin text-semibold"><?=number_format($last_sms_update)?></h3>
+                  <span class="text-uppercase text-size-mini text-muted">Last SMS Update</span>
+                </div>
+              </div>
+          </div>
+        </div>
         <div class="panel panel-white"> 
           <div class="panel-heading" style="padding-top: 5px; padding-bottom: 7px;">
             <h5 class="content-group">

@@ -352,7 +352,7 @@ class Overview extends MX_Controller
             
             $order_info_insert = $this->Model_insertion->datainsert($dbres,$tablename,$order_table_info);
             /*********** Saving Order Info ***********/
-            /********* Saving Order DEtails **********/
+            /********* Saving Order Details **********/
             $order_details_info = [
               'order_id' => $order_info_insert,
               'pricelist_ids' => implode("|", $pricelist_ids),
@@ -382,6 +382,21 @@ class Overview extends MX_Controller
 
                   if(!empty($sms_result['error'])) 
                     $this->session->set_flashdata('error', $sms_result['error']);
+                  else {
+                    # Retrieving Last Record
+                    $tablename = "settings_sms";
+                    $query_result = $this->model_retrieval->getLastRecord($dbres,$tablename);
+                    
+                    if(!empty($query_result)) {
+                      # Loading Update Model
+                      $this->load->model('globals/model_update');
+
+                      $update_data = array('sms_by_system' => $query_result->sms_by_system + 1);
+                      $where_condition = array('id' => $query_result->id);
+                      
+                      $update_result = $this->model_update->update_info($dbres,$tablename,$return_dataType="php_object",$update_data,$where_condition);
+                    }
+                  }
                 }
               
               /******** Sending Email & SMS Notice ************/
@@ -518,6 +533,21 @@ class Overview extends MX_Controller
                 
                 if(!empty($sms_result['error'])) 
                   $this->session->set_flashdata('error', 'Error Sending SMS');
+                else {
+                  # Retrieving Last Record
+                  $tablename = "settings_sms";
+                  $query_result = $this->model_retrieval->getLastRecord($dbres,$tablename);
+                  
+                  if(!empty($query_result)) {
+                    # Loading Update Model
+                    $this->load->model('globals/model_update');
+
+                    $update_data = array('sms_by_system' => $query_result->sms_by_comments + 1);
+                    $where_condition = array('id' => $query_result->id);
+                    
+                    $update_result = $this->model_update->update_info($dbres,$tablename,$return_dataType="php_object",$update_data,$where_condition);
+                  }
+                }
               }
             }
             /******* Sending SMS **********/

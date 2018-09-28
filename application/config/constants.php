@@ -92,8 +92,8 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 | Thes Contains User Defined Constants 
 |
 */
-define('SYSTEM_DEVS', array("0541786220","0245626487","0247173741"));
-define('IMAGE_PATH', 'http://localhost/marksbon/projects/test/resources/images');
+@define('SYSTEM_DEVS', array("0541786220","0245626487"));
+define('IMAGE_PATH', 'http://localhost/poseidon/resources/images');
 
 define('EDIT_COMPANY_TABLE', 'hr_company_info');
 define('VIEW_COMPANY_TABLE', 'vw_company_info');
@@ -113,25 +113,25 @@ define('VIEW_USER_TABLE', 'vw_user_details');
   # MNOTIFY SETTINGS
   define('MNOTIFY_SMS_GATEWAY_API', "https://apps.mnotify.net/smsapi?");
   define('MNOTIFY_SMS_API_KEY', "058289f6054524bbd6fa");
-  define('MNOTIFY_SMS_ERROR_MESSAGE', array(
+  define('MNOTIFY_SMS_ERROR_MESSAGE', json_encode(array(
       '1000' => "SMS Sent Successfully", 
       '1002' => "Sms Sending Failed", 
-      '1003' => "Insufficient SMS Balance", 
+      '1003' => "Insu   fficient SMS Balance", 
       '1005' => "Invalid Recipient Phone Number",
       '1006' =>	"Invalid Sender ID.",
       '1007' => "Message scheduled for later delivery",
       '1008' =>	"Empty Message"
-    )
+    ))
   );
 
   # HUBTEL SETTINGS
   define('HUBTEL_SMS_GATEWAY_API', "https://api.hubtel.com/v1/messages/send?");
   define('HUBTEL_CLIENT_ID', "nrjhvxtv");
   define('HUBTEL_CLIENT_SECRET_KEY', 'ndzztfvl');
-  define('HUBTEL_SMS_ERROR_MESSAGE', array(
+  define('HUBTEL_SMS_RESPONSE_MESSAGES', json_encode(array(
       '0' => "SMS Sent Successfully", 
       '1' => "Invalid Recipient Phone Number",
       '6' =>	"Empty Message"
-    )
+    ))
   );
 

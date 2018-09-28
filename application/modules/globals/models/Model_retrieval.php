@@ -200,6 +200,20 @@ class Model_retrieval extends CI_Model
     /***********************************************
 			Generating New ID
     ************************************************/
+    public function getLastRecord($dbres,$tablename) 
+    {
+      $dbres->order_by('id',"DESC");
+
+      $dbres->limit(1);
+
+      $query = $dbres->get($tablename);
+        
+      return ( ($query->num_rows() > 0) ? $query->row(0) : FALSE );
+	  }
+  
+    /***********************************************
+			Generating New ID
+    ************************************************/
     public function LastID($TableName,$FieldName) 
     {
       $this->db->select($FieldName);
