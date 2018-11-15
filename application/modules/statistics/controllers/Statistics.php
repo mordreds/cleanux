@@ -283,15 +283,15 @@ class Statistics extends MX_Controller
           # Retrieving remaining sms
             $tablename = "vw_sms_remaining";
             $condition = [
-              'fields' => array('sms_remaining','sms_by_system','sms_by_comments'),
+              'fields' => array('sms_remaining','sms_by_system','sms_by_comments','last_sms_purchased'),
               'where_condition' => array()
             ];
             $sms_retrieve = $this->model_retrieval->retrieve_allinfo($dbres,$tablename,$condition);
             $lastest_record = $sms_retrieve[sizeof($sms_retrieve) - 1];
             
-            $data['last_sms_update'] = $lastest_record->sms_remaining;
+            $data['last_sms_update'] = $lastest_record->last_sms_purchased;
             $data['sms_used'] = $lastest_record->sms_by_system + $lastest_record->sms_by_comments;
-            $data['remaining_sms'] = $data['last_sms_update'] - $data['sms_used'];
+            $data['remaining_sms'] = $lastest_record ->sms_remaining;
 
             //print "<pre>"; print_r($data['remaining_sms']); print "</pre>"; exit;
         /****** Additional Functions  ****************/  

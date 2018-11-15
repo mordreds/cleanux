@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2018 at 03:49 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.1.14
+-- Generation Time: Nov 15, 2018 at 11:49 AM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -150,7 +150,18 @@ INSERT INTO `access_login_successful` (`id`, `user_id`, `time_in`, `time_out`, `
 (83, 1, '2018-09-04 02:57:04', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '::1', 'London', NULL, NULL),
 (84, 1, '2018-09-04 10:43:44', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '::1', 'London', NULL, NULL),
 (85, 1, '2018-09-05 10:05:08', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '::1', 'London', NULL, NULL),
-(86, 1, '2018-09-05 15:19:11', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '::1', 'London', NULL, NULL);
+(86, 1, '2018-09-05 15:19:11', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '::1', 'London', NULL, NULL),
+(87, 1, '2018-10-28 23:16:42', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
+(88, 1, '2018-10-29 04:01:50', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
+(89, 1, '2018-10-29 12:35:35', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
+(90, 1, '2018-11-02 13:06:17', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
+(91, 1, '2018-11-02 16:23:20', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
+(92, 1, '2018-11-08 15:20:02', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
+(93, 1, '2018-11-08 23:11:29', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
+(94, 1, '2018-11-08 23:14:37', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
+(95, 1, '2018-11-14 23:16:32', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
+(96, 1, '2018-11-15 09:45:15', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
+(97, 1, '2018-11-15 10:01:23', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -655,7 +666,8 @@ INSERT INTO `laundry_garments` (`id`, `name`, `description`, `status`, `date_cre
 (2, 'Pure Cotton Clothing', 'All Types', 'active', '2017-12-27 20:11:53'),
 (3, 'Cotton / Polyesther Clothing', 'All Types', 'active', '2017-12-27 20:13:09'),
 (4, 'Light Jeans', 'All Types', 'active', '2017-12-27 20:13:49'),
-(5, 'Heavy Jeans', 'All Types', 'active', '2017-12-27 20:14:01');
+(5, 'Heavy Jeans', 'All Types', 'active', '2017-12-27 20:14:01'),
+(6, 'Suits', 'Suit', 'active', '2018-11-15 10:47:36');
 
 -- --------------------------------------------------------
 
@@ -693,7 +705,8 @@ CREATE TABLE `laundry_orders` (
 --
 
 INSERT INTO `laundry_orders` (`id`, `order_number`, `service_charge`, `delivery_cost`, `total_cost`, `amount_paid`, `change_paid`, `balance`, `tax_id`, `client_id`, `processor_user_id`, `delivery_method_id`, `delivery_location`, `due_date`, `modified_by`, `modified_date`, `processing_stages`, `delivered_by`, `delivery_date`, `status`, `reason_for_cancel`, `date_created`) VALUES
-(1, '46324911', 20, 5, 25, 30, 5, 0, 4, 11, 1, 4, 'abelemkpe', '2018-09-06', 0, NULL, 'Pending', '', '0000-00-00', 'Pending', '', '2018-09-05 16:52:26');
+(1, '46324911', 20, 5, 25, 30, 5, 0, 4, 11, 1, 4, 'abelemkpe', '2018-09-06', 1, '2018-11-15 10:44:07', 'Pending', '', '0000-00-00', 'Cancelled', 'Overdue Due Date Crossed company policy', '2018-09-05 16:52:26'),
+(2, '22478967', 10, 0, 10, 10, 0, 0, 4, 11, 1, 6, 'pickup', '2018-11-16', 0, NULL, 'Pending', '', '0000-00-00', 'Pending', '', '2018-11-15 10:38:56');
 
 -- --------------------------------------------------------
 
@@ -750,7 +763,8 @@ CREATE TABLE `laundry_order_details` (
 --
 
 INSERT INTO `laundry_order_details` (`id`, `order_id`, `pricelist_ids`, `quantities`, `unit_prices`, `total_sums`, `description`, `service_status`, `status_change_userids`, `status_change_dates`) VALUES
-(1, 1, '3', '4', '5', '20', '', '', '', '');
+(1, 1, '3', '4', '5', '20', '', '', '', ''),
+(2, 2, '3', '2', '5', '10', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -781,7 +795,8 @@ INSERT INTO `laundry_prices` (`id`, `service_id`, `weight_id`, `garment_id`, `am
 (6, 1, 1, 0, 10, 'active', '2018-01-16 08:39:53'),
 (7, 1, 2, 5, 15, 'active', '2018-01-16 08:40:15'),
 (8, 2, 0, 3, 45, 'active', '2018-08-10 03:52:43'),
-(9, 2, 0, 2, 35, 'active', '2018-08-10 03:52:55');
+(9, 2, 0, 2, 35, 'active', '2018-08-10 03:52:55'),
+(10, 1, 0, 6, 25, 'active', '2018-11-15 10:48:00');
 
 -- --------------------------------------------------------
 
@@ -868,6 +883,30 @@ INSERT INTO `settings_dashboard_tabs` (`id`, `name`, `comment`, `icon`, `link`, 
 (14, 'overview', 'All Services Made', 'fa fa-tasks', 'overview', 'text-teal-400', 'can delete|can add|can edit', 'oms', 'active'),
 (15, 'inhouse', 'All Services Made', 'fa fa-inbox', 'inhouse', 'text-teal-400', 'can delete|can add|can edit', 'oms', 'active'),
 (16, 'dispatch', 'All Services Made', 'fa fa-truck', 'dispatch', 'text-teal-400', 'can delete|can add|can edit', 'oms', 'active');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `settings_sms`
+--
+
+CREATE TABLE `settings_sms` (
+  `id` int(11) NOT NULL,
+  `sms_bought` int(11) NOT NULL,
+  `amount` float NOT NULL,
+  `sms_by_system` int(11) NOT NULL,
+  `sms_by_comments` int(11) NOT NULL,
+  `record_by` bigint(11) NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `settings_sms`
+--
+
+INSERT INTO `settings_sms` (`id`, `sms_bought`, `amount`, `sms_by_system`, `sms_by_comments`, `record_by`, `date_created`) VALUES
+(1, 500, 50, 20, 3, 1, '2018-11-03 11:13:23'),
+(2, 50, 5, 3, 0, 2, '2018-11-03 11:14:34');
 
 -- --------------------------------------------------------
 
@@ -1124,6 +1163,24 @@ CREATE TABLE `vw_orderlist_summary` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `vw_sms_remaining`
+-- (See below for the actual view)
+--
+CREATE TABLE `vw_sms_remaining` (
+`id` int(11)
+,`sms_bought` decimal(32,0)
+,`amount` double
+,`sms_by_system` decimal(32,0)
+,`sms_by_comments` decimal(32,0)
+,`sms_remaining` decimal(34,0)
+,`last_record_by` bigint(11)
+,`last_sms_purchased` double
+,`last_purchase_date` datetime
+);
+
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `vw_user_details`
 -- (See below for the actual view)
 --
@@ -1231,6 +1288,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `vw_orderlist_summary`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_orderlist_summary`  AS  select `a`.`id` AS `id`,`a`.`order_number` AS `order_number`,`f`.`value` AS `tax`,((`f`.`value` * `a`.`service_charge`) / 100) AS `tax_value`,`a`.`service_charge` AS `service_charge`,`d`.`price` AS `delivery_cost`,`a`.`total_cost` AS `total_cost`,`a`.`amount_paid` AS `amount_paid`,`a`.`change_paid` AS `change_paid`,`a`.`balance` AS `previous_balance`,coalesce(`e`.`balance_paid`,0) AS `balance_paid`,(`a`.`amount_paid` + coalesce(`e`.`balance_paid`,0)) AS `total_amount_paid`,coalesce((`a`.`balance` - `e`.`balance_paid`),`a`.`balance`) AS `balance`,coalesce((select `vw_user_details`.`fullname` from `vw_user_details` where (`vw_user_details`.`id` = `e`.`user_id`)),'') AS `balance_received_by`,coalesce(`e`.`payment_date`,'') AS `balance_payment_date`,`a`.`client_id` AS `client_id`,`a`.`processor_user_id` AS `processor_user_id`,`a`.`delivery_method_id` AS `delivery_method_id`,`d`.`location` AS `delivery_method`,`a`.`delivery_location` AS `delivery_location`,`a`.`delivered_by` AS `delivered_by`,`a`.`delivery_date` AS `delivery_date`,`a`.`due_date` AS `due_date`,`a`.`status` AS `status`,coalesce(`a`.`modified_by`,'') AS `modified_by`,coalesce(`a`.`modified_date`,'') AS `modified_date`,coalesce(`a`.`reason_for_cancel`,'') AS `reason_for_cancel`,coalesce((select count(`laundry_order_comments`.`comment`) from `laundry_order_comments` where (`laundry_order_comments`.`order_id` = `a`.`id`)),'') AS `total_comments`,`a`.`date_created` AS `date_created`,`b`.`fullname` AS `client_fullname`,coalesce(`b`.`company`,'') AS `client_company`,`b`.`phone_number_1` AS `client_phone_no_1`,`b`.`phone_number_2` AS `client_phone_no_2`,`c`.`fullname` AS `processor_name` from (((((`laundry_orders` `a` left join `laundry_clients` `b` on((`a`.`client_id` = `b`.`id`))) left join `vw_user_details` `c` on((`a`.`processor_user_id` = `c`.`id`))) left join `laundry_delivery_method` `d` on((`a`.`delivery_method_id` = `d`.`id`))) left join `laundry_order_balances` `e` on((`a`.`id` = `e`.`order_id`))) left join `settings_tax_system` `f` on((`a`.`tax_id` = `f`.`id`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vw_sms_remaining`
+--
+DROP TABLE IF EXISTS `vw_sms_remaining`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_sms_remaining`  AS  select sql_cache max(`settings_sms`.`id`) AS `id`,sum(`settings_sms`.`sms_bought`) AS `sms_bought`,sum(`settings_sms`.`amount`) AS `amount`,sum(`settings_sms`.`sms_by_system`) AS `sms_by_system`,sum(`settings_sms`.`sms_by_comments`) AS `sms_by_comments`,(sum(`settings_sms`.`sms_bought`) - (sum(`settings_sms`.`sms_by_system`) + sum(`settings_sms`.`sms_by_comments`))) AS `sms_remaining`,max(`settings_sms`.`record_by`) AS `last_record_by`,(select `settings_sms`.`amount` from `settings_sms` order by `settings_sms`.`id` desc limit 1) AS `last_sms_purchased`,max(`settings_sms`.`date_created`) AS `last_purchase_date` from `settings_sms` ;
 
 -- --------------------------------------------------------
 
@@ -1433,6 +1499,12 @@ ALTER TABLE `settings_dashboard_tabs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `settings_sms`
+--
+ALTER TABLE `settings_sms`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `settings_tax_system`
 --
 ALTER TABLE `settings_tax_system`
@@ -1452,7 +1524,7 @@ ALTER TABLE `access_login_failed`
 -- AUTO_INCREMENT for table `access_login_successful`
 --
 ALTER TABLE `access_login_successful`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=87;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `access_password_reset_requests`
@@ -1566,13 +1638,13 @@ ALTER TABLE `laundry_delivery_method`
 -- AUTO_INCREMENT for table `laundry_garments`
 --
 ALTER TABLE `laundry_garments`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `laundry_orders`
 --
 ALTER TABLE `laundry_orders`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `laundry_order_balances`
@@ -1590,13 +1662,13 @@ ALTER TABLE `laundry_order_comments`
 -- AUTO_INCREMENT for table `laundry_order_details`
 --
 ALTER TABLE `laundry_order_details`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `laundry_prices`
 --
 ALTER TABLE `laundry_prices`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `laundry_services`
@@ -1615,6 +1687,12 @@ ALTER TABLE `laundry_weights`
 --
 ALTER TABLE `settings_dashboard_tabs`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `settings_sms`
+--
+ALTER TABLE `settings_sms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `settings_tax_system`

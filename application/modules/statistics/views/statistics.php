@@ -165,8 +165,8 @@
                   <span class="text-uppercase text-size-mini text-muted">Total SMS Left</span>
                 </div>
                 <div class="media-body media-middle text-right">
-                  <h3 class="no-margin text-semibold"><?=number_format($last_sms_update)?></h3>
-                  <span class="text-uppercase text-size-mini text-muted">Last SMS Update</span>
+                  <h3 class="no-margin text-semibold">₵ <?=number_format($last_sms_update)?></h3>
+                  <span class="text-uppercase text-size-mini text-muted">Last SMS Purchased</span>
                 </div>
               </div>
           </div>
