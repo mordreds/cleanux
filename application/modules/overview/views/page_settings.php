@@ -256,11 +256,11 @@
 
         let service_id = $(this).val();
 
-        if(service_id == 1) {
+        /*if(service_id == 1) {
           $('#washing_requiredFields').show(300);
           $('#other_requiredFields').hide();
         }
-        else if(service_id != "") {
+        else*/ if(service_id != "") {
           $('#washing_requiredFields').hide();
           $('#other_requiredFields').show(300);
         }
@@ -431,6 +431,7 @@
       let price = $('[name="garment_price"]').val();
       let pricelist_id = $('[name="garment_price"]').data('pricelist_id');
       let item_quantity = $('[name="total_no_garments"]').val();
+      let garment_description = $('[name="garment_description"]').val();
       /******** Error Checking **********/
       if(service_id == "") {
         $.jGrowl('Service Type Required', {
@@ -462,7 +463,8 @@
           'garment_name' : garment_name,
           'price' : price,
           'pricelist_id': pricelist_id,
-          'item_quantity' : item_quantity
+          'item_quantity' : item_quantity,
+          'garment_description' : garment_description
         };
 
         $.ajax({
@@ -516,9 +518,10 @@
       },
       columns: [
         {data: "fullname",render: function(data,type,row,meta) { 
-          return '<div class="media" style="display:inline-flex"><a href="#" onclick="return false;" class="media-left"><img src="<?=base_url()?>/resources/images/users/default.png" width="40" height="40" class="img-circle img-md" alt=""></a><div class="media-middle"><a href="#" onclick="return false;" class="text-semibold">'+row.fullname+'</a></div></div>'; 
+          return '<a href="#" onclick="return false;" class="text-semibold">'+row.fullname+'</a>'; 
         }},
         {data: "phone_number_1"},
+        {data: "phone_number_2"},
         {data: "id", render: function(data,type,row,meta) { 
             button = '<a class="customer_new_order" data-client_tel="'+row.phone_number_1+'" data-popup="tooltip" data-original-title="Create Order"><i class="icon-basket text-success" style="font-size:18px"></i> Make New Order</a>';
 

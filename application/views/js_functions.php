@@ -30,37 +30,41 @@
         var theme = "alert-styled-left bg-warning"
       
       $.jGrowl(message, {
-        theme: theme
+        theme: theme,
       });
     }
 
     <?php if(!empty($_SESSION['success'])) : ?>
       $.jGrowl('<?= $this->session->flashdata("success") ?>', {
-        theme: 'alert-styled-left bg-success'
+        theme: 'alert-styled-left bg-success',
       });
     <?php endif; ?>
 
     <?php if(!empty($_SESSION['error'])) : ?>
       $.jGrowl('<?= $this->session->flashdata("error") ?>', {
-        theme: 'alert-styled-left bg-danger'
+        theme: 'alert-styled-left bg-danger',
+        sticky: true,
       });
     <?php endif; ?>
 
     <?php if(!empty($_SESSION['validation_error'])) : ?>
       $.jGrowl('<?= $this->session->flashdata("validation_error") ?>', {
-        theme: 'alert-styled-left bg-danger'
+        theme: 'alert-styled-left bg-danger',
+        sticky: true,
       });
     <?php endif; ?>
 
     <?php if(!empty($_SESSION['warning'])) : ?>
       $.jGrowl('<?= $this->session->flashdata("warning") ?>', {
-        theme: 'alert-styled-left bg-warning'
+        theme: 'alert-styled-left bg-warning',
+        sticky: true,
       });
     <?php endif; ?>
 
     <?php if(!empty($_SESSION['info'])) : ?>
       $.jGrowl('<?= $this->session->flashdata("info") ?>', {
-        theme: 'alert-styled-left bg-info'
+        theme: 'alert-styled-left bg-info',
+        sticky: true,
       });
     <?php endif; ?>
   /************ Notifications ***************/

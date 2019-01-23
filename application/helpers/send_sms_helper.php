@@ -1,9 +1,8 @@
 <?php
 
-  function sendSMS($to = "",$message = "",$sms_sender="",$sms_gateway = "hubtel") {
-
-    $sender = (empty($sms_sender)) ? SMS_SENDER : $sms_sender;
-    
+  function sendSMS($to = "",$message = "",$sms_sender="",$sms_gateway = "hubtel",$sms_remaining = 0) {
+    if(!empty($sms_remaining)) {
+      $sender = (empty($sms_sender)) ? SMS_SENDER : $sms_sender;
       switch ($sms_gateway) {
         case 'hubtel':
             if(!empty(HUBTEL_SMS_GATEWAY_API) && !empty(SMS_SENDER) && !empty($to) && !empty($message)) {
@@ -58,6 +57,10 @@
           # code...
           break;
       }
+    }
+    else {
+      $return_data = ['error' => "SMS Bundle Exausted. Contact Admin"];
+    }
     
     return $return_data;
   }

@@ -101,6 +101,9 @@ define('VIEW_COMPANY_TABLE', 'vw_company_info');
 define('EDIT_USER_TABLE', 'access_users');
 define('VIEW_USER_TABLE', 'vw_user_details');
 
+define('TEMP_USER',"CTS/TEMP/");
+define('EMP_CODE',"CTS/EMP/");
+
 /*
 |--------------------------------------------------------------------------
 | SMS GATEWAY SETTINGS
@@ -109,7 +112,8 @@ define('VIEW_USER_TABLE', 'vw_user_details');
 | Thes Contains User Defined Constants 
 |
 */
-  define('SMS_SENDER', "BGS Laundry");
+  # SMS Sender name must not be more than 13 Characters
+  define('SMS_SENDER', "CTS Laundry");
   # MNOTIFY SETTINGS
   define('MNOTIFY_SMS_GATEWAY_API', "https://apps.mnotify.net/smsapi?");
   define('MNOTIFY_SMS_API_KEY', "058289f6054524bbd6fa");

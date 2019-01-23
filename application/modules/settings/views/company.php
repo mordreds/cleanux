@@ -86,7 +86,7 @@
                         </div>
                         <div class="col-md-4">
                           <div class="form-group">
-                            <label class="display-block">Tin Number</label>
+                            <label class="display-block">TIN</label>
                             <input type="text" name="tin_number" class="form-control" value="<?=@strtoupper($company_info[0]->tin_number)?>" style="font-weight: 800;">
                           </div>
                         </div>

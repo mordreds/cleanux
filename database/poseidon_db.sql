@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2018 at 11:49 AM
+-- Generation Time: Dec 27, 2018 at 04:43 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bgee_db`
+-- Database: `poseidon_db`
 --
 
 -- --------------------------------------------------------
@@ -65,103 +65,8 @@ CREATE TABLE `access_login_successful` (
 --
 
 INSERT INTO `access_login_successful` (`id`, `user_id`, `time_in`, `time_out`, `online`, `user_agent`, `ipaddress`, `hostname`, `city_region`, `country`) VALUES
-(1, 1, '2018-08-04 00:05:40', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36', '::1', 'London', NULL, NULL),
-(2, 1, '2018-08-04 00:22:20', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36', '::1', 'London', NULL, NULL),
-(3, 1, '2018-08-04 00:30:49', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36', '::1', 'London', NULL, NULL),
-(4, 1, '2018-08-04 00:36:42', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36', '::1', 'London', NULL, NULL),
-(5, 1, '2018-08-04 00:36:56', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(6, 1, '2018-08-08 09:11:47', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(7, 1, '2018-08-08 09:16:58', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(8, 1, '2018-08-08 13:58:12', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(9, 1, '2018-08-08 17:08:11', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(10, 1, '2018-08-08 17:10:23', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '192.168.3.40', 'London', ',', NULL),
-(11, 1, '2018-08-08 17:11:48', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.183 Safari/537.36 Vivaldi/1.96.1147.64', '192.168.3.11', 'LAPTOP-PP1FHF0I', ',', NULL),
-(12, 1, '2018-08-08 18:45:49', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '192.168.3.11', 'LAPTOP-PP1FHF0I', ',', NULL),
-(13, 1, '2018-08-08 19:25:28', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '192.168.3.40', 'London', ',', NULL),
-(14, 1, '2018-08-08 19:33:20', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '192.168.3.40', 'London', ',', NULL),
-(15, 1, '2018-08-08 23:27:40', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(16, 1, '2018-08-09 09:42:45', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '192.168.3.40', 'London', ',', NULL),
-(17, 1, '2018-08-09 10:14:12', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
-(18, 1, '2018-08-09 10:20:36', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
-(19, 1, '2018-08-09 10:34:13', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.183 Safari/537.36 Vivaldi/1.96.1147.52', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
-(20, 1, '2018-08-10 05:55:21', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.183 Safari/537.36 Vivaldi/1.96.1147.52', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
-(21, 1, '2018-08-10 07:31:15', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
-(22, 1, '2018-08-10 13:59:48', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
-(23, 1, '2018-08-10 16:09:29', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/66.0.3359.122 Mobile/15G77 Safari/604.1', '154.160.4.162', '154.160.4.162', 'Accra,Greater Accra Region', 'Ghana'),
-(24, 1, '2018-08-10 21:48:53', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/66.0.3359.122 Mobile/15G77 Safari/604.1', '154.160.4.162', '154.160.4.162', 'Accra,Greater Accra Region', 'Ghana'),
-(25, 1, '2018-08-11 07:45:49', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Linux; Android 4.4.2; T1-701u Build/HuaweiMediaPad) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.109 Safari/537.36', '41.66.199.84', '41.66.199.84', 'Accra,Greater Accra Region', 'Ghana'),
-(26, 1, '2018-08-12 22:31:27', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/66.0.3359.122 Mobile/15G77 Safari/604.1', '197.190.168.70', '197.190.168.70', 'Kumasi,Ashanti Region', 'Ghana'),
-(27, 1, '2018-08-12 22:57:37', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Linux; Android 7.0; TECNO K7 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36', '197.191.127.252', '197.191.127.252', 'Accra (Osu Klottey),Greater Accra', 'Ghana'),
-(28, 1, '2018-08-13 09:48:10', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
-(29, 1, '2018-08-13 17:32:42', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
-(30, 1, '2018-08-13 19:56:10', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/66.0.3359.122 Mobile/15G77 Safari/604.1', '154.160.6.119', '154.160.6.119', 'Accra,Greater Accra Region', 'Ghana'),
-(31, 1, '2018-08-14 05:38:14', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '41.215.171.151', '41.215.171.151', 'Accra,Greater Accra Region', 'Ghana'),
-(32, 1, '2018-08-14 05:55:56', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/66.0.3359.122 Mobile/15G77 Safari/604.1', '154.160.3.89', '154.160.3.89', 'Gawso,', 'Ghana'),
-(33, 1, '2018-08-14 08:06:56', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
-(34, 1, '2018-08-14 10:17:13', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0', '104.129.18.62', 'unassigned.quadranet.com', 'Atlanta,Georgia', 'United States'),
-(35, 1, '2018-08-14 13:52:50', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
-(36, 1, '2018-08-15 11:45:22', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
-(37, 2, '2018-08-15 11:57:35', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
-(38, 1, '2018-08-16 19:39:09', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '41.215.163.6', '41.215.163.6', 'Accra,Greater Accra Region', 'Ghana'),
-(39, 1, '2018-08-16 20:44:56', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/66.0.3359.122 Mobile/15G77 Safari/604.1', '154.160.1.182', '154.160.1.182', 'Accra,Greater Accra Region', 'Ghana'),
-(40, 1, '2018-08-16 20:45:09', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) CriOS/66.0.3359.122 Mobile/15G77 Safari/604.1', '154.160.1.182', '154.160.1.182', 'Accra,Greater Accra Region', 'Ghana'),
-(41, 1, '2018-08-17 00:32:17', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '41.215.163.6', '41.215.163.6', 'Accra,Greater Accra Region', 'Ghana'),
-(42, 1, '2018-08-17 11:25:07', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
-(43, 1, '2018-08-17 12:19:46', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
-(44, 1, '2018-08-17 12:27:37', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.2 Safari/605.1.15', '41.191.96.26', '41.191.96.26', 'Accra,Greater Accra Region', 'Ghana'),
-(45, 1, '2018-08-17 12:32:34', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '197.159.128.74', '197.159.128.74', 'Accra,Greater Accra Region', 'Ghana'),
-(46, 1, '2018-08-17 13:54:22', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(47, 1, '2018-08-17 15:02:24', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(48, 1, '2018-08-17 18:40:26', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(49, 1, '2018-08-19 23:40:19', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(50, 1, '2018-08-20 09:17:12', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(51, 1, '2018-08-20 14:08:34', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(52, 1, '2018-08-21 14:16:05', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(53, 1, '2018-08-21 16:48:50', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(54, 1, '2018-08-21 22:53:51', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(55, 1, '2018-08-22 05:57:14', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(56, 1, '2018-08-22 12:52:33', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(57, 1, '2018-08-22 15:51:33', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(58, 1, '2018-08-22 21:44:19', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(59, 1, '2018-08-22 21:59:46', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '192.168.1.100', 'London', ',', NULL),
-(60, 1, '2018-08-22 22:02:59', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36', '192.168.1.101', 'MORDREDS-INSPIR', ',', NULL),
-(61, 1, '2018-08-23 00:19:25', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '192.168.1.100', 'London', ',', NULL),
-(62, 1, '2018-08-23 10:18:02', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '192.168.3.40', 'London', ',', NULL),
-(63, 1, '2018-08-23 14:42:42', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '192.168.3.40', 'London', ',', NULL),
-(64, 1, '2018-08-24 09:23:26', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '192.168.3.40', 'London', ',', NULL),
-(65, 1, '2018-08-24 11:32:59', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '192.168.3.44', 'JULIETE', ',', NULL),
-(66, 1, '2018-08-24 14:16:38', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '192.168.3.40', 'London', ',', NULL),
-(67, 1, '2018-08-25 22:05:40', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '::1', 'London', NULL, NULL),
-(68, 1, '2018-08-27 14:44:43', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(69, 1, '2018-08-27 20:07:08', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(70, 1, '2018-08-27 22:57:16', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(71, 1, '2018-08-28 06:00:39', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(72, 1, '2018-08-28 14:45:41', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(73, 1, '2018-08-29 13:39:48', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0', '::1', 'London', NULL, NULL),
-(74, 1, '2018-08-29 15:30:33', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:63.0) Gecko/20100101 Firefox/63.0', '::1', 'London', NULL, NULL),
-(75, 1, '2018-08-29 19:36:37', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:63.0) Gecko/20100101 Firefox/63.0', '::1', 'London', NULL, NULL),
-(76, 1, '2018-08-31 13:01:29', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:63.0) Gecko/20100101 Firefox/63.0', '::1', 'London', NULL, NULL),
-(77, 1, '2018-09-01 21:27:21', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:63.0) Gecko/20100101 Firefox/63.0', '::1', 'London', NULL, NULL),
-(78, 1, '2018-09-01 21:59:52', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:63.0) Gecko/20100101 Firefox/63.0', '::1', 'London', NULL, NULL),
-(79, 1, '2018-09-02 07:46:05', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:63.0) Gecko/20100101 Firefox/63.0', '::1', 'London', NULL, NULL),
-(80, 1, '2018-09-02 17:28:15', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:63.0) Gecko/20100101 Firefox/63.0', '::1', 'London', NULL, NULL),
-(81, 1, '2018-09-02 23:24:30', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:63.0) Gecko/20100101 Firefox/63.0', '::1', 'London', NULL, NULL),
-(82, 1, '2018-09-03 14:43:09', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '::1', 'London', NULL, NULL),
-(83, 1, '2018-09-04 02:57:04', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '::1', 'London', NULL, NULL),
-(84, 1, '2018-09-04 10:43:44', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '::1', 'London', NULL, NULL),
-(85, 1, '2018-09-05 10:05:08', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '::1', 'London', NULL, NULL),
-(86, 1, '2018-09-05 15:19:11', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', '::1', 'London', NULL, NULL),
-(87, 1, '2018-10-28 23:16:42', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
-(88, 1, '2018-10-29 04:01:50', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
-(89, 1, '2018-10-29 12:35:35', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
-(90, 1, '2018-11-02 13:06:17', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
-(91, 1, '2018-11-02 16:23:20', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
-(92, 1, '2018-11-08 15:20:02', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
-(93, 1, '2018-11-08 23:11:29', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
-(94, 1, '2018-11-08 23:14:37', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
-(95, 1, '2018-11-14 23:16:32', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
-(96, 1, '2018-11-15 09:45:15', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL),
-(97, 1, '2018-11-15 10:01:23', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36', '::1', 'DESKTOP-L7TSSCJ', NULL, NULL);
+(1, 1, '2018-12-27 15:28:33', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', '::1', 'Daemon', NULL, NULL),
+(2, 1, '2018-12-27 15:36:32', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', '::1', 'Daemon', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -224,8 +129,7 @@ CREATE TABLE `access_roles_privileges_user` (
 --
 
 INSERT INTO `access_roles_privileges_user` (`id`, `user_id`, `custom_roles`, `custom_privileges`, `group_id`, `status`) VALUES
-(1, 1, '', '', 1, 'active'),
-(2, 2, '', '', 2, 'active');
+(1, 1, '', '', 1, 'active');
 
 -- --------------------------------------------------------
 
@@ -272,10 +176,7 @@ CREATE TABLE `access_users` (
 --
 
 INSERT INTO `access_users` (`id`, `username`, `passwd`, `default_passwd`, `fullname`, `phone_number`, `temp_employee_id`, `biodata_id`, `demo_user_id`, `first_login`, `login_attempt`, `online`, `status`, `created_by`, `date_created`) VALUES
-(1, 'eahlijah@gmail.com', '$2y$10$O/swrfsJ6TbhtHiyzR7GmurgN4u49VcaMFzrOtZ9.3N511hoPhOVi', '', 'Edem Ahlijah', '023456789', 'KAD/SYS/001', 0, 0, 0, 5, 0, 'active', 0, '2018-07-03 15:59:37'),
-(2, 'quuqubismark@yahoo.com', '', '$2y$10$k2DkumN0H4sXIKwK.C6Pr.VcBpYEmebFbxR1z/EW02SLRGG.K/ph2', 'BIAMARK  K', '', '', 3, 0, 0, 5, 0, 'active', 0, '2018-08-15 11:56:28'),
-(3, 'wikills22@gmail.com', '$2y$10$BSmfg/t6.N12rVVdJmvk4ey62u98hwHcQ/zFZfkdi2rMMgIWKK/Be', '', 'Bismark Nana', 'bv', '', 0, 1, 0, 5, 0, 'active', 0, '2018-08-15 14:57:11'),
-(4, 'bismarkoffei22@gmail.com', '$2y$10$FUkj8vCJlyE0vXlOQIk3kuYrFEqlxVI0FAFbXo7ugtvEfB5bSXbPK', '', 'Bismark Nana', 'bv', '', 0, 2, 0, 5, 0, 'active', 0, '2018-08-15 14:59:00');
+(1, 'marksbonapps@gmail.com', '$2y$10$O/swrfsJ6TbhtHiyzR7GmurgN4u49VcaMFzrOtZ9.3N511hoPhOVi', '', 'Edem Ahlijah', '023456789', 'KAD/SYS/001', 0, 0, 0, 5, 0, 'active', 0, '2018-07-03 15:59:37');
 
 -- --------------------------------------------------------
 
@@ -311,21 +212,6 @@ CREATE TABLE `demo_requests` (
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `demo_requests`
---
-
-INSERT INTO `demo_requests` (`id`, `first_name`, `last_name`, `email`, `contact`, `company_name`, `company_location`, `expectations`, `date_scheduled`, `feedback`, `date_created`) VALUES
-(1, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Test', NULL, NULL, '2018-08-17 14:34:25'),
-(2, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Test', NULL, NULL, '2018-08-17 14:35:49'),
-(3, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Test', NULL, NULL, '2018-08-17 14:37:18'),
-(4, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Test', NULL, NULL, '2018-08-17 14:39:31'),
-(5, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Test', NULL, NULL, '2018-08-17 14:48:14'),
-(6, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Test', NULL, NULL, '2018-08-17 14:53:41'),
-(7, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Test', NULL, NULL, '2018-08-17 14:54:05'),
-(8, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Test', NULL, NULL, '2018-08-17 14:56:05'),
-(9, 'Osborne', 'Mordreds', 'osborne.mordred@gmail.com', '0541786220', 'Marksbon Limited', 'Taifa', 'Some Told Me About This Laundry System. So I Want To Give It A Try.', NULL, NULL, '2018-08-17 14:59:12');
-
 -- --------------------------------------------------------
 
 --
@@ -344,14 +230,6 @@ CREATE TABLE `demo_request_userinfo` (
   `date_scheduled` datetime DEFAULT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `demo_request_userinfo`
---
-
-INSERT INTO `demo_request_userinfo` (`id`, `first_name`, `last_name`, `email`, `contact`, `company_name`, `company_location`, `remarks`, `date_scheduled`, `date_created`) VALUES
-(1, 'Bismark', 'Nana', 'wikills22@gmail.com', 'bv', 'OARB-Bank', 'Tiafa', '', NULL, '2018-08-15 10:57:11'),
-(2, 'Bismark', 'Nana', 'bismarkoffei22@gmail.com', 'bv', 'OARB-Bank', 'Tiafa', '', NULL, '2018-08-15 10:59:00');
 
 -- --------------------------------------------------------
 
@@ -410,7 +288,7 @@ CREATE TABLE `hr_company_info` (
 --
 
 INSERT INTO `hr_company_info` (`id`, `name`, `telephone_1`, `telephone_2`, `fax`, `email`, `postal_address`, `residence_address`, `website`, `mission`, `vision`, `gps_location`, `tin_number`, `logo_id`, `date_of_commence`) VALUES
-(1, 'BG\'S LAUNDRY', '0244000999', '0233888999', NULL, 'info@gblaundry.com', 'POSTAL ADDRES', 'OFANKOR', 'www.gbslaundry.com', 'MISSION STATEMENT', 'VISION STATEMAN', '', 'TN-12345678', 0, '0000-00-00');
+(1, 'CTS LAUNDRY', '0244000999', '0233888999', NULL, 'info@gblaundry.com', 'POSTAL ADDRES', 'OFANKOR', 'www.ctslaundry.com', 'MISSION STATEMENT', 'VISION STATEMAN', '', 'TN-12345678', 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -468,14 +346,6 @@ CREATE TABLE `hr_employee_biodata` (
   `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
---
--- Dumping data for table `hr_employee_biodata`
---
-
-INSERT INTO `hr_employee_biodata` (`id`, `first_name`, `middle_name`, `last_name`, `gender`, `date_of_birth`, `id_type`, `id_number`, `id_expiry_date`, `id_issue_date`, `id_card_photo_id`, `marital_status`, `nationality`, `postal_address`, `social_security`, `bank_name`, `bank_branch`, `account_number`, `user_id`, `photo_id`, `status`, `created_date`) VALUES
-(1, 'Bismark', 'Kwame', 'Offei', 'Male', NULL, NULL, NULL, NULL, NULL, 0, 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '2018-08-04 02:09:47'),
-(3, 'BIAMARK', '', 'K', 'Male', NULL, NULL, NULL, NULL, NULL, 0, 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '2018-08-15 07:55:33');
-
 -- --------------------------------------------------------
 
 --
@@ -498,14 +368,6 @@ CREATE TABLE `hr_employee_contact_info` (
   `emergency_postal_addr` varchar(50) CHARACTER SET utf8 NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `hr_employee_contact_info`
---
-
-INSERT INTO `hr_employee_contact_info` (`id`, `biodata_id`, `phone_number_1`, `phone_number_2`, `email`, `residence`, `emergency_fullname`, `emergency_relationship`, `emergency_occupation`, `emergency_phone_1`, `emergency_phone_2`, `emergency_residence`, `emergency_postal_addr`, `date_created`) VALUES
-(1, 1, '0233897468', '0240636911', 'Wikills22@gmail.com', 'Taifa', 'Osborne Mordreds', 'Guardian', '', '0541786220', NULL, 'Abelemkpe', '', '2018-08-04 02:09:47'),
-(2, 3, '0245626487', '', 'quuqubismark@yahoo.com', 'Ashoman-Estate', '0245626487', 'Father', '', '0245626487', NULL, '0245626487', '', '2018-08-15 11:55:33');
 
 -- --------------------------------------------------------
 
@@ -539,14 +401,6 @@ CREATE TABLE `hr_employee_work_info` (
   `date_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
---
--- Dumping data for table `hr_employee_work_info`
---
-
-INSERT INTO `hr_employee_work_info` (`id`, `biodata_id`, `employee_id`, `position_id`, `department_id`, `employment_type`, `employment_startdate`, `work_email`, `resume_id`, `application_id`, `date_created`) VALUES
-(1, 1, 'BG/EMP/001', 6, 1, '', NULL, NULL, NULL, 0, '2018-08-04 02:09:47'),
-(2, 3, 'BG/EMP/002', 6, 2, '', NULL, NULL, NULL, 0, '2018-08-15 11:55:33');
-
 -- --------------------------------------------------------
 
 --
@@ -569,12 +423,7 @@ CREATE TABLE `hr_position` (
 --
 
 INSERT INTO `hr_position` (`id`, `name`, `parent_position`, `department_id`, `description`, `salary`, `status`, `created_date`) VALUES
-(1, 'SYSTEM', 0, 1, 'Developers Of the System', 0, 'active', '2018-05-08 11:04:04'),
-(2, 'OPERATIONS MANAGER', 4, 2, 'Manage All Employees And Process Flow', 2000, 'active', '2018-08-04 01:07:23'),
-(3, 'ACCOUNTANT', 4, 4, 'Controls All Financial Matters', 2500, 'active', '2018-08-04 01:08:51'),
-(4, 'CEO', NULL, 2, 'Ceo', 1, 'active', '2018-08-04 01:09:19'),
-(5, 'RECEPTIONIST', 2, 3, 'Recieves Client On First Counter', 700, 'active', '2018-08-04 01:32:48'),
-(6, 'ADMIN', 2, 2, 'Super User Of The System And It Maintenance', 1500, 'active', '2018-08-04 01:36:57');
+(1, 'SYSTEM', 0, 1, 'Developers Of the System', 0, 'active', '2018-05-08 11:04:04');
 
 -- --------------------------------------------------------
 
@@ -700,14 +549,6 @@ CREATE TABLE `laundry_orders` (
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `laundry_orders`
---
-
-INSERT INTO `laundry_orders` (`id`, `order_number`, `service_charge`, `delivery_cost`, `total_cost`, `amount_paid`, `change_paid`, `balance`, `tax_id`, `client_id`, `processor_user_id`, `delivery_method_id`, `delivery_location`, `due_date`, `modified_by`, `modified_date`, `processing_stages`, `delivered_by`, `delivery_date`, `status`, `reason_for_cancel`, `date_created`) VALUES
-(1, '46324911', 20, 5, 25, 30, 5, 0, 4, 11, 1, 4, 'abelemkpe', '2018-09-06', 1, '2018-11-15 10:44:07', 'Pending', '', '0000-00-00', 'Cancelled', 'Overdue Due Date Crossed company policy', '2018-09-05 16:52:26'),
-(2, '22478967', 10, 0, 10, 10, 0, 0, 4, 11, 1, 6, 'pickup', '2018-11-16', 0, NULL, 'Pending', '', '0000-00-00', 'Pending', '', '2018-11-15 10:38:56');
-
 -- --------------------------------------------------------
 
 --
@@ -757,14 +598,6 @@ CREATE TABLE `laundry_order_details` (
   `status_change_userids` varchar(255) NOT NULL,
   `status_change_dates` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `laundry_order_details`
---
-
-INSERT INTO `laundry_order_details` (`id`, `order_id`, `pricelist_ids`, `quantities`, `unit_prices`, `total_sums`, `description`, `service_status`, `status_change_userids`, `status_change_dates`) VALUES
-(1, 1, '3', '4', '5', '20', '', '', '', ''),
-(2, 2, '3', '2', '5', '10', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -900,14 +733,6 @@ CREATE TABLE `settings_sms` (
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `settings_sms`
---
-
-INSERT INTO `settings_sms` (`id`, `sms_bought`, `amount`, `sms_by_system`, `sms_by_comments`, `record_by`, `date_created`) VALUES
-(1, 500, 50, 20, 3, 1, '2018-11-03 11:13:23'),
-(2, 50, 5, 3, 0, 2, '2018-11-03 11:14:34');
-
 -- --------------------------------------------------------
 
 --
@@ -917,6 +742,8 @@ INSERT INTO `settings_sms` (`id`, `sms_bought`, `amount`, `sms_by_system`, `sms_
 CREATE TABLE `settings_tax_system` (
   `id` int(11) NOT NULL,
   `value` float NOT NULL,
+  `getfund` float NOT NULL,
+  `nhil` float NOT NULL,
   `user_id` bigint(20) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -925,11 +752,11 @@ CREATE TABLE `settings_tax_system` (
 -- Dumping data for table `settings_tax_system`
 --
 
-INSERT INTO `settings_tax_system` (`id`, `value`, `user_id`, `date_created`) VALUES
-(1, 2, 1, '2018-08-08 09:38:33'),
-(2, 2.87, 1, '2018-08-08 09:42:18'),
-(3, 0.25, 1, '2018-08-09 09:38:47'),
-(4, 17.5, 1, '2018-08-28 22:06:14');
+INSERT INTO `settings_tax_system` (`id`, `value`, `getfund`, `nhil`, `user_id`, `date_created`) VALUES
+(1, 2, 0, 0, 1, '2018-08-08 09:38:33'),
+(2, 2.87, 0, 0, 1, '2018-08-08 09:42:18'),
+(3, 0.25, 0, 0, 1, '2018-08-09 09:38:47'),
+(4, 17.5, 0, 0, 1, '2018-08-28 22:06:14');
 
 -- --------------------------------------------------------
 
@@ -1524,7 +1351,7 @@ ALTER TABLE `access_login_failed`
 -- AUTO_INCREMENT for table `access_login_successful`
 --
 ALTER TABLE `access_login_successful`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=98;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT COMMENT 'auto generated id', AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `access_password_reset_requests`
@@ -1566,13 +1393,13 @@ ALTER TABLE `blobs`
 -- AUTO_INCREMENT for table `demo_requests`
 --
 ALTER TABLE `demo_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `demo_request_userinfo`
 --
 ALTER TABLE `demo_request_userinfo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hr_branches`
@@ -1596,13 +1423,13 @@ ALTER TABLE `hr_departments`
 -- AUTO_INCREMENT for table `hr_employee_biodata`
 --
 ALTER TABLE `hr_employee_biodata`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hr_employee_contact_info`
 --
 ALTER TABLE `hr_employee_contact_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hr_employee_other_info`
@@ -1614,7 +1441,7 @@ ALTER TABLE `hr_employee_other_info`
 -- AUTO_INCREMENT for table `hr_employee_work_info`
 --
 ALTER TABLE `hr_employee_work_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hr_position`
@@ -1644,7 +1471,7 @@ ALTER TABLE `laundry_garments`
 -- AUTO_INCREMENT for table `laundry_orders`
 --
 ALTER TABLE `laundry_orders`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `laundry_order_balances`
@@ -1662,7 +1489,7 @@ ALTER TABLE `laundry_order_comments`
 -- AUTO_INCREMENT for table `laundry_order_details`
 --
 ALTER TABLE `laundry_order_details`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `laundry_prices`
@@ -1692,7 +1519,7 @@ ALTER TABLE `settings_dashboard_tabs`
 -- AUTO_INCREMENT for table `settings_sms`
 --
 ALTER TABLE `settings_sms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `settings_tax_system`

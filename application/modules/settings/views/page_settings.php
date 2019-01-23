@@ -48,9 +48,9 @@
             }},
             {data: "description"},
             {data: "id", render: function(data,type,row,meta) { 
-              if(row.name == "Washing Only")
+              /*if(row.name == "Washing Only")
                 button = "";
-              else
+              else*/
               button = '<ul class="action_btns"><li><a class="" data-popup="tooltip" title="Delete"><i class="icon-trash text-danger delete_button" style="font-size: 20px" data-deletename="'+row.name+'" data-deleteid="'+row.id+'" data-formurl="'+service_formurl+'" data-tableid="laundry_services"></i></a></li></ul>';
               return button; 
               }
@@ -93,8 +93,8 @@
       /********** Laundry Garments  ************/
         var garment_formurl = "<?=base_url()?>settings/save_garment";
         $('#laundry_garments').dataTable({
-          searching : false,
-          paging: false,
+          searching : true,
+          paging: true,
           ajax: {
             type : 'GET',
             url : '<?= base_url()?>settings/retrieve_alldata/garments/default',

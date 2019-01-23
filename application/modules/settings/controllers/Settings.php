@@ -691,7 +691,9 @@ class Settings extends MX_Controller
     /****** Save Weight ************/
       public function save_tax() {
         if(in_array('Settings', $_SESSION['user']['roles'])) {
-          $this->form_validation->set_rules('tax_value','ID','trim|required');
+          $this->form_validation->set_rules('tax_value','VAT','trim|required');
+          $this->form_validation->set_rules('nhil_value','NHIL','trim|required');
+          $this->form_validation->set_rules('getfund_value','GETFund','trim|required');
 
           if($this->form_validation->run() === FALSE) {
             $error_msg = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
@@ -705,6 +707,8 @@ class Settings extends MX_Controller
             $tablename = "settings_tax_system";
             $data = [
               'value' => (float)$this->input->post('tax_value'),
+              'getfund' => (float)$this->input->post('getfund_value'),
+              'nhil' => (float)$this->input->post('nhil_value'),
               'user_id' => $_SESSION['user']['id'] 
             ];
             $return_dataType="php_object";
@@ -713,6 +717,8 @@ class Settings extends MX_Controller
             $query_result = $this->model_insertion->datainsert($dbres,$tablename,$data);
             if($query_result) {
               $_SESSION['tax_value'] = (float)$this->input->post('tax_value');
+              $_SESSION['nhil'] = (float)$this->input->post('nhil_value');
+              $_SESSION['getfund'] = (float)$this->input->post('getfund_value');
               $this->session->set_flashdata('success',"Save Successful");
             }
             else
@@ -1271,19 +1277,19 @@ class Settings extends MX_Controller
       $last_employee_id  = $this->custom_retrievals->last_temp_employee_id($dbres,$return_dataType);
       
       if(empty($last_employee_id[0]->temp_employee_id)) 
-        $next_usr_id = "KAD/TEMP/001"; 
+        $next_usr_id = TEMP_USER."001"; 
       else {
         $last_emp_id = explode("/", $last_employee_id[0]->temp_employee_id);
         $last_emp_id = (int)$last_emp_id[2];
 
         if(strlen($last_emp_id) == 1)
-        $next_usr_id = "KAD/TEMP/00".($last_emp_id + 1);
+        $next_usr_id = TEMP_USER."00".($last_emp_id + 1);
 
         elseif(strlen($last_emp_id) == 2)
-          $next_usr_id = "KAD/TEMP/0".($last_emp_id + 1);
+          $next_usr_id = TEMP_USER."0".($last_emp_id + 1);
 
         elseif(strlen($last_emp_id) == 3)
-          $next_usr_id = "KAD/TEMP/".($last_emp_id + 1);
+          $next_usr_id = TEMP_USER.($last_emp_id + 1);
       }
 
       return $next_usr_id;  

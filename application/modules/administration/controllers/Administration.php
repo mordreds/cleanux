@@ -660,19 +660,19 @@ class Administration extends MX_Controller
       $last_employee_id  = $this->custom_retrievals->last_temp_employee_id($dbres,$return_dataType);
       
       if(empty($last_employee_id[0]->temp_employee_id)) 
-        $next_usr_id = "BG/TEMP/001"; 
+        $next_usr_id = TEMP_USER."001"; 
       else {
         $last_emp_id = explode("/", $last_employee_id[0]->temp_employee_id);
         $last_emp_id = (int)$last_emp_id[2];
 
         if(strlen($last_emp_id) == 1)
-        $next_usr_id = "BG/TEMP/00".($last_emp_id + 1);
+        $next_usr_id = TEMP_USER."00".($last_emp_id + 1);
 
         elseif(strlen($last_emp_id) == 2)
-          $next_usr_id = "BG/TEMP/0".($last_emp_id + 1);
+          $next_usr_id = TEMP_USER."0".($last_emp_id + 1);
 
         elseif(strlen($last_emp_id) == 3)
-          $next_usr_id = "BG/TEMP/".($last_emp_id + 1);
+          $next_usr_id = TEMP_USER.($last_emp_id + 1);
       }
 
       return $next_usr_id;  
@@ -693,19 +693,19 @@ class Administration extends MX_Controller
       $last_employee_id  = $this->custom_retrievals->last_employee_id($dbres,$return_dataType);
       
       if(empty($last_employee_id[0]->employee_id)) 
-        $next_usr_id = "BG/EMP/001"; 
+        $next_usr_id = EMP_CODE."001"; 
       else {
         $last_emp_id = explode("/", $last_employee_id[0]->employee_id);
         $last_emp_id = (int)$last_emp_id[2];
 
         if(strlen($last_emp_id) == 1)
-        $next_usr_id = "BG/EMP/00".($last_emp_id + 1);
+        $next_usr_id = EMP_CODE."00".($last_emp_id + 1);
 
         elseif(strlen($last_emp_id) == 2)
-          $next_usr_id = "BG/EMP/0".($last_emp_id + 1);
+          $next_usr_id = EMP_CODE."0".($last_emp_id + 1);
 
         elseif(strlen($last_emp_id) == 3)
-          $next_usr_id = "BG/EMP/".($last_emp_id + 1);
+          $next_usr_id = EMP_CODE.($last_emp_id + 1);
       }
 
       return $next_usr_id;  

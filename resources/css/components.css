@@ -20376,17 +20376,17 @@ thead .htCollapseButton:after {
 }
 
 .login-container .page-container .login-form {
-				/*width: 350px*/
+				width: 350px
 }
 
 .login-container .page-container .login-form,
 .login-container .page-container .login-form .thumb,
 .login-container .page-container .registration-form {
 				margin: 0 auto 20px;
-				float: left;
+				/*float: left;*/
 				border-bottom-left-radius: 0px;
 				border-top-left-radius: 0px;
-			  min-height: 563px;
+			  /*min-height: 563px;*/
 }
 
 .login-container .page-container .app-info {

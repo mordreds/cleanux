@@ -230,9 +230,11 @@ class Overview extends MX_Controller
             $this->form_validation->set_rules('price','Price','trim|required');
             $this->form_validation->set_rules('pricelist_id','Price','trim|required');
             $this->form_validation->set_rules('item_quantity','Item Total Quantity','trim|required');
+            $this->form_validation->set_rules('garment_description','Garment Description','trim|required');
 
             if($this->form_validation->run() === FALSE) {
-              $return_data = ['error' => "All Fields Required"];
+              $errors = str_replace(array("\r","\n","<p>","</p>"),array("<br/>","<br/>","",""),validation_errors());
+              $return_data = ['error' => $errors];
               print_r(json_encode($return_data));
             }
             else {
@@ -248,6 +250,7 @@ class Overview extends MX_Controller
                 'price' => $this->input->post('price'),
                 'pricelist_id' => $this->input->post('pricelist_id'),
                 'description' => $this->input->post('description'),
+                'garment_description' => $this->input->post('garment_description'),
                 'quantity' => $this->input->post('item_quantity'),
                 'service_code' => $service_code,
                 'array_index' => $next_array_key,
@@ -307,12 +310,12 @@ class Overview extends MX_Controller
             $tax_value = $this->model_retrieval->select_where_returnRow($dbres,$tablename,$return_dataType,$select,$where_condition);
             //print_r($tax_value); exit;
             if(empty($tax_value->id)) {
-              $this->session->set_flashdata('error', 'Please Setup VAT Percent First');
+              $this->session->set_flashdata('error', 'Please Setup VAT Percentage First');
               redirect($_SERVER['HTTP_REFERER'],'refresh');
             }
 
             # variable declaration
-            $pricelist_ids = $quantities = $unit_prices = $total_sums = $description = array();
+            $pricelist_ids = $quantities = $unit_prices = $total_sums = $description = $garment_description = array();
             $delivery_price = $delivery_price->price;
             $service_cost = $_SESSION['laundry']['new_order']['cart_total_amount'];
             $total_cost = $service_cost + $delivery_price;
@@ -328,6 +331,7 @@ class Overview extends MX_Controller
                 $unit_prices[] = $value['price'];
                 $total_sums[] = $value['total_cost'];
                 $description[] = $value['description'];
+                $garment_description[] = $value['garment_description'];
               }
             }
             /*********** Saving Order Info ***********/
@@ -360,6 +364,7 @@ class Overview extends MX_Controller
               'unit_prices' => implode("|", $unit_prices),
               'total_sums' => implode("|", $total_sums),
               'description' => implode("|", $description),
+              'garment_description' => implode("|", $garment_description)
             ];
             $dbres = self::$_Default_DB;
             $tablename = "laundry_order_details";
@@ -378,8 +383,16 @@ class Overview extends MX_Controller
                 $message = "Dear ".$client_fullname.", Thanks for choosing our services! Your Order reference number is ".$order_table_info['order_number']; /* ." Click link below for more details ".base_url()."overview/order_details"; */
 
                 if(!empty($sms_alert)) {
-                  $sendsms = sendSMS($to,$message);
-
+                  # Retrieving SMS Last Bundle
+                  $tablename = "vw_sms_remaining";
+                  $query_result = $this->model_retrieval->getLastRecord($dbres,$tablename);
+                  if(empty($query_result))
+                    $sms_remaining = 0;
+                  else
+                    $sms_remaining = $query_result->sms_remaining;
+                  # Retrieving SMS Last Bundle
+                  $sms_result = sendSMS($to,$message,$sms_getway="hubtel",$sms_remaining);
+                 
                   if(!empty($sms_result['error'])) 
                     $this->session->set_flashdata('error', $sms_result['error']);
                   else {
@@ -801,6 +814,7 @@ class Overview extends MX_Controller
           $unit_prices = explode('|',$query_result->unit_prices);
           $total_sums = explode('|',$query_result->total_sums);
           $descriptions = explode('|',$query_result->description);
+          $garment_description = explode('|',$query_result->garment_description);
           $status = explode('|',$query_result->service_status);
           $changed_by = explode('|',$query_result->status_change_userids);
           $change_date = explode('|',$query_result->status_change_dates);
@@ -828,6 +842,7 @@ class Overview extends MX_Controller
                 'service_name' => $pricelist_query_result->service_name,
                 'service_code' => $pricelist_query_result->service_code,
                 'description' => $description,
+                'garment_description' => $garment_description,
                 'quantity' => $quantities[$a],
                 'unit_price' => @$unit_prices[$a],
                 'total_sums' => @$total_sums[$a],

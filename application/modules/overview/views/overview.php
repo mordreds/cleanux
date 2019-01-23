@@ -240,6 +240,12 @@
                                 <div class="col-md-12">
                                   <div class="col-md-4">
                                     <div class="form-group">
+                                      <label class="display-block">Description <span class="text-danger">*</span></label>
+                                      <input type="text" name="garment_description" class="form-control">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div class="form-group">
                                       <label class="display-block">Total No. Of Items <span class="text-danger">*</span></label>
                                       <input type="number" name="total_no_garments" class="form-control" min="1">
                                     </div>
@@ -299,6 +305,7 @@
                             <thead>
                               <tr class="bg-teal-400">
                                 <th>Full name</th>
+                                <th>Phone No #</th>
                                 <th>Phone No #</th>
                                 <th class="text-center">Actions</th>
                               </tr>

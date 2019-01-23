@@ -209,7 +209,9 @@
           },
           columns: [
             {data: "service_name"},
-            {data: "description"},
+            {data: "description",render: function(data,type,row,meta) {
+              return row.description+" ("+row.garment_description+")"
+            }},
             {data: "quantity"},
             //status
           ],
