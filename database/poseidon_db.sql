@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2018 at 04:43 PM
+-- Generation Time: Jan 23, 2019 at 05:06 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -65,8 +65,8 @@ CREATE TABLE `access_login_successful` (
 --
 
 INSERT INTO `access_login_successful` (`id`, `user_id`, `time_in`, `time_out`, `online`, `user_agent`, `ipaddress`, `hostname`, `city_region`, `country`) VALUES
-(1, 1, '2018-12-27 15:28:33', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', '::1', 'Daemon', NULL, NULL),
-(2, 1, '2018-12-27 15:36:32', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', '::1', 'Daemon', NULL, NULL);
+(1, 1, '2019-01-22 23:46:05', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', '::1', 'Daemon', NULL, NULL),
+(2, 1, '2019-01-22 23:48:47', '0000-00-00 00:00:00', 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36', '::1', 'Daemon', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -107,7 +107,8 @@ CREATE TABLE `access_roles_privileges_group` (
 
 INSERT INTO `access_roles_privileges_group` (`id`, `name`, `roles`, `privileges`, `description`, `login_url`, `status`, `date_created`) VALUES
 (1, 'SYSTEM', 'statistics|overview|inhouse|dispatch|Settings|company|users|permissions|customers|reports|sms', '', 'Designers of this software', 'dashboard', 'active', '2017-10-16 17:42:32'),
-(2, 'RECEPTIONIST', 'statistics|overview|inhouse|dispatch', '', NULL, '', 'active', '2018-08-15 10:20:37');
+(2, 'CEO', '', '', 'Chief Executive Officer Of The Whole Business', '', 'active', '2019-01-22 23:54:44'),
+(3, 'RECEPTIONIST', '', '', 'Recieves Clients Warmly And Also The First Point Of Contact. Front Desk Things Too', '', 'active', '2019-01-22 23:56:09');
 
 -- --------------------------------------------------------
 
@@ -176,7 +177,7 @@ CREATE TABLE `access_users` (
 --
 
 INSERT INTO `access_users` (`id`, `username`, `passwd`, `default_passwd`, `fullname`, `phone_number`, `temp_employee_id`, `biodata_id`, `demo_user_id`, `first_login`, `login_attempt`, `online`, `status`, `created_by`, `date_created`) VALUES
-(1, 'marksbonapps@gmail.com', '$2y$10$O/swrfsJ6TbhtHiyzR7GmurgN4u49VcaMFzrOtZ9.3N511hoPhOVi', '', 'Edem Ahlijah', '023456789', 'KAD/SYS/001', 0, 0, 0, 5, 0, 'active', 0, '2018-07-03 15:59:37');
+(1, 'marksbonapps@gmail.com', '$2y$10$O/swrfsJ6TbhtHiyzR7GmurgN4u49VcaMFzrOtZ9.3N511hoPhOVi', '', 'Osborne Mordreds', '0541786220', 'KAD/SYS/001', 0, 0, 0, 5, 0, 'active', 0, '2018-07-03 15:59:37');
 
 -- --------------------------------------------------------
 
@@ -288,7 +289,7 @@ CREATE TABLE `hr_company_info` (
 --
 
 INSERT INTO `hr_company_info` (`id`, `name`, `telephone_1`, `telephone_2`, `fax`, `email`, `postal_address`, `residence_address`, `website`, `mission`, `vision`, `gps_location`, `tin_number`, `logo_id`, `date_of_commence`) VALUES
-(1, 'CTS LAUNDRY', '0244000999', '0233888999', NULL, 'info@gblaundry.com', 'POSTAL ADDRES', 'OFANKOR', 'www.ctslaundry.com', 'MISSION STATEMENT', 'VISION STATEMAN', '', 'TN-12345678', 0, '0000-00-00');
+(1, 'CTS LAUNDRY', '0244000999', '0233888999', NULL, 'info@ctslaundry.com', 'POSTAL ADDRES', 'OFANKOR', 'www.ctslaundry.com', 'MISSION STATEMENT', 'VISION STATEMAN', 'GA-125-69631', 'TN-12345678', 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -346,6 +347,14 @@ CREATE TABLE `hr_employee_biodata` (
   `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
+--
+-- Dumping data for table `hr_employee_biodata`
+--
+
+INSERT INTO `hr_employee_biodata` (`id`, `first_name`, `middle_name`, `last_name`, `gender`, `date_of_birth`, `id_type`, `id_number`, `id_expiry_date`, `id_issue_date`, `id_card_photo_id`, `marital_status`, `nationality`, `postal_address`, `social_security`, `bank_name`, `bank_branch`, `account_number`, `user_id`, `photo_id`, `status`, `created_date`) VALUES
+(1, 'Margaret', 'Yaa', 'Appiah', 'Female', NULL, NULL, NULL, NULL, NULL, 0, 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '2019-01-22 23:59:14'),
+(2, 'Kelvin', 'Floyd', 'Okai', 'Male', NULL, NULL, NULL, NULL, NULL, 0, 'Single', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', '2019-01-23 00:10:34');
+
 -- --------------------------------------------------------
 
 --
@@ -368,6 +377,14 @@ CREATE TABLE `hr_employee_contact_info` (
   `emergency_postal_addr` varchar(50) CHARACTER SET utf8 NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `hr_employee_contact_info`
+--
+
+INSERT INTO `hr_employee_contact_info` (`id`, `biodata_id`, `phone_number_1`, `phone_number_2`, `email`, `residence`, `emergency_fullname`, `emergency_relationship`, `emergency_occupation`, `emergency_phone_1`, `emergency_phone_2`, `emergency_residence`, `emergency_postal_addr`, `date_created`) VALUES
+(1, 1, '0244000555', '', 'margaret@ctslaundry.com', 'Abehenease - Amasaman', 'Sister Adjoa', 'Guardian', '', '026655335', NULL, 'Abehenease - Amasaman', '', '2019-01-22 23:59:14'),
+(2, 2, '0266369852', '', 'floyd@ctslaundry.com', 'Ayikai-Doblo', 'Bra Kwame', 'Guardian', '', '0244789563', NULL, '3 Junction - Amasaman', '', '2019-01-23 00:10:34');
 
 -- --------------------------------------------------------
 
@@ -401,6 +418,14 @@ CREATE TABLE `hr_employee_work_info` (
   `date_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
+--
+-- Dumping data for table `hr_employee_work_info`
+--
+
+INSERT INTO `hr_employee_work_info` (`id`, `biodata_id`, `employee_id`, `position_id`, `department_id`, `employment_type`, `employment_startdate`, `work_email`, `resume_id`, `application_id`, `date_created`) VALUES
+(1, 1, 'BG/EMP/001', 3, 2, '', NULL, NULL, NULL, 0, '2019-01-22 23:59:14'),
+(2, 2, 'CTS/EMP/002', 3, 2, '', NULL, NULL, NULL, 0, '2019-01-23 00:10:34');
+
 -- --------------------------------------------------------
 
 --
@@ -423,7 +448,9 @@ CREATE TABLE `hr_position` (
 --
 
 INSERT INTO `hr_position` (`id`, `name`, `parent_position`, `department_id`, `description`, `salary`, `status`, `created_date`) VALUES
-(1, 'SYSTEM', 0, 1, 'Developers Of the System', 0, 'active', '2018-05-08 11:04:04');
+(1, 'SYSTEM', 0, 1, 'Developers Of the System', 0, 'active', '2018-05-08 11:04:04'),
+(2, 'CEO', 0, 1, 'Chief Executive Officer Of The Whole Business', 1, 'active', '2019-01-22 23:54:44'),
+(3, 'RECEPTIONIST', 2, 2, 'Recieves Clients Warmly And Also The First Point Of Contact. Front Desk Things Too', 600, 'active', '2019-01-22 23:56:09');
 
 -- --------------------------------------------------------
 
@@ -463,7 +490,8 @@ INSERT INTO `laundry_clients` (`id`, `fullname`, `gender`, `company`, `residence
 (8, 'Wisdom', 'Male', 'Sablah', 'Ct Loop', 'YK 1407, kanda', '0247173741', '', 'sablah247@gmail.com', 1, 0, 0, 'active', '2018-08-14 06:22:07'),
 (9, 'Mavis Mordreds', 'Female', '', 'Fise', '', '0547843221', '', 'mavis.mordred@gmail.com', 1, 0, 0, 'active', '2018-08-21 14:21:27'),
 (10, 'Vee', 'Female', '', 'Pokuase', '', '0246498413', '', 'veeniq@gmail.com', 1, 0, 0, 'active', '2018-08-24 11:36:10'),
-(11, 'Matilda', 'Female', 'Tilda\'s Secret', 'Abelemkpe', 'Postal Address', '0249162378', '', 'matilda@gmail.com', 1, 0, 0, 'active', '2018-08-27 20:11:07');
+(11, 'Matilda', 'Female', 'Tilda\'s Secret', 'Abelemkpe', 'Postal Address', '0249162378', '058419581', 'matilda@gmail.com', 1, 0, 0, 'active', '2018-08-27 20:11:07'),
+(12, 'CTS LAUNDRY', 'Male', '', 'DUBLO', '', '0248132918', '', '', 1, 0, 0, 'active', '2019-01-15 16:41:48');
 
 -- --------------------------------------------------------
 
@@ -511,12 +539,60 @@ CREATE TABLE `laundry_garments` (
 --
 
 INSERT INTO `laundry_garments` (`id`, `name`, `description`, `status`, `date_created`) VALUES
-(1, 'Nylon Cloths', 'All Types', 'active', '2017-12-27 20:11:24'),
-(2, 'Pure Cotton Clothing', 'All Types', 'active', '2017-12-27 20:11:53'),
-(3, 'Cotton / Polyesther Clothing', 'All Types', 'active', '2017-12-27 20:13:09'),
-(4, 'Light Jeans', 'All Types', 'active', '2017-12-27 20:13:49'),
-(5, 'Heavy Jeans', 'All Types', 'active', '2017-12-27 20:14:01'),
-(6, 'Suits', 'Suit', 'active', '2018-11-15 10:47:36');
+(1, 'Apron', 'Apron', 'active', '2019-01-23 00:14:40'),
+(2, 'Cloth, Kente', 'Cloth, Kente', 'active', '2019-01-23 00:15:22'),
+(3, 'Cloth, Wax Print', 'Cloth, Wax Print', 'active', '2019-01-23 00:15:48'),
+(4, 'Bed Sheet, King', 'Bed Sheet, King', 'active', '2019-01-23 00:17:21'),
+(5, 'Coat/Blazer', 'Coat/Blazer', 'active', '2019-01-23 00:17:43'),
+(6, 'Curtains, Heavy, Lined/sq M', 'Curtains, Heavy, Lined/sq M', 'active', '2019-01-23 00:18:11'),
+(7, 'Curtains, Light, Lined/sq M', 'Curtains, Light, Lined/sq M', 'active', '2019-01-23 00:18:23'),
+(8, 'Dress', 'Dress', 'active', '2019-01-23 00:18:42'),
+(9, 'Duvet Cover, King', 'Duvet Cover, King', 'active', '2019-01-23 00:18:59'),
+(10, 'Duvet Cover, Queen', 'Duvet Cover, Queen', 'active', '2019-01-23 00:19:19'),
+(11, 'Duvet/Blanket, King', 'Duvet/Blanket, King', 'active', '2019-01-23 00:19:38'),
+(12, 'Duvet/Blanket, Queen', 'Duvet/Blanket, Queen', 'active', '2019-01-23 00:19:52'),
+(13, 'Jacket, Winter', 'Jacket, Winter', 'active', '2019-01-23 00:20:04'),
+(14, 'Jeans', 'Jeans', 'active', '2019-01-23 00:20:14'),
+(15, 'Jumpsuit, Ladies', 'Jumpsuit, Ladies', 'active', '2019-01-23 00:20:29'),
+(16, 'Kaba, 2pc', 'Kaba, 2pc', 'active', '2019-01-23 00:20:41'),
+(17, 'Kaba, 3pc', 'Kaba, 3pc', 'active', '2019-01-23 00:20:53'),
+(18, 'Kaba, Kente, 2pc', 'Kaba, Kente, 2pc', 'active', '2019-01-23 00:21:07'),
+(19, 'Kaba, Kente, 3pc', 'Kaba, Kente, 3pc', 'active', '2019-01-23 00:21:19'),
+(20, 'Kaftan/Boubou, 1pc', 'Kaftan/Boubou, 1pc', 'active', '2019-01-23 00:21:39'),
+(21, 'Kaftan/Boubou, 2pc', 'Kaftan/Boubou', 'active', '2019-01-23 00:21:54'),
+(22, 'Kaftan/Boubou, 3pc', 'Kaftan/Boubou', 'active', '2019-01-23 00:22:08'),
+(23, 'Napkin', 'Napkin', 'active', '2019-01-23 00:22:27'),
+(24, 'Nightgown', 'Nightgown', 'active', '2019-01-23 00:22:37'),
+(25, 'Overalls', 'Overalls', 'active', '2019-01-23 00:22:45'),
+(26, 'Overcoat', 'Overcoat', 'active', '2019-01-23 00:22:55'),
+(27, 'Pajamas', 'Pajamas', 'active', '2019-01-23 00:23:04'),
+(28, 'Pillow', 'Pillow', 'active', '2019-01-23 00:23:17'),
+(29, 'Pillow Case', 'Pillow Case', 'active', '2019-01-23 00:23:31'),
+(30, 'Polo/Golf Shirt', 'Polo/Golf Shirt', 'active', '2019-01-23 00:24:08'),
+(31, 'Robe, Academic/Choir', 'Robe, Academic/Choir', 'active', '2019-01-23 00:24:28'),
+(32, 'Robe, Bath', 'Robe, Bath', 'active', '2019-01-23 00:24:47'),
+(33, 'Seat Cover, Car, 1 Seat', 'Seat Cover, Car, 1 Seat', 'active', '2019-01-23 00:25:03'),
+(34, 'Seat Cover, Car, 3 Seat', 'Seat Cover, Car, 3 Seat', 'active', '2019-01-23 00:25:17'),
+(35, 'Seat Cover, Domestic, 1 Seat', 'Seat Cover, Domestic, 1 Seat', 'active', '2019-01-23 00:25:32'),
+(36, 'Shirt - Folded', 'Shirt - Folded', 'active', '2019-01-23 00:26:20'),
+(37, 'Shirt - Hanged', 'Shirt - Hanged', 'active', '2019-01-23 00:26:31'),
+(38, 'Shorts', 'Shorts', 'active', '2019-01-23 00:26:40'),
+(39, 'Singlet/Vest', 'Singlet/Vest', 'active', '2019-01-23 00:26:51'),
+(40, 'Skirt', 'Skirt', 'active', '2019-01-23 00:27:01'),
+(41, 'Smock, 1pc', 'Smock, 1pc', 'active', '2019-01-23 00:27:13'),
+(42, 'Smock, 2pc', 'Smock, 2pc', 'active', '2019-01-23 00:27:26'),
+(43, 'Smock, 3pc', 'Smock, 3pc', 'active', '2019-01-23 00:27:39'),
+(44, 'Socks', 'Socks', 'active', '2019-01-23 00:27:50'),
+(45, 'Stuffed Toy/kg', 'Stuffed Toy/kg', 'active', '2019-01-23 00:28:02'),
+(46, 'Suit, 2pc', 'Suit, 2pc', 'active', '2019-01-23 00:28:15'),
+(47, 'Suit, 3pc', 'Suit, 3pc', 'active', '2019-01-23 00:28:30'),
+(48, 'Suit, Safari', 'Suit, Safari', 'active', '2019-01-23 00:28:41'),
+(49, 'T-shirt', 'T-shirt', 'active', '2019-01-23 00:28:54'),
+(50, 'Tablecloth', 'Tablecloth', 'active', '2019-01-23 00:29:04'),
+(51, 'Towel, Large', 'Towel, Large', 'active', '2019-01-23 00:29:19'),
+(52, 'Towel, Small', 'Towel, Small', 'active', '2019-01-23 00:29:35'),
+(53, 'Trousers', 'Trousers', 'active', '2019-01-23 00:29:46'),
+(54, 'Underpants/Boxers', 'Underpants/Boxers', 'active', '2019-01-23 00:29:59');
 
 -- --------------------------------------------------------
 
@@ -594,6 +670,7 @@ CREATE TABLE `laundry_order_details` (
   `unit_prices` varchar(100) NOT NULL,
   `total_sums` varchar(100) NOT NULL,
   `description` varchar(100) NOT NULL,
+  `garment_description` text NOT NULL,
   `service_status` varchar(255) NOT NULL,
   `status_change_userids` varchar(255) NOT NULL,
   `status_change_dates` text NOT NULL
@@ -620,16 +697,12 @@ CREATE TABLE `laundry_prices` (
 --
 
 INSERT INTO `laundry_prices` (`id`, `service_id`, `weight_id`, `garment_id`, `amount`, `status`, `date_created`) VALUES
-(1, 1, 3, 0, 25, 'deleted', '2017-12-28 04:55:04'),
-(2, 1, 2, 0, 40, 'active', '2017-12-28 04:55:32'),
-(3, 4, 0, 1, 5, 'active', '2017-12-28 04:56:21'),
-(4, 2, 0, 5, 20, 'active', '2018-01-16 08:38:47'),
-(5, 2, 2, 5, 30, 'deleted', '2018-01-16 08:39:17'),
-(6, 1, 1, 0, 10, 'active', '2018-01-16 08:39:53'),
-(7, 1, 2, 5, 15, 'active', '2018-01-16 08:40:15'),
-(8, 2, 0, 3, 45, 'active', '2018-08-10 03:52:43'),
-(9, 2, 0, 2, 35, 'active', '2018-08-10 03:52:55'),
-(10, 1, 0, 6, 25, 'active', '2018-11-15 10:48:00');
+(1, 1, 0, 54, 20, 'active', '2019-01-23 00:31:32'),
+(2, 1, 0, 53, 10, 'active', '2019-01-23 00:33:07'),
+(3, 1, 0, 52, 8, 'active', '2019-01-23 00:33:28'),
+(4, 1, 0, 51, 12, 'active', '2019-01-23 00:33:40'),
+(5, 1, 0, 50, 12, 'active', '2019-01-23 00:34:00'),
+(6, 1, 0, 49, 7, 'active', '2019-01-23 00:34:19');
 
 -- --------------------------------------------------------
 
@@ -651,11 +724,9 @@ CREATE TABLE `laundry_services` (
 --
 
 INSERT INTO `laundry_services` (`id`, `name`, `code`, `description`, `status`, `date_created`) VALUES
-(1, 'Washing Only', 'WO', 'All items in this category are weighed', 'active', '2017-12-24 12:37:39'),
-(2, 'Washing & Ironing', 'WI', 'Individual Items Are Charged Here', 'active', '2017-12-27 19:18:22'),
-(3, 'Dry Cleaning', 'DC', 'Dry cleaning description', 'active', '2017-12-27 19:18:42'),
-(4, 'Ironing', 'IR', 'Item Brought for ironing only', 'active', '2017-12-27 19:29:43'),
-(5, 'Delivery', 'DL', 'Deliver washed items', 'active', '2018-01-15 07:06:48');
+(1, 'Laundry', 'LA', 'Laundry Things', 'active', '2019-01-23 00:12:18'),
+(2, 'Dry Cleaning', 'DC', 'Dry Cleaning', 'active', '2019-01-23 00:12:55'),
+(3, 'Press Only', 'PO', 'Ironing Only - No Washing', 'active', '2019-01-23 00:13:27');
 
 -- --------------------------------------------------------
 
@@ -671,14 +742,6 @@ CREATE TABLE `laundry_weights` (
   `status` enum('active','inactive','deleted','') NOT NULL DEFAULT 'active',
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `laundry_weights`
---
-
-INSERT INTO `laundry_weights` (`id`, `service_type`, `weight`, `description`, `status`, `date_created`) VALUES
-(1, 1, '1 - 10 KG', '', 'active', '2017-12-27 19:30:48'),
-(2, 1, '15 - 30 KG', '', 'active', '2017-12-27 19:33:34');
 
 -- --------------------------------------------------------
 
@@ -753,10 +816,8 @@ CREATE TABLE `settings_tax_system` (
 --
 
 INSERT INTO `settings_tax_system` (`id`, `value`, `getfund`, `nhil`, `user_id`, `date_created`) VALUES
-(1, 2, 0, 0, 1, '2018-08-08 09:38:33'),
-(2, 2.87, 0, 0, 1, '2018-08-08 09:42:18'),
-(3, 0.25, 0, 0, 1, '2018-08-09 09:38:47'),
-(4, 17.5, 0, 0, 1, '2018-08-28 22:06:14');
+(1, 12, 2.5, 2.5, 1, '2019-01-23 02:39:26'),
+(2, 12, 2.5, 2.2, 1, '2019-01-23 02:40:37');
 
 -- --------------------------------------------------------
 
@@ -1363,7 +1424,7 @@ ALTER TABLE `access_password_reset_requests`
 -- AUTO_INCREMENT for table `access_roles_privileges_group`
 --
 ALTER TABLE `access_roles_privileges_group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `access_roles_privileges_user`
@@ -1381,7 +1442,7 @@ ALTER TABLE `access_sysaudit`
 -- AUTO_INCREMENT for table `access_users`
 --
 ALTER TABLE `access_users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `blobs`
@@ -1423,13 +1484,13 @@ ALTER TABLE `hr_departments`
 -- AUTO_INCREMENT for table `hr_employee_biodata`
 --
 ALTER TABLE `hr_employee_biodata`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `hr_employee_contact_info`
 --
 ALTER TABLE `hr_employee_contact_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `hr_employee_other_info`
@@ -1441,19 +1502,19 @@ ALTER TABLE `hr_employee_other_info`
 -- AUTO_INCREMENT for table `hr_employee_work_info`
 --
 ALTER TABLE `hr_employee_work_info`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `hr_position`
 --
 ALTER TABLE `hr_position`
-  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `laundry_clients`
 --
 ALTER TABLE `laundry_clients`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `laundry_delivery_method`
@@ -1465,7 +1526,7 @@ ALTER TABLE `laundry_delivery_method`
 -- AUTO_INCREMENT for table `laundry_garments`
 --
 ALTER TABLE `laundry_garments`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `laundry_orders`
@@ -1495,19 +1556,19 @@ ALTER TABLE `laundry_order_details`
 -- AUTO_INCREMENT for table `laundry_prices`
 --
 ALTER TABLE `laundry_prices`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `laundry_services`
 --
 ALTER TABLE `laundry_services`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `laundry_weights`
 --
 ALTER TABLE `laundry_weights`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `settings_dashboard_tabs`
@@ -1525,7 +1586,7 @@ ALTER TABLE `settings_sms`
 -- AUTO_INCREMENT for table `settings_tax_system`
 --
 ALTER TABLE `settings_tax_system`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
